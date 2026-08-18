@@ -3199,26 +3199,26 @@ character_event = {
 					limit = { has_holder = yes }
 					remove_building = ca_sub_barony_ruin
 					remove_building = ct_sub_barony_ruin
-					clr_title_flag = sub_barony_ruin 
+					clr_title_flag = sub_barony_ruin
 				}
 			}
 		}
 		1221 = {
-			hidden_tooltip = {  #just in case coloniser erroneously becomes independent	
-				FROM = { 
+			hidden_tooltip = {  #just in case coloniser erroneously becomes independent
+				FROM = {
 					if = {
-						limit = { 
-							NOT = { vassal_of = event_target:colonise_liege } 
+						limit = {
+							NOT = { vassal_of = event_target:colonise_liege }
 							NOT = { character = event_target:colonise_liege }
-						} 
-						set_defacto_liege = event_target:colonise_liege 
-					}	
+						}
+						set_defacto_liege = event_target:colonise_liege
+					}
 				}
-			}	
-			if = { 
-				limit = { 
+			}
+			if = {
+				limit = {
 					OR = {
-						has_province_flag = ca_colony_1 
+						has_province_flag = ca_colony_1
 						NOR = {
 							has_province_flag = ca_colony_1
 							has_province_flag = ca_colony_2
@@ -3227,79 +3227,79 @@ character_event = {
 							has_province_flag = ca_colony_5
 							has_province_flag = ca_colony_6
 						}
-					}	
-				} 
-				set_province_flag = ca_colony_1 
-				capital_holding = { 
+					}
+				}
+				set_province_flag = ca_colony_1
+				capital_holding = {
 					if = {
 						limit = { holding_type = castle }
-						add_building = ca_colony_1 
+						add_building = ca_colony_1
 					}
 					if = {
 						limit = { holding_type = city }
-						add_building = ct_colony_1 
+						add_building = ct_colony_1
 					}
 				}
-			}	
-			if = { 
-				limit = { has_province_flag = ca_colony_2 } 
-				capital_holding = { 
+			}
+			if = {
+				limit = { has_province_flag = ca_colony_2 }
+				capital_holding = {
 					if = {
 						limit = { holding_type = castle }
 						add_building = ca_colony_2
-					}	
+					}
 					if = {
 						limit = { holding_type = city }
 						add_building = ct_colony_2
 					}
 				}
 			}
-			if = { 
-				limit = { has_province_flag = ca_colony_3 } 
-				capital_holding = { 
+			if = {
+				limit = { has_province_flag = ca_colony_3 }
+				capital_holding = {
 					if = {
 						limit = { holding_type = castle }
 						add_building = ca_colony_3
-					}	
+					}
 					if = {
 						limit = { holding_type = city }
 						add_building = ct_colony_3
 					}
 				}
 			}
-			if = { 
+			if = {
 				limit = { has_province_flag = ca_colony_4 }
-				capital_holding = { 
+				capital_holding = {
 					if = {
 						limit = { holding_type = castle }
 						add_building = ca_colony_4
-					}	
+					}
 					if = {
 						limit = { holding_type = city }
 						add_building = ct_colony_4
 					}
 				}
 			}
-			if = { 
-				limit = { has_province_flag = ca_colony_5 } 
-				capital_holding = { 
+			if = {
+				limit = { has_province_flag = ca_colony_5 }
+				capital_holding = {
 					if = {
 						limit = { holding_type = castle }
-						add_building = ca_colony_5 
-					}	
+						add_building = ca_colony_5
+					}
 					if = {
 						limit = { holding_type = city }
 						add_building = ct_colony_5
 					}
 				}
 			}
-			if = { 
-				limit = { has_province_flag = ca_colony_6 } 
-				capital_holding = { 
+			if = {
+				limit = { has_province_flag = ca_colony_6 }
+				capital_holding = {
 					if = {
 						limit = { holding_type = castle }
 						add_building = ca_colony_6
-					}	
+					}
 					if = {
 						limit = { holding_type = city }
 						add_building = ct_colony_6
@@ -3311,7 +3311,7 @@ character_event = {
 				if = {
 					limit = { has_province_modifier = ruined_province }
 					remove_province_modifier = ruined_province
-				}	
+				}
 				if = {
 					limit = { has_province_modifier = dothraki_domain }
 					remove_province_modifier = dothraki_domain
