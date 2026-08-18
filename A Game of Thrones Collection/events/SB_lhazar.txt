@@ -1,0 +1,240 @@
+namespace = sb_lhazar
+
+#Decide what to do with Lhazar lords
+narrative_event = {
+	id = sb_lhazar.1
+	desc = "EVTDESC_sb_lhazar.1"
+	title = "EVTTITLE_sb_lhazar.1"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = lhazar_negotiations }
+	}
+
+	immediate = {
+		set_global_flag = lhazar_negotiations
+	}
+
+	option = {
+		name = "EVTOPTA_sb_lhazar.1"
+		ai_chance = { factor = 70 }
+		wealth = -15
+		any_playable_ruler = {
+			limit = { has_landed_title = d_lhazosh }
+			character_event = {
+				id =  sb_lhazar.2
+				days = 7
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_hesh }
+			character_event = {
+				id =  sb_lhazar.2
+				days = 7
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_kosrak }
+			character_event = {
+				id =  sb_lhazar.2
+				days = 7
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_lhazar.1"
+		ai_chance = { factor = 20 }
+		piety = 50
+	}
+
+	option = {
+		name = "EVTOPTC_sb_lhazar.1"
+		ai_chance = { factor = 10 }
+		d_hesh = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+		d_kosrak = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+		d_lhazosh = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+	}
+}
+#Lords of Lhazar decide what to do
+character_event = {
+	id = sb_lhazar.2
+	desc = "EVTDESC_sb_lhazar.2"
+	title = "EVTTITLE_sb_lhazar.2"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_lhazar.2"
+		ai_chance = { factor = 95 }
+		trigger = {
+			c_77041 = {
+				is_alive = yes
+				has_landed_title = e_ghiscar
+			}
+		}
+		c_77041 = {
+			narrative_event = {
+				id = sb_lhazar.3
+				days = 7
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_lhazar.2"
+		ai_chance = { factor = 5 }
+		prestige = 100
+	}
+}
+#Accept or reject their offer to become vassals
+narrative_event = {
+	id = sb_lhazar.3
+	desc = "EVTDESC_sb_lhazar.3"
+	title = "EVTTITLE_sb_lhazar.3"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = lhazar_answer }
+	}
+
+	immediate = { set_global_flag = lhazar_answer }
+
+	option = {
+		name = "EVTOPTA_sb_lhazar.3"
+		ai_chance = { factor = 90 }
+		wealth = -50
+		FROM = { set_defacto_liege = ROOT }
+		FROM = { show_portrait = yes }
+		FROM = { wealth = 50 }
+	}
+
+	option = {
+		name = "EVTOPTB_sb_lhazar.3"
+		ai_chance = { factor = 10 }
+		prestige = -100
+	}
+}
+#Created Lhazar Kindom, choose one lord to be King/Lord Paramount
+narrative_event = {
+	id = sb_lhazar.4
+	desc = "EVTDESC_sb_lhazar.4"
+	title = "EVTTITLE_sb_lhazar.4"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		has_landed_title = k_lhazar
+		NOT = { has_global_flag = lhazar_king_event }
+	}
+
+	immediate = { set_global_flag = lhazar_king_event }
+
+	option = {
+		name = "EVTOPTA_sb_lhazar.4"
+		wealth = -50
+		d_hesh = { holder_scope = { wealth = 50 } }
+		any_vassal = {
+			limit = {
+				has_landed_title = d_hesh
+				is_alive =	yes
+				is_ruler = yes
+			}
+			k_lhazar = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = lhazar_king_blood
+			}
+		}
+		e_ghiscar = {
+			k_lhazar = { de_jure_liege = PREV }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_lhazar.4"
+		wealth = -50
+		d_lhazosh = { holder_scope = { wealth = 50 } }
+		any_vassal = {
+			limit = {
+				has_landed_title = d_lhazosh
+				is_alive =	yes
+				is_ruler = yes
+			}
+			k_lhazar = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = lhazar_king_blood
+			}
+		}
+		e_ghiscar = {
+			k_lhazar = { de_jure_liege = PREV }
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_lhazar.4"
+		wealth = -50
+		d_kosrak = { holder_scope = { wealth = 50 } }
+		any_vassal = {
+			limit = {
+				has_landed_title = d_kosrak
+				is_alive =	yes
+				is_ruler = yes
+			}
+			k_lhazar = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = lhazar_king_blood
+			}
+		}
+		e_ghiscar = {
+			k_lhazar = { de_jure_liege = PREV }
+		}
+	}
+}

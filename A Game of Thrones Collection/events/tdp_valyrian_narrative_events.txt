@@ -1,0 +1,1227 @@
+namespace = tdp_valyrian_narrative
+
+#The Brave
+#Polygamy Problems
+#Nicknames + Bloodlines
+#
+
+#The Brave
+character_event = {
+	id = tdp_valyrian_narrative.1
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		start_date < 8052.1.1
+		tier = EMPEROR
+		has_dragonpit_trigger = yes
+		any_vassal = { trait = dragonkeeper }
+		NOT = { has_global_flag = kid_the_brave }
+		any_child = {
+			NOR = {
+				trait = sickly
+				trait = idolizer
+				trait = timid
+				trait = affectionate
+			}
+			age = 2
+			age < 5
+		}
+		any_courtier = {
+			trait = dragon
+			age = 100
+			has_character_modifier = locked_in_dragonpit
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 10
+	}
+
+	immediate = {
+		random_child = {
+			limit = {
+				NOR = {
+					trait = sickly
+					trait = idolizer
+					trait = timid
+					trait = affectionate
+				}
+				age = 2
+				age < 5
+			}
+			save_event_target_as = the_child
+		}
+		random_courtier = {
+			limit = {
+				trait = dragon
+				age = 100
+				has_character_modifier = locked_in_dragonpit
+			}
+			save_event_target_as = the_dragon
+		}
+		character_event = { id = tdp_valyrian_narrative.10 }
+	}
+}
+character_event = {
+	id = tdp_valyrian_narrative.10
+	desc = EVTDESCtdp_valyrian_narrative.10
+	picture = GFX_dragon_riding
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_valyrian_narrative.10
+		set_global_flag = kid_the_brave
+
+		event_target:the_child = {
+			add_trait = brave
+		}
+		hidden_tooltip = {
+			event_target:the_child = {
+				random_list = {
+					1 = {
+						give_nickname = nick_the_brave
+					}
+					5 = {
+						give_nickname = nick_the_fearless
+					}
+					5 = {
+						give_nickname = nick_the_courageous
+					}
+					5 = {
+						give_nickname = nick_the_undaunted
+					}
+					5 = {
+						give_nickname = nick_the_dragonheart
+					}
+				}
+			}
+		}
+	}
+}
+
+
+###Character takes a second bride
+#Scope for portrait
+character_event = {
+	id = tdp_valyrian_narrative.2999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		top_liege = { character_event = { id = tdp_valyrian_narrative.2 } }
+	}
+}
+
+#King is informed of marriage
+character_event = {
+	id = tdp_valyrian_narrative.2
+	desc = EVTDESCtdp_valyrian_narrative.2
+	picture = GFX_targaryen_polygamy
+
+	is_triggered_only = yes
+
+	option = { #Who cares?
+		name = EVTOPTAtdp_valyrian_narrative.2
+		any_realm_lord = {
+			limit = {
+				NOT = { character = FROMFROM }
+				trait = zealous
+				OR = {
+					religion = old_gods
+					religion = the_seven
+				}
+				NOR = {
+					trait = septon
+					trait = septa
+				}
+			}
+			opinion = {
+				modifier = opinion_allowed_polygamy
+				who = ROOT
+			}
+		}
+		hidden_tooltip = {
+			any_realm_character = {
+				limit = {
+					NOT = { character = FROMFROM }
+					OR = {
+						trait = septon
+						trait = septa
+					}
+				}
+				opinion = {
+					modifier = opinion_allowed_polygamy
+					who = ROOT
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = { #Demand annulment
+		name = EVTOPTBtdp_valyrian_narrative.2
+		custom_tooltip = {
+			text = TOOLTIPannulment
+		}
+		FROM = { character_event = { id = tdp_valyrian_narrative.20 days = 1 } }
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+
+character_event = {
+	id = tdp_valyrian_narrative.20
+	desc = EVTDESCtdp_valyrian_narrative.20
+	picture = GFX_targaryen_polygamy
+
+	is_triggered_only = yes
+
+	option = { #Refusal
+		name = EVTOPTAtdp_valyrian_narrative.20
+		FROM = { character_event = { id = tdp_valyrian_narrative.200 days = 1 } }
+		change_variable = { which = rogue_prince value = 1 }
+		change_variable = { which = the_cruel value = 1 }
+		ai_chance = {
+			factor = 50
+		}
+	}
+
+	option = { #Annul marriage
+		name = EVTOPTBtdp_valyrian_narrative.20
+		FROM = { character_event = { id = tdp_valyrian_narrative.201 days = 1 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+
+#Informed of Refusal
+character_event = {
+	id = tdp_valyrian_narrative.200
+	desc = EVTDESCtdp_valyrian_narrative.200
+	picture = GFX_targaryen_polygamy
+
+	is_triggered_only = yes
+
+	option = { #Ah fine if you really want to
+		name = EVTOPTAtdp_valyrian_narrative.200
+		any_realm_lord = {
+			limit = {
+				NOT = { character = FROM }
+				OR = {
+					AND = {
+						trait = zealous
+						OR = {
+							religion = old_gods
+							religion = the_seven
+						}
+					}
+					trait = septon
+					trait = septa
+				}
+			}
+			opinion = {
+				modifier = opinion_allowed_polygamy
+				who = ROOT
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = { #Then you are banished from the realm!
+		name = EVTOPTBtdp_valyrian_narrative.200
+		random_independent_ruler = {
+			limit = {
+				culture_group = free_cities
+				tier = KING
+			}
+			FROM = {
+				banish = PREV
+				any_consort = {
+					banish = PREVPREV
+				}
+			}
+		}
+		FROM = {
+			opinion = { modifier = opinion_exiled_me who = PREV }
+			any_consort = {
+				opinion = { modifier = opinion_exiled_me who = PREVPREV }
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+#Informed of Annulment
+character_event = {
+	id = tdp_valyrian_narrative.201
+	desc = EVTDESCtdp_valyrian_narrative.201
+	picture = GFX_targaryen_polygamy
+
+	is_triggered_only = yes
+
+	option = { #Good
+		name = EVTOPTAtdp_valyrian_narrative.201
+		set_character_flag = forbidden_from_polygamy
+		clr_character_flag = has_high_valyrian_polygamy_wife
+		FROM = {
+			any_consort = {
+				limit = { has_character_flag = high_valyrian_polygamy_wife }
+				clr_character_flag = high_valyrian_polygamy_wife
+				remove_consort = FROM
+				remove_lover = FROM
+			}
+		}
+	}
+}
+
+
+#Nicknames + Bloodlines
+character_event = {
+	id = tdp_valyrian_narrative.4
+	desc = EVTDESCtdp_valyrian_narrative.4
+	picture = GFX_dragon_war_victorious
+
+	is_triggered_only = yes
+
+	min_age = 20
+	only_independent = yes
+	culture_group = valyrian
+
+	trigger = {
+		tier = EMPEROR
+		ruled_years = 5
+		NOT = {
+			any_owned_bloodline = {
+				ROOT = {
+					is_bloodline_founder_of = PREV
+				}
+			}
+		}
+		OR = {
+			AND = {
+				calc_true_if = {
+					amount = 4
+					trait = diligent
+					trait = just
+					trait = patient
+					trait = charismatic_negotiator
+					trait = grey_eminence
+					trait = brave
+					trait = authoritative
+					is_smart_incl_genius_trigger = yes
+				}
+				NOR = {
+					has_unpleasant_trait_trigger = yes
+					has_evil_trait_trigger = yes
+					has_impious_trait_trigger = yes
+					has_vice_trigger = yes
+				}
+			}
+			AND = {
+				has_impious_trait_trigger = no
+				has_vice_trigger = no
+				calc_true_if = {
+					amount = 6
+					trait = chaste
+					trait = zealous
+					trait = humble
+					trait = temperate
+					trait = charitable
+					trait = patient
+					trait = trusting
+					trait = mastermind_theologian
+					trait = septon
+				}
+			}
+			AND = {
+				OR = {
+					trait = midas_touched
+					trait = fortune_builder
+				}
+				calc_true_if = {
+					amount = 4
+					trait = erudite
+					trait = charitable
+					trait = just
+					trait = diligent
+					trait = brave
+					trait = kind
+					trait = scholar
+				}
+			}
+			AND = {
+				OR = {
+					trait = hedonist
+					trait = lustful
+				}
+				calc_true_if = {
+					amount = 4
+					trait = cruel
+					trait = impaler
+					trait = selfish
+					trait = greedy
+					trait = gluttonous
+					trait = gregarious
+					trait = arbitrary
+					trait = deceitful
+					trait = wroth
+					trait = envious
+					trait = ruthless
+				}
+			}
+			AND = {
+				trait = lunatic
+				calc_true_if = {
+					amount = 4
+					trait = cruel
+					trait = impaler
+					trait = selfish
+					trait = greedy
+					trait = gluttonous
+					trait = gregarious
+					trait = arbitrary
+					trait = deceitful
+					trait = wroth
+					trait = envious
+					trait = ruthless
+				}
+				NOT = { is_strong_trigger = yes }
+			}
+			AND = {
+				is_strong_trigger = yes
+				calc_true_if = {
+					amount = 4
+					trait = wroth
+					trait = paranoid
+					trait = cruel
+					trait = ruthless
+					trait = lunatic
+					has_warrior_nickname_prereq_trigger = yes
+				}
+				NOR = {
+					has_virtue_trigger = yes
+					has_pious_trait_trigger = yes
+					has_pleasant_trait_trigger = yes
+					has_benevolent_trait_trigger = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+		#Benevolent
+		if = {
+			limit = {
+				calc_true_if = {
+					amount = 4
+					trait = diligent
+					trait = just
+					trait = patient
+					trait = charismatic_negotiator
+					trait = grey_eminence
+					trait = brave
+					trait = authoritative
+					is_smart_incl_genius_trigger = yes
+				}
+				NOR = {
+					has_unpleasant_trait_trigger = yes
+					has_evil_trait_trigger = yes
+					has_impious_trait_trigger = yes
+					has_vice_trigger = yes
+				}
+			}
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_nickname = no
+					}
+					random_list = {
+						10 = { give_nickname = nick_the_peacemaker }
+						10 = { give_nickname = nick_the_arbitrator }
+						10 = { give_nickname = nick_the_negotiator }
+						10 = { give_nickname = nick_the_diplomat }
+						1 = {
+							modifier = {
+								factor = 0
+								start_date = 8081.1.1
+							}
+							give_nickname = nick_the_conciliator
+						}
+					}
+				}
+			}
+			create_bloodline = {
+				type = tdp_benevolent_bloodline
+			}
+			new_bloodline = {
+				set_description = tdp_jaehaerys_i_desc
+			}
+		}
+		else_if = {
+			limit = {
+				has_impious_trait_trigger = no
+				has_vice_trigger = no
+				calc_true_if = {
+					amount = 6
+					trait = chaste
+					trait = zealous
+					trait = humble
+					trait = temperate
+					trait = charitable
+					trait = patient
+					trait = trusting
+					trait = mastermind_theologian
+					trait = septon
+				}
+			}
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_nickname = no
+					}
+					random_list = {
+						10 = { give_nickname = nick_the_graced }
+						10 = { give_nickname = nick_the_devoted }
+						10 = { give_nickname = nick_the_holy }
+						10 = {
+							modifier = {
+								factor = 0
+								NOT = { trait = septon }
+							}
+							give_nickname = nick_the_septon_king
+						}
+						5 = { give_nickname = nick_the_beloved }
+						1 = {
+							modifier = {
+								factor = 0
+								start_date = 8081.1.1
+							}
+							give_nickname = nick_the_blessed
+						}
+					}
+				}
+			}
+			create_bloodline = {
+				type = tdp_benevolent_bloodline
+			}
+			new_bloodline = {
+				set_description = tdp_baelor_desc
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					trait = midas_touched
+					trait = fortune_builder
+				}
+				calc_true_if = {
+					amount = 4
+					trait = erudite
+					trait = charitable
+					trait = just
+					trait = diligent
+					trait = brave
+					trait = kind
+					trait = scholar
+				}
+			}
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_nickname = no
+					}
+					random_list = {
+						#10 = { give_nickname = nick_the_graced }
+						#15 = { give_nickname = nick_the_ }
+						1 = { give_nickname = nick_the_good }
+					}
+				}
+			}
+			create_bloodline = {
+				type = tdp_benevolent_bloodline
+			}
+			new_bloodline = {
+				set_description = tdp_daeron_ii_desc
+			}
+		}
+
+		#Malevolent
+		else_if = {
+			limit = {
+				OR = {
+					trait = hedonist
+					trait = lustful
+				}
+				calc_true_if = {
+					amount = 4
+					trait = cruel
+					trait = impaler
+					trait = selfish
+					trait = greedy
+					trait = gluttonous
+					trait = gregarious
+					trait = arbitrary
+					trait = deceitful
+					trait = wroth
+					trait = envious
+					trait = ruthless
+				}
+			}
+			hidden_tooltip = {
+			if = {
+				limit = {
+					has_nickname = no
+				}
+				random_list = {
+					1 = { give_nickname = nick_the_unfit }
+					1 = { give_nickname = nick_the_unchaste }
+					1 = { give_nickname = nick_the_unfaithful }
+					1 = { give_nickname = nick_the_depraved }
+				}
+			}
+			}
+			create_bloodline = {
+				type = tdp_malevolent_bloodline
+			}
+			new_bloodline = {
+				set_description = tdp_aegon_iv_desc
+			}
+		}
+		else_if = {
+			limit = {
+				trait = lunatic
+				calc_true_if = {
+					amount = 4
+					trait = cruel
+					trait = impaler
+					trait = selfish
+					trait = greedy
+					trait = gluttonous
+					trait = gregarious
+					trait = arbitrary
+					trait = deceitful
+					trait = wroth
+					trait = envious
+					trait = ruthless
+				}
+				NOT = { is_strong_trigger = yes }
+			}
+			hidden_tooltip = {
+			if = {
+				limit = {
+					has_nickname = no
+				}
+				random_list = {
+					15 = { give_nickname = nick_the_malevolent }
+					15 = { give_nickname = nick_the_deranged }
+					15 = { give_nickname = nick_the_insane }
+					15 = { give_nickname = nick_the_paranoid }
+					1 = { give_nickname = nick_the_mad }
+				}
+			}
+			}
+			create_bloodline = {
+				type  = tdp_malevolent_bloodline
+			}
+			new_bloodline = {
+				set_description = tdp_aerys_ii_desc
+			}
+		}
+		else = {
+			limit = {
+				is_strong_trigger = yes
+				calc_true_if = {
+					amount = 4
+					trait = wroth
+					trait = paranoid
+					trait = cruel
+					trait = ruthless
+					trait = lunatic
+					has_warrior_nickname_prereq_trigger = yes
+				}
+				NOR = {
+					has_virtue_trigger = yes
+					has_pious_trait_trigger = yes
+					has_pleasant_trait_trigger = yes
+					has_benevolent_trait_trigger = yes
+				}
+			}
+			hidden_tooltip = {
+			if = {
+				limit = {
+					has_nickname = no
+				}
+				random_list = {
+					1 = { give_nickname = nick_the_merciless }
+					1 = { give_nickname = nick_the_ruthless }
+					1 = { give_nickname = nick_the_sadist }
+					1 = { give_nickname = nick_the_damned }
+
+					}
+				}
+			}
+			create_bloodline = {
+				type  = tdp_malevolent_bloodline
+			}
+			new_bloodline = {
+				set_description = tdp_maegor_desc
+			}
+		}
+	}
+}
+
+#Nicknames/Bloodlines from other scenarios
+long_character_event = {
+	id = tdp_valyrian_narrative.5
+	desc = EVTDESCtdp_valyrian_narrative.5
+	picture = GFX_last_dragon
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_valyrian_narrative.5
+		give_nickname = nick_dragonbane
+	}
+}
+
+character_event = {
+	id = tdp_valyrian_narrative.50
+	desc = EVTDESCtdp_valyrian_narrative.4
+	picture = GFX_dragon_war_victorious
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_valyrian_narrative.5
+		create_bloodline = {
+			type = negotiator_with_dorne_bloodline
+		}
+	}
+}
+
+#Bastard of Two Targs
+character_event = {
+	id = tdp_valyrian_narrative.51
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_character_flag = ambitious_bastard }
+		father = { dynasty = 496 }
+		mother = { dynasty = 496 }
+		trait = bastard
+	}
+
+	immediate = {
+		set_character_flag = ambitious_bastard
+	}
+}
+
+character_event = {
+	id = tdp_valyrian_narrative.510
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = ambitious_bastard
+	ai = yes
+
+	trigger = {
+		age == 6
+		OR = {
+			trait = affectionate
+			trait = playful
+			trait = indolent
+			trait = timid
+			trait = idolizer
+		}
+	}
+
+	immediate = {
+		remove_trait = affectionate
+		remove_trait = playful
+		remove_trait = indolent
+		remove_trait = timid
+		remove_trait = idolizer
+		random_list = {
+			1 = { add_trait = fussy }
+			1 = { add_trait = brooding }
+			1 = { add_trait = willful }
+			1 = { add_trait = rowdy }
+			1 = { add_trait = haughty }
+			1 = { add_trait = curious }
+		}
+		random_list = {
+			1 = { add_trait = fussy }
+			1 = { add_trait = brooding }
+			1 = { add_trait = willful }
+			1 = { add_trait = rowdy }
+			1 = { add_trait = haughty }
+			1 = { add_trait = curious }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_valyrian_narrative.511
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	min_age = 8
+	has_character_flag = ambitious_bastard
+
+	trigger = {
+		OR = {
+			trait = craven
+			trait = kind
+			trait = humble
+			trait = gluttonous
+			trait = trusting
+			trait = content
+		}
+	}
+
+	immediate = {
+		remove_trait = craven
+		remove_trait = kind
+		remove_trait = humble
+		remove_trait = gluttonous
+		remove_trait = trusting
+		remove_trait = content
+
+		random_list = {
+			1 = { add_trait = brave }
+			1 = { add_trait = ruthless }
+			1 = { add_trait = ambitious }
+			1 = { add_trait = diligent }
+			1 = { add_trait = wroth }
+			1 = { add_trait = proud }
+		}
+		random_list = {
+			1 = { add_trait = brave }
+			1 = { add_trait = ruthless }
+			1 = { add_trait = ambitious }
+			1 = { add_trait = diligent }
+			1 = { add_trait = wroth }
+			1 = { add_trait = proud }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_valyrian_narrative.512
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	min_age = 12
+	has_character_flag = ambitious_bastard
+
+	trigger = {
+		NOR = {
+			trait = skilled_warrior
+			trait = master_warrior
+		}
+	}
+
+	immediate = {
+		random_list = {
+			65 = { add_trait = skilled_warrior }
+			35 = { add_trait = master_warrior }
+		}
+		if = {
+			limit = { NOT = { has_focus = focus_ed_martial } }
+			clear_focus = yes
+			set_focus = focus_ed_martial
+		}
+		if = {
+			limit = { age = 16 }
+			clr_character_flag = ambitious_bastard
+			random_list = {
+				65 = {
+					trigger = {
+						NOT = { trait = skilled_tactician }
+					}
+					add_trait = skilled_tactician
+				}
+				35 = {
+					trigger = {
+						NOT = { trait = brilliant_strategist }
+					}
+					add_trait = brilliant_strategist
+				}
+			}
+		}
+	}
+}
+
+
+#Nettles Returns?
+character_event = {
+	id = tdp_valyrian_narrative.6
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		NOT = { has_global_flag = nettles_return }
+		start_date = 8141.1.9
+		start_date < 8161.1.1
+		has_landed_title = e_iron_throne
+	}
+
+	mean_time_to_happen = {
+		years = 500
+	}
+
+	immediate = {
+		set_global_flag = nettles_return
+		c_30509001 = {
+			create_character = {
+				name = Nettles
+				dna = "uqorfoddaay"
+				properties = "0r0edk"
+				female = yes
+				dynasty = 504
+				religion = the_seven
+				culture = western_valyrian
+				age = 28
+				historical = yes
+
+				attributes = {
+					learning = 0
+					stewardship = 2
+					martial = 4
+					intrigue = 8
+					diplomacy = 4
+				}
+
+				add_trait = quick
+				add_trait = brave
+				add_trait = honorable
+				add_trait = flamboyant_schemer
+				add_trait = gregarious
+				add_trait = dragon_rider
+			}
+			new_character = {
+				save_event_target_as = new_nettles
+				move_character = ROOT
+				set_graphical_culture = summer_valyrian
+				create_bloodline = {
+					type = bloodline_nettles
+				}
+				#Change Age depending on year
+				if = {
+					limit = {
+						start_date = 8143.1.1
+					}
+					add_age = 2
+				}
+				else_if = {
+					limit = {
+						start_date = 8145.1.1
+					}
+					add_age = 4
+				}
+				else_if = {
+					limit = {
+						start_date = 8147.1.1
+					}
+					add_age = 6
+				}
+				else_if = {
+					limit = {
+						start_date = 8149.1.1
+					}
+					add_age = 8
+				}
+				else_if = {
+					limit = {
+						start_date = 8151.1.1
+					}
+					add_age = 10
+				}
+				else_if = {
+					limit = {
+						start_date = 8153.1.1
+					}
+					add_age = 12
+				}
+				else_if = {
+					limit = {
+						start_date = 8155.1.1
+					}
+					add_age = 14
+				}
+				else_if = {
+					limit = {
+						start_date = 8157.1.1
+					}
+					add_age = 16
+				}
+				else_if = {
+					limit = {
+						start_date = 8159.1.1
+					}
+					add_age = 18
+				}
+				else = {
+					limit = {
+						start_date = 8161.1.1
+					}
+					add_age = 20
+				}
+
+				e_iron_throne = { holder_scope = { character_event = { id = tdp_valyrian_narrative.60 } } }
+			}
+			dynasty = none
+		}
+		c_77990022 = {
+			create_character = {
+				name = Sheepstealer
+				dynasty = 497000
+				religion = dragon_rel
+				culture = dragon_culture
+				age = 83
+
+				add_trait = "dragon"
+				add_trait = "misguided_warrior"
+				add_trait = dragon_5
+				add_trait = ugly_dragon
+				add_trait = wroth_dragon
+				add_trait = ravenous_dragon
+				add_trait = incapable_dragon
+				add_trait = orange_flame
+				add_trait = small_claws
+				add_trait = large_horns
+				add_trait = sheep_dragon
+			}
+			new_character = {
+				add_friend = event_target:new_nettles
+				set_father = 77990005
+				set_mother = 77990007
+				move_character = ROOT
+				event_target:new_nettles = {
+					create_bloodline = {
+						type = dragon_rider_tracker
+					}
+					new_bloodline = {
+						add_bloodline_member = PREVPREV
+						remove_bloodline_member = PREV
+					}
+				}
+				#Change Age depending on year
+				if = {
+					limit = {
+						start_date = 8143.1.1
+					}
+					add_age = 2
+				}
+				else_if = {
+					limit = {
+						start_date = 8145.1.1
+					}
+					add_age = 4
+				}
+				else_if = {
+					limit = {
+						start_date = 8147.1.1
+					}
+					add_age = 6
+				}
+				else_if = {
+					limit = {
+						start_date = 8149.1.1
+					}
+					add_age = 8
+				}
+				else_if = {
+					limit = {
+						start_date = 8151.1.1
+					}
+					add_age = 10
+				}
+				else_if = {
+					limit = {
+						start_date = 8153.1.1
+					}
+					add_age = 12
+				}
+				else_if = {
+					limit = {
+						start_date = 8155.1.1
+					}
+					add_age = 14
+				}
+				else_if = {
+					limit = {
+						start_date = 8157.1.1
+					}
+					add_age = 16
+				}
+				else_if = {
+					limit = {
+						start_date = 8159.1.1
+					}
+					add_age = 18
+				}
+				else = {
+					limit = {
+						start_date = 8161.1.1
+					}
+					add_age = 20
+				}
+			}
+			dynasty = none
+			set_father = 0
+			set_mother = 0
+		}
+		random = {
+			chance = 66
+			create_character = {
+				age = 10
+				female = random
+				culture = western_valyrian
+				religion = the_seven
+				dynasty = 496
+				add_trait = quick
+				add_trait = bastard
+			}
+			new_character = {
+				set_father = 779496
+				set_mother = event_target:new_nettles
+				random_list = {
+					33 = { set_graphical_culture = summer_valyrian }
+					33 = { set_graphical_culture = western_valyrian }
+					33 = { set_graphical_culture = high_valyrian }
+				}
+				#Change Age depending on year
+				if = {
+					limit = {
+						start_date = 8143.1.1
+					}
+					add_age = 2
+				}
+				else_if = {
+					limit = {
+						start_date = 8145.1.1
+					}
+					add_age = 4
+				}
+				else_if = {
+					limit = {
+						start_date = 8147.1.1
+					}
+					add_age = 6
+				}
+				else_if = {
+					limit = {
+						start_date = 8149.1.1
+					}
+					add_age = 8
+				}
+				else_if = {
+					limit = {
+						start_date = 8151.1.1
+					}
+					add_age = 10
+				}
+				else_if = {
+					limit = {
+						start_date = 8153.1.1
+					}
+					add_age = 12
+				}
+				else_if = {
+					limit = {
+						start_date = 8155.1.1
+					}
+					add_age = 14
+				}
+				else_if = {
+					limit = {
+						start_date = 8157.1.1
+					}
+					add_age = 16
+				}
+				else_if = {
+					limit = {
+						start_date = 8159.1.1
+					}
+					add_age = 18
+				}
+				else = {
+					limit = {
+						start_date = 8161.1.1
+					}
+					add_age = 20
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_valyrian_narrative.60
+	desc = EVTDESCtdp_valyrian_narrative.60
+	picture = GFX_sheepstealer
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_valyrian_narrative.60
+	}
+}
+
+
+character_event = {
+	id = tdp_valyrian_narrative.7
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	culture_group = valyrian
+
+	trigger = {
+		NOR = {
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mystic
+				has_bloodline_flag = bloodline_greensight
+				has_bloodline_flag = bloodline_oldgods
+			}
+		}
+		mother_even_if_dead = {
+			NOT = { dynasty = ROOT }
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mystic
+				has_bloodline_flag = bloodline_greensight
+				has_bloodline_flag = bloodline_oldgods
+			}
+		}
+	}
+
+	immediate = {
+		create_bloodline = {
+			type = tdp_firstmen_bloodline
+		}
+	}
+}

@@ -1,0 +1,784 @@
+##################################################################################
+#####Daenerys Quest to Conquer YiTi in ACOK for Stormborn Submod by PabloLara#####
+##################################################################################
+namespace = sb_acok_yiti
+
+#Daenerys decided to Invade YiTi, set flags and begin the quest
+narrative_event = {
+	id = sb_acok_yiti.1
+	desc = "EVTDESCsb_acok_yiti.1"
+	title = "EVTITLEsb_acok_yiti.1"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_global_flag = dany_yiti_invasion
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.1"
+		set_character_flag = preparing_invasion_yiti
+		any_courtier = {
+			limit = {
+				culture = lengi
+				religion = old_ones
+			}
+			set_character_flag = conquest_advisor
+			tooltip = { show_portrait = yes }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_acok_yiti.2
+				days = 35
+			}
+		}
+	}
+}
+#Arrive at the Isle of Marahai
+narrative_event = {
+	id = sb_acok_yiti.2
+	desc = "EVTDESCsb_acok_yiti.2"
+	title = "EVTITLEsb_acok_yiti.2"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.2"
+		any_courtier = {
+			limit = { has_character_flag = conquest_advisor }
+			tooltip = { show_portrait = yes }
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_leng }
+			character_event = {
+				id = sb_acok_yiti.201
+				days = 30
+			}
+		}
+		c_marahai = {
+			grant_title = PREV
+		}
+		b_marahai_temple = {
+			grant_title = PREV
+		}
+		b_marahai_city = {
+			grant_title = PREV
+		}
+		d_marahai = {
+			grant_title = PREV
+		}
+		hidden_tooltip = {
+			location = {
+				if = {
+					limit = {
+						NOT = {
+							any_province_holding = {
+								NOT = { holding_type = nomad }
+								NOT = { holding_type = temple }
+								NOT = { holding_type = tribal }
+							}
+						}
+					}
+					build_holding = {
+						type = castle
+						holder = FROM
+					}
+					random_province_holding = {
+						limit = {
+							holding_type = castle
+							holder_scope = { character = FROM }
+						}
+						save_event_target_as = new_city_holding
+						location = { province_event = { id = unoccupied.399 } } #increase base value, seperate event to avoid 'break'
+						if = {
+							limit = { FROM = { is_feudal = yes } }
+							make_capital_holding = yes
+						}
+					}
+				}
+				county = {
+					gain_title = FROM
+					hidden_tooltip = {
+						any_de_jure_vassal_title = {
+							limit = { has_holder = yes }
+							remove_building = ca_sub_barony_ruin
+							remove_building = ct_sub_barony_ruin
+							clr_title_flag = sub_barony_ruin
+						}
+					}
+				}
+				hidden_tooltip = {  #just in case coloniser erroneously becomes independent
+					FROM = {
+						if = {
+							limit = {
+								NOT = { vassal_of = event_target:colonise_liege }
+								NOT = { character = event_target:colonise_liege }
+							}
+							set_defacto_liege = event_target:colonise_liege
+						}
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							has_province_flag = ca_colony_1
+							NOR = {
+								has_province_flag = ca_colony_1
+								has_province_flag = ca_colony_2
+								has_province_flag = ca_colony_3
+								has_province_flag = ca_colony_4
+								has_province_flag = ca_colony_5
+								has_province_flag = ca_colony_6
+							}
+						}
+					}
+					set_province_flag = ca_colony_1
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_1
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_2 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_2
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_3 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_3
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_4 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_4
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_4
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_5 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_5
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_5
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_6 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_6
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_6
+						}
+					}
+				}
+				set_province_flag = colony_province
+				if = {
+					limit = { has_province_flag = ruined_province }
+					ROOT_FROM = {
+						if = {
+							limit = { has_game_rule = { name = colinisation_cost value = expensive } }
+							wealth = -1600
+						}
+						else_if = {
+							limit = { has_game_rule = { name = colinisation_cost value = normal } }
+							wealth = -1000
+						}
+						else_if = {
+							limit = { has_game_rule = { name = colinisation_cost value = cheap } }
+							wealth = -400
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						traditional_nomad_territory_trigger = yes
+					}
+					ROOT_FROM = {
+						if = {
+							limit = { has_game_rule = { name = colinisation_cost value = expensive } }
+							wealth = -800
+						}
+						else_if = {
+							limit = { has_game_rule = { name = colinisation_cost value = normal } }
+							wealth = -500
+						}
+						else_if = {
+							limit = { has_game_rule = { name = colinisation_cost value = cheap } }
+							wealth = -200
+						}
+					}
+				}
+
+				hidden_tooltip = {
+					if = {
+						limit = { has_province_modifier = ruined_province }
+						remove_province_modifier = ruined_province
+					}
+					if = {
+						limit = { has_province_modifier = dothraki_domain }
+						remove_province_modifier = dothraki_domain
+					}
+					if = {
+						limit = { has_province_modifier = jogos_nhai_domain }
+						remove_province_modifier = jogos_nhai_domain
+					}
+					add_province_modifier = {
+						name = colony
+						duration = -1
+					}
+				}
+			}
+		}
+			hidden_tooltip = {
+				any_de_jure_vassal_title = {
+					limit = { holder_scope = { culture_group = unoccupied_group } }
+					set_defacto_liege = ROOT_FROM
+				}
+				FROM = {
+					any_realm_lord = {
+						limit = { culture_group = unoccupied_group }
+						clear_wealth = THIS
+						any_demesne_title = { gain_title = ROOT_FROM }
+						death = yes
+					}
+					any_realm_character = {
+						limit = { culture_group = unoccupied_group }
+						clear_wealth = THIS
+						death = yes
+					}
+					if = { #maintain patrician status
+						limit = {
+							has_character_flag = is_patrician
+							is_patrician = no
+						}
+						set_government_type = merchant_republic_government
+					}
+					clr_character_flag = is_patrician
+					if = {
+						limit = { ai = no }
+						chronicle = {
+							entry = CHRONICLE_STARTED_COLONY
+							picture = "GFX_evt_castle_construction"
+					}
+				}
+			}
+		}
+	}
+}
+#God Empress of Leng gets news of Dany at Marahai
+character_event = {
+	id = sb_acok_yiti.201
+	desc = "EVTDESCsb_acok_yiti.201"
+	title = "EVTITLEsb_acok_yiti.201"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = k_leng
+		has_global_flag = dany_yiti_invasion
+		c_77041 = {
+			has_landed_title = c_marahai
+			has_character_flag = preparing_invasion_yiti
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.201"
+		ai_chance = { factor = 100 }
+		set_character_flag = met_daenerys
+		set_global_flag = sb_dany_leng
+		any_playable_ruler = {
+			limit = { has_landed_title = c_marahai }
+			narrative_event = {
+				id = sb_acok_yiti.3
+				days = 10
+			}
+		}
+		c_13155963 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTB_acok_yiti.201"
+		ai_chance = { factor = 0 }
+		prestige = -100
+	}
+}
+#Daenerys gets lengi visitors at Marahai
+narrative_event = {
+	id = sb_acok_yiti.3
+	desc = "EVTDESCsb_acok_yiti.3"
+	title = "EVTITLEsb_acok_yiti.3"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+		has_global_flag = sb_dany_leng
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.3"
+		ai_chance = { factor = 100 }
+		c_13155963 = {
+			set_character_flag = met_daenerys
+			tooltip = { show_portrait = yes }
+		}
+		add_trait = wikid
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.301
+				days = 10
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_acok_yiti.3"
+		ai_chance = { factor = 0 }
+		c_13155963 = {
+			set_character_flag = met_daenerys
+			tooltip = { show_portrait = yes }
+			add_rival = 77041
+		}
+		c_12555963 = { add_rival = 77041 }
+		set_global_flag = sb_leng_enemy
+	}
+}
+#Daenerys arrives at Leng, some lore of the isle
+narrative_event = {
+	id = sb_acok_yiti.301
+	desc = "EVTDESCsb_acok_yiti.301"
+	title = "EVTITLEsb_acok_yiti.301"
+	picture = GFX_evt_china_unrest
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+		has_global_flag = sb_dany_leng
+		trait = wikid
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.301"
+		c_12555963 = { tooltip = { show_portrait = yes } }
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.302
+				days = 5
+			}
+		}
+	}
+}
+#Daenerys Talk with the Empress of Leng
+narrative_event = {
+	id = sb_acok_yiti.302
+	desc = "EVTDESCsb_acok_yiti.302"
+	title = "EVTITLEsb_acok_yiti.302"
+	picture = GFX_god_emperor
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+		has_global_flag = sb_dany_leng
+		trait = wikid
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.302"
+		ai_chance = { factor = 95 }
+		c_12555963 = { tooltip = { show_portrait = yes } }
+		prestige = 25
+		add_trait = brave
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.303
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_acok_yiti.302"
+		ai_chance = { factor = 5 }
+		c_12555963 = {
+			c_marahai = { grant_title = PREV }
+			d_marahai = { grant_title = PREV }
+			clr_global_flag = sb_dany_leng
+			clr_character_flag = preparing_invasion_yiti
+			tooltip = { show_portrait = yes }
+		}
+		prestige = -25
+		wealth = 500
+		remove_trait = wikid
+		remove_trait = ambitious
+	}
+}
+#Empress of Leng is interested in your conquest
+narrative_event = {
+	id = sb_acok_yiti.303
+	desc = "EVTDESCsb_acok_yiti.303"
+	title = "EVTITLEsb_acok_yiti.302"
+	picture = GFX_god_emperor
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+		has_global_flag = sb_dany_leng
+		trait = wikid
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.303"
+		c_12555963 = { tooltip = { show_portrait = yes } }
+		c_13155963 = { tooltip = { show_portrait = yes } }
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.304
+				days = 1
+			}
+		}
+	}
+}
+#Empress of Leng agrees to help with some troops
+narrative_event = {
+	id = sb_acok_yiti.304
+	desc = "EVTDESCsb_acok_yiti.304"
+	title = "EVTITLEsb_acok_yiti.302"
+	picture = GFX_god_emperor
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+		has_global_flag = sb_dany_leng
+		trait = wikid
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.304"
+		clr_global_flag = sb_dany_leng
+		remove_trait = wikid
+		c_13155963 = {
+			move_character = ROOT
+			tooltip = { show_portrait = yes }
+		}
+		any_independent_ruler = {
+				limit = { has_landed_title = k_leng }
+				opinion = {
+					modifier = in_non_aggression_pact
+					years = 10
+					who = ROOT
+				}
+				reverse_opinion = {
+					modifier = in_non_aggression_pact
+					years = 10
+					who = ROOT
+				}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.4
+				days = 15
+			}
+		}
+		791 = {
+			ROOT = {
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					owner = ROOT
+					leader = ROOT
+					troops = {
+						light_infantry = { 2500 2500 }
+						archers = { 500 500 }
+						heavy_infantry = { 400 4000 }
+					}
+					attrition = 0.5
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					owner = ROOT
+					troops = {
+						light_infantry = { 2500 2500 }
+						archers = { 500 500 }
+						heavy_infantry = { 400 4000 }
+					}
+					attrition = 0.5
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					owner = ROOT
+					troops = {
+						light_infantry = { 2500 2500 }
+						archers = { 500 500 }
+						heavy_infantry = { 400 4000 }
+					}
+					attrition = 0.5
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+			}
+		}
+		spawn_fleet = {
+			province = closest # closest sea zone
+			owner = ROOT
+			troops = { galleys = { 75 75 } }
+			earmark = danys_fleet
+		}
+	}
+}
+#Back at Marahai after Leng, start tame of Drogon
+narrative_event = {
+	id = sb_acok_yiti.4
+	desc = "EVTDESCsb_acok_yiti.4"
+	title = "EVTITLEsb_acok_yiti.4"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_character_flag = preparing_invasion_yiti
+		has_landed_title = c_marahai
+		has_global_flag = dany_yiti_invasion
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.4"
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.401
+				days = 60
+			}
+		}
+		788 = {
+			ROOT = {
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					owner = ROOT
+					leader = ROOT
+					troops = {
+						light_infantry = { 2000 2000 }
+						archers = { 350 350 }
+						heavy_infantry = { 250 250 }
+					}
+					attrition = 0.5
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					owner = ROOT
+					troops = {
+						light_infantry = { 2000 2000 }
+						archers = { 350 350 }
+						heavy_infantry = { 250 250 }
+					}
+					attrition = 0.5
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					owner = ROOT
+					troops = {
+						light_infantry = { 2000 2000 }
+						archers = { 350 350 }
+						heavy_infantry = { 250 250 }
+					}
+					attrition = 0.5
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+			}
+		}
+	}
+}
+#Tame Drogon
+narrative_event = {
+	id = sb_acok_yiti.401
+	desc = "EVTDESCsb_acok_yiti.401"
+	title = "EVTITLEsb_acok_yiti.401"
+	picture = "GFX_tamingdragon"
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_character_flag = preparing_invasion_yiti
+		has_global_flag = dany_yiti_invasion
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.401"
+		add_trait = dragon_rider
+		clr_character_flag = dany_no_tame_dragon
+		clr_character_flag = preparing_invasion_yiti
+		hidden_tooltip = {
+			random_friend = {
+				limit = { trait = dragon }
+				change_martial = 4
+			}
+			set_dynasty_flag = dragon_riding_dynasty
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.5
+				days = 70
+			}
+		}
+	}
+}
+#Begin conquest of Yi Ti
+narrative_event = {
+	id = sb_acok_yiti.5
+	desc = "EVTDESCsb_acok_yiti.5"
+	title = "EVTITLEsb_acok_yiti.5"
+	picture = GFX_god_emperor
+
+	is_triggered_only = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = c_marahai
+		has_global_flag = dany_yiti_invasion
+		trait = dragon_rider
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.5"
+		set_character_flag = invading_yiti
+		c_13155963 = {
+			add_friend = 77041
+			tooltip = { show_portrait = yes }
+		}
+		e_yi_ti = {
+			reverse_war = {
+				target = d_marahai
+				casus_belli = dragon_conquest
+			}
+		}
+	}
+}
+#Yi Ti conquered, destroy special title
+character_event = {
+	id = sb_acok_yiti.6
+	desc = "EVTDESCsb_acok_yiti.6"
+	picture = GFX_god_emperor
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	trigger = {
+		has_landed_title = e_yi_ti
+		NOT = { has_landed_title = e_iron_throne }
+		NOT = { has_global_flag = sb_acok_yiticonquered }
+		has_global_flag = dany_yiti_invasion
+	}
+
+	immediate = {
+		set_global_flag = sb_acok_yiticonquered
+	}
+
+	option = {
+		name = "EVTOPTA_acok_yiti.6"
+		activate_title = { status = no title = k_great_grass_sea }
+		k_great_grass_sea = { destroy_landed_title = THIS }
+		clr_global_flag = dany_yiti_invasion
+		clr_character_flag = invading_yiti
+		set_character_flag = yiti_empress
+	}
+}

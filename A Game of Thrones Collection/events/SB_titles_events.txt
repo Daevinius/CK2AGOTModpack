@@ -1,0 +1,238 @@
+namespace = sb_titles_bhorash
+
+#Make the player know Bhorash should be colonized early
+ narrative_event = {
+	id = sb_titles_bhorash.0
+	desc = "EVTDESC_sb_titles_bhorash.0"
+	title = "EVTTITLEsb_titles_bhorash.0"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	min_age = 16
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+	}
+
+	option = {
+		name = "EVTOPTAsb_titles_bhorash.0A"
+	}
+}
+#Inform the player that Bhorash is now a military command with appointment successsion
+narrative_event = {
+	id = sb_titles_bhorash.1
+	desc = "EVTDESC_sb_titles_bhorash.1"
+	title = "EVTTITLEsb_titles_bhorash.1"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = c_bhorash
+		NOT = { has_global_flag = bhorash_fortress }
+	}
+
+	immediate = {
+		set_global_flag = bhorash_fortress
+	}
+
+	option = {
+		name = "EVTOPTAsb_titles_bhorash.1A"
+		prestige = 30
+		d_meereen = {
+			c_bhorash = { de_jure_liege = PREV }
+		}
+	}
+}
+namespace = sb_titles_elos
+
+#Narrative Event for the Isle of Cedars
+narrative_event = {
+	id = sb_titles_elos.1
+	desc = "EVTDESC_sb_titles_elos.1"
+	title = "EVTTITLEsb_titles_elos.1"
+	picture = GFX_evt_dany_meereen_2
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		has_landed_title = d_isle_of_cedars
+		NOT = { has_global_flag = strange_colony_elos }
+	}
+
+	immediate = {
+		set_global_flag = strange_colony_elos
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	option = {
+		name = "EVTOPTAsb_titles_elos.1A"
+		prestige = 20
+		e_ghiscar = {
+			k_elos = { de_jure_liege = PREV }
+		}
+	}
+}
+namespace = sb_titles_yunkai
+
+narrative_event = {
+	id = sb_titles_yunkai.1
+	desc = "EVTDESC_sb_titles_yunkai.1"
+	title = "EVTTITLEsb_titles_yunkai.1"
+	picture = GFX_evt_yunkai
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = c_yellowpyramid
+		has_landed_title = k_yunkai
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = yunkai_liege_choice }
+	}
+
+	immediate = {
+		set_global_flag = yunkai_liege_choice
+		create_character = {
+			religion = harpy
+			culture = yunkaii_freedmen
+			trait = liberator
+			trait = former_slave
+			trait = skilled_warrior
+			trait = just
+			trait = skilled_tactician
+			set_character_flag = yunkai_candidate_freed
+			dynasty = 0
+		}
+		create_character = {
+			religion = harpy
+			culture = yunkaii
+			trait = greedy
+			trait = honorable
+			trait = fair
+			trait = just
+			trait = midas_touched
+			set_character_flag = yunkai_candidate_yunkish
+			dynasty = 0
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_titles_yunkai.1"
+		ai_chance = { factor = 35 }
+		trigger = { has_character_flag = faegon_joined }
+		1388 = { culture = yunkaii_freedmen }
+		610 = { culture = yunkaii_freedmen }
+		c_125009 = {
+			c_yellowpyramid = {
+				grant_title = PREV
+			}
+			c_yunkai = {
+				grant_title = PREV
+			}
+			d_yunkai = {
+				grant_title = PREV
+			}
+			k_yunkai = {
+				grant_title = PREV
+				recalc_succession = yes
+			    succession = primogeniture
+				gender_succ = cognatic
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_titles_yunkai.1"
+		ai_chance = { factor = 30 }
+		1388 = { culture = yunkaii_freedmen }
+		610 = { culture = yunkaii_freedmen }
+		random_courtier = {
+			limit = {
+				culture = yunkaii
+				trait = greedy
+				trait = honorable
+				trait = fair
+				trait = midas_touched
+			}
+			create_bloodline = {
+				type = yunkai_king_blood
+			}
+			c_yellowpyramid = {
+				grant_title = PREV
+			}
+			c_yunkai = {
+				grant_title = PREV
+			}
+			d_yunkai = {
+				grant_title = PREV
+			}
+			k_yunkai = {
+				grant_title = PREV
+				recalc_succession = yes
+			    succession = primogeniture
+				gender_succ = cognatic
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_titles_yunkai.1"
+		ai_chance = { factor = 30 }
+		1388 = { culture = yunkaii_freedmen }
+		610 = { culture = yunkaii_freedmen }
+		random_courtier = {
+			limit = {
+				culture = yunkaii_freedmen
+				trait = liberator
+				trait = former_slave
+				trait = just
+				trait = skilled_tactician
+			}
+			create_bloodline = {
+				type = yunkai_freedmen_blood
+			}
+			c_yellowpyramid = {
+				grant_title = PREV
+			}
+			c_yunkai = {
+				grant_title = PREV
+			}
+			d_yunkai = {
+				grant_title = PREV
+			}
+			k_yunkai = {
+				grant_title = PREV
+				recalc_succession = yes
+			    succession = primogeniture
+				gender_succ = cognatic
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_titles_yunkai.1"
+		ai_chance = { factor = 5 }
+		1388 = { culture = yunkaii_freedmen }
+		610 = { culture = yunkaii_freedmen }
+		prestige = 10
+	}
+}
+

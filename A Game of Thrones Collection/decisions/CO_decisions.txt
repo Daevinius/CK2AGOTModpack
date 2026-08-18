@@ -1,0 +1,28 @@
+decisions = {
+	drace_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_drace_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = co_armours.1 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}

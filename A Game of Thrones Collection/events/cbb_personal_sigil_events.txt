@@ -1,0 +1,223 @@
+namespace = cbb_personal_sigil_events
+###################################
+
+###
+
+
+character_event = {
+	id = cbb_personal_sigil_events.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Albino
+character_event = {
+	id = cbb_personal_sigil_events.2
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		ai = yes
+		OR = {
+			dynasty = 93
+			dynasty = 107
+			dynasty = 87
+			dynasty = 83
+			dynasty = 102
+			dynasty = 126
+			dynasty = 59
+			dynasty = 317
+		}
+		NOR = {
+
+			has_character_flag = umber_albino
+			has_character_flag = greyjoy_albino
+			has_character_flag = bolton_albino
+			has_character_flag = hornwood_albino
+			has_character_flag = mormont_albino
+			has_character_flag = reed_albino
+			has_character_flag = stark_albino
+			has_character_flag = baratheon_albino
+			has_character_flag = no_special_coa_mbs
+		}
+		OR = {
+			trait = albino
+		}
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				100 = {
+					if = {
+						limit = {
+							dynasty = 93
+						}
+						set_character_flag = umber_albino
+					}
+					if = {
+						limit = {
+							dynasty = 107
+						}
+						set_character_flag = greyjoy_albino
+					}
+					if = {
+						limit = {
+							dynasty = 87
+						}
+						set_character_flag = bolton_albino
+					}
+					if = {
+						limit = {
+							dynasty = 83
+						}
+						set_character_flag = hornwood_albino
+					}
+					if = {
+						limit = {
+							dynasty = 102
+						}
+						set_character_flag = mormont_albino
+					}
+					if = {
+						limit = {
+							dynasty = 126
+						}
+						set_character_flag = reed_albino
+					}
+					if = {
+						limit = {
+							dynasty = 59
+						}
+						set_character_flag = stark_albino
+					}
+					if = {
+						limit = {
+							dynasty = 317
+						}
+						set_character_flag = baratheon_albino
+					}
+				}
+				300 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Wildfire
+character_event = {
+	id = cbb_personal_sigil_events.3
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		ai = yes
+		OR = {
+			dynasty = 285
+			dynasty = 212
+			dynasty = 174409
+			dynasty = 496
+			dynasty = 108
+			dynasty = 359
+			dynasty = 186
+		}
+		NOR = {
+
+			has_character_flag = hightower_wildfire
+			has_character_flag = marbrand_wildfire
+			has_character_flag = clifton_wildfire
+			has_character_flag = targaryen_wildfire
+			has_character_flag = stonehouse_wildfire
+			has_character_flag = qoherys_wildfire
+			has_character_flag = grafton_wildfire
+			has_character_flag = no_special_coa_mbs
+		}
+		OR = {
+			trait = fire_obsessed
+			trait = lunatic
+		}
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				100 = {
+					if = {
+						limit = {
+							dynasty = 285
+						}
+						set_character_flag = hightower_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 212
+						}
+						set_character_flag = marbrand_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 174409
+						}
+						set_character_flag = clifton_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 496
+						}
+						set_character_flag = targaryen_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 108
+						}
+						set_character_flag = stonehouse_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 359
+						}
+						set_character_flag = qoherys_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 186
+						}
+						set_character_flag = grafton_wildfire
+					}
+				}
+				300 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

@@ -1,0 +1,582 @@
+namespace = mbs_vulture_king
+###Vulture King of the Red Mountains Invades
+province_event = {
+	id = mbs_vulture_king.1
+	desc = "EVTDESC_mbs_vultureking.1"
+	title = "EVTTITLE_mbs_vultureking.1"
+	picture = GFX_tower_of_joy
+
+	trigger = {
+		region = world_dorne
+		OR = {
+			NOT = { has_global_flag = war_cooldown_period }
+			had_global_flag = { flag = war_cooldown_period days = 25 }
+		}
+		OR = {
+			e_reach = {
+				has_holder = yes
+			}
+			e_stormlands = {
+				has_holder = yes
+			}
+			e_iron_throne = {
+				has_holder = yes
+			}
+		}
+		d_red_mountains = {
+			has_holder = no
+			OR = { #75 year cooldown
+				NOT = { has_title_flag = vulture_invasion }
+				had_title_flag = { flag = vulture_invasion days = 27375 }
+			}
+		}
+		NOT = {
+			has_game_rule = {
+				name = non_lore_invasions
+				value = off
+			}
+		}
+		any_character = {
+			NOT = { character = ROOT }
+			culture = stone_dornish
+			is_married = no
+			is_ruler = no
+			is_female = no
+			is_adult = yes
+			prisoner = no
+			is_primary_heir = no
+			is_incapable = no
+			is_lowborn = no
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 300
+		modifier = {
+			factor = 3
+			has_game_rule = {
+				name = non_lore_invasions
+				value = rare
+			}
+		}
+		modifier = {
+			factor = 0.5
+			owner = {
+				top_liege = {
+					primary_title = {
+						OR = {
+							title = e_dorne
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			owner = {
+				top_liege = {
+					war = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			e_iron_throne = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			e_reach = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			e_stormlands = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAvulture_king.1"
+		random_character = {
+			limit = {
+				NOT = { character = ROOT }
+				culture = stone_dornish
+				is_married = no
+				is_ruler = no
+				is_female = no
+				is_adult = yes
+				prisoner = no
+				is_primary_heir = no
+				is_incapable = no
+				is_lowborn = no
+			}
+			give_nickname = nick_the_vulture_king
+			add_trait = disinherited
+			add_trait = ruthless
+			add_trait = ambitious
+			activate_title = { title = d_red_mountains status = yes }
+			d_red_mountains = {
+				gain_title = PREV
+				clr_title_flag = vulture_invasion
+				set_title_flag = vulture_invasion
+			}
+			character_event = {
+				id = mbs_vulture_king.2
+				days = 2
+			}
+
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					OR = {
+						has_landed_title = e_iron_throne
+						has_landed_title = e_reach
+						has_landed_title = e_stormlands
+					}
+				}
+				character_event = {
+					id = mbs_vulture_king.3
+					days = 2
+				}
+			}
+		}
+	}
+}
+namespace = mbs_vulture_king
+#Spawm the Army
+character_event = {
+	id = mbs_vulture_king.2
+	desc = "Arrgh!"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok."
+		FROM = {
+			ROOT = {
+				spawn_unit = {
+					province = 329
+					home = 329
+					troops = {
+						light_infantry = { 1123 1123 }
+						light_cavalry = { 33 33 }
+						archers = { 133 133 }
+						heavy_infantry = { 30 30 }
+						pikemen = { 113 113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = 329
+					home = 329
+					troops = {
+						light_infantry = { 1123 1123 }
+						light_cavalry = { 33 33 }
+						archers = { 133 133 }
+						heavy_infantry = { 30 30 }
+						pikemen = { 113 113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = 329
+					home = 329
+					troops = {
+						light_infantry = { 1123 1123 }
+						light_cavalry = { 33 33 }
+						archers = { 133 133 }
+						heavy_infantry = { 30 30 }
+						pikemen = { 113 113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = 329
+					home = 329
+					troops = {
+						light_infantry = { 1123 1123 }
+						light_cavalry = { 33 33 }
+						archers = { 133 133 }
+						heavy_infantry = { 30 30 }
+						pikemen = { 113 113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+			}
+		}
+		#Spawn a few courtiers
+		create_random_soldier = {
+			female = no
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = dwarf_1
+			remove_trait = dwarf_2
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_random_soldier = {
+			female = no
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_random_soldier = {
+			female = no
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_random_soldier = {
+			female = no
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_character = {
+			female = yes
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+			age = 18
+		}
+		new_character = {
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_character = {
+			female = yes
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+			age = 25
+		}
+		new_character = {
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_character = {
+			female = yes
+			culture = stone_dornish
+			religion = the_seven
+			random_traits = yes
+			dynasty = none
+			age = 24
+		}
+		new_character = {
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = weak_1
+			remove_trait = weak_2
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+	}
+}
+namespace = mbs_vulture_king
+#Inform the world
+character_event = {
+	id = mbs_vulture_king.3
+	desc = "EVTDESC_mbs_vultureking.3"
+	picture = GFX_tower_of_joy
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAvulture_king.3"
+		d_red_mountains = {
+			holder_scope = { tooltip = { show_portrait = yes } }
+		}
+		ROOT = {
+			reverse_war = {
+				target = d_red_mountains
+				casus_belli = mbs_vulture_hunt
+			}
+		}
+	}
+}
+namespace = mbs_vulture_king
+#The Prince of Dorne is asked to help
+character_event = {
+	id = mbs_vulture_king.4
+	desc = "EVTDESC_mbs_vultureking.4"
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = e_dorne
+			has_landed_title = k_dorne
+		}
+		NOT = { has_character_flag = vulture_king_event.4 }
+	}
+
+	immediate = { set_character_flag = vulture_king_event.4 }
+
+	option = {
+		name = "EVTOPTAvulture_king.4"
+		prestige = -50
+		d_red_mountains = {
+			holder_scope = { tooltip = { show_portrait = yes } }
+		}
+		ROOT = { join_defender_wars = FROM }
+	}
+
+	option = {
+		name = "EVTOPTBvulture_king.4"
+		prestige = 50
+	}
+
+	option = {
+		name = "EVTOPTCvulture_king.4"
+		wealth = -50
+		d_red_mountains = {
+			holder_scope = {
+				wealth = 50
+				opinion = {
+					modifier = opinion_backed_adventure
+					who = ROOT
+				}
+			}
+		}
+		d_red_mountains = {
+			holder_scope = { tooltip = { show_portrait = yes } }
+		}
+	}
+}
+namespace = mbs_vulture_king
+narrative_event = {
+	id = mbs_vulture_king.5
+	desc = "EVTDESC_mbs_vultureking.5"
+	title = "EVTTITLE_mbs_vultureking.5"
+	picture = GFX_tower_of_joy
+	hide_from = yes
+
+	trigger = {
+		is_ruler = yes
+		prisoner = no
+		trait = brave
+		age = 12
+		OR = {
+			culture = stone_dornish
+			culture = sand_dornish
+			culture = salt_dornish
+		}
+		NOT = {
+			has_character_flag = found_vulture_lair
+			trait = incapable
+		}
+		NOR = {
+			trait = craven
+			trait = slothful
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+
+	immediate = {
+		set_character_flag = found_vulture_lair
+	}
+
+	option = {
+		name = "EVTOPTAvulture_king.5"
+		wealth = 25
+		prestige = 50
+	}
+}
+character_event = {
+	id = mbs_vulture_king.10
+	desc = "EVTDESC_mbs_vultureking.10"
+	picture = GFX_tower_of_joy
+
+	trigger = {
+		has_landed_title = d_red_mountains
+		OR = {
+			e_reach = {
+				has_holder = yes
+			}
+			e_stormlands = {
+				has_holder = yes
+			}
+			e_iron_throne = {
+				has_holder = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 2
+		modifier = {
+			factor = 3
+			has_game_rule = {
+				name = non_lore_invasions
+				value = rare
+			}
+		}
+		modifier = {
+			factor = 0.5
+			e_iron_throne = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			e_reach = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			e_stormlands = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAvulture_king.10"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					OR = {
+						has_landed_title = e_iron_throne
+						has_landed_title = e_reach
+						has_landed_title = e_stormlands
+					}
+				}
+				character_event = {
+					id = mbs_vulture_king.3
+					days = 2
+				}
+			}
+		}
+	}
+}

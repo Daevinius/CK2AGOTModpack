@@ -1,0 +1,231 @@
+decisions = {
+
+	reset_crownland_vassals = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			always = no
+			# has_game_rule = { name = tdp_border_gore value = on }
+			has_landed_title = e_iron_throne
+			any_realm_lord = {
+				primary_title = { de_jure_liege_or_above = k_crownlands }
+				liege = { tier = KING }
+			}
+		}
+		allow = {
+		}
+		effect = {
+			character_event = { id = tdp_border_gore.3 }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	reset_nightswatch_titles = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			#has_landed_title = d_nightswatch
+			trait = nightswatch
+			government = NW_government
+			ai = yes
+		}
+		allow = {
+			OR = {
+				any_vassal = {
+					higher_tier_than = BARON
+					NOR = {
+						has_landed_title = c_brandons_gift
+						has_landed_title = c_eastwatch
+						has_landed_title = c_shadow_tower
+						has_landed_title = c_castle_black
+						has_landed_title = c_westwatch_mbs
+						has_landed_title = c_new_gift
+						has_landed_title = c_west_gift
+						has_landed_title = c_coast_gift
+					}
+				}
+				any_demesne_title = {
+					NOR = {
+						de_jure_liege_or_above = k_nightswatch
+						title = d_nightswatch
+						title = d_nightswatch_dummy
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					any_demesne_title = {
+						NOR = {
+							de_jure_liege_or_above = k_nightswatch
+							title = d_nightswatch
+							title = d_nightswatch_dummy
+							title = d_the_wall
+							title = d_the_gifts
+							title = c_brandons_gift
+							title = c_eastwatch
+							title = c_shadow_tower
+							title = c_castle_black
+							title = c_westwatch_mbs
+							title = c_new_gift
+							title = c_west_gift
+							title = c_coast_gift
+						}
+					}
+				}
+				if = {
+					limit = {
+						any_dynasty_member = {
+							is_alive = yes
+							NOT = { is_female = yes }
+							NOT = { trait = nightswatch }
+							NOT = { trait = kingsguard }
+							OR = {
+								can_marry_trigger = yes
+								is_married = yes
+								age < 15
+							}
+							age = 12
+						}
+					}
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { is_female = yes }
+							NOT = { trait = nightswatch }
+							NOT = { trait = kingsguard }
+							OR = {
+								can_marry_trigger = yes
+								is_married = yes
+								age < 15
+							}
+							age = 12
+						}
+						ROOT = {
+							any_demesne_title = {
+								limit = {
+									NOR = {
+										de_jure_liege_or_above = k_nightswatch
+										title = d_nightswatch
+										title = d_nightswatch_dummy
+										title = d_the_wall
+										title = d_the_gifts
+										title = c_brandons_gift
+										title = c_eastwatch
+										title = c_shadow_tower
+										title = c_castle_black
+										title = c_westwatch_mbs
+										title = c_new_gift
+										title = c_west_gift
+										title = c_coast_gift
+									}
+								}
+								gain_title = {
+									target = PREVPREV
+									type = inheritance
+								}
+							}
+						}
+					}
+				}
+				else = {
+					limit = {
+						any_dynasty_member = {
+							is_alive = yes
+							NOT = { trait = nightswatch }
+							NOT = { trait = kingsguard }
+							OR = {
+								can_marry_trigger = yes
+								is_married = yes
+								age < 15
+							}
+						}
+					}
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { trait = nightswatch }
+							NOT = { trait = kingsguard }
+							OR = {
+								can_marry_trigger = yes
+								is_married = yes
+								age < 15
+							}
+						}
+						ROOT = {
+							any_demesne_title = {
+								limit = {
+									NOR = {
+										de_jure_liege_or_above = k_nightswatch
+										title = d_nightswatch
+										title = d_nightswatch_dummy
+										title = d_the_wall
+										title = d_the_gifts
+										title = c_brandons_gift
+										title = c_eastwatch
+										title = c_shadow_tower
+										title = c_castle_black
+										title = c_westwatch_mbs
+										title = c_new_gift
+										title = c_west_gift
+										title = c_coast_gift
+									}
+								}
+								gain_title = {
+									target = PREVPREV
+									type = inheritance
+								}
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						NOT = { independent = yes }
+					}
+					set_defacto_liege = THIS
+				}
+			}
+			if = {
+				limit = {
+					any_vassal = {
+						higher_tier_than = BARON
+						NOR = {
+							has_landed_title = c_brandons_gift
+							has_landed_title = c_eastwatch
+							has_landed_title = c_shadow_tower
+							has_landed_title = c_castle_black
+							has_landed_title = c_westwatch_mbs
+							has_landed_title = c_new_gift
+							has_landed_title = c_west_gift
+							has_landed_title = c_coast_gift
+						}
+					}
+				}
+				any_vassal = {
+					limit = {
+						higher_tier_than = BARON
+						NOR = {
+							has_landed_title = c_brandons_gift
+							has_landed_title = c_eastwatch
+							has_landed_title = c_shadow_tower
+							has_landed_title = c_castle_black
+							has_landed_title = c_westwatch_mbs
+							has_landed_title = c_new_gift
+							has_landed_title = c_west_gift
+							has_landed_title = c_coast_gift
+						}
+					}
+					set_defacto_liege = THIS
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+}

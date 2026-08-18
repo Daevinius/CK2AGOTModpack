@@ -1,0 +1,298 @@
+namespace = sb_astapor
+
+#After Astapor loses to Yunkai, Cleon comes to Meereen alone
+narrative_event = {
+	id = sb_astapor.1
+	desc = "EVTDESC_sb_astapor.1"
+	title = "EVTTITLE_sb_astapor.1"
+	picture = GFX_evt_dany_meereen_1
+	portrait = 600000060
+
+	only_playable = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = cleon_event }
+		NOT = { has_landed_title = e_ghiscar }
+		NOT = { has_landed_title = k_astapor }
+		c_600000060 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = cleon_event
+	}
+
+	option = {
+		name = "EVTOPTA_sb_astapor.1"
+		ai_chance = { factor = 30 }
+		set_global_flag = cleon_allowed
+		c_600000060 = { move_character = ROOT }
+		ROOT = {
+			narrative_event = {
+				id = sb_astapor.2
+				days = 7
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTB_sb_astapor.1"
+		ai_chance = { factor = 70 }
+		piety = -20
+		c_600000060 = { imprison = PREV }
+		c_600000060 = { tooltip = { show_portrait = yes } }
+	}
+}
+#Cleons asks for his family to be able to enter Meereen
+narrative_event = {
+	id = sb_astapor.2
+	desc = "EVTDESC_sb_astapor.2"
+	title = "EVTTITLE_sb_astapor.2"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = cleon_allowed
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = cleon_family_event }
+		NOT = { has_global_flag = astapor_liege_choice }
+	}
+
+	immediate = {
+		set_global_flag = cleon_family_event
+	}
+
+	option = {
+		name = "EVTOPTA_sb_astapor.2"
+		ai_chance = { factor = 65 }
+		c_475360028 = {
+			move_character = ROOT
+		}
+		c_475360028 = { tooltip = { show_portrait = yes } }
+		c_178360028 = {
+			move_character = ROOT
+		}
+		c_178360028 = { tooltip = { show_portrait = yes } }
+		c_176360028 = {
+			move_character = ROOT
+		}
+		c_176360028 = { tooltip = { show_portrait = yes } }
+		c_177360028 = {
+			move_character = ROOT
+		}
+		c_177360028 = { tooltip = { show_portrait = yes } }
+	}
+	option = {
+		name = "EVTOPTB_sb_astapor.2"
+		ai_chance = { factor = 35 }
+		piety = -100
+		prestige = 100
+		c_600000060 = { tooltip = { show_portrait = yes } }
+	}
+}
+#Once Astapor is conquered by Daenerys again, you decide who shall rule it
+narrative_event = {
+	id = sb_astapor.3
+	desc = "EVTDESC_sb_astapor.3"
+	title = "EVTTITLE_sb_astapor.3"
+	picture = "GFX_evt_dany_astapor"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_astapor
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = astapor_capital }
+		NOT = { has_global_flag = astapor_liege_choice }
+	}
+
+	immediate = {
+		set_global_flag = astapor_liege_choice
+		create_character = {
+			religion = lady_of_spears
+			culture = astapori_freedmen
+			trait = unsullied
+			trait = liberator
+			trait = honorable
+			trait = skilled_warrior
+			trait = just
+			trait = skilled_tactician
+			dynasty = 0
+		}
+		create_character = {
+			religion = ROOT
+			culture = astapori_freedmen
+			trait = former_slave
+			trait = peasant_leader
+			trait = trained_warrior
+			trait = just
+			trait = kind
+			trait = midas_touched
+			dynasty = 0
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_astapor.3"
+		ai_chance = { factor = 35 }
+		trigger = {
+			has_global_flag = cleon_allowed
+			c_600000060 = {
+				is_alive = yes
+				is_ruler = no
+			}
+		}
+		1389 = { culture = astapori_freedmen }
+		613 = { culture = astapori_freedmen }
+		piety = -100
+		c_600000060 = {
+			wealth = 200
+			prestige = 100
+			culture = astapori_freedmen
+			c_red_pyramid = {
+				grant_title = PREV
+			}
+			c_astapor = {
+				grant_title = PREV
+			}
+			d_astapor = {
+				grant_title = PREV
+			}
+			k_astapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+				set_defacto_liege = ROOT
+			}
+		}
+		if = {
+			limit = { has_landed_title = c_bloody_hills }
+			c_600000060 = {
+				c_bloody_hills = {
+				grant_title = PREV
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_astapor.3"
+		ai_chance = { factor = 30 }
+		1389 = { culture = astapori_freedmen }
+		613 = { culture = astapori_freedmen }
+		random_realm_character = {
+			limit = {
+				NOT = {
+					trait = slave_owner
+					trait = unsullied
+					trait = eunuch
+					trait = cruel
+				}
+				is_ruler = no
+				trait = peasant_leader
+				OR = {
+					culture = astapori
+					culture = astapori_freedmen
+				}
+			}
+			wealth = 300
+			prestige = 300
+			create_bloodline = {
+				type = astapor_king_blood
+			}
+			c_red_pyramid = {
+				grant_title = PREV
+			}
+			c_astapor = {
+				grant_title = PREV
+			}
+			d_astapor = {
+				grant_title = PREV
+			}
+			k_astapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+				set_defacto_liege = ROOT
+			}
+		}
+		if = {
+			limit = { has_landed_title = c_bloody_hills }
+			c_bloody_hills = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_astapor.3"
+		ai_chance = { factor = 30 }
+		1389 = { culture = astapori_freedmen }
+		613 = { culture = astapori_freedmen }
+		613 = { religion = lady_of_spears }
+		1389 = { religion = lady_of_spears }
+		random_courtier  = {
+			limit = {
+				trait = unsullied
+				trait = just
+				trait = honorable
+				trait = liberator
+				NOT = { trait = eunuch }
+				religion = lady_of_spears
+				culture = astapori_freedmen
+			}
+			wealth = 300
+			prestige = 300
+			create_bloodline = {
+				type = unsullied_king_blood
+			}
+			c_red_pyramid = {
+				grant_title = PREV
+			}
+			c_astapor = {
+				grant_title = PREV
+			}
+			d_astapor = {
+				grant_title = PREV
+			}
+			k_astapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+				set_defacto_liege = ROOT
+			}
+		}
+		if = {
+			limit = { has_landed_title = c_bloody_hills }
+			c_bloody_hills = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_astapor.3"
+		ai_chance = { factor = 5 }
+		1389 = { culture = astapori_freedmen }
+		613 = { culture = astapori_freedmen }
+		prestige = 10
+	}
+}

@@ -1,0 +1,212 @@
+namespace = stark_wolfblood_mbs
+
+#stark on birth event
+character_event = {
+	id = stark_wolfblood_mbs.1
+	desc = "How are you even seeing this? (high_valyrian.7)"
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			true_father_even_if_dead = {
+				dynasty = 59
+			}
+			dynasty = 59
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					father_even_if_dead = {
+						higher_tier_than = COUNT
+					}
+					mother_even_if_dead = {
+
+						higher_tier_than = COUNT
+					}
+					higher_tier_than = COUNT
+					father_even_if_dead = {
+						is_primary_heir = yes
+						OR = {
+							father_even_if_dead = { higher_tier_than = COUNT }
+							mother_even_if_dead = { higher_tier_than = COUNT }
+						}
+					}
+					mother_even_if_dead = {
+						is_primary_heir = yes
+						OR = {
+							father_even_if_dead = { higher_tier_than = COUNT }
+							mother_even_if_dead = { higher_tier_than = COUNT }
+						}
+					}
+				}
+			}
+			set_character_flag = wolfed_mbs
+		}
+	}
+
+	option = {
+		name = "EVTOPTAstark_wolfblood_mbs.1" #Yes
+		if = {
+			limit = {	has_character_flag = wolfed_mbs }
+			random = {
+				chance = 70
+				character_event = { id = stark_wolfblood_mbs.3 days = 2000 }
+			}
+		}
+		if = {
+			limit = {	NOT = { has_character_flag = wolfed_mbs } }
+			random = {
+				chance = 40
+				character_event = { id = stark_wolfblood_mbs.3 days = 2000 }
+			}
+		}
+		clr_character_flag = wolfed_mbs
+	}
+}
+#stark coin flip
+character_event = {
+	id = stark_wolfblood_mbs.3
+	desc = "EVTDESCstark_wolfblood_mbs.3"
+	picture = "GFX_STARK"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAstark_wolfblood_mbs.3"
+		random_list = {
+			50 = {
+				add_trait = wroth
+				random_list = {
+					70 = {
+						add_trait = brave
+					}
+					30 = {
+					}
+				}
+				random_list = {
+					40 = {
+						add_trait = lustful
+					}
+					60 = {
+					}
+				}
+				random_list = {
+					80 = {
+						add_trait = stubborn
+					}
+					20 = {
+					}
+				}
+				random_list = {
+					80 = {
+						add_trait = rowdy
+					}
+					20 = {
+					}
+				}
+				random_list = {
+					30 = {
+						add_trait = brooding
+					}
+					70 = {
+					}
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							ai = no
+							OR = {
+								is_parent_of = ROOT
+								is_grandparent_of = ROOT
+								any_child = { is_grandparent_of = ROOT }
+							}
+						}
+						character_event = { id = stark_wolfblood_mbs.4 }
+					}
+				}
+			}
+			50 = {
+				add_trait = temperate
+				random_list = {
+					70 = {
+						add_trait = patient
+					}
+					30 = {
+					}
+				}
+				random_list = {
+					20 = {
+						add_trait = content
+					}
+					80 = {
+					}
+				}
+				random_list = {
+					80 = {
+						add_trait = diligent
+					}
+					20 = {
+					}
+				}
+				random_list = {
+					80 = {
+						add_trait = conscientious
+					}
+					20 = {
+					}
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							ai = no
+							OR = {
+								is_parent_of = ROOT
+								is_grandparent_of = ROOT
+								any_child = { is_grandparent_of = ROOT }
+							}
+						}
+						set_character_flag = diligent
+						character_event = { id = stark_wolfblood_mbs.5 }
+					}
+				}
+			}
+		}
+	}
+}
+
+#infrom parents wolf blood
+character_event = {
+	id = stark_wolfblood_mbs.4
+	picture = "GFX_STARK"
+
+	desc = {
+		text = "EVTDESCstark_wolfblood_mbs.4"
+	}
+
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAstark_wolfblood_mbs.4"
+	}
+}
+#infrom parents
+character_event = {
+	id = stark_wolfblood_mbs.5
+	picture = "GFX_STARK"
+
+	desc = {
+		text = "EVTDESCstark_wolfblood_mbs.5" #
+	}
+
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAstark_wolfblood_mbs.5"
+	}
+}

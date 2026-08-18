@@ -1,0 +1,125 @@
+namespace = sb_nvalyria
+
+#Daenerys grants North Valyria to a vassal
+narrative_event = {
+	id = sb_nvalyria.1
+	desc = "EVTDESC_sb_nvalyria.1"
+	title = "EVTTITLEsb_nvalyria.1"
+	picture = GFX_evt_mantarys
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		has_landed_title = k_north_valyria
+		NOT = { has_global_flag = sb_northvalyria_king }
+	}
+
+	immediate = { set_global_flag = sb_northvalyria_king }
+
+	option = {
+		name = "EVTOPTA_sb_nvalyria.1"       #House Zobridar
+		ai_chance = { factor = 30 }
+		trigger = {
+			any_realm_character = {
+				dynasty = 5700136
+				is_female = no
+				is_alive =	yes
+				is_ruler = yes
+			}
+		}
+		random_realm_character = {
+			limit = {
+				dynasty = 5700136
+				is_female = no
+				is_alive =	yes
+				is_ruler = yes
+			}
+			k_north_valyria = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = north_valyria_blood
+			}
+		}
+		e_ghiscar = {
+			k_north_valyria = { de_jure_liege = PREV }
+		}
+	}
+	option = {
+		name = "EVTOPTB_sb_nvalyria.1"      #House Azantone
+		ai_chance = { factor = 30 }
+		trigger = {
+			any_realm_character = {
+				dynasty = 5700101
+				is_female = no
+				is_alive =	yes
+				is_ruler = yes
+			}
+		}
+		random_realm_character = {
+			limit = {
+				dynasty = 5700101
+				is_female = no
+				is_alive =	yes
+				is_ruler = yes
+			}
+			k_north_valyria = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = north_valyria_blood
+			}
+		}
+		e_ghiscar = {
+			k_north_valyria = { de_jure_liege = PREV }
+		}
+	}
+	option = {
+		name = "EVTOPTC_sb_nvalyria.1"       #House Ilvar
+		ai_chance = { factor = 30 }
+		trigger = {
+			any_realm_character = {
+				dynasty = 5700110
+				is_female = no
+				is_alive =	yes
+				is_ruler = yes
+			}
+		}
+		random_realm_character = {
+			limit = {
+				dynasty = 5700110
+				is_female = no
+				is_alive =	yes
+				is_ruler = yes
+			}
+			k_north_valyria = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = north_valyria_blood
+			}
+		}
+		e_ghiscar = {
+			k_north_valyria = { de_jure_liege = PREV }
+		}
+	}
+	option = {
+		name = "EVTOPTD_sb_nvalyria.1"
+		ai_chance = { factor = 10 }
+		add_trait = tyrant1
+		e_ghiscar = {
+			k_north_valyria = { de_jure_liege = PREV }
+		}
+	}
+}

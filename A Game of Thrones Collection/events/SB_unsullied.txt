@@ -1,0 +1,196 @@
+namespace = sb_unsullied
+
+#Maintenance event for Unsullied trait and flag
+character_event = {
+	id = sb_unsullied.1
+	desc = "EVTDESC_sb_unsullied.1"
+	title = "EVTTITLEsb_unsullied.1"
+	picture = GFX_unsullied
+
+	trigger = {
+		religion = lady_of_spears
+		NOT = { trait = unsullied }
+		NOT = { has_character_flag = unsullied_trait }
+		NOT = { character = 601498 }
+		NOT = { character = 601501 }
+		NOT = { character = 601500 }
+		NOT = { character = 601499 }
+		NOT = { character = 601496 }
+		NOT = { character = 600496 }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA_sb_unsullied.1"
+		add_trait = unsullied
+		remove_trait = eunuch
+		set_character_flag = unsullied
+		set_character_flag = unsullied_trait
+	}
+}
+#Create 3 new Unsullied once in a while
+character_event = {
+	id = sb_unsullied.2
+	desc = "EVTDESC_sb_unsullied.2"
+	title = "EVTTITLEsb_unsullied.2"
+	picture = GFX_unsullied
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		is_title_active = d_unsullied
+		has_landed_title = d_unsullied
+		top_liege = { dynasty = 496 }
+		has_global_flag = new_unsullieds
+	}
+
+	mean_time_to_happen = {
+		years = 15
+	}
+
+	option = {
+		name = "EVTOPTA_sb_unsullied.2"
+		create_random_soldier = {
+			female = no
+			religion = lady_of_spears
+			culture = astapori_freedmen
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			remove_trait = eunuch
+			add_trait = unsullied
+			add_trait = brave
+			set_character_flag = unsullied
+			set_character_flag = unsullied_trait
+		}
+		create_random_soldier = {
+			female = no
+			religion = lady_of_spears
+			culture = yunkaii_freedmen
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			remove_trait = eunuch
+			add_trait = unsullied
+			add_trait = brave
+			set_character_flag = unsullied
+			set_character_flag = unsullied_trait
+		}
+		create_random_soldier = {
+			female = no
+			religion = lady_of_spears
+			random_traits = yes
+			culture = meereenese_freedmen
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			remove_trait = eunuch
+			add_trait = unsullied
+			add_trait = brave
+			set_character_flag = unsullied
+			set_character_flag = unsullied_trait
+		}
+	}
+}
+#Daenerys decides if train new Unsullied
+narrative_event = {
+	id = sb_unsullied.3
+	desc = "EVTDESC_sb_unsullied.3"
+	title = "EVTTITLEsb_unsullied.3"
+	picture = GFX_unsullied
+
+	is_triggered_only = yes
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		is_title_active = d_unsullied
+		NOT = { has_global_flag = new_unsullieds }
+		NOT = { has_global_flag = unsullied_denied }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_unsullied.3"
+		set_global_flag = new_unsullieds
+		custom_tooltip = { text = EVTTOOLTIP_unsullied_TOOLTIP }
+		ROOT = {
+			character_event = {
+				id = sb_loyalty.1
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_unsullied.3"
+		set_global_flag = unsullied_denied
+		custom_tooltip = { text = EVTTOOLTIPno_unsullied_TOOLTIP }
+		ROOT = {
+			character_event = {
+				id = sb_loyalty.1
+				days = 1
+			}
+		}
+	}
+}

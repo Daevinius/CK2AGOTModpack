@@ -1,0 +1,301 @@
+targeted_decisions = {
+
+	remove_lover_decision = {
+		filter = realm
+
+		ai = no
+
+		potential = {
+			ai = yes
+			has_lover = yes
+			NOT = { trait = dragon }
+			NOT = { has_character_flag = asked_to_breakup }
+			NOT = { is_lover = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { save_event_target_as = decision_taker }
+			set_character_flag = asked_to_breakup
+			character_event = { id = tdp_more.1 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+    remove_lover_debug_decision = {
+		filter = all
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			has_lover = yes
+			NOT = { trait = dragon }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_lover = {
+				remove_lover = ROOT
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_start_blood_feud = {
+		filter = all
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			NOT = { dynasty = FROM }
+			NOT = { trait = dragon }
+			NOR = {
+				has_opinion_modifier = {
+					who = FROM
+					name = opinion_blood_feud
+				}
+				FROM = {
+					has_opinion_modifier = {
+						who = ROOT
+						name = opinion_blood_feud
+					}
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				custom_tooltip = { text = TOOLTIPNEWBLOODFEUD }
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					add_trait = blood_feud #blood feud tracker
+					any_dynasty_member = {
+						limit = {
+							NOT = { character = FROM }
+							is_alive = yes
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						any_character = {
+							limit = {
+								dynasty = ROOT
+								NOT = { character = ROOT }
+							}
+							opinion = {
+								who = PREV
+								modifier = opinion_blood_feud
+							}
+						}
+					}
+				}
+			}
+			opinion = {
+				who = FROM
+				modifier = opinion_blood_feud
+			}
+			set_dynasty_flag = in_blood_feud
+			hidden_tooltip = {
+				add_trait = blood_feud #blood feud tracker
+				any_dynasty_member = {
+					limit = {
+						NOT = { character = ROOT }
+						is_alive = yes
+					}
+					opinion = {
+						who = FROM
+						modifier = opinion_blood_feud
+					}
+					any_character = {
+						limit = {
+							dynasty = FROM
+							NOT = { character = FROM }
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_blood_feud
+						}
+					}
+				}
+			}
+
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_remove_blood_feud = {
+		filter = all
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			NOT = { dynasty = FROM }
+			NOT = { trait = dragon }
+			has_opinion_modifier = {
+				who = FROM
+				name = opinion_blood_feud
+			}
+			FROM = {
+				has_opinion_modifier = {
+					who = ROOT
+					name = opinion_blood_feud
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				remove_opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				custom_tooltip = { text = TOOLTIPNEWBLOODFEUD }
+				clr_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					remove_trait = blood_feud #blood feud tracker
+					any_dynasty_member = {
+						limit = {
+							NOT = { character = FROM }
+							is_alive = yes
+						}
+						remove_opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						any_character = {
+							limit = {
+								dynasty = ROOT
+								NOT = { character = ROOT }
+							}
+							remove_opinion = {
+								who = PREV
+								modifier = opinion_blood_feud
+							}
+						}
+					}
+				}
+			}
+			remove_opinion = {
+				who = FROM
+				modifier = opinion_blood_feud
+			}
+			clr_dynasty_flag = in_blood_feud
+			hidden_tooltip = {
+				remove_trait = blood_feud #blood feud tracker
+				any_dynasty_member = {
+					limit = {
+						NOT = { character = ROOT }
+						is_alive = yes
+					}
+					remove_opinion = {
+						who = FROM
+						modifier = opinion_blood_feud
+					}
+					any_character = {
+						limit = {
+							dynasty = FROM
+							NOT = { character = FROM }
+						}
+						remove_opinion = {
+							who = PREV
+							modifier = opinion_blood_feud
+						}
+					}
+				}
+			}
+
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_destroy_title = {
+		filter = all
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			tier = EMPEROR
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_demesne_title = {
+				limit = { tier = EMPEROR }
+				unsafe_destroy_landed_title = THIS
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}
+
+
+decisions = {
+
+	invite_fool = {
+		potential = {
+			capital_scope = {
+				location = { region = world_westeros }
+			}
+			OR = {
+				higher_tier_than = DUKE
+				ai = no
+			}
+			OR = {
+				ai = no
+				trait = gregarious
+				trait = cynical
+			}
+			NOT = {
+				any_courtier = {
+					trait = fool
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = tdp_more.3 }
+		}
+		ai_will_do = {
+			factor = 2
+		}
+	}
+
+
+}

@@ -1,0 +1,865 @@
+##War Against Triarchy
+##Disputed Lands Conquest (County-tier Wars for Tyrosh, Myr, & Lys)
+##Gain Stepstone Island
+##Break Hold on Stepstones
+
+
+##War Against Triarchy
+tdp_triarchy_war = {
+	name = CB_NAME_TDP_TRIARCHY_WAR
+	war_name = WAR_NAME_TDP_TRIARCHY_WAR
+	truce_days = 3650
+	hostile_against_others = yes
+	is_permanent = yes
+	allow_whitepeace = yes
+	can_ask_to_join_war = yes
+	allowed_to_target_tributaries = no
+	defender_unoccupied_warscore = yes
+	full_hostility = yes
+
+	infamy_modifier = 0
+
+	sort_priority = 8000
+
+	can_use_gui = {
+		FROM = {
+			has_landed_title = e_three_daughters
+			war = no
+		}
+	}
+
+	can_use = {
+		ROOT = {
+			OR = {
+				has_character_flag = can_war_against_triarchy
+				AND = {
+					independent = yes
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+			}
+			NOT = { has_landed_title = e_three_daughters }
+		}
+		FROM = {
+			has_landed_title = e_three_daughters
+			has_character_modifier = full_tolling_narrow_sea
+			war = no
+		}
+	}
+
+	can_use_title = {
+		universal_cb_restrictions_trigger = yes
+		universal_cb_title_restrictions_trigger = yes
+	}
+
+	is_valid_title = {
+		universal_cb_valid_restrictions_trigger = yes
+	}
+
+	on_success = {
+		ROOT = {
+			prestige = 400
+			remove_character_modifier = full_tolled_in_narrow_sea
+		}
+		FROM = {
+			prestige = -400
+			if = {
+				limit = { ROOT = { has_landed_title = e_iron_throne } }
+				any_realm_character = {
+					limit = { has_character_flag = kidnapped_by_lyseni }
+					move_character = ROOT
+					clr_character_flag = no_court_invites
+					clr_character_flag = kidnapped_by_lyseni
+				}
+			}
+			remove_character_modifier = full_tolling_narrow_sea
+			stepstones_controller_effect = yes
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_character_modifier = full_tolled_in_narrow_sea
+					has_character_modifier = partial_tolled_in_narrow_sea
+					has_character_modifier = full_tolling_narrow_sea
+					has_character_modifier = partial_tolling_narrow_sea
+				}
+			}
+			remove_character_modifier = full_tolled_in_narrow_sea
+			remove_character_modifier = partial_tolled_in_narrow_sea
+			remove_character_modifier = full_tolling_narrow_sea
+			remove_character_modifier = partial_tolling_narrow_sea
+		}
+		clr_global_flag = lyseni_raiders_active
+		clr_global_flag = triarchy_phase_3
+		clr_global_flag = triarchy_initiated
+	}
+
+	on_success_title = {
+		FROM = {
+			e_three_daughters = {
+				unsafe_destroy_landed_title = THIS
+			}
+		}
+	}
+
+	on_reverse_demand = {
+		ROOT = {
+			prestige = -400
+			wealth = -1000
+		}
+		FROM = {
+			prestige = 400
+			wealth = 1000
+		}
+	}
+
+	attacker_ai_victory_worth = {
+		factor = -1
+	}
+
+	attacker_ai_defeat_worth = {
+		factor = 100
+	}
+
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
+
+	ai_will_do = {
+		factor = 5
+	}
+}
+
+tdp_disputed_lands_war = {
+	name = CB_NAME_TDP_DISPUTED_LANDS
+	war_name = WAR_NAME_TDP_DISPUTED_LANDS
+	truce_days = 3650
+
+	is_permanent = yes
+	hostile_against_others = yes
+	allow_whitepeace = yes
+	check_all_titles = yes # if permanent, setting this to true will check against all of someones titles, including vassal held titles
+	can_ask_to_join_war = yes
+	allowed_to_target_tributaries = no
+
+	infamy_modifier = 0
+
+	sort_priority = 5000
+
+	can_use_gui = {
+		ROOT = {
+			war = no
+		}
+	}
+
+	can_use = {
+		ROOT = {
+			independent = yes
+			OR = {
+				has_landed_title = k_tyrosh
+				has_landed_title = k_lys
+				has_landed_title = k_myr
+				has_landed_title = e_three_daughters
+			}
+		}
+		FROM = {
+			independent = yes
+			any_realm_title = {
+				OR = {
+					title = c_dyrenohill
+					title = c_lyseneforest
+					title = c_disputedforest
+					title = c_mesylosh
+					title = c_silkhead
+					title = c_forestofmyr
+					title = c_myrwater
+					title = c_drelyia
+
+					title = c_tyroshilanding
+					title = c_kylos
+					title = c_disputedpeninsula
+					title = c_vysosplains
+					title = c_plainsofmaegys
+					title = c_anyria
+					title = c_dreos
+				}
+			}
+		}
+	}
+
+	can_use_title = {
+		OR = {
+			title = c_dyrenohill
+			title = c_lyseneforest
+			title = c_disputedforest
+			title = c_mesylosh
+			title = c_silkhead
+			title = c_forestofmyr
+			title = c_myrwater
+			title = c_drelyia
+
+			title = c_tyroshilanding
+			title = c_kylos
+			title = c_disputedpeninsula
+			title = c_vysosplains
+			title = c_plainsofmaegys
+			title = c_anyria
+			title = c_dreos
+		}
+	}
+
+	is_valid = {
+		ROOT = {
+			NOT = { trait = nightswatch }
+		}
+		FROM = {
+			independent = yes
+		}
+	}
+
+	on_success = {
+		ROOT = {
+			prestige = 100
+		}
+		FROM = {
+			prestige = -100
+		}
+	}
+
+	on_add_title = {
+		save_event_target_as = title_to_usurp
+	}
+
+	on_success_title = {
+		usurp_title_plus_barony_if_unlanded = { target = ROOT }
+	}
+
+	on_fail = {
+		ROOT = {
+			prestige = -200
+		}
+		FROM = {
+			prestige = 200
+		}
+	}
+
+	on_reverse_demand = {
+		ROOT = {
+			wealth = -200
+		}
+		FROM = {
+			wealth = 200
+		}
+	}
+
+	attacker_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	attacker_ai_defeat_worth = {
+		factor = 100
+	}
+
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
+
+	ai_will_do = {
+		factor = 1000
+	}
+}
+
+
+##War for a Stepstone
+tdp_stepstone_war = {
+	name = CB_NAME_TDP_STEPSTONE_WAR
+	war_name = WAR_NAME_TDP_STEPSTONE_WAR
+	truce_days = 365
+
+	is_permanent = yes
+	hostile_against_others = yes
+	check_all_titles = yes # if permanent, setting this to true will check against all of someones titles, including vassal held titles
+	allow_whitepeace = yes
+	can_ask_to_join_war = yes
+	allowed_to_target_tributaries = no
+
+	infamy_modifier = 0
+
+	sort_priority = 5000
+
+	can_use_gui = {
+		ROOT = {
+			war = no
+		}
+	}
+
+	can_use = {
+		ROOT = {
+			independent = yes
+			OR = {
+				has_landed_title = k_tyrosh
+				has_landed_title = k_lys
+				has_landed_title = k_myr
+				has_landed_title = e_three_daughters
+				AND = {
+					tier = KING
+					primary_title = { has_title_flag = sellsword_company }
+				}
+			}
+		}
+		FROM = {
+			independent = yes
+			NOT = { higher_tier_than = DUKE }
+			OR = {
+				has_landed_title = c_bloodstone
+				has_landed_title = c_wreckstone
+				has_landed_title = c_sunstone
+				has_landed_title = c_shameisle
+				has_landed_title = c_dwarfstone
+				has_landed_title = c_darkden
+				has_landed_title = c_theskulls
+				has_landed_title = c_fishskins
+				has_landed_title = c_dim_cove
+				has_landed_title = c_torturersdeep
+				has_landed_title = c_lastrefuge
+				has_landed_title = c_greygallows
+				has_landed_title = c_last_lamp
+				has_landed_title = c_southstone
+			}
+		}
+	}
+
+	can_use_title = {
+		is_primary_holder_title = yes
+		OR = {
+			title = c_bloodstone
+			title = c_wreckstone
+			title = c_sunstone
+			title = c_shameisle
+			title = c_dwarfstone
+			title = c_darkden
+			title = c_theskulls
+			title = c_fishskins
+			title = c_dim_cove
+			title = c_torturersdeep
+			title = c_lastrefuge
+			title = c_greygallows
+			title = c_last_lamp
+			title = c_southstone
+		}
+	}
+
+	is_valid = {
+		ROOT = {
+			NOT = { trait = nightswatch }
+		}
+		FROM = {
+			independent = yes
+		}
+	}
+
+	on_success = {
+		ROOT = {
+			prestige = 100
+		}
+		FROM = {
+			prestige = -100
+		}
+	}
+
+	on_success_title = {
+		FROM = {
+			any_demesne_title = {
+				limit = {
+					OR = {
+						title = c_bloodstone
+						title = c_wreckstone
+						title = c_sunstone
+						title = c_shameisle
+						title = c_dwarfstone
+						title = c_darkden
+						title = c_theskulls
+						title = c_fishskins
+						title = c_dim_cove
+						title = c_torturersdeep
+						title = c_lastrefuge
+						title = c_greygallows
+						title = c_last_lamp
+						title = c_southstone
+					}
+				}
+				usurp_title_plus_barony_if_unlanded = ROOT
+			}
+		}
+		ROOT = {
+			stepstones_controller_effect = yes
+		}
+	}
+
+	on_fail = {
+		ROOT = {
+			prestige = -200
+		}
+		FROM = {
+			prestige = 200
+		}
+	}
+
+	on_reverse_demand = {
+		ROOT = {
+			wealth = -200
+		}
+		FROM = {
+			wealth = 200
+		}
+	}
+
+	attacker_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	attacker_ai_defeat_worth = {
+		factor = 100
+	}
+
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}
+
+##Break Hold on Stepstones
+tdp_break_stepstone_hold = {
+	name = CB_NAME_TDP_BREAK_STEPSTONE_HOLD
+	war_name = WAR_NAME_TDP_BREAK_STEPSTONE_HOLD
+	truce_days = 365
+
+	is_permanent = yes
+	hostile_against_others = yes
+	check_all_titles = yes # if permanent, setting this to true will check against all of someones titles, including vassal held titles
+	allow_whitepeace = yes
+	can_ask_to_join_war = yes
+	allowed_to_target_tributaries = no
+
+	infamy_modifier = 0
+
+	sort_priority = 5000
+
+	can_use_gui = {
+		ROOT = {
+			war = no
+		}
+	}
+
+	can_use = {
+		ROOT = {
+			OR = {
+				has_landed_title = k_tyrosh
+				has_landed_title = k_lys
+				has_landed_title = k_myr
+				has_landed_title = e_three_daughters
+				AND = {
+					tier = KING
+					primary_title = { has_title_flag = sellsword_company }
+				}
+				has_character_modifier = full_tolled_in_narrow_sea
+			}
+		}
+		FROM = {
+			independent = yes
+			OR = {
+				has_character_modifier = foothold_in_stepstones_3
+				has_character_modifier = foothold_in_stepstones_4
+				has_character_modifier = foothold_in_stepstones_5
+				has_character_modifier = foothold_in_stepstones_6
+			}
+		}
+	}
+
+	can_use_title = {
+		higher_real_tier_than = DUKE
+	}
+
+	is_valid = {
+		ROOT = {
+			NOT = { trait = nightswatch }
+		}
+		FROM = {
+			independent = yes
+		}
+	}
+
+	on_success = {
+		ROOT = {
+			prestige = 200
+
+		}
+		FROM = {
+			prestige = -200
+			if = {
+				limit = {
+					c_bloodstone = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_bloodstone = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_wreckstone = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_wreckstone = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_sunstone = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_sunstone = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_shameisle = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_shameisle = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_dwarfstone = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_dwarfstone = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_darkden = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_darkden = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_theskulls = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_theskulls = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_fishskins = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_fishskins = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_dim_cove = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_dim_cove = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_torturersdeep = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_torturersdeep = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_lastrefuge = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_lastrefuge = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_greygallows = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_greygallows = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_last_lamp = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_last_lamp = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+			if = {
+				limit = {
+					c_southstone = {
+						holder_scope = {
+							OR = {
+								character = FROM
+								top_liege = { character = FROM }
+							}
+						}
+					}
+				}
+				c_southstone = {
+					random_character = {
+						limit = {
+							religion = pirate
+							is_ruler = no
+						}
+						gain_title = PREV
+						set_defacto_liege = THIS
+					}
+				}
+			}
+		}
+	}
+
+	on_success_title = {
+
+	}
+
+	on_fail = {
+		ROOT = {
+			prestige = -300
+		}
+		FROM = {
+			prestige = 300
+		}
+	}
+
+	on_reverse_demand = {
+		ROOT = {
+			wealth = -200
+		}
+		FROM = {
+			wealth = 200
+		}
+	}
+
+	attacker_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	attacker_ai_defeat_worth = {
+		factor = 100
+	}
+
+	defender_ai_victory_worth = {
+		factor = -1 # always accept
+	}
+
+	defender_ai_defeat_worth = {
+		factor = 100
+	}
+
+	ai_will_do = {
+		factor = 100
+	}
+}

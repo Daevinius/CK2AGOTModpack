@@ -1,0 +1,142 @@
+namespace = tdp_game_rules
+
+#
+#
+#
+#
+
+
+character_event = {
+	id = tdp_game_rules.1
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = tdp_game_rules_set }
+	}
+
+	immediate = {
+		set_global_flag = tdp_game_rules_set
+
+		###Dragon Game Rules###
+		#Dragon Rider Limiter
+		if = {
+			limit = {
+				NOT = { has_global_flag = dragon_rider_limiter_on }
+				has_game_rule = { name = tdp_dragon_rider_limiter value = on }
+			}
+			set_global_flag = dragon_rider_limiter_on
+		}
+		#Dragon Dances
+		if = {
+			limit = {
+				NOT = { has_global_flag = tdp_dance_of_dragons }
+				OR = {
+					has_game_rule = { name = tdp_dragon_dances value = default }
+					has_game_rule = { name = tdp_dragon_dances value = less_common }
+				}
+			}
+			set_global_flag = tdp_dance_of_dragons
+		}
+		#Valyrian Blood
+		if = {
+			limit = {
+				NOR = {
+					has_global_flag = tdp_using_valyrian_blood_traits
+					has_global_flag = tdp_using_valyrian_blood_bloodlines
+				}
+				OR = {
+					has_game_rule = { name = tdp_valyrian_blood value = traits }
+					has_game_rule = { name = tdp_valyrian_blood value = bloodlines }
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = { name = tdp_valyrian_blood value = traits }
+				}
+				set_global_flag = tdp_using_valyrian_blood_traits
+			}
+			if = {
+				limit = {
+					has_game_rule = { name = tdp_valyrian_blood value = bloodlines }
+				}
+				set_global_flag = tdp_using_valyrian_blood_bloodlines
+			}
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_global_flag = tdp_diverse_portraits
+					has_global_flag = tdp_portraits
+					has_global_flag = tdp_art
+					has_global_flag = tdp_overhaul
+				}
+				OR = {
+					has_game_rule = { name = tdp_dragon_portraits value = diverse_portraits }
+					has_game_rule = { name = tdp_dragon_portraits value = portraits }
+					has_game_rule = { name = tdp_dragon_portraits value = art }
+					has_game_rule = { name = tdp_dragon_portraits value = overhaul }
+				}
+			}
+			if = {
+				limit = {
+					has_game_rule = { name = tdp_dragon_portraits value = overhaul }
+				}
+				set_global_flag = tdp_overhaul
+			}
+			else_if = {
+				limit = {
+					has_game_rule = { name = tdp_dragon_portraits value = art }
+				}
+				set_global_flag = tdp_art
+			}
+			else_if = {
+				limit = {
+					has_game_rule = { name = tdp_dragon_portraits value = portraits }
+				}
+				set_global_flag = tdp_portraits
+			}
+			else = {
+				limit = {
+					has_game_rule = { name = tdp_dragon_portraits value = diverse_portraits }
+				}
+				set_global_flag = tdp_diverse_portraits
+			}
+		}
+		###Extra Game Rules###
+		#Strong Seed
+		if = {
+			limit = {
+				NOT = { has_global_flag = tdp_strong_seed }
+				has_game_rule = { name = tdp_strong_seed value = on }
+			}
+			set_global_flag = tdp_strong_seed
+		}
+		#Play the Game
+		if = {
+			limit = {
+				NOT = { has_global_flag = play_the_game_on }
+				has_game_rule = { name = tdp_play_the_game value = on }
+			}
+			set_global_flag = play_the_game_on
+		}
+		#Border Gore
+		# if = {
+			# limit = {
+				# NOT = { has_global_flag = border_gore_limiter_on }
+				# has_game_rule = { name = tdp_border_gore value = on }
+			# }
+			# set_global_flag = border_gore_limiter_on
+		# }
+		#Succession Titles & History
+		if = {
+			limit = {
+				NOT = { has_global_flag = tdp_succession_on }
+				has_game_rule = { name = tdp_succession_titles value = on }
+			}
+			set_global_flag = tdp_succession_on
+		}
+	}
+}
+

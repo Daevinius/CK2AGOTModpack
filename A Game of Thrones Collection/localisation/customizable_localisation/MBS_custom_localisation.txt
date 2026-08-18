@@ -1,0 +1,27 @@
+defined_text = { #
+	name = GetKnightedByName
+	text = {
+		trigger = {
+			NOT = { persistent_event_target:knighted_ser_per = { always = yes } }
+			FROM = {
+				is_alive = yes
+				trait = knight
+			}
+		}
+		localisation_key = string_from_knighted_by_ser_aliveop
+	}
+	text = {
+		trigger = {
+			is_alive = yes
+			trait = knight
+		}
+		localisation_key = string_knighted_by_ser_alive
+	}
+	text = {
+		trigger = {
+			is_alive = no
+			trait = knight
+		}
+		localisation_key = string_knighted_by_ser__dead
+	}
+}

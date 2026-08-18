@@ -1,0 +1,303 @@
+namespace = sb_friendship_melisandre
+#Melisandre comes to Meereen if Danny is rhllor and Stannis is dead or lost
+narrative_event = {
+	 id = sb_friendship_melisandre.1
+	 desc = "EVTDESC_sb_melisandre.1"
+	 title = "EVTTITLE_sb_melisandre.1"
+	 picture = GFX_evt_red_priest_approaches
+
+	 only_women = yes
+	 only_playable = yes
+	 has_global_flag = dany_stormborn_events
+
+	 trigger = {
+		character = 77041
+		religion = rhllor
+		is_ruler = yes
+		NOT = { trait = wikid }
+		NOT = { has_global_flag = melissandre_stormborn_event }
+		c_4317 = {
+			OR = {
+				is_alive = no
+				is_ruler = no
+				prisoner = yes
+			}
+		}
+		c_2002994 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+			NOT = { has_character_flag = joined_stormborn }
+		}
+	 }
+
+	 mean_time_to_happen = {
+		days = 5
+	}
+
+	immediate = {
+		set_global_flag = melissandre_stormborn_event
+	}
+
+	option = {
+		name = "EVTOPTA_sb_friendship_melisandre.1A"
+		ai_chance = { factor = 80 }
+		piety = 100
+		c_2002994 = {
+			move_character = ROOT
+			set_character_flag = joined_stormborn
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		c_2002994 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_friendship_melisandre.1B"
+		ai_chance = { factor = 20 }
+		prestige = 40
+	}
+}
+namespace = sb_friendship_varys
+#Varys comes to Meereen if Faegon fails his invasion
+narrative_event = {
+	id = sb_friendship_varys.1
+	desc = "EVTDESC_sb_varys.1"
+	title = "EVTTITLE_sb_varys.1"
+	picture = GFX_evt_dany_meereen_1
+
+	only_women = yes
+	only_playable = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		is_ruler = yes
+		NOT = { trait = wikid }
+		NOT = { has_global_flag = varys_stormborn_event }
+		c_696969101 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+		}
+		c_125009 = { is_ruler = no }
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	immediate = {
+		set_global_flag = varys_stormborn_event
+	}
+
+	option = {
+		name = "EVTOPTA_sb_friendship_varys.1A"
+		ai_chance = { factor = 70 }
+		piety = 30
+		c_696969101 = { move_character = ROOT }
+	}
+	option = {
+		name = "EVTOPTA_sb_friendship_varys.1B"
+		ai_chance = { factor = 30 }
+		prestige = 30
+		c_696969101 = { imprison = PREV }
+	}
+}
+namespace = sb_friendship_tumcolho
+#Tumco Lho becomes a knight and gets bloodline
+narrative_event = {
+	id = sb_friendship_tumcolho.1
+	desc = "EVTDESC_sb_tumcolho.1"
+	title = "EVTTITLE_sb_tumcolho.1"
+	picture = GFX_knighted
+
+	only_women = yes
+	only_playable = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		is_ruler = yes
+		NOT = { has_landed_title = e_iron_throne }
+		NOT = { trait = wikid }
+		NOT = { has_global_flag = tumcolho_event }
+		c_12400103 = {
+			is_alive = yes
+			prisoner = no
+			is_adult = yes
+		}
+		c_201302 = {
+			is_alive = yes
+			prisoner = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = tumcolho_event
+	}
+
+	mean_time_to_happen = {
+		months = 24
+	}
+
+	option = {
+		name = "EVTOPTA_sb_friendship_tumcolho.1A"
+		c_12400103 = {
+			add_trait = master_warrior
+			add_trait = knight
+			add_trait = knight_kingsguard
+			set_character_flag = barristan_squire
+			give_minor_title = title_bodyguard
+			give_nickname = nick_the_knight
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+			create_bloodline = {
+				type = tumco_lho_blood
+			}
+		}
+		hidden_tooltip = {
+			c_12400103 = { remove_trait = squire }
+		}
+	}
+}
+namespace = sb_barristan
+#Other squires of Barristan become knights
+character_event = {
+	id = sb_barristan.1
+	desc = "EVTDESC_sb_barristan.1"
+	title = "EVTTITLE_sb_barristan.1"
+	picture = GFX_knighted
+
+	has_global_flag = dany_stormborn_events
+	only_playable = yes
+	only_women = yes
+
+	trigger = {
+		character = 77041
+		NOT = { has_landed_title = e_iron_throne }
+		NOT = { has_global_flag = barristan_squires_event }
+		has_global_flag = tumcolho_event
+		c_201302 = {
+			is_alive = yes
+			prisoner = no
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 24
+	}
+
+	immediate = {
+		set_global_flag = barristan_squires_event
+	}
+
+	option = {
+		name = "EVTOPTA_sb_barristan.1"
+		c_130360004 = {
+			add_trait = brave
+			add_trait = knight
+			add_trait = knight_kingsguard
+			set_character_flag = barristan_squire
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		c_12400105 = {
+			add_trait = brave
+			add_trait = knight
+			add_trait = knight_kingsguard
+			set_character_flag = barristan_squire
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		c_12400104 = {
+			add_trait = brave
+			add_trait = knight
+			add_trait = knight_kingsguard
+			set_character_flag = barristan_squire
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		hidden_tooltip = {
+			c_130360004 = { remove_trait = squire }
+			c_12400105 = { remove_trait = squire }
+			c_12400104 = { remove_trait = squire }
+		}
+	}
+}
+namespace = sb_tyrion
+#Tyrion gets the Hand of the Queen job and loses drunkard trait
+narrative_event = {
+	id = sb_tyrion.1
+	desc = "EVTDESC_sb_tyrion.1"
+	title = "EVTTITLE_sb_tyrion.1"
+	picture = GFX_evt_tyrion
+
+	only_playable = yes
+	only_women = yes
+	has_character_flag = tyrion_event
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		NOT = { has_global_flag = sb_tyrion_hand }
+		NOT = { trait = has_missing }
+		any_courtier = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+			NOT = { has_job_title = job_castellan }
+			has_character_flag = tyrion_lannister
+			dynasty = 190
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		set_global_flag = sb_tyrion_hand
+	}
+
+	option = {
+		name = "EVTOPTA_sb_tyrion.1"
+		ai_chance = { factor = 45 }
+		c_5190 = {
+			remove_trait = drunkard
+			set_character_flag = queens_hand
+			give_job_title = job_castellan
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_tyrion.1"
+		ai_chance = { factor = 45 }
+		c_5190 = {
+			remove_trait = drunkard
+			set_character_flag = queens_hand
+			give_job_title = job_castellan
+			add_friend = 77041
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_tyrion.1"
+		ai_chance = { factor = 10 }
+		prestige = 30
+	}
+}

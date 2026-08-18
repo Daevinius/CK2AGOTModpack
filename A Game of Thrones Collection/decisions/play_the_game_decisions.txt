@@ -1,0 +1,349 @@
+targeted_decisions = {
+
+	set_crownlands_for_council = {
+		filter = realm
+
+		ai = no
+
+		from_potential = {
+			has_landed_title = e_iron_throne
+		}
+		potential = {
+			ai = yes
+           	is_ruler = yes
+            lower_real_tier_than = KING
+           	NOT = { vassal_of = FROM }
+			NOT = { trait = dragon }
+			NOT = { trait = dragonkeeper }
+			NOT = { has_character_flag = marked_for_council }
+			OR = {
+				FROM = { ai = no }
+				AND = {
+					FROM = { ai = yes }
+					OR = {
+						#Hand of the King
+						AND = {
+							FROM = { NOT = { any_vassal = { has_job_title = job_castellan } } }
+							can_be_castellan_trigger = yes
+							stewardship = 15
+							diplomacy = 10
+						}
+						#Master of Laws
+						AND = {
+							FROM = { NOT = { any_vassal = { has_job_title = job_chancellor } } }
+							can_be_chancellor_trigger = yes
+							diplomacy = 15
+						}
+						#Master-At-Arms
+						AND = {
+							FROM = { NOT = { any_vassal = { has_job_title = job_marshal } } }
+							can_be_marshal_trigger = yes
+							martial = 15
+						}
+						#Master of Coin
+						AND = {
+							FROM = { NOT = { any_vassal = { has_job_title = job_treasurer } } }
+							can_be_treasurer_trigger = yes
+							stewardship = 15
+						}
+						#Master of Whisperers
+						AND = {
+							FROM = { NOT = { any_vassal = { has_job_title = job_spymaster } } }
+							can_be_spymaster_trigger = yes
+							intrigue = 15
+						}
+						#Master of Ships
+						AND = {
+							FROM = { NOT = { any_vassal = { has_minor_title  = title_high_admiral } } }
+							can_be_admiral_trigger = yes
+							OR = {
+								has_landed_title = c_driftmark
+								has_landed_title = c_dragonstone
+								has_landed_title = c_whiteharbor
+								has_landed_title = c_gulltown
+								has_landed_title = c_the_arbor
+								has_landed_title = c_oldtown
+								has_landed_title = c_seagard
+								has_landed_title = c_fair_isle
+							}
+						}
+					}
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_character_flag = marked_for_council
+			any_liege = {
+				limit = { tier = KING }
+				opinion = {
+					name = opinion_tdp_my_vassal
+					who = ROOT
+				}
+			}
+			set_defacto_liege = FROM
+			if = {
+				limit = { tier = DUKE }
+				primary_title = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			if = {
+				limit = { FROM = { ai = yes } }
+				#Hand of the King
+				if = {
+					limit = {
+						FROM = { NOT = { any_vassal = { has_job_title = job_castellan } } }
+						can_be_castellan_trigger = yes
+						stewardship = 15
+						diplomacy = 10
+					}
+					give_job_title = job_castellan
+				}
+				#Master of Laws
+				else_if = {
+					limit = {
+						FROM = { NOT = { any_vassal = { has_job_title = job_chancellor } } }
+						can_be_chancellor_trigger = yes
+						diplomacy = 15
+					}
+					give_job_title = job_chancellor
+				}
+				#Master-At-Arms
+				else_if = {
+					limit = {
+						FROM = { NOT = { any_vassal = { has_job_title = job_marshal } } }
+						can_be_marshal_trigger = yes
+						martial = 15
+					}
+					give_job_title = job_marshal
+				}
+				#Master of Coin
+				else_if = {
+					limit = {
+						FROM = { NOT = { any_vassal = { has_job_title = job_treasurer } } }
+						can_be_treasurer_trigger = yes
+						stewardship = 15
+					}
+					give_job_title = job_treasurer
+				}
+				#Master of Whisperers
+				else_if = {
+					limit = {
+						FROM = { NOT = { any_vassal = { has_job_title = job_spymaster } } }
+						can_be_spymaster_trigger = yes
+						intrigue = 15
+					}
+					give_job_title = job_spymaster
+				}
+				#Master of Ships
+				else = {
+					limit = {
+						FROM = { NOT = { any_vassal = { has_minor_title  = title_high_admiral } } }
+						can_be_admiral_trigger = yes
+						OR = {
+							has_landed_title = c_driftmark
+							has_landed_title = c_dragonstone
+							has_landed_title = c_whiteharbor
+							has_landed_title = c_gulltown
+							has_landed_title = c_the_arbor
+							has_landed_title = c_oldtown
+							has_landed_title = c_seagard
+							has_landed_title = c_fair_isle
+						}
+					}
+					give_minor_title = title_high_admiral
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	reset_dejure_liege = {
+		filter = realm
+
+		ai = no
+
+		from_potential = {
+			has_landed_title = e_iron_throne
+		}
+		potential = {
+			ai = yes
+           	has_character_flag = marked_for_council
+			NOT = { vassal_of = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = play_the_game.3 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+    remove_son_from_kingsguard = {
+		filter = realm
+		diplomacy_icon = GFX_appoint_to_kingsguard
+
+		from_potential = {
+			war = no
+
+			trait = ambitious
+			any_child = {
+				trait = kingsguard
+			}
+			any_close_relative = {
+				has_landed_title = e_iron_throne
+			}
+		}
+		potential = {
+			trait = kingsguard
+			is_child_of = FROM
+
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = kingsguard
+			if = {
+				limit = { is_landed = yes }
+				abdicate = yes
+			}
+			move_character = FROM
+			FROM = { recalc_succession = yes }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	add_family_member_kingsguard = {
+		filter = realm
+		diplomacy_icon = GFX_appoint_to_kingsguard
+
+		from_potential = {
+			OR = {
+				has_global_flag = kingsguard_initialising
+				is_title_active = d_kingsguard
+			}
+			trait = ambitious
+			any_liege = {
+				has_landed_title = e_iron_throne
+				owes_favor_to = FROM
+				NOT = {
+					kingsguard = {
+						is_alive = yes
+						count = 7
+					}
+				}
+			}
+		}
+		potential = {
+			NOT = { is_primary_heir = FROM }
+
+			OR = {
+				can_be_kingsguard_candidate_trigger = yes
+				highborn_kingsguard_candidate_trigger = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_trait = kingsguard
+			set_character_flag = no_court_invites
+			d_kingsguard = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			FROM = {
+				any_liege = {
+					limit = {
+						has_landed_title = e_iron_throne
+						owes_favor_to = FROM
+					}
+					reverse_remove_favor = FROM
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}
+
+decisions = {
+
+	melt_ice_for_lannister = {
+		is_high_prio = yes
+
+		potential = {
+			year = 8299
+			NOT = { has_global_flag = ice_stolen_and_reforged }
+			any_artifact = {
+				artifact_type = ice
+				NOT = { has_artifact_flag = forged_from_ice }
+			}
+			dynasty = 190
+			OR = {
+				trait = ruthless
+				trait = cruel
+				trait = ambitious
+			}
+			NOT = { trait = imbecile }
+
+			#Must NOT be at war with Starks
+			NOT = {
+				any_current_enemy = { dynasty = 59 }
+			}
+			NOT = { has_character_flag = ice_reforged }
+		}
+		allow = {
+
+		}
+		effect = {
+			character_event = { id = play_the_game.112 }
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	establish_iron_throne_bloodline = {
+		is_high_prio = yes
+
+		potential = {
+			NOT = { has_character_flag = establish_iron_throne_bloodline }
+			has_character_flag = ambitious_father
+			any_independent_ruler = {
+				has_landed_title = e_iron_throne
+				is_grandchild_of = ROOT
+			}
+		}
+		allow = {
+
+		}
+		effect = {
+			character_event = { id = play_the_game.1110 }
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+}

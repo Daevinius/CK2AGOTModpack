@@ -1,0 +1,93 @@
+namespace = tdp_sellsword
+
+#
+#
+#
+#
+
+character_event = {
+	id = tdp_sellsword.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		start_date = 7900.1.1
+		has_dlc = "Legacy of Rome"
+		OR = {
+			NOT = { trait = sellsword }
+			any_courtier = {
+				NOT = { trait = sellsword }
+			}
+		}
+		OR = {
+			has_landed_title = d_golden_company #Bittersteel founded 8212.1.1
+			has_landed_title = d_brave_companions
+			has_landed_title = d_bright_banners #Since Doom
+			has_landed_title = d_company_of_the_cat
+			has_landed_title = d_gallant_men
+			has_landed_title = d_iron_shields
+			has_landed_title = d_long_lances
+			has_landed_title = d_maidens_men
+			has_landed_title = d_men_of_valor
+			has_landed_title = d_ragged_standard
+			has_landed_title = d_second_sons
+			has_landed_title = d_stormcrows
+			has_landed_title = d_windblown #8270.1.1
+			has_landed_title = d_stormbreakers #aftermath of Dance of Dragons 8131.1.1
+			has_landed_title = d_lost_legion
+			has_landed_title = d_adventurers
+			has_landed_title = d_free_company
+			has_landed_title = d_jolly_fellows
+			has_landed_title = d_company_of_the_rose #founded after Aegon's Conquest 8000.1.1
+			has_landed_title = d_wolf_pack #aftermath of Dance of Dragons 8131.1.1
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { NOT = { trait = sellsword } }
+			remove_trait = former_sellsword
+			add_trait = sellsword
+			set_character_flag = sellsword
+		}
+		any_courtier = {
+			limit = {
+				NOT = { trait = sellsword }
+				NOT_mythical_creature_trigger = yes
+				age = 15
+				OR = {
+					is_female = no
+					combat_rating = 120
+					martial = 10
+				}
+			}
+			remove_trait = former_sellsword
+			add_trait = sellsword
+			set_character_flag = sellsword
+		}
+	}
+}
+
+character_event = {
+	id = tdp_sellsword.2
+
+	hide_window = yes
+
+	has_character_flag = sellsword
+
+	trigger = {
+		liege = { NOT = { trait = sellsword } }
+		trait = sellsword
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+
+	immediate = {
+		remove_trait = sellsword
+		add_trait = former_sellsword
+		clr_character_flag = sellsword
+	}
+}

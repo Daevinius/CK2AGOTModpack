@@ -1,0 +1,101 @@
+decisions = {
+
+	donate_money_to_nightswatch = {
+		only_rulers = yes
+		potential = {
+			is_title_active = d_nightswatch
+
+			is_incapable = no
+			NOT = { government = order_government }
+			primary_title = {
+				location = { region = world_westeros }
+			}
+			NOR = {
+				culture_group = free_folk
+				religion_group = wildling_religion
+			}
+			d_nightswatch = {
+				holder_scope = {
+					liege = {
+						NOT = { character = ROOT }
+					}
+				}
+			}
+		}
+
+		allow = {
+			wealth >= 250
+			custom_tooltip = {
+				text = nightswatch_donate_cooldown_tt
+				NOT = { has_character_modifier = donate_to_nightswatch_cooldown }
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				add_character_modifier = {
+					modifier = donate_to_nightswatch_cooldown
+					hidden = yes
+					years = 1
+				}
+			}
+			wealth = -250
+			if = {
+				limit = {
+					has_character_modifier = donated_to_nightswatch
+				}
+				piety = 50
+			}
+			else = {
+				piety = 100
+				add_character_modifier = {
+					name = donated_to_nightswatch
+					duration = -1
+				}
+			}
+
+			hidden_tooltip = {
+				d_nightswatch = {
+					holder_scope = {
+						character_event = {
+							id = blackdonation.1
+						}
+						ROOT = {
+							chronicle = {
+								entry = CHRONICLE_HOLY_ORDER_DONATION
+								portrait = [Prev.GetID]
+							}
+						}
+					}
+				}
+			}
+		}
+
+		ai_check_interval = 24
+		ai_will_do = {
+			factor = 1
+
+			trigger = {
+				wealth >= 350
+				NOR = {
+					trait = greedy
+					trait = ruthless
+					trait = cynical
+					trait = arbitrary
+					trait = ambitious
+					trait = selfish
+				}
+			}
+
+			mult_modifier = {
+				factor = 5
+				trait = charitable
+			}
+
+			mult_modifier = {
+				factor = 2
+				religion = old_gods
+			}
+		}
+	}
+}

@@ -1,0 +1,1942 @@
+
+
+namespace = missing_people
+
+#Find missing Gerion Lannister
+narrative_event = {
+	id = missing_people.1
+	title = "EVTtitlecbb_notification.1"
+	desc = "EVTDESCmissing_people.1"
+	picture = "GFX_LANNISTER"
+
+	has_character_flag = missing_gerion_lannister
+
+	trigger = {
+		has_game_rule = { name = missing_characters value = on }
+		# OR = {
+			# character = 7189
+		# }
+		#NOT = { has_character_flag = gerion_lannister_found }
+		NOT = { dynasty = 190 }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				dynasty = 190
+				at_location = ROOT
+			}
+			AND = {
+				liege = {
+					capital_scope = { region = world_westeros }
+					NOT = { trait = wildling }
+					war = no
+					NOT = { any_liege = { war = yes } }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 25 }
+
+	immediate = {
+		set_character_flag = gerion_lannister_found
+		clr_character_flag = missing_gerion_lannister
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.5"
+		dynasty = 190
+		c_1190 = { #Tygett
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_90190 = { ROOT = { set_mother = PREV } } #
+		recalc_succession = yes
+		if = {
+			limit = { c_1907189 = { character = PREV } } #Benjen
+			set_name = Герион
+			add_artifact = brightroar
+			wealth = 500
+			add_artifact = golden_sword
+			add_artifact = golden_staff
+			add_artifact = dragonbone_statue
+			add_artifact = golden_bracelets
+			add_friend = 5190
+		hidden_tooltip = {
+						c_7189 = { #the 'dead' Gerion
+							dynasty = none
+							set_father = 0
+							set_mother = 0
+		 				 	}
+						c_11190 = { #Joy
+							set_father = 1907189
+						  	  }
+				 }
+		}
+		character_event = { id = dynastic_rivalry.8 days = 1 }
+		if = {
+			limit = { is_female = no }
+			e_westerlands = {
+				if = {
+					limit = { has_holder = yes }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			k_westerlands = {
+				if = {
+					limit = {
+						OR = {
+							has_holder = yes
+							e_north = { has_holder = no }
+						}
+					}
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			d_casterly_rock = { add_weak_pressed_claim = ROOT }
+			c_casterly_rock = { add_weak_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			e_westerlands = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 190 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 190 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			k_westerlands = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 190 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 190 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			d_casterly_rock = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 190 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 190 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			c_casterly_rock = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 190 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 190 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = bastard }
+			remove_trait = bastard
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = missing_people.2 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 190
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = missing_people.2 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 190 }
+								OR = {
+									has_landed_title = e_westerlands
+									has_landed_title = k_westerlands
+									has_landed_title = d_casterly_rock
+									has_landed_title = c_casterly_rock
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 190
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.2 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = e_north
+							has_landed_title = k_north
+							has_landed_title = d_winterfell
+							has_landed_title = c_winterfell
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.2 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						NOR = {
+							has_landed_title = e_westerlands
+							has_landed_title = k_westerlands
+							has_landed_title = d_casterly_rock
+							has_landed_title = c_casterly_rock
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.3 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = missing_people.3 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Gerion Lannister has been found!
+narrative_event  = {
+	id = missing_people.2
+	desc = "EVTDESCmissing_people.2"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = gerion_lannister_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = gerion_lannister } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.2" #Yay!
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_FOUND_GERION_LANNISTER
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+#Gerion Lannister has been found
+narrative_event  = {
+	id = missing_people.3
+	desc = "EVTDESCmissing_people.3"
+	picture = "GFX_STARK"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = gerion_lannister_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = gerion_lannister } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.3"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { trait = wildling }
+					NOT = { character = ROOT }
+					OR = {
+						culture_group = andal
+						culture = ironborn
+						culture_group = dornish
+						culture = western_valyrian
+						culture_group = first_men
+						culture = skagosi
+						capital_scope = { region = world_westeros }
+					}
+				}
+				character_event = { id = missing_people.4 }
+			}
+		}
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_GERION_LANNISTER_REVEALED
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+
+narrative_event  = {
+	id = missing_people.4
+	desc = "EVTDESCmissing_people.4"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	trigger = { FROM = { FROM = { has_character_flag = gerion_lannnister_found } } }
+
+	option = {
+		name = EVTOPTAmissing_people.4
+		if = {
+			limit = {
+				culture_group = first_men
+				NOT = { has_landed_title = k_westerlands }
+				NOT = { k_westerlands = { holder_scope = { dynasty = ROOT } } }
+				NOT = { k_westerlands = { holder_scope = { dynasty = 190 } } }
+			}
+			opinion = {
+				who = FROMFROM
+				modifier = opinion_restored_lannister
+				years = 120
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBmissing_people.4
+	}
+}
+#Find missing Benjen Stark
+narrative_event = {
+	id = missing_people.5
+	title = "EVTtitlecbb_benjen_notification.5"
+	desc = "EVTDESCmissing_people.5"
+	picture = "GFX_STARK"
+
+	has_character_flag = missing_benjen_stark
+
+	trigger = {
+		has_game_rule = { name = missing_characters value = on }
+		# OR = {
+			# character = 1058 #Benjen
+		# }
+		#NOT = { has_character_flag = benjen_stark_found }
+		NOT = { dynasty = 59 }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				dynasty = 59
+				at_location = ROOT
+			}
+			AND = {
+				liege = {
+					capital_scope = { region = world_westeros }
+					NOT = { trait = wildling }
+					war = no
+					NOT = { any_liege = { war = yes } }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 25 }
+
+	immediate = {
+		set_character_flag = benjen_stark_found
+		clr_character_flag = missing_benjen_stark
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.5"
+		dynasty = 59
+		c_2058 = { #Rickard
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_42058 = { ROOT = { set_mother = PREV } } #
+		recalc_succession = yes
+		if = {
+			limit = { c_591058 = { character = PREV } } #Benjen
+			set_name = Бенджен
+				hidden_tooltip = {
+						c_1058 = { #the 'dead' Benjen
+							dynasty = none
+							set_father = 0
+							set_mother = 0
+		 				 }
+				}
+		}
+		character_event = { id = dynastic_rivalry.8 days = 1 }
+		if = {
+			limit = { is_female = no }
+			e_north = {
+				if = {
+					limit = { has_holder = yes }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			k_north = {
+				if = {
+					limit = {
+						OR = {
+							has_holder = yes
+							e_north = { has_holder = no }
+						}
+					}
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			d_winterfell = { add_weak_pressed_claim = ROOT }
+			c_winterfell = { add_weak_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			e_north = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			k_north = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			d_winterfell = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			c_winterfell = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = bastard }
+			remove_trait = bastard
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = missing_people.6 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 59
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = missing_people.6 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 59 }
+								OR = {
+									has_landed_title = e_north
+									has_landed_title = k_north
+									has_landed_title = d_winterfell
+									has_landed_title = c_winterfell
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 59
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.6 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = northman
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = e_north
+							has_landed_title = k_north
+							has_landed_title = d_winterfell
+							has_landed_title = c_winterfell
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.6 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = northman
+						NOR = {
+							has_landed_title = e_north
+							has_landed_title = k_north
+							has_landed_title = d_winterfell
+							has_landed_title = c_winterfell
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.7 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = missing_people.7 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Benjen Stark has been found!
+narrative_event  = {
+	id = missing_people.6
+	desc = "EVTDESCmissing_people.6"
+	picture = "GFX_STARK"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = benjen_stark_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = benjen_stark } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.6" #Yay!
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_FOUND_BENJEN_STARK
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+#Benjen Stark has been found
+narrative_event  = {
+	id = missing_people.7
+	desc = "EVTDESCmissing_people.7"
+	picture = "GFX_STARK"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = benjen_stark_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = benjen_stark } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.7"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { trait = wildling }
+					NOT = { character = ROOT }
+					OR = {
+						culture_group = andal
+						culture = ironborn
+						culture_group = dornish
+						culture = western_valyrian
+						culture_group = first_men
+						culture = skagosi
+						capital_scope = { region = world_westeros }
+					}
+				}
+				character_event = { id = missing_people.8 }
+			}
+		}
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_BENJEN_STARK_REVEALED
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+
+narrative_event  = {
+	id = missing_people.8
+	desc = "EVTDESCmissing_people.8"
+	picture = "GFX_STARK"
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	trigger = { FROM = { FROM = { has_character_flag = benjen_stark_found } } }
+
+	option = {
+		name = EVTOPTAmissing_people.8
+		if = {
+			limit = {
+				culture_group = first_men
+				NOT = { has_landed_title = k_north }
+				NOT = { k_north = { holder_scope = { dynasty = ROOT } } }
+				NOT = { k_north = { holder_scope = { dynasty = 59 } } }
+			}
+			opinion = {
+				who = FROMFROM
+				modifier = opinion_restored_stark
+				years = 120
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBmissing_people.8
+	}
+}
+#Find missing Elissa Farman
+narrative_event = {
+	id = missing_people.13
+	title = "EVTtitlecbb_elissa_notification.13"
+	desc = "EVTDESCmissing_people.13"
+	picture = "GFX_LANNISTER"
+
+	has_character_flag = missing_elissa_farman
+
+	trigger = {
+		has_game_rule = { name = missing_characters value = on }
+		# OR = {
+			# character = 88000268 #Elissa
+		# }
+		#NOT = { has_character_flag = elissa_farman_found }
+		NOT = { dynasty = 194 }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				dynasty = 194
+				at_location = ROOT
+			}
+			AND = {
+				liege = {
+					capital_scope = { region = world_westeros }
+					NOT = { trait = wildling }
+					war = no
+					NOT = { any_liege = { war = yes } }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		set_character_flag = elissa_farman_found
+		clr_character_flag = missing_elissa_farman
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.13"
+		dynasty = 194
+		c_309194 = {
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_5020199 = { ROOT = { set_mother = PREV } } #
+		recalc_succession = yes
+		if = {
+			limit = { c_194268 = { character = PREV } }
+			set_name = Алис
+			wealth = 500
+			add_artifact = sunchaser
+ 			hidden_tooltip = {
+						c_88000268 = { #the 'dead' Elissa
+							dynasty = none
+							set_father = 0
+							set_mother = 0
+		 				 }
+						# c_194268 = { character_event =  { id = missing_people.31 } }
+				}
+		}
+		character_event = { id = dynastic_rivalry.8 days = 1 }
+		if = {
+			limit = { is_female = no }
+			c_fair_isle = { add_weak_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			c_fair_isle = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 194 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 194 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = bastard }
+			remove_trait = bastard
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = missing_people.14 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 194
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = missing_people.14 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 194 }
+								OR = {
+									has_landed_title = e_westerlands
+									has_landed_title = k_westerlands
+									has_landed_title = d_fair_isle
+									has_landed_title = c_fair_isle
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 194
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.14 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = e_westerlands
+							has_landed_title = k_westerlands
+							has_landed_title = d_fair_isle
+							has_landed_title = c_fair_isle
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.14 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						NOR = {
+							has_landed_title = e_westerlands
+							has_landed_title = k_westerlands
+							has_landed_title = d_fair_isle
+							has_landed_title = c_fair_isle
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.15 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = missing_people.15 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Elissa Farman has been found!
+narrative_event  = {
+	id = missing_people.14
+	desc = "EVTDESCmissing_people.14"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = elissa_farman_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = elissa_farman } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.14" #Yay!
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_FOUND_ELISSA_FARMAN
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+#Elissa Farman has been found
+narrative_event  = {
+	id = missing_people.15
+	desc = "EVTDESCmissing_people.15"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = elissa_farman_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = elissa_farman } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.15"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { trait = wildling }
+					NOT = { character = ROOT }
+					OR = {
+						culture_group = andal
+						culture = ironborn
+						culture_group = dornish
+						culture = western_valyrian
+						culture_group = first_men
+						culture = skagosi
+						capital_scope = { region = world_westeros }
+					}
+				}
+				character_event = { id = missing_people.16 }
+			}
+		}
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_ELISSA_FARMAN_REVEALED
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+
+narrative_event  = {
+	id = missing_people.16
+	desc = "EVTDESCmissing_people.16"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	trigger = { FROM = { FROM = { has_character_flag = elissa_farman_found } } }
+
+	option = {
+		name = EVTOPTAmissing_people.16
+		if = {
+			limit = {
+				culture_group = first_men
+				NOT = { has_landed_title = k_westerlands }
+				NOT = { c_fair_isle = { holder_scope = { dynasty = ROOT } } }
+				NOT = { c_fair_isle = { holder_scope = { dynasty = 194 } } }
+			}
+			opinion = {
+				who = FROMFROM
+				modifier = opinion_restored_farman
+				years = 120
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBmissing_people.16
+	}
+}
+#Find missing Sandor Clegane
+narrative_event = {
+	id = missing_people.17
+	title = "EVTtitlecbb_sandor_notification.17"
+	desc = "EVTDESCmissing_people.17"
+	picture = "GFX_LANNISTER"
+
+	has_character_flag = missing_sandor_clegane
+
+	trigger = {
+		has_game_rule = { name = missing_characters value = on }
+		# OR = {
+			# character = 2230 #Sandor
+		# }
+		#NOT = { has_character_flag = sandor_clegane_found }
+		NOT = { dynasty = 230 }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				at_location = ROOT
+			}
+			AND = {
+				liege = {
+					capital_scope = { region = world_westeros }
+					NOT = { trait = wildling }
+					war = no
+					NOT = { any_liege = { war = yes } }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		set_character_flag = sandor_clegane_found
+		clr_character_flag = missing_sandor_clegane
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.17"
+		dynasty = 230
+		c_230 = {
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_3230 = { ROOT = { set_mother = PREV } } #
+		recalc_succession = yes
+		if = {
+			limit = { c_2302230 = { character = PREV } }
+			set_name = Сандор
+			add_artifact = hound_helm
+			give_nickname = nick_the_hound
+			add_rival = 1230
+ 			hidden_tooltip = {
+						c_2302230 = {
+
+							set_character_flag = sandor_hound
+						}
+						c_2230 = { #the 'dead' Sandor
+							dynasty = none
+							set_father = 0
+							set_mother = 0
+		 				 }
+				}
+		}
+		c_11274 = {
+			death = { death_reason = death_duel killer = ROOT }
+		}
+		c_3155 = {
+			death = { death_reason = death_battle killer = ROOT }
+		}
+		c_88000544 = {
+			death = { death_reason = death_duel killer = ROOT }
+		}
+		c_88000545 = {
+			death = { death_reason = death_murder_unknown killer = ROOT }
+		}
+		c_4233 = {
+			death = { death_reason = death_murder killer = ROOT }
+		}
+		character_event = { id = dynastic_rivalry.8 days = 1 }
+		if = {
+			limit = { is_female = no }
+			c_fang_tower = { add_weak_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			c_fang_tower = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 230 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 230 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = bastard }
+			remove_trait = bastard
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = missing_people.18 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 230
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = missing_people.18 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 230 }
+								OR = {
+									has_landed_title = c_fang_tower
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 230
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.18 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = c_fang_tower
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.18 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						NOR = {
+							has_landed_title = c_fang_tower
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.19 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = missing_people.19 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Sandor Clegane has been found!
+narrative_event  = {
+	id = missing_people.18
+	desc = "EVTDESCmissing_people.18"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = sandor_clegane_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = sandor_clegane } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.14" #Yay!
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_FOUND_SANDOR_CLEGANE
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+#Sandor Clegane has been found
+narrative_event  = {
+	id = missing_people.19
+	desc = "EVTDESCmissing_people.19"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = sandor_clegane_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = sandor_clegane } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.19"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { trait = wildling }
+					NOT = { character = ROOT }
+					OR = {
+						culture_group = andal
+						culture = ironborn
+						culture_group = dornish
+						culture = western_valyrian
+						culture_group = first_men
+						culture = skagosi
+						capital_scope = { region = world_westeros }
+					}
+				}
+				character_event = { id = missing_people.20 }
+			}
+		}
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_SANDOR_CLEGANE_REVEALED
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+
+narrative_event  = {
+	id = missing_people.20
+	desc = "EVTDESCmissing_people.20"
+	picture = "GFX_LANNISTER"
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	trigger = { FROM = { FROM = { has_character_flag = sandor_clegane_found } } }
+
+	option = {
+		name = EVTOPTAmissing_people.20
+		if = {
+			limit = {
+				culture_group = first_men
+				NOT = { has_landed_title = k_westerlands }
+				NOT = { c_fang_tower = { holder_scope = { dynasty = ROOT } } }
+				NOT = { c_fang_tower = { holder_scope = { dynasty = 230 } } }
+			}
+			opinion = {
+				who = FROMFROM
+				modifier = opinion_restored_clegane
+				years = 120
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBmissing_people.20
+	}
+}
+#Find missing Shiera Seastar
+narrative_event = {
+	id = missing_people.21
+	title = "EVTtitlecbb_shiera_notification.21"
+	desc = "EVTDESCmissing_people.21"
+	picture = "GFX_TARGARYEN"
+
+	has_character_flag = missing_shiera_seastar
+
+	trigger = {
+		has_game_rule = { name = missing_characters value = on }
+		# OR = {
+			# character = 77027 #Shiera
+		# }
+		#NOT = { has_character_flag = shiera_seastar_found }
+		NOT = { dynasty = 496 }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				dynasty = 496
+				at_location = ROOT
+			}
+			AND = {
+				liege = {
+					capital_scope = { region = world_westeros }
+					NOT = { trait = wildling }
+					war = no
+					NOT = { any_liege = { war = yes } }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		set_character_flag = shiera_seastar_found
+		clr_character_flag = missing_shiera_seastar
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.21"
+		dynasty = 18879
+		c_77020 = {
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_600000047 = { ROOT = { set_mother = PREV } } #
+		recalc_succession = yes
+		if = {
+			limit = { c_49677027 = { character = PREV } }
+			set_name = Шира
+			hidden_tooltip = {
+						c_77027 = { #the 'dead' Elissa
+							dynasty = none
+							set_father = 0
+							set_mother = 0
+		 				 }
+				}
+		}
+		character_event = { id = dynastic_rivalry.8 days = 1 }
+		if = {
+			limit = { is_female = no }
+			e_iron_throne = { add_weak_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			e_iron_throne = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 18879 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 18879 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = bastard }
+			remove_trait = bastard
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = missing_people.22 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 496
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = missing_people.22 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 496 }
+								OR = {
+									has_landed_title = e_iron_throne
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 496
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.22 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = high_valyrian
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = e_iron_throne
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.22 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = westerman
+						NOR = {
+							has_landed_title = e_iron_throne
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.23 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = missing_people.23 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Shiera Seastar has been found!
+narrative_event  = {
+	id = missing_people.22
+	desc = "EVTDESCmissing_people.22"
+	picture = "GFX_TARGARYEN"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = shiera_seastar_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = shiera_seastar } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.22" #Yay!
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_FOUND_SHIERA_SEASTAR
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+#Elissa Farman has been found
+narrative_event  = {
+	id = missing_people.23
+	desc = "EVTDESCmissing_people.23"
+	picture = "GFX_TARGARYEN"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = shiera_seastar_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = shiera_seastar } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.23"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { trait = wildling }
+					NOT = { character = ROOT }
+					OR = {
+						culture_group = andal
+						culture = ironborn
+						culture_group = dornish
+						culture = western_valyrian
+						culture_group = first_men
+						culture = skagosi
+						capital_scope = { region = world_westeros }
+					}
+				}
+				character_event = { id = missing_people.24 }
+			}
+		}
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_SHIERA_SEASTAR_REVEALED
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+
+narrative_event  = {
+	id = missing_people.24
+	desc = "EVTDESCmissing_people.24"
+	picture = "GFX_TARGARYEN"
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	trigger = { FROM = { FROM = { has_character_flag = shiera_seastar_found } } }
+
+	option = {
+		name = EVTOPTAmissing_people.24
+		if = {
+			limit = {
+				culture_group = first_men
+				NOT = { has_landed_title = k_westerlands }
+				NOT = { c_fair_isle = { holder_scope = { dynasty = ROOT } } }
+				NOT = { e_iron_throne = { holder_scope = { dynasty = 496 } } }
+			}
+			opinion = {
+				who = FROMFROM
+				modifier = opinion_restored_seastar
+				years = 120
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBmissing_people.24
+	}
+}
+#Rowan
+narrative_event = {
+	id = missing_people.25
+	title = "EVTtitlecbb_berena_notification.25"
+	desc = "EVTDESCmissing_people.25"
+	picture = "GFX_godswood"
+
+	has_character_flag = missing_berena_umber
+
+	trigger = {
+		has_game_rule = { name = missing_characters value = on }
+		# OR = {
+			# character = 222093 #Berena
+		# }
+		#NOT = { has_character_flag = berena_umber_found }
+		NOT = { dynasty = 93 }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				dynasty = 93
+				at_location = ROOT
+			}
+			AND = {
+				liege = {
+					capital_scope = { region = world_westeros }
+					NOT = { trait = wildling }
+					war = no
+					NOT = { any_liege = { war = yes } }
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		set_character_flag = berena_umber_found
+		clr_character_flag = missing_berena_umber
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.25"
+		dynasty = 93
+		c_1093 = {
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_25093 = { ROOT = { set_mother = PREV } } #
+		recalc_succession = yes
+		if = {
+			limit = { c_93222093 = { character = PREV } }
+			set_name = Берена
+			hidden_tooltip = {
+						c_222093 = { #the 'dead' Elissa
+							dynasty = none
+							set_father = 0
+							set_mother = 0
+		 				 }
+				}
+		}
+		character_event = { id = dynastic_rivalry.8 days = 1 }
+		if = {
+			limit = { is_female = no }
+			c_last_hearth = { add_weak_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			c_last_hearth = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 93 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 93 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = bastard }
+			remove_trait = bastard
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = missing_people.26 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 93
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = missing_people.26 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 93 }
+								OR = {
+									has_landed_title = c_lasthearth
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 93
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.26 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = northman
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = c_lasthearth
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.26 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = northman
+						NOR = {
+							has_landed_title = c_lasthearth
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = missing_people.27 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = missing_people.27 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Berena Umber has been found!
+narrative_event  = {
+	id = missing_people.26
+	desc = "EVTDESCmissing_people.26"
+	picture = "GFX_godswood"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = berena_umber_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = berena_umber } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.26" #Yay!
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_FOUND_BERENA_UMBER
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event  = {
+	id = missing_people.27
+	desc = "EVTDESCmissing_people.27"
+	picture = "GFX_godswood"
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = berena_umber_found } }
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_character_flag = berena_umber } }
+		}
+		recalc_succession = yes
+	}
+
+	option = {
+		name = "EVTOPTAmissing_people.27"
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { trait = wildling }
+					NOT = { character = ROOT }
+					OR = {
+						culture_group = andal
+						culture = ironborn
+						culture_group = dornish
+						culture = western_valyrian
+						culture_group = first_men
+						culture = skagosi
+						capital_scope = { region = world_westeros }
+					}
+				}
+				character_event = { id = missing_people.28 }
+			}
+		}
+		e_rebels = {
+			persistent_event_target:chronicle_player = {
+				if = {
+					limit = {
+						OR = {
+							character = ROOT
+							dynasty = ROOT
+							is_liege_or_above = ROOT
+							capital_scope = { region = world_westeros }
+						}
+					}
+					chronicle = {
+						entry = CHRONICLE_BERENA_UMBER_REVEALED
+						portrait = [From.GetID]
+					}
+				}
+			}
+		}
+	}
+}
+
+narrative_event  = {
+	id = missing_people.28
+	desc = "EVTDESCmissing_people.28"
+	picture = "GFX_godswood"
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	trigger = { FROM = { FROM = { has_character_flag = berena_umber_found } } }
+
+	option = {
+		name = EVTOPTAmissing_people.28
+		if = {
+			limit = {
+				culture_group = first_men
+				NOT = { has_landed_title = k_north }
+				NOT = { c_lasthearth = { holder_scope = { dynasty = ROOT } } }
+				NOT = { c_lasthearth = { holder_scope = { dynasty = 93 } } }
+			}
+			opinion = {
+				who = FROMFROM
+				modifier = opinion_restored_umber
+				years = 120
+			}
+		}
+	}
+	option = {
+		name = EVTOPTBmissing_people.28
+	}
+}
+# Remove some Targaryen bloodlines from missing
+character_event = {
+	id = missing_people.29
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+			character = 1907189
+			character = 591058
+			character = 1906189
+			character = 194268
+			character = 2302230
+			character = 49677027
+			character = 93222093
+	}
+
+	immediate = {
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = blood_of_the_dragon
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = aegon_the_conqueror
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = the_conciliator
+			}
+			remove_bloodline_member = PREV
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}

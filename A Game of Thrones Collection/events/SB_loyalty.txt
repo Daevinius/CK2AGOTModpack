@@ -1,0 +1,125 @@
+namespace = sb_loyalty
+
+#House Of Naath Loyalty +30 opinion on Daenerys Targaryen Branch
+character_event = {
+	id = sb_loyalty.0
+
+	is_triggered_only = yes
+
+	hide_window = yes
+
+	has_global_flag = naathi_friendship
+
+	trigger = {
+		dynasty = 496
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_canon_stormborn
+		}
+	}
+
+	immediate = {
+		 random_character = {
+			limit = { dynasty = 306022 }
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_naathi_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_naathi_loyalty who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_naathi_loyalty who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_naathi_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_naathi_loyalty who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_naathi_loyalty who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+#Unsullied Loyalty on Daenerys Targaryen Branch
+character_event = {
+	id = sb_loyalty.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 496
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_canon_stormborn
+		}
+		OR = {
+			has_global_flag = new_unsullieds
+			has_character_flag = unsullied_denied
+		}
+	}
+
+	immediate = {
+		 any_character = {
+			limit = { trait = unsullied }
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_unsullied_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_unsullied_loyalty who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_unsullied_loyalty who = ROOT years = 100 }
+			}
+		}
+	}
+}
+#Shavepate Loyalty on Daenerys Targaryen Branch
+character_event = {
+	id = sb_loyalty.2
+
+	is_triggered_only = yes
+
+	hide_window = yes
+
+	has_global_flag = shavepates_founded
+
+	trigger = {
+		dynasty = 496
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_canon_stormborn
+		}
+	}
+
+	immediate = {
+		 any_character = {
+			limit = { trait = shavepate }
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_shavepate_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_shavepate_loyalty who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_shavepate_loyalty who = ROOT years = 100 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

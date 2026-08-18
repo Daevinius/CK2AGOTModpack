@@ -1,0 +1,289 @@
+namespace = tyrek_puppet
+
+# Leader of the Golden Company decides to tell him or not
+character_event = {
+	id = tyrek_puppet.1
+	desc = EVTDESCtyrek_puppet.1
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_stormlands = {
+				holder_scope = {
+					#war = no
+					character = 125009
+					OR = {
+						dynasty = 496
+						dynasty = 497
+						dynasty = 57
+					}
+				}
+			}
+			k_stormlands = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+						OR = {
+							dynasty = 496
+							dynasty = 497
+							dynasty = 57
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = { # I will tell him the truth
+		name = EVTOPTAtyrek_puppet.1
+		ai_chance = { factor = 100 }
+		c_125009 = { narrative_event = { id = tyrek_puppet.2 days = 3 } }
+	}
+	#after = {
+	#	narrative_event = { id = invasions.104 days = 5 } #disband golden company now
+	#}
+}
+# Aegon is informed of true lineage
+narrative_event = {
+	id = tyrek_puppet.2
+	title = EVTTITLEtyrek_puppet.2
+	desc = EVTDESCtyrek_puppet.2
+	picture = GFX_evt_blackfyre
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 125009
+		NOT = { has_character_flag = knows_tyrek }
+		#war = no
+	}
+
+	immediate = { set_character_flag = knows_tyrek }
+
+	option = {
+		name = EVTOPTAtyrek_puppet.2 #Lets use him to our advantage lord Varys
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = ruthless
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+		}
+		c_1906189 = {
+			set_character_flag = tyrek_puppet
+			narrative_event = { id = tyrek_puppet.3 days = 1 }
+		}
+	}
+	option = {
+		name = EVTOPTBtyrek_puppet.2 #His claim is ludacris, I'll win over the true lords of the West
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 3
+				trait = humble
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+			modifier = {
+				factor = 2
+				trait = content
+			}
+		}
+		c_1906189 = {
+			set_character_flag = tyrek_lannister_killed
+			narrative_event = { id = tyrek_puppet.4 days = 1 }
+		}
+	}
+}
+# Inform the realm
+letter_event = {
+	id = tyrek_puppet.3
+	desc = EVTDESCtyrek_puppet.3
+
+	is_triggered_only = yes
+
+	has_character_flag = tyrek_puppet
+
+	trigger = {
+		character = 1906189
+	}
+
+	option = {
+		name = EVTOPTAtyrek_puppet.3 #Lets use him to our advantage lord Varys
+
+		dynasty = 190
+		c_5189 = { #Tygett
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		c_2212 = { ROOT = { set_mother = PREV } } #
+		c_6189 = {
+			dynasty = none
+			set_father = 0
+			set_mother = 0
+			remove_spouse = 932
+		}
+		c_932 = { remove_spouse = 6189 }
+		c_4190 = { add_rival = 125009 }
+		recalc_succession = yes
+
+		set_name = Тирек
+		add_spouse = 932
+		add_friend = 125009
+		give_nickname = nick_the_wetnurse
+		create_bloodline = {
+			type = tyrek_wetnurse
+		}
+		opinion = {
+			modifier = opinion_dynasty_loyalist
+			who = 125009
+		}
+		set_character_flag = tyrek_lannister
+		if = {
+			limit = { is_adult = no }
+			k_stormlands = { holder_scope = { ROOT = { set_guardian = PREV } } }
+		}
+
+		k_westerlands = {
+			usurp_title_plus_barony_if_unlanded = { target = PREV }
+		}
+		d_casterly_rock = {
+			usurp_title_plus_barony_if_unlanded = { target = PREV }
+		}
+		c_casterly_rock = {
+			usurp_title_plus_barony_if_unlanded = { target = PREV }
+		}
+
+		k_stormlands = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				k_westerlands = { #Tyrek Lannister
+					holder_scope = {
+						opinion = {
+							modifier = opinion_dynasty_loyalist
+							who = PREVPREV
+						}
+						reverse_opinion = {
+							modifier = opinion_my_loyalist
+							who = PREVPREV
+						}
+						add_alliance = { who = PREVPREV years = 10 }
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						k_stormlands = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+		c_4190 = { character_event = { id = tyrek_puppet.6 days = 6 } }
+		any_playable_ruler = {
+			limit = {
+				ai = no
+				capital_scope = { region = world_westeros }
+				NOT = { character = FROM }
+				NOT = { trait = wildling }
+			}
+			narrative_event = { id = tyrek_puppet.5 days = 1 }
+		}
+	}
+}
+character_event = {
+	id = tyrek_puppet.4
+
+	is_triggered_only = yes
+
+	has_character_flag = tyrek_lannister_killed
+
+	trigger = {
+		character = 1906189
+	}
+
+
+	option = {
+		name = EVTOPTAtyrek_puppet.4
+
+		death = { death_reason = death_murder_unknown }
+	}
+}
+narrative_event = {
+	id = tyrek_puppet.5
+	desc = "EVTDESCtyrek_puppet.5"
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		trigger = { NOT = { is_married = FROM } }
+	}
+	option = {
+		name = EVTOPTAtyrek_puppet.5
+		trigger = { is_married = FROM }
+	}
+}
+character_event = {
+	id = tyrek_puppet.6
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 4190
+	}
+
+	option = {
+		name = EVTOPTAtyrek_puppet.6
+
+		set_defacto_liege = e_iron_throne
+		clr_character_flag = neutral
+		set_character_flag = supporting_king
+		any_demesne_title = {
+			limit = {
+				OR = {
+					tier = COUNT
+					tier = DUKE
+				}
+			}
+			set_variable = { which = "de_facto_kingdom" value = 9 } #westerlands
+		}
+		k_westerlands = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_traitor
+					who = ROOT
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				ROOT = {
+						join_defender_wars = PREV
+						opinion = {
+							who = PREV
+							modifier = opinion_with_king
+							years = 100
+						}
+					}
+				opinion = {
+					who = ROOT
+					modifier = opinion_loyal_to_crown
+					years = 5
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,703 @@
+namespace = tdp_succession
+
+#
+#
+#
+#
+
+
+###Succession Title Fix###
+#Rhaenyra
+character_event = {
+	id = tdp_succession.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_succession_on
+
+	immediate = {
+		if = {
+			limit = { has_landed_title = d_rhaenyra_host }
+			c_dragonstone = {
+				copy_title_history = d_rhaenyra_host
+			}
+			activate_title = { status = no title = d_rhaenyra_host }
+			d_rhaenyra_host = {
+				destroy_landed_title = THIS
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_succession.10
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		NOT = { has_global_flag = targaryen_black_succession }
+		FROM = {
+			has_character_flag = targaryen_black
+		}
+		ROOT = {
+			has_landed_title = e_iron_throne
+		}
+	}
+
+	immediate = {
+		character_event = { id = tdp_succession.11 days = 1 }
+	}
+}
+
+character_event = {
+	id = tdp_succession.11
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	immediate = {
+		e_iron_throne = {
+			copy_title_history = c_dragonstone
+		}
+		k_daemon_blackfyres_host = {
+			copy_title_history = c_dragonstone
+		}
+		c_dragonstone = {
+			copy_title_history = d_dragonstone
+		}
+		set_global_flag = targaryen_black_succession
+	}
+}
+
+character_event = {
+	id = tdp_succession.12
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = targaryen_black
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		NOT = { has_global_flag = targaryen_black_succession }
+		NOT = {
+			any_character = {
+				has_character_flag = targaryen_black
+				NOT = { character = ROOT }
+			}
+		}
+	}
+
+	immediate = {
+		c_dragonstone = {
+			copy_title_history = d_dragonstone
+		}
+	}
+}
+
+character_event = {
+	id = tdp_succession.13
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	culture = high_valyrian
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		NOT = { has_character_flag = targaryen_black }
+		OR = {
+			character = 77015
+			character = 77019
+		}
+	}
+
+	immediate = {
+		set_character_flag = targaryen_black
+	}
+}
+
+#Without Game Rule - Delete titles
+character_event = {
+	id = tdp_succession.1999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = d_rhaenyra_host
+			has_landed_title = d_stannis_host
+			has_landed_title = d_renly_host
+		}
+	}
+
+	immediate = {
+		activate_title = { status = no title = d_rhaenyra_host }
+		d_rhaenyra_host = {
+			destroy_landed_title = THIS
+		}
+		activate_title = { status = no title = d_stannis_host }
+		d_stannis_host = {
+			destroy_landed_title = THIS
+		}
+		activate_title = { status = no title = d_renly_host }
+		d_renly_host = {
+			destroy_landed_title = THIS
+		}
+	}
+}
+
+#Stannis
+character_event = {
+	id = tdp_succession.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_succession_on
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					dynasty = 496
+					character = 317
+				}
+				has_landed_title = d_stannis_host
+			}
+			activate_title = { status = no title = d_stannis_host }
+			d_stannis_host = {
+				destroy_landed_title = THIS
+			}
+
+		}
+		if = {
+			limit = {
+				NOR = {
+					dynasty = 496
+					character = 317
+				}
+				has_landed_title = d_stannis_host
+			}
+			c_dragonstone = {
+				copy_title_history = d_stannis_host
+			}
+			activate_title = { status = no title = d_stannis_host }
+			d_stannis_host = {
+				destroy_landed_title = THIS
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_succession.20
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		NOT = { has_global_flag = stannis_mannis_succession }
+		FROM = {
+			character = 4317
+		}
+		ROOT = {
+			has_landed_title = e_iron_throne
+		}
+	}
+
+	immediate = {
+		character_event = { id = tdp_succession.21 days = 1 }
+	}
+}
+
+character_event = {
+	id = tdp_succession.21
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		any_independent_ruler = {
+			character = 4317
+			has_landed_title = e_iron_throne
+		}
+	}
+
+	immediate = {
+
+		e_iron_throne = {
+			copy_title_history = c_dragonstone
+		}
+		c_dragonstone = {
+			copy_title_history = d_dragonstone
+		}
+		set_global_flag = stannis_mannis_succession
+	}
+}
+
+#Renly
+character_event = {
+	id = tdp_succession.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_succession_on
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					dynasty = 496
+					character = 317
+				}
+				has_landed_title = d_renly_host
+			}
+			activate_title = { status = no title = d_renly_host }
+			d_renly_host = {
+				destroy_landed_title = THIS
+			}
+
+		}
+		if = {
+			limit = {
+				NOR = {
+					dynasty = 496
+					character = 317
+				}
+				has_landed_title = d_stannis_host
+			}
+			c_storms_end = {
+				copy_title_history = d_renly_host
+			}
+			activate_title = { status = no title = d_renly_host }
+			d_renly_host = {
+				destroy_landed_title = THIS
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_succession.30
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		NOT = { has_global_flag = renly_succession }
+		FROM = {
+			character = 5317
+		}
+		ROOT = {
+			has_landed_title = e_iron_throne
+		}
+	}
+
+	immediate = {
+		character_event = { id = tdp_succession.31 days = 1 }
+	}
+}
+
+character_event = {
+	id = tdp_succession.31
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	immediate = {
+		e_iron_throne = {
+			copy_title_history = c_storms_end
+		}
+		c_storms_end = {
+			copy_title_history = d_shipbreaker
+		}
+		set_global_flag = renly_succession
+	}
+}
+
+character_event = {
+	id = tdp_succession.32
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		ROOT = {
+			character = 5317
+		}
+		FROM = {
+			character = 4317
+		}
+	}
+
+	immediate = {
+		ROOT = {
+			remove_special_character_title = yes
+			any_child = {
+				remove_special_character_title = yes
+			}
+		}
+	}
+}
+
+#Dragonstone Prince/Lord
+##Not Affected by Game Rule
+character_event = {
+	id = tdp_succession.4
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_playable = yes
+
+	trigger = {
+		independent = no
+
+		primary_title = {
+			title = k_dragonstone
+		}
+	}
+
+	immediate = {
+		liege = {
+			ROOT = {
+				any_demesne_title = {
+					limit = {
+						tier = KING
+						NOT = { is_variable_equal = { which = "lord_paramount_status" value = 1 } } #1 = lord paramount, 2 = interregnum
+						controls_religion = no
+						is_landless_type_title = no
+					}
+					if = {
+						limit = {
+							is_titular = yes
+							capital_scope = {
+								OR = {
+									kingdom = { holder_scope = { is_liege_of = ROOT } }
+									empire = { holder_scope = { is_liege_of = ROOT } }
+								}
+							}
+						}
+						destroy_landed_title = THIS
+					}
+					else = {
+						if = {
+							limit = { has_law = privilege_vassal_king }
+							revoke_law = privilege_vassal_king
+						}
+						hidden_tooltip = { set_variable = { which = "lord_paramount_status" value = 1 } } #1 = lord paramount, 2 = interregnum
+						custom_tooltip = {
+							text = TOOLTIPrevoked_royal_privilege
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_character_modifier = granted_royal_privilege_modifier
+					}
+					remove_character_modifier = granted_royal_privilege_modifier
+				}
+				hidden_tooltip = {
+					if = {
+						limit = {
+							primary_title = {
+								tier = KING
+								is_variable_equal = { which = "lord_paramount_status" value = 1 } #1 = lord paramount, 2 = interregnum
+							}
+						}
+						set_government_type = feudal_government_LP
+					}
+					if = {
+						limit = {
+							independent = yes
+						}
+						set_defacto_liege = ROOT_FROM
+					}
+					#remove special titles
+					if = {
+						limit = {
+							primary_title = {
+								OR = {
+									title = k_wolfswoodTK
+									title = k_barrowlandsTK
+									title = k_theneckTK
+									title = k_dreadfortTK
+									title = k_winterfellTK
+									title = k_riverrunTK
+									title = k_dragonstone
+									title = k_duskendaleTK
+									title = k_shipbreakerTK
+								}
+							}
+						}
+						remove_special_character_title = yes
+					}
+				}
+			}
+		}
+
+
+		if = {
+			limit = {
+				is_female = no
+				top_liege = {
+					NOR = {
+						is_parent_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			set_character_flag = tdp_lorded
+			set_special_character_title = duke
+		}
+		if = {
+			limit = {
+				is_female = no
+				top_liege = {
+					OR = {
+						is_parent_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			give_minor_title = title_prince_AGOT
+			set_character_flag = princed
+			set_special_character_title = DORNEPRINCE
+			any_child = {
+				limit = { is_female = no }
+				give_minor_title = title_prince_AGOT
+				set_character_flag = princed
+				set_special_character_title = DORNEPRINCE
+			}
+			any_child = {
+				limit = { is_female = yes }
+				give_minor_title = title_prince_AGOT
+				set_character_flag = princed
+				set_special_character_title = DORNEPRINCE_female
+			}
+		}
+		if = {
+			limit = {
+				is_female = yes
+				top_liege = {
+					NOR = {
+						is_parent_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			set_character_flag = tdp_lorded
+			set_special_character_title = "Lady"
+		}
+		if = {
+			limit = {
+				is_female = yes
+				top_liege = {
+					OR = {
+						is_parent_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			give_minor_title = title_prince_AGOT
+			set_character_flag = princed
+			set_special_character_title = DORNEPRINCE_female
+			any_child = {
+				limit = { is_female = no }
+				give_minor_title = title_prince_AGOT
+				set_character_flag = princed
+				set_special_character_title = DORNEPRINCE
+			}
+			any_child = {
+				limit = { is_female = yes }
+				give_minor_title = title_prince_AGOT
+				set_character_flag = princed
+				set_special_character_title = DORNEPRINCE_female
+			}
+		}
+	}
+}
+
+###Clear Special title at end of war if lost
+character_event = {
+	id = tdp_succession.9996
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		ROOT = { #Defender
+			OR = {
+				character = 9316 #Joffrey
+				character = 8316 #Myrcella
+				character = 7316 #Tommen
+				character = 5317 #Renly
+				has_character_flag = targaryen_green
+			}
+		}
+		FROM = { #Attacker
+			OR = {
+				has_character_flag = targaryen_black
+				character = 4317 #Stannis
+				character = 5317 #Renly
+			}
+		}
+	}
+
+	immediate = {
+		ROOT = {
+			if = {
+				limit = { character = 5317 }
+				character_event = { id = tdp_succession.9997 days = 2 }
+			}
+		}
+		FROM = {
+			remove_special_character_title = yes
+			any_child = {
+				remove_special_character_title = yes
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_succession.9997
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	immediate = {
+		set_special_character_title = KING_TITLE
+		any_child = {
+			limit = { is_female = no }
+			set_special_character_title = DORNEPRINCE
+		}
+		any_child = {
+			limit = { is_female = yes }
+			set_special_character_title = DORNEPRINCE_female
+		}
+	}
+}
+
+###Give King/Queen
+character_event = {
+	id = tdp_succession.9998
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		NOT = { has_character_flag = tdp_rightful_ruler }
+		NOT = { tier = EMPEROR }
+		OR = {
+			has_character_flag = targaryen_black
+			character = 4317 #Stannis
+			character = 5317 #Renly
+		}
+		any_current_enemy = {
+			OR = {
+				character = 9316 #Joffrey
+				character = 7316 #Tommen
+				character = 4317 #Stannis for Renly
+				character = 5317 #Renly for Stannis
+				has_character_flag = targaryen_green
+			}
+		}
+	}
+
+	immediate = {
+		set_character_flag = tdp_rightful_ruler
+		if = {
+			limit = {
+				has_character_flag = targaryen_black
+				is_female = yes
+			}
+			set_special_character_title = QUEEN_TITLE
+			any_child = {
+				limit = { is_female = no }
+				set_special_character_title = DORNEPRINCE
+			}
+			any_child = {
+				limit = { is_female = yes }
+				set_special_character_title = DORNEPRINCE_female
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_character_flag = targaryen_black
+						is_female = no
+					}
+					character = 4317
+					character = 5317
+				}
+			}
+			set_special_character_title = KING_TITLE
+			any_child = {
+				limit = { is_female = no }
+				give_minor_title = title_prince_AGOT
+				set_character_flag = princed
+				set_special_character_title = DORNEPRINCE
+			}
+			any_child = {
+				limit = { is_female = yes }
+				give_minor_title = title_prince_AGOT
+				set_character_flag = princed
+				set_special_character_title = DORNEPRINCE_female
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_succession.9999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = targaryen_black
+	has_global_flag = tdp_succession_on
+
+	trigger = {
+		has_character_flag = tdp_rightful_ruler
+		NOT = { tier = EMPEROR }
+		any_current_enemy = {
+			has_character_flag = targaryen_green
+		}
+		current_heir = {
+			has_character_flag = targaryen_black
+		}
+	}
+
+	immediate = {
+		current_heir = {
+			character_event = {	id = tdp_succession.9998 days = 2 }
+		}
+	}
+}

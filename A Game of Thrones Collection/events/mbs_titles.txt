@@ -1,0 +1,531 @@
+namespace = mbs_titles
+
+################################
+character_event = {
+	id = mbs_titles.1
+	hide_window = yes
+
+	only_rulers = yes
+	only_men = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = b_maris_motherhouse
+	}
+
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = valeman
+		}
+		new_character = {
+			b_maris_motherhouse = { gain_title = PREV }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.2
+	hide_window = yes
+
+	only_rulers = yes
+	only_men = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = b_oldtown_motherhouse
+	}
+
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = reachman
+		}
+		new_character = {
+			b_oldtown_motherhouse = { gain_title = PREV }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.3
+	hide_window = yes
+
+	only_rulers = yes
+	only_men = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = b_maidenpool_motherhouse
+	}
+
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = riverlander
+		}
+		new_character = {
+			b_maidenpool_motherhouse = { gain_title = PREV }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.4
+	hide_window = yes
+
+	only_rulers = yes
+	only_men = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = b_lannisport_motherhouse
+	}
+
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = westerman
+		}
+		new_character = {
+			b_lannisport_motherhouse = { gain_title = PREV }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.5
+	hide_window = yes
+
+	only_playable = yes
+	only_men = yes
+	religion = the_seven
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_theocracy = yes
+		OR = {
+#			has_landed_title = c_mbs_holy_house
+#			has_landed_title = c_mbs_highgarden_sept
+#			has_landed_title = c_mbs_gulltown_sept
+#			has_landed_title = c_mbs_lannisport_sept
+#			has_landed_title = c_mbs_lords_sept
+			has_landed_title = c_starry_sept
+			has_landed_title = c_quiet_isle
+		}
+		OR = {
+#			primary_title = { title = c_mbs_holy_house }
+#			primary_title = { title = c_mbs_highgarden_sept }
+#			primary_title = { title = c_mbs_gulltown_sept }
+#			primary_title = { title = c_mbs_lannisport_sept }
+#			primary_title = { title = c_mbs_lords_sept }
+			primary_title = { title = c_starry_sept }
+			primary_title = { title = c_quiet_isle }
+		}
+		NOT = { primary_title = { title = k_the_most_devout } }
+	}
+
+
+	immediate = {
+		add_trait = septon
+		set_special_character_title = title_septon
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Traditional honourary titles assigned
+character_event = {
+	id = mbs_titles.6
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_keeper_of_the_night_lamp }
+		has_landed_title = c_sweetsister
+	}
+
+	immediate = {
+		give_minor_title = title_keeper_of_the_night_lamp
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.7
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_warden_princes_pass }
+		has_landed_title = d_princespass
+	}
+
+	immediate = {
+		give_minor_title = title_warden_princes_pass
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.8
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_warden_stone_way }
+		has_landed_title = d_stoneway
+	}
+
+	immediate = {
+		give_minor_title = title_warden_stone_way
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.9
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_warden_white_knife }
+		has_landed_title = c_whiteharbor
+	}
+
+	immediate = {
+		give_minor_title = title_warden_white_knife
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.10
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_defender_of_the_fords }
+		has_landed_title = c_bitterbridge
+	}
+
+	immediate = {
+		give_minor_title = title_defender_of_the_fords
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.11
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_keeper_gatesofmoon }
+		has_landed_title = c_the_gates_of_the_moon
+	}
+
+	immediate = {
+		give_minor_title = title_keeper_gatesofmoon
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.12
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			has_minor_title = title_beacon_of_south
+			has_minor_title = title_lord_of_port
+			has_minor_title = title_protector_of_citadel
+		}
+		has_landed_title = c_oldtown
+	}
+
+	immediate = {
+		give_minor_title = title_beacon_of_south
+		give_minor_title = title_lord_of_port
+		give_minor_title = title_protector_of_citadel
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.13
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_son_of_sea_wind }
+		OR = {
+			has_landed_title = k_iron_isles
+			has_landed_title = e_iron_isles
+		}
+	}
+
+	immediate = {
+		give_minor_title = title_son_of_sea_wind
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.14
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_defender_marches }
+		OR = {
+			has_landed_title = k_reach
+			has_landed_title = e_reach
+		}
+	}
+
+	immediate = {
+		give_minor_title = title_defender_marches
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.15
+
+	hide_window = yes
+
+	only_independent = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_king_of_winter }
+		has_landed_title = e_north
+	}
+
+	immediate = {
+		give_minor_title = title_king_of_winter
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.16
+	hide_window = yes
+
+	only_rulers = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = k_the_most_devout
+		NOT = {
+			has_landed_title = c_starry_sept
+		}
+		NOT = {
+			year = 8000
+		}
+	}
+
+
+	immediate = {
+		c_starry_sept = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.17
+
+	hide_window = yes
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_minor_title = title_knight_of_the_gate }
+		has_landed_title = c_bloody_gate
+	}
+
+	immediate = {
+		give_minor_title = title_knight_of_the_gate
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+character_event = {
+	id = mbs_titles.18
+	hide_window = yes
+
+	only_rulers = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_mbs_sparrows
+	}
+
+
+	immediate = {
+		destroy_landed_title = FROM
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.19
+	hide_window = yes
+
+	only_rulers = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_ravens_teeth_mbs
+	}
+
+
+	immediate = {
+		destroy_landed_title = FROM
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.20
+	hide_window = yes
+
+	only_rulers = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_right_flank_mbs
+	}
+
+
+	immediate = {
+		destroy_landed_title = FROM
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+

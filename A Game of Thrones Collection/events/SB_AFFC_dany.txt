@@ -1,0 +1,888 @@
+##################################################################
+######Daenerys AFFC Events for Stormborn Submod by PabloLara######
+##################################################################
+namespace = sb_dany
+
+#Add Sacked modifier to new meereen capital and begin submod events for AFFC Daenerys
+ narrative_event = {
+	id = sb_dany.0
+	desc = "EVTDESC_sb_dany.0"
+	title = "EVTTITLEsb_dany.0"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	min_age = 16
+	has_character_flag = daenerys_targaryen
+
+	trigger = {
+		character = 77041
+		has_landed_title = c_the_great_pyramid
+		NOT = { has_global_flag = dany_stormborn_events }
+	}
+
+	immediate = {
+		set_global_flag = dany_stormborn_events
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.0"
+		set_global_flag = shavepates_founded
+		hidden_tooltip = {
+			c_201302 = {
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_loyalty.2
+				days = 5
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_dany.9
+				days = 10
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_meereen.1
+				days = 20 random = 5
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_titles_bhorash.0
+				days = 60
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_missandeinaath.1
+				days = 35 random = 5
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_unsullied.3
+				days = 80 random = 10
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_hazdahn.0
+				days = 60 random = 5
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_barristan.1
+				days = 300 random = 45
+			}
+		}
+	}
+ }
+#First Male True Son of Daenerys gets Nickname
+narrative_event = {
+	id = sb_dany.1
+	desc = "EVTDESC_sb_dany.1"
+	title = "EVTTITLEsb_dany.1"
+	picture = GFX_evt_dany_mother_of_dragons
+
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		NOT = { has_global_flag = desiredprince_born }
+		OR = {
+			has_landed_title = e_ghiscar
+			has_landed_title = k_meereen
+			has_landed_title = k_yunkai
+			has_landed_title = k_astapor
+		}
+		any_child = {
+			is_alive = yes
+			is_female = no
+			is_child_of = PREV
+			dynasty = ROOT
+			is_primary_heir = yes
+			NOT = { trait = bastard }
+		}
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = desiredprince_born
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.1"
+		any_child = {
+			limit = {
+				is_alive = yes
+				is_female = no
+				is_child_of = PREV
+				dynasty = ROOT
+				NOT = { trait = bastard }
+			}
+			give_nickname = nick_the_desired
+			set_character_flag = stormborn_son
+			prestige = 50
+		}
+		any_vassal = {
+			 limit = {
+				 capital_scope = {
+					 OR = {
+						 region = world_ghiscar
+						 region = world_slavers_bay
+					 }
+				 }
+				 religion = harpy
+			 }
+			 opinion = { who = ROOT modifier = opinion_religion_threatened months = 12 }
+		 }
+	}
+}
+#First Female True Daughter of Daenerys is born
+narrative_event = {
+	id = sb_dany.2
+	desc = "EVTDESC_sb_dany.2"
+	title = "EVTTITLEsb_dany.2"
+	picture = GFX_evt_dany_mother_of_dragons
+
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		OR = {
+			has_landed_title = e_ghiscar
+			has_landed_title = k_meereen
+			has_landed_title = k_yunkai
+			has_landed_title = k_astapor
+		}
+		any_child = {
+			is_alive = yes
+			is_female = yes
+			is_child_of = ROOT
+			dynasty = ROOT
+			NOT = { trait = bastard }
+		}
+		NOT = { has_global_flag = dragonprincess_born }
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = dragonprincess_born
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.2"
+		any_child = {
+			limit = {
+				is_alive = yes
+				is_female = yes
+				is_child_of = PREV
+				dynasty = ROOT
+				NOT = { trait = bastard }
+			}
+			add_trait = fair
+			set_character_flag = dragon_princess
+			prestige = 50
+		}
+	}
+}
+#First Bastard Son of Daenerys gets nickname
+narrative_event = {
+	id = sb_dany.3
+	desc = "EVTDESC_sb_dany.3"
+	title = "EVTTITLEsb_dany.3"
+	picture = GFX_evt_dany_mother_of_dragons
+
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		OR = {
+			has_landed_title = e_ghiscar
+			has_landed_title = k_meereen
+			has_landed_title = k_yunkai
+			has_landed_title = k_astapor
+		}
+		any_child = {
+			is_alive = yes
+			is_female = no
+			is_child_of = PREV
+			dynasty = ROOT
+			trait = bastard
+			NOT = { has_character_flag = ghisfyre_bastard }
+		}
+		NOT = { has_global_flag = ghisfyre_born }
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = ghisfyre_born
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.3"
+		any_child = {
+			limit = {
+				is_alive = yes
+				is_female = no
+				is_child_of = PREV
+				dynasty = ROOT
+				trait = bastard
+			}
+			give_nickname = nick_the_ghis_fyre
+			set_character_flag = ghisfyre_bastard
+			prestige = 100
+		}
+	}
+}
+#Dragon Princess gets Bloodline
+narrative_event = {
+	id = sb_dany.4
+	desc = "EVTDESC_sb_dany.4"
+	title = "EVTTITLEsb_dany.4"
+	picture = GFX_evt_dany_mother_of_dragons
+
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = dragonprincess_born
+		NOT = { has_global_flag = dragonprincess_bloodline }
+		any_courtier = {
+			has_character_flag = dragon_princess
+			trait = dragon_rider
+			is_alive = yes
+			prisoner = no
+			is_ruler = no
+		}
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = dragonprincess_bloodline
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.4"
+		any_child = {
+			limit = {
+				is_alive = yes
+				is_female = yes
+				is_child_of = PREV
+				dynasty = ROOT
+				has_character_flag = dragon_princess
+				trait = dragon_rider
+				NOT = { trait = bastard }
+			}
+			create_bloodline = {
+				type = dragon_princess_blood
+			}
+			prestige = 100
+			give_nickname = nick_the_dragon_princess
+			add_trait = brave
+			add_trait = groomed
+		}
+	}
+}
+#Bastard Ghisfyre gets Bloodline
+narrative_event = {
+	id = sb_dany.5
+	desc = "EVTDESC_sb_dany.5"
+	title = "EVTTITLEsb_dany.5"
+	picture = GFX_evt_dany_mother_of_dragons
+
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		any_child = {
+			is_alive = yes
+			age = 14
+			is_female = no
+			is_child_of = PREV
+			dynasty = ROOT
+			is_primary_heir = no
+			trait = bastard
+			has_character_flag = ghisfyre_bastard
+		}
+		NOT = { has_global_flag = ghisfyre_bloodline }
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = ghisfyre_bloodline
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.5"
+		any_child = {
+			limit = {
+				is_alive = yes
+				age = 14
+				has_character_flag = ghisfyre_bastard
+				is_female = no
+				is_child_of = PREV
+				dynasty = ROOT
+				trait = bastard
+			}
+			create_bloodline = {
+				type = ghisfyre_blood
+			}
+			set_character_flag = the_ghisfyre
+			add_trait = ambitious
+			add_trait = brave
+			remove_trait = bastard
+			add_trait = legit_bastard
+			dynasty = 999999
+			set_dynasty_flag = is_cadet_house
+			reverse_opinion = { who = ROOT modifier = opinion_cadet_affection years = 200 }
+		}
+	}
+}
+#Set Capital of Ghiscar Empire
+narrative_event = {
+	id = sb_dany.6
+	desc = "EVTDESC_sb_dany.6"
+	title = "EVTTITLEsb_dany.6"
+	picture = GFX_Slavers_bay
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_character_flag = capital_ghiscar }
+		NOT = { has_global_flag = meereen_capital }
+		NOT = { has_global_flag = yunkai_capital }
+		NOT = { has_global_flag = astapor_capital }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.6"
+		ai_chance = { factor = 80 }
+		set_global_flag = meereen_capital
+		set_character_flag = capital_ghiscar
+		1387 = { culture = meereenese_freedmen }
+		e_ghiscar = {
+			set_preferred_capital = 1387
+		}
+		b_greatpyramid = {
+			ROOT = { capital = PREV }
+			add_building = ca_mhysa_seat
+			remove_building = ca_meereen_throne_1
+		}
+		c_the_great_pyramid = {
+			location = {
+				set_province_flag = ghiscar_capital_established
+			}
+		}
+		ROOT = { character_event = { id = sb_dany.601 } }
+		ROOT = {
+			narrative_event = {
+				id =  sb_astapor.3
+				days = 2
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_titles_yunkai.1
+				days = 3
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_meereen.2
+				days = 5
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.1
+				days = 10
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_lhazar.1
+				days = 100 random = 20
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_harpy.0
+				days = 2000 random = 200
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_dany.6"
+		ai_chance = { factor = 10 }
+		set_global_flag = yunkai_capital
+		set_character_flag = capital_ghiscar
+		1388 = { culture = yunkaii_freedmen }
+		e_ghiscar = {
+			set_preferred_capital = 1388
+		}
+		b_yellow_pyramid = {
+			ROOT = { capital = PREV }
+			add_building = ca_mhysa_seat
+		}
+		c_yellowpyramid = {
+			location = {
+				set_province_flag = ghiscar_capital_established
+			}
+		}
+		ROOT = { character_event = { id = sb_dany.601 } }
+		ROOT = {
+			narrative_event = {
+				id =  sb_astapor.3
+				days = 2
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.1
+				days = 10
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_lhazar.1
+				days = 100 random = 20
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_harpy.0
+				days = 2000 random = 200
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_dany.6"
+		ai_chance = { factor = 10 }
+		set_global_flag = astapor_capital
+		set_character_flag = capital_ghiscar
+		1389 = { culture = astapori_freedmen }
+		e_ghiscar = {
+			set_preferred_capital = 1389
+		}
+		b_redhall = {
+			ROOT = { capital = PREV }
+			add_building = ca_mhysa_seat
+		}
+		c_red_pyramid = {
+			location = {
+				set_province_flag = ghiscar_capital_established
+			}
+		}
+		ROOT = { character_event = { id = sb_dany.601 } }
+		ROOT = {
+			narrative_event = {
+				id =  sb_titles_yunkai.1
+				days = 3
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.1
+				days = 10
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_lhazar.1
+				days = 100 random = 20
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_harpy.0
+				days = 2000 random = 200
+			}
+		}
+	}
+}
+#Choose name for the new Empire
+character_event = {
+	id = sb_dany.601
+	desc = "EVTDESC_sb_dany.601"
+	title = "EVTTITLEsb_dany.601"
+	picture = GFX_Slavers_bay
+
+	is_triggered_only = yes
+
+	ai = no
+	has_character_flag = capital_ghiscar
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.601"
+		ai_chance = { factor = 100 }
+		e_ghiscar = { set_name = e_ghiscar }
+	}
+
+	option = {
+		name = "EVTOPTB_sb_dany.601"
+		ai_chance = { factor = 0 }
+		e_ghiscar = { set_name = e_ghiscar_freehold }
+	}
+
+	option = {
+		name = "EVTOPTC_sb_dany.601"
+		ai_chance = { factor = 0 }
+		e_ghiscar = { set_name = e_dragon_empire }
+	}
+
+	option = {
+		name = "EVTOPTD_sb_dany.601"
+		ai_chance = { factor = 00 }
+		e_ghiscar = { set_name = e_dragon_bay }
+	}
+}
+#Stormcrows and Second Sons decide to join Dany
+narrative_event = {
+	id = sb_dany.7
+	desc = "EVTDESC_sb_dany.7"
+	title = "EVTTITLEsb_dany.7"
+	picture = "GFX_plumm"
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = d_stormcrows
+			has_landed_title = d_second_sons
+		}
+		c_77041 = { has_landed_title = k_meereen }
+		NOT = { has_character_flag = stormborn_vassal }
+		NOT = { has_global_flag = mercenary_vassals }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.8"
+		ai_chance = { factor = 100 }
+		set_character_flag = stormborn_vassal
+		c_77041 = {
+			character_event = {
+				id = sb_dany.8
+				days = 4
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_dany.8"
+		ai_chance = { factor = 0 }
+		prestige = 10
+	}
+}
+#Stormcrows and Second Sons become vassals of Dany
+character_event = {
+	id = sb_dany.8
+	desc = "EVTDESC_sb_dany.8"
+	title = "EVTTITLEsb_dany.8"
+	picture = "GFX_plumm"
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = mercenary_vassals }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.8"
+		ai_chance = { factor = 100 }
+		wealth = -35
+		set_global_flag = mercenary_vassals
+		FROM = { set_defacto_liege = ROOT }
+		FROM = { tooltip = { show_portrait = yes } }
+		FROM = { wealth = 35 }
+	}
+
+	option = {
+		name = "EVTOPTB_sb_dany.8"
+		ai_chance = { factor = 0 }
+		trigger = { ai = no }
+		set_global_flag = mercenary_vassals
+		prestige = 10
+	}
+}
+#Daenerys creates the Freedmen Companies
+narrative_event = {
+	id = sb_dany.9
+	desc = "EVTDESC_sb_dany.9"
+	title = "EVTTITLEsb_dany.9"
+	picture = GFX_Freedmen
+
+	is_triggered_only = yes
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = freedmen_companies }
+		NOT = { has_global_flag = freedmen_company_refused }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.9"
+		ai_chance = { factor = 100 }
+		set_global_flag = freedmen_companies
+		activate_title = { title = d_mothers_men status = yes }
+		c_601498 = {
+			d_mothers_men = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			show_portrait = yes
+			culture = naathi_freedmen
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		activate_title = { title = d_free_brothers status = yes }
+		c_1241002 = {
+			d_free_brothers = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			show_portrait = yes
+			culture = astapori_freedmen
+			opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+			}
+		}
+		activate_title = { title = d_stalwart_shields  status = yes }
+		c_1241001 = {
+			d_stalwart_shields  = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			show_portrait = yes
+			culture = pentosi_freedmen
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_freedmen.1
+				days = 2
+			}
+		}
+		hidden_tooltip = {
+			any_courtier = {
+				limit = { culture = white_walker  }
+				 death = {
+					death_reason = death_trait
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_dany.9"
+		ai_chance = { factor = 0 }
+		set_global_flag = freedmen_company_refused
+		prestige = 10
+	}
+}
+#Move capital to Old Ghis if colonized
+narrative_event = {
+	id = sb_dany.10
+	desc = "EVTDESC_sb_dany.10"
+	title = "EVTTITLEsb_dany.10"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		dynasty = 496
+		has_landed_title = e_ghiscar
+		has_landed_title = c_oldghis
+		NOT = { has_global_flag = oldghis_choice }
+	}
+
+	immediate = {
+		set_global_flag = oldghis_choice
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.10"
+		ai_chance = { factor = 10 }
+		clr_global_flag = meereen_capital
+		clr_global_flag = yunkai_capital
+		clr_global_flag = astapor_capital
+		set_global_flag = oldghis_capital
+		set_character_flag = relocate_imperialguard
+		e_ghiscar = {
+			set_preferred_capital = 619
+		}
+		c_oldghis = {
+			location = {
+				set_province_flag = ghiscar_capital_established
+			}
+		}
+		b_pyramidoldghis = {
+			ROOT = { capital = PREV }
+			add_building = ca_mhysa_seat
+		}
+		hidden_tooltip = {
+			b_greatpyramid = {
+				remove_building = ca_mhysa_seat
+			}
+			b_yellow_pyramid = {
+				remove_building = ca_mhysa_seat
+			}
+			b_redhall = {
+				remove_building = ca_mhysa_seat
+			}
+			c_oldghis = {
+				build_holding = {
+					title = b_oldghis4
+					type = castle
+					holder = PREV
+				}
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_dany.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.140
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = EVTOPTB_sb_dany.10
+		ai_chance = { factor = 90 }
+		ROOT = {
+			character_event = {
+				id = sb_dany.11
+				days = 1
+			}
+		}
+	}
+}
+#Create Kingdom of Old Ghis
+character_event = {
+	id = sb_dany.11
+	desc = "EVTDESC_sb_dany.11"
+	title = "EVTTITLEsb_dany.11"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		dynasty = 496
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_dany.11"
+		ai_chance = { factor = 40 }
+		trigger = { has_global_flag = oldghis_capital }
+		k_old_ghis = { gain_title = ROOT }
+		e_ghiscar = {
+			k_old_ghis = { de_jure_liege = PREV }
+		}
+		k_old_ghis = {
+			d_old_ghis = { de_jure_liege = PREV }
+			d_ghiscari_hills = { de_jure_liege = PREV }
+			d_bonecoast = { de_jure_liege = PREV }
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_ghiscari_hills }
+			set_defacto_liege = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_bonecoast }
+			set_defacto_liege = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_ghiscarihills }
+			set_defacto_liege = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_bakedshore }
+			set_defacto_liege = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_ghiscarishore }
+			set_defacto_liege = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_sumbyar }
+			set_defacto_liege = ROOT
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_dany.11"
+		ai_chance = { factor = 60 }
+	}
+}

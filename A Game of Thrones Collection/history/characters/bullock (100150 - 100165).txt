@@ -1,0 +1,425 @@
+#####################################################
+###############Расширено до Века Крови###############
+#####################################################
+700012 = {
+	name = "Эйрион"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "valyrian_rel"
+
+	7874.1.1 = {
+		birth = yes
+	}
+	7920.1.1 = {
+		death = yes
+	}
+}
+700013 = {
+	name = "Монтерис"
+	dynasty = 1498
+	father = 700012
+
+	culture = "western_valyrian"
+	religion = "valyrian_rel"
+
+	7906.1.1 = {
+		birth = yes
+	}
+	7956.1.1 = {
+		death = yes
+	}
+}
+700014 = {
+	name = "Квентон"
+	dynasty = 1498
+	father = 700013
+
+	culture = "western_valyrian"
+	religion = "valyrian_rel"
+
+	7940.1.1 = {
+		birth = yes
+	}
+	7988.1.1 = {
+		death = yes
+	}
+}
+#####################################################
+100150 = {
+	name = "Хейгон" #Father of Merrell Bullock
+	dynasty = 1498
+	father = 700014
+
+	culture = "western_valyrian"
+	religion = "valyrian_rel"
+
+	7982.1.1 = {
+		birth = yes
+	}
+	8001.1.1 = {
+		religion = "the_seven"
+	}
+	8042.1.1 = {
+		death = yes
+	}
+}
+1498 = {
+	name = "Меррелл"	# canon, Ser Merrell Bullock, commander of Dragonstone garrisson in Jaehaerys times
+	dynasty = 1498
+	father = 100150
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	martial = 6
+
+	8004.1.1 = { birth = yes }
+	8016.1.1 = {
+		add_trait = diligent
+	}
+	8020.1.1 = {
+		add_trait = knight
+		add_trait = trained_warrior
+		add_trait = tough_soldier
+	}
+	8048.1.1 = {
+		employer = 77006 #Jaehaerys
+	}
+	8051.1.1 = {
+		employer = 60540496 #Rhaena
+	}
+	8054.1.1 = {	#Rhaena dismisses him
+		employer = 77006 #Back to Jaehaerys? Dont know where he has gone
+	}
+	8068.1.1 = { death = yes }	#Random
+}
+
+101498 = {
+	name = "Алин"		# canon, elder son of Ser Merrell
+	dynasty = 1498
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 1498
+
+	8026.1.1 = { birth = yes }
+	8042.1.1 = {
+		add_trait = knight
+		add_trait = trained_warrior
+		add_trait = tough_soldier
+	}
+	8048.1.1 = {
+		employer = 77006 #Jaehaerys
+	}
+	8051.1.1 = {
+		employer = 60540496 #Rhaena
+	}
+	8054.1.1 = {	#Rhaena dismisses his father
+		employer = 77006
+	}
+	8074.1.1 = { death = yes }	#Random
+}
+111498 = {
+	name = "Говард"		# canon, younger son of Ser Merrell
+	dynasty = 1498
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 1498
+
+	8028.1.1 = { birth = yes }
+	8040.1.1 = {
+		add_trait = lustful
+		add_trait = drunkard
+		add_trait = deceitful
+	}
+	8044.1.1 = {
+		add_trait = knight
+		add_trait = trained_warrior
+		add_trait = misguided_warrior
+		add_spouse = 121498 #Random spouse
+	}
+	8048.1.1 = {
+		employer = 77006 #Jaehaerys
+	}
+	8050.1.1 = {
+		employer = 101300525 #Myr
+		remove_spouse = 121498
+		effect = {														#Fled with Corynne Wylde, left his wife behind
+			add_lover = 307329 #Corynne Wylde
+			set_variable = { which = "dishonorable" value = 10 }
+			hidden_tooltip = { character_event = { id = maintenance.3 } }#dishonour trait
+		}
+	}
+	8053.1.1 = {
+		death = {
+			death_reason = death_accident
+		}
+	}
+}
+121498 = {
+	name = "Мэри"
+	female = yes
+
+	religion = "the_seven"
+	culture = "crownlander"
+
+	8030.1.1 = { birth = yes }
+	8078.1.1 = { death = yes }
+}
+
+100151 = {
+	name = "Флориан" #Son of Alyn Bullock
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 101498
+
+	8061.1.1 = {
+		birth = yes
+	}
+	8113.1.1 = {
+		death = yes
+	}
+}
+
+100152 = {
+	name = "Малентин"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100151
+
+	8100.1.1 = {
+		birth = yes
+	}
+	8149.1.1 = {
+		death = yes
+	}
+}
+
+100153 = {
+	name = "Эдвелл"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100152
+
+	8127.1.1 = {
+		birth = yes
+	}
+	8174.1.1 = {
+		death = yes
+	}
+}
+
+100154 = {
+	name = "Флориан"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100153
+
+	8151.1.1 = {
+		birth = yes
+	}
+	8160.1.1 = {
+		effect = { add_friend = 100155 }
+	}
+	8186.1.1 = {
+		death = yes
+	}
+}
+
+100155 = {
+	name = "Пейт"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100153
+
+	8160.1.1 = {
+		birth = yes
+		effect = { add_friend = 100154 }
+	}
+	8186.1.1 = {
+		add_trait = depressed
+	}
+	8220.1.1 = {
+		death = yes
+	}
+}
+
+300156 = {
+	name = "Флориан"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100155
+
+	8186.1.1 = {
+		birth = yes
+	}
+	8264.1.1 = {
+		death = yes
+	}
+}
+
+200157 = {
+	name = "Деймон"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 300156
+
+	8223.1.1 = {
+		birth = yes
+	}
+	8275.1.1 = {
+		death = yes
+	}
+}
+
+100158 = {
+	name = "Бартимос"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 200157
+
+	8244.1.1 = {
+		birth = yes
+	}
+	8289.1.1 = {
+		death = yes
+	}
+}
+
+100159 = {
+	name = "Матарис"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100158
+
+	8268.1.1 = {
+		birth = yes
+	}
+}
+
+100160 = {
+	name = "Клэйтон"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100158
+
+	8273.1.1 = {
+		birth = yes
+	}
+}
+
+200161 = {
+	name = "Леонетта" #Younger sister of Bartimos
+	dynasty = 1498
+	female = yes
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 200157
+
+	8256.1.1 = {
+		birth = yes
+	}
+	8291.1.1 = {
+		death = yes
+	}
+}
+
+100162 = {
+	name = "Джейхейрис" #Younger brother of Daemon
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 300156
+
+	8225.1.1 = {
+		birth = yes
+	}
+	8283.1.1 = {
+		death = yes
+	}
+}
+
+100163 = {
+	name = "Стеффон"
+	dynasty = 1498
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100162
+
+	8258.1.1 = {
+		birth = yes
+	}
+	8300.1.1 = {
+		death = yes
+	}
+}
+
+100164 = {
+	name = "Рей"
+	dynasty = 1498
+	female = yes
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100162
+
+	8263.1.1 = {
+		birth = yes
+	}
+}
+
+100165 = {
+	name = "Дониза"
+	dynasty = 1498
+	female = yes
+
+	culture = "western_valyrian"
+	religion = "the_seven"
+
+	father = 100162
+
+	8267.1.1 = {
+		birth = yes
+	}
+}

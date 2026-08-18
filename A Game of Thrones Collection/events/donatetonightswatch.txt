@@ -1,0 +1,38 @@
+namespace = blackdonation
+
+character_event = {
+	id = blackdonation.1
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		wealth = 250
+		FROM = {
+			letter_event = {
+				id = blackdonation.2
+			}
+		}
+		opinion = {
+			who = FROM
+			modifier = opinion_generous_donation
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+letter_event = {
+	id = blackdonation.2
+	desc = EVTDESC_blackdonation_2
+	picture = GFX_evt_the_wall
+	border = GFX_event_letter_frame_religion
+
+	is_triggered_only = yes
+
+	option = {
+		name = EXCELLENT
+	}
+}

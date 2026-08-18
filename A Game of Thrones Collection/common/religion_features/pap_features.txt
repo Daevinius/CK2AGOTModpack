@@ -1,0 +1,191 @@
+religion_nature = {
+
+	religion_feature_bone = {
+		picture = GFX_religion_feature_bone
+		potential = {
+			has_game_started = yes
+			religion = gods_bone_mountains_reformed
+			NOT = {
+				has_alternate_start_parameter = { key = religion_names value = random }
+			}
+		}
+		trigger = {
+			religion = gods_bone_mountains_reformed
+			NOT = {
+				has_selected_religion_feature = religion_ritual_sacrifice
+			}
+		}
+		effect = {
+			custom_tooltip = { text = tooltip_religion_feature_defensive }
+			custom_tooltip = { text = tooltip_religion_feature_hard_conversion }
+			custom_tooltip = { text = tooltip_religion_feature_aztec_sacrifices }
+			custom_tooltip = { text = tooltip_religion_feature_bloodthirsty_mechanics }
+			hidden_tooltip = {
+				set_pacifist = no
+				set_peace_piety_gain = 0
+				set_raised_vassal_opinion_loss = yes
+				set_piety_loss_for_attacking_same_religion = no
+				set_peace_prestige_loss = no
+				set_allow_looting = yes
+				set_hard_to_convert = yes
+				#set_convert_other_groups = 1
+				#set_convert_same_group = 1
+				set_ai_aggression = 0.5
+				set_unit_modifier = {
+					garrison_size = 0.3
+					levy_size = 0.2
+
+					key = "DEF_RELIGION"
+				}
+				set_unit_home_modifier = {
+					land_morale = 0.8
+					light_infantry_defensive = 0.8
+					heavy_infantry_defensive = 0.8
+					pikemen_defensive = 0.8
+					light_cavalry_defensive = 0.8
+					knights_defensive = 0.8
+					archers_defensive = 0.8
+					horse_archers_defensive = 0.8
+					camel_cavalry_defensive = 0.8
+					war_elephants_defensive = 0.8
+
+					garrison_size = 0.4
+
+					key = "DEF_RELIGION_HOME_TERRITORY"
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
+	}
+}
+
+# religion_leadership = {
+
+# 	religion_papal_head = {
+# 		picture = GFX_religion_feature_papal_head
+# 		potential = {
+# 			has_game_started = yes
+# 		}
+# 		effect = {
+# 			custom_tooltip = { text = tooltip_religion_feature_papal_head }
+# 			hidden_tooltip = {
+# 				set_can_excommunicate = yes
+# 				set_can_grant_divorce = yes
+# 				set_can_grant_invasion_cb = no
+# 				set_can_grant_claim = no
+# 				set_can_have_antipopes = no
+# 				set_can_call_crusade = no
+# 				set_religion_head = ROOT
+# 			}
+# 			if = {
+# 				limit = {
+# 					ROOT = {
+# 						controls_religion = yes
+# 					}
+# 				}
+# 				any_demesne_title = {
+# 					add_law = {
+# 						law = succ_pagan_papal_succession
+# 						cooldown = no
+# 						opinion_effect = no
+# 					}
+# 				}
+# 				#recalc_succession = yes
+# 			}
+# 		}
+# 		ai_will_do = {
+# 			factor = 50
+# 			# modifier = {
+# 				# factor = 0.1
+# 				# FROM = {
+# 					# character = yes
+# 					# NOR = {
+# 						# religion = tengri_pagan
+# 						# religion = zun_pagan
+# 					# }
+# 				# }
+# 			# }
+# 		}
+# 	}
+# }
+
+religion_doctrine = {
+
+	religion_feature_sarnor = {
+		picture = GFX_religion_feature_sarnor
+		potential = {
+			has_game_started = yes
+			religion = gods_sarnor_reformed
+			NOT = {
+				has_alternate_start_parameter = { key = religion_names value = random }
+			}
+		}
+		trigger = {
+			religion = gods_sarnor_reformed
+			NOR = {
+				has_selected_religion_feature = religion_dogmatic
+				has_selected_religion_feature = religion_stable
+				has_selected_religion_feature = religion_meritocratic
+			}
+		}
+		effect = {
+			custom_tooltip = { text = tooltip_religion_feature_meritocratic }
+			custom_tooltip = { text = tooltip_religion_feature_stable }
+			custom_tooltip = { text = tooltip_religion_feature_war_levies }
+			hidden_tooltip = {
+				set_heir_designation = yes
+				set_raised_vassal_opinion_loss = no
+				set_short_reign_opinion_year_mult = 0
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	religion_feature_harpy = {
+		picture = GFX_religion_feature_harpy
+		potential = {
+			has_game_started = yes
+			religion = harpy_reformed
+			NOT = {
+				has_alternate_start_parameter = { key = religion_names value = random }
+			}
+		}
+		trigger = {
+			religion = harpy_reformed
+			NOR = {
+				has_selected_religion_feature = religion_peaceful
+				has_selected_religion_feature = religion_stable
+				has_selected_religion_feature = religion_defensive
+				has_selected_religion_feature = religion_relentless
+			}
+		}
+		effect = {
+			custom_tooltip = { text = tooltip_religion_feature_harpy }
+			custom_tooltip = { text = tooltip_religion_feature_stable }
+			custom_tooltip = { text = tooltip_religion_feature_anti_attrition }
+			custom_tooltip = { text = tooltip_religion_feature_offensive }
+			hidden_tooltip = {
+				set_short_reign_opinion_year_mult = 0
+				set_ignores_defensive_attrition = yes
+				set_unit_modifier = {
+					light_infantry_offensive = 0.1
+					heavy_infantry_offensive = 0.1
+					light_cavalry_offensive = 0.1
+					knights_offensive = 0.1
+					pikemen_offensive = 0.1
+					archers_offensive = 0.1
+					horse_archers_offensive = 0.1
+					camel_cavalry_offensive = 0.1
+					war_elephants_offensive = 0.1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
+	}
+}

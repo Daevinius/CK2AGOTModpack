@@ -1,0 +1,989 @@
+namespace = mbs_rickon_invasion
+###Rickon Invades
+narrative_event = {
+	id = mbs_rickon_invasion.1
+	title = "EVTNAMEmbs_rickon_invasion.1"
+	desc = "EVTDESCmbs_rickon_invasion.1"
+	picture = "GFX_STARK"
+
+	min_age = 16
+	has_character_flag = rickon_stark
+
+	trigger = {
+		OR = {
+			k_north = {
+				has_holder = yes
+				holder_scope = { NOT = { character = 9269059 } }
+				holder_scope = { NOT = { character = 9059 } }
+				holder_scope = { NOT = { character = 1002059 } }
+				holder_scope = { NOT = { character = 2059 } }
+				holder_scope = { NOT = { dynasty = 59 } }
+				NOT = {
+					any_war = {
+						attacker = {
+							OR = {
+								dynasty = 59
+								supported_claimant = { dynasty = 59 }
+							}
+						}
+					}
+				}
+			}
+			e_north = {
+				has_holder = yes
+				holder_scope = { NOT = { character = 9269059 } }
+				holder_scope = { NOT = { character = 9059 } }
+				holder_scope = { NOT = { character = 1002059 } }
+				holder_scope = { NOT = { character = 2059 } }
+				holder_scope = { NOT = { dynasty = 59 } }
+				NOT = {
+					any_war = {
+						attacker = {
+							OR = {
+								dynasty = 59
+								supported_claimant = { dynasty = 59 }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 20
+
+		# modifier = { #Prime claimant
+			# factor = 0.33
+			# random_character = {
+				# limit = {
+					# NOT = { character = 9269059 }
+					# trait = direwolf
+					# is_ruler = no
+					# is_female = no
+					# is_adult = yes
+					# graphical_culture = Tully_dyn
+					# has_character_flag = rickon_stark
+					# prisoner = no
+					# is_alive = yes
+					# is_incapable = no
+				# }
+			# }
+		# }
+		modifier = { #Prime claimant
+			factor = 0.33
+			# c_9269059 = {
+				age > 17
+				prisoner = no
+				can_press_claims_trigger = yes
+				NOT = { age > 40 }
+				is_incapable = no
+				NOT = { has_severe_disability_trigger = yes }
+				is_ill = no
+				OR = {
+					martial = 10
+					diplomacy = 10
+					combat_rating = 60
+				}
+			# }
+		}
+		modifier = { #north losing war, great opportunity
+			factor = 0.1
+			e_north = {
+				holder_scope = {
+					any_war = {
+						defender = { has_landed_title = k_north }
+						war_score = 50
+					}
+				}
+			}
+		}
+		modifier = { #north losing war, great opportunity
+			factor = 0.1
+			k_north = {
+				holder_scope = {
+					any_war = {
+						defender = { has_landed_title = k_north }
+						war_score = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.33
+			k_north = { holder_scope = { trait = civil_war } }
+		}
+		modifier = {
+			factor = 0.33
+			e_north = { holder_scope = { trait = civil_war } }
+		}
+		modifier = {
+			factor = 0.33
+			e_iron_throne = { holder_scope = { has_regent = yes } }
+		}
+		modifier = {
+			factor = 0.33
+			k_north = { holder_scope = { has_regent = yes } }
+		}
+		modifier = {
+			factor = 0.33
+			e_north = { holder_scope = { dynasty = 87 } }
+		}
+		modifier = {
+			factor = 0.33
+			k_north = { holder_scope = { dynasty = 87 } }
+		}
+	}
+
+	immediate = {
+		random_character = {
+			limit = {
+				OR = {
+					character = 9269059
+					has_character_flag = rickon_stark
+				}
+				trait = direwolf
+				is_ruler = no
+				is_female = no
+				is_adult = yes
+				graphical_culture = Tully_dyn
+				has_character_flag = rickon_stark
+				prisoner = no
+				is_alive = yes
+				is_incapable = no
+			}
+			save_event_target_as = young_rickon
+			dynasty = 16481003
+			random_list = {
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			add_trait = sympathy_wildling_religion
+			add_trait = brave
+			e_north = {
+				add_claim = PREV
+			}
+			k_north = {
+				add_claim = PREV
+			}
+			d_winterfell = {
+				add_claim = PREV
+			}
+			c_winterfell = {
+				add_claim = PREV
+			}
+			c_e_wolfwood = {
+				add_claim = PREV
+			}
+			c_moatcailin = {
+				add_claim = PREV
+			}
+			c_seadragonpoint = {
+				add_claim = PREV
+			}
+			d_stonyshore = {
+				add_claim = PREV
+			}
+			character_event = { id = mbs_rickon_invasion.2 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_rickon_invasion.1" # Long live the King!
+		trigger = {
+			OR = {
+				character = 9269059
+				has_character_flag = rickon_stark
+			}
+		}
+		random_character = {
+			limit = {
+				OR = {
+					character = 9269059
+					has_character_flag = rickon_stark
+				}
+				trait = direwolf
+				is_ruler = no
+				is_female = no
+				is_adult = yes
+				graphical_culture = Tully_dyn
+				has_character_flag = rickon_stark
+				prisoner = no
+				is_alive = yes
+				is_incapable = no
+			}
+			save_event_target_as = young_rickon
+			dynasty = 16481003
+			random_list = {
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			add_trait = sympathy_wildling_religion
+			add_trait = brave
+			e_north = {
+				add_claim = PREV
+			}
+			k_north = {
+				add_claim = PREV
+			}
+			d_winterfell = {
+				add_claim = PREV
+			}
+			c_winterfell = {
+				add_claim = PREV
+			}
+			c_e_wolfwood = {
+				add_claim = PREV
+			}
+			c_moatcailin = {
+				add_claim = PREV
+			}
+			c_seadragonpoint = {
+				add_claim = PREV
+			}
+			d_stonyshore = {
+				add_claim = PREV
+			}
+			character_event = { id = mbs_rickon_invasion.2 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_rickon_invasion.1" # Long live the King!
+		trigger = {
+			NOR = {
+				character = 9269059
+				has_character_flag = rickon_stark
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCmbs_rickon_invasion.1" # an unlikely story
+		trigger = {
+			NOR = {
+				character = 9269059
+				has_character_flag = rickon_stark
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTDmbs_rickon_invasion.1"
+		trigger = {
+			has_landed_title = e_north
+			has_landed_title = k_north
+		}
+	}
+
+}
+# war
+character_event = {
+	id = mbs_rickon_invasion.2
+	desc = "EVTDESCmbs_rickon_invasion.2"
+	picture = "GFX_STARK"
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAinvasions.2" #
+		trigger = {
+			e_north = {
+				has_holder = yes
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					character = 9269059
+					has_character_flag = rickon_stark
+				}
+				trait = direwolf
+				is_ruler = no
+				is_female = no
+				is_adult = yes
+				graphical_culture = Tully_dyn
+				has_character_flag = rickon_stark
+				prisoner = no
+				is_alive = yes
+				is_incapable = no
+			}
+			set_character_flag = claimant_adventurer
+			set_character_flag = young_rickon_claimant
+			activate_title = { status = yes title = d_rickons_host }
+			d_rickons_host = {
+				gain_title = ROOT
+				set_preferred_capital = 31
+			}
+			set_defacto_liege = THIS
+			if = {
+				limit = { ai = yes }
+				add_trait = forbid_marriage
+			}
+			any_friend = {
+				limit = {
+					character = 10274 #Osha
+					is_ruler = no
+				}
+				move_character = ROOT
+			}
+			e_north = {
+				holder_scope = { #Call in claimant faction if possible
+					save_event_target_as = mega_war_liege
+					random_vassal = {
+						limit = {
+							leads_faction = faction_claimant
+							supported_claimant = { character = ROOT }
+						}
+						any_faction_backer = {
+							faction = faction_claimant
+							if = {
+								limit = { ai = no }
+								letter_event = { id = TOG.1276 }
+							}
+							if = {
+								limit = { ai = yes }
+								letter_event = { id = TOG.1276 days = 1 }
+							}
+						}
+						set_character_flag = faction_leader_1276
+						if = {
+							limit = { ai = no }
+							letter_event = { id = TOG.1276 }
+						}
+						if = {
+							limit = { ai = yes }
+							letter_event = { id = TOG.1276 days = 1 }
+						}
+					}
+				}
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+				}
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			c_whiteharbor = {
+				holder_scope = {
+					if = {
+						limit = {
+							dynasty = 80
+						}
+						ROOT = { save_event_target_as = potential_loyalty_target }
+						e_north = { holder_scope = { save_event_target_as = potential_loyalty_targets_enemy } }
+						character_event = { id = dynastic_loyalty.1 }
+					}
+				}
+			}
+
+
+
+			#Opinions
+			e_north = {
+				holder_scope = {
+					if = {
+						dynasty = 87
+						reverse_opinion = {
+							modifier = opinion_vengeance
+							who = ROOT
+						}
+					}
+					reverse_opinion = {
+						modifier = opinion_usurped_title
+						who = ROOT
+					}
+				}
+			}
+			k_north = {
+				holder_scope = {
+					if = {
+						dynasty = 87
+						reverse_opinion = {
+							modifier = opinion_vengeance
+							who = ROOT
+						}
+					}
+					reverse_opinion = {
+						modifier = opinion_usurped_title
+						who = ROOT
+					}
+				}
+			}
+			d_winterfell = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_winterfell = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_e_wolfwood = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_moatcailin = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_seadragonpoint = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			d_stonyshore = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBinvasions.2" #
+		trigger = {
+			k_north = {
+				has_holder = yes
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					character = 9269059
+					has_character_flag = rickon_stark
+				}
+				trait = direwolf
+				is_ruler = no
+				is_female = no
+				is_adult = yes
+				graphical_culture = Tully_dyn
+				has_character_flag = rickon_stark
+				prisoner = no
+				is_alive = yes
+				is_incapable = no
+			}
+			set_character_flag = claimant_adventurer
+			set_character_flag = young_rickon_claimant
+			activate_title = { status = yes title = d_rickons_host }
+			d_rickons_host = {
+				gain_title = ROOT
+				set_preferred_capital = 31
+			}
+			set_defacto_liege = THIS
+			if = {
+				limit = { ai = yes }
+				add_trait = forbid_marriage
+			}
+			any_friend = {
+				limit = {
+					character = 10274 #Osha
+					is_ruler = no
+				}
+				move_character = ROOT
+			}
+			k_north = {
+				holder_scope = { #Call in claimant faction if possible
+					save_event_target_as = mega_war_liege
+					random_vassal = {
+						limit = {
+							leads_faction = faction_claimant
+							supported_claimant = { character = ROOT }
+						}
+						any_faction_backer = {
+							faction = faction_claimant
+							if = {
+								limit = { ai = no }
+								letter_event = { id = TOG.1276 }
+							}
+							if = {
+								limit = { ai = yes }
+								letter_event = { id = TOG.1276 days = 1 }
+							}
+						}
+						set_character_flag = faction_leader_1276
+						if = {
+							limit = { ai = no }
+							letter_event = { id = TOG.1276 }
+						}
+						if = {
+							limit = { ai = yes }
+							letter_event = { id = TOG.1276 days = 1 }
+						}
+					}
+				}
+				reverse_war = {
+					target = ROOT
+					casus_belli = claim
+				}
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			spawn_unit = {
+				province = 31
+				owner = ROOT
+				troops = {
+					archers = { 250 250 }
+					heavy_infantry = { 750 750 }
+					pikemen = { 500 500 }
+					light_infantry = { 500 500 }
+					light_cavalry = { 100 100 }
+				}
+				attrition = 1.0
+				disband_on_peace = yes
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			create_random_soldier = {
+				female = no
+				culture = skagosi
+				religion = beyond_wall_old_gods
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					70 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					10 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+			}
+			c_whiteharbor = {
+				holder_scope = {
+					if = {
+						limit = {
+							dynasty = 80
+						}
+						ROOT = { save_event_target_as = potential_loyalty_target }
+						e_north = { holder_scope = { save_event_target_as = potential_loyalty_targets_enemy } }
+						character_event = { id = dynastic_loyalty.1 }
+					}
+				}
+			}
+			#Opinions
+			e_north = {
+				holder_scope = {
+					if = {
+						dynasty = 87
+						reverse_opinion = {
+							modifier = opinion_vengeance
+							who = ROOT
+						}
+					}
+					reverse_opinion = {
+						modifier = opinion_usurped_title
+						who = ROOT
+					}
+				}
+			}
+			k_north = {
+				holder_scope = {
+					if = {
+						dynasty = 87
+						reverse_opinion = {
+							modifier = opinion_vengeance
+							who = ROOT
+						}
+					}
+					reverse_opinion = {
+						modifier = opinion_usurped_title
+						who = ROOT
+					}
+				}
+			}
+			d_winterfell = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_winterfell = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_e_wolfwood = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_moatcailin = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			c_seadragonpoint = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+			d_stonyshore = {
+				holder_scope = {
+					if = {
+						limit = { NOT = { dynasty = 59 } } #
+						reverse_opinion = {
+							modifier = opinion_usurped_title
+							who = ROOT
+						}
+					}
+				}
+			}
+		}
+	}
+}

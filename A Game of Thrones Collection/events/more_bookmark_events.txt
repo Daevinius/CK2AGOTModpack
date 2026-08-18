@@ -1,0 +1,761 @@
+namespace = more_bookmarks
+
+# Detect which scenario
+character_event = {
+	id = more_bookmarks.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = c_the_citadel
+		NOT = { has_global_flag = more_bookmarks_initialised }
+	}
+
+	immediate = {
+		set_global_flag = more_bookmarks_initialised
+		# The Crowned Dragon
+		if = {
+			limit = {
+				year = 8001
+				year < 8002
+			}
+			set_global_flag = crowned_dragon_scenario
+		}
+		# The Targaryen Rule
+		if = {
+			limit = {
+				year = 8011
+				year < 8012
+			}
+			set_global_flag = targaryen_rule_scenario
+		}
+		# Death of the Conqueror
+		if = {
+			limit = {
+				year = 8038
+				year < 8039
+			}
+			set_global_flag = death_of_the_conqueror_scenario
+		}
+		# Crowning of the Conciliator
+		if = {
+			limit = {
+				year = 8051
+				year < 8052
+			}
+			set_global_flag = crowning_of_the_conciliator_scenario
+		}
+		# Rise of the Three Daughters
+		if = {
+			limit = {
+				year = 8096
+				year < 8097
+			}
+			set_global_flag = rise_of_three_daughters_scenario
+		}
+		# Fall of the Three Daughters
+		if = {
+			limit = {
+				year = 8130
+				year < 8131
+			}
+			set_global_flag = fall_of_three_daughters_scenario
+		}
+		# The Holy King
+		if = {
+			limit = {
+				year = 8161
+				year < 8162
+			}
+			set_global_flag = holy_king_scenario
+		}
+		# Third Blackfyre Rebellion
+		if = {
+			limit = {
+				year = 8219
+				year < 8220
+			}
+			set_global_flag = third_blackfyre_rebellion_scenario
+		}
+		# Raymun Redbeard's Invasion
+		if = {
+			limit = {
+				year = 8226
+				year < 8227
+			}
+			set_global_flag = raymun_redbeard_invasion_scenario
+		}
+		# Great Council of 233 AC
+		if = {
+			limit = {
+				year = 8233
+				year < 8234
+			}
+			set_global_flag = third_great_council_scenario
+		}
+		# Fourth Blackfyre Rebellion
+		if = {
+			limit = {
+				year = 8236
+				year < 8237
+			}
+			set_global_flag = fourth_blackfyre_rebellion_scenario
+		}
+		# Laughing Storm Rebellion
+		if = {
+			limit = {
+				year = 8239
+				year < 8240
+			}
+			set_global_flag = laughing_storm_rebellion_scenario
+		}
+		# Reyne Rebellion
+		if = {
+			limit = {
+				year = 8261
+				year < 8262
+			}
+			set_global_flag = reyne_rebellion_scenario
+		}
+		# Defiance of Duskendale
+		if = {
+			limit = {
+				year = 8276
+				year < 8277
+			}
+			set_global_flag = defiance_of_duskendale_scenario
+		}
+		# Year of the False Spring - Not in 8281 as the base mod has RR starting in it
+		if = {
+			limit = {
+				year = 8280
+				year < 8281
+			}
+			set_global_flag = year_false_spring_scenario
+		}
+		# Parley at Storm's End - Not in 8281 as the base mod has RR starting in it
+		if = {
+			limit = {
+				year = 8299
+				year < 8300
+			}
+			set_global_flag = parley_at_storms_end_scenario
+		}
+		# If in a scenario send event
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = crowned_dragon_scenario
+					has_global_flag = death_of_the_conqueror_scenario
+					has_global_flag = crowning_of_the_conciliator_scenario
+					has_global_flag = rise_of_three_daughters_scenario
+					has_global_flag = fall_of_three_daughters_scenario
+					has_global_flag = holy_king_scenario
+					has_global_flag = third_great_council_scenario
+					has_global_flag = third_blackfyre_rebellion_scenario
+					has_global_flag = raymun_redbeard_invasion_scenario
+					has_global_flag = fourth_blackfyre_rebellion_scenario
+					has_global_flag = laughing_storm_rebellion_scenario
+					has_global_flag = reyne_rebellion_scenario
+					has_global_flag = defiance_of_duskendale_scenario
+					has_global_flag = year_false_spring_scenario
+					#has_global_flag = parley_at_storms_end_scenario #already has events
+				}
+			}
+			any_playable_ruler = {
+				limit = { ai = no }
+				character_event = { id = more_bookmarks.2 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+# Event depending on scenario
+character_event = {
+	id = more_bookmarks.2
+	picture = GFX_evt_ironthrone
+
+	is_triggered_only = yes
+
+	desc = {
+		text = EVTDESCcrowned_dragon_scenario
+		trigger = {
+			has_global_flag = crowned_dragon_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCtargaryen_rule_scenario
+		trigger = {
+			has_global_flag = targaryen_rule_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCdeath_of_the_conqueror_scenario
+		trigger = {
+			has_global_flag = death_of_the_conqueror_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCrise_of_three_daughters_scenario
+		trigger = {
+			has_global_flag = rise_of_three_daughters_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCcrowning_of_the_conciliator_scenario
+		trigger = {
+			has_global_flag = crowning_of_the_conciliator_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCfall_of_three_daughters_scenario
+		trigger = {
+			has_global_flag = fall_of_three_daughters_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCholy_king_scenario
+		trigger = {
+			has_global_flag = holy_king_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCthird_blackfyre_rebellion_scenario
+		trigger = {
+			has_global_flag = third_blackfyre_rebellion_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCraymun_redbeard_invasion_scenario
+		trigger = {
+			has_global_flag = raymun_redbeard_invasion_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCfourth_blackfyre_rebellion_scenario
+		trigger = {
+			has_global_flag = fourth_blackfyre_rebellion_scenario
+		}
+	}
+	desc = {
+		text = EVTDESClaughing_storm_rebellion_scenario
+		trigger = {
+			has_global_flag = laughing_storm_rebellion_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCthird_great_council_scenario
+		trigger = {
+			has_global_flag = third_great_council_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCreyne_rebellion_scenario
+		trigger = {
+			has_global_flag = reyne_rebellion_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCdefiance_of_duskendale_scenario
+		trigger = {
+			has_global_flag = defiance_of_duskendale_scenario
+		}
+	}
+	desc = {
+		text = EVTDESCyear_false_spring_scenario
+		trigger = {
+			has_global_flag = year_false_spring_scenario
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_global_flag = holy_king_scenario }
+			hidden_tooltip = { # Fix Torrentine independance
+				d_redmountains = {
+					holder_scope = {
+						set_defacto_liege = e_dorne
+					}
+				}
+			}
+		}
+		if = {
+			limit = { has_global_flag = raymun_redbeard_invasion_scenario }
+			hidden_tooltip = { # Give Raymun Redbeard an army
+				k_beyond_wall = {
+					holder_scope = {
+						create_character = {
+							random_traits = yes
+							dynasty = random
+							religion = beyond_wall_old_gods
+							culture = wildling
+							female = no
+							age = 30
+							attributes = {
+								martial = 12
+							}
+							trait = brilliant_strategist
+							trait = wildling
+						}
+						new_character = {
+							spawn_unit = {
+								province = 18 # Eastwatch
+								troops = {
+									archers = { 10000 10000 }
+									light_cavalry = { 6000 6000 }
+									light_infantry = { 6000 6000 }
+									heavy_infantry = { 1000 6000 }
+								}
+							}
+						}
+						create_character = {
+							random_traits = yes
+							dynasty = random
+							religion = beyond_wall_old_gods
+							culture = wildling
+							female = no
+							age = 30
+							attributes = {
+								martial = 12
+							}
+							trait = brilliant_strategist
+							trait = wildling
+						}
+						new_character = {
+							spawn_unit = {
+								province = 17 # Castle Black
+								troops = {
+									archers = { 10000 10000 }
+									light_cavalry = { 6000 6000 }
+									light_infantry = { 6000 6000 }
+									heavy_infantry = { 1000 6000 }
+								}
+							}
+						}
+						create_character = {
+							random_traits = yes
+							dynasty = random
+							religion = beyond_wall_old_gods
+							culture = wildling
+							female = no
+							age = 30
+							attributes = {
+								martial = 12
+							}
+							trait = brilliant_strategist
+							trait = wildling
+						}
+						new_character = {
+							spawn_unit = {
+								province = 16 # Shadow Tower
+								troops = {
+									archers = { 10000 10000 }
+									light_cavalry = { 6000 6000 }
+									light_infantry = { 6000 6000 }
+									heavy_infantry = { 1000 6000 }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		if = {
+			limit = { has_global_flag = year_false_spring_scenario }
+			hidden_tooltip = { # Make things like they would be in 8281 excluding RR starting
+				# Harlan Grandison death
+				kingsguard = {
+					limit = {
+						is_alive = yes
+						character = 101308
+					}
+					death = yes
+				}
+				k_westerlands = {
+					holder_scope = {
+						# Jaime appointed to Kingsguard
+						current_heir = {
+							remove_trait = squire
+							add_trait = knight # Ser Arthur Dayne
+							add_trait = kingsguard
+							add_trait = aggressive_leader
+							d_kingsguard = { holder_scope = { reverse_banish = PREVPREV } } # Joined the kingsguard
+						}
+						# Tywin resigns as hand
+						remove_title = job_castellan
+					}
+				}
+				k_north = {
+					holder_scope = {
+						# Brandon Catelyn marriage
+						current_heir = {
+							k_riverlands = {
+								holder_scope = {
+									random_child = {
+										limit = { character = 1059 }
+										add_spouse = PREVPREVPREV
+									}
+								}
+							}
+						}
+						# Lyanna Robert betrothal
+						random_child = {
+							limit = { is_female = yes }
+							k_stormlands = {
+								holder_scope = {
+									add_spouse = PREVPREV
+								}
+							}
+							# add_character_modifier = { #To stop impregnation until Tourney at Harrenhal is resolved
+								# name = child
+								# duration = -1
+								# hidden = yes
+							# }
+						}
+						# Fix Sheepshead Hills and Ramsgate so there isn't instantly war
+						c_sheepsheadhills = {
+							holder_scope = {
+								set_defacto_liege = k_north
+							}
+						}
+						c_ramsgate = {
+							holder_scope = {
+								set_defacto_liege = k_north
+							}
+						}
+					}
+				}
+				k_stormlands = {
+					holder_scope = {
+						# Remove Robert's claim
+						remove_claim = e_iron_throne
+					}
+				}
+				d_harrenhal = {
+					holder_scope = {
+						# Walter When Tourney at Harrenhal
+						character_event = { id = more_bookmarks.3 days = 1 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Long live the Dragon King!
+		name = EVTOPTAcrowned_dragon_scenario
+		trigger = {
+			has_global_flag = crowned_dragon_scenario
+		}
+	}
+	option = { # Curse the invaders and their heretic ways
+		name = EVTOPTBcrowned_dragon_scenario
+		trigger = {
+			has_global_flag = crowned_dragon_scenario
+			NOT = { has_landed_title = e_iron_throne }
+		}
+	}
+	option = { # The Targaryens have brought peace and unity!
+		name = EVTOPTAtargaryen_rule_scenario
+		trigger = {
+			has_global_flag = targaryen_rule_scenario
+		}
+	}
+	option = { # This cannot and will not last
+		name = EVTOPTBtargaryen_rule_scenario
+		trigger = {
+			has_global_flag = targaryen_rule_scenario
+			NOT = { has_landed_title = e_iron_throne }
+		}
+	}
+	option = { # The king is dead, long live the king
+		name = EVTOPTAdeath_of_the_conqueror_scenario
+		trigger = {
+			has_global_flag = death_of_the_conqueror_scenario
+		}
+	}
+	option = { # Now is the time to rise up
+		name = EVTOPTBdeath_of_the_conqueror_scenario
+		trigger = {
+			has_global_flag = death_of_the_conqueror_scenario
+			NOT = { has_landed_title = e_iron_throne }
+		}
+	}
+	option = { # The new union will be great for trade
+		name = EVTOPTArise_of_three_daughters_scenario
+		trigger = {
+			has_global_flag = rise_of_three_daughters_scenario
+		}
+	}
+	option = { # This new power poses a threat
+		name = EVTOPTBrise_of_three_daughters_scenario
+		trigger = {
+			has_global_flag = rise_of_three_daughters_scenario
+			NOT = { has_landed_title = e_three_daughters }
+		}
+	}
+	option = { # We shall wait and see
+		name = EVTOPTAcrowning_of_the_conciliator_scenario
+		trigger = {
+			has_global_flag = crowning_of_the_conciliator_scenario
+		}
+	}
+	option = { # This loss of trade is not good
+		name = EVTOPTAfall_of_three_daughters_scenario
+		trigger = {
+			has_global_flag = fall_of_three_daughters_scenario
+		}
+	}
+	option = { # Finally that beast is gone
+		name = EVTOPTBfall_of_three_daughters_scenario
+		trigger = {
+			has_global_flag = fall_of_three_daughters_scenario
+		}
+	}
+	option = { # The King truly is blessed
+		name = EVTOPTAholy_king_scenario
+		trigger = {
+			has_global_flag = holy_king_scenario
+		}
+	}
+	option = { # He masks his weakness with faith
+		name = EVTOPTBholy_king_scenario
+		trigger = {
+			has_global_flag = holy_king_scenario
+		}
+	}
+	option = { # The black dragon shall rule
+		name = EVTOPTAthird_blackfyre_rebellion_scenario
+		trigger = {
+			has_global_flag = third_blackfyre_rebellion_scenario
+			NOT = { has_landed_title = e_iron_throne }
+		}
+	}
+	option = { # These pretenders will be easily defeated
+		name = EVTOPTBthird_blackfyre_rebellion_scenario
+		trigger = {
+			has_global_flag = third_blackfyre_rebellion_scenario
+		}
+	}
+	option = { # These wildlings will be stopped
+		name = EVTOPTAraymun_redbeard_invasion_scenario
+		trigger = {
+			has_global_flag = raymun_redbeard_invasion_scenario
+			NOT = { has_landed_title = k_beyond_wall }
+		}
+	}
+	option = { # Ha, watch the Northeners struggle
+		name = EVTOPTBraymun_redbeard_invasion_scenario
+		trigger = {
+			has_global_flag = raymun_redbeard_invasion_scenario
+		}
+	}
+	option = { # The black dragon shall rule
+		name = EVTOPTAfourth_blackfyre_rebellion_scenario
+		trigger = {
+			has_global_flag = fourth_blackfyre_rebellion_scenario
+			NOT = { has_landed_title = e_iron_throne }
+		}
+	}
+	option = { # These pretenders will be easily defeated
+		name = EVTOPTBfourth_blackfyre_rebellion_scenario
+		trigger = {
+			has_global_flag = fourth_blackfyre_rebellion_scenario
+		}
+	}
+	option = { # This is unnaceptable behaviour for a Prince
+		name = EVTOPTAlaughing_storm_rebellion_scenario
+		trigger = {
+			has_global_flag = laughing_storm_rebellion_scenario
+		}
+	}
+	option = { # The Prince loved another and love conquers all
+		name = EVTOPTBlaughing_storm_rebellion_scenario
+		trigger = {
+			has_global_flag = laughing_storm_rebellion_scenario
+			NOT = { has_landed_title = k_stormlands }
+		}
+	}
+	option = { # Tywin is too young and Tytos is too weak
+		name = EVTOPTAreyne_rebellion_scenario
+		trigger = {
+			has_global_flag = reyne_rebellion_scenario
+		}
+	}
+	option = { # The young lion is capable, House Reyne and Tarbeck will pay
+		name = EVTOPTBreyne_rebellion_scenario
+		trigger = {
+			has_global_flag = reyne_rebellion_scenario
+		}
+	}
+	option = { # His wanderings have left him a half-peasant
+		name = EVTOPTAthird_great_council_scenario
+		trigger = {
+			has_global_flag = third_great_council_scenario
+		}
+	}
+	option = { # A champion of the smallfolk is what we need
+		name = EVTOPTBthird_great_council_scenario
+		trigger = {
+			has_global_flag = third_great_council_scenario
+		}
+	}
+	option = { # What has the realm come too!
+		name = EVTOPTAdefiance_of_duskendale_scenario
+		trigger = {
+			has_global_flag = defiance_of_duskendale_scenario
+		}
+		e_iron_throne = { # A chance for Aerys to be freed so the war doesn't instantly end as Darklyns have 100% warscore
+			holder_scope = {
+				random = {
+					chance = 50
+					modifier = {
+						factor = 10
+						e_iron_throne = { holder_scope = { ai = no } }
+					}
+					kingsguard = { # Barristan Selmy
+						limit = {
+							is_alive = yes
+							trait = duelist
+						}
+						custom_tooltip = {
+							text = TOOLTIPdefiance_of_duskendale_scenario_aerys_freed
+							hidden_tooltip = {
+								e_iron_throne = { holder_scope = { imprison = no } }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	option = { # The weather is warming, perhaps winter is ending!
+		name = EVTOPTAyear_false_spring_scenario
+		trigger = {
+			has_global_flag = year_false_spring_scenario
+		}
+	}
+	option = { # The King has been acting strangely as of late
+		name = EVTOPTByear_false_spring_scenario
+		trigger = {
+			has_global_flag = year_false_spring_scenario
+			NOT = { has_landed_title = e_iron_throne }
+		}
+	}
+}
+
+#######################################
+### Year of the False Spring Events ###
+#######################################
+
+# Force start Walter Went's tourney set proper scopes
+character_event = {
+	id = more_bookmarks.3
+	is_triggered_only = yes
+	hide_window = yes
+
+	option = {
+		name = EVTOPTAmore_bookmarks.3
+		set_character_flag = epic_tournament
+		set_character_flag = tourny_in_progress
+		set_character_flag = do_not_disturb
+		clr_character_flag = tournament_has_ended
+		add_character_modifier = {
+			name = "holding_epic_tournament"
+			duration = -1
+		}
+		character_event = { id = more_bookmarks.4 tooltip = "tournament_invite" }
+		hidden_tooltip = {
+			character_event = { id = 70001 days = 30 } # Tournament start
+		}
+	}
+}
+
+# Walter Went hosts Tourney at Harrenhal
+character_event = {
+	id = more_bookmarks.4
+	desc = EVTDESCmore_bookmarks.4
+	picture = GFX_evt_courier
+
+	is_triggered_only = yes
+
+	immediate = {
+		clr_character_flag = king_tourny
+		clr_character_flag = grand_tourny
+		clr_character_flag = normal_tourny
+		clr_character_flag = small_tourny
+	}
+
+	option = {
+		name = EVTOPTAmore_bookmarks.4
+		prestige = 175
+		set_character_flag = tourney_at_harrrenhal
+		set_character_flag = grand_tourny
+		custom_tooltip = {
+			text = TOOLTIPtourney.1GRAND
+			hidden_tooltip = {
+				top_liege = {  #All characters in realm invited to grand tourneys
+					any_realm_character = { #Invite participants
+						limit = {
+							age = 15
+							NOT = { character = ROOT }
+							OR = {	#Must either
+								#Have placed in a large tourney
+								has_character_flag = grand_tourny_1st
+								has_character_flag = grand_tourny_2nd
+								has_character_flag = grand_tourny_3rd
+								has_character_flag = normal_tourny_1st
+								has_character_flag = normal_tourny_2nd
+								#All of the following....
+								AND = {
+									OR = { #Is either a Lord or liege is a relative
+										higher_tier_than = BARON
+										liege = {
+											NOT = { tier = BARON }
+											OR = {
+												is_close_relative = PREV
+												dynasty = PREV
+											}
+										}
+									}
+									OR = { #Is a knight or a trained fighter
+										trait = poor_warrior
+										trait = trained_warrior
+										trait = skilled_warrior
+										trait = master_warrior
+										trait = knight
+									}
+								}
+								AND = { #Is an awesome knight
+									trait = knight
+									OR = {
+										trait = master_warrior
+										trait = dragon_rider
+										trait = kingsguard
+										prestige = 300
+									}
+								}
+								character = 77039
+							}
+							NOT = { trait = dragon }
+							NOT = { trait = white_walker }
+						}
+						letter_event = { id = tourney.2 }
+					}
+					any_realm_lord = { #Invite all lords as spectators
+						limit = {
+							NOT = { character = ROOT }
+							NOT = { tier = BARON }
+							NOT = { character = 77039 }
+						}
+						clr_character_flag = tournament_has_ended
+						letter_event = { id = 70086 days = 7 }
+					}
+				}
+			}
+		}
+	}
+}

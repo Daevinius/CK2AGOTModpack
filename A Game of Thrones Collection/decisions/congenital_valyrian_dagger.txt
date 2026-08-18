@@ -1,0 +1,18 @@
+decisions = {
+	reforge_dagger = {
+		ai = no
+		potential = {
+			has_artifact = valyrian_dagger
+			NOT = { has_character_flag = reforge_valyrian_dagger }
+		}
+		allow = {
+			wealth = 100
+			has_artifact = valyrian_dagger
+		}
+		effect = {
+			character_event = { id = 900000 }
+			set_character_flag = reforge_valyrian_dagger
+			wealth = -100
+		}
+	}
+}

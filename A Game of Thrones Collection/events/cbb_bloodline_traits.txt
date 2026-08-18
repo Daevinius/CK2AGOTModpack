@@ -1,0 +1,326 @@
+namespace = cbb_bloodline_traits
+###################################
+#cbb_bloodline_traits.1-2 - Big Ears
+#cbb_bloodline_traits.3-4 - Albino
+#cbb_bloodline_traits.7-8 - High Cheekbones
+character_event = {
+	id = cbb_bloodline_traits.1
+	hide_window = no
+	desc = "EVTDESCcbb_bloodline_traits.1"
+	picture = "GFX_FLORENT"
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			father = { dynasty = 281 }
+			mother_even_if_dead = { dynasty = 281 }
+		}
+		NOT = { has_global_flag = florents_ears }
+		NOT = { character = 3284 }
+	}
+
+	immediate = {
+		set_global_flag = florents_ears
+	}
+
+	option = {
+		name = "EVTDESAcbb_bloodline_traits.1"
+		random = {
+				chance = 25
+				add_trait = big_ears
+
+				modifier = {
+					factor = 2
+					trait = ugly
+				}
+				modifier = {
+					factor = 2
+					dynasty = 281
+				}
+				modifier = {
+					factor = 3
+					trait = ugly_1
+				}
+				modifier = {
+					factor = 4
+					trait = ugly_2
+				}
+				modifier = {
+					factor = 0.25
+					trait = fair
+				}
+				modifier = {
+					factor = 0
+					trait = fair_1
+				}
+				modifier = {
+					factor = 0
+					trait = fair_2
+				}
+			}
+		}
+	}
+character_event = {
+	id = cbb_bloodline_traits.2
+	desc = "EVTDESCcbb_bloodline_traits.2"
+	picture = "GFX_FLORENT"
+
+	is_triggered_only = yes
+
+	trigger = {
+			OR = {
+				father = { dynasty = 281 }
+				mother_even_if_dead = { dynasty = 281 }
+			}
+	}
+
+	option = {
+		name = "EVTDESAcbb_bloodline_traits.2"
+		random = {
+			chance = 25
+			add_trait = big_ears
+
+			modifier = {
+				factor = 2
+				trait = ugly
+			}
+			modifier = {
+				factor = 2
+				dynasty = 281
+			}
+			modifier = {
+				factor = 3
+				trait = ugly_1
+			}
+			modifier = {
+				factor = 4
+				trait = ugly_2
+			}
+			modifier = {
+				factor = 0.25
+				trait = fair
+			}
+			modifier = {
+				factor = 0
+				trait = fair_1
+			}
+			modifier = {
+				factor = 0
+				trait = fair_2
+			}
+		}
+	}
+}
+#################################################################################################################################
+#cbb_bloodline_traits.3 - Albino
+character_event = {
+	id = cbb_bloodline_traits.3
+	hide_window = no
+	desc = "EVTDESCcbb_bloodline_traits.3"
+	picture = "GFX_summer_1"
+
+	is_triggered_only = yes
+
+	trigger = {
+			OR = {
+				father = { trait = albino }
+				mother_even_if_dead = { trait = albino }
+			}
+			NOT = { has_global_flag = albino_checked }
+	}
+
+	immediate = {
+		set_global_flag = albino_checked
+	}
+
+	option = {
+		name = "EVTDESAcbb_bloodline_traits.3"
+		random = {
+				chance = 25
+				add_trait = albino
+
+				modifier = {
+					factor = 2
+					trait = ugly
+				}
+				modifier = {
+					factor = 3
+					trait = ugly_1
+				}
+				modifier = {
+					factor = 4
+					trait = ugly_2
+				}
+				modifier = {
+					factor = 0.5
+					trait = fair
+				}
+				modifier = {
+					factor = 0.33
+					trait = fair_1
+				}
+				modifier = {
+					factor = 0.25
+					trait = fair_2
+				}
+			}
+		}
+	}
+character_event = {
+	id = cbb_bloodline_traits.4
+	desc = "EVTDESCcbb_bloodline_traits.4"
+	picture = "GFX_summer_1"
+
+	is_triggered_only = yes
+
+	trigger = {
+			OR = {
+				father = { trait = albino }
+				mother_even_if_dead = { trait = albino }
+			}
+	}
+
+	option = {
+		name = "EVTDESAcbb_bloodline_traits.4"
+		random = {
+				chance = 25
+				add_trait = albino
+
+				modifier = {
+					factor = 2
+					trait = ugly
+				}
+				modifier = {
+					factor = 3
+					trait = ugly_1
+				}
+				modifier = {
+					factor = 4
+					trait = ugly_2
+				}
+				modifier = {
+					factor = 0.5
+					trait = fair
+				}
+				modifier = {
+					factor = 0.33
+					trait = fair_1
+				}
+				modifier = {
+					factor = 0.25
+					trait = fair_2
+				}
+			}
+		}
+	}
+#################################################################################################################################
+#cbb_bloodline_traits.7 - High Cheekbones
+character_event = {
+	id = cbb_bloodline_traits.7
+	hide_window = no
+	desc = "EVTDESCcbb_bloodline_traits.7"
+	picture = "GFX_summer_1"
+
+	is_triggered_only = yes
+
+	trigger = {
+			OR = {
+				father = { dynasty = 146 }
+				mother_even_if_dead = { dynasty = 146 }
+			}
+			NOT = { has_global_flag = whent_cheekbones }
+	}
+
+	immediate = {
+		set_global_flag = whent_cheekbones
+	}
+
+	option = {
+		name = "EVTDESAcbb_bloodline_traits.7"
+		random = {
+				chance = 25
+				add_trait = high_cheekbones
+
+				modifier = {
+					factor = 2
+					dynasty = 146
+				}
+				modifier = {
+					factor = 2
+					trait = fair
+				}
+				modifier = {
+					factor = 3
+					trait = fair_1
+				}
+				modifier = {
+					factor = 4
+					trait = fair_2
+				}
+				modifier = {
+					factor = 0.25
+					trait = ugly
+				}
+				modifier = {
+					factor = 0.125
+					trait = ugly_1
+				}
+				modifier = {
+					factor = 0
+					trait = ugly_2
+				}
+			}
+		}
+	}
+character_event = {
+	id = cbb_bloodline_traits.8
+	desc = "EVTDESCcbb_bloodline_traits.8"
+	picture = "GFX_summer_1"
+
+	is_triggered_only = yes
+
+	trigger = {
+			OR = {
+				father = { dynasty = 146 }
+				mother_even_if_dead = { dynasty = 146 }
+			}
+	}
+
+	option = {
+		name = "EVTDESAcbb_bloodline_traits.8"
+		random = {
+				chance = 25
+				add_trait = high_cheekbones
+
+				modifier = {
+					factor = 2
+					dynasty = 146
+				}
+				modifier = {
+					factor = 2
+					trait = fair
+				}
+				modifier = {
+					factor = 3
+					trait = fair_1
+				}
+				modifier = {
+					factor = 4
+					trait = fair_2
+				}
+				modifier = {
+					factor = 0.25
+					trait = ugly
+				}
+				modifier = {
+					factor = 0.125
+					trait = ugly_1
+				}
+				modifier = {
+					factor = 0
+					trait = ugly_2
+				}
+			}
+		}
+	}

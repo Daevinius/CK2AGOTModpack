@@ -1,0 +1,327 @@
+namespace = mbs_finding
+
+################################
+#Find missing Stark child
+narrative_event  = {
+	id = mbs_finding.1
+	title = "EVTtitlembs_finding.1"
+	desc = "EVTDESCmbs_finding.1"
+	picture = GFX_STARK
+
+	has_character_flag = secret_stark_bastard
+
+	trigger = {
+		NOT = {
+			c_3058 = {
+				is_alive = yes
+			}
+		}
+		NOT = { dynasty = 59 }
+		NOT = { has_character_flag = stark_bastard_found }
+		OR = {
+			is_ruler = yes
+			any_playable_ruler = {
+				dynasty = 59
+				at_location = ROOT
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	immediate = {
+		set_character_flag = stark_bastard_found
+		clr_character_flag = secret_stark_bastard
+	}
+
+	option = {
+		name = "EVTOPTAmbs_finding.1" #Yay!
+		dynasty = 59
+		c_3058 = { #Ned
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		recalc_succession = yes
+		if = {
+			limit = { is_female = no }
+			e_north = {
+				if = {
+					limit = { has_holder = yes }
+					add_pressed_claim = ROOT
+				}
+			}
+			k_north = {
+				if = {
+					limit = {
+						OR = {
+							has_holder = yes
+							e_north = { has_holder = no }
+						}
+					}
+					add_pressed_claim = ROOT
+				}
+			}
+			d_winterfell = { add_pressed_claim = ROOT }
+			c_winterfell = { add_pressed_claim = ROOT }
+		}
+		if = {
+			limit = { is_female = yes }
+			e_north = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			k_north = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			d_winterfell = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+			c_winterfell = {
+				if = {
+					limit = { holder_scope = { NOT = { dynasty = 59 } } }
+					add_pressed_claim = ROOT
+				}
+				if = {
+					limit = { holder_scope = { dynasty = 59 } }
+					add_weak_pressed_claim = ROOT
+				}
+			}
+		}
+		if = {
+			limit = { trait = forbid_marriage }
+			remove_trait = forbid_marriage
+		}
+		if = {
+			limit = { is_ruler = yes }
+			character_event = { id = mbs_finding.2 }
+			break = yes
+		}
+		if = {
+			limit = { is_ruler = no }
+			random_playable_ruler = {
+				limit = {
+					dynasty = 59
+					at_location = ROOT
+					NOT = { trait = nightswatch }
+				}
+				character_event = { id = mbs_finding.2 }
+				ROOT = { move_character = PREV }
+				break = yes
+			}
+			if = {
+				limit = {
+					liege = {
+						OR = {
+							NOT = { NOT_mythical_creature_trigger = yes }
+							trait = nightswatch
+							AND = {
+								NOT = { dynasty = 59 }
+								OR = {
+									has_landed_title = e_north
+									has_landed_title = k_north
+									has_landed_title = d_winterfell
+									has_landed_title = c_winterfell
+								}
+							}
+						}
+					}
+				}
+				random_playable_ruler = {
+					limit = {
+						dynasty = 59
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = mbs_finding.2 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = northman
+						opinion = { who = ROOT value = 0 }
+						reverse_opinion = { who = ROOT value = -19 }
+						NOR = {
+							has_landed_title = e_north
+							has_landed_title = k_north
+							has_landed_title = d_winterfell
+							has_landed_title = c_winterfell
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = mbs_finding.2 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+				random_playable_ruler = {
+					limit = {
+						culture = northman
+						NOR = {
+							has_landed_title = e_north
+							has_landed_title = k_north
+							has_landed_title = d_winterfell
+							has_landed_title = c_winterfell
+						}
+						NOT = { trait = nightswatch }
+					}
+					character_event = { id = mbs_finding.2 }
+					ROOT = { move_character = PREV }
+					break = yes
+				}
+			}
+			liege = { character_event = { id = mbs_finding.2 } }
+		}
+		recalc_succession = yes
+	}
+}
+#Stark child has been found!
+narrative_event  = {
+	id = mbs_finding.2
+	title = "EVTtitlembs_finding.2"
+	desc = {
+		text = "EVTDESCmbs_finding.2A"
+		trigger = {
+			ROOT = {
+				OR = {
+					character = 2058
+					character = 42058
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2B"
+		trigger = {
+			ROOT = {
+				OR = {
+					father_even_if_dead = {
+						character = 2058
+					}
+					mother_even_if_dead = {
+						character = 42058
+					}
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2B"
+		trigger = {
+			ROOT = {
+				OR = {
+					father_even_if_dead = {
+						character = 59
+					}
+					father_even_if_dead = {
+						character = 1058
+					}
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2C"
+		trigger = {
+			ROOT = {
+				OR = {
+					father_even_if_dead = {
+						character = 3058
+					}
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2D"
+		trigger = {
+			ROOT = {
+				OR = {
+					mother_even_if_dead = {
+						character = 4059
+					}
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2E"
+		trigger = {
+			ROOT = {
+				OR = {
+					father_even_if_dead = {
+						character = 3058
+					}
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2F"
+		trigger = {
+			ROOT = {
+				character = 3058
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCmbs_finding.2G"
+		trigger = {
+			ROOT = {
+				NOR = {
+					character = 2058
+					character = 42058
+					father_even_if_dead = {
+						character = 2058
+					}
+					mother_even_if_dead = {
+						character = 42058
+					}
+					father_even_if_dead = {
+						character = 59
+					}
+					father_even_if_dead = {
+						character = 1058
+					}
+					mother_even_if_dead = {
+						character = 4059
+					}
+					father_even_if_dead = {
+						character = 3058
+					}
+					character = 3058
+				}
+			}
+		}
+	}
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	trigger = { FROM = { has_character_flag = stark_bastard_found } }
+
+
+	option = {
+		name = "EVTOPTAmbs_finding.2" #Yay!
+	}
+}

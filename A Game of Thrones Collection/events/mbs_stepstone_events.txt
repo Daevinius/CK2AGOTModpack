@@ -1,0 +1,846 @@
+namespace = mbs_stepstones_events
+# The Stepstones Melting Pot
+character_event = {
+	id = mbs_stepstones_events.1
+	desc = "EVTDESCmbs_stepstones_events.1"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture_group = first_men
+
+	trigger = {
+		any_demesne_province = {
+			region = world_stepstones
+			NOR = {
+				culture_group = first_men
+				culture_group = dornish
+				culture_group = andal
+			}
+			any_province_holding = {
+				NOT = { holding_type = nomad }
+			}
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+		NOT = { culture = armsman }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.75
+			learning = 7
+		}
+		modifier = {
+			factor = 0.75
+			learning = 9
+		}
+		modifier = {
+			factor = 0.75
+			learning = 11
+		}
+		modifier = {
+			factor = 0.75
+			learning = 13
+		}
+		modifier = {
+			factor = 1.5
+			learning < 5
+		}
+		modifier = {
+			factor = 1.5
+			learning < 3
+		}
+		modifier = {
+			factor = 2.0
+			learning < 1
+		}
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.1"
+	#	culture = armsman
+		random_demesne_province = {
+			limit = {
+				region = world_stepstones
+				NOR = {
+					culture_group = first_men
+					culture_group = dornish
+					culture_group = andal
+				}
+				any_province_holding = {
+					NOT = { holding_type = nomad }
+				}
+			}
+			culture = armsman
+		}
+	}
+}
+
+# It's spreading
+character_event = {
+	id = mbs_stepstones_events.2
+	desc = "EVTDESCmbs_stepstones_events.2"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture = armsman
+
+	trigger = {
+		any_demesne_province = {
+			region = world_stepstones
+			NOR = {
+				culture_group = first_men
+				culture_group = dornish
+				culture_group = andal
+			}
+			any_province_holding = {
+				NOT = { holding_type = nomad }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.2"
+		random_demesne_province = {
+			limit = {
+				region = world_stepstones
+				NOR = {
+					culture_group = first_men
+					culture_group = dornish
+					culture_group = andal
+				}
+				any_province_holding = {
+					NOT = { holding_type = nomad }
+				}
+			}
+			culture = armsman
+		}
+	}
+}
+
+#Make my court speak English
+character_event = {
+	id = mbs_stepstones_events.3
+	desc = "EVTDESCmbs_stepstones_events.3"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture = armsman
+
+	trigger = {
+		top_liege = {
+			primary_title = {
+				title = k_stepstones
+			}
+		}
+		any_courtier = {
+			culture_group = first_men
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.3"
+		any_courtier = {
+			limit = {
+				culture_group = first_men
+			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
+			culture = armsman
+			hidden_tooltip = {
+				character_event = { id = mbs_stepstones_events.6 days = 3 }
+			}
+		}
+	}
+}
+
+#Make my vassal speak English
+character_event = {
+	id = mbs_stepstones_events.4
+	desc = "EVTDESCmbs_stepstones_events.4"
+	picture = GFX_evt_throne_room
+
+	only_playable = yes
+	culture = armsman
+
+	trigger = {
+		independent = no
+		top_liege = {
+			primary_title = {
+				title = k_stepstones
+			}
+		}
+		any_vassal = {
+			culture_group = first_men
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+	}
+
+
+	mean_time_to_happen = {
+		months = 720
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.4"
+		any_vassal = {
+			limit = {
+				culture_group = first_men
+			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
+			culture = armsman
+			hidden_tooltip = {
+				character_event = { id = mbs_stepstones_events.6 days = 3 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = mbs_stepstones_events.6
+	desc = "EVTDESCmbs_stepstones_events.6"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.6"
+		culture = armsman
+	}
+}
+###Andal
+# The Stepstones Melting Pot
+character_event = {
+	id = mbs_stepstones_events.11
+	desc = "EVTDESCmbs_stepstones_events.11"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture_group = andal
+
+	trigger = {
+		any_demesne_province = {
+			region = world_stepstones
+			NOR = {
+				culture_group = first_men
+				culture_group = dornish
+				culture_group = andal
+			}
+			any_province_holding = {
+				NOT = { holding_type = nomad }
+			}
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+		NOT = { culture = stepstonesman }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.75
+			learning = 7
+		}
+		modifier = {
+			factor = 0.75
+			learning = 9
+		}
+		modifier = {
+			factor = 0.75
+			learning = 11
+		}
+		modifier = {
+			factor = 0.75
+			learning = 13
+		}
+		modifier = {
+			factor = 1.5
+			learning < 5
+		}
+		modifier = {
+			factor = 1.5
+			learning < 3
+		}
+		modifier = {
+			factor = 2.0
+			learning < 1
+		}
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.11"
+	#	culture = stepstonesman
+		random_demesne_province = {
+			limit = {
+				region = world_stepstones
+				NOR = {
+					culture_group = first_men
+					culture_group = dornish
+					culture_group = andal
+				}
+				any_province_holding = {
+					NOT = { holding_type = nomad }
+				}
+			}
+			culture = stepstonesman
+		}
+	}
+}
+
+# It's spreading
+character_event = {
+	id = mbs_stepstones_events.12
+	desc = "EVTDESCmbs_stepstones_events.12"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture = stepstonesman
+
+	trigger = {
+		any_demesne_province = {
+			region = world_stepstones
+			NOR = {
+				culture_group = first_men
+				culture_group = dornish
+				culture_group = andal
+			}
+			any_province_holding = {
+				NOT = { holding_type = nomad }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.12"
+		random_demesne_province = {
+			limit = {
+				region = world_stepstones
+				NOR = {
+					culture_group = first_men
+					culture_group = dornish
+					culture_group = andal
+				}
+				any_province_holding = {
+					NOT = { holding_type = nomad }
+				}
+			}
+			culture = stepstonesman
+		}
+	}
+}
+
+#Make my court speak English
+character_event = {
+	id = mbs_stepstones_events.13
+	desc = "EVTDESCmbs_stepstones_events.13"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture = stepstonesman
+
+	trigger = {
+		top_liege = {
+			primary_title = {
+				title = k_stepstones
+			}
+		}
+		any_courtier = {
+			culture_group = andal
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.13"
+		any_courtier = {
+			limit = {
+				culture_group = andal
+			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
+			culture = stepstonesman
+			hidden_tooltip = {
+				character_event = { id = mbs_stepstones_events.16 days = 3 }
+			}
+		}
+	}
+}
+
+#Make my vassal speak English
+character_event = {
+	id = mbs_stepstones_events.14
+	desc = "EVTDESCmbs_stepstones_events.14"
+	picture = GFX_evt_throne_room
+
+	only_playable = yes
+	culture = stepstonesman
+
+	trigger = {
+		independent = no
+		top_liege = {
+			primary_title = {
+				title = k_stepstones
+			}
+		}
+		any_vassal = {
+			culture_group = andal
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+	}
+
+
+	mean_time_to_happen = {
+		months = 720
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.14"
+		any_vassal = {
+			limit = {
+				culture_group = andal
+			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
+			culture = stepstonesman
+			hidden_tooltip = {
+				character_event = { id = mbs_stepstones_events.16 days = 3 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = mbs_stepstones_events.16
+	desc = "EVTDESCmbs_stepstones_events.16"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.16"
+		culture = stepstonesman
+	}
+}
+###Dornish
+# The Stepstones Melting Pot
+character_event = {
+	id = mbs_stepstones_events.21
+	desc = "EVTDESCmbs_stepstones_events.21"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture_group = dornish
+
+	trigger = {
+		any_demesne_province = {
+			region = world_stepstones
+			NOR = {
+				culture_group = first_men
+				culture_group = dornish
+				culture_group = andal
+			}
+			any_province_holding = {
+				NOT = { holding_type = nomad }
+			}
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+		NOT = { culture = sea_dornish }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.75
+			learning = 7
+		}
+		modifier = {
+			factor = 0.75
+			learning = 9
+		}
+		modifier = {
+			factor = 0.75
+			learning = 11
+		}
+		modifier = {
+			factor = 0.75
+			learning = 13
+		}
+		modifier = {
+			factor = 1.5
+			learning < 5
+		}
+		modifier = {
+			factor = 1.5
+			learning < 3
+		}
+		modifier = {
+			factor = 2.0
+			learning < 1
+		}
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.21"
+	#	culture = sea_dornish
+		random_demesne_province = {
+			limit = {
+				region = world_stepstones
+				NOR = {
+					culture_group = first_men
+					culture_group = dornish
+					culture_group = andal
+				}
+				any_province_holding = {
+					NOT = { holding_type = nomad }
+				}
+			}
+			culture = sea_dornish
+		}
+	}
+}
+
+# It's spreading
+character_event = {
+	id = mbs_stepstones_events.22
+	desc = "EVTDESCmbs_stepstones_events.22"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture = sea_dornish
+
+	trigger = {
+		any_demesne_province = {
+			region = world_stepstones
+			NOR = {
+				culture_group = first_men
+				culture_group = dornish
+				culture_group = andal
+			}
+			any_province_holding = {
+				NOT = { holding_type = nomad }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.22"
+		random_demesne_province = {
+			limit = {
+				region = world_stepstones
+				NOR = {
+					culture_group = first_men
+					culture_group = dornish
+					culture_group = andal
+				}
+				any_province_holding = {
+					NOT = { holding_type = nomad }
+				}
+			}
+			culture = sea_dornish
+		}
+	}
+}
+
+#Make my court speak English
+character_event = {
+	id = mbs_stepstones_events.23
+	desc = "EVTDESCmbs_stepstones_events.23"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	only_playable = yes
+	culture = sea_dornish
+
+	trigger = {
+		top_liege = {
+			primary_title = {
+				title = k_stepstones
+			}
+		}
+		any_courtier = {
+			culture_group = dornish
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+	}
+
+	mean_time_to_happen = {
+		months = 120
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.23"
+		any_courtier = {
+			limit = {
+				culture_group = dornish
+			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
+			culture = sea_dornish
+			hidden_tooltip = {
+				character_event = { id = mbs_stepstones_events.26 days = 3 }
+			}
+		}
+	}
+}
+
+#Make my vassal speak English
+character_event = {
+	id = mbs_stepstones_events.24
+	desc = "EVTDESCmbs_stepstones_events.24"
+	picture = GFX_evt_throne_room
+
+	only_playable = yes
+	culture = sea_dornish
+
+	trigger = {
+		independent = no
+		top_liege = {
+			primary_title = {
+				title = k_stepstones
+			}
+		}
+		any_vassal = {
+			culture_group = dornish
+		}
+		government = feudal_government
+		NOT = { government = chinese_imperial_government }
+		NOT = { government = pirate_government }
+	}
+
+
+	mean_time_to_happen = {
+		months = 720
+		modifier = {
+			factor = 0.3
+			OR = {
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots
+				}
+				has_game_rule = {
+					name = culture_conversion
+					value = faster_melting_pots_and_slower_normal
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.24"
+		any_vassal = {
+			limit = {
+				culture_group = andal
+			}
+			score_value = { #Prioritizes selecting an interesting courtier...
+	            value = 10
+	            interesting_courtier_selection_score = yes
+	        }
+			culture = sea_dornish
+			hidden_tooltip = {
+				character_event = { id = mbs_stepstones_events.26 days = 3 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = mbs_stepstones_events.26
+	desc = "EVTDESCmbs_stepstones_events.26"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_stepstones_events.26"
+		culture = sea_dornish
+	}
+}

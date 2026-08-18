@@ -1,0 +1,729 @@
+namespace = mbs_gendel
+
+
+province_event = {
+	id = mbs_gendel.1
+	desc = "EVTDESCmbs_gendel.1"
+	picture = GFX_evt_wildlings
+
+	trigger = {
+		province = 25
+		OR = {
+			NOT = { has_global_flag = war_cooldown_period }
+			had_global_flag = { flag = war_cooldown_period days = 25 }
+		}
+		d_mbs_gendels_folk = {
+			has_holder = no
+			OR = { #75 year cooldown
+				NOT = { has_title_flag = cannibal_invasion }
+				had_title_flag = { flag = cannibal_invasion days = 27375 }
+			}
+		}
+		NOT = {
+			has_game_rule = {
+				name = non_lore_invasions
+				value = off
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 200
+
+		modifier = {
+			factor = 3
+			has_game_rule = {
+				name = non_lore_invasions
+				value = rare
+			}
+		}
+		modifier = {
+			factor = 0.5
+			owner = {
+				top_liege = {
+					primary_title = {
+						OR = {
+							title = e_north
+							title = k_north
+							title = k_beyond_wall
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			owner = {
+				top_liege = {
+					war = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			e_iron_throne = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_gendel.1"
+		create_random_soldier = {
+			attributes = {
+				martial = 9
+				diplomacy = 2
+				learning = 2
+			}
+			female = no
+			employer = e_rebels
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = 5009898
+			trait = brave
+			trait = ambitious
+			trait = cannibal_trait
+			trait = cruel
+			trait = skilled_tactician
+			trait = inbred
+			historical = yes
+		}
+		new_character = {
+			c_797179 = {
+				PREVPREV = { set_father = PREV }
+				any_owned_bloodline = {
+					add_bloodline_member = PREVPREV
+				}
+			}
+			prestige = 600
+			set_character_flag = wildling_horde
+			random_list = {
+				25 = { add_trait = trained_warrior }
+				75 = { add_trait = skilled_warrior }
+				25 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			set_character_flag = gendels_folk_invader
+			activate_title = { title = d_mbs_gendels_folk status = yes }
+			d_mbs_gendels_folk = {
+				gain_title = PREV
+				clr_title_flag = cannibal_invasion
+				set_title_flag = cannibal_invasion
+			}
+			character_event = { id = mbs_gendel.2 days = 2  }
+			character_event = { id = mbs_gendel.4 }
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					OR = {
+						capital_scope = { region = world_westeros }
+						ROOT = { owner = { same_realm = PREVPREV } }
+					}
+				}
+				character_event = { id = mbs_gendel.3 days = 1 } #Notification to other human players.
+			}
+		}
+	}
+}
+#Actually Spawm the Army...
+character_event = {
+	id = mbs_gendel.2
+	desc = "Arrgh!"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok."
+		FROM = {
+			kingdom = {
+				ROOT = {
+					war = {
+						casus_belli = tribal_invasion
+						target = PREVPREV # The top liege of the province owner
+						thirdparty_title = PREV # The de jure kingdom
+					}
+				}
+			}
+		}
+		random_province = {
+			limit = { province = 8 }
+			province_event = { id = mbs_gendel.7 }
+		}
+		random_province = {
+			limit = { province = 17 }
+			province_event = { id = mbs_gendel.9 }
+		}
+		FROM = {
+			ROOT = {
+				spawn_unit = {
+					province = 25
+					home = 25
+					troops = {
+						light_infantry = { 1400 1400 }
+						archers = { 333 333 }
+						heavy_infantry = { 100 100 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+				spawn_unit = {
+					province = 25
+					home = 25
+					troops = {
+						light_infantry = { 1400 1400 }
+						archers = { 333 333 }
+						heavy_infantry = { 100 100 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+				spawn_unit = {
+					province = 25
+					home = 25
+					troops = {
+						light_infantry = { 1400 1400 }
+						archers = { 333 333 }
+						heavy_infantry = { 100 100 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+			}
+			ROOT = {
+				spawn_unit = {
+					province = 8
+					home = 8
+					scaled_by_biggest_garrison = 1
+					troops = {
+						light_infantry = { 600 600 }
+						archers = { 200 200 }
+						heavy_infantry = { 60 60 }
+					}
+					match_min = 2000
+					match_max = 4000
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					troops = {
+						light_infantry = { 600 600 }
+						archers = { 200 200 }
+						heavy_infantry = { 60 60 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+				spawn_unit = {
+					province = PREV
+					home = PREV
+					troops = {
+						light_infantry = { 600 600 }
+						archers = { 200 200 }
+						heavy_infantry = { 60 60 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+			}
+			ROOT = {
+				spawn_unit = {
+					province = 21
+					home = 21
+					troops = {
+						light_infantry = { 400 400 }
+						archers = { 100 100 }
+						heavy_infantry = { 40 40 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+				spawn_unit = {
+					province = 21
+					home = 21
+					troops = {
+						light_infantry = { 400 400 }
+						archers = { 100 100 }
+						heavy_infantry = { 40 40 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+				spawn_unit = {
+					province = 21
+					home = 21
+					troops = {
+						light_infantry = { 400 400 }
+						archers = { 100 100 }
+						heavy_infantry = { 40 40 }
+					}
+					attrition = 0.25
+					earmark = cannibal_troops
+				}
+			}
+		}
+		#Spawn a few courtiers
+		create_random_soldier = {
+			female = no
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_random_soldier = {
+			female = no
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_random_soldier = {
+			female = no
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_random_soldier = {
+			female = no
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_character = {
+			female = yes
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+			random_traits = yes
+			dynasty = none
+			age = 18
+		}
+		new_character = {
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_character = {
+			female = yes
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+			random_traits = yes
+			dynasty = none
+			age = 25
+		}
+		new_character = {
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+		create_character = {
+			female = yes
+			culture = gendels_folk
+			religion = beyond_wall_old_gods
+			random_traits = yes
+			dynasty = none
+			trait = cannibal_trait
+			trait = cruel
+			trait = inbred
+			random_traits = yes
+			dynasty = none
+			age = 24
+		}
+		new_character = {
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+	}
+}
+#Inform the world
+narrative_event = {
+	id = mbs_gendel.3
+	title = "EVTtitlembs_gendel.3"
+	desc = "EVTDESCmbs_gendel.3"
+	picture = GFX_evt_wildlings
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_gendel.3"
+		d_mbs_gendels_folk = {
+			holder_scope = { tooltip = { show_portrait = yes } }
+		}
+	}
+}
+character_event = {
+	id = mbs_gendel.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				dynasty = 5009898
+				has_landed_title = d_mbs_gendels_folk
+			}
+			has_missing = { #
+				limit = { character = 797179 }
+				ROOT = { set_father = PREV }
+			}
+			#generate wife
+			if = {
+				limit = {
+					age = 65
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = none
+					female = yes
+					age = 73
+					historical = yes
+					culture = ROOT
+					religion = ROOT
+					trait = cannibal_trait
+					trait = cruel
+					trait = inbred
+				}
+				new_character = { save_event_target_as = random_wife }
+			}
+			else_if = {
+				limit = {
+					age = 50
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = none
+					female = yes
+					age = 58
+					historical = yes
+					culture = ROOT
+					religion = ROOT
+					trait = cannibal_trait
+					trait = cruel
+					trait = inbred
+				}
+				new_character = { save_event_target_as = random_wife }
+			}
+			else_if = {
+				limit = {
+					age = 40
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = none
+					female = yes
+					age = 46
+					historical = yes
+					culture = ROOT
+					religion = ROOT
+					trait = cannibal_trait
+					trait = cruel
+					trait = inbred
+				}
+				new_character = { save_event_target_as = random_wife }
+			}
+			else_if = {
+				limit = {
+					age = 30
+				}
+				create_character = {
+					random_traits = yes
+					dynasty = none
+					female = yes
+					age = 36
+					historical = yes
+					culture = ROOT
+					religion = ROOT
+					trait = cannibal_trait
+					trait = cruel
+					trait = inbred
+				}
+				new_character = { save_event_target_as = random_wife }
+			}
+			else = {
+				create_character = {
+					random_traits = yes
+					dynasty = none
+					female = yes
+					age = 26
+					historical = yes
+					culture = ROOT
+					religion = ROOT
+					trait = cannibal_trait
+					trait = cruel
+					trait = inbred
+				}
+				new_character = { save_event_target_as = random_wife }
+			}
+			add_spouse = event_target:random_wife
+			event_target:random_wife = {
+				culture = gendels_folk
+				prestige = -500
+			}
+			prestige = 400
+
+			character_event = { id = roberts_rebellion.151 } #generate additional relatives
+			character_event = { id = mbs_gendel.5 days = 2 }
+			culture = gendels_folk
+			any_close_relative = {
+				culture = gendels_folk
+				add_trait = cannibal_trait
+				add_trait = cruel
+				add_trait = inbred
+			}
+			random = {
+				chance = 50
+				add_trait = mystic
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_gendel.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		any_dynasty_member = {
+			character_event = { id = mbs_gendel.6 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_gendel.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		add_trait = cannibal_trait
+		add_trait = cruel
+		add_trait = inbred
+	}
+
+	option = {
+		name = OK
+	}
+}
+province_event = {
+	id = mbs_gendel.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_gendel.8 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_gendel.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			kingdom = {
+				ROOT = {
+					war = {
+						casus_belli = invasion
+						target = PREVPREV # The top liege of the province owner
+						thirdparty_title = PREV # The de jure kingdom
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+province_event = {
+	id = mbs_gendel.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_gendel.10 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_gendel.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			duchy = {
+				ROOT = {
+					war = {
+						casus_belli = invasion
+						target = PREVPREV # The top liege of the province owner
+						thirdparty_title = PREV # The de jure kingdom
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

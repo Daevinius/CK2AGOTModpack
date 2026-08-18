@@ -1,0 +1,6870 @@
+########################################
+###Written by Ogaburan aka Ran Miller###
+########################################
+
+###################################
+###########Nicknames############
+namespace = nicknames
+###################################
+
+#nicknames.0 - Generic nicknames
+#nicknames.1 - Lannister/Reyne nicknames.
+#nicknames.2 - Stark nicknames.
+#nicknames.3 - Targaryan nicknames.
+#nicknames.4 - Baratheon/Durrandon nicknames.
+#nicknames.5 - Martell nicknames.
+#nicknames.6 - Tyrell nicknames.
+#nicknames.7 - Tully nicknames.
+#nicknames.8 - Greyjoy nicknames.
+#nicknames.9 - Florent nicknames.
+#nicknames.10 - Arryn nicknames.
+#nicknames.11 - Mormont nicknames.
+#nicknames.12 - Manderly nicknames.
+#nicknames.13 - Hightower nicknames.
+#nicknames.14 - Cunington nicknames.
+#nicknames.15 - Oakheart nicknames.
+#nicknames.16 - Fossoway (both branches) nicknames.
+#nicknames.17 - Crackehall nicknames.
+#nicknames.18 - Clegane nicknames.
+#nicknames.19 - Clegane nicknames.
+#nicknames.20 - Eastermont nicknames.
+#nicknames.21 - Swann nicknames.
+#nicknames.22 - Cerwyn nicknames.
+#nicknames.23 - Goodbrother nicknames.
+#nicknames.24 - Harlaw nicknames.
+#nicknames.25 - Saltcliffe nicknames.
+#nicknames.26 - Mooton nicknames.
+#nicknames.27 - Vypren nicknames.
+#nicknames.28 - Whent nicknames.
+#nicknames.29 - Belmore nicknames.
+#nicknames.30 - Hunter nicknames.
+#nicknames.31 - Bar Emmon nicknames.
+#nicknames.32 - Velaryon nicknames.
+#nicknames.33 - Brax nicknames.
+#nicknames.34 - Lydden nicknames.
+#nicknames.35 - Westerling nicknames.
+#nicknames.36 - Prester nicknames.
+#nicknames.37 - Serrett nicknames.
+#nicknames.38 - Cafferen nicknames.
+#nicknames.39 - Dondarion nicknames.
+#nicknames.40 - Ambrose nicknames.
+#nicknames.41 - Caswell nicknames.
+#nicknames.42 - Beesbury nicknames.
+#nicknames.43 - Mullendore nicknames.
+#nicknames.44 - Webber nicknames.
+#nicknames.45 - Varner nicknames.
+#nicknames.46 - Qorgyle nicknames.
+#nicknames.47 - Vaith nicknames.
+#nicknames.48 - Mallister nicknames.
+#nicknames.49 - Deddings nicknames.
+#nicknames.50 - Lolliston nicknames.
+#nicknames.51 - Piper nicknames.
+#nicknames.52 - Brune nicknames.
+#nicknames.55 - Hull clansman nicknames.
+
+#Note
+#"The affectionate X" was removed due to popular demand.
+#Need to find a better nick for lustful, shablone is this;
+#		if = {
+#			limit = {
+#				OR = {
+#					trait = lustful
+#					trait = hedonist
+#				}
+#				NOT = { any_dynasty_member = { has_nickname = nick_the_affectionate_XcrestX } }
+#			}
+#			random_list = {
+#				5 = { }
+#				5 = { give_nickname = nick_the_affectionate_XcrestX }
+#			}
+#		}
+#
+###################################
+
+
+###Generic###
+character_event = {
+	id = nicknames.0
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_nickname = no
+		is_ruler = no
+		OR = {
+			prestige = 500
+			liege = { is_close_relative = ROOT }
+			trait = dragon_rider
+			trait = kingsguard
+			trait = master_warrior
+		}
+		NOT_mythical_creature_trigger = yes
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			60 = {	}
+			5 = {
+				trigger = { piety = 1000 }
+				random_list = {
+					5 = { give_nickname = nick_the_pious }
+					5 = { give_nickname = nick_the_holy }
+					5 = { give_nickname = nick_the_blessed }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = brave
+					OR = {
+						trait = wroth
+						combat_rating = 50
+					}
+					NOT = { trait = paranoid }
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_brave }
+					5 = { give_nickname = nick_the_fearless }
+					5 = { give_nickname = nick_the_bold }
+				}
+			}
+			5 = {
+				trigger = {
+					is_female = no
+					has_fashionable_groomed_trigger = yes
+				}
+				give_nickname = nick_the_effeminate
+			}
+			2 = {
+				trigger = { trait = wroth }
+				random_list = {
+					5 = { give_nickname = nick_the_ill_tempered }
+					5 = { give_nickname = nick_the_grim }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = gregarious
+					diplomacy = 10
+					NOT = { trait = cruel }
+					NOT = { trait = rude }
+					NOT = { trait = wroth }
+					NOR = {
+						trait = lisp
+						trait = stutter
+						trait = possessed
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_affable }
+					5 = { give_nickname = nick_the_jovial }
+					5 = { give_nickname = nick_the_jolly }
+					5 = { give_nickname = nick_the_merry }
+					5 = { give_nickname = nick_the_eloquent }
+					5 = { give_nickname = nick_brightsmile }
+				}
+			}
+			1 = {
+				trigger = {
+					OR = {
+						trait = ugly
+						trait = harelip
+						trait = lisp
+						trait = leper
+						trait = maimed
+						trait = drunkard
+						trait = disfigured
+					}
+				}
+				give_nickname = nick_bluetooth
+			}
+			5 = {
+				trigger = {
+					father_even_if_dead = {
+						same_regnal_name = ROOT
+						NOT = { has_nickname = nick_the_younger }
+					}
+				}
+				give_nickname = nick_the_younger
+			}
+			5 = {
+				trigger = {
+					age < 25
+					has_fair_trait_trigger = yes
+				}
+				give_nickname = nick_the_youthful
+			}
+			5 = {
+				trigger = {
+					intrigue = 18
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_shadow }
+					5 = { give_nickname = nick_the_whisperer }
+					5 = { give_nickname = nick_the_wily }
+					5 = { give_nickname = nick_the_fox }
+					5 = { give_nickname = nick_the_spider }
+					5 = { give_nickname = nick_the_cunning }
+					5 = { give_nickname = nick_moonshadow }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = ruthless
+					NOT = { trait = kind }
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_ruthless }
+					5 = { give_nickname = nick_the_merciless }
+					5 = { give_nickname = nick_the_heartless }
+					2 = { give_nickname = nick_stoneheart }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = lunatic
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_mad }
+					5 = { give_nickname = nick_the_strange }
+					2 = { give_nickname = nick_the_madling }
+					5 = {
+						trigger = {
+							is_female = yes
+							is_married = no
+						}
+						give_nickname = nick_the_mad_maid
+					}
+				}
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_red
+			}
+			5 = {
+				trigger = {
+					learning < 5
+					is_smart_trigger = no
+				}
+				give_nickname = nick_the_clumsy
+			}
+			5 = {
+				trigger = { prestige = 2000 }
+				give_nickname = nick_the_legendary
+			}
+			5 = {
+				trigger = { is_evil_trigger = yes }
+				give_nickname = nick_the_evil
+			}
+			5 = {
+				trigger = {
+					trait = cruel
+					OR = {
+						trait = wroth
+						trait = ruthless
+						trait = lunatic
+						trait = impaler
+					}
+					NOT = { trait = just }
+					NOT = { trait = honorable }
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_tormentor }
+					5 = { give_nickname = nick_the_mutilator }
+					5 = { give_nickname = nick_the_depraved }
+					5 = { give_nickname = nick_the_monster }
+					5 = { give_nickname = nick_the_cruel }
+					5 = { give_nickname = nick_the_terrible }
+					5 = { give_nickname = nick_the_monstrous }
+					5 = { give_nickname = nick_the_weeper }
+					5 = { give_nickname = nick_the_unsmiling }
+					5 = { give_nickname = nick_the_barber }
+					5 = { give_nickname = nick_redhand }
+					5 = { give_nickname = nick_the_tormentor }
+					5 = { give_nickname = nick_the_twisted }
+					5 = { give_nickname = nick_the_soulless }
+					5 = { give_nickname = nick_the_red_smile }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = proud
+					trait = wroth
+				}
+				give_nickname = nick_the_arrogant
+			}
+			5 = {
+				trigger = {
+					trait = diligent
+					trait = ambitious
+				}
+				give_nickname = nick_the_able
+			}
+			5 = {
+				trigger = {
+					trait = charitable
+					trait = kind
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_kind }
+					2 = { give_nickname = nick_the_sweet }
+				}
+			}
+			5 = {
+				trigger = {
+					has_strong_nickname_prereq_trigger = yes
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_strong }
+					2 = { give_nickname = nick_the_bull }
+				}
+			}
+			5 = {
+				trigger = {
+					has_dumb_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_the_simple
+			}
+			5 = {
+				trigger = {
+					diplomacy = 10
+					intrigue = 10
+					NOT = { trait = bastard }
+					NOT = { trait = legit_bastard }
+					is_lowborn = no
+					OR = {
+						trait = grey_eminence
+						trait = intricate_webweaver
+						trait = elusive_shadow
+						trait = charismatic_negotiator
+						trait = brilliant_strategist
+						trait = skilled_tactician
+					}
+				}
+				give_nickname = nick_the_noble
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = one_eyed
+						trait = blinded
+						trait = blinded_age
+					}
+				}
+				give_nickname = nick_the_blind
+			}
+			5 = {
+				trigger = {
+					trait = kind
+					trait = gregarious
+					NOT = { trait = ruthless }
+				}
+				give_nickname = nick_the_gentle
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = bastard
+						trait = legit_bastard
+					}
+					is_female = no
+				}
+				give_nickname = nick_the_bastard
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = maimed
+						trait = one_handed
+					}
+				}
+				give_nickname = nick_half_hand
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = chaste
+						trait = celibate
+					}
+					piety = 50
+				}
+				give_nickname = nick_the_chaste
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = clubfooted
+						trait = inbred
+						trait = one_legged
+					}
+				}
+				give_nickname = nick_the_lame
+			}
+			5 = {
+				trigger = {
+					is_female = no
+					has_fair_trait_trigger = yes
+					has_unattractive_trait_trigger = no
+					age < 60
+				}
+				give_nickname = nick_the_handsome
+			}
+			5 = {
+				trigger = {
+					is_female = yes
+					has_fair_trait_trigger = yes
+					has_unattractive_trait_trigger = no
+					age < 40
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_fair }
+					5 = { give_nickname = nick_the_beautiful }
+				}
+			}
+			5 = {
+				trigger = {
+					OR = {
+						has_unattractive_trait_trigger = yes
+						trait = disfigured_AGOT
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_hideous }
+					5 = { give_nickname = nick_the_frog }
+					5 = { give_nickname = nick_the_repulsive }
+					5 = { give_nickname = nick_the_ugly }
+					1 = { give_nickname = nick_horror }
+					5 = { give_nickname = nick_cleftjaw }
+					2 = { give_nickname = nick_the_goat }
+					5 = { give_nickname = nick_the_twisted }
+					2 = { give_nickname = nick_the_ruined }
+				}
+			}
+			5 = {
+				trigger = {
+					age = 30
+					trait = is_fat
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_fat }
+					5 = { give_nickname = nick_the_gross }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = drunkard
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_drunkard }
+					5 = { give_nickname = nick_the_drunken }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = one_eyed
+				}
+				random_list = {
+					5 = { give_nickname = nick_one_eye }
+					5 = { give_nickname = nick_the_one_eyed }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = one_handed
+				}
+				random_list = {
+					5 = { give_nickname = nick_one_hand }
+					2 = { give_nickname = nick_stumphand }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = one_legged
+				}
+				give_nickname = nick_one_leg
+			}
+			5 = {
+				trigger = {
+					OR = {
+						is_weak_trigger = yes
+						trait = cancer
+						trait = infirm
+					}
+				}
+				give_nickname = nick_the_frail
+			}
+			5 = {
+				trigger = {
+					martial = 12
+					OR = {
+						is_strong_trigger = yes
+						trait = robust
+					}
+					OR = {
+						trait = cruel
+						trait = ruthless
+						trait = wroth
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_brute }
+					1 = { give_nickname = nick_spotted_butcher }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = stubborn
+					NOR = {
+						trait = gregarious
+						trait = just
+						trait = shy
+						trait = humble
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_mule }
+					5 = { give_nickname = nick_the_defiant }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = honorable
+					trait = content
+					trait = just
+				}
+				give_nickname = nick_the_loyal
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = disfigured_AGOT
+						trait = disfigured
+					}
+					trait = shy
+				}
+				give_nickname = nick_the_faceless
+			}
+			5 = {
+				trigger = {
+					OR = {
+						piety < -100
+						trait = possessed
+						is_any_kinslayer_trigger = yes
+						trait = excommunicated
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_accursed }
+					5 = { give_nickname = nick_the_wicked }
+					5 = { give_nickname = nick_the_bewitched }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = dragon_rider
+					OR = {
+						trait = skilled_warrior
+						trait = master_warrior
+						prestige = 2000
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_dragon }
+					5 = { give_nickname = nick_the_dragonlord }
+				}
+			}
+			5 = {
+				trigger = {
+					has_old_nickname_prereq_trigger = yes
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_old }
+					1 = { give_nickname = nick_the_grey }
+				}
+			}
+			5 = {
+				trigger = {
+					OR = {
+						is_imbecile_trigger = yes
+						trait = inbred
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_fool }
+					5 = { give_nickname = nick_the_lackwit }
+					5 = { give_nickname = nick_the_dim }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = hunchback
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_hunchback }
+					5 = { give_nickname = nick_the_humpback }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = scholar
+				}
+				give_nickname = nick_the_scholar
+			}
+			1 = {
+				trigger = {
+					has_black_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_the_black
+			}
+			5 = {
+				trigger = {
+					trait = poet
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_poet }
+					5 = { give_nickname = the_bard }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = humble
+					NOT = {
+						is_strong_trigger = yes
+						trait = gregarious
+						trait = proud
+					}
+					OR = {
+						trait = weak
+						trait = weak_1
+						trait = weak_2
+
+
+						trait = shy
+						trait = craven
+					}
+				}
+				give_nickname = nick_the_meek
+			}
+			5 = {
+				trigger = {
+					learning = 12
+					OR = {
+						trait = scholar
+						trait = erudite
+					}
+					NOR = {
+						is_imbecile_trigger = yes
+						is_dumb_trigger = yes
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_learned }
+					5 = { give_nickname = nick_the_reader }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = slothful
+					NOR = {
+						trait = ambitious
+						trait = diligent
+					}
+					OR = {
+						trait = content
+						trait = patient
+						trait = gluttonous
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_indolent }
+					5 = { give_nickname = nick_the_lazy }
+					5 = { give_nickname = nick_the_sleepy }
+				}
+
+			}
+			5 = {
+				trigger = {
+					trait = hedonist
+				}
+				give_nickname = nick_the_decadent
+			}
+			5 = {
+				trigger = {
+					trait = proud
+
+
+					OR = {
+						has_fashionable_groomed_trigger = yes
+						has_fair_trait_trigger = yes
+					}
+
+				}
+				give_nickname = nick_the_vain
+			}
+			5 = {
+				trigger = {
+					is_short_trigger = yes
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_short }
+					5 = { give_nickname = nick_the_imp }
+					5 = { give_nickname = nick_the_small }
+					2 = { give_nickname = nick_the_flea }
+					5 = { give_nickname = nick_the_tall } #irony
+				}
+			}
+			5 = {
+				trigger = {
+					is_any_kinslayer_trigger = yes
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_kinslayer }
+					5 = { give_nickname = nick_kin_killer }
+					2 = { give_nickname = nick_the_parricide }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = wroth
+					trait = brave
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_wild }
+					5 = { give_nickname = nick_the_rash }
+					5 = { give_nickname = nick_the_daring }
+					5 = { give_nickname = nick_the_fierce }
+				}
+			}
+			5 = {
+				trigger = {
+					combat_rating = 80
+					prestige = 350
+					NOT = { trait = craven }
+					NOT = { has_severe_disability_trigger = yes }
+				}
+				random_list = {
+					7 = { give_nickname = nick_the_warrior }
+					5 = { give_nickname = nick_greysteel }
+					1 = { give_nickname = nick_fireball }
+					5 = { give_nickname = nick_hardstone }
+					5 = { give_nickname = nick_breakspear }
+					5 = { give_nickname = nick_oakenfist }
+					5 = { give_nickname = nick_greatheart }
+					5 = { give_nickname = nick_the_neveryield }
+					5 = { give_nickname = nick_greycloak }
+					5 = { give_nickname = nick_longspear }
+					5 = { give_nickname = nick_shieldbreaker }
+					5 = { give_nickname = nick_thunderbolt }
+					5 = { give_nickname = nick_the_steelskin }
+					5 = { give_nickname = nick_the_woe }
+					5 = { give_nickname = nick_the_hammer }
+					5 = { give_nickname = nick_the_morningstar }
+					5 = { give_nickname = nick_oakenshield }
+					5 = { give_nickname = nick_blacksword }
+					5 = { give_nickname = nick_widowmaker }
+					5 = { give_nickname = nick_bloodborn }
+					5 = { give_nickname = nick_starfire }
+					5 = { give_nickname = nick_the_windrider }
+					2 = { give_nickname = nick_the_eagle }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = honorable
+					OR = {
+						trait = honest
+						trait = just
+					}
+				}
+				give_nickname = nick_the_honorable
+			}
+			5 = {
+				trigger = {
+					trait = shy
+					trait = content
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_quiet }
+					5 = { give_nickname = nick_the_meek }
+					5 = { give_nickname = nick_the_dour }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = honest
+					trait = trusting
+				}
+				give_nickname = nick_the_truthful
+			}
+			5 = {
+				trigger = {
+					trait = ambitious
+					trait = envious
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_ambitious }
+					2 = { give_nickname = nick_the_bitter }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = just
+					trait = zealous
+				}
+				give_nickname = nick_the_righteous
+			}
+			5 = {
+				trigger = {
+					trait = proud
+					trait = rude
+				}
+				give_nickname = nick_the_pompous
+			}
+			2 = {
+				trigger = {
+					trait = homosexual
+					is_female = no
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_queer }
+					5 = { give_nickname = nick_the_peculiar }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = genius
+					OR = {
+						trait = elusive_shadow
+						trait = grey_eminence
+						trait = midas_touched
+						trait = brilliant_strategist
+						trait = mastermind_theologian
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_brilliant }
+					5 = { give_nickname = nick_the_clever }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = shy
+					trait = paranoid
+				}
+				give_nickname = nick_the_recluse
+			}
+			5 = {
+				trigger = {
+					trait = clubfooted
+				}
+				give_nickname = nick_the_clubfoot
+			}
+			5 = {
+				trigger = {
+					trait = fire_obsessed
+				}
+				give_nickname = nick_the_firegazer
+			}
+			5 = {
+				trigger = {
+					has_fashionable_groomed_trigger = yes
+					NOT = { has_ugly_trait_trigger = yes }
+				}
+				give_nickname = nick_the_elegant
+			}
+			2 = {
+				trigger = {
+					trait = rude
+				}
+				give_nickname = nick_the_rude
+			}
+			2 = {
+				trigger = {
+					trait = greyscale_scarred
+				}
+				give_nickname = nick_stoneface
+			}
+			5 = {
+				trigger = {
+					is_strong_trigger = yes
+					trait = tall
+					combat_rating = 60
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_mountain_that_rides }
+					5 = { give_nickname = nick_the_titan }
+					5 = { give_nickname = nick_the_mighty }
+					5 = { give_nickname = nick_the_giant }
+					5 = { give_nickname = nick_bonebreaker }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = honorable
+					OR = {
+						trait = knight
+						trait = trained_warrior
+						trait = skilled_warrior
+						trait = master_warrior
+					}
+				}
+				give_nickname = nick_the_gallant
+			}
+			5 = {
+				trigger = {
+					trait = knight
+					NOT = { religion = the_seven }
+					NOT = { father_even_if_dead = { religion = the_seven } }
+				}
+				give_nickname = nick_the_knight
+			}
+			5 = {
+				trigger = {
+					NOT = { culture_group = valyrian }
+					graphical_culture = valyriangfx
+				}
+				random_list = {
+					5 = { give_nickname = nick_silverhair }
+					2 = { give_nickname = nick_palehair }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = greensight
+					OR = {
+						trait = wolf
+						trait = crow
+					}
+				}
+				give_nickname = nick_the_skinchanger
+			}
+			2 = {
+				trigger = {
+					OR = {
+						trait = tall
+						trait = is_fat
+					}
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_tall }
+					2 = { give_nickname = nick_the_long }
+					1 = {
+						trigger = { is_female = no }
+						give_nickname = nick_the_big_man
+					}
+					5 = { give_nickname = nick_the_small } #irony
+				}
+
+			}
+			5 = {
+				trigger = {
+					is_crippled_trigger = yes
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_broken }
+					2 = { give_nickname = nick_the_limp }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = lustful
+					is_female = no
+					OR = {
+						trait = cruel
+						trait = arbitrary
+					}
+					NOR = {
+						trait = just
+						trait = kind
+						trait = honorable
+					}
+					is_ruler = no
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_rapist }
+					5 = { give_nickname = nick_the_raper }
+					5 = { give_nickname = nick_maidensbane }
+					5 = { give_nickname = nick_whoresbane }
+					2 = { give_nickname = nick_the_savage }
+					1 = { give_nickname = nick_the_sheep_lover }
+				}
+			}
+			5 = {
+				trigger = {
+					trait = knight
+					trait = homosexual
+					is_female = no
+				}
+				give_nickname = nick_the_knight_of_kisses
+			}
+			5 = {
+				trigger = {
+					trait = kingsguard
+					is_strong_trigger = yes
+				}
+				give_nickname = nick_the_white_bull
+			}
+			5 = {
+				trigger = {
+					is_female = yes
+					age = 18
+					is_virgin_trigger = yes
+					is_ascetic_trigger = no
+				}
+				give_nickname = nick_the_maid
+			}
+			5 = {
+				trigger = {
+					trait = kingsguard
+					OR = {
+						trait = bastard
+						trait = legit_bastard
+					}
+				}
+				give_nickname = nick_the_white_bastard
+			}
+			2 = {
+				trigger = {
+					trait = lustful
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_lusty }
+					2 = { give_nickname = nick_the_virile }
+				}
+			}
+			5 = {
+				trigger = {
+					has_red_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_the_red
+			}
+			5 = {
+				give_nickname = nick_the_purple
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = dragon_dreams
+						trait = greensight
+					}
+				}
+				give_nickname = nick_the_dreamer
+			}
+			5 = {
+				give_nickname = nick_redback
+			}
+			2 = {
+				trigger = {
+					trait = greedy
+					NOT = { trait = just }
+					NOT = { trait = honorable }
+				}
+				random_list = {
+					5 = { give_nickname = nick_the_niggardly }
+					2 = { give_nickname = nick_the_haggler }
+				}
+			}
+			5 = {
+				give_nickname = nick_the_mummer
+			}
+			5 = {
+				give_nickname = nick_the_painter
+			}
+			5 = {
+				give_nickname = nick_the_late
+			}
+			5 = {
+				give_nickname = nick_the_yellow
+			}
+			5 = {
+				give_nickname = nick_the_green
+			}
+			5 = {
+				give_nickname = nick_the_orange
+			}
+			5 = {
+				give_nickname = nick_the_spotted
+			}
+			5 = {
+				give_nickname = nick_the_white
+			}
+		}
+	}
+}
+
+#nicknames.1 - Lannister/Reyne/Osgrey nicknames.
+character_event = {
+	id = nicknames.1
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			dynasty = 190
+			dynasty = 197
+			dynasty = 235
+		}
+		has_nickname = no
+	}
+
+	option = {
+		name = OK
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_lion
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_lion
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_lion
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_lion
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_lion
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_lion
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_lion
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+
+				random_list = {
+					2 = { give_nickname = nick_the_charming_lion }
+					2 = {
+						trigger = { dynasty = 190 }
+						give_nickname = nick_the_golden
+					}
+				}
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_lion
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_lion
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_lion
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_lion
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_lion #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				random_list = {
+					2 = { give_nickname = nick_the_delicate_lion }
+					2 = { give_nickname = nick_the_toothless_lion }
+				}
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_lion #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_lion #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_lion
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				random_list = {
+					2 = { give_nickname = nick_the_lionknight  }
+					2 = {
+						trigger = { dynasty = 190 }
+						give_nickname = nick_the_crimsonknight
+					}
+					2 = {
+						trigger = { dynasty = 235 }
+						give_nickname = nick_the_chequyknight
+					}
+					2 = {
+						trigger = { dynasty = 197 }
+						give_nickname = nick_the_red_lion
+					}
+				}
+			}
+			2 = {
+				trigger = {
+					is_female = yes
+					OR = {
+						prestige = 3000
+						martial = 18
+						diplomacy = 18
+						trait = master_warrior
+					}
+				}
+				give_nickname = nick_the_lioness
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = brave
+						is_strong_trigger = yes
+					}
+					OR = {
+						trait = skilled_tactician
+						trait = brilliant_strategist
+						trait = skilled_warrior
+						trait = master_warrior
+					}
+					NOT = {
+						is_weak_trigger = yes
+					}
+				}
+				give_nickname = nick_the_lionheart
+			}
+		}
+	}
+}
+
+#nicknames.2 - Stark nicknames.
+character_event = {
+	id = nicknames.2
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 59
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_wolf
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_wolf
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_wolf
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_wolf
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_wolf
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_wolf
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_wolf
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_wolf
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_wolf
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_wolf
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_wolf
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_wolf
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_wolf #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_wolf
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_wolf #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_wolf #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_wolf
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wolfknight
+			}
+		}
+	}
+}
+
+#nicknames.3 - Targaryan nicknames.
+character_event = {
+	id = nicknames.3
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				high_valyrian_dynasty_trigger = yes
+				NOT = { dynasty = 52 } #velaryon
+			}
+			dynasty = 153 #Vance
+		}
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_dragon
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_dragon
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_dragon
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_dragon
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_dragon
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_dragon
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				random_list = {
+					5 = { give_nickname = nick_the_strong_dragon }
+					5 = { give_nickname = nick_the_strong_dragon2 }
+				}
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_dragon
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_dragon
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_dragon
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_dragon
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_dragon
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_dragon #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_dragon
+			}
+			5 = {
+				trigger = {
+					#has_silver_nickname_prereq_trigger = yes #silver targs are not special, great instead
+					prestige = 2000
+				}
+				give_nickname = nick_the_suspicious_dragon #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_dragon #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_dragon
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				random_list = {
+					5 = { give_nickname = nick_the_dragonknightB }
+					5 = { give_nickname = nick_the_fireknight }
+				}
+			}
+		}
+	}
+}
+
+#nicknames.4 - Baratheon/Durrandon nicknames.
+character_event = {
+	id = nicknames.4
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+
+		OR = {
+			dynasty = 317
+			dynasty = 1544
+		}
+		has_nickname = no
+
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_stag
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_stag
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_stag
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_stag
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_stag
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_stag
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_stag
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_stag
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_stag
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_stag
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_stag
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_stag
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_stag #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_stag
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_stag #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_stag #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_storm
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_stagknight
+			}
+		}
+	}
+}
+
+#nicknames.5 - Martell nicknames.
+character_event = {
+	id = nicknames.5
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 1
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_spear
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_spear
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_spear
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_spear
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_spear
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_spear
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_spear
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_spear
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_spear
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_spear
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_spear
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_spear
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_spear #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_spear
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_spear #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_spear #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_spear
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				random_list = {
+					5 = { give_nickname = nick_the_spearknight }
+					5 = { give_nickname = nick_the_sunknight }
+				}
+			}
+		}
+	}
+}
+
+#nicknames.6 - Tyrell nicknames.
+character_event = {
+	id = nicknames.6
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 253
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_rose
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_rose
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_rose
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_rose
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_rose
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_rose
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_rose
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_rose
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_rose
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_rose
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_rose
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_rose
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_rose #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_rose
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_rose #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_rose #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_rose
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				random_list = {
+					5 = {
+						give_nickname = nick_the_roseknight
+					}
+					5 = {
+						give_nickname = nick_the_knight_of_flowersB
+					}
+				}
+			}
+		}
+	}
+}
+
+#nicknames.7 - Tully nicknames.
+character_event = {
+	id = nicknames.7
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+
+		dynasty = 159
+		has_nickname = no
+
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_fish
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_fish
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_fish
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_fish
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_fish
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_fish
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_fish
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_fish
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_fish
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_fish
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_fish
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_fish
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_fish #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_fish
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_fish #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_fish #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_fish
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_fishknight
+			}
+		}
+	}
+}
+
+#nicknames.8 - Greyjoy nicknames.
+character_event = {
+	id = nicknames.8
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 107
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_cracken
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_cracken
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_cracken
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_cracken
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_cracken
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_cracken
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_cracken
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_cracken
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_cracken
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_cracken
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_cracken
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_cracken
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_cracken #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_cracken
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_cracken #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_cracken #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_cracken
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_krakenknight
+			}
+		}
+
+	}
+}
+
+#nicknames.9 - Florent nicknames.
+character_event = {
+	id = nicknames.9
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+
+		dynasty = 281
+		has_nickname = no
+
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_fox
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_fox
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_fox
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_fox
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_fox
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_fox
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_fox
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_fox
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_fox
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_fox
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_fox
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_fox
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_fox #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_fox
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_fox #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_fox #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_fox
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_foxknight
+			}
+		}
+	}
+}
+
+#nicknames.10 - Arryn nicknames.
+character_event = {
+	id = nicknames.10
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 178
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_falcon
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_falcon
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_falcon
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_falcon
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_falcon
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_falcon
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_falcon
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_falcon
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_falcon
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_falcon
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_falcon
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_falcon
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_falcon #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_falcon
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_falcon #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_falcon #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_falcon
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_falconknight
+			}
+		}
+	}
+}
+
+#nicknames.11 - Mormont nicknames.
+character_event = {
+	id = nicknames.11
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 102 #Mormont
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_bear
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_bear
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_bear
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_bear
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_bear
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_bear
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				random_list = {
+					5 = { give_nickname = nick_the_strong_bear }
+					5 = {
+						trigger = { is_female = yes }
+						give_nickname = nick_the_shebear
+					}
+				}
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_bear
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_bear
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_bear
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_bear
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_bear
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_bear #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_bear
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_bear #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_bear #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_bear
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_bearknight
+			}
+		}
+	}
+}
+
+#nicknames.12 - Manderly nicknames.
+character_event = {
+	id = nicknames.12
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 80
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		if = {
+			limit = {
+				is_female = no
+			}
+			random_list = {
+				30 = {
+				}
+				5 = {
+					trigger = { has_black_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_black_merman
+				}
+				5 = {
+					trigger = { has_white_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_white_merman
+				}
+				5 = {
+					trigger = { has_crazed_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_crazed_merman
+				}
+				2 = {
+					trigger = { has_wroth_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_wild_merman
+				}
+				5 = {
+					trigger = { has_red_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_harmless_merman
+				}
+				5 = {
+					trigger = { has_big_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_big_merman
+				}
+				5 = {
+					trigger = { has_strong_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_strong_merman
+				}
+				5 = {
+					trigger = { has_fair_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_charming_merman
+				}
+				2 = {
+					trigger = { has_ugly_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_grotesque_merman
+				}
+				5 = {
+					trigger = { has_little_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_little_merman
+				}
+				5 = {
+					trigger = { has_genius_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_wise_merman
+				}
+				5 = {
+					trigger = { has_dumb_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_simple_merman
+				}
+				5 = {
+					trigger = { has_dark_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_learned_merman #Dark
+				}
+				5 = {
+					trigger = { has_weak_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_delicate_merman
+				}
+				5 = {
+					trigger = { has_silver_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_suspicious_merman #Silver
+				}
+				5 = {
+					trigger = { has_old_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_headstrong_merman #old
+				}
+				1 = {
+					trigger = { has_laughing_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_laughing_merman
+				}
+				5 = {
+					trigger = { has_warrior_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_mermanknight
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_female = yes
+			}
+			random_list = {
+				30 = {
+				}
+				5 = {
+					trigger = { has_black_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_black_mermaid
+				}
+				5 = {
+					trigger = { has_white_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_white_mermaid
+				}
+				5 = {
+					trigger = { has_crazed_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_crazed_mermaid
+				}
+				2 = {
+					trigger = { has_wroth_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_wild_mermaid
+				}
+				5 = {
+					trigger = { has_red_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_harmless_mermaid
+				}
+				5 = {
+					trigger = { has_big_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_big_mermaid
+				}
+				5 = {
+					trigger = { has_strong_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_strong_mermaid
+				}
+				5 = {
+					trigger = { has_fair_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_charming_mermaid
+				}
+				2 = {
+					trigger = { has_ugly_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_grotesque_mermaid
+				}
+				5 = {
+					trigger = { has_little_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_little_mermaid
+				}
+				5 = {
+					trigger = { has_genius_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_wise_mermaid
+				}
+				5 = {
+					trigger = { has_dumb_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_simple_mermaid
+				}
+				5 = {
+					trigger = { has_dark_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_learned_mermaid #Dark
+				}
+				5 = {
+					trigger = { has_weak_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_delicate_mermaid
+				}
+				5 = {
+					trigger = { has_silver_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_suspicious_mermaid #Silver
+				}
+				5 = {
+					trigger = { has_old_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_headstrong_mermaid #old
+				}
+				1 = {
+					trigger = { has_laughing_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_laughing_mermaid
+				}
+				5 = {
+					trigger = { has_warrior_nickname_prereq_trigger = yes }
+					give_nickname = nick_the_mermaidknight
+				}
+			}
+		}
+	}
+}
+
+#nicknames.13 - Hightower nicknames.
+character_event = {
+	id = nicknames.13
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 285
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_tower
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_tower
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_tower
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_tower
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_tower
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_tower
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_tower
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_tower
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_tower
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_tower
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_tower
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_tower
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_tower #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_tower
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_tower #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_tower #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_tower
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_towerknight
+			}
+		}
+	}
+}
+
+
+#nicknames.14 - Cunington nicknames.
+character_event = {
+	id = nicknames.14
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 316
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_griffin
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_griffin
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_griffin
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_griffin
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_griffin
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_griffin
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_griffin
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_griffin
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_griffin
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_griffin
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_griffin
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_griffin
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_griffin #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_griffin
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_griffin #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_griffin #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_griffin
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_griffinknight
+			}
+		}
+	}
+}
+
+
+#nicknames.15 - Oakheart nicknames.
+character_event = {
+	id = nicknames.15
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 237
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_oak
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_oak
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_oak
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_oak
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_oak
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_oak
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_oak
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_oak
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_oak
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_oak
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_oak
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_oak
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_oak #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_oak
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_oak #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_oak #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_oak
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_oakenknight
+			}
+		}
+	}
+}
+
+
+#nicknames.16 - Fossoway (both branches) nicknames.
+character_event = {
+	id = nicknames.16
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			dynasty = 261
+			dynasty = 262
+		}
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_apple
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_apple
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_apple
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_apple
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_apple
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_apple
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_apple
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_apple
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_apple
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_apple
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_apple
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_apple
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_apple #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_apple
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_apple #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_apple #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_apple
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_appleknight
+			}
+		}
+	}
+}
+
+
+#nicknames.17 - Crackehall nicknames.
+character_event = {
+	id = nicknames.17
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 227
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_boar
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_boar
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_boar
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_boar
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_boar
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_boar
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_boar
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_boar
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_boar
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_boar
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_boar
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_boar
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_boar #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_boar
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_boar #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_boar #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_boar
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_boarknight
+			}
+		}
+	}
+}
+
+
+#nicknames.18 - Clegane nicknames.
+character_event = {
+	id = nicknames.18
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 230
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_hound
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_hound
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_hound
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_hound
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_hound
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_hound
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_hound
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_hound
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_hound
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_hound
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_hound
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_hound
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_hound #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_hound
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_hound #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_hound #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_hound
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_houndknight
+			}
+		}
+	}
+}
+
+
+#nicknames.19 - Redwyne nicknames.
+character_event = {
+	id = nicknames.19
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 288
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_thorn
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_thorn
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_thorn
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_thorn
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_thorn
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_thorn
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_thorn
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_thorn
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_thorn
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_thorn
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_thorn
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_thorn
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_thorn #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_thorn
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_thorn #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_thorn #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_thorn
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_thornknight
+			}
+		}
+	}
+}
+
+#nicknames.20 - Eastermont nicknames.
+character_event = {
+	id = nicknames.20
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 330
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_turtle
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_turtle
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_turtle
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_turtle
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_turtle
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_turtle
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_turtle
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_turtle
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_turtle
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_turtle
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_turtle
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_turtle
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_turtle #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_turtle
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_turtle #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_turtle #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_turtle
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_turtleknight
+			}
+		}
+	}
+}
+
+#nicknames.21 - Swann nicknames.
+character_event = {
+	id = nicknames.21
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 306
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_swan
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_swan
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_swan
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_swan
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_swan
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_swan
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_swan
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_swan
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_swan
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_swan
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_swan
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_swan
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_swan #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_swan
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_swan #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_swan #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_swan
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_swanknight
+			}
+		}
+	}
+}
+
+#nicknames.22 - Cerwyn nicknames.
+character_event = {
+	id = nicknames.22
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 61
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_axe
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_axe
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_axe
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_axe
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_axe
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_axe
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_axe
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_axe
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_axe
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_axe
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_axe
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_axe
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_axe #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_axe
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_axe #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_axe #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_axe
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_axeknight
+			}
+		}
+	}
+}
+
+#nicknames.23 - Goodbrother nicknames.
+character_event = {
+	id = nicknames.23
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 112
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_warhorn
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_warhorn
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_warhorn
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_warhorn
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_warhorn
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_warhorn
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_warhorn
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_warhorn
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_warhorn
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_warhorn
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_warhorn
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_warhorn
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_warhorn #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_warhorn
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_warhorn #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_warhorn #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_warhorn
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_warhornknight
+			}
+		}
+	}
+}
+
+#nicknames.24 - Harlaw nicknames.
+character_event = {
+	id = nicknames.24
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 122
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_scythe
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_scythe
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_scythe
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_scythe
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_scythe
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_scythe
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_scythe
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_scythe
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_scythe
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_scythe
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_scythe
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_scythe
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_scythe #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_scythe
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_scythe #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_scythe #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_scythe
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_scytheknight
+			}
+		}
+	}
+}
+
+#nicknames.25 - Saltcliffe nicknames.
+character_event = {
+	id = nicknames.25
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 109
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_snake
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_snake
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_snake
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_snake
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_snake
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_snake
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_snake
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_snake
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_snake
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_snake
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_snake
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_snake
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_snake #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_snake
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_snake #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_snake #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_snake
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_snakeknight
+			}
+		}
+	}
+}
+
+ #nicknames.26 - Mooton nicknames.
+character_event = {
+	id = nicknames.26
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 138
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_salmon
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_salmon
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_salmon
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_salmon
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_salmon
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_salmon
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_salmon
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_salmon
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_salmon
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_salmon
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_salmon
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_salmon
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_salmon #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_salmon
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_salmon #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_salmon #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_salmon
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_salmonknight
+			}
+		}
+	}
+}
+
+#nicknames.27 - Vypren nicknames.
+character_event = {
+	id = nicknames.27
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 131
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_frog
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_frog
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_frog
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_frog
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_frog
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_frog
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_frog
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_frog
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_frog
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_frog
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_frog
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_frog
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_frog #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_frog
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_frog #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_frog #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_frog
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_frogknight
+			}
+		}
+	}
+}
+
+#nicknames.28 - Whent/Lothston nicknames.
+character_event = {
+	id = nicknames.28
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			dynasty = 146
+			dynasty = 355
+		}
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_bat
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_bat
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_bat
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_bat
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_bat
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_bat
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_bat
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_bat
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_bat
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_bat
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_bat
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_bat
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_bat #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_bat
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_bat #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_bat #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_bat
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_batknight
+			}
+		}
+	}
+}
+
+#nicknames.29 - Belmore nicknames.
+character_event = {
+	id = nicknames.29
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 161
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_bell
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_bell
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_bell
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_bell
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_bell
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_bell
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_bell
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_bell
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_bell
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_bell
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_bell
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_bell
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_bell #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_bell
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_bell #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_bell #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_bell
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_bellknight
+			}
+		}
+	}
+}
+
+#nicknames.30 - Hunter nicknames.
+character_event = {
+	id = nicknames.30
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 177
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_arrow
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_arrow
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_arrow
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_arrow
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_arrow
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_arrow
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_arrow
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_arrow
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_arrow
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_arrow
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_arrow
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_arrow
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_arrow #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_arrow
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_arrow #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_arrow #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_arrow
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_arrowknight
+			}
+		}
+	}
+}
+
+#nicknames.31 - Bar Emmon nicknames.
+character_event = {
+	id = nicknames.31
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 49
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_swordfish
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_swordfish
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_swordfish
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_swordfish
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_swordfish
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_swordfish
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_swordfish
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_swordfish
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_swordfish
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_swordfish
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_swordfish
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_swordfish
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_swordfish #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_swordfish
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_swordfish #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_swordfish #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_swordfish
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_swordfishknight
+			}
+		}
+	}
+}
+
+#nicknames.32 - Velaryon nicknames.
+character_event = {
+	id = nicknames.32
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 52
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_seahorse
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_seahorse
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_seahorse
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_seahorse
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_seahorse
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_seahorse
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_seahorse
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_seahorse
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_seahorse
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_seahorse
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_seahorse
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_seahorse
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_seahorse #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_seahorse
+			}
+			5 = {
+				trigger = {
+					#has_silver_nickname_prereq_trigger = yes #silver velaryons are not special, great instead
+					prestige = 2000
+				}
+				give_nickname = nick_the_suspicious_seahorse #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_seahorse #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_seahorse
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_seahorseknight
+			}
+		}
+	}
+}
+
+#nicknames.33 - Brax nicknames.
+character_event = {
+	id = nicknames.33
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 216
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_unicorn
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_unicorn
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_unicorn
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_unicorn
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_unicorn
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_unicorn
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_unicorn
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_unicorn
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_unicorn
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_unicorn
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_unicorn
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_unicorn
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_unicorn #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_unicorn
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_unicorn #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_unicorn #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_unicorn
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_unicornknight
+			}
+		}
+	}
+}
+
+#nicknames.34 - Lydden nicknames.
+character_event = {
+	id = nicknames.34
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 217
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_badger
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_badger
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_badger
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_badger
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_badger
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_badger
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_badger
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_badger
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_badger
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_badger
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_badger
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_badger
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_badger #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_badger
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_badger #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_badger #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_badger
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_badgerknight
+			}
+		}
+	}
+}
+
+#nicknames.35 - westerling nicknames.
+character_event = {
+	id = nicknames.35
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 199
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_shell
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_shell
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_shell
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_shell
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_shell
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_shell
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_shell
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_shell
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_shell
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_shell
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_shell
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_shell
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_shell #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_shell
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_shell #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_shell #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_shell
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_shellknight
+			}
+		}
+	}
+}
+
+#nicknames.36 - Prester nicknames.
+character_event = {
+	id = nicknames.36
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 196
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_ox
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_ox
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_ox
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_ox
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_ox
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_ox
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_ox
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_ox
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_ox
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_ox
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_ox
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_ox
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_ox #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_ox
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_ox #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_ox #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_ox
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_oxknight
+			}
+		}
+	}
+}
+
+#nicknames.37 - Serrett nicknames.
+character_event = {
+	id = nicknames.37
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 221
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_peacock
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_peacock
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_peacock
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_peacock
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_peacock
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_peacock
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_peacock
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_peacock
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_peacock
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_peacock
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_peacock
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_peacock
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_peacock #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_peacock
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_peacock #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_peacock #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_peacock
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_peacockknight
+			}
+		}
+	}
+}
+
+#nicknames.38 - Cafferen nicknames.
+character_event = {
+	id = nicknames.38
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 310
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_fawn
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_fawn
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_fawn
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_fawn
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_fawn
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_fawn
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_fawn
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_fawn
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_fawn
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_fawn
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_fawn
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_fawn
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_fawn #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_fawn
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_fawn #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_fawn #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_fawn
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_fawnknight
+			}
+		}
+	}
+}
+
+#nicknames.39 - Dondarion nicknames.
+character_event = {
+	id = nicknames.39
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+
+		dynasty = 303
+		has_nickname = no
+
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_lightning
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_lightning
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_lightning
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_lightning
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_lightning
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_lightning
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_lightning
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_lightning
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_lightning
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_lightning
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_lightning
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_lightning
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_lightning #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_lightning
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_lightning #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_lightning #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_lightning
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_lightningknight
+			}
+		}
+	}
+}
+
+#nicknames.40 - Ambrose nicknames.
+character_event = {
+	id = nicknames.40
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 297
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_ant
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_ant
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_ant
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_ant
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_ant
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_ant
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_ant
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_ant
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_ant
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_ant
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_ant
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_ant
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_ant #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_ant
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_ant #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_ant #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_ant
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_antknight
+			}
+		}
+	}
+}
+
+#nicknames.41 - Caswell nicknames.
+character_event = {
+	id = nicknames.41
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 264
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_centaur
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_centaur
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_centaur
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_centaur
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_centaur
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_centaur
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_centaur
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_centaur
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_centaur
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_centaur
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_centaur
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_centaur
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_centaur #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_centaur
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_centaur #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_centaur #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_centaur
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_centaurknight
+			}
+		}
+	}
+}
+
+#nicknames.42 - Beesbury nicknames.
+character_event = {
+	id = nicknames.42
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 282
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_bee
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_bee
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_bee
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_bee
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_bee
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_bee
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_bee
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_bee
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_bee
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_bee
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_bee
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_bee
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_bee #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_bee
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_bee #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_bee #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_bee
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_beeknight
+			}
+		}
+	}
+}
+
+#nicknames.43 - Mullendore nicknames.
+character_event = {
+	id = nicknames.43
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 290
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_butterfly
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_butterfly
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_butterfly
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_butterfly
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_butterfly
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_butterfly
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_butterfly
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_butterfly
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_butterfly
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_butterfly
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_butterfly
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_butterfly
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_butterfly #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_butterfly
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_butterfly #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_butterfly #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_butterfly
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_butterflyknight
+			}
+		}
+	}
+}
+
+#nicknames.44 - Webber nicknames.
+character_event = {
+	id = nicknames.44
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 238
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_spider
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_spider
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_spider
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_spider
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_spider
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_spider
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_spider
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_spider
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_spider
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_spider
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_spider
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_spider
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_spider #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_spider
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_spider #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_spider #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_spider
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_spiderknight
+			}
+		}
+	}
+}
+
+#nicknames.45 - Varner nicknames.
+character_event = {
+	id = nicknames.45
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 258
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_weasel
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_weasel
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_weasel
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_weasel
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_weasel
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_weasel
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_weasel
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_weasel
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_weasel
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_weasel
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_weasel
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_weasel
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_weasel #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_weasel
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_weasel #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_weasel #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_weasel
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_weaselknight
+			}
+		}
+	}
+}
+
+#nicknames.46 - Qorgyle nicknames.
+character_event = {
+	id = nicknames.46
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 15
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_scorpion
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_scorpion
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_scorpion
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_scorpion
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_scorpion
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_scorpion
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_scorpion
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_scorpion
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_scorpion
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_scorpion
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_scorpion
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_scorpion
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_scorpion #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_scorpion
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_scorpion #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_scorpion #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_scorpion
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_scorpionknight
+			}
+		}
+	}
+}
+
+#nicknames.47 - Vaith nicknames.
+character_event = {
+	id = nicknames.47
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 8
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_leopard
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_leopard
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_leopard
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_leopard
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_leopard
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_leopard
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_leopard
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_leopard
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_leopard
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_leopard
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_leopard
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_leopard
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_leopard #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_leopard
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_leopard #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_leopard #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_leopard
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_leopardknight
+			}
+		}
+	}
+}
+
+#nicknames.48 - Mallister nicknames.
+character_event = {
+	id = nicknames.48
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 128
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_eagle
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_eagle
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_eagle
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_eagle
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_eagle
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_eagle
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_eagle
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_eagle
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_eagle
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_eagle
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_eagle
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_eagle
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_eagle #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_eagle
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_eagle #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_eagle #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_eagle
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_eagleknight
+			}
+		}
+	}
+}
+
+#nicknames.49 - Deddings nicknames.
+character_event = {
+	id = nicknames.49
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 211
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_ram
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_ram
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_ram
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_ram
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_ram
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_ram
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_ram
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_ram
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_ram
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_ram
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_ram
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_ram
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_ram #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_ram
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_ram #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_ram #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_ram
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_ramknight
+			}
+		}
+	}
+}
+
+#nicknames.50 - Lolliston nicknames.
+character_event = {
+	id = nicknames.50
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 135
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_barrel
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_barrel
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_barrel
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_barrel
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_barrel
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_barrel
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_barrel
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_barrel
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_barrel
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_barrel
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_barrel
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_barrel
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_barrel #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_barrel
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_barrel #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_barrel #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_barrel
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_barrelknight
+			}
+		}
+	}
+}
+
+#nicknames.51 - Piper nicknames.
+character_event = {
+	id = nicknames.51
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 157
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_pipe
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_pipe
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_pipe
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_pipe
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_pipe
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_pipe
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_pipe
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_pipe
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_pipe
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_pipe
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_pipe
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_pipe
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_pipe #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_pipe
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_pipe #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_pipe #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_pipe
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_pipeknight
+			}
+		}
+	}
+}
+
+#nicknames.52 - Brune nicknames.
+character_event = {
+	id = nicknames.52
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 42
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_paw
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_paw
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_paw
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_paw
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_paw
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_paw
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_paw
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_paw
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_paw
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_paw
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_paw
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_paw
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_paw #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_paw
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_paw #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_paw #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_paw
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_pawknight
+			}
+		}
+	}
+}
+#nicknames.53 - Dayne nicknames.
+character_event = {
+	id = nicknames.53
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		dynasty = 16
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_star
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_star
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_star
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_star
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_star
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_star
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_star
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_star
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_star
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_star
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_star
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_star
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_star #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_star
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_star #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_star #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_star
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_starknight
+			}
+		}
+	}
+}
+#nicknames.54 - Celtigar/Crab nicknames.
+character_event = {
+	id = nicknames.54
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			dynasty = 1197
+			dynasty = 50
+		}
+		has_nickname = no
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+			}
+			5 = {
+				trigger = { has_black_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_black_crab
+			}
+			5 = {
+				trigger = { has_white_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_white_crab
+			}
+			5 = {
+				trigger = { has_crazed_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crazed_crab
+			}
+			2 = {
+				trigger = { has_wroth_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wild_crab
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_harmless_crab
+			}
+			5 = {
+				trigger = { has_big_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_big_crab
+			}
+			5 = {
+				trigger = { has_strong_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_strong_crab
+			}
+			5 = {
+				trigger = { has_fair_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_charming_crab
+			}
+			2 = {
+				trigger = { has_ugly_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_grotesque_crab
+			}
+			5 = {
+				trigger = { has_little_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_little_crab
+			}
+			5 = {
+				trigger = { has_genius_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_wise_crab
+			}
+			5 = {
+				trigger = { has_dumb_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_simple_crab
+			}
+			5 = {
+				trigger = { has_dark_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_learned_crab #Dark
+			}
+			5 = {
+				trigger = { has_weak_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_delicate_crab
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_suspicious_crab #Silver
+			}
+			5 = {
+				trigger = { has_old_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_headstrong_crab #old
+			}
+			1 = {
+				trigger = { has_laughing_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_laughing_crab
+			}
+			5 = {
+				trigger = { has_warrior_nickname_prereq_trigger = yes }
+				give_nickname = nick_the_crabknight
+			}
+		}
+	}
+}
+###Hill Clanman###
+character_event = {
+	id = nicknames.55
+	desc = "Penis"
+
+	min_age = 16
+	only_capable = yes
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_nickname = no
+		culture = hill_clansman
+		is_lowborn = no
+		OR = {
+			is_ruler = yes
+			prestige = 500
+			liege = { is_close_relative = ROOT }
+			trait = dragon_rider
+			trait = kingsguard
+			trait = master_warrior
+		}
+		NOT_mythical_creature_trigger = yes
+	}
+
+	option = {
+		name = "OK"
+		random_list = {
+			50 = {
+			}
+			2 = {
+				trigger = {
+					dynasty_head = { character = ROOT }
+					higher_tier_than = BARON
+				}
+				give_nickname = nick_the_dynasty
+			}
+			2 = {
+				trigger = {
+					OR = {
+						trait = tall
+						trait = is_fat
+					}
+				}
+				give_nickname = nick_big_dynasty
+			}
+			2 = {
+				trigger = {
+					is_strong_trigger = no
+					is_weak_trigger = no
+					NOT = { trait = tall }
+					NOT = { trait = dwarf }
+					NOT = { trait = is_fat }
+					any_sibling = {
+						OR = {
+							trait = tall
+							trait = is_fat
+							is_strong_trigger = yes
+						}
+					}
+					any_sibling = {
+						OR = {
+							trait = dwarf
+							is_weak_trigger = yes
+						}
+					}
+				}
+				give_nickname = nick_middle_dynasty
+			}
+			2 = {
+				trigger = {
+					OR = {
+						trait = dwarf
+						is_weak_trigger = yes
+					}
+					NOT = { trait = tall }
+				}
+				random_list = {
+					5 = { give_nickname = nick_little_dynasty }
+					5 = { give_nickname = nick_wee_dynasty }
+				}
+			}
+			2 = {
+				trigger = {
+					has_strong_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_strong_dynasty
+			}
+			2 = {
+				trigger = {
+					OR = {
+						trait = clubfooted
+						trait = inbred
+						trait = one_legged
+						is_crippled_trigger = yes
+					}
+				}
+				give_nickname = nick_lame_dynasty
+			}
+			2 = {
+				trigger = {
+					trait = is_fat
+				}
+				give_nickname = nick_fat_dynasty
+			}
+			5 = {
+				trigger = {
+					age = 30
+					learning = 12
+					NOT = { trait = arbitrary }
+					NOT = { trait = wroth }
+					NOR = {
+						trait = imbecile
+						is_dumb_trigger = yes
+					}
+					NOT = { trait = inbred }
+					is_incapable = no
+					OR = {
+						is_smart_incl_genius_trigger = yes
+						trait = just
+						trait = patient
+						trait = scholar
+					}
+				}
+				give_nickname = nick_wise_dynasty
+			}
+			5 = {
+				trigger = {
+					piety = 50
+					trait = brave
+					OR = {
+						trait = hunter
+						trait = duelist
+						trait = wroth
+						is_strong_trigger = yes
+					}
+					NOT = {
+						trait = paranoid
+					}
+				}
+				give_nickname = nick_bold_dynasty
+			}
+			5 = {
+				trigger = {
+					ruled_years = 10
+					age < 20
+				}
+				give_nickname = nick_young_dynasty
+			}
+			5 = {
+				trigger = {
+					has_old_nickname_prereq_trigger = yes
+				}
+				random_list = {
+					5 = { give_nickname = nick_old_dynasty }
+					1 = { give_nickname = nick_grey_dynasty }
+				}
+			}
+			5 = {
+				trigger = {
+					ruled_years = 10
+					prestige = 3000
+				}
+				give_nickname = nick_great_dynasty
+			}
+			5 = {
+				trigger = {
+					has_black_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_black_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = greedy
+					trait = arbitrary
+				}
+				give_nickname = nick_bad_dynasty
+			}
+			2 = {
+				trigger = {
+					trait = rude
+				}
+				give_nickname = nick_rude_dynasty
+			}
+			5 = {
+				trigger = { has_silver_nickname_prereq_trigger = yes }
+				give_nickname = nick_silver_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = charitable
+					trait = just
+				}
+				give_nickname = nick_good_dynasty
+			}
+			2 = {
+				trigger = { trait = wroth }
+				give_nickname = nick_grim_dynasty
+			}
+			5 = {
+				trigger = { has_red_nickname_prereq_trigger = yes }
+				give_nickname = nick_red_dynasty
+			}
+			5 = {
+				trigger = { is_evil_trigger = yes }
+				give_nickname = nick_evil_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = charitable
+					trait = kind
+				}
+				give_nickname = nick_sweet_dynasty
+			}
+			5 = {
+				trigger = {
+					OR = {
+						trait = one_eyed
+						trait = blinded
+						trait = blinded_age
+					}
+				}
+				give_nickname = nick_blind_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = drunkard
+				}
+				give_nickname = nick_drunk_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = honorable
+					trait = content
+					trait = just
+				}
+				give_nickname = nick_loyal_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = dragon_rider
+					OR = {
+						trait = skilled_warrior
+						trait = master_warrior
+						prestige = 2000
+					}
+				}
+				give_nickname = nick_dragon_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = slothful
+					NOR = {
+						trait = ambitious
+						trait = diligent
+					}
+					OR = {
+						trait = content
+						trait = patient
+						trait = gluttonous
+					}
+				}
+				give_nickname = nick_lazy_dynasty
+			}
+			5 = {
+				trigger = {
+					trait = wroth
+					trait = brave
+				}
+				give_nickname = nick_wild_dynasty
+			}
+
+
+
+			2 = {
+				trigger = {
+					trait = greyscale_scarred
+				}
+				give_nickname = nick_stoneface
+			}
+			5 = {
+				trigger = {
+					is_strong_trigger = yes
+					trait = tall
+					combat_rating = 60
+				}
+				give_nickname = nick_giant_dynasty
+			}
+			5 = {
+				trigger = {
+					has_white_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_white_dynasty
+			}
+			5 = {
+				trigger = {
+					has_dark_nickname_prereq_trigger = yes
+				}
+				give_nickname = nick_dark_dynasty
+			}
+		}
+	}
+}
+#Remove 'the young nickname'
+character_event = {
+	id = nicknames.60
+
+	is_triggered_only = yes
+	min_age = 30
+	only_playable = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			has_nickname = nick_the_young
+			has_nickname = nick_the_young_eagle
+			has_nickname = nick_the_green_warrior
+			has_nickname = nick_the_warrior_child
+			has_nickname = nick_the_young_conqueror
+			has_nickname = nick_young_dynasty
+			has_nickname = nick_the_young_dragon
+			has_nickname = nick_the_young_wolf
+			has_nickname = nick_the_young_falcon
+		}
+	}
+
+	immediate = {
+		remove_nickname = yes
+	}
+
+	option = {
+		name = "OK"
+	}
+}

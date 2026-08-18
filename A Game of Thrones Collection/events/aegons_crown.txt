@@ -1,0 +1,169 @@
+###Aegon's Crown events
+
+namespace = aegons_crown
+
+character_event = {
+	id = aegons_crown.1
+	desc = EVTDESCaegons_crown.1
+	title = "EVTTITLEaegons_crown.1"
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_game_rule = { name = aegons_crown value = on }
+		k_dorne = {
+			holder_scope = {
+				dynasty = 1
+				NOT = { has_character_flag = aegons_crown_event }
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				dynasty = 496
+				NOT = { has_artifact = aegons_crown }
+			}
+		}
+		NOT = { has_global_flag = aegons_crown_resolved }
+
+	}
+
+	immediate = {
+		k_dorne = {
+			holder_scope = {
+				set_character_flag = aegons_crown_event
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTAaegons_crown.1
+		ai_chance = { factor = 100 }
+
+		k_dorne = {
+			holder_scope = { narrative_event = { id = aegons_crown.2 days = 15 } }
+		}
+	}
+}
+
+narrative_event = {
+	id = aegons_crown.2
+	desc = EVTDESCaegons_crown.2
+	title = "EVTTITLEaegons_crown.1"
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	trigger = {
+		k_dorne = {
+			holder_scope = {
+				dynasty = 1
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				dynasty = 496
+				NOT = { has_artifact = aegons_crown }
+			}
+		}
+	}
+
+	option = { # I will give back the crown
+		name = EVTOPTAaegons_crown.2
+		ai_chance = {
+			factor = 50
+
+			modifier = {
+				factor = 2
+				trait = kind
+			}
+			modifier = {
+				factor = 2
+				trait = content
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				trait = honorable
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				narrative_event = { id = aegons_crown.3 days = 5 }
+				opinion = {
+					modifier = opinion_gave_ancestor_crown_back
+					who = ROOT
+					months = 120
+					multiplier = 1
+				}
+
+				set_character_flag = has_dynasty_loyalist
+
+				k_dorne = {
+					holder_scope = {
+						opinion = {
+							modifier = opinion_dynasty_loyalist
+							who = PREVPREV
+						}
+						reverse_opinion = {
+							modifier = opinion_my_loyalist
+							who = PREVPREV
+						}
+					}
+				}
+			}
+		}
+		set_global_flag = aegons_crown_resolved
+	}
+	option = { # It shall stay in my personal vault
+		name = EVTOPTBaegons_crown.2
+		ai_chance = {
+			factor = 50
+
+			modifier = {
+				factor = 2
+				trait = cruel
+			}
+			modifier = {
+				factor = 2
+				trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+		}
+	}
+}
+narrative_event = {
+	id = aegons_crown.3
+	desc = EVTDESCaegons_crown.3
+	title = "EVTTITLEaegons_crown.1"
+	picture = GFX_TARGARYEN
+
+	is_triggered_only = yes
+
+	trigger = {
+		e_iron_throne = {
+				holder_scope = {
+					dynasty = 496
+				}
+		}
+	}
+
+	option = { # Thank the Gods!
+		name = EVTOPTAaegons_crown.3
+		ai_chance = { factor = 100 }
+		e_iron_throne = {
+			holder_scope = {
+				add_artifact = aegons_crown
+			}
+		}
+	}
+}
+
+

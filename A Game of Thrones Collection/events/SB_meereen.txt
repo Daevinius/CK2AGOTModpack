@@ -1,0 +1,1356 @@
+namespace = sb_meereen
+#Cupbearers Chain Event begins
+narrative_event = {
+	id = sb_meereen.1
+	desc = "EVTDESC_sb_meereen.1"
+	title = "EVTTITLEsb_meereen.1"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = events_meereen }
+	}
+
+	immediate = {
+		set_global_flag = events_meereen
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.1"
+		custom_tooltip = { text = EVTTOOLTIP_cupbearers }
+		set_character_flag = has_cupbearers
+		c_130360004 = { #Grazhar zo Galare
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_131360004 = { #Qezza co Galare
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_108360010 = { #Jezhene zo Quazzar
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_132360007 = { #Kezmya zo Pahl
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_106360005 = { #Mezzara zo Merreq
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_103360014 = { #Miklaz zo Rhazdar
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_107360016 = { #Draqaz zo Zhak
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_104360012 = { #Dhazzar zo Dhazak
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_137360003 = { #Bhakaz co Loraq
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		c_103360030 = { #Azzak zo Ghazeen
+			custom_tooltip = { show_portrait = yes }
+			set_character_flag = daenerys_cupbearer
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_meereen.101
+				days = 25 random = 3
+			}
+		}
+	}
+}
+#The Galare hostages
+narrative_event = {
+	id = sb_meereen.101
+	desc = "EVTDESC_sb_meereen.101"
+	title = "EVTTITLEsb_meereen.101"
+	picture = GFX_evt_dany_meereen_1
+
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_character_flag = has_cupbearers
+	has_global_flag = events_meereen
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+	}
+
+	immediate = {
+		c_130360004 = { #Grazhar Being trained by Barristan
+			set_guardian = 201302
+			set_focus = focus_ed_martial
+			add_trait = squire
+			add_trait = poor_warrior
+		}
+		c_131360004 = { #Possible friendship?
+			set_guardian = ROOT
+			set_focus = focus_ch_humility
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.101"
+		ai_chance = { factor = 80 }
+		piety = 10
+		hidden_tooltip = {
+			c_12400105 = { #Set Larraw as a squire right away as well
+				set_guardian = 201302
+				set_focus = focus_ed_martial
+				add_trait = squire
+			}
+		}
+		c_151360004 = { #Galazza the Green Grace
+			custom_tooltip = { show_portrait = yes }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 5
+			}
+		}
+		c_130360004 = { #Grazhar zo Galare
+			custom_tooltip = { show_portrait = yes }
+			add_trait = brave
+			set_character_flag = support_daenerys
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+		c_131360004 = { #Qezza co Galare
+			custom_tooltip = { show_portrait = yes }
+			add_trait = poet
+			set_character_flag = support_daenerys
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_meereen.102
+				days = 40 random = 5
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.101"
+		ai_chance = { factor = 20 }
+		prestige = 20
+		hidden_tooltip = {
+			c_12400105 = { #Set Larraw as a squire right away as well
+				set_guardian = 201302
+				set_focus = focus_ed_martial
+				add_trait = squire
+			}
+		}
+		c_16571015 = {  #Lord Galare
+			custom_tooltip = { show_portrait = yes }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 5
+			}
+		}
+		c_151360004 = { #Galazza the Green Grace
+			opinion = {
+				modifier = opinion_threatened_me
+				who = ROOT
+				years = 10
+			}
+		}
+		c_130360004 = { #Grazhar zo Galare
+			add_trait = brave
+			opinion = {
+				modifier = opinion_threatened_me
+				who = ROOT
+				years = 10
+			}
+		}
+		c_131360004 = { #Qezza co Galare
+			add_trait = poet
+			opinion = {
+				modifier = opinion_threatened_me
+				who = ROOT
+				years = 10
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_meereen.102
+				days = 22 random = 5
+			}
+		}
+	}
+}
+#Children of the Harpy (Merreq, Zhak, Dhazak)
+narrative_event = {
+	id = sb_meereen.102
+	desc = "EVTDESC_sb_meereen.102"
+	title = "EVTTITLEsb_meereen.102"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_character_flag = has_cupbearers
+	has_global_flag = events_meereen
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.102"
+		ai_chance = { factor = 80 }
+		piety = 20
+		c_16571011 = {
+			opinion = {
+				modifier = opinion_angry
+				who = ROOT
+				years = 5
+			}
+		}
+		c_106360005 = { #Mezzara zo Merreq
+			set_character_flag = support_daenerys
+			add_trait = shy
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+		c_107360016 = { #Draqaz zo Zhak
+			set_character_flag = support_daenerys
+			add_trait = gregarious
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+		c_104360012 = { #Dhazzar zo Dhazak
+			set_character_flag = support_daenerys
+			add_trait = proud
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.102"
+		ai_chance = { factor = 20 }
+		prestige = 50
+		add_trait = arbitrary
+		c_16571011 = {
+			opinion = {
+				modifier = opinion_happy
+				who = ROOT
+				years = 5
+			}
+		}
+		c_106360005 = { #Mezzara zo Merreq
+			add_trait = wounded
+			opinion = {
+				modifier = opinion_threatened_me
+				who = ROOT
+				years = 10
+			}
+		}
+		c_107360016 = { #Draqaz zo Zhak
+			add_trait = wounded
+			opinion = {
+				modifier = opinion_threatened_me
+				who = ROOT
+				years = 10
+			}
+		}
+		c_104360012 = { #Dhazzar zo Dhazak
+			add_trait = wounded
+			opinion = {
+				modifier = opinion_threatened_me
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+#Hostages of Enemy houses (Pahl, Quazzar, Rhazadar)
+narrative_event = {
+	id = sb_meereen.103
+	desc = "EVTDESC_sb_meereen.103"
+	title = "EVTTITLEsb_meereen.103"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_character_flag = has_cupbearers
+	has_global_flag = events_meereen
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.103"
+		ai_chance = { factor = 80 }
+		piety = 10
+		c_132360007 = { #Kezmya zo Pahl
+			set_character_flag = support_daenerys
+			add_trait = proud
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+		c_103360014 = { #Miklaz zo Rhazdar
+			set_character_flag = support_daenerys
+			add_trait = honest
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+		c_108360010 = { #Jezhene zo Quazzar
+			set_character_flag = support_daenerys
+			add_trait = kind
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 15
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.103"
+		ai_chance = { factor = 20 }
+		prestige = 30
+		add_trait = cruel
+		c_132360007 = { #Kezmya zo Pahl
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = 132360007
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_demon_road }
+			opinion = {
+				modifier = evil_murderer
+				who = ROOT
+				years = 100
+			}
+		}
+		c_103360014 = { #Miklaz zo Rhazdar
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = 132360007
+			}
+		}
+			any_playable_ruler = {
+			limit = { has_landed_title = b_meereenharbor }
+			opinion = {
+				modifier = evil_murderer
+				who = ROOT
+				years = 100
+			}
+		}
+		c_108360010 = { #Jezhene zo Quazzar
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = 132360007
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_salt_hills }
+			opinion = {
+				modifier = evil_murderer
+				who = ROOT
+				years = 100
+			}
+		}
+	}
+}
+#Hostages of House Loraq
+narrative_event = {
+	id = sb_meereen.104
+	desc = "EVTDESC_sb_meereen.104"
+	title = "EVTTITLEsb_meereen.104"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_character_flag = has_cupbearers
+	has_global_flag = events_meereen
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.104"
+		ai_chance = { factor = 80 }
+		c_137360003 = { #Bhakaz co Loraq
+			move_character = ROOT
+			set_character_flag = support_daenerys
+			opinion = {
+				modifier = opinion_happy_with_guardian
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.104"
+		ai_chance = { factor = 20 }
+		prestige = 10
+	}
+}
+#Punish Meereenese lords who joined the Harpy?
+narrative_event = {
+	id = sb_meereen.2
+	desc = "EVTDESC_sb_meereen.2"
+	title = "EVTTITLEsb_meereen.2"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = events_meereen
+
+	trigger = {
+		has_global_flag = meereen_capital
+		has_landed_title = k_meereen
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.2"
+		ai_chance = { factor = 40 }
+		custom_tooltip = { text = EVTTOOLTIP_newmeereen }
+		prestige = 10
+		set_global_flag = new_meereen
+		ROOT = {
+			character_event = {
+				id = sb_meereen.201
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_meereen.202
+				days = 2
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_meereen.203
+				days = 3
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_meereen.204
+				days = 4
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_meereen.205
+				days = 5
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.2"
+		ai_chance = { factor = 60 }
+		piety = 50
+	}
+}
+#Decide fate of Meereenese vassals - House Galare
+character_event = {
+	id = sb_meereen.201
+	desc = "EVTDESC_sb_meereen.201"
+	title = "EVTTITLEsb_meereen.201"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = events_meereen
+
+	trigger = {
+		has_global_flag = new_meereen
+		has_global_flag = meereen_capital
+		has_landed_title = k_meereen
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.201"
+		ai_chance = { factor = 20 }
+		trigger = {
+			c_130360004 = {
+				is_alive = yes
+				is_ruler = no
+			}
+		}
+		c_130360004 = { #Grazhar zo Galare
+			c_nomansland = {
+				grant_title = PREV
+			}
+			d_nomansland = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_nomansland }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.201"
+		ai_chance = { factor = 80 }
+		piety = 10
+		any_playable_ruler = {
+			limit = { has_landed_title = c_nomansland }
+			d_nomansland = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+#Decide fate of Meereenese vassals - Houses Merreq, Zhak, Dhazak (Sons of the Harpy members)
+character_event = {
+	id = sb_meereen.202
+	desc = "EVTDESC_sb_meereen.202"
+	title = "EVTTITLEsb_meereen.202"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = events_meereen
+
+	trigger = {
+		has_global_flag = new_meereen
+		has_global_flag = meereen_capital
+		has_landed_title = k_meereen
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.202"
+		ai_chance = { factor = 30 }
+		c_104360012 = { #Dhazzar zo Dhazak
+			c_kalzhak = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_kalzhak }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+		c_106360005 = { #Mezzara zo Merreq
+			c_sandstone_valley  = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_sandstone_valley  }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+		c_107360016 = { #Draqaz zo Zhak
+			c_demongate = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_demongate }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.202"
+		ai_chance = { factor = 70 }
+		any_playable_ruler = {
+			limit = { has_landed_title = c_kalzhak }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_sandstone_valley }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_demongate }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+#Decide fate of Meereenese vassals - Houses Quazzar, Yherizan, Ghazeen (Joined Yunkai as ship captains)
+character_event = {
+	id = sb_meereen.203
+	desc = "EVTDESC_sb_meereen.203"
+	title = "EVTTITLEsb_meereen.203"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = events_meereen
+
+	trigger = {
+		has_global_flag = new_meereen
+		has_global_flag = meereen_capital
+		has_landed_title = k_meereen
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.203"
+		ai_chance = { factor = 40 }
+		c_108360010 = { #Jezhene zo Quazzar
+			c_salt_hills = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_salt_hills }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+		c_103360014 = { #Miklaz zo Rhazdar
+			c_broken_joint = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_broken_joint }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+		c_103360030 = { #Azzak zo Ghazeen
+			c_burned_coast = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_burned_coast }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.203"
+		ai_chance = { factor = 60 }
+		any_playable_ruler = {
+			limit = { has_landed_title = c_salt_hills }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_broken_joint }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_burned_coast }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+#Decide fate of Meereenese vassals - House Pahl
+character_event = {
+	id = sb_meereen.204
+	desc = "EVTDESC_sb_meereen.204"
+	title = "EVTTITLEsb_meereen.204"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = events_meereen
+
+	trigger = {
+		has_global_flag = new_meereen
+		has_global_flag = meereen_capital
+		has_landed_title = k_meereen
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.204"
+		ai_chance = { factor = 50 }
+		trigger = {
+			c_132360007 = {
+				is_alive = yes
+				is_ruler = no
+			}
+		}
+		c_132360007 = { #Kezmya zo Pahl
+			c_demon_road = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			d_demon_road = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_demon_road }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.204"
+		ai_chance = { factor = 50 }
+		any_playable_ruler = {
+			limit = { has_landed_title = c_demon_road }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+#Decide fate of Meereenese vassals - House Loraq
+character_event = {
+	id = sb_meereen.205
+	desc = "EVTDESC_sb_meereen.205"
+	title = "EVTTITLEsb_meereen.205"
+	picture = GFX_Meereen_conquest
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = events_meereen
+
+	trigger = {
+		has_global_flag = new_meereen
+		has_global_flag = meereen_capital
+		has_landed_title = k_meereen
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_meereen.205"
+		ai_chance = { factor = 50 }
+		trigger = {
+			c_137360003 = {
+				is_alive = yes
+				is_ruler = no
+			}
+		}
+		c_137360003 = { #Bhakaz co Loraq
+			c_meereenesehills = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			d_meereenesehills = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+			if = {
+				limit = { has_character_flag = support_daenerys }
+				opinion = {
+					modifier = opinion_loyal_servant
+					who = PREV
+				}
+				add_trait = shavepate
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_meereenesehills }
+			death = {
+				death_reason = death_execution_crucifixion
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_meereen.205"
+		ai_chance = { factor = 50 }
+		any_playable_ruler = {
+			limit = { has_landed_title = c_meereenesehills }
+			opinion = {
+				modifier = strengthened_loyalty
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+namespace = sb_shavepate
+#Move Skahaz into Dany court if he becomes unlanded
+character_event = {
+	id = sb_shavepate.0
+	desc = "EVTDESC_sb_shavepate.0"
+	picture = GFX_shavepates
+	hide_window = yes
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = skahaz_courtier_event }
+		c_16571011 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = skahaz_courtier_event
+	}
+
+	option = {
+		name = "Ok."
+		c_16571011 = {
+			move_character = ROOT
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+	}
+}
+#Grant City of Meereen and Bloodline to the Shavepate if alive
+narrative_event = {
+	id = sb_shavepate.1
+	desc = "EVTDESC_sb_shavepate.1"
+	title = "EVTTITLEsb_shavepate.1"
+	picture = GFX_shavepates
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = c_meereen
+		has_landed_title = k_meereen
+		NOT = { has_global_flag = skahaz_event }
+		c_16571011 = {
+			is_alive = yes
+			prisoner = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = skahaz_event
+	}
+
+	option = {
+		name = "sb_titles_commander_shavepate.1A"
+		ai_chance = { factor = 95 }
+		c_16571011 = {
+			c_meereen = {
+				grant_title = PREV
+			}
+			b_meereen = {
+				grant_title = PREV
+			}
+			b_meereenharbor = {
+				grant_title = PREV
+			}
+			b_great_cells = {
+				grant_title = ROOT
+			}
+			give_minor_title = title_commander_brazen_beasts_watch
+			give_minor_title = title_commander_shavepate
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "sb_titles_commander_shavepate.1B"
+		ai_chance = { factor = 5 }
+		set_global_flag = shavepates_founded
+		prestige = 100
+	}
+}
+#Meereenese nobles have the chance to become Shavepates
+narrative_event = {
+	id = sb_shavepate.2
+	desc = "EVTDESC_sb_shavepate.2"
+	title = "EVTTITLEsb_shavepate.2"
+	picture = GFX_shavepates
+
+	min_age = 16
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		OR = {
+			culture = meereenese
+			culture = meereenese_freedmen
+		}
+		has_global_flag = shavepates_founded
+		NOT = { trait = shavepate }
+		NOT = { character = 16571013 }
+		NOT = { character = 16571012 }
+		NOT = { character = 151360004 }
+		NOT = { character = 135360007 }
+		NOT = { character = 16571011 }
+		NOT = { character = 102360030 }
+		NOT = { character = 228360007 }
+		NOT = { character = 127360007 }
+		NOT = { character = 230360007 }
+		NOT = { character = 201360011 }
+		NOT = { character = 201360006 }
+		NOT = { character = 102360014 }
+		NOT = { character = 134360007 }
+		NOT = { character = 104360005 }
+		NOT = { has_character_flag = shavepate }
+		NOT = { has_character_flag = refused_shavepate }
+		top_liege = {
+			dynasty = 496
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_stormborn
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = "EVTOPTA_sb_unsullied.2"
+		ai_chance = {
+			factor = 35
+			modifier = {
+				factor = 2
+				tier = cynical
+			}
+			modifier = {
+				factor = 0.5
+				trait = stubborn
+			}
+			modifier = {
+				factor = 0.5
+				religion = harpy
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				religion = rhllor
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.2
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 1.5
+				trait = kind
+			}
+			modifier = {
+				factor = 100
+				e_ghiscar = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.3
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		add_trait = shavepate
+		set_character_flag = shavepate
+	}
+
+	option = {
+		name = "EVTOPTB_sb_unsullied.2"
+		ai_chance = {
+			factor = 65
+			modifier = {
+				factor = 100
+				trait = slave_owner
+			}
+			modifier = {
+				factor = 100
+				religion = harpy
+				trait = zealous
+			}
+			modifier = {
+				factor = 100
+				e_ghiscar = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 2.5
+				trait = selfish
+			}
+			modifier = {
+				factor = 0.5
+				religion = rhllor
+				trait = zealous
+			}
+			modifier = {
+				factor = 5
+				religion = harpy
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.2
+				trait = proud
+			}
+			modifier = {
+				factor = -0.8
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = -0.8
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = -0.7
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = -0.6
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = -0.5
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.1
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.3
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				k_meereen = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		add_trait = zealous
+		set_character_flag = refused_shavepate
+	}
+}

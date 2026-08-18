@@ -1,0 +1,131 @@
+
+# filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] ('self' MUST be set for decisions targetting only the taker, the other filter types can be set to lessen CPU load)
+# ai_target_filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] (which characters for which the AI evaluates the decision.)
+#	court: all characters in the AI's host court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	home_court: all characters in the AI's home court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	vassals: direct vassal rulers of the AI's employer
+#	sub_realm: all characters below the AI's employer
+#	realm: all characters in the same top realm as the AI
+#	dynasty: all members of the same dynasty
+#	all: all living characters (Avoid if possible. VERY CPU-HEAVY!)
+#
+
+
+decisions = {
+	immortal_weirwood_mbs_dec = {
+		is_high_prio = yes
+		#ai = no
+		potential = {
+			trait = greenseer
+		}
+		allow = {
+			age = 65
+			NOT = {
+				trait = greenseer_weirwood
+			}
+		}
+		effect = {
+			add_trait = greenseer_weirwood
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	immortal_weirwood_die_mbs_dec = {
+		is_high_prio = yes
+		#ai = no
+		potential = {
+			trait = greenseer_weirwood
+			NOT = {
+				has_landed_title = d_cotf_mbs
+			}
+		}
+		allow = {
+			age = 120
+			has_character_flag = flag_mbs_taught_greenseer
+			any_character  = {
+				count = 2
+				trait = greenseer
+			}
+		}
+		effect = {
+			ROOT = {
+				death = {
+					death_reason = death_natural
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	immortal_weirwood_die_title_mbs_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_rulers = yes
+		potential = {
+			trait = greenseer_weirwood
+			has_landed_title = d_cotf_mbs
+		}
+		allow = {
+			age = 120
+			has_character_flag = flag_mbs_taught_greenseer
+			any_character  = {
+				count = 2
+				trait = greenseer
+			}
+		}
+		effect = {
+			ROOT = {
+				death = {
+					death_reason = death_natural
+				}
+			}
+			any_character = {
+				limit = {
+					trait = greenseer
+					NOT = {
+						has_landed_title = d_cotf_mbs
+					}
+				}
+				character_event = { id = more_bloodlines.87 days = 2 }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	immortal_weirwood_teach_mbs_dec = {
+		is_high_prio = yes
+		#ai = no
+		potential = {
+			trait = greenseer_weirwood
+			trait = greenseer
+			NOT = { has_character_flag = flag_mbs_taught_greenseer }
+		}
+		allow = {
+			any_character  = {
+				count = 2
+				trait = greenseer
+			}
+			NOT = { has_character_flag = flag_mbs_teaching_greenseer }
+		}
+		effect = {
+			save_event_target_as = mbs_greenseer_teacher
+			set_character_flag = flag_mbs_teaching_greenseer
+			any_character = {
+				limit = {
+					trait = greenseer
+					NOT = {
+						trait = greenseer_weirwood
+					}
+				}
+				character_event = { id = more_bloodlines.83 days = 2 }
+				save_event_target_as = mbs_greenseer_learner
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}

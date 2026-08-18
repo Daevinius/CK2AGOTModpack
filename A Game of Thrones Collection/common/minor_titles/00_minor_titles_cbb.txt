@@ -1,0 +1,190 @@
+########################################################
+# MINOR TITLES
+# Characters can have any number of these
+########################################################
+#	grant_limit: Max number of holders.
+#	realm_in_name: Append the name of the country after the title (Queen [of Sweden])
+#	allowed_to_hold: conditions for the character to hold the title
+#	allowed_to_grant: conditions for a ruler to grant the title
+#	regent: This is the title for regents (not really "minor")
+#	gain_effect: fires when the title is granted
+#	lose_effect: fires when a title is lost through most causes
+#	retire_effect: fires when a title is lost due to the character stepping down
+#	death_effect: fires when a title is lost due to the character dying
+#	message: should fire a message to the its owner when set
+#	The other fields are all character modifiers.
+
+title_commander_city_watch = {
+	is_high_prio = yes
+	dignity = 0.33
+	grant_limit = 1
+	opinion_effect = 10
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	is_voter = yes
+
+	allowed_to_hold = {
+		has_landed_title = c_kl_city
+		can_be_commander_gold_cloaks_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title =  c_kings_landing
+		NOT = { has_landed_title = c_kl_city }
+		c_kl_city = { has_title_flag = military_command }
+		ROOT = { is_voter = no }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_kl_city = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+
+title_lord_commander_kingsguard_cbb = {
+	is_high_prio = yes
+	dignity = 0.33
+	grant_limit = 1
+	opinion_effect = 10
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	is_voter = yes
+
+	allowed_to_hold = {
+		can_be_lord_commander_trigger = yes
+		NOT = { has_minor_title = title_triarch }
+		has_landed_title = d_kingsguard
+	}
+
+	allowed_to_grant = {
+		has_landed_title =  c_kings_landing
+		ROOT = { is_voter = no }
+	}
+
+	gain_effect = {
+		if = {
+			limit = { has_opinion_modifier = { who = FROM modifier = opinion_fired_from_council } }
+			remove_opinion = { who = FROM modifier = opinion_fired_from_council }
+			opinion = { who = FROM modifier = opinion_job_security_concerns }
+		}
+	}
+	message = yes
+}
+title_commander_wolfs_den = {
+	is_high_prio = yes
+	dignity = 0.33
+	grant_limit = 1
+	opinion_effect = 10
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	is_voter = yes
+
+	allowed_to_hold = {
+		has_landed_title = c_wolfs_den
+		can_be_commander_wolfs_den_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title =  c_whiteharbor
+		NOT = { has_landed_title = c_wolfs_den }
+		c_wolfs_den = { has_title_flag = military_command }
+		ROOT = { is_voter = no }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_wolfs_den = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_oldtown = {
+	is_high_prio = yes
+	dignity = 0.33
+	grant_limit = 1
+	opinion_effect = 10
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	is_voter = yes
+
+	allowed_to_hold = {
+		has_landed_title = c_oldtown_city
+		can_be_commander_oldtown_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title =  c_oldtown
+		NOT = { has_landed_title = c_oldtown_city }
+		c_oldtown_city = { has_title_flag = military_command }
+		ROOT = { is_voter = no }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_oldtown_city = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_mistress_cbb = {
+	dignity = 0.05
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	opinion_effect = 5
+
+	allowed_to_hold = {
+		is_female = yes
+		is_adult = yes
+		is_married = no
+		is_lover = FROM
+	}
+	allowed_to_grant = {
+		trait = lustful
+		primary_title = { title = e_iron_throne }
+	}
+
+	gain_effect = {
+		FROM = {
+			spouse = {
+				opinion = { who = ROOT modifier = opinion_kings_mistress }
+				reverse_opinion = { who = ROOT modifier = opinion_kings_wife }
+				opinion = { who = FROM modifier = opinion_king_has_mistress }
+			}
+		}
+	}
+	lose_effect = {
+		FROM = {
+			spouse = {
+				remove_opinion = { who = ROOT modifier = opinion_kings_mistress }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_kings_wife }
+				opinion = { who = ROOT modifier = opinion_former_kings_mistress }
+				remove_opinion = { who = FROM modifier = opinion_king_has_mistress }
+				opinion = { who = FROM modifier = opinion_king_had_mistress }
+			}
+		}
+		ROOT = {
+			character_event = { id = lovers.600 tooltip = EVTTOOLTIPlovers.600 }
+		}
+	}
+
+	message = yes
+}

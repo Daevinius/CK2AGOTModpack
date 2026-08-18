@@ -1,0 +1,4230 @@
+namespace = tdp_anti_dragon
+
+###Dragon Cold War### - 1
+	##Rival Tags##
+	##Childhood##
+
+	##Opposite Personalities##
+	##Jealous Uncle##
+	##Half Siblings##
+	##Bastards##
+	##Notable Dragon House Rivalries##
+	##Bracken-Blackwood extension##
+	###Solve the Problems###
+	###Dance Starter###
+###Events to happen during Dances### - 2
+###Shot Down at Sea### - 3
+###No Royal Valyrian Family### - 4
+###Brandon Snow### - 5
+###Leave the Wall### - 6
+###Wild Dragon Attack Cooldown### - 7
+###Adjust Traits### - 8
+###Maester Conspiracy### - 9
+
+character_event = {
+	id = tdp_anti_dragon.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	has_global_flag = tdp_dance_of_dragons
+
+	trigger = {
+		tier = EMPEROR
+		calc_true_if = {
+			amount = 3
+			trait = lunatic
+			trait = kind
+			trait = hedonist
+			trait = lustful
+			trait = cruel
+			trait = selfish
+			trait = greedy
+			trait = gluttonous
+			trait = arbitrary
+			trait = wroth
+			trait = paranoid
+			trait = shy
+			trait = craven
+			trait = ruthless
+			trait = trusting
+			is_weak_trigger = yes
+		}
+		NOR = {
+			trait = brave
+			trait = authoritative
+			trait = diligent
+		}
+	}
+
+	immediate = {
+		add_character_modifier = {
+			name = is_weak_king
+			duration = -1
+		}
+		if = {
+			limit = {
+				NOR = {
+					trait = paranoid
+					trait = greedy
+				}
+				has_law = tdp_dragon_tamer_0 #Restricted
+			}
+			primary_title = {
+				add_law = tdp_dragon_tamer_1 #Dynasty
+				revoke_law = tdp_dragon_tamer_0
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.9999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	has_global_flag = tdp_dance_of_dragons
+
+	trigger = {
+		tier = EMPEROR
+		has_law = tdp_dragon_tamer_1 #Dynasty
+		calc_true_if = {
+			amount = 3
+			trait = just
+			trait = patient
+			trait = charismatic_negotiator
+			trait = grey_eminence
+			trait = brave
+			trait = authoritative
+			trait = ruthless
+			trait = diligent
+			trait = humble
+			trait = temperate
+			trait = scholar
+			trait = fortune_builder
+		}
+		NOR = {
+			trait = lunatic
+			trait = cruel
+			trait = selfish
+			trait = greedy
+			trait = gluttonous
+			trait = arbitrary
+			trait = wroth
+			trait = paranoid
+			trait = craven
+			is_weak_trigger = yes
+		}
+	}
+
+	immediate = {
+		remove_character_modifier = is_weak_king
+		if = {
+			limit = {
+				has_law = tdp_dragon_tamer_1 #Dynasty
+			}
+			primary_title = {
+				add_law = tdp_dragon_tamer_0 #Restricted
+				revoke_law = tdp_dragon_tamer_1
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+###### Dances of the Dragons ######
+#Phase 1: When the amount of dragon riders in a realm get too high, events will start
+#Phase 2: Tag possible characters that could act as leaders of sides
+#Phase 3: When one of the tagged characters has the Emperor-tier title, Dance is eligible to kick off
+
+
+###Dragon Cold War###
+character_event = {
+	id = tdp_anti_dragon.1
+
+	is_triggered_only = yes
+
+	hide_window = yes
+
+	only_independent = yes
+	has_global_flag = tdp_dance_of_dragons
+
+	trigger = {
+		has_global_flag = age_of_dragons
+		tier = EMPEROR
+		OR = {
+			AND = {
+				has_game_rule = { name = tdp_dragon_dances value = default }
+				any_realm_character = {
+					trait = dragon_rider
+					is_alive = yes
+					count = 10
+				}
+			}
+			AND = {
+				has_game_rule = { name = tdp_dragon_dances value = less_common }
+				any_realm_character = {
+					trait = dragon_rider
+					is_alive = yes
+					count = 30
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_dynasty_flag = dragon_cold_war
+		any_realm_character = {
+			limit = {
+				NOT = { dynasty = ROOT }
+				trait = dragon_rider
+			}
+			set_dynasty_flag = dragon_cold_war
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+###Rival Tags###
+character_event = {
+	id = tdp_anti_dragon.10
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_dance_of_dragons
+
+	trigger = {
+		father = { tier = EMPEROR }
+		is_primary_heir = father
+		trait = dragon_rider
+		any_rival = {
+			trait = dragon_rider
+			NOR = {
+				has_character_flag = candidate_for_war
+				is_main_spouse = ROOT
+				is_parent_of = ROOT
+				is_child_of = ROOT
+				is_grandchild_of = ROOT
+				is_grandparent_of = ROOT
+			}
+		}
+	}
+
+	immediate = {
+		set_character_flag = candidate_for_war
+		random_rival = {
+			limit = {
+				trait = dragon_rider
+				NOR = {
+					has_character_flag = candidate_for_war
+					is_main_spouse = ROOT
+					is_parent_of = ROOT
+					is_child_of = ROOT
+					is_grandchild_of = ROOT
+					is_grandparent_of = ROOT
+				}
+			}
+			set_character_flag = candidate_for_war
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+##Childhood##
+character_event = { #Bullied for not having a dragon yet
+	id = tdp_anti_dragon.100
+	desc = EVTDESCtdp_anti_dragon.100
+	picture = GFX_sad_targ_kid
+
+	min_age = 6
+	max_age = 12
+
+	trigger = {
+		has_character_modifier = granted_dragon_access
+		NOT = { trait = dragon_rider }
+		NOT = { any_friend = { trait = dragon } }
+		has_dynasty_flag = dragon_riding_dynasty
+		any_realm_character = {
+			at_location = ROOT
+			age = 8
+			age < 15
+			any_friend = { trait = dragon }
+			OR = {
+				trait = ruthless
+				trait = rude
+				trait = rowdy
+				trait = lunatic
+				trait = proud
+				trait = deceitful
+			}
+			NOR = {
+				trait = kind
+				trait = charitable
+				trait = humble
+				trait = gregarious
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 20
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+	}
+
+	immediate = {
+		any_realm_character = {
+			limit = {
+				at_location = ROOT
+				age = 8
+				age < 15
+				any_friend = { trait = dragon }
+				OR = {
+					trait = ruthless
+					trait = rude
+					trait = rowdy
+					trait = lunatic
+					trait = proud
+					trait = deceitful
+				}
+				NOR = {
+					trait = kind
+					trait = charitable
+					trait = humble
+					trait = gregarious
+				}
+			}
+			save_event_target_as = dragon_bully
+		}
+
+	}
+
+	option = {
+		name = OK
+		add_rival = event_target:dragon_bully
+		father = {
+			if = {
+				limit = {
+					is_alive = yes
+					ai = no
+				}
+				character_event = { id = tdp_anti_dragon.1000 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.1000
+	desc = EVTDESCtdp_anti_dragon.1000
+	picture = GFX_sad_targ_kid
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_anti_dragon.1000
+	}
+
+	option = {
+		name = EVTOPTBtdp_anti_dragon.1000
+		trigger = {
+			OR = {
+				is_smart_incl_genius_trigger = yes
+				diplomacy = 13
+				trait = socializer
+				trait = grey_eminence
+			}
+			OR = {
+				trait = kind
+				trait = honorable
+				trait = familyperson
+			}
+			NOR = {
+				trait = wroth
+				trait = slothful
+				trait = proud
+				trait = selfish
+				trait = incapable
+				trait = infirm
+				trait = drunkard
+				trait = cruel
+				trait = envious
+			}
+		}
+		FROM = {
+			remove_rival = event_target:dragon_bully
+		}
+	}
+}
+
+##Opposite Personalities##
+character_event = {
+	id = tdp_anti_dragon.101
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+	war = no
+
+	trigger = {
+		trait = dragon_rider
+
+		age = 14
+		OR = {
+			trait = honorable
+			trait = temperate
+			trait = chaste
+			trait = charitable
+			trait = kind
+			trait = humble
+		}
+		NOR = {
+			trait = deceitful
+			trait = cruel
+			trait = impaler
+			trait = greedy
+			trait = wroth
+			trait = envious
+			trait = ruthless
+		}
+		NOT = {	has_character_flag = candidate_for_war	}
+		top_liege = {
+			any_realm_character = {
+				ai = yes
+				war = no
+				trait = dragon_rider
+				age = 14
+				NOR = {
+					trait = honorable
+					trait = temperate
+					trait = chaste
+					trait = charitable
+					trait = kind
+					trait = humble
+				}
+				OR = {
+					trait = deceitful
+					trait = cruel
+					trait = impaler
+					trait = greedy
+					trait = wroth
+					trait = envious
+					trait = ruthless
+				}
+				NOT = {	has_character_flag = candidate_for_war	}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			top_liege = { has_character_modifier = is_weak_king }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = hero_character
+		top_liege = {
+			random_realm_character = {
+				limit = {
+					trait = dragon_rider
+					ai = yes
+					NOR = {
+						trait = honorable
+						trait = temperate
+						trait = chaste
+						trait = charitable
+						trait = kind
+						trait = humble
+					}
+					OR = {
+						trait = deceitful
+						trait = cruel
+						trait = impaler
+						trait = greedy
+						trait = wroth
+						trait = envious
+						trait = ruthless
+					}
+				}
+				save_event_target_as = villain_character
+			}
+			set_character_flag = opposite_personalities
+			character_event = { id = tdp_anti_dragon.1098 }
+		}
+	}
+}
+
+
+##Jealous Uncle##
+character_event = {
+	id = tdp_anti_dragon.102
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+	war = no
+
+	trigger = {
+		father = { tier = EMPEROR }
+		is_heir = father
+		trait = dragon_rider
+		NOT = {	has_character_flag = candidate_for_war }
+		any_close_relative = {
+			ai = yes
+			war = no
+			trait = dragon_rider
+			is_aunt_uncle_of = ROOT
+			is_female = no
+			is_older_than = ROOT
+			age_diff = {
+				who = ROOT
+				years <= 10
+			}
+			OR = {
+				trait = envious
+				trait = greedy
+				trait = ambitious
+			}
+			NOR = {
+				trait = content
+				trait = familyperson
+				trait = kind
+				trait = humble
+				trait = shy
+				is_friend = ROOT
+			}
+			NOT = {	has_character_flag = candidate_for_war	}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			top_liege = { has_character_modifier = is_weak_king }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = hero_character
+		random_close_relative = {
+			limit = {
+				ai = yes
+				war = no
+				trait = dragon_rider
+				is_aunt_uncle_of = ROOT
+				is_female = no
+				is_older_than = ROOT
+				age_diff = {
+					who = ROOT
+					years <= 10
+				}
+				OR = {
+					trait = envious
+					trait = greedy
+					trait = ambitious
+				}
+				NOR = {
+					trait = content
+					trait = familyperson
+					trait = kind
+					trait = humble
+				}
+			}
+			save_event_target_as = villain_character
+		}
+		top_liege = {
+			set_character_flag = jealous_uncle
+			character_event = { id = tdp_anti_dragon.1098 }
+		}
+	}
+}
+
+##Half Siblings##
+character_event = {
+	id = tdp_anti_dragon.103
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+	war = no
+
+	trigger = {
+		NOT = {	has_character_flag = candidate_for_war }
+		trait = dragon_rider
+		any_sibling = {
+			ai = yes
+			war = no
+			trait = dragon_rider
+			mother_even_if_dead = { NOT = { is_mother = ROOT } }
+			OR = {
+				trait = envious
+				trait = greedy
+				trait = ambitious
+				trait = wroth
+				trait = cruel
+				trait = ruthless
+			}
+			NOR = {
+				trait = content
+				trait = familyperson
+				trait = kind
+				trait = humble
+				trait = shy
+				trait = craven
+			}
+			NOT = {	has_character_flag = candidate_for_war }
+		}
+
+	}
+
+	mean_time_to_happen = {
+		years = 50
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			top_liege = { has_character_modifier = is_weak_king }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = hero_character
+		random_sibling = {
+			limit = {
+				ai = yes
+				war = no
+				trait = dragon_rider
+				mother_even_if_dead = { NOT = { is_mother = ROOT } }
+				OR = {
+					trait = envious
+					trait = greedy
+					trait = ambitious
+					trait = wroth
+					trait = cruel
+					trait = ruthless
+				}
+				NOR = {
+					trait = content
+					trait = familyperson
+					trait = kind
+					trait = humble
+					trait = shy
+					trait = craven
+				}
+			}
+			save_event_target_as = villain_character
+		}
+		top_liege = {
+			set_character_flag = half_siblings
+			character_event = { id = tdp_anti_dragon.1098 }
+		}
+	}
+}
+
+##Bastards##
+character_event = {
+	id = tdp_anti_dragon.104
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+	war = no
+
+	trigger = {
+		NOT = {	has_character_flag = candidate_for_war	}
+		trait = dragon_rider
+		any_sibling = {
+			ai = yes
+			war = no
+			trait = dragon_rider
+			NOT = { is_older_than = ROOT }
+			OR = {
+				trait = bastard
+				trait = legit_bastard
+			}
+			OR = {
+				trait = envious
+				trait = greedy
+				trait = ambitious
+			}
+			NOR = {
+				trait = content
+				trait = familyperson
+				trait = kind
+				trait = humble
+			}
+			NOT = {	has_character_flag = candidate_for_war	}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			top_liege = { has_character_modifier = is_weak_king }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = hero_character
+		random_sibling = {
+			limit = {
+				ai = yes
+				war = no
+				trait = dragon_rider
+				NOT = { is_older_than = ROOT }
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+				OR = {
+					trait = envious
+					trait = greedy
+					trait = ambitious
+				}
+				NOR = {
+					trait = content
+					trait = familyperson
+					trait = kind
+					trait = humble
+				}
+			}
+			save_event_target_as = villain_character
+		}
+		top_liege = {
+			set_character_flag = bastard_ambitious
+			character_event = { id = tdp_anti_dragon.1098 }
+		}
+	}
+}
+
+##Notable Dragon House Rivalries##
+character_event = {
+	id = tdp_anti_dragon.105
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+	war = no
+
+	trigger = {
+		NOT = {	has_character_flag = candidate_for_war }
+		trait = dragon_rider
+		OR = {
+			trait = wroth
+			trait = proud
+			trait = cruel
+		}
+		OR = {
+			dynasty = 57
+			dynasty = 496
+			dynasty = 450204
+			dynasty = 450205
+			dynasty = 450206
+			dynasty = 450207
+		}
+		num_of_dynasty_members = 5
+		top_liege = {
+			any_realm_character = {
+				ai = yes
+				war = no
+				NOT = { dynasty = ROOT }
+				NOT = {	has_character_flag = candidate_for_war	}
+
+				trait = dragon_rider
+				OR = {
+					trait = wroth
+					trait = proud
+					trait = cruel
+					trait = ambitious
+					trait = ruthless
+				}
+				OR = {
+					dynasty = 57
+					dynasty = 496
+					dynasty = 450204
+					dynasty = 450205
+					dynasty = 450206
+					dynasty = 450207
+				}
+				num_of_dynasty_members = 5
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			top_liege = { has_character_modifier = is_weak_king }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = hero_character
+		top_liege = {
+			random_realm_character = {
+				limit = {
+					ai = yes
+					war = no
+					NOT = { dynasty = ROOT }
+					NOT = { has_character_flag = candidate_for_war }
+
+					trait = dragon_rider
+					OR = {
+						dynasty = 57
+						dynasty = 496
+						dynasty = 450204
+						dynasty = 450205
+						dynasty = 450206
+						dynasty = 450207
+					}
+					num_of_dynasty_members = 6
+				}
+				save_event_target_as = villain_character
+			}
+		}
+		top_liege = {
+			if = {
+				limit = {
+					OR = {
+						dynasty = event_target:hero_character
+						dynasty = event_target:villain_character
+					}
+				}
+				set_character_flag = dragon_houses
+				character_event = { id = tdp_anti_dragon.1098 }
+			}
+		}
+	}
+}
+
+##Bracken-Blackwood extension##
+character_event = {
+	id = tdp_anti_dragon.106
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+	war = no
+
+	trigger = {
+		NOT = { has_character_flag = candidate_for_war }
+
+		trait = dragon_rider
+		OR = {
+			any_spouse = {
+				dynasty = 149
+			}
+			father_even_if_dead = {
+				dynasty = 149
+			}
+			mother_even_if_dead = {
+				dynasty = 149
+			}
+		}
+		top_liege = {
+			any_realm_character = {
+				NOT = { has_character_flag = candidate_for_war }
+				ai = yes
+				war = no
+				trait = dragon_rider
+				OR = {
+					any_spouse = {
+						dynasty = 150
+					}
+					father_even_if_dead = {
+						dynasty = 150
+					}
+					mother_even_if_dead = {
+						dynasty = 150
+					}
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+		modifier = {
+			factor = 0.5
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			top_liege = { has_character_modifier = is_weak_king }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = hero_character
+		top_liege = {
+			random_realm_character = {
+				limit = {
+					NOR = {	has_character_flag = candidate_for_war }
+					ai = yes
+					trait = dragon_rider
+					OR = {
+						any_spouse = {
+							dynasty = 150
+						}
+						father_even_if_dead = {
+							dynasty = 150
+						}
+						mother_even_if_dead = {
+							dynasty = 150
+						}
+						any_friend = {
+							dynasty = 150
+						}
+					}
+				}
+				save_event_target_as = villain_character
+			}
+			set_character_flag = bracken_blackwood
+			character_event = { id = tdp_anti_dragon.1098 }
+		}
+	}
+
+}
+
+#Lunatic Dragon Rider
+character_event = {
+	id = tdp_anti_dragon.107
+
+	hide_window = yes
+	ai = yes
+
+	has_global_flag = tdp_dance_of_dragons
+
+	trigger = {
+		NOT = { has_character_flag = candidate_for_war }
+		trait = lunatic
+		trait = dragon_rider
+	}
+
+	mean_time_to_happen = {
+		years = 5
+	}
+
+	immediate = {
+		set_character_flag = candidate_for_war
+		top_liege = { character_event = { id = tdp_anti_dragon.1070 } }
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.1070
+	desc = EVTDESCtdp_anti_dragon.1070
+	picture = GFX_brightflame
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.1070
+	}
+}
+
+###Solve the Disputes###
+character_event = {
+	id = tdp_anti_dragon.1098
+	#desc =
+	picture = GFX_dragon_rider_disputes
+
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = opposite_personalities }
+		}
+		text = EVTDESCAtdp_anti_dragon.1098
+	}
+
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = jealous_uncle }
+		}
+		text = EVTDESCBtdp_anti_dragon.1098
+	}
+
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = half_siblings }
+		}
+		text = EVTDESCCtdp_anti_dragon.1098
+	}
+
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = bastard_ambitious }
+		}
+		text = EVTDESCDtdp_anti_dragon.1098
+	}
+
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = dragon_houses }
+		}
+		text = EVTDESCEtdp_anti_dragon.1098
+	}
+
+	desc = {
+		trigger = {
+			FROM = { has_character_flag = bracken_blackwood }
+		}
+		text = EVTDESCFtdp_anti_dragon.1098
+	}
+
+	is_triggered_only = yes
+
+	option = { #Able to mend the issue
+		name = EVTOPTAtdp_anti_dragon.1098
+		trigger = {
+			OR = {
+				diplomacy = 12
+				trait = grey_eminence
+				trait = charismatic_negotiator
+				is_smart_incl_genius_trigger = yes
+			}
+			OR = {
+				trait = just
+				trait = diligent
+				trait = patient
+				trait = authoritative
+			}
+			NOR = {
+				trait = deceitful
+				trait = cruel
+				trait = impaler
+				trait = greedy
+				trait = wroth
+				trait = envious
+				trait = ruthless
+				trait = arbitrary
+				trait = lunatic
+			}
+		}
+		set_character_flag = mended_issue
+		event_target:villain_character = {
+			opinion = {
+				name = opinion_tdp_mended_dispute
+				who = ROOT
+			}
+		}
+		event_target:hero_character = {
+			opinion = {
+				name = opinion_tdp_mended_dispute
+				who = ROOT
+			}
+		}
+		character_event = { id = tdp_anti_dragon.1099 }
+		ai_chance = {
+			factor = 500
+		}
+	}
+
+	option = { #Picks side of hero character
+		name = EVTOPTBtdp_anti_dragon.1098
+		set_character_flag = failed_to_mend
+		character_event = { id = tdp_anti_dragon.1099 }
+		event_target:hero_character = {
+			opinion = {
+				name = opinion_tdp_mended_dispute
+				who = ROOT
+			}
+		}
+		event_target:villain_character = {
+			set_character_flag = candidate_for_war
+			opinion = {
+				name = opinion_tdp_angry
+				who = ROOT
+			}
+			opinion = {
+				name = opinion_tdp_furious
+				who = event_target:hero_character
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = { #Picks side of villain character
+		name = EVTOPTCtdp_anti_dragon.1098
+		set_character_flag = failed_to_mend
+		character_event = { id = tdp_anti_dragon.1099 }
+		event_target:villain_character = {
+			opinion = {
+				name = opinion_tdp_mended_dispute
+				who = ROOT
+			}
+		}
+		event_target:hero_character = {
+			set_character_flag = candidate_for_war
+			opinion = {
+				name = opinion_tdp_angry
+				who = ROOT
+			}
+			opinion = {
+				name = opinion_tdp_furious
+				who = event_target:villain_character
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = { #Escalates the issue
+		name = EVTOPTDtdp_anti_dragon.1098
+		trigger = {
+			NOR = {
+				trait = honorable
+				trait = temperate
+				trait = charitable
+				trait = kind
+				trait = humble
+				trait = shy
+			}
+			OR = {
+				trait = deceitful
+				trait = cruel
+				trait = impaler
+				trait = greedy
+				trait = wroth
+				trait = envious
+				trait = ruthless
+				trait = arbitrary
+				trait = lunatic
+			}
+		}
+		set_character_flag = made_problem_worse
+		character_event = { id = tdp_anti_dragon.1099 }
+		event_target:hero_character = {
+			set_character_flag = candidate_for_war
+			opinion = {
+				name = opinion_tdp_angry
+				who = ROOT
+			}
+			opinion = {
+				name = opinion_tdp_furious
+				who = event_target:villain_character
+			}
+		}
+		event_target:villain_character = {
+			add_rival = event_target:hero_character
+			set_character_flag = candidate_for_war
+			opinion = {
+				name = opinion_tdp_angry
+				who = ROOT
+			}
+			opinion = {
+				name = opinion_tdp_furious
+				who = event_target:hero_character
+			}
+		}
+		ai_chance = {
+			factor = 500
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.1099
+	picture = GFX_dragon_rider_disputes
+
+	desc = {
+		trigger = {
+			has_character_flag = mended_issue
+		}
+		text = EVTDESCAtdp_anti_dragon.1099
+	}
+
+	desc = {
+		trigger = {
+			has_character_flag = failed_to_mend
+		}
+		text = EVTDESCBtdp_anti_dragon.1099
+	}
+
+	desc = {
+		trigger = {
+			has_character_flag = made_problem_worse
+		}
+		text = EVTDESCCtdp_anti_dragon.1099
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		if = {
+			limit = { has_character_flag = mended_issue }
+			clr_character_flag = mended_issue
+		}
+		if = {
+			limit = { has_character_flag = failed_to_mend }
+			clr_character_flag = failed_to_mend
+		}
+		if = {
+			limit = { has_character_flag = made_problem_worse }
+			clr_character_flag = made_problem_worse
+		}
+	}
+}
+
+
+###King dying will make Phase 3 possible###
+character_event = {
+	id = tdp_anti_dragon.12
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_dance_of_dragons
+
+	trigger = {
+		has_character_modifier = is_weak_king
+		OR = {
+			any_realm_character = {
+				NOT = { is_primary_heir = ROOT }
+				age = 16
+				trait = dragon_rider
+				has_character_flag = candidate_for_war
+				NOR = {
+					is_friend = current_heir
+					is_main_spouse = current_heir
+					is_parent_of = current_heir
+					is_child_of = current_heir
+					is_grandchild_of = current_heir
+					is_grandparent_of = current_heir
+				}
+				OR = {
+					any_friend = {
+						trait = dragon
+						martial = 60
+						NOR = {
+							trait = wounded_dragon
+							trait = maimed_dragon
+							trait = infirm_dragon
+							trait = harmless_dragon
+						}
+					}
+					has_supporter_with_big_dragon = yes
+				}
+			}
+			AND = {
+				any_sibling = {
+					NOT = { is_heir = yes }
+					NOT = { ROOT = { current_heir = { is_child_of = PREVPREV } } }
+					age = 18
+					trait = dragon_rider
+					any_friend = {
+						trait = dragon
+						martial = 100
+					}
+					calc_true_if = {
+						amount = 2
+						trait = ruthless
+						trait = ambitious
+						trait = deceitful
+						trait = envious
+						trait = greedy
+						trait = wroth
+						trait = arbitrary
+					}
+					NOR = {
+						trait = honorable
+						trait = kind
+						trait = humble
+						trait = slothful
+						trait = craven
+						trait = honest
+					}
+				}
+				current_heir = {
+					OR = {
+						NOT = { trait = dragon_rider }
+						AND = {
+							trait = dragon_rider
+							any_friend = {
+								trait = dragon
+								martial < 30
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_global_flag = active_dragon_dance
+
+		###Dance Starter###
+		if = {
+			limit = {
+				any_realm_character = {
+					NOT = { is_primary_heir = ROOT }
+					age = 16
+					trait = dragon_rider
+					has_character_flag = candidate_for_war
+					NOR = {
+						is_friend = current_heir
+						is_main_spouse = current_heir
+						is_parent_of = current_heir
+						is_child_of = current_heir
+						is_grandchild_of = current_heir
+						is_grandparent_of = current_heir
+					}
+					OR = {
+						any_friend = {
+							trait = dragon
+							martial = 60
+							NOR = {
+								trait = wounded_dragon
+								trait = maimed_dragon
+								trait = infirm_dragon
+								trait = harmless_dragon
+							}
+						}
+						has_supporter_with_big_dragon = yes
+					}
+				}
+			}
+			current_heir = {
+				set_character_flag = dance_target
+				character_event = { id = tdp_anti_dragon.13 days = 1 }
+			}
+		}
+		###Stolen Throne###
+		else = {
+			limit = {
+				any_sibling = {
+					NOT = { is_heir = yes }
+					NOT = { ROOT = { current_heir = { is_child_of = PREVPREV } } }
+					age = 18
+					trait = dragon_rider
+					any_friend = {
+						trait = dragon
+						martial = 100
+					}
+					calc_true_if = {
+						amount = 2
+						trait = ruthless
+						trait = ambitious
+						trait = deceitful
+						trait = envious
+						trait = greedy
+						trait = wroth
+						trait = arbitrary
+					}
+					NOR = {
+						trait = honorable
+						trait = kind
+						trait = humble
+						trait = slothful
+						trait = craven
+						trait = honest
+					}
+				}
+				current_heir = {
+					OR = {
+						NOT = { trait = dragon_rider }
+						AND = {
+							trait = dragon_rider
+							any_friend = {
+								trait = dragon
+								martial < 30
+							}
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					save_event_target_as = dead_dragon
+					current_heir = {
+						set_character_flag = the_uncrowned
+						save_event_target_as = rebel_dragon
+					}
+					random_sibling = {
+						limit = {
+							NOT = { is_heir = yes }
+							NOT = { ROOT = { current_heir = { is_child_of = PREVPREV } } }
+							age = 18
+							trait = dragon_rider
+							any_friend = {
+								trait = dragon
+								martial = 100
+							}
+							calc_true_if = {
+								amount = 2
+								trait = ruthless
+								trait = ambitious
+								trait = deceitful
+								trait = envious
+								trait = greedy
+								trait = wroth
+								trait = arbitrary
+							}
+							NOR = {
+								trait = honorable
+								trait = kind
+								trait = humble
+								trait = slothful
+								trait = craven
+								trait = honest
+							}
+						}
+						save_event_target_as = crown_dragon
+						any_friend = {
+							limit = {
+								trait = dragon
+							}
+							save_event_target_as = large_dragon
+						}
+						inherit = ROOT
+						ROOT = {
+							any_artifact = {
+								transfer_artifact = {
+									from = ROOT
+									to = PREVPREV
+								}
+							}
+						}
+						character_event = { id = tdp_anti_dragon.14 days = 1 }
+					}
+				}
+				80 = {
+					modifier = {
+						factor = 0
+						war = no
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+###Dance Starter###
+character_event = {
+	id = tdp_anti_dragon.13
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = dance_target
+
+	immediate = {
+		any_realm_lord = {
+			limit = { ai = no }
+			narrative_event = { id = tdp_anti_dragon.1320 }
+		}
+		any_demesne_title = {
+			limit = { tier = EMPEROR }
+			save_event_target_as = emperor_title
+		}
+		###Dynastic Civil War###
+		if = {
+			limit = {
+				any_realm_character = {
+					dynasty = ROOT
+					trait = dragon_rider
+					has_character_flag = candidate_for_war
+					age = 16
+					OR = {
+						any_friend = {
+							trait = dragon
+							martial = 60
+							NOR = {
+								trait = wounded_dragon
+								trait = maimed_dragon
+								trait = infirm_dragon
+								trait = harmless_dragon
+							}
+						}
+						has_supporter_with_big_dragon = yes
+					}
+				}
+			}
+			random_realm_character = {
+				limit = {
+					dynasty = ROOT
+					trait = dragon_rider
+					has_character_flag = candidate_for_war
+					age = 16
+					OR = {
+						any_friend = {
+							trait = dragon
+							martial = 60
+							NOR = {
+								trait = wounded_dragon
+								trait = maimed_dragon
+								trait = infirm_dragon
+								trait = harmless_dragon
+							}
+						}
+						has_supporter_with_big_dragon = yes
+					}
+				}
+				set_character_flag = tdp_rebel_dragon_lead
+				save_event_target_as = rebel_dragon
+				#Find supporter with big dragon
+				if = {
+					limit = {
+						any_spouse = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+					}
+					random_spouse = {
+						limit = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+						set_character_flag = tdp_rebel_dragon
+					}
+				}
+				else_if = {
+					limit = {
+						any_friend = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+					}
+					random_friend = {
+						limit = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+						set_character_flag = tdp_rebel_dragon
+						save_event_target_as = large_dragon_supporter
+					}
+				}
+				else = {
+					limit = {
+						any_sibling = {
+							trait = dragon_rider
+							age = 15
+							NOT = { sibling_is_half_sibling = yes }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+					}
+					random_sibling = {
+						limit = {
+							trait = dragon_rider
+							age = 15
+							NOT = { sibling_is_half_sibling = yes }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+						set_character_flag = tdp_rebel_dragon
+						save_event_target_as = large_dragon_supporter
+					}
+				}
+				#Give Title if Unlanded
+				if = {
+					limit = { is_landed = no }
+					k_rebel_dragon_host = {
+						gain_title = event_target:rebel_dragon
+						add_law = succ_primogeniture
+						recalc_succession = yes
+						set_title_flag = has_dynamic_coa
+						set_dynamic_coa_effect = yes
+						set_name = event_target:emperor_title
+					}
+				}
+				else = {
+					set_defacto_liege = ROOT
+				}
+			}
+			set_character_flag = tdp_crown_dragon_lead
+			save_event_target_as = crown_dragon
+
+			event_target:rebel_dragon = {
+				any_spouse = {
+					limit = {
+						is_landed = no
+						NOT = { trait = nightswatch }
+					}
+					move_character = event_target:rebel_dragon
+					set_character_flag = tdp_rebel_dragon
+				}
+				any_child = {
+					limit = {
+						is_landed = no
+						NOT = { trait = nightswatch }
+					}
+					move_character = event_target:rebel_dragon
+					set_character_flag = tdp_rebel_dragon
+				}
+				event_target:large_dragon_supporter = {
+					if = {
+						limit = {
+							is_landed = no
+							NOT = { trait = nightswatch }
+						}
+
+						move_character = event_target:rebel_dragon
+						set_character_flag = tdp_rebel_dragon
+					}
+				}
+			}
+		}
+		###Non-Dynastic Dragon War###
+		else = {
+			limit = {
+				any_realm_character = {
+					NOT = { dynasty = ROOT }
+					trait = dragon_rider
+					age = 16
+					has_character_flag = candidate_for_war
+					OR = {
+						any_friend = {
+							trait = dragon
+							martial = 60
+							NOR = {
+								trait = wounded_dragon
+								trait = maimed_dragon
+								trait = infirm_dragon
+								trait = harmless_dragon
+							}
+						}
+						has_supporter_with_big_dragon = yes
+					}
+				}
+			}
+			random_realm_character = {
+				limit = {
+					NOT = { dynasty = ROOT }
+					trait = dragon_rider
+					age = 16
+					has_character_flag = candidate_for_war
+					OR = {
+						any_friend = {
+							trait = dragon
+							martial = 60
+							NOR = {
+								trait = wounded_dragon
+								trait = maimed_dragon
+								trait = infirm_dragon
+								trait = harmless_dragon
+							}
+						}
+						has_supporter_with_big_dragon = yes
+					}
+				}
+				set_character_flag = tdp_rebel_dragon_lead
+				save_event_target_as = rebel_dragon
+				#Find supporter with big dragon
+				if = {
+					limit = {
+						any_spouse = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+					}
+					random_spouse = {
+						limit = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+						set_character_flag = tdp_rebel_dragon
+					}
+				}
+				else_if = {
+					limit = {
+						any_friend = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+					}
+					random_friend = {
+						limit = {
+							trait = dragon_rider
+							age = 15
+							NOT = { trait = nightswatch }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+						set_character_flag = tdp_rebel_dragon
+						save_event_target_as = large_dragon_supporter
+					}
+				}
+				else = {
+					limit = {
+						any_sibling = {
+							trait = dragon_rider
+							age = 15
+							NOT = { sibling_is_half_sibling = yes }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+					}
+					random_sibling = {
+						limit = {
+							trait = dragon_rider
+							age = 15
+							NOT = { sibling_is_half_sibling = yes }
+							any_friend = {
+								trait = dragon
+								martial = 60
+								NOR = {
+									trait = wounded_dragon
+									trait = maimed_dragon
+									trait = infirm_dragon
+									trait = harmless_dragon
+								}
+							}
+						}
+						set_character_flag = tdp_rebel_dragon
+						save_event_target_as = large_dragon_supporter
+					}
+				}
+				#Give Title if Unlanded
+				if = {
+					limit = { is_landed = no }
+					k_rebel_dragon_host = {
+						gain_title = event_target:rebel_dragon
+						add_law = succ_primogeniture
+						add_law = cognatic_succession
+						recalc_succession = yes
+						set_title_flag = has_dynamic_coa
+						set_dynamic_coa_effect = yes
+						set_name = event_target:emperor_title
+					}
+				}
+			}
+			set_character_flag = tdp_crown_dragon_lead
+			save_event_target_as = crown_dragon
+			#Blood Feud
+			character_event = { id = tdp_anti_dragon.130 days = 2 }
+			#Move Families to their sides
+			any_realm_character = {
+				limit = {
+					dynasty = ROOT
+					is_landed = no
+					trait = dragon_rider
+					age = 15
+					OR = {
+						is_married = no
+						is_female = no
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+					}
+					NOR = {
+						is_rival = ROOT
+						is_friend = event_target:rebel_dragon
+						#is_main_spouse = event_target:rebel_dragon
+					}
+				}
+				set_character_flag = tdp_crown_dragon
+			}
+			any_realm_character = {
+				limit = {
+					dynasty = event_target:rebel_dragon
+					is_landed = no
+					trait = dragon_rider
+					age = 15
+					OR = {
+						is_married = no
+						is_female = no
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+					}
+					NOR = {
+						is_rival = event_target:rebel_dragon
+						is_friend = event_target:crown_dragon
+						#is_main_spouse = event_target:crown_dragon
+					}
+				}
+
+				set_character_flag = tdp_rebel_dragon
+				if = {
+					limit = { NOT = { at_location = event_target:rebel_dragon } }
+					move_character = event_target:rebel_dragon
+					any_spouse = {
+						limit = {
+							is_landed = no
+							NOT = { trait = nightswatch }
+						}
+						move_character = event_target:rebel_dragon
+						set_character_flag = tdp_rebel_dragon
+					}
+					any_child = {
+						limit = {
+							is_landed = no
+							NOT = { trait = nightswatch }
+						}
+						move_character = event_target:rebel_dragon
+						set_character_flag = tdp_rebel_dragon
+					}
+					event_target:large_dragon_supporter = {
+						if = {
+							limit = {
+								is_landed = no
+								NOT = { trait = nightswatch }
+							}
+							move_character = event_target:rebel_dragon
+							set_character_flag = tdp_rebel_dragon
+						}
+					}
+				}
+			}
+		}
+		###Kick Off War###
+		#Set up camp
+		#Westeros
+		if = {
+			limit = { event_target:rebel_dragon = { is_landed = no } }
+				event_target:crown_dragon = {
+					random_realm_province = {
+						limit = {
+							any_province_holding = {
+								holding_type = castle
+								owner = {
+									NOT = { higher_tier_than = BARON }
+									NOT = { liege = { character = event_target:crown_dragon } }
+									NOT = { has_dynasty_flag = has_dynamic_coa }
+								}
+							}
+						}
+						random_province_holding = {
+							limit = {
+								holding_type = castle
+								owner = {
+									NOT = { higher_tier_than = BARON }
+									NOT = { liege = { character = event_target:crown_dragon } }
+									NOT = { has_dynasty_flag = has_dynamic_coa }
+								}
+							}
+							gain_title = event_target:rebel_dragon
+						add_holding_modifier = {
+								name = b_rebel_camp
+							duration = -1
+						}
+					}
+				}
+			}
+			#spawn troops
+			event_target:rebel_dragon = {
+				if = {
+					limit = {
+						event_target:crown_dragon = {
+							capital_scope = { region = world_westeros }
+						}
+					}
+					spawn_unit = {
+						province = 218 #North Cracklaw Point
+						home = ROOT
+						owner = event_target:rebel_dragon
+						leader = event_target:rebel_dragon
+						troops = {
+							archers = { 200 200 }
+							heavy_infantry = { 5400 5400 }
+							light_infantry = { 2400 2400 }
+							light_cavalry = { 1200 1200 }
+							knights = { 150 150 }
+						}
+						attrition = 1.0
+					}
+				}
+				else_if = {
+					limit = {
+						event_target:crown_dragon = {
+							capital_scope = { region = world_free_cities }
+						}
+					}
+					spawn_unit = {
+						province = 428 #Dagger Lake
+						home = ROOT
+						owner = event_target:rebel_dragon
+						leader = event_target:rebel_dragon
+						troops = {
+							archers = { 200 200 }
+							heavy_infantry = { 5400 5400 }
+							light_infantry = { 2400 2400 }
+							light_cavalry = { 1200 1200 }
+							knights = { 150 150 }
+						}
+						attrition = 1.0
+					}
+				}
+				else_if = {
+					limit = {
+						event_target:crown_dragon = {
+							capital_scope = { region = world_ghiscar }
+						}
+					}
+					spawn_unit = {
+						province = 605 #Demon Road
+						home = ROOT
+						owner = event_target:rebel_dragon
+						leader = event_target:rebel_dragon
+						troops = {
+							archers = { 200 200 }
+							heavy_infantry = { 5400 5400 }
+							light_infantry = { 2400 2400 }
+							light_cavalry = { 1200 1200 }
+							knights = { 150 150 }
+						}
+						attrition = 1.0
+					}
+				}
+				else_if = {
+					limit = {
+						event_target:crown_dragon = {
+							capital_scope = { region = world_valyrian_peninsula }
+						}
+					}
+					spawn_unit = {
+						province = 484 #Little Valyria
+						home = ROOT
+						owner = event_target:rebel_dragon
+						leader = event_target:rebel_dragon
+						troops = {
+							archers = { 200 200 }
+							heavy_infantry = { 5400 5400 }
+							light_infantry = { 2400 2400 }
+							light_cavalry = { 1200 1200 }
+							knights = { 150 150 }
+						}
+						attrition = 1.0
+					}
+				}
+				else = {
+					limit = {
+						event_target:crown_dragon = {
+							capital_scope = {
+								NOR = {
+									region = world_free_cities
+									region = world_ghiscar
+									region = world_westeros
+									region = world_valyrian_peninsula
+								}
+							}
+						}
+					}
+					spawn_unit = {
+						province = 484 #Little Valyria
+						home = ROOT
+						owner = event_target:rebel_dragon
+						leader = event_target:rebel_dragon
+						troops = {
+							archers = { 200 200 }
+							heavy_infantry = { 5400 5400 }
+							light_infantry = { 2400 2400 }
+							light_cavalry = { 1200 1200 }
+							knights = { 150 150 }
+						}
+						attrition = 1.0
+					}
+				}
+			}
+		}
+		event_target:rebel_dragon = {
+			narrative_event = { id = tdp_anti_dragon.132 }
+			event_target:emperor_title = {
+				reverse_unsafe_war = {
+					target = event_target:rebel_dragon
+					casus_belli = tdp_dance_of_dragons
+				}
+			}
+		}
+
+		narrative_event = { id = tdp_anti_dragon.132 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+###Starts Blood Feud for Non-Dynastic War###
+character_event = {
+	id = tdp_anti_dragon.130
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		event_target:crown_dragon = {
+			opinion = {
+				who = event_target:rebel_dragon
+				modifier = opinion_blood_feud
+			}
+			custom_tooltip = { text = TOOLTIPNEWBLOODFEUD }
+			set_dynasty_flag = in_blood_feud
+			hidden_tooltip = {
+				add_trait = blood_feud #blood feud tracker
+				any_dynasty_member = {
+					limit = {
+						NOT = { character = event_target:crown_dragon }
+						is_alive = yes
+					}
+					opinion = {
+						who = event_target:rebel_dragon
+						modifier = opinion_blood_feud
+					}
+					any_character = {
+						limit = {
+							dynasty = event_target:rebel_dragon
+							NOT = { character = event_target:rebel_dragon }
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_blood_feud
+						}
+					}
+				}
+			}
+		}
+		event_target:rebel_dragon = {
+			opinion = {
+				who = event_target:crown_dragon
+				modifier = opinion_blood_feud
+			}
+			set_dynasty_flag = in_blood_feud
+			hidden_tooltip = {
+				add_trait = blood_feud #blood feud tracker
+				any_dynasty_member = {
+					limit = {
+						NOT = { character = event_target:rebel_dragon }
+						is_alive = yes
+					}
+					opinion = {
+						who = event_target:crown_dragon
+						modifier = opinion_blood_feud
+					}
+					any_character = {
+						limit = {
+							dynasty = event_target:crown_dragon
+							NOT = { character = event_target:crown_dragon }
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_blood_feud
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Message for Leads
+narrative_event = {
+	id = tdp_anti_dragon.132
+	title = EVTTITLEtdp_anti_dragon.132
+	picture = GFX_evt_rogue_prince
+
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				NOT = { dynasty = event_target:rebel_dragon }
+			}
+		}
+		text = EVTDESCAtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				sibling = event_target:rebel_dragon
+			}
+		}
+		text = EVTDESCBtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				is_aunt_uncle_of = event_target:rebel_dragon
+			}
+		}
+		text = EVTDESCCtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:rebel_dragon = {
+				is_aunt_uncle_of = event_target:crown_dragon
+			}
+		}
+		text = EVTDESCDtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				is_cousin_of = event_target:rebel_dragon
+			}
+		}
+		text = EVTDESCEtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				dynasty = event_target:rebel_dragon
+				NOR = {
+					is_close_relative = event_target:rebel_dragon
+					is_aunt_uncle_of = event_target:rebel_dragon
+					is_nibling_of = event_target:rebel_dragon
+					sibling = event_target:rebel_dragon
+					is_cousin_of = event_target:rebel_dragon
+				}
+			}
+		}
+		text = EVTDESCFtdp_anti_dragon.132
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS
+	}
+
+	option = {
+		name = EVTOPTplayas
+		trigger = {
+			tier = EMPEROR
+		}
+		set_player_character = event_target:rebel_dragon
+	}
+}
+
+#Message for Player Lords
+narrative_event = {
+	id = tdp_anti_dragon.1320
+	title = EVTTITLEtdp_anti_dragon.132
+	picture = GFX_evt_rogue_prince
+
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				NOT = { dynasty = event_target:rebel_dragon }
+			}
+		}
+		text = EVTDESCAtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				sibling = event_target:rebel_dragon
+			}
+		}
+		text = EVTDESCBtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				is_aunt_uncle_of = event_target:rebel_dragon
+			}
+		}
+		text = EVTDESCCtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:rebel_dragon = {
+				is_aunt_uncle_of = event_target:crown_dragon
+			}
+		}
+		text = EVTDESCDtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				is_cousin_of = event_target:rebel_dragon
+			}
+		}
+		text = EVTDESCEtdp_anti_dragon.132
+	}
+	desc = {
+		trigger = {
+			event_target:crown_dragon = {
+				dynasty = event_target:rebel_dragon
+				NOR = {
+					is_close_relative = event_target:rebel_dragon
+					is_aunt_uncle_of = event_target:rebel_dragon
+					is_nibling_of = event_target:rebel_dragon
+					sibling = event_target:rebel_dragon
+					is_cousin_of = event_target:rebel_dragon
+				}
+			}
+		}
+		text = EVTDESCFtdp_anti_dragon.132
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.1320
+	}
+}
+
+###Stolen Throne###
+character_event = {
+	id = tdp_anti_dragon.14
+	desc = EVTDESCtdp_anti_dragon.14
+	picture = GFX_maegor_crowning
+
+	is_triggered_only = yes
+
+	immediate = {
+		any_demesne_title = {
+			limit = { tier = EMPEROR }
+			save_event_target_as = emperor_title
+		}
+		event_target:rebel_dragon = { character_event = { id = tdp_anti_dragon.140 days = 2 } }
+	}
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS
+	}
+
+	option = {
+		name = EVTOPTplayas
+		set_player_character = event_target:rebel_dragon
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.140
+	desc = EVTDESCtdp_anti_dragon.140
+	picture = GFX_maegor_crowning
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS #War
+		trigger = {
+			trait = dragon_rider
+		}
+		narrative_event = { id = tdp_anti_dragon.132 }
+		FROM = { set_character_flag = dance_target }
+		set_defacto_vassal = FROM
+		event_target:emperor_title = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = tdp_dance_of_dragons
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = EVTOPTAtdp_anti_dragon.140 #I need a dragon
+		trigger = {
+			NOT = { trait = dragon_rider }
+			NOT = { has_character_modifier = cannot_tame_dragon }
+		}
+		character_event = { id = dragon.2699 }
+		character_event = { id = tdp_anti_dragon.140 days = 10 }
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_anti_dragon.140 #I will do nothing
+		add_trait = craven
+		hidden_tooltip = {
+			random_list = {
+				1 = { give_nickname = nick_the_toothless }
+				1 = { give_nickname = nick_the_frightened }
+				1 = { give_nickname = nick_the_spineless }
+				1 = { give_nickname = nick_the_do_nothing }
+				1 = { give_nickname = nick_the_cowardly }
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Winner's Bloodline
+character_event = {
+	id = tdp_anti_dragon.17
+	desc = EVTDESCtdp_anti_dragon.17
+	picture = GFX_dragon_war_victorious
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_tooltip = {
+			if = {
+				limit = {
+					character = event_target:rebel_dragon
+					has_nickname = no
+				}
+				random_list = {
+					1 = { give_nickname = nick_the_usurper }
+					1 = { give_nickname = nick_the_victorious }
+					1 = { give_nickname = nick_the_fearless }
+					1 = { give_nickname = nick_the_vengeful }
+					1 = { give_nickname = nick_the_ambitious }
+
+				}
+			}
+			else = {
+				limit = {
+					character = event_target:crown_dragon
+					has_nickname = no
+				}
+				random_list = {
+					1 = { give_nickname = nick_the_warforged }
+					1 = { give_nickname = nick_the_victorious }
+					1 = { give_nickname = nick_the_fearless }
+					1 = { give_nickname = nick_the_protector }
+					1 = { give_nickname = nick_the_gallant }
+				}
+			}
+
+		}
+	}
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.17
+		trigger = {
+			character = event_target:rebel_dragon
+		}
+		create_bloodline = {
+			type = rebel_dragon_bloodline
+
+		}
+	}
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.17
+		trigger = {
+			character = event_target:crown_dragon
+		}
+		create_bloodline = {
+			type = crown_dragon_bloodline
+		}
+	}
+}
+
+###Tagging Dances that dont go through this process
+character_event = {
+	id = tdp_anti_dragon.1898
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_character_flag = dance_target }
+		dance_of_dragons_war_type_trigger = yes
+	}
+
+	immediate = {
+		set_global_flag = active_dragon_dance
+		if = {
+			limit = { dance_of_dragons_war_type_trigger = yes }
+			set_character_flag = dance_target
+			set_character_flag = tdp_crown_dragon_lead
+			any_courtier = {
+				limit = { trait = dragon_rider }
+				set_character_flag = tdp_crown_dragon
+			}
+			random_current_enemy = {
+				limit = { trait = dragon_rider }
+				set_character_flag = tdp_rebel_dragon_lead
+				any_courtier = {
+					limit = { trait = dragon_rider }
+					set_character_flag = tdp_rebel_dragon
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.1999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		ROOT = {
+			OR = {
+				has_character_flag = tdp_crown_dragon
+				has_character_flag = tdp_crown_dragon_lead
+				has_character_flag = tdp_rebel_dragon
+				has_character_flag = tdp_rebel_dragon_lead
+			}
+		}
+		FROM = {
+			OR = {
+				has_character_flag = tdp_crown_dragon
+				has_character_flag = tdp_crown_dragon_lead
+				has_character_flag = tdp_rebel_dragon
+				has_character_flag = tdp_rebel_dragon_lead
+			}
+		}
+	}
+
+	immediate = {
+		clr_global_flag = active_dragon_dance
+		any_character = {
+			limit = {
+				OR = {
+					has_character_flag = tdp_crown_dragon_lead
+					has_character_flag = tdp_crown_dragon
+					has_character_flag = tdp_rebel_dragon_lead
+					has_character_flag = tdp_rebel_dragon
+				}
+			}
+			clr_character_flag = dance_target
+			clr_character_flag = tdp_crown_dragon_lead
+			clr_character_flag = tdp_crown_dragon
+			clr_character_flag = tdp_rebel_dragon_lead
+			clr_character_flag = tdp_rebel_dragon
+			if = {
+				limit = { has_character_modifier = calling_for_dragon_riders }
+				remove_character_modifier = calling_for_dragon_riders
+			}
+		}
+		FROM = {
+			if = {
+				limit = { has_landed_title = k_rebel_dragon_host }
+				activate_title = { status = no title = k_rebel_dragon_host }
+				k_rebel_dragon_host = {
+					destroy_landed_title = THIS
+				}
+			}
+		}
+	}
+}
+
+###Events to happen during Dances###
+##Push the storming of dragon pit
+province_event = {
+	id = tdp_anti_dragon.20
+	picture = GFX_evt_peasants
+	border = GFX_event_normal_frame_war
+
+	has_global_flag = active_dragon_dance
+
+	trigger = {
+		NOT = { has_global_flag = tdp_stormed_dragon_pit }
+		had_global_flag = {
+			flag = active_dragon_dance
+			months = 18
+		}
+		is_capital = yes
+		owner = {
+			tier = EMPEROR
+			top_liege = {
+				war = yes
+				capital_scope  = {
+					any_province_holding = {
+						has_building = ca_dragon_pit
+					}
+				}
+				OR = {
+					AND = {
+						religion = the_seven
+						any_demesne_title = {
+							OR = {
+								has_law = investiture_law_0
+								has_law = investiture_law_1
+							}
+							NOR = {
+								has_law = investiture_law_2
+								has_law = investiture_law_3
+							}
+						}
+					}
+					AND = {
+						NOT = { religion = the_seven }
+						any_realm_province = {
+							religion = the_seven
+						}
+					}
+					AND = {
+						NOT = { religion = rhllor }
+						any_realm_province = {
+							religion = rhllor
+						}
+					}
+					NOT = { religion = ROOT }
+				}
+			}
+		}
+
+		NOT = { # Not if there is already an ongoing peasant revolt for this province
+			owner = {
+				top_liege = {
+					war = yes
+					any_war = {
+						defender = { character = PREV }
+						AND = {
+							using_cb = peasant_revolt
+							war_title = ROOT # The county
+						}
+					}
+				}
+			}
+		}
+		NOT = { has_province_flag = kings_landing_riot }
+	}
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	immediate = {
+		set_province_flag = kings_landing_riot
+		if = {
+			limit = {
+				owner = {
+					top_liege = {
+						OR = {
+							AND = {
+								religion = the_seven
+								any_demesne_title = {
+									OR = {
+										has_law = investiture_law_0
+										has_law = investiture_law_1
+									}
+									NOR = {
+										has_law = investiture_law_2
+										has_law = investiture_law_3
+									}
+								}
+							}
+							AND = {
+								NOT = { religion = the_seven }
+								any_realm_province = {
+									religion = the_seven
+								}
+							}
+						}
+					}
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = none
+				religion = the_seven
+				culture = ROOT
+				female = no
+				age = 64
+				trait = peasant_leader
+				trait = tough_soldier
+				trait = ambitious
+				trait = brave
+				trait = zealous
+			}
+		}
+		else_if = {
+			limit = {
+				owner = {
+					top_liege = {
+						NOT = { religion = rhllor }
+						any_realm_province = {
+							religion = rhllor
+						}
+					}
+				}
+			}
+			create_character = {
+				random_traits = yes
+				dynasty = none
+				religion = rhllor
+				culture = ROOT
+				female = no
+				age = 64
+				trait = peasant_leader
+				trait = tough_soldier
+				trait = ambitious
+				trait = brave
+				trait = zealous
+			}
+		}
+		else = {
+			create_character = {
+				random_traits = yes
+				dynasty = none
+				religion = ROOT
+				culture = ROOT
+				female = no
+				age = 64
+				trait = peasant_leader
+				trait = tough_soldier
+				trait = ambitious
+				trait = brave
+				trait = zealous
+			}
+		}
+		new_character = {
+			set_name = " "
+			remove_trait = content
+			remove_trait = kind
+			random_list = {
+				10 = { add_trait = skilled_warrior }
+				30 = { add_trait = trained_warrior }
+				60 = { add_trait = poor_warrior }
+			}
+			random_list = {
+				4 = { give_nickname = nick_the_tdp_shepherd }
+				16 = { give_nickname = nick_the_tdp_zealot }
+				16 = { give_nickname = nick_the_tdp_prophet }
+				16 = { give_nickname = nick_the_tdp_disciple }
+				16 = { give_nickname = nick_the_tdp_apostle }
+				16 = { give_nickname = nick_the_tdp_oracle }
+				16 = { give_nickname = nick_the_tdp_harbinger }
+			}
+			create_title = {
+				tier = DUKE
+				landless = yes
+				temporary = yes
+				rebel = yes
+				culture = ROOT
+				name = "PEASANT_REVOLT"
+				holder = THIS
+			}
+			save_event_target_as = tdp_riot_leader
+		}
+		owner = {
+			top_liege = {
+				any_realm_lord = {
+					limit = {
+						is_located_in = ROOT
+						tier = BARON
+					}
+					any_courtier = {
+						limit = {
+							OR = {
+								has_character_flag = tdp_palehair_truefyre
+								character = 30509009
+							}
+						}
+						move_character = event_target:tdp_riot_leader
+						set_character_flag = tdp_palehair_truefyre
+						event_target:tdp_riot_leader = {
+							set_character_flag = has_tdp_palehair_truefyre
+						}
+					}
+				}
+			}
+		}
+
+		event_target:tdp_riot_leader = {
+			random_list = {
+				25 = {
+					spawn_unit = {
+						province = ROOT
+						home = ROOT
+						owner = THIS
+						leader = THIS
+						scaled_by_biggest_garrison = 0.75
+						troops = {
+							archers = { 6 6 }
+							light_cavalry = { 4 4 }
+							light_infantry = { 10 10 }
+						}
+						attrition = 1.0
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 30
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.75
+							troops = {
+								archers = { 6 6 }
+								light_cavalry = { 4 4 }
+								light_infantry = { 10 10 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 31
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.75
+							troops = {
+								archers = { 6 6 }
+								light_cavalry = { 4 4 }
+								light_infantry = { 10 10 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+				}
+				25 = {
+					spawn_unit = {
+						province = ROOT
+						home = ROOT
+						owner = THIS
+						leader = THIS
+						scaled_by_biggest_garrison = 0.5
+						troops = {
+							archers = { 6 6 }
+							light_cavalry = { 3 3 }
+							light_infantry = { 11 11 }
+						}
+						attrition = 1.0
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 30
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.5
+							troops = {
+								archers = { 6 6 }
+								light_cavalry = { 3 3 }
+								light_infantry = { 11 11 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 31
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.5
+							troops = {
+								archers = { 6 6 }
+								light_cavalry = { 3 3 }
+								light_infantry = { 11 11 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+				}
+				25 = {
+					spawn_unit = {
+						province = ROOT
+						home = ROOT
+						owner = THIS
+						leader = THIS
+						scaled_by_biggest_garrison = 0.75
+						troops = {
+							archers = { 6 6 }
+							light_infantry = { 14 14 }
+						}
+						attrition = 1.0
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 30
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.75
+							troops = {
+								archers = { 6 6 }
+								light_infantry = { 14 14 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 31
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.75
+							troops = {
+								archers = { 6 6 }
+								light_infantry = { 14 14 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+				}
+				25 = {
+					spawn_unit = {
+						province = ROOT
+						home = ROOT
+						owner = THIS
+						leader = THIS
+						scaled_by_biggest_garrison = 0.5
+						troops = {
+							archers = { 6 6 }
+							light_infantry = { 14 14 }
+						}
+						attrition = 1.0
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 30
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.5
+							troops = {
+								archers = { 6 6 }
+								light_infantry = { 14 14 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+					create_character = {
+						random_traits = yes
+						dynasty = none
+						religion = THIS
+						culture = THIS
+						female = no
+						age = 31
+						trait = peasant_leader
+						trait = tough_soldier
+						trait = knight
+					}
+					new_character = {
+						random_list = {
+							10 = { add_trait = skilled_warrior }
+							30 = { add_trait = trained_warrior }
+							60 = { add_trait = poor_warrior }
+						}
+						spawn_unit = {
+							province = ROOT
+							home = ROOT
+							owner = PREV
+							scaled_by_biggest_garrison = 0.5
+							troops = {
+								archers = { 6 6 }
+								light_infantry = { 14 14 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+						}
+					}
+				}
+			}
+
+			# DoW on the province top liege
+			ROOT = {
+				owner = {
+					top_liege = {
+						reverse_war = {
+							target = PREVPREVPREV
+							casus_belli = peasant_revolt
+							thirdparty_title = ROOT # The county
+						}
+						reverse_opinion = {
+							who = PREVPREVPREV
+							modifier = opinion_evil_tyrant
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAdance_of_dragons.15"
+
+	}
+}
+
+#Trigger by Siege
+character_event = {
+	id = tdp_anti_dragon.200
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		#ROOT = {
+			#if = {
+				#limit = { has_character_flag = has_tdp_palehair_truefyre }
+				#random_courtier = {
+					#limit = { has_character_flag = tdp_palehair_truefyre }
+					#save_event_target_as = tdp_palehair_truefyre
+					#random_list = {
+					#	50 = { dynasty = 501 }
+					#	50 = {
+					#		modifier = {
+					#			factor = 0
+					#			event_target:tdp_palehair_truefyre = { character = 30509009 }
+					#		}
+					#		dynasty = 707801
+					#	}
+					#}
+					#ROOT = {
+					#	any_current_enemy = {
+					#		limit = { tier = EMPEROR }
+					#		character_event = { id = tdp_anti_dragon.201 }
+					#	}
+					#}
+				#}
+			#}
+		#}
+		FROM = {
+			set_global_flag = tdp_stormed_dragon_pit
+			any_province = {
+				limit = { has_building = ca_dragon_pit }
+				province_event = { id = dragon.79 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Moon of More Kings
+character_event = {
+	id = tdp_anti_dragon.201
+	desc = EVTDESCAtdp_anti_dragon.201
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+
+#Dragonseeds switch sides
+character_event = {
+	id = tdp_anti_dragon.22
+
+	hide_window = yes
+
+	has_global_flag = active_dragon_dance
+	has_character_flag = tdp_dragonseed
+
+	trigger = {
+		NOT = { has_character_flag = tdp_dragonseed_betrayer }
+		is_landed = no
+		trait = ambitious
+		prisoner = no
+		OR = {
+			trait = deceitful
+			trait = greedy
+			trait = wroth
+			trait = arbitrary
+		}
+		NOR = {
+			trait = honorable
+			trait = content
+		}
+		top_liege = {
+			OR = {
+				has_character_flag = tdp_rebel_dragon_lead
+				has_character_flag = tdp_crown_dragon_lead
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 18
+		modifier = {
+			factor = 0.5
+			has_character_flag = spurned_dragonseed
+		}
+		modifier = {
+			factor = 0.5
+			trait = deceitful
+		}
+		modifier = {
+			factor = 0.5
+			trait = greedy
+		}
+		modifier = {
+			factor = 0.5
+			trait = wroth
+		}
+		modifier = {
+			factor = 0.5
+			trait = arbitrary
+		}
+
+	}
+
+	immediate = {
+		set_character_flag = tdp_dragonseed_betrayer
+		clr_character_flag = against_king
+		clr_character_flag = supporting_king
+		if = {
+			limit = { has_character_flag = tdp_crown_dragon }
+			clr_character_flag = tdp_crown_dragon
+			any_independent_ruler = {
+				limit = { has_character_flag = tdp_rebel_dragon_lead }
+				save_event_target_as = new_host
+				character_event = { id = tdp_anti_dragon.221 }
+			}
+			liege = { character_event = { id = tdp_anti_dragon.220 } }
+			move_character = event_target:new_host
+		}
+		if = {
+			limit = { has_character_flag = tdp_rebel_dragon }
+			clr_character_flag = tdp_rebel_dragon
+			any_independent_ruler = {
+				limit = { has_character_flag = tdp_crown_dragon_lead }
+				save_event_target_as = new_host
+				character_event = { id = tdp_anti_dragon.221 }
+			}
+			liege = { character_event = { id = tdp_anti_dragon.220 } }
+			move_character = event_target:new_host
+		}
+		if = {
+			limit = { liege = { has_character_flag = tdp_rebel_dragon_lead } }
+			set_character_flag = tdp_rebel_dragon
+		}
+		if = {
+			limit = { liege = { has_character_flag = tdp_crown_dragon_lead } }
+			set_character_flag = tdp_crown_dragon
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Inform old Liege they've been betrayed
+character_event = {
+	id = tdp_anti_dragon.220
+	desc = EVTDESCtdp_anti_dragon.220
+	picture = GFX_dragons_flying
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.220
+		opinion = {
+			name = opinion_traitor
+			who = FROM
+			years = 60
+		}
+		opinion = {
+			name = opinion_at_war
+			who = ROOT
+			years = 5
+		}
+		if = {
+			limit = { has_character_flag = tdp_rebel_dragon_lead }
+			remove_opinion = {
+				name = opinion_joined_cause
+				who = FROM
+			}
+		}
+		if = {
+			limit = { has_character_flag = tdp_crown_dragon_lead }
+			remove_opinion = {
+				name = opinion_loyal_to_crown
+				who = FROM
+			}
+		}
+		FROM = {
+			opinion = {
+				name = opinion_at_war
+				who = ROOT
+				years = 5
+			}
+			opinion = {
+				name = opinion_hate
+				who = ROOT
+				years = 60
+			}
+		}
+		set_character_flag = tdp_betrayed_by_dragonseed
+		if = {
+			limit = { NOT = { has_character_flag = spared_dragonseeds } }
+			character_event = { id = tdp_anti_dragon.23 days = 1 }
+		}
+	}
+}
+
+#Inform new Liege they've added a new rider
+character_event = {
+	id = tdp_anti_dragon.221
+	desc = EVTDESCtdp_anti_dragon.221
+	picture = GFX_dragons_flying
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.221
+		if = {
+			limit = { has_character_flag = tdp_rebel_dragon_lead }
+			opinion = {
+				name = opinion_joined_cause
+				who = FROM
+				years = 5
+			}
+		}
+		if = {
+			limit = { has_character_flag = tdp_crown_dragon_lead }
+			opinion = {
+				name = opinion_loyal_to_liege
+				who = FROM
+				years = 5
+			}
+			remove_opinion = {
+				name = opinion_joined_rebellion
+				who = FROM
+			}
+		}
+		any_courtier = {
+			limit = { trait = dragon_rider }
+			unsafe_give_minor_title = title_commander
+		}
+	}
+}
+
+#Arrest Dragonseeds decision
+character_event = { #FIX
+	id = tdp_anti_dragon.23
+	desc = EVTDESCtdp_anti_dragon.23
+	picture = GFX_dote_events_claimant
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_dragonseeds.23
+		any_realm_character = {
+			limit = {
+				has_character_flag = tdp_dragonseed
+				trait = dragon_rider
+			}
+			character_event = { id = tdp_anti_dragon.2399 }
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_dragonseeds.23
+		set_character_flag = spared_dragonseeds
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.2399
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Imprisoned"
+		imprison = FROM
+		FROM = { character_event = { id = tdp_anti_dragon.230 } }
+		ai_chance = {
+			factor = 45
+		}
+	}
+
+	option = {
+		name = "Defect"
+		trigger = {
+			NOT = { trait = honorable }
+		}
+		character_event = { id = tdp_anti_dragon.22 }
+		ai_chance = {
+			factor = 45
+		}
+	}
+
+	option = {
+		name = "Disappeared"
+		any_friend = {
+			limit = { trait = dragon }
+			death = {
+				death_reason = death_missing
+			}
+		}
+		death = {
+			death_reason = death_missing
+		}
+		FROM = { character_event = { id = tdp_anti_dragon.231 } }
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+
+#Imprisoned
+character_event = {
+	id = tdp_anti_dragon.230
+	desc = EVTDESCtdp_anti_dragon.230
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.230
+	}
+}
+
+#Disappeared
+character_event = {
+	id = tdp_anti_dragon.231
+	desc = EVTDESCtdp_anti_dragon.231
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_anti_dragon.231
+	}
+}
+
+
+###Shot Down at Sea###
+character_event = {
+	id = tdp_anti_dragon.3
+
+	hide_window = yes
+
+	trigger = {
+		trait = dragon_rider
+		any_friend = {
+			trait = dragon
+			age < 10
+		}
+		war_with = {
+			OR = {
+				e_iron_isles
+				k_iron_islands
+			}
+		}
+		is_at_sea = yes
+	}
+
+	mean_time_to_happen = {
+		years = 20
+	}
+
+	immediate = {
+		any_friend = {
+			limit = { trait = dragon }
+			death = {
+				death_reason = death_battle
+			}
+		}
+		any_playable_ruler = {
+			limit = { ai = no }
+			character_event = { id = tdp_anti_dragon.30 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+
+character_event = {
+	id = tdp_anti_dragon.30
+	desc = EVTDESCtdp_anti_dragon.810
+	picture = GFX_the_iron_fleet
+
+	is_triggered_only = yes
+
+	ai = no
+
+	option = {
+		name = "Какая серьёзная оплошность!"
+	}
+}
+
+###Tagging for More Riders###
+character_event = {
+	id = tdp_anti_dragon.4
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		NOT = { culture_group = valyrian }
+		NOR = {
+			any_vassal = {
+				OR = {
+					dynasty = 496
+					dynasty = 57
+				}
+				is_landed = yes
+			}
+			any_realm_character = {
+				OR = {
+					dynasty = 496
+					dynasty = 57
+				}
+				trait = dragon_rider
+			}
+		}
+		NOT = { has_character_modifier = cannot_tame_dragon }
+	}
+
+	immediate = {
+		any_realm_character = {
+			limit = {
+				OR = {
+					dynasty = 496
+					dynasty = 57
+				}
+			}
+			set_character_flag = can_receive_egg
+			add_character_modifier = {
+				name = granted_dragon_access
+				duration = -1
+			}
+		}
+	}
+}
+
+#Lots of Untamed Dragons
+character_event = {
+	id = tdp_anti_dragon.40
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture_group = valyrian
+
+	trigger = {
+		dragon_counter_trigger = no
+		NOR = {
+			trait = dragon_rider
+			has_character_modifier = cannot_tame_dragon
+			has_character_modifier = granted_dragon_access
+			trait = craven
+			is_weak_trigger = yes
+		}
+		trait = ambitious
+		any_dynasty_member = {
+			higher_tier_than = KING
+		}
+	}
+
+	immediate = {
+		add_character_modifier = {
+			name = granted_dragon_access
+			duration = -1
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+
+###Brandon Snow###
+character_event = {
+	id = tdp_anti_dragon.5
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		start_date < 8001.1.1
+		ROOT = {
+			has_landed_title = e_north
+			any_courtier = {
+				character = 120059 #Brandon Snow
+			}
+		}
+		FROM = {
+			character = 77000
+		}
+	}
+
+	immediate = {
+		any_courtier = {
+			limit = { character = 120059 }
+			save_event_target_as = absolute_mad_lad
+		}
+		ROOT = { character_event = { id = tdp_anti_dragon.50 days = 7 } }
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.50
+	title = EVTTITLEtdp_anti_dragon.90
+	desc = EVTDESCtdp_anti_dragon.90
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	war = yes
+
+	trigger = {
+		has_landed_title = e_north
+		any_courtier = {
+			character = 120059 #Brandon Snow
+		}
+	}
+
+	option = {
+		name = "Конечно, почему бы и нет?"
+		event_target:absolute_mad_lad = {
+			character_event = { id = tdp_anti_dragon.51 days = 3 }
+		}
+		ai_chance = {
+			factor = 30
+		}
+	}
+
+	option = {
+		name = "Нет. Это самоубийство."
+		ai_chance = {
+			factor = 70
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.51
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		character = 120059 #Brandon Snow
+	}
+
+	option = {
+		name = "Улыбнись, сукин сын..."
+		any_character = {
+			limit = { character = 77990001 } #Balerion
+			any_dynasty_member = {
+				limit = { trait = dragon }
+				death = {
+					death_reason = death_murder
+					killer = ROOT
+				}
+			}
+			death = {
+				death_reason = death_murder
+				killer = ROOT
+			}
+		}
+		any_independent_ruler = {
+			limit = { character = 77000 }
+			character_event = { id = tdp_anti_dragon.52 days = 1 }
+		}
+		any_independent_ruler = {
+			limit = { has_landed_title = e_north }
+			character_event = { id = tdp_anti_dragon.53 days = 1 }
+		}
+		prestige = 7000
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = "Может быть, это была плохая идея."
+		death = {
+			death_reason = death_battle_dragon_fire
+			killer = 77000 #roasted by Aegon
+		}
+		any_independent_ruler = {
+			limit = { character = 77000 }
+			character_event = { id = tdp_anti_dragon.54 days = 1 }
+		}
+		any_independent_ruler = {
+			limit = { has_landed_title = e_north }
+			character_event = { id = tdp_anti_dragon.55 days = 1 }
+		}
+		ai_chance = {
+			factor = 300
+		}
+	}
+}
+
+
+
+character_event = { #To Aegon
+	id = tdp_anti_dragon.52
+	title = EVTTITLEtdp_anti_dragon.92
+	desc = EVTDESCtdp_anti_dragon.92
+	picture = GFX_aegon_finds_dragons
+
+	is_triggered_only = yes
+
+	option = {
+		name = "ОН ЧТО??"
+	}
+}
+
+character_event = { #To KingInDaNorf
+	id = tdp_anti_dragon.53
+	title = EVTTITLEtdp_anti_dragon.920
+	desc = EVTDESCtdp_anti_dragon.920
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Брандон, Убийца драконов!"
+	}
+}
+
+character_event = { #To Aegon
+	id = tdp_anti_dragon.54
+	title = EVTTITLEtdp_anti_dragon.93
+	desc = EVTDESCtdp_anti_dragon.93
+	picture = GFX_targaryen_balerion
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Дурак."
+	}
+}
+
+character_event = { #To KingInDaNorf
+	id = tdp_anti_dragon.55
+	title = EVTTITLEtdp_anti_dragon.930
+	desc = EVTDESCtdp_anti_dragon.930
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Я не должен был его отправлять..."
+	}
+}
+
+###Leave the Wall###
+character_event = {
+	id = tdp_anti_dragon.6
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		trait = nightswatch
+		trait = dragon_rider
+		any_friend = {
+			trait = dragon
+			age = 10
+			NOT = { has_character_modifier = locked_in_dragonpit }
+		}
+		NOR = {
+			trait = honorable
+			trait = craven
+			trait = zealous
+			is_weak_trigger = yes
+		}
+		OR = {
+			trait = cynical
+			trait = deceitful
+			trait = greedy
+			trait = wroth
+			trait = envious
+			trait = ruthless
+		}
+	}
+
+	immediate = {
+		remove_trait = nightswatch
+		add_trait = deserter
+		set_character_flag = exile
+		any_independent_ruler = {
+			limit = { culture_group = free_cities }
+			move_character = ROOT
+		}
+		any_playable_ruler = {
+			limit = {
+				ai = no
+				higher_tier_than = DUKE
+				OR = {
+					culture_group = andal
+					culture_group = first_men
+					culture = high_valyrian
+					culture = western_valyrian
+				}
+			}
+			character_event = { id = tdp_anti_dragon.60 }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.60
+	desc = EVTDESCtdp_anti_dragon.940
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Клятвопреступник!"
+	}
+}
+
+
+
+
+###Adjust Traits###
+character_event = {
+	id = tdp_anti_dragon.8
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture_group = valyrian
+	has_global_flag = age_of_dragons
+
+	trigger = {
+		NOT = { has_character_flag = marked_as_possible_craven }
+		OR = {
+			dynasty = 496
+			dynasty = 57
+			dynasty = 52
+		}
+		NOR = {
+			character = 60580496 #Daella
+			character = 77004 #Aenys I
+		}
+		trait = craven
+	}
+
+	immediate = {
+		remove_trait = craven
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.80
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture_group = valyrian
+	has_global_flag = age_of_dragons
+
+	option = {
+		name = OK
+		ai_chance = {
+			factor = 2
+		}
+		set_character_flag = marked_as_possible_craven
+	}
+
+	option = {
+		name = OK
+		ai_chance = {
+			factor = 98
+		}
+
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.81
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture_group = valyrian
+
+	trigger = {
+		NOT = { trait = ambitious }
+		OR = {
+			any_spouse = {
+				any_dynasty_member = {
+					higher_tier_than = DUKE
+				}
+			}
+			any_friend = {
+				trait = dragon
+				martial = 80
+			}
+			AND = {
+				OR = {
+					is_evil_trigger = yes
+					is_impious_trigger	= yes
+				}
+				is_weak_trigger = no
+			}
+			any_dynasty_member = {
+				is_close_relative = no
+				higher_tier_than = KING
+			}
+		}
+		any_friend = {
+			trait = dragon
+			martial = 50
+		}
+	}
+
+	immediate = {
+		add_trait = ambitious
+	}
+}
+
+#Dark Sister related events
+character_event = {
+	id = tdp_anti_dragon.82
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 496
+		NOT = { has_artifact = darksister }
+		spare_heir_trigger = yes
+		any_dynasty_member = {
+			has_artifact = darksister
+		}
+		NOT = {
+			any_dynasty_member = {
+				count = 2
+				age < 40
+				OR = {
+					trait = skilled_warrior
+					trait = master_warrior
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_character_flag = training_for_darksister
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.820
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = training_for_darksister
+	ai = yes
+
+	trigger = {
+		age == 6
+		OR = {
+			trait = affectionate
+			trait = playful
+			trait = indolent
+			trait = timid
+			trait = idolizer
+		}
+	}
+
+	immediate = {
+		remove_trait = affectionate
+		remove_trait = playful
+		remove_trait = indolent
+		remove_trait = timid
+		remove_trait = idolizer
+
+		random_list = {
+			1 = { add_trait = fussy }
+			1 = { add_trait = brooding }
+			1 = { add_trait = willful }
+			1 = { add_trait = rowdy }
+			1 = { add_trait = haughty }
+			1 = { add_trait = curious }
+		}
+		random_list = {
+			1 = { add_trait = fussy }
+			1 = { add_trait = brooding }
+			1 = { add_trait = willful }
+			1 = { add_trait = rowdy }
+			1 = { add_trait = haughty }
+			1 = { add_trait = curious }
+		}
+		if = {
+			limit = { NOT = { has_focus = focus_ch_struggle } }
+			father = {
+				character_event = { id = tdp_anti_dragon.821 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.821
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = training_for_darksister
+
+	trigger = {
+		age = 8
+		OR = {
+			trait = craven
+			trait = kind
+			trait = humble
+			trait = gluttonous
+			trait = trusting
+			trait = content
+		}
+	}
+
+	immediate = {
+		remove_trait = craven
+		remove_trait = kind
+		remove_trait = humble
+		remove_trait = gluttonous
+		remove_trait = trusting
+		remove_trait = content
+
+		random_list = {
+			1 = { add_trait = brave }
+			1 = { add_trait = ruthless }
+			1 = { add_trait = ambitious }
+			1 = { add_trait = diligent }
+			1 = { add_trait = wroth }
+			1 = { add_trait = proud }
+		}
+		random_list = {
+			1 = { add_trait = brave }
+			1 = { add_trait = ruthless }
+			1 = { add_trait = ambitious }
+			1 = { add_trait = diligent }
+			1 = { add_trait = wroth }
+			1 = { add_trait = proud }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.822
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = training_for_darksister
+
+	trigger = {
+		age = 12
+		NOR = {
+			trait = skilled_warrior
+			trait = master_warrior
+		}
+	}
+
+	immediate = {
+		random_list = {
+			65 = { add_trait = skilled_warrior }
+			35 = { add_trait = master_warrior }
+		}
+		if = {
+			limit = { NOT = { has_focus = focus_ed_martial } }
+			clear_focus = yes
+			set_focus = focus_ed_martial
+		}
+		if = {
+			limit = { age = 16 }
+			clr_character_flag = training_for_darksister
+
+			random_list = {
+				65 = {
+					trigger = {
+						NOT = { trait = skilled_tactician }
+					}
+					add_trait = skilled_tactician
+				}
+				35 = {
+					trigger = {
+						NOT = { trait = brilliant_strategist }
+					}
+					add_trait = brilliant_strategist
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.8299
+
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_any_opinion_modifier = opinion_wants_darksister }
+		dynasty = 496
+		OR = {
+			trait = skilled_warrior
+			trait = master_warrior
+		}
+		NOR = {
+			has_artifact = darksister
+			has_artifact = blackfyre
+		}
+		any_dynasty_member = {
+			has_artifact = darksister
+			NOT = { has_artifact = blackfyre }
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 3
+	}
+
+	immediate = {
+		any_dynasty_member = {
+			limit = { has_artifact = darksister }
+			reverse_opinion = {
+				name = opinion_wants_darksister
+				who = ROOT
+			}
+		}
+	}
+}
+
+
+###Maester Conspiracy###
+character_event = {
+	id = tdp_anti_dragon.9
+
+	hide_window = yes
+
+	has_global_flag = active_dragon_dance
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	immediate = {
+		set_global_flag = dragons_are_a_threat
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.90
+
+	hide_window = yes
+
+	has_global_flag = dragons_are_a_threat
+
+	trigger = {
+		NOT = { has_global_flag = maester_conspiracy }
+		trait = archmaester
+		top_liege = {
+			any_realm_character = {
+				trait = dragon
+				is_alive = yes
+				NOT = { has_character_flag = shadow_lands_dragon }
+				NOT = { has_character_flag = cannibal_dragon }
+				count < 6
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		set_global_flag = maester_conspiracy
+	}
+}
+
+character_event = {
+	id = tdp_anti_dragon.91
+
+	hide_window = yes
+
+	has_global_flag = dragons_are_a_threat
+
+	trigger = {
+		NOT = { has_global_flag = age_of_dragons }
+	}
+
+	mean_time_to_happen = {
+		months = 2
+	}
+
+	immediate = {
+		clr_global_flag = maester_conspiracy
+		clr_global_flag = dragons_are_a_threat
+	}
+}

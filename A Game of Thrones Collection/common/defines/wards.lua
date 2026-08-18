@@ -1,0 +1,1 @@
+NDefines.NCharacter.MAX_WARDS_PER_GUARDIAN = 6

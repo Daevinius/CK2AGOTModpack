@@ -1,0 +1,35 @@
+d_mbs_summerhall = {
+	color = { 245 245 120 }
+	color2 = { 255 255 255 }
+
+	allow = {
+		num_of_duke_titles = 2
+		c_summerhall = {
+			de_jure_liege = d_mbs_summerhall
+		}
+		OR = {
+			AND = {
+				independent = yes
+				has_landed_title = c_summerhall
+			}
+			AND = {
+				has_landed_title = e_iron_throne
+				c_summerhall = {
+					holder_scope = {
+						same_realm = ROOT
+						NOT = {
+							has_landed_title = d_summerhall
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	# Always exists
+
+			title = "DORNEPRINCE"
+			title_female = "DORNEPRINCE_female"
+			foa = "DORNEPRINCE_FOA"
+}

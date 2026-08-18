@@ -1,0 +1,672 @@
+namespace = dote
+
+#dote_proclamation_events
+#dote_empire_events
+#dote_appointed_governor_events
+#dote_imperial_palace_events
+#dote_dragon_guard_events
+
+#######################
+# PROCLAMATION EVENTS #
+#######################
+
+character_event = {
+	id = dote.1
+	title = EVTTITLEdote.1
+	desc = EVTDESCdote.1
+	picture = GFX_dote_events_valyrianempire
+
+    only_independent = yes
+
+	trigger = {
+		has_landed_title = e_valyrian_empire
+		NOT = { has_character_flag = dragonlord_valyria }
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	# Remove previous occupant
+	immediate = {
+		random_independent_ruler = {
+			limit = { any_realm_character = { has_character_flag = dragonlord_valyria } }
+			random_realm_character = {
+				limit = { has_character_flag = dragonlord_valyria }
+				clr_character_flag = dragonlord_valyria
+			}
+		}
+	}
+
+	# All hail!
+	option = {
+		name = EVTOPTdote.1
+		set_character_flag = dragonlord_valyria
+		hidden_tooltip = {
+			any_realm_lord = {
+				limit = {
+					NOT = { character = ROOT }
+				}
+				character_event = { id = dote.10 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = dote.10
+	title = EVTTITLEdote.1
+	desc = EVTDESCdote.1
+	picture = GFX_dote_events_valyrianempire
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote.10
+	}
+
+	option = {
+		name = EVTOPTBdote.10
+	}
+}
+
+###########################
+###### EMPIRE EVENTS ######
+###########################
+
+#Narrative events when the Valyrian Empire is created
+narrative_event = {
+	id = dote.2
+	title = dote_empire_events.4_title
+	desc = dote_empire_events.4_desc
+	picture = GFX_aegon_the_badass
+
+    only_playable = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Да здравствует Повелитель Драконов!"
+	}
+}
+
+#Vassals of the Empire get claims on it if prestigious enough.
+character_event = {
+	id = dote.20
+	border = GFX_event_normal_frame_war
+	picture = GFX_dote_events_claimant
+	desc = dote_empire_events.1_desc
+
+	trigger = {
+		is_female = no
+		has_regent = no
+		is_patrician = no
+		is_theocracy = no
+		higher_tier_than = count
+	    NOT = { has_claim = e_valyrian_empire }
+	    NOT = { has_landed_title = e_valyrian_empire }
+	    top_liege = {
+		    has_landed_title = e_valyrian_empire
+		}
+		prestige = 2500
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = dote_empire_events.1_option
+
+		add_claim = e_valyrian_empire
+
+		top_liege = {
+			character_event = {
+				id = dote.21
+			}
+		}
+	}
+}
+
+#Liege is informed of prestigious claimant.
+character_event = {
+	id = dote.21
+    border = GFX_event_normal_frame_war
+	picture = GFX_dote_events_claimant
+	desc = dote_empire_events.2_desc
+
+	is_triggered_only = yes
+
+	trigger = {
+	    has_landed_title = e_valyrian_empire
+	}
+
+
+	option = {
+		name = dote_empire_events.2_option
+	}
+}
+
+#Remove Empire Laws from non-imperial titles.
+character_event = {
+	id = dote.22
+	hide_window = yes
+	only_rulers = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+	    NOT = {
+			government = valyrian_imperial_government
+		}
+	}
+
+	immediate = {
+		any_demesne_title = {
+		    revoke_law = dote_imperial_administration
+			revoke_law = dote_feudal_administration
+			revoke_law = dote_republic_administration
+			revoke_law = dote_hereditary_governors
+			revoke_law = dote_appointed_governors
+			revoke_law = dote_autonomy_0
+			revoke_law = dote_autonomy_1
+			revoke_law = dote_autonomy_2
+			revoke_law = dote_centralisation_1
+			revoke_law = dote_centralisation_2
+			revoke_law = dote_centralisation_3
+			revoke_law = dote_centralisation_4
+			revoke_law = dote_centralisation_5
+			revoke_law = dragon_tamer_0
+			revoke_law = dragon_tamer_1
+			revoke_law = dragon_tamer_2
+			revoke_law = dote_full_aristocratic
+			revoke_law = dote_partial_aristocratic
+			revoke_law = dote_slightly_aristocratic
+			revoke_law = dote_slightly_plutocratic
+			revoke_law = dote_partial_plutocratic
+			revoke_law = dote_full_plutocratic
+			revoke_law = tax_levy_law_imperial_0
+			revoke_law = tax_levy_law_imperial_1
+			revoke_law = tax_levy_law_imperial_2
+			revoke_law = tax_levy_law_imperial_3
+			revoke_law = tax_levy_law_imperial_4
+			revoke_law = tax_levy_law_imperial_5
+			revoke_law = tax_levy_law_imperial_6
+			revoke_law = tax_levy_law_imperial_7
+			revoke_law = tax_levy_law_imperial_8
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Narrative events when converting to Rhllor
+narrative_event = {
+	id = dote.23
+	title = dote_empire_events.5_title
+	desc = dote_empire_events.5_desc
+	picture = GFX_evt_red_priest_approaches
+	border = GFX_event_narrative_frame_religion
+	major = yes
+
+    only_playable = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = dote_empire_events.5a
+	}
+}
+
+#Narrative events when building an Imperial Road Network
+narrative_event = {
+	id = dote.24
+	title = dote_empire_events.6_title
+	desc = dote_empire_events.6_desc
+	picture = GFX_dote_events_imperial_road
+	border = GFX_event_narrative_frame_economy
+
+	is_triggered_only = yes
+
+	option = {
+		name = dote_empire_events.6_option
+	}
+}
+
+#Narrative Event when building Imperial Army Outpost
+narrative_event = {
+	id = dote.240
+	title = dote_empire_events.7_title
+	desc = dote_empire_events.7_desc
+	picture = GFX_dote_events_dragon_guard
+	border = GFX_event_narrative_frame_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = dote_empire_events.6_option
+	}
+}
+
+#Destroy Imperial Army outpost when not held by Imperial character
+character_event = {
+	id = dote.241
+	hide_window = yes
+
+	only_playable = yes
+
+	trigger = {
+		AND = {
+			any_demesne_province = {
+				has_province_modifier = imperial_army_outpost_modifier
+			}
+			NOT = {
+				AND = {
+					has_landed_title = e_valyrian_empire
+					government = valyrian_imperial_government
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1093
+	}
+
+	immediate = {
+		any_demesne_province = {
+			limit = {
+				has_province_modifier = imperial_army_outpost_modifier
+			}
+			remove_province_modifier = imperial_army_outpost_modifier
+		}
+	}
+
+	option = {
+		name = ok
+	}
+}
+
+# Timed Imperial Road Network Building Event
+character_event = {
+	id = dote.242
+	desc = dote_empire_events.9_desc
+	picture = GFX_dote_events_imperial_road
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		tier = EMPEROR
+		government = valyrian_imperial_government
+	}
+
+	immediate = {
+		FROM = {
+			if = {
+				limit = {
+					location = {
+						has_province_modifier = imperial_road_modifier
+					}
+				}
+				location = {
+					remove_province_modifier = imperial_road_modifier
+					remove_province_modifier = dote_construction_in_progress
+					add_province_modifier = {
+						modifier = imperial_road_modifier_2
+						duration = -1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					location = {
+						has_province_modifier = imperial_road_modifier_2
+					}
+				}
+				location = {
+					remove_province_modifier = imperial_road_modifier_2
+					remove_province_modifier = dote_construction_in_progress
+					add_province_modifier = {
+						modifier = imperial_road_modifier_3
+						duration = -1
+					}
+				}
+			}
+			else = {
+				limit = {
+					location = {
+						has_province_modifier = imperial_road_modifier_3
+					}
+				}
+				location = {
+					remove_province_modifier = imperial_road_modifier_3
+					remove_province_modifier = dote_construction_in_progress
+					add_province_modifier = {
+						modifier = imperial_road_modifier_4
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = dote_empire_events.9_option
+	}
+}
+
+# Timed Imperial Army Outpost Event
+character_event = {
+	id = dote.243
+	desc = dote_empire_events.10_desc
+	picture = GFX_dote_events_dragon_guard
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		tier = emperor
+		government = valyrian_imperial_government
+	}
+
+	 immediate = {
+		FROM = {
+			if = {
+				limit = {
+					location = {
+						has_province_modifier = imperial_army_outpost_modifier
+					}
+				}
+				location = {
+					remove_province_modifier = imperial_army_outpost_modifier
+					remove_province_modifier = dote_construction_in_progress
+					add_province_modifier = {
+						modifier = imperial_army_outpost_modifier_2
+						duration = -1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					location = {
+						has_province_modifier = imperial_army_outpost_modifier_2
+					}
+				}
+				location = {
+					remove_province_modifier = imperial_road_modifier_2
+					remove_province_modifier = dote_construction_in_progress
+					add_province_modifier = {
+						modifier = imperial_army_outpost_modifier_3
+						duration = -1
+					}
+				}
+			}
+			else = {
+				limit = {
+					location = {
+						has_province_modifier = imperial_army_outpost_modifier_3
+					}
+				}
+				location = {
+					remove_province_modifier = imperial_army_outpost_modifier_3
+					remove_province_modifier = dote_construction_in_progress
+					add_province_modifier = {
+						modifier = imperial_army_outpost_modifier_4
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = dote_empire_events.10_option
+	}
+}
+
+
+##########################
+# IMPERIAL PALACE EVENTS #
+##########################
+
+narrative_event = {
+	id = dote.3
+	title = dote_imperial_palace_events.0_title
+	desc = dote_imperial_palace_events.0_desc
+	picture = GFX_dote_events_imperial_palace
+	border = GFX_event_narrative_frame_economy
+
+    only_playable = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = dote_imperial_palace_events.0_option
+	}
+}
+
+narrative_event = {
+	id = dote.30
+	title = dote_imperial_palace_events.1_title
+	desc = dote_imperial_palace_events.1_desc
+	picture = GFX_dote_events_imperial_palace
+	border = GFX_event_narrative_frame_economy
+
+    only_playable = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = dote_imperial_palace_events.1_option
+		capital_scope = {
+			add_province_modifier =  {
+				modifier = imperial_palace_modifier
+				duration = -1
+			}
+		}
+		clr_global_flag = imperial_palace_under_construction
+	}
+}
+
+#######################
+# IMPERIAL GOVERNMENT #
+#######################
+
+#Imperial Government check 	- Every 14 days
+character_event = {
+	id = dote.4
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+	    AND = {
+			is_landed = yes
+			is_theocracy = no
+			OR = {
+				AND = {
+					has_landed_title = e_valyrian_empire
+					has_law = dote_imperial_administration
+					NOT = { government = valyrian_imperial_government }
+				}
+
+				AND = {
+					top_liege = {
+					    has_landed_title = e_valyrian_empire
+                        has_law = dote_imperial_administration
+					}
+					NOT = { government = valyrian_imperial_government }
+				}
+			}
+		}
+	}
+
+	immediate = {
+	    set_government_type = valyrian_imperial_government
+	}
+
+	option = {
+		name = ok
+	}
+}
+
+# Imperial Government check - On New Holder On Action
+character_event = {
+	id = dote.40
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+	    AND = {
+			is_landed = yes
+			is_theocracy = no
+			OR = {
+				AND = {
+					has_landed_title = e_valyrian_empire
+					has_law = dote_imperial_administration
+					NOT = { government = valyrian_imperial_government }
+				}
+
+				AND = {
+					top_liege = {
+					    has_landed_title = e_valyrian_empire
+                        has_law = dote_imperial_administration
+					}
+					NOT = { government = valyrian_imperial_government }
+				}
+
+			}
+		}
+	}
+
+	immediate = {
+	    set_government_type = valyrian_imperial_government
+	}
+
+	option = {
+		name = ok
+	}
+}
+
+#####################
+#APPOINTED GOVERNORS#
+#####################
+
+#Duke or above titles in the Empire return to the Emperor on the death of the holder
+character_event = {
+	id = dote.41
+	hide_window = yes
+	only_rulers = yes
+
+	is_triggered_only = yes #On Death event
+
+	trigger = {
+		is_theocracy = no
+		NOT = { has_landed_title = d_dragonsguard }
+		top_liege = {
+		    AND = {
+		        has_landed_title = e_valyrian_empire
+                has_law = dote_appointed_governors
+			}
+		}
+	}
+
+	immediate = {
+		any_demesne_title = {
+			limit = { higher_tier_than = count }
+			holder_scope = {
+				current_heir = {
+					add_claim = PREVPREV
+					character_event = {
+						id = dote.43  #Inform Would-Be-Heir
+						days = 1
+					}
+				}
+				top_liege = {
+					grant_title = PREVPREV
+					character_event = {
+						id = dote.42  #Inform Top Liege
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+# Dragonlord is informed of Governor/Protector death.
+character_event = {
+	id = dote.42
+	desc = dote_appointed_governor_events.2_desc
+	border = GFX_event_normal_frame_diplomacy
+	picture = GFX_evt_council
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_valyrian_empire
+	}
+
+	option = {
+		name = dote_appointed_governor_events.2_option
+	}
+}
+
+character_event = {
+	id = dote.43
+	desc = dote_appointed_governor_events.3_desc
+	border = GFX_event_normal_frame_diplomacy
+	picture = GFX_evt_council
+
+	is_triggered_only = yes
+
+	trigger = {
+		top_liege = {
+			has_landed_title = e_valyrian_empire
+		}
+	}
+
+	option = {
+		name = dote_appointed_governor_events.3_option
+	}
+}
+
+
+########################
+#IMPERIAL ORDERS EVENTS#
+########################
+
+#Dragon Guard is formed
+narrative_event = {
+	id = dote.5
+	title = dote_dragon_guard_events.1_title
+	desc = dote_dragon_guard_events.1_desc
+	border = GFX_event_narrative_frame_war
+	picture = GFX_dote_events_dragon_guard
+
+	is_triggered_only = yes
+
+	trigger = {
+	    OR = {
+			has_landed_title = e_valyrian_empire
+            top_liege = { has_landed_title = e_valyrian_empire }
+		}
+	}
+
+	option = {
+		name = dote_dragon_guard_events.1a
+	}
+}
+

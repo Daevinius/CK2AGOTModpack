@@ -1,0 +1,799 @@
+namespace = play_the_game
+
+#Flag the Royal House
+###Family gains influence### - 1
+###Ambitious Father### - 111
+###Essosi Power Plays### - 2
+
+#Flag the Royal House
+character_event = {
+	id = play_the_game.0
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		NOT = { has_dynasty_flag = iron_throne_royalty }
+		has_landed_title = e_iron_throne
+	}
+
+	immediate = {
+		set_dynasty_flag = iron_throne_royalty
+		any_realm_character = {
+			limit = {
+				NOT = { dynasty = ROOT }
+				has_dynasty_flag = iron_throne_royalty
+			}
+			clr_dynasty_flag = iron_throne_royalty
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+###Family gains influence###
+character_event = {
+	id = play_the_game.1
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		FROM = {
+			has_dynasty_flag = iron_throne_royalty
+			is_female = no
+			NOT = { trait = bastard }
+		}
+		new_character = {
+			has_dynasty_flag = has_dynamic_coa
+			NOT = { trait = bastard }
+			any_dynasty_member = {
+				higher_tier_than = COUNT
+			}
+		}
+	}
+
+	immediate = {
+		new_character = {
+			save_event_target_as = the_royal_bride
+			character_event = { id = play_the_game.110 days = 1 }
+		}
+		FROM = {
+			character_event = { id = play_the_game.10 }
+		}
+	}
+
+	option = {
+		name = OK
+
+	}
+}
+
+character_event = {
+	id = play_the_game.10
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+
+	immediate = {
+		set_character_flag = royal_groom
+		save_event_target_as = the_royal_groom
+	}
+
+	option = {
+		name = OK
+		if = {
+			limit = {
+				NOT = { has_landed_title = e_iron_throne }
+				OR = {
+					trait = drunkard
+					trait = charitable
+					trait = trusting
+					trait = craven
+					trait = slothful
+					is_weak_trigger = yes
+					is_dumb_trigger = yes
+					is_lazy_trigger = yes
+					is_imbecile_trigger = yes
+				}
+				NOR = {
+					trait = authoritative
+					trait = paranoid
+					trait = diligent
+				}
+			}
+			top_liege = { character_event = { id = play_the_game.100 days = 2 } }
+		}
+		if = {
+			limit = {
+				has_landed_title = e_iron_throne
+				OR = {
+					trait = drunkard
+					trait = charitable
+					trait = trusting
+					trait = craven
+					trait = slothful
+					is_weak_trigger = yes
+					is_dumb_trigger = yes
+					is_lazy_trigger = yes
+					is_imbecile_trigger = yes
+				}
+				NOR = {
+					trait = authoritative
+					trait = paranoid
+					trait = diligent
+				}
+			}
+			character_event = { id = play_the_game.100 days = 2 }
+		}
+	}
+}
+
+character_event = {
+	id = play_the_game.100
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+
+	immediate = {
+		any_realm_character = {
+			limit = {
+				has_character_flag = family_favored
+				dynasty = event_target:the_royal_bride
+				NOR = {
+					trait = kingsguard
+					trait = nightswatch
+				}
+				can_marry_trigger = yes
+				OR = {
+					trait = ambitious
+					diplomacy = 10
+					intrigue = 10
+					reverse_opinion = {
+						who = ROOT
+						value = 25
+					}
+				}
+				event_target:the_royal_bride = {
+					NOT = { character = 6059 } #Sansa
+				}
+			}
+			add_favor = event_target:the_royal_groom
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Setting Wife House flags
+#Start Up
+character_event = {
+	id = play_the_game.11
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+	only_women = yes
+
+	trigger = {
+		NOT = { has_dynasty_flag = iron_throne_royalty }
+		any_spouse_even_if_dead = {
+			has_dynasty_flag = iron_throne_royalty
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { is_female = yes }
+			set_character_flag = influential_bride
+			set_dynasty_flag = has_royal_favor
+			save_event_target_as = the_royal_bride
+			any_dynasty_member = {
+				limit = {
+					age = 20
+					NOR = {
+						trait = incapable
+						trait = infirm
+						trait = crippled
+						trait = maimed
+					}
+				}
+				set_character_flag = family_favored
+			}
+			any_spouse = {
+				character_event = { id = play_the_game.10 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+		father = {
+			character_event = { id = play_the_game.111 }
+		}
+	}
+}
+
+#On Marriage
+character_event = {
+	id = play_the_game.110
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		new_character = {
+			is_female = yes
+			NOT = { has_dynasty_flag = iron_throne_royalty }
+			any_spouse = {
+				has_dynasty_flag = iron_throne_royalty
+			}
+		}
+	}
+
+	immediate = {
+		new_character = {
+			set_character_flag = influential_bride
+			set_dynasty_flag = has_royal_favor
+			any_dynasty_member = {
+				limit = {
+					age = 16
+					NOR = {
+						trait = incapable
+						trait = infirm
+						trait = crippled
+						trait = maimed
+					}
+				}
+				set_character_flag = family_favored
+				if = {
+					limit = {
+						is_primary_heir = no
+						is_landed = no
+						OR = {
+
+							AND = {
+								is_female = yes
+								is_married = no
+							}
+							AND = {
+								is_female = no
+								is_married_matrilineally = no
+							}
+						}
+					}
+					move_character = FROM
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+		new_character = {
+			father = {
+				character_event = { id = play_the_game.111 }
+			}
+		}
+	}
+}
+
+###Ambitious Father###
+character_event = {
+	id = play_the_game.111
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		is_alive = yes
+		trait = ambitious
+	}
+
+	immediate = {
+		set_character_flag = ambitious_father
+	}
+
+	option = {
+		name = OK
+
+	}
+}
+
+#Set Bloodline
+character_event = {
+	id = play_the_game.1110
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	has_character_flag = ambitious_father
+	has_global_flag = play_the_game_on
+
+	immediate = {
+		set_character_flag = establish_iron_throne_bloodline
+	}
+
+	option = {
+		name = OK
+		create_bloodline = {
+			type = influential_father_bloodline
+		}
+	}
+}
+
+#Inspire Daughter to be Ambitious
+character_event = {
+	id = play_the_game.1111
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	has_character_flag = ambitious_father
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		trait = ambitious
+		any_child = {
+			has_character_flag = influential_bride
+			NOT = { trait = ambitious }
+			any_spouse = {
+				has_character_flag = royal_groom
+			}
+			is_landed = no
+		}
+	}
+
+	immediate = {
+		any_child = {
+			limit = {
+				has_character_flag = influential_bride
+				NOT = { trait = ambitious }
+				any_spouse = {
+					has_character_flag = royal_groom
+				}
+				is_landed = no
+			}
+			remove_trait = content
+			add_trait = ambitious
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Hand of the King is father-in-law
+character_event = {
+	id = play_the_game.1112
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	has_character_flag = ambitious_father
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		trait = ambitious
+		has_job_title = job_castellan
+		NOT = { holds_favor_on = any_liege }
+		any_child = {
+			has_character_flag = influential_bride
+			any_spouse = {
+				has_landed_title = e_iron_throne
+			}
+		}
+		OR = {
+			diplomacy = 12
+			intrigue = 12
+			trait = grey_eminence
+			trait = elusive_shadow
+		}
+		NOR = {
+			trait = drunkard
+			trait = charitable
+			trait = trusting
+			trait = craven
+			trait = slothful
+			trait = kind
+			trait = honest
+			is_weak_trigger = yes
+			is_dumb_trigger = yes
+			is_lazy_trigger = yes
+			is_imbecile_trigger = yes
+		}
+		liege = {
+			has_landed_title = e_iron_throne
+			OR = {
+				trait = drunkard
+				trait = charitable
+				trait = trusting
+				trait = craven
+				trait = slothful
+				is_weak_trigger = yes
+				is_dumb_trigger = yes
+				is_lazy_trigger = yes
+				is_imbecile_trigger = yes
+			}
+			NOR = {
+				trait = authoritative
+				trait = paranoid
+				trait = diligent
+			}
+		}
+	}
+
+	immediate = {
+		liege = {
+			add_favor = ROOT
+			if = {
+				limit = { ai = no }
+				character_event = { id = play_the_game.1113 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = play_the_game.1113
+	desc = EVTDESCplay_the_game.1113
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+#Reforge Ice event
+character_event = {
+	id = play_the_game.112
+	desc = "EVTDESC250280"
+	picture = "GFX_evt_valyrian_steel"
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_character_flag = ice_reforged
+		random_artifact = {
+			limit = {
+				artifact_type = ice
+				NOT = { has_artifact_flag = forged_from_ice }
+			}
+			random_artifact_owner = {
+				limit = { dynasty = 59 }
+				save_event_target_as = stark_owner
+			}
+		}
+	}
+
+	option = {
+		name = "Сделай это."
+		set_global_flag = ice_stolen_and_reforged
+		hidden_tooltip = {
+			random_artifact = {
+				limit = {
+					artifact_type = ice
+					NOT = { has_artifact_flag = forged_from_ice }
+				}
+				set_picture = GFX_vs_widowswail
+				set_artifact_flag = forged_from_ice
+				set_artifact_flag = heirloom_@ROOT
+				get_random_sword_name_effect = yes
+				set_description = widowswail_descB
+			}
+		}
+		tooltip = { add_artifact = ice }
+		hidden_tooltip = { add_artifact = oathkeeper }
+		new_artifact = {
+			set_artifact_flag = heirloom_@PREV
+			set_artifact_flag = heirloom_@event_target:stark_owner
+			get_random_sword_name_effect = yes
+			set_description = oathkeeper_descB
+		}
+		#Make Stark heirs hate Tywin even more for melting down Ice
+		any_character = {
+			limit = { dynasty = 59 }
+			opinion = {
+				who = ROOT
+				modifier = opinion_stole_sword
+				years = 100
+			}
+		}
+	}
+}
+
+###Essosi Power Plays###
+character_event = {
+	id = play_the_game.2
+	desc = "EVTDESCplay_the_game.2"
+	picture = "GFX_free_cities_planning"
+
+	is_triggered_only = yes
+
+	has_global_flag = play_the_game_on
+
+	trigger = {
+		NOT = { has_character_flag = attempted_iron_throne_marriage }
+		trait = ambitious
+		diplomacy = 8
+		OR = {
+			higher_real_tier_than = DUKE
+			AND = {
+				higher_real_tier_than = BARON
+				culture = lysene
+			}
+		}
+		OR = {
+			culture = braavosi
+			culture = lysene
+			culture = pentosi
+			culture = myrman
+			culture = tyroshi
+		}
+		any_child = {
+			is_female = yes
+			can_marry_trigger = yes
+			age = 14
+		}
+		any_independent_ruler = {
+			has_landed_title = e_iron_throne
+			any_close_relative = {
+				is_female = no
+				can_marry_trigger = yes
+				age = 14
+				age < 23
+			}
+		}
+	}
+
+	immediate = {
+		save_event_target_as = ambitious_essos_father
+		any_child = {
+			limit = {
+				is_female = yes
+				can_marry_trigger = yes
+				age = 14
+				age < 26
+			}
+			set_character_flag = foreign_bride
+			save_event_target_as = foreign_bride
+		}
+	}
+
+	option = {
+		name = "Отправьте предложение!"
+		any_independent_ruler = {
+			limit = { has_landed_title = e_iron_throne }
+			character_event = { id = play_the_game.20 days = 1 }
+		}
+	}
+
+	option = {
+		name = "Мы будем искать подходящего кандидата в другом месте."
+
+	}
+}
+
+character_event = {
+	id = play_the_game.20
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		any_close_relative = {
+			is_female = no
+			can_marry_trigger = yes
+			age = 14
+			age < 23
+		}
+	}
+
+	immediate = {
+		any_close_relative = {
+			limit = {
+				is_female = no
+				can_marry_trigger = yes
+				age = 14
+				age < 23
+			}
+			save_event_target_as = royal_groom_essos
+		}
+		character_event = { id = play_the_game.21 days = 1 }
+	}
+
+	option = {
+		name = OK
+
+	}
+}
+
+character_event = {
+	id = play_the_game.21
+	desc = "EVTDESCplay_the_game.21"
+	picture = "GFX_free_cities_planning"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Отличная пара!"
+		event_target:foreign_bride = {
+			move_character = ROOT
+		}
+		event_target:royal_groom_essos = {
+			set_character_flag = royal_groom_essos
+			add_spouse = event_target:foreign_bride
+		}
+		event_target:ambitious_essos_father = {
+			character_event = { id = play_the_game.210 days = 1 }
+		}
+	}
+
+	option = {
+		name = "Мы найдем другую невесту."
+		event_target:ambitious_essos_father = {
+			character_event = { id = play_the_game.22 days = 1 }
+		}
+	}
+}
+
+character_event = {
+	id = play_the_game.210
+	desc = "EVTDESCplay_the_game.210"
+	picture = "GFX_free_cities_planning"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Пошлите людей с моей дочерью."
+		trigger = {
+			any_dynasty_member = {
+				age = 16
+				NOR = {
+					trait = incapable
+					trait = infirm
+					trait = crippled
+					trait = maimed
+					is_primary_heir = yes
+					is_landed = yes
+				}
+				OR = {
+					AND = {
+						is_female = yes
+						is_married = no
+					}
+					AND = {
+						is_female = no
+						is_married_matrilineally = no
+					}
+				}
+			}
+		}
+		any_dynasty_member = {
+			limit = {
+				age = 16
+				NOR = {
+					trait = incapable
+					trait = infirm
+					trait = crippled
+					trait = maimed
+					is_primary_heir = yes
+					is_landed = yes
+				}
+				OR = {
+					AND = {
+						is_female = yes
+						is_married = no
+					}
+					AND = {
+						is_female = no
+						is_married_matrilineally = no
+					}
+				}
+			}
+			set_character_flag = family_favored
+			move_character = FROM
+		}
+	}
+
+	option = {
+		name = "Это принесёт нам пользу."
+		set_character_flag = attempted_iron_throne_marriage
+	}
+}
+
+#Letter from IT of denial
+character_event = {
+	id = play_the_game.22
+	desc = "EVTDESCplay_the_game.22"
+	picture = "GFX_free_cities_planning"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "К сожалению."
+		set_character_flag = attempted_iron_throne_marriage
+	}
+}
+
+#Council Member Return to liege
+character_event = {
+	id = play_the_game.3
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = marked_for_council
+
+	trigger = {
+		NOT = { is_voter  = yes }
+		liege = {
+			tier = EMPEROR
+		}
+		any_character = {
+			has_opinion_modifier = {
+				who = ROOT
+				name = opinion_tdp_my_vassal
+			}
+		}
+	}
+
+	immediate = {
+		clr_character_flag = marked_for_council
+		any_character = {
+			limit = {
+				has_opinion_modifier = {
+					who = ROOT
+					name = opinion_tdp_my_vassal
+				}
+			}
+			set_defacto_vassal = ROOT
+			remove_opinion = {
+				name = opinion_tdp_my_vassal
+				who = ROOT
+			}
+			primary_title = {
+				save_event_target_as = liege_title
+			}
+		}
+		if = {
+			limit = { ROOT = { tier = DUKE } }
+			primary_title = {
+				de_jure_liege = event_target:liege_title
+			}
+		}
+	}
+}
+
+

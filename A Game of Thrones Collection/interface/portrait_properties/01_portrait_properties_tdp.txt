@@ -1,0 +1,4369 @@
+###Backgrounds###
+#p41
+
+###Dragon Art###
+#p42
+#p43
+
+###Dragon Portraits###
+#p44
+#p45
+
+###Dragon Diverse Portraits###
+#p46
+#p47
+#p48
+
+###Dragon Child###
+#p49
+
+
+###Backgrounds###
+#p41
+41 = {
+	0 = { #Obsidian for Dead
+		factor = 1
+		modifier = {
+			factor = 100
+			NOT = { is_alive = yes }
+			culture = dragon_culture
+		}
+		modifier = {
+			factor = 0
+			is_alive = yes
+			culture = dragon_culture
+		}
+	}
+	1 = { #Dragonstone Wild
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { location = { province_id = 221 } }
+		}
+		modifier = { #No Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	2 = { #Dragonstone Castle
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { location = { province_id = 221 } }
+		}
+		modifier = { #Rider
+			factor = 0
+			num_of_friends >= 1
+			culture = dragon_culture
+		}
+	}
+	3 = { #Mountains
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			OR = {
+				NOT = { location = { terrain = mountain } }
+				location = { region = world_stormlands }
+				has_character_modifier = locked_in_dragonpit
+			}
+		}
+		modifier = { #No Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	4 = { #Grass
+		factor = 1
+		modifier = {
+			factor = 0
+			location = {
+				NOR = {
+					terrain = farmlands
+					terrain = hills
+					terrain = plains
+				}
+			}
+			culture = dragon_culture
+		}
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			OR = {
+				has_character_modifier = locked_in_dragonpit
+				location = { province_id = 220 }
+				location = { province_id = 221 } #Dragonstone
+				location = { province_id = 286 } #Oldtown
+				AND = {
+					num_of_friends = 1
+					location = { province_id = 226 } #King's Landing
+				}
+				AND = {
+					num_of_friends = 1
+					location = { province_id = 1203 } #Red Keep
+				}
+			}
+		}
+	}
+	5 = { #Desert
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { location = { terrain = desert } }
+			culture = dragon_culture
+		}
+	}
+	6 = { #Tropical
+		factor = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				location = { region = world_summer_sea }
+				location = { region = world_stepstones }
+			}
+			culture = dragon_culture
+		}
+	}
+	7 = { #Storm's End
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { location = { region = world_stormlands } }
+			culture = dragon_culture
+		}
+		modifier = { #Rider
+			factor = 0
+			num_of_friends >= 1
+			culture = dragon_culture
+		}
+	}
+	8 = { #coastal
+		factor = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				location = { province_id = 220 }
+			}
+			culture = dragon_culture
+		}
+		modifier = { #coastal
+			factor = 0
+			OR = {
+				location = { region = world_stormlands }
+				location = { region = world_stepstones }
+				location = { region = world_ghiscar }
+				location = { province_id = 367 } #Tyrosh
+				location = { province_id = 368 } #Lys
+				location = { province_id = 378 } #Myr
+				location = { province_id = 406 } #Pentos
+				location = { province_id = 471 } #Lorath
+				location = { province_id = 433 } #Norvos
+				location = { province_id = 470 } #Braavos
+				location = { province_id = 476 } #Qohor
+				location = { province_id = 221 } #Dragonstone
+				location = { province_id = 226 } #King's Landing
+				location = { province_id = 1203 } #Red Keep
+				has_character_modifier = locked_in_dragonpit
+			}
+			culture = dragon_culture
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				location = { province_id = 220 }
+				#location = { region = world_iron_isles }
+			}
+			culture = dragon_culture
+		}
+	}
+	9 = { #Snow
+		factor = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				location = { region = world_the_wall }
+				location = { region = world_beyond_the_wall }
+				location = { region = world_north }
+			}
+			culture = dragon_culture
+		}
+		modifier = { #No Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	10 = { #Forest
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { location = { terrain = forest } }
+			culture = dragon_culture
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+			NOT = { location = { terrain = desert } }
+		}
+	}
+	11 = { #Dragonpit
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { has_character_modifier = locked_in_dragonpit }
+		}
+	}
+	12 = { #Red Keep
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_character_modifier = locked_in_dragonpit
+				NOR = {
+					location = {
+						province_id = 226 #King's Landing
+					}
+					location = {
+						province_id = 1203 #Red Keep
+					}
+				}
+			}
+			culture = dragon_culture
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				location = {
+					province_id = 226 #King's Landing
+				}
+				location = {
+					province_id = 1203 #Red Keep
+				}
+			}
+			culture = dragon_culture
+		}
+	}
+	13 = { #Valyria
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { location = { region = world_valyria } }
+			culture = dragon_culture
+		}
+		modifier = { #Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	14 = { #Oldtown
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { location = { province_id = 286 } }
+			culture = dragon_culture
+		}
+		modifier = { #Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	15 = { #Ghiscari
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { location = { region = world_ghiscar } }
+			culture = dragon_culture
+		}
+		modifier = { #Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	16 = { #Volantis
+		factor = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				location = { province_id = 419 }
+				location = { province_id = 417 }
+			}
+			culture = dragon_culture
+		}
+		modifier = { #Rider
+			factor = 0
+			num_of_friends < 1
+			culture = dragon_culture
+		}
+	}
+	17 = { #Generic Castle
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				num_of_friends < 1
+				location = { province_id = 220 }
+				location = { province_id = 367 } #Tyrosh
+				location = { province_id = 368 } #Lys
+				location = { province_id = 378 } #Myr
+				location = { province_id = 406 } #Pentos
+				location = { province_id = 471 } #Lorath
+				location = { province_id = 433 } #Norvos
+				location = { province_id = 470 } #Braavos
+				location = { province_id = 476 } #Qohor
+				location = { province_id = 221 } #Dragonstone
+				location = { province_id = 226 } #King's Landing
+				location = { province_id = 1203 } #Red Keep
+				has_character_modifier = locked_in_dragonpit
+			}
+			culture = dragon_culture
+		}
+	}
+	18 = { #Free Cities
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = {
+				location = {
+					province_id = 367 #Tyrosh
+					province_id = 368 #Lys
+					province_id = 378 #Myr
+					province_id = 406 #Pentos
+					province_id = 471 #Lorath
+					province_id = 433 #Norvos
+					province_id = 470 #Braavos
+					province_id = 476 #Qohor
+				}
+			}
+			culture = dragon_culture
+		}
+	}
+}
+
+
+###Dragon Art###
+#p42 Dragon Art
+42 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+			OR = {
+				trait = dragon_1
+				trait = dragon_2
+				trait = dragon_3
+				trait = dragon_4
+				trait = dragon_5
+				trait = dragon_6
+				trait = dragon_7
+				trait = dragon_8
+				trait = dragon_9
+				trait = dragon_10
+				trait = dragon_11
+				trait = dragon_12
+				trait = dragon_13
+				trait = dragon_14
+				trait = dragon_15
+				trait = dragon_16
+				trait = dragon_17
+				trait = dragon_18
+				trait = dragon_19
+				trait = dragon_20
+				trait = dragon_21
+				trait = dragon_22
+				trait = dragon_23
+				trait = dragon_24
+				trait = dragon_25
+				trait = dragon_26
+			}
+		}
+	}
+
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_1 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_2 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_3 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_4 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_5 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_6 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_7 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_8 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_9 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_10 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_11 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_12 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_13 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_14 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_15 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_16 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_17 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_18 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_19 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_20 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	21 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_21 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	22 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_22 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	23 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_23 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	24 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_24 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	25 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_25 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	26 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_26 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+}
+
+
+#p43 Dragon Art Pt2
+43 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+			OR = {
+				trait = dragon_28
+				trait = dragon_29
+				trait = dragon_30
+				trait = dragon_31
+				trait = dragon_32
+				trait = dragon_33
+				trait = dragon_34
+				trait = dragon_35
+				trait = dragon_36
+				trait = dragon_37
+				trait = dragon_38
+				trait = dragon_39
+				trait = dragon_40
+				trait = dragon_41
+				trait = dragon_42
+				trait = dragon_43
+				trait = dragon_44
+				trait = dragon_45
+				trait = dragon_46
+				trait = dragon_47
+				trait = dragon_48
+				trait = dragon_49
+				trait = dragon_50
+				trait = dragon_51
+				trait = dragon_52
+				trait = dragon_53
+			}
+		}
+	}
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_28 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_29 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_30 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_31 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_32 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_33 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_34 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_35 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_36 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_37 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_38 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_39 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_40 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_41 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_42 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_43 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_44 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_45 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_46 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_47 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	21 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_48 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	22 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_49 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	23 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_50 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	24 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_51 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	25 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_52 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	26 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_53 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+}
+
+
+###Portraits###
+
+#p44 Dragon Portraits
+44 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+			OR = {
+				trait = dragon_1
+				trait = dragon_2
+				trait = dragon_3
+				trait = dragon_4
+				trait = dragon_5
+				trait = dragon_6
+				trait = dragon_7
+				trait = dragon_8
+				trait = dragon_9
+				trait = dragon_10
+				trait = dragon_11
+				trait = dragon_12
+				trait = dragon_13
+				trait = dragon_14
+				trait = dragon_15
+				trait = dragon_16
+				trait = dragon_17
+				trait = dragon_18
+				trait = dragon_19
+				trait = dragon_20
+				trait = dragon_21
+				trait = dragon_22
+				trait = dragon_23
+				trait = dragon_24
+				trait = dragon_25
+				trait = dragon_26
+			}
+		}
+	}
+
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_1 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_2 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_3 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_4 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_5 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_6 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_7 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_8 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_9 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_10 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_11 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_12 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_13 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_14 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_15 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_16 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_17 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_18 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_19 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_20 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	21 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_21 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	22 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_22 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	23 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_23 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	24 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_24 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	25 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_25 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	26 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_26 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+}
+
+
+#p45 Dragon Portraits Pt2
+45 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+			OR = {
+				trait = dragon_28
+				trait = dragon_29
+				trait = dragon_30
+				trait = dragon_31
+				trait = dragon_32
+				trait = dragon_33
+				trait = dragon_34
+				trait = dragon_35
+				trait = dragon_36
+				trait = dragon_37
+				trait = dragon_38
+				trait = dragon_39
+				trait = dragon_40
+				trait = dragon_41
+				trait = dragon_42
+				trait = dragon_43
+				trait = dragon_44
+				trait = dragon_45
+				trait = dragon_46
+				trait = dragon_47
+				trait = dragon_48
+				trait = dragon_49
+				trait = dragon_50
+				trait = dragon_51
+				trait = dragon_52
+				trait = dragon_53
+			}
+		}
+	}
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_28 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_29 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_30 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_31 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_32 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_33 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_34 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_35 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_36 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_37 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_38 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_39 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_40 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_41 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_42 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_43 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_44 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_45 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_46 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_47 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	21 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_48 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	22 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_49 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	23 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_50 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	24 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_51 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	25 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_52 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	26 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_53 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+}
+
+
+###Dragon Diverse Portraits###
+#by Zemeraire on the Citadel
+
+#p46 Dragon Diverse Portraits
+46 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+			OR = {
+				trait = dragon_1
+				trait = dragon_2
+				trait = dragon_3
+				trait = dragon_4
+				trait = dragon_5
+				trait = dragon_6
+				trait = dragon_7
+				trait = dragon_8
+				trait = dragon_9
+				trait = dragon_10
+				trait = dragon_11
+				trait = dragon_12
+				trait = dragon_13
+				trait = dragon_14
+				trait = dragon_15
+				trait = dragon_16
+				trait = dragon_17
+				trait = dragon_18
+				trait = dragon_19
+				trait = dragon_20
+			}
+		}
+	}
+
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_1 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_2 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_3 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_4 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_5 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_6 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_7 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_8 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_9 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_10 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_11 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_12 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_13 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_14 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_15 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_16 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_17 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_18 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_19 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_20 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+
+}
+
+#p47 Dragon Diverse Portraits Pt2
+47 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+			OR = {
+				trait = dragon_21
+				trait = dragon_22
+				trait = dragon_23
+				trait = dragon_24
+				trait = dragon_25
+				trait = dragon_26
+				trait = dragon_27
+				trait = dragon_28
+				trait = dragon_29
+				trait = dragon_30
+				trait = dragon_31
+				trait = dragon_32
+				trait = dragon_33
+				trait = dragon_34
+				trait = dragon_35
+				trait = dragon_36
+				trait = dragon_37
+				trait = dragon_38
+				trait = dragon_39
+				trait = dragon_40
+			}
+		}
+	}
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_21 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_22 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_23 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_24 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_25 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_26 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_27 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_28 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_29 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_30 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_31 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_32 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_33 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_34 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_35 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_36 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_37 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_38 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_39 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_40 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+}
+
+#p48 Dragon Diverse Portraits Pt3
+48 = {
+	0 = { # blank
+		factor = 100
+		modifier = {
+			factor = 0
+			NOR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+			OR = {
+				trait = dragon_41
+				trait = dragon_42
+				trait = dragon_43
+				trait = dragon_44
+				trait = dragon_45
+				trait = dragon_46
+				trait = dragon_47
+				trait = dragon_48
+				trait = dragon_49
+				trait = dragon_50
+				trait = dragon_51
+				trait = dragon_52
+				trait = dragon_53
+				trait = dragon_54
+				trait = dragon_55
+				trait = dragon_56
+				trait = dragon_57
+				trait = dragon_58
+				trait = dragon_59
+				trait = dragon_60
+			}
+		}
+	}
+	1 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_41 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	2 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_42 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	3 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_43 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	4 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_44 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	5 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_45 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	6 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_46 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	7 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_47 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	8 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_48 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	9 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_49 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	10 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_50 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	11 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_51 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	12 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_52 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	13 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_53 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	14 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_54 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	15 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_55 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	16 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_56 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	17 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_57 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	18 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_58 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	19 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_59 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	20 = { #
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			NOT = { trait = dragon_60 }
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+
+}
+
+
+49 = {
+	0 = { #Blank
+		factor = 1
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			age < 7
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { culture = dragon_culture }
+		}
+	}
+	#Art Hatchling
+	1 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+			}
+		}
+	}
+	#Portraits Hatchling
+	2 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			culture = dragon_culture
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = diverse_portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	#Zemeraire
+	3 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = black_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	4 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = blue_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	5 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = white_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	6 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = orange_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	7 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = red_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	8 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = golden_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+	9 = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { trait = green_flame }
+		}
+		modifier = {
+			factor = 0
+			age = 7
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = portraits
+				}
+				has_game_rule = {
+					name = tdp_dragon_portraits
+					value = art
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,511 @@
+namespace = mbs_loyalty_events
+character_event = {         #Bolton Disloyalty -25 opinion on Stark
+	id = mbs_loyalty_events.0
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 59
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 87
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_bolton_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_bolton_loyalty who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_bolton_loyalty who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_bolton_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_bolton_loyalty who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_bolton_loyalty who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_loyalty_events.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = c_winterfell
+		NOT = {
+			c_dreadfort = {
+				de_jure_liege = d_dreadfort
+			}
+		}
+	}
+
+	immediate = {
+		c_dreadfort = {
+			de_jure_liege = d_winterfell
+		}
+		d_dreadfort = {
+			de_jure_liege = k_north
+		}
+
+	}
+}
+namespace = mbs_loyalty_events
+character_event = {         #Reyne Disloyalty -25 opinion on Lannister
+	id = mbs_loyalty_events.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 190
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 197
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_reyne_disloyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_reyne_disloyalty who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_reyne_disloyalty who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_reyne_disloyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_reyne_disloyalty who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_reyne_disloyalty who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_loyalty_events.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = c_casterly_rock
+		NOT = {
+			c_castamere = {
+				de_jure_liege = d_castamere
+			}
+		}
+	}
+
+	immediate = {
+		c_castamere = {
+			de_jure_liege = d_casterly_rock
+		}
+		d_castamere = {
+			de_jure_liege = k_westerlands
+		}
+
+	}
+}
+namespace = mbs_loyalty_events
+character_event = {         #Frey Disloyalty -25 opinion on Tully
+	id = mbs_loyalty_events.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 159
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 127
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_frey_disloyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_frey_disloyalty who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_frey_disloyalty who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_frey_disloyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_frey_disloyalty who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_frey_disloyalty who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_loyalty_events.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = c_riverrun
+		NOT = {
+			c_thetwins = {
+				de_jure_liege = d_thecrossing
+			}
+		}
+	}
+
+	immediate = {
+		c_thetwins = {
+			de_jure_liege = d_riverrun
+		}
+		d_thecrossing = {
+			de_jure_liege = k_riverlands
+		}
+
+	}
+}
+namespace = mbs_loyalty_events
+character_event = {         #Poole Loyalty +25 opinion on Stark
+	id = mbs_loyalty_events.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 59
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 95
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_poole_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_poole_loyalty  who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_poole_loyalty  who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_poole_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_poole_loyalty  who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_poole_loyalty  who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_loyalty_events.7
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = c_winterfell
+		NOT = {
+			b_coldstream = {
+				de_jure_liege = d_winterfell
+			}
+		}
+	}
+
+	immediate = {
+		b_coldstream = {
+			de_jure_liege = d_winterfell
+		}
+		d_winterfell = {
+			de_jure_liege = k_north
+		}
+
+	}
+}
+character_event = {         #Cassel Loyalty +25 opinion on Stark
+	id = mbs_loyalty_events.8
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 59
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 60
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_cassel_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_cassel_loyalty  who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_cassel_loyalty  who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_cassel_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_cassel_loyalty  who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_cassel_loyalty  who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_loyalty_events.9
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = c_winterfell
+		NOT = {
+			c_kingscourse = {
+				de_jure_liege = d_winterfell
+			}
+		}
+	}
+
+	immediate = {
+		c_kingscourse = {
+			de_jure_liege = d_winterfell
+		}
+		d_winterfell = {
+			de_jure_liege = k_north
+		}
+
+	}
+}
+character_event = {         #Manderly Loyalty +25 opinion on Stark
+	id = mbs_loyalty_events.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 59
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 80
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_manderly_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_manderly_loyalty  who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_manderly_loyalty  who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_manderly_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_manderly_loyalty  who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_manderly_loyalty  who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {         #Mormont Loyalty +10 opinion on Stark
+	id = mbs_loyalty_events.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 59
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 102
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_mormont_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_mormont_loyalty  who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_mormont_loyalty  who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_mormont_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_mormont_loyalty  who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_mormont_loyalty  who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {         #Grell Loyalty +15 opinion on Tullys
+	id = mbs_loyalty_events.12
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 159
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 133
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_grell_loyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_grell_loyalty  who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_grell_loyalty  who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_grell_loyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_grell_loyalty  who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_grell_loyalty  who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}
+character_event = {         #Yronwood Disoyalty -15 opinion on Martells
+	id = mbs_loyalty_events.13
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 1
+	}
+
+	immediate = {
+		 random_character = {
+			limit = {
+				dynasty = 12
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_opinion_modifier = {
+							modifier = opinion_yronwood_disloyalty
+							who = ROOT
+						}
+					}
+				}
+				opinion = { modifier = opinion_yronwood_disloyalty  who = ROOT years = 100 }
+				reverse_opinion = { modifier = opinion_yronwood_disloyalty  who = ROOT years = 100 }
+			}
+			any_dynasty_member = {
+				if = {
+					limit = {
+						NOT = {
+							has_opinion_modifier = {
+								modifier = opinion_yronwood_disloyalty
+								who = ROOT
+							}
+						}
+					}
+					opinion = { modifier = opinion_yronwood_disloyalty  who = ROOT years = 100 }
+					reverse_opinion = { modifier = opinion_yronwood_disloyalty  who = ROOT years = 100 }
+				}
+			}
+		}
+	}
+}

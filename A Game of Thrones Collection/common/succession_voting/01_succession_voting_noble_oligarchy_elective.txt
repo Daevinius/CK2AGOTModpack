@@ -1,0 +1,439 @@
+noble_oligarchy_elective = {
+
+	elector_vote_strength = {
+		days = 1
+
+		additive_modifier = {
+			value = 2
+			localisation_key = tooltip_elector_strength_CURRENT
+
+			FROMFROM = { holder_scope = { character = ROOT } }
+		}
+
+		additive_modifier = {
+			value = 4
+			localisation_key = tooltip_elector_strength_TIER
+
+			real_tier = EMPEROR
+		}
+
+		additive_modifier = {
+			value = 3
+			localisation_key = tooltip_elector_strength_TIER
+
+			real_tier = KING
+		}
+
+		additive_modifier = {
+			value = 2
+			localisation_key = tooltip_elector_strength_TIER
+
+			real_tier = DUKE
+		}
+
+		additive_modifier = {
+			value = 1
+			localisation_key = tooltip_elector_strength_TIER
+
+			real_tier = COUNT
+		}
+
+		additive_modifier = {
+			value = 1
+			localisation_key = tooltip_elector_strength_COUNCIL
+
+			FROMFROM = { holder_scope = { is_liege_of = ROOT } }
+
+			OR = {
+				is_councillor = yes
+				is_voter = yes
+			}
+		}
+
+		additive_modifier = {
+			value = 1
+			localisation_key = tooltip_elector_strength_CLAIMANT
+
+			any_claim = { title = FROMFROM }
+		}
+
+		additive_modifier = {
+			value = 1
+			localisation_key = tooltip_elector_strength_DRAGON_RIDER
+
+			FROMFROM = { holder_scope = { is_valyrian_freehold_trigger = yes } }
+			trait = dragon_rider
+
+			NOT = {
+				any_friend = {
+					trait = dragon
+					martial >= 25
+					NOT = { trait = maimed_dragon }
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 2
+			localisation_key = tooltip_elector_strength_DRAGON_RIDER
+
+			FROMFROM = { holder_scope = { is_valyrian_freehold_trigger = yes } }
+			trait = dragon_rider
+
+			any_friend = {
+				trait = dragon
+				martial >= 25
+				martial < 50
+				NOT = { trait = maimed_dragon }
+			}
+		}
+
+		additive_modifier = {
+			value = 3
+			localisation_key = tooltip_elector_strength_DRAGON_RIDER
+
+			FROMFROM = { holder_scope = { is_valyrian_freehold_trigger = yes } }
+			trait = dragon_rider
+
+			any_friend = {
+				trait = dragon
+				martial >= 50
+				martial < 75
+				NOT = { trait = maimed_dragon }
+			}
+		}
+
+		additive_modifier = {
+			value = 4
+			localisation_key = tooltip_elector_strength_DRAGON_RIDER
+
+			FROMFROM = { holder_scope = { is_valyrian_freehold_trigger = yes } }
+			trait = dragon_rider
+
+			any_friend = {
+				trait = dragon
+				martial >= 75
+				NOT = { trait = maimed_dragon }
+			}
+		}
+	}
+
+	elector_selection = {
+		days = -100
+
+		additive_modifier = { # Either title is higher than Duke-tier, or must be primary.
+			value = -999
+			FROMFROM = {
+				NOR = {
+					higher_tier_than = DUKE
+					holder_scope = { primary_title = { title = PREVPREV } }
+				}
+			}
+		}
+
+		additive_modifier = { # Current ruler is always an elector.
+			value = 150
+			FROMFROM = {
+				holder_scope = {
+					character = PREVPREV
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 110
+			NOT_mythical_creature_trigger = yes
+			OR = {
+				# AND = { # Independent ruler who is dejure vassal.
+					# independent = yes
+					# any_dejure_liege = { title = FROMFROM }
+				# }
+				AND = { # Vassal in dejure realm (or is titular)
+					is_ruler = yes
+					FROMFROM = { holder_scope = { is_vassal_or_below = PREVPREV } }
+					OR = {
+						FROMFROM = { is_titular = yes }
+						any_dejure_liege = { title = FROMFROM }
+					}
+				}
+				AND = { # Unlanded subjects
+					FROMFROM = { holder_scope = { is_vassal_or_below = PREVPREV } }
+					OR = {
+						FROMFROM = { is_titular = yes }
+						FROMFROM = { holder_scope = { primary_title = { title = PREVPREV } } }
+						any_claim = { title = FROMFROM }
+					}
+					is_ruler = no
+					is_adult = yes
+					is_incapable = no
+					prisoner = no
+				}
+			}
+
+			trigger_if = { # Freehold conditions
+				limit = { FROMFROM = { holder_scope = { is_valyrian_freehold_trigger = yes } } }
+				OR = {
+					AND = {
+						is_ruler = yes
+						is_theocracy = no
+						is_lowborn = no
+						OR = {
+							culture = high_valyrian
+							any_demesne_province = { region = world_valyrian_peninsula }
+						}
+					}
+					has_character_flag = title_freeholder
+				}
+			}
+			trigger_else = { #Non-freehold conditions
+				OR = {
+					higher_real_tier_than = BARON #All count tier and above
+					AND = { #Barons in duke tier realms
+						tier = BARON
+						FROMFROM = { lower_real_tier_than = KING }
+					}
+					AND = { #Holder's council
+						FROMFROM = { holder_scope = { is_liege_of = PREVPREV } }
+						OR = {
+							is_councillor = yes
+							is_voter = yes
+						}
+					}
+					FROMFROM = { holder_scope = { is_close_relative = PREVPREV } } #Holder's relatives
+					any_claim = { title = FROMFROM } #Claimants
+					liege = { #Relatives of important rulers
+						liege = { has_landed_title = FROMFROM }
+						is_close_relative = PREV
+						OR = {
+							higher_real_tier_than = BARON #All count tier and above
+							AND = { #Barons in duke tier realms
+								tier = BARON
+								FROMFROM = { lower_real_tier_than = KING }
+							}
+						}
+						OR = {
+							FROMFROM = { is_titular = yes }
+							any_dejure_liege = { title = FROMFROM }
+						}
+					}
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 40
+
+			real_tier = KING
+		}
+
+		additive_modifier = {
+			value = 30
+
+			real_tier = DUKE
+		}
+
+		additive_modifier = {
+			value = 20
+
+			real_tier = COUNT
+		}
+
+		additive_modifier = {
+			value = 10
+
+			OR = {
+				real_tier = BARON
+				is_councillor = yes
+				is_voter = yes
+			}
+		}
+
+		additive_modifier = {
+			value = 5
+
+			OR = {
+				AND = { # Valyrian dragon riders
+					FROMFROM = { holder_scope = { is_valyrian_freehold_trigger = yes } }
+					trait = dragon_rider
+				}
+				any_claim = { title = FROMFROM } # Claimants
+			}
+		}
+	}
+
+	#ROOT = Current Title holder, FROM = Candidate, FROMFROM = Title, FROMFROMFROM = Null
+	candidate_trigger = {
+		NOT = { character = FROM } #Not the current ruler.
+
+		FROM = {
+			can_inherit_titles_trigger = yes
+			NOT_mythical_creature_trigger = yes
+
+			OR = {
+				any_claim = { title = ROOT_FROMFROM }
+				is_close_relative = ROOT
+
+				AND = { # Holder's council
+					liege = { character = ROOT }
+
+					OR = {
+						is_councillor = yes
+						is_voter = yes
+					}
+				}
+
+				AND = {
+					OR = {
+						higher_real_tier_than = COUNT # All duke tier and above
+						AND = { # Counts in king tier realms
+							real_tier = COUNT
+							ROOT_FROMFROM = { lower_real_tier_than = EMPEROR }
+						}
+						AND = { # Barons in duke tier realms
+							real_tier = BARON
+							ROOT_FROMFROM = { lower_real_tier_than = KING }
+						}
+						AND = { # All rulers in freehold eligible
+							ROOT = { is_valyrian_freehold_trigger = yes }
+							demesne_size >= 1
+						}
+					}
+					#OR = { #Either defacto direct vassal, or independent ruler who is dejure vassal.
+						is_liege_or_above = ROOT
+						# AND = {
+							# any_dejure_liege = { title = ROOT_FROMFROM }
+							# independent = yes
+						# }
+					#}
+				}
+
+				liege = { # Relatives of important rulers
+					liege = { character = ROOT }
+					is_close_relative = PREV
+					OR = {
+						higher_real_tier_than = BARON # All count tier and above
+						AND = { # Barons in duke tier realms
+							real_tier = BARON
+							ROOT_FROMFROM = { lower_real_tier_than = KING }
+						}
+					}
+					OR = {
+						ROOT_FROMFROM = { is_titular = yes }
+						any_dejure_liege = { title = ROOT_FROMFROM }
+					}
+				}
+
+				AND = { # freeholders in valyria
+					ROOT = { is_valyrian_freehold_trigger = yes }
+					is_ruler = no
+					has_character_flag = title_freeholder
+					is_liege_or_above = ROOT
+				}
+			}
+
+			trigger_if = { # Extra freehold requirements
+				limit = { ROOT = { is_valyrian_freehold_trigger = yes } }
+				eligible_archon_trigger = yes
+			}
+
+			NAND = { # Candidate should not be a landless Courtier that is about to inherit a Theocracy or Republic
+				is_ruler = no
+				any_heir_title = {
+					holder_scope = { NOT = { is_feudal = yes } }
+				}
+			}
+
+			OR = { # If the title controls the religion, candidates must be of the same religion.
+				ROOT = {
+					NOT = {
+						controls_religion = yes
+					}
+				}
+				religion = ROOT
+			}
+
+			trigger_if = {
+				limit = { is_ruler = yes }
+				NOR = {
+					is_theocracy = yes
+					is_republic = yes
+					is_merchant_republic = yes
+				}
+			}
+		}
+	}
+
+	candidate_vote_score = {
+		days = 0
+
+		### Elector voting himself ###
+		elector_self_feudal_vote = yes
+		elector_self_freehold_vote = yes
+
+		##########################   Candidate's traits   ##########################
+
+		# Sexism
+		elector_candidate_gender_vote = yes
+
+		# Ageism
+		elector_candidate_age_vote = yes
+		elector_candidate_age_children_vote = yes
+
+		# Culturism
+		elector_candidate_culture_vote = yes
+		elector_candidate_culture_noble_oligarchy_vote = yes
+
+		# Faithism
+		elector_candidate_religion_vote = yes
+
+		# Barbarism
+		elector_candidate_barbarism_vote = yes
+
+		# Nepotism
+		elector_candidate_nepotism_vote = yes
+
+		# Alliances
+		elector_candidate_alliances_vote = yes
+
+		# Prestige
+		elector_candidate_prestige_vote = yes
+
+		# Piety
+		elector_candidate_piety_vote = yes
+
+		# Education and lifestyle
+		elector_candidate_education_lifestyle_vote = yes
+		elector_candidate_education_attribute_vote = yes
+
+		# Claims
+		elector_candidate_claims_vote = yes
+
+		# Traits
+		elector_candidate_traits_vote = yes
+		elector_candidate_traits_disfigured_vote = yes
+		elector_candidate_traits_excommunication_vote = yes
+		elector_candidate_traits_feudal_vote = yes
+		elector_candidate_combat_ratings_vote = yes
+
+		# Ruler traits
+		elector_ruler_traits_vote = yes
+
+		##########################   Raw Opinion bonus towards Candidate   ##########################
+		elector_candidate_opinion_1_vote = yes
+
+		# Opinion -
+		elector_candidate_opinion_vote = yes
+
+		# Ruler opinion
+		elector_ruler_opinion_vote = yes
+
+		# Ambition-Specific Modifiers
+		elector_candidate_ambition_vote = yes
+
+		# Dragons
+		elector_candidate_dragons_vote = yes
+
+		# Valyrian Freehold considerations
+		elector_candidate_valyrian_freehold_vote = yes
+	}
+}

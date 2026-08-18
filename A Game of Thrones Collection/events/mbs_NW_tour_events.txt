@@ -1,0 +1,1334 @@
+namespace = mbs_NW_tour
+#Lord Commander of the NW sends a recruitment tour
+narrative_event = {
+	id = mbs_NW_tour.1
+	desc = "EVTDESC_mbs_NW_tour.1"
+	title = "EVTTITLE_mbs_NW_tour.1"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	trigger = {
+		wealth = 25
+		OR = {
+			trait = nightswatch
+			primary_title = { title = d_nightswatch }
+		}
+		NOT = { trait = wildling }
+		NOT = { culture_group = winter_group }
+		AND = { #Lord Commander checks
+			has_landed_title = d_nightswatch
+			trait = nightswatch
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 20
+		modifier = {
+			factor = 0.5
+			d_winter = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			d_nightswatch = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			k_beyond_wall = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.1"    #Recruiter Tour paid
+		ai_chance = { factor = 90 }
+		wealth = -25
+		set_global_flag = NW_tour_north
+		ROOT = {
+			character_event = {
+				id =  mbs_NW_tour.3
+				days = 32
+			}
+		}
+		ROOT = {
+			character_event = {
+				id =  mbs_NW_tour.5
+				days = 65
+			}
+		}
+		ROOT = {
+			character_event = {
+				id =  mbs_NW_tour.6
+				days = 120
+			}
+		}
+		ROOT = {
+			character_event = {
+				id =  mbs_NW_tour.7
+				days = 160
+			}
+		}
+		ROOT = {
+			character_event = {
+				id =  mbs_NW_tour.8
+				days = 190
+			}
+		}
+		ROOT = {
+			random_courtier = {
+				limit = {
+					trait = nightswatch
+					age = 16
+					is_ruler = no
+					is_adult = yes
+					is_female = no
+					is_incapable = no
+					prisoner = no
+					NOT = { trait = maester }
+				}
+				add_trait = wikid
+				set_character_flag = NW_recruiter
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_landed_title = d_lasthearth
+					has_landed_title = d_karhold
+					NOT = { has_character_flag = NW_visit_upcoming }
+				}
+			}
+			character_event = {
+				id =  mbs_NW_tour.2
+				days = 7
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_landed_title = d_winterfell
+					has_landed_title = c_bearisland
+					NOT = { has_character_flag = NW_visit_upcoming }
+				}
+			}
+			character_event = {
+				id =  mbs_NW_tour.2
+				days = 14
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_whiteharbor
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.2
+				days = 31
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_NW_tour.1"  #No
+		prestige = -50
+		ai_chance = { factor = 10 }
+	}
+}
+namespace = mbs_NW_tour
+#Tour goes to Northern Lords
+character_event = {
+	id = mbs_NW_tour.2
+	desc = "EVTDESC_mbs_NW_tour.2"
+	title = "EVTTITLE_mbs_NW_tour.2"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ruler = yes
+		culture_group = first_men
+		NOT = { has_global_flag = recruiter_attacked_north }
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.2"    #Pay Gold instead
+		ai_chance = { factor = 25 }
+		wealth = -15
+		prestige = 10
+		hidden_tooltip = {
+		d_nightswatch = { holder_scope = { wealth = 15 } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_NW_tour.2"   #Recruiter takes your available prisoners
+		ai_chance = { factor = 50 }
+		trigger = {
+			ROOT = {
+				any_courtier = {
+					prisoner = yes
+					is_female = no
+					is_primary_heir = no
+					is_ruler = no
+					is_incapable = no
+					age = 16
+					NOT = { has_character_modifier = getting_justice }
+					NOT = { trait = crippled }
+					NOT = { trait = dragon }
+					NOT = { culture_group = winter_group }
+					NOT = { culture_group = unoccupied_group }
+				}
+			}
+		}
+		ROOT = {
+		  any_courtier = {
+			limit = {
+				prisoner = yes
+				is_female = no
+				is_primary_heir = no
+				is_ruler = no
+				is_incapable = no
+				age = 16
+				NOT = { has_character_modifier = getting_justice }
+				NOT = { trait = crippled }
+				NOT = { trait = dragon }
+				NOT = { culture_group = winter_group }
+				NOT = { culture_group = unoccupied_group }
+			}
+			add_trait = nightswatch
+			add_trait = wikid
+			set_character_flag = NW_recruit
+			prisoner = no
+		  }
+	    }
+	}
+
+	option = {
+		name = "EVTOPTC_NW_tour.2"   #Northern Lord joins NW himself
+		ai_chance = { factor = 5 }
+		trigger = {
+			age = 60
+			is_incapable = no
+			is_female = no
+			culture_group = first_men
+			NOT = { trait = ambitious }
+			any_child = {
+				is_primary_heir = yes
+				is_female = no
+				age = 16
+				is_alive = yes
+				NOT = { trait = bastard }
+				is_incapable = no
+				dynasty = ROOT
+				is_child_of = PREV
+			}
+		}
+		abdicate = yes
+		add_trait = nightswatch
+	}
+
+	option = {
+		name = "EVTOPTD_NW_tour.2"   #Nothing
+		ai_chance = { factor = 20 }
+		prestige = -30
+		d_nightswatch = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_ignored_NW_call
+					who = ROOT
+				}
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Norther recruits arrive, decide if recruiter goes Vale and Riverlands or returns
+character_event = {
+	id = mbs_NW_tour.3
+	desc = "EVTDESC_mbs_NW_tour.3"
+	title = "EVTTITLE_mbs_NW_tour.3"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = nightswatch
+			primary_title = { title = d_nightswatch }
+		}
+		NOT = { trait = wildling }
+		NOT = { culture_group = winter_group }
+		NOT = { has_global_flag = recruiter_attacked_north }
+		AND = { #Lord Commander checks
+			has_landed_title = d_nightswatch
+			trait = nightswatch
+		}
+	}
+
+	immediate = {
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+				is_ruler = yes
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+		clr_global_flag = NW_tour_north
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.3"
+		wealth = -10
+		set_global_flag = NW_tour_south
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = nightswatch
+				trait = wikid
+			}
+			move_character = ROOT
+			clr_character_flag = NW_recruit
+			remove_trait = wikid
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_riverrun
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 9
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_harrenhal
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 30
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_the_giants_lance
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 25
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		k_riverlands = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 14 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 21 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 28 }
+						set_character_flag = NW_visit_upcoming
+					}
+				}
+			}
+			k_vale = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 14 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 21 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 28 }
+						set_character_flag = NW_visit_upcoming
+					}
+				}
+			}
+	}
+	option = {
+		name = "EVTOPTB_NW_tour.3"
+		prestige = -10
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = nightswatch
+				trait = wikid
+			}
+			move_character = ROOT
+			clr_character_flag = NW_recruit
+			remove_trait = wikid
+		}
+		ROOT = {
+			any_courtier = {
+				limit = {
+					trait = nightswatch
+					trait = wikid
+					has_character_flag = NW_recruiter
+				}
+				remove_trait = wikid
+				clr_character_flag = NW_recruiter
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Tour asks for help to Southern Lords
+character_event = {
+	id = mbs_NW_tour.4
+	desc = "EVTDESC_mbs_NW_tour.4"
+	title = "EVTTITLE_mbs_NW_tour.4"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = recruiter_attacked_north }
+		NOT = { has_global_flag = recruiter_attacked_south }
+	}
+
+	immediate = {
+		set_character_flag = NW_visit_upcoming
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.2"    #Pay Gold instead
+		ai_chance = { factor = 20 }
+		wealth = -15
+		prestige = 10
+		hidden_tooltip = {
+		d_nightswatch = { holder_scope = { wealth = 15 } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_NW_tour.4"   #Recruiter takes your available prisoners
+		ai_chance = { factor = 35 }
+		trigger = {
+			ROOT = {
+				any_courtier = {
+					prisoner = yes
+					is_female = no
+					is_primary_heir = no
+					is_ruler = no
+					is_incapable = no
+					age = 16
+					NOT = { has_character_modifier = getting_justice }
+					NOT = { trait = crippled }
+					NOT = { trait = dragon }
+					NOT = { culture_group = winter_group }
+					NOT = { culture_group = unoccupied_group }
+				}
+			}
+		}
+		ROOT = {
+		  any_courtier = {
+			limit = {
+				prisoner = yes
+				is_female = no
+				is_primary_heir = no
+				is_ruler = no
+				is_incapable = no
+				age = 16
+				NOT = { has_character_modifier = getting_justice }
+				NOT = { trait = crippled }
+				NOT = { trait = dragon }
+				NOT = { culture_group = winter_group }
+				NOT = { culture_group = unoccupied_group }
+			}
+			add_trait = nightswatch
+			add_trait = wikid
+			set_character_flag = NW_recruit
+			prisoner = no
+		  }
+	    }
+	}
+
+	option = {
+		name = "EVTOPTC_NW_tour.4"   #Southern Lord joins NW himself
+		ai_chance = { factor = 5 }
+		abdicate = yes
+		add_trait = nightswatch
+		trigger = {
+			age = 65
+			is_incapable = no
+			is_female = no
+			culture_group = andal
+			trait = brave
+			trait = honest
+			NOT = { trait = ambitious }
+			any_child = {
+				is_primary_heir = yes
+				is_female = no
+				age = 16
+				is_alive = yes
+				NOT = { trait = bastard }
+				is_incapable = no
+				dynasty = ROOT
+				is_child_of = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_NW_tour.4"   #Nothing
+		ai_chance = { factor = 40 }
+		prestige = -30
+		d_nightswatch = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_ignored_NW_call
+					who = ROOT
+				}
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Lord Commander decides if recruiter goes Kings Landing and Stormlands or returns
+character_event = {
+	id = mbs_NW_tour.5
+	desc = "EVTDESC_mbs_NW_tour.5"
+	title = "EVTTITLE_mbs_NW_tour.5"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = nightswatch
+			primary_title = { title = d_nightswatch }
+		}
+		NOT = { trait = wildling }
+		NOT = { culture_group = winter_group }
+		NOT = { has_global_flag = recruiter_attacked_north }
+		NOT = { has_global_flag = recruiter_attacked_south }
+		AND = { #Lord Commander checks
+			has_landed_title = d_nightswatch
+			trait = nightswatch
+		}
+	}
+
+	immediate = {
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+				is_ruler = yes
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.5"
+		wealth = -10
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = e_iron_throne
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 15
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_shipbreaker
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 20
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		k_crownlands = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 7 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 12 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 15 }
+						set_character_flag = NW_visit_upcoming
+					}
+				}
+			}
+			k_stormlands = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 11 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 18 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 25 }
+						set_character_flag = NW_visit_upcoming
+					}
+				}
+			}
+	}
+	option = {
+		name = "EVTOPTB_NW_tour.3"
+		prestige = -10
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = nightswatch
+				trait = wikid
+			}
+			move_character = ROOT
+			clr_character_flag = NW_recruit
+			remove_trait = wikid
+		}
+		ROOT = {
+			any_courtier = {
+				limit = {
+					trait = nightswatch
+					trait = wikid
+					has_character_flag = NW_recruiter
+				}
+				remove_trait = wikid
+				clr_character_flag = NW_recruiter
+			}
+		}
+	}
+}
+
+namespace = mbs_NW_tour
+#Lord Commander decides if recruiter goes Westerlands and Reach or returns
+character_event = {
+	id = mbs_NW_tour.6
+	desc = "EVTDESC_mbs_NW_tour.6"
+	title = "EVTTITLE_mbs_NW_tour.6"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = nightswatch
+			primary_title = { title = d_nightswatch }
+		}
+		NOT = { trait = wildling }
+		NOT = { culture_group = winter_group }
+		NOT = { has_global_flag = recruiter_attacked_north }
+		NOT = { has_global_flag = recruiter_attacked_south }
+		AND = { #Lord Commander checks
+			has_landed_title = d_nightswatch
+			trait = nightswatch
+		}
+	}
+
+	immediate = {
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+				is_ruler = yes
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.6"
+		wealth = -10
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_casterly_rock
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 10
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_highgarden
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 20
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		k_reach = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 11 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 18 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 15 }
+						set_character_flag = NW_visit_upcoming
+					}
+				}
+			}
+			k_westerlands = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 11 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 18 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 25 }
+						set_character_flag = NW_visit_upcoming
+					}
+				}
+			}
+	}
+	option = {
+		name = "EVTOPTB_NW_tour.3"
+		prestige = -10
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = nightswatch
+				trait = wikid
+			}
+			move_character = ROOT
+			clr_character_flag = NW_recruit
+			remove_trait = wikid
+		}
+		ROOT = {
+			any_courtier = {
+				limit = {
+					trait = nightswatch
+					trait = wikid
+					has_character_flag = NW_recruiter
+				}
+				remove_trait = wikid
+				clr_character_flag = NW_recruiter
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Lord Commander decides if recruiter goes Dorne or returns
+character_event = {
+	id = mbs_NW_tour.7
+	desc = "EVTDESC_mbs_NW_tour.7"
+	title = "EVTTITLE_mbs_NW_tour.7"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = nightswatch
+			primary_title = { title = d_nightswatch }
+		}
+		NOT = { trait = wildling }
+		NOT = { culture_group = winter_group }
+		NOT = { has_global_flag = recruiter_attacked_north }
+		NOT = { has_global_flag = recruiter_attacked_south }
+		AND = { #Lord Commander checks
+			has_landed_title = d_nightswatch
+			trait = nightswatch
+		}
+	}
+
+	immediate = {
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+				is_ruler = yes
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.7"
+		wealth = -10
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_brokenarm
+				NOT = { has_character_flag = NW_visit_upcoming }
+			}
+			character_event = {
+				id =  mbs_NW_tour.4
+				days = 7
+			}
+			set_character_flag = NW_visit_upcoming
+		}
+		k_dorne = {
+				holder_scope = {
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 10 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 15 }
+						set_character_flag = NW_visit_upcoming
+					}
+					random_vassal = {
+						limit = {
+							NOR = {
+								is_incapable = yes
+								is_adult = no
+								prisoner = yes
+								has_character_flag = NW_visit_upcoming 	#remove this on later event
+							}
+							tier = DUKE
+							is_feudal = yes
+						}
+						character_event = { id = mbs_NW_tour.4 days = 20 }
+						set_character_flag = NW_visit_upcoming
+					}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTB_NW_tour.3"
+		prestige = -10
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = nightswatch
+				trait = wikid
+			}
+			move_character = ROOT
+			clr_character_flag = NW_recruit
+			remove_trait = wikid
+		}
+		ROOT = {
+			any_courtier = {
+				limit = {
+					trait = nightswatch
+					trait = wikid
+					has_character_flag = NW_recruiter
+				}
+				remove_trait = wikid
+				clr_character_flag = NW_recruiter
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Tour Ends for good
+character_event = {
+	id = mbs_NW_tour.8
+	desc = "EVTDESC_mbs_NW_tour.8"
+	title = "EVTTITLE_mbs_NW_tour.8"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = nightswatch
+			primary_title = { title = d_nightswatch }
+		}
+		NOT = { trait = wildling }
+		NOT = { culture_group = winter_group }
+		NOT = { has_global_flag = recruiter_attacked_north }
+		NOT = { has_global_flag = recruiter_attacked_south }
+		AND = { #Lord Commander checks
+			has_landed_title = d_nightswatch
+			trait = nightswatch
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.8"
+		prestige = 100
+		clr_global_flag = NW_tour_south
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = nightswatch
+				trait = wikid
+			}
+			move_character = ROOT
+			clr_character_flag = NW_recruit
+			remove_trait = wikid
+		}
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+		ROOT = {
+			any_courtier = {
+				limit = {
+					trait = nightswatch
+					trait = wikid
+					has_character_flag = NW_recruiter
+				}
+				remove_trait = wikid
+				clr_character_flag = NW_recruiter
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Recruiter is in danger in the North
+character_event = {
+	id = mbs_NW_tour.9
+	desc = "EVTDESC_mbs_NW_tour.9"
+	title = "EVTTITLE_mbs_NW_tour.9"
+	picture = GFX_evt_the_wall
+
+	hide_from = yes
+
+	ai = yes
+	only_rulers = no
+	has_global_flag = NW_tour_north
+	has_character_flag = NW_recruiter
+
+	trigger = {
+		trait = wikid
+		NOT = { has_global_flag = NW_tour_south }
+	}
+
+	immediate = {
+		set_global_flag = recruiter_attacked_north
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_nightswatch
+				trait = nightswatch
+			}
+				character_event = {
+					id = mbs_NW_tour.11
+					days = 1
+				}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 90
+		modifier = {
+			factor = 0.5
+			k_north = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.9"
+		ai_chance = { factor = 55 }
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruiter
+				trait = wikid
+				is_alive = yes
+			}
+			prestige = 10
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_NW_tour.9"
+		ai_chance = { factor = 30 }
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruiter
+				trait = wikid
+				is_alive = yes
+			}
+			add_trait = wounded
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_NW_tour.9"
+		ai_chance = { factor = 15 }
+		clr_global_flag = NW_tour_south
+		clr_global_flag = NW_tour_north
+		clr_global_flag = recruiter_attacked_south
+		clr_global_flag = recruiter_attacked_north
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = wikid
+			}
+			remove_trait = wikid
+			clr_character_flag = NW_recruit
+		}
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruiter
+				trait = wikid
+				is_alive = yes
+			}
+			death = {
+				death_reason = death_murder_unknown_slayed
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Recruiter is in danger in the South
+character_event = {
+	id = mbs_NW_tour.10
+	desc = "EVTDESC_mbs_NW_tour.10"
+	title = "EVTTITLE_mbs_NW_tour.10"
+	picture = GFX_evt_the_wall
+
+	hide_from = yes
+
+	ai = yes
+	only_rulers = no
+	has_character_flag = NW_recruiter
+	has_global_flag = NW_tour_south
+
+	trigger = {
+		trait = wikid
+		NOT = { has_global_flag = NW_tour_north }
+	}
+
+	immediate = {
+		set_global_flag = recruiter_attacked_south
+		any_playable_ruler = {
+			limit = { has_landed_title = d_nightswatch }
+				character_event = { id = mbs_NW_tour.11 days = 7 }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 36
+		modifier = {
+			factor = 0.5
+			e_iron_throne = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			k_riverlands = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			k_westerlands = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			k_vale = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			k_stormlands = { holder_scope = { war = yes } }
+		}
+		modifier = {
+			factor = 0.5
+			k_dorne = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_NW_tour.10"
+		ai_chance = { factor = 55 }
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruiter
+				trait = wikid
+				is_alive = yes
+			}
+			prestige = 10
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_NW_tour.10"
+		ai_chance = { factor = 30 }
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruiter
+				trait = wikid
+				is_alive = yes
+			}
+			add_trait = wounded
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_NW_tour.10"
+		ai_chance = { factor = 15 }
+		clr_global_flag = NW_tour_south
+		clr_global_flag = NW_tour_north
+		clr_global_flag = recruiter_attacked_south
+		clr_global_flag = recruiter_attacked_north
+		any_character = {
+			limit = {
+				has_character_flag = NW_visit_upcoming
+			}
+			clr_character_flag = NW_visit_upcoming
+		}
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruit
+				trait = wikid
+			}
+			remove_trait = wikid
+			clr_character_flag = NW_recruit
+		}
+		any_character = {
+			limit = {
+				has_character_flag = NW_recruiter
+				trait = wikid
+				is_alive = yes
+			}
+			death = {
+				death_reason = death_murder_unknown_slayed
+			}
+		}
+	}
+}
+namespace = mbs_NW_tour
+#Tour ended because recruiter died
+character_event = {
+	id = mbs_NW_tour.11
+	desc = "EVTDESC_mbs_NW_tour.11"
+	title = "EVTTITLE_mbs_NW_tour.11"
+	picture = GFX_evt_the_wall
+	hide_from = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_NW_tour.11"
+	}
+}

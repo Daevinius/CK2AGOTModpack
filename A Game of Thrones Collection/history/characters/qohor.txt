@@ -1,0 +1,4684 @@
+#Aurion's Father
+100496029 = {
+	name = "Дейрон"	# not a lord
+	dynasty = 496029
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	7822.1.1 = { birth = yes }
+	7838.1.1 = { add_trait = trained_warrior }
+	7870.1.1 = { death = yes }
+}
+#Emperor Aurion, claimed Valyria at the Doom
+50012300 = {
+	name = "Аурион"
+	dynasty = 496029
+
+	dna = cccsdqmdcft
+	properties = fk0jhb
+
+	religion = valyrian_rel
+	culture = "high_valyrian"
+
+	father = 100496029
+
+	add_trait = wroth
+	add_trait = ambitious
+	add_trait = proud
+	add_trait = authoritative
+	add_trait = tough_soldier
+	add_trait = valyrian_steel
+
+	7850.1.1 = {
+		birth = yes
+		effect = {
+			set_dynasty_flag = high_valyrian
+			set_character_flag = high_valyrian
+			create_bloodline = {
+				type = blood_of_the_dragon
+			}
+		}
+	}
+	7866.1.1 = {
+		add_trait = trained_warrior
+		add_trait = dragon_rider
+		effect = { set_dynasty_flag = dragon_riding_dynasty }
+	}
+	7898.1.1 = {
+		create_bloodline = {
+			type = emperor_aurion_mbs
+			has_dlc = "Holy Fury"
+		}
+		effect = {
+			wealth = 300
+			prestige = 400
+			add_artifact = enormous_flagship
+			new_artifact = { set_name = Valyria }
+			if = {
+				limit = { ai = no }
+				narrative_event = { id = century_of_blood.1 }
+			}
+			if = {
+				limit = { ai = yes }
+				narrative_event = { id = century_of_blood.1 days = 2 }
+			}
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					NOT = { character = ROOT }
+				}
+				narrative_event = { id = century_of_blood.2 }
+			}
+		}
+	}
+	7899.1.1 = {
+		add_trait = dead_target #used in e_new_valyria to change title
+		death = { death_reason = death_missing }
+	}
+}
+# Flavour family
+401496029 = {
+	name = "Рейнира"
+	female = yes
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	7850.1.1 = { birth = yes }
+	7898.1.1 = {
+		death = { death_reason = death_missing }
+	}
+}
+102496029 = {
+	name = "Мейгон"	# not a lord
+	dynasty = 496029
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	father = 100496029
+
+	7852.1.1 = { birth = yes }
+	7868.1.1 = { add_trait = poor_warrior }
+	7898.1.1 = {
+		death = { death_reason = death_missing }
+	}
+}
+103496029 = {
+	name = "Джейхейрис"	# not a lord
+	dynasty = 496029
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	father = 100496029
+
+	7853.1.1 = { birth = yes }
+	7869.1.1 = { add_trait = trained_warrior }
+	7898.1.1 = {
+		death = { death_reason = death_missing }
+	}
+}
+104496029 = {
+	name = "Алисанна"	# not a lord
+	female = yes
+	dynasty = 496029
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	father = 100496029
+
+	7855.1.1 = { birth = yes }
+	7898.1.1 = {
+		death = { death_reason = death_missing }
+	}
+}
+105496029 = {
+	name = "Хейрис"	# not a lord
+	dynasty = 496029
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	father = 50012300
+	mother = 401496029
+
+	7878.1.1 = { birth = yes }
+	7898.1.1 = {
+		death = { death_reason = death_missing }
+	}
+}
+106496029 = {
+	name = "Деймон"	# not a lord
+	dynasty = 496029
+
+	religion = "valyrian_rel"
+	culture = "high_valyrian"
+
+	father = 50012300
+	mother = 401496029
+
+	7882.1.1 = { birth = yes }
+	7898.1.1 = {
+		death = { death_reason = death_missing }
+	}
+}
+
+#############################
+### Major Merchant Houses ###
+#############################
+### House Zhander
+345300520 = {
+	name = "Трего"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7805.1.1 = { birth = yes }
+	7866.1.1 = { death = yes }
+}
+344300520 = {
+	name = "Варгио"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 345300520
+
+	7829.1.1 = { birth = yes }
+	7893.1.1 = { death = yes }
+}
+343300520 = {
+	name = "Зарго"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 344300520
+
+	7855.1.1 = { birth = yes }
+	7906.1.1 = { death = yes }
+}
+342300520 = {
+	name = "Трегис"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 343300520
+
+	7878.1.1 = { birth = yes }
+	7942.1.1 = { death = yes }
+}
+341300520 = {
+	name = "Зелекор"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 342300520
+
+	7913.1.1 = { birth = yes }
+	7971.1.1 = { death = yes }
+}
+340300520 = {
+	name = "Вого"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 341300520
+
+	7938.1.1 = { birth = yes }
+	7984.1.1 = { death = yes }
+}
+100300520 = {
+	name = "Джосс"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 340300520
+
+	7964.1.1 = { birth = yes }
+	7980.1.1 = { add_trait = trained_warrior }
+	8023.1.1 = { death = yes }
+}
+101300520 = {
+	name = "Бегго"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300520
+
+	7989.1.1 = { birth = yes }
+	8005.1.1 = { add_trait = poor_warrior }
+	8049.1.1 = { death = yes }
+}
+105300520 = {
+	name = "Луко"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101300520
+
+	8018.1.1 = { birth = yes }
+	8034.1.1 = { add_trait = poor_warrior }
+	8088.1.1 = { death = yes }
+}
+106300520 = {
+	name = "Бруско"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101300520
+
+	8021.1.1 = { birth = yes }
+	8037.1.1 = { add_trait = poor_warrior }
+	8078.1.1 = { death = yes }
+}
+108300520 = {
+	name = "Тихо"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 106300520
+
+	8040.1.1 = { birth = yes }
+	8056.1.1 = { add_trait = skilled_warrior }
+	8078.1.1 = { death = yes }
+}
+109300520 = {
+	name = "Баян"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 106300520
+
+	8043.1.1 = { birth = yes }
+	8059.1.1 = { add_trait = trained_warrior }
+	8110.1.1 = { death = yes }
+}
+114300520 = {
+	name = "Арео"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 108300520
+
+	8077.1.1 = { birth = yes }
+	8093.1.1 = { add_trait = poor_warrior }
+	8123.1.1 = { death = yes }
+}
+117300520 = {
+	name = "Бегго"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 114300520
+
+	8101.1.1 = { birth = yes }
+	8117.1.1 = { add_trait = poor_warrior }
+	8153.1.1 = { death = yes }
+}
+119300520 = {
+	name = "Морео"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 114300520
+
+	8103.1.1 = { birth = yes }
+	8119.1.1 = { add_trait = skilled_warrior }
+	8164.1.1 = { death = { death_reason = death_murder } }
+}
+122300520 = {
+	name = "Орбело"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 119300520
+
+	8126.1.1 = { birth = yes }
+	8142.1.1 = { add_trait = poor_warrior }
+	8184.1.1 = { death = yes }
+}
+125300520 = {
+	name = "Джосс"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 122300520
+
+	8148.1.1 = { birth = yes }
+	8164.1.1 = { add_trait = trained_warrior }
+	8227.1.1 = { death = yes }
+}
+128300520 = {
+	name = "Мирмелло"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 125300520
+
+	8172.1.1 = { birth = yes }
+	8188.1.1 = { add_trait = trained_warrior }
+	8230.1.1 = { death = { death_reason = death_murder } }
+}
+130300520 = {
+	name = "Бруско"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 125300520
+
+	8177.1.1 = { birth = yes }
+	8193.1.1 = { add_trait = poor_warrior }
+	8241.1.1 = { death = yes }
+}
+132300520 = {
+	name = "Коллио"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 128300520
+
+	8205.1.1 = { birth = yes }
+	8221.1.1 = { add_trait = poor_warrior }
+	8223.1.1 = { add_spouse = 432300520 }
+	8275.1.1 = { death = yes }
+}
+432300520 = {
+	name = "Алия"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8205.1.1 = { birth = yes }
+	8275.1.1 = { death = yes }
+}
+136300520 = {
+	name = "Меро"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 132300520
+	mother = 432300520
+
+	8239.1.1 = { birth = yes }
+	8255.1.1 = { add_trait = poor_warrior }
+	8257.1.1 = { add_spouse = 436300520 }
+	8286.1.1 = { death = yes }
+}
+436300520 = {
+	name = "Брея"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8239.1.1 = { birth = yes }
+	8286.1.1 = { death = yes }
+}
+137300520 = {
+	name = "Якен"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 132300520
+	mother = 432300520
+
+	8240.1.1 = { birth = yes }
+	8256.1.1 = { add_trait = poor_warrior }
+	8277.1.1 = { death = { death_reason = death_battle } }
+}
+138300520 = {
+	name = "Тернесия"	# not a lord
+	female = yes
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 132300520
+	mother = 432300520
+
+	8242.1.1 = { birth = yes }
+	8295.1.1 = { death = yes }
+}
+139300520 = {
+	name = "Терриос"	# not a lord
+	female = yes
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 132300520
+	mother = 432300520
+
+	8245.1.1 = { birth = yes }
+}
+140300520 = {
+	name = "Мелларио"	# not a lord
+	female = yes
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 132300520
+	mother = 432300520
+
+	8248.1.1 = { birth = yes }
+}
+141300520 = {
+	name = "Орделло"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300520
+	mother = 436300520
+
+	8259.1.1 = { birth = yes }
+	8275.1.1 = { add_trait = poor_warrior }
+	8277.1.1 = { add_spouse = 441300520 }
+}
+441300520 = {
+	name = "Кваррия"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8259.1.1 = { birth = yes }
+}
+142300520 = {
+	name = "Аллакво"	# a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300520
+	mother = 436300520
+
+	8262.1.1 = { birth = yes }
+	8278.1.1 = { add_trait = poor_warrior }
+	8280.1.1 = { add_spouse = 442300520 }
+}
+442300520 = {
+	name = "Нохия"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8262.1.1 = { birth = yes }
+}
+143300520 = {
+	name = "Терриос"	# not a lord
+	female = yes
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 142300520
+	mother = 442300520
+
+	8289.1.1 = { birth = yes }
+}
+144300520 = {
+	name = "Якен"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 142300520
+	mother = 442300520
+
+	8290.1.1 = { birth = yes }
+	8306.1.1 = { add_trait = trained_warrior }
+}
+145300520 = {
+	name = "Иллирио"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 141300520
+	mother = 441300520
+
+	8279.1.1 = { birth = yes }
+	8295.1.1 = { add_trait = trained_warrior }
+}
+146300520 = {
+	name = "Талея"	# not a lord
+	female = yes
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 141300520
+	mother = 441300520
+
+	8282.1.1 = { birth = yes }
+}
+147300520 = {
+	name = "Баян"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 141300520
+	mother = 441300520
+
+	8284.1.1 = { birth = yes }
+	8300.1.1 = { add_trait = poor_warrior }
+}
+148300520 = {
+	name = "Олло"	# not a lord
+	dynasty = 300520
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 141300520
+	mother = 441300520
+
+	8285.1.1 = { birth = yes }
+	8301.1.1 = { add_trait = poor_warrior }
+}
+
+### House Reymnos
+344300529 = {
+	name = "Виран"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7822.1.1 = { birth = yes }
+	7898.1.1 = { death = yes } #dov
+}
+343300529 = {
+	name = "Риос"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 344300529
+
+	7850.1.1 = { birth = yes }
+	7899.1.1 = { death = yes }
+}
+342300529 = {
+	name = "Рарго"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 343300529
+
+	7881.1.1 = { birth = yes }
+	7935.1.1 = { death = yes }
+}
+341300529 = {
+	name = "Гаррид"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 342300529
+
+	7903.1.1 = { birth = yes }
+	7954.1.1 = { death = yes }
+}
+340300529 = {
+	name = "Вогис"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 341300529
+
+	7928.1.1 = { birth = yes }
+	7973.1.1 = { death = yes }
+}
+100300529 = {
+	name = "Орделло"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 340300529
+
+	7953.1.1 = { birth = yes }
+	7969.1.1 = { add_trait = trained_warrior }
+	8023.1.1 = { death = yes }
+}
+101300529 = {
+	name = "Даарио"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300529
+
+	7974.1.1 = { birth = yes }
+	7990.1.1 = { add_trait = poor_warrior }
+	8037.1.1 = { death = yes }
+}
+103300529 = {
+	name = "Арео"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300529
+
+	7976.1.1 = { birth = yes }
+	7992.1.1 = { add_trait = poor_warrior }
+	8048.1.1 = { death = yes }
+}
+110300529 = {
+	name = "Мирмелло"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103300529
+
+	8003.1.1 = { birth = yes }
+	8019.1.1 = { add_trait = poor_warrior }
+	8065.1.1 = { death = yes }
+}
+112300529 = {
+	name = "Гилоро"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 110300529
+
+	8036.1.1 = { birth = yes }
+	8052.1.1 = { add_trait = trained_warrior }
+	8081.1.1 = { death = yes }
+}
+113300529 = {
+	name = "Тернесио"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 112300529
+
+	8058.1.1 = { birth = yes }
+	8074.1.1 = { add_trait = poor_warrior }
+	8133.1.1 = { death = yes }
+}
+114300529 = {
+	name = "Сирио"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 113300529
+
+	8084.1.1 = { birth = yes }
+	8100.1.1 = { add_trait = poor_warrior }
+	8136.1.1 = { death = yes }
+}
+115300529 = {
+	name = "Арео"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 113300529
+
+	8086.1.1 = { birth = yes }
+	8102.1.1 = { add_trait = skilled_warrior }
+	8149.1.1 = { death = yes }
+}
+116300529 = {
+	name = "Варго"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 114300529
+
+	8107.1.1 = { birth = yes }
+	8123.1.1 = { add_trait = skilled_warrior }
+	8174.1.1 = { death = yes }
+}
+120300529 = {
+	name = "Мирмелло"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 116300529
+
+	8132.1.1 = { birth = yes }
+	8148.1.1 = { add_trait = poor_warrior }
+	8186.1.1 = { death = yes }
+}
+123300529 = {
+	name = "Лото"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 120300529
+
+	8154.1.1 = { birth = yes }
+	8170.1.1 = { add_trait = skilled_warrior }
+	8202.1.1 = { death = yes }
+}
+126300529 = {
+	name = "Сирио"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 123300529
+
+	8177.1.1 = { birth = yes }
+	8193.1.1 = { add_trait = skilled_warrior }
+	8255.1.1 = { death = yes }
+}
+128300529 = {
+	name = "Якен"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 126300529
+
+	8199.1.1 = { birth = yes }
+	8215.1.1 = { add_trait = poor_warrior }
+	8217.1.1 = { add_spouse = 428300529 }
+	8260.1.1 = { death = yes }
+}
+428300529 = {
+	name = "Умма"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8199.1.1 = { birth = yes }
+	8260.1.1 = { death = yes }
+}
+129300529 = {
+	name = "Иллирио"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 126300529
+
+	8202.1.1 = { birth = yes }
+	8218.1.1 = { add_trait = poor_warrior }
+	8220.1.1 = { add_spouse = 429300529 }
+	8265.1.1 = { death = yes }
+}
+429300529 = {
+	name = "Коссома"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8202.1.1 = { birth = yes }
+	8265.1.1 = { death = yes }
+}
+130300529 = {
+	name = "Тейна"	# not a lord
+	female = yes
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 128300529
+	mother = 428300529
+
+	8223.1.1 = { birth = yes }
+	8281.1.1 = { death = yes }
+}
+132300529 = {
+	name = "Якен"	# not a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 128300529
+	mother = 428300529
+
+	8227.1.1 = { birth = yes }
+	8243.1.1 = { add_trait = trained_warrior }
+	8264.1.1 = { death = yes }
+}
+133300529 = {
+	name = "Баян"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 129300529
+	mother = 429300529
+
+	8221.1.1 = { birth = yes }
+	8237.1.1 = { add_trait = trained_warrior }
+	8239.1.1 = { add_spouse = 433300529 }
+	8271.1.1 = { death = yes }
+}
+433300529 = {
+	name = "Орбела"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8221.1.1 = { birth = yes }
+	8271.1.1 = { death = yes }
+}
+135300529 = {
+	name = "Луко"	# not a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 129300529
+	mother = 429300529
+
+	8224.1.1 = { birth = yes }
+	8240.1.1 = { add_trait = poor_warrior }
+	8276.1.1 = { death = yes }
+}
+136300529 = {
+	name = "Мералин"	# a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300529
+	mother = 433300529
+
+	8256.1.1 = { birth = yes }
+	8272.1.1 = { add_trait = trained_warrior }
+	8274.1.1 = { add_spouse = 436300529 }
+}
+436300529 = {
+	name = "Ланна"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8256.1.1 = { birth = yes }
+}
+137300529 = {
+	name = "Серенея"	# not a lord
+	female = yes
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300529
+	mother = 433300529
+
+	8258.1.1 = { birth = yes }
+}
+138300529 = {
+	name = "Мирмеллиос"	# not a lord
+	female = yes
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300529
+	mother = 433300529
+
+	8261.1.1 = { birth = yes }
+}
+139300529 = {
+	name = "Феррега"	# not a lord
+	female = yes
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300529
+	mother = 436300529
+
+	8287.1.1 = { birth = yes }
+}
+140300529 = {
+	name = "Рогго"	# not a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300529
+	mother = 436300529
+
+	8289.1.1 = { birth = yes }
+}
+141300529 = {
+	name = "Мирмелло"	# not a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300529
+	mother = 436300529
+
+	8291.1.1 = { birth = yes }
+}
+142300529 = {
+	name = "Ориос"	# not a lord
+	female = yes
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300529
+	mother = 436300529
+
+	8294.1.1 = { birth = yes }
+}
+143300529 = {
+	name = "Изембаро"	# not a lord
+	dynasty = 300529
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 136300529
+	mother = 436300529
+
+	8295.1.1 = { birth = yes }
+}
+
+### House Togott
+345300564 = {
+	name = "Нарго"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7790.1.1 = { birth = yes }
+	7855.1.1 = { death = yes }
+}
+344300564 = {
+	name = "Зарис"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 345300564
+
+	7817.1.1 = { birth = yes }
+	7888.1.1 = { death = yes }
+}
+343300564 = {
+	name = "Варан"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 344300564
+
+	7839.1.1 = { birth = yes }
+	7894.1.1 = { death = yes }
+}
+342300564 = {
+	name = "Карго"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 343300564
+
+	7865.1.1 = { birth = yes }
+	7919.1.1 = { death = yes }
+}
+341300564 = {
+	name = "Арар"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 342300564
+
+	7898.1.1 = { birth = yes }
+	7952.1.1 = { death = yes }
+}
+340300564 = {
+	name = "Варгано"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 341300564
+
+	7923.1.1 = { birth = yes }
+	7971.1.1 = { death = yes }
+}
+100300564 = {
+	name = "Мералин"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 340300564
+
+	7951.1.1 = { birth = yes }
+	7967.1.1 = { add_trait = trained_warrior }
+	8008.1.1 = { death = yes }
+}
+101300564 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300564
+
+	7978.1.1 = { birth = yes }
+	7994.1.1 = { add_trait = poor_warrior }
+	8046.1.1 = { death = yes }
+}
+104300564 = {
+	name = "Джосс"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101300564
+
+	8012.1.1 = { birth = yes }
+	8028.1.1 = { add_trait = poor_warrior }
+	8059.1.1 = { death = yes }
+}
+105300564 = {
+	name = "Коллио"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101300564
+
+	8013.1.1 = { birth = yes }
+	8029.1.1 = { add_trait = trained_warrior }
+	8082.1.1 = { death = yes }
+}
+108300564 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 104300564
+
+	8041.1.1 = { birth = yes }
+	8057.1.1 = { add_trait = trained_warrior }
+	8104.1.1 = { death = yes }
+}
+111300564 = {
+	name = "Коссомо"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 108300564
+
+	8066.1.1 = { birth = yes }
+	8082.1.1 = { add_trait = poor_warrior }
+	8111.1.1 = { death = yes }
+}
+112300564 = {
+	name = "Тихо"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 108300564
+
+	8068.1.1 = { birth = yes }
+	8084.1.1 = { add_trait = trained_warrior }
+	8126.1.1 = { death = yes }
+}
+116300564 = {
+	name = "Тихо"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 112300564
+
+	8103.1.1 = { birth = yes }
+	8119.1.1 = { add_trait = trained_warrior }
+	8157.1.1 = { death = yes }
+}
+120300564 = {
+	name = "Баян"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 116300564
+
+	8136.1.1 = { birth = yes }
+	8152.1.1 = { add_trait = master_warrior }
+	8204.1.1 = { death = yes }
+}
+123300564 = {
+	name = "Терро"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 120300564
+
+	8159.1.1 = { birth = yes }
+	8175.1.1 = { add_trait = poor_warrior }
+	8217.1.1 = { death = yes }
+}
+126300564 = {
+	name = "Баян"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 123300564
+
+	8183.1.1 = { birth = yes }
+	8199.1.1 = { add_trait = skilled_warrior }
+	8258.1.1 = { death = yes }
+}
+127300564 = {
+	name = "Орделло"	# not a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 123300564
+
+	8185.1.1 = { birth = yes }
+	8201.1.1 = { add_trait = skilled_warrior }
+	8203.1.1 = { add_spouse = 427300564 }
+	8230.1.1 = { death = { death_reason = death_murder } }
+}
+427300564 = {
+	name = "Беллегера"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8185.1.1 = { birth = yes }
+	8230.1.1 = { death = yes }
+}
+130300564 = {
+	name = "Беллегера"	# not a lord
+	female = yes
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 127300564
+	mother = 427300564
+
+	8203.1.1 = { birth = yes }
+	8262.1.1 = { death = yes }
+}
+131300564 = {
+	name = "Иллирио"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 127300564
+	mother = 427300564
+
+	8206.1.1 = { birth = yes }
+	8222.1.1 = { add_trait = poor_warrior }
+	8224.1.1 = { add_spouse = 431300564 }
+	8262.1.1 = { death = yes }
+}
+431300564 = {
+	name = "Серенея"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8206.1.1 = { birth = yes }
+	8262.1.1 = { death = yes }
+}
+133300564 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 131300564
+	mother = 431300564
+
+	8241.1.1 = { birth = yes }
+	8257.1.1 = { add_trait = trained_warrior }
+	8259.1.1 = { add_spouse = 433300564 }
+	8294.1.1 = { death = yes }
+}
+433300564 = {
+	name = "Мирмеллиос"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8241.1.1 = { birth = yes }
+	8294.1.1 = { death = yes }
+}
+134300564 = {
+	name = "Гролео"	# a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 131300564
+	mother = 431300564
+
+	8242.1.1 = { birth = yes }
+	8258.1.1 = { add_trait = poor_warrior }
+	8260.1.1 = { add_spouse = 434300564 }
+}
+434300564 = {
+	name = "Тиха"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8242.1.1 = { birth = yes }
+}
+135300564 = {
+	name = "Коссома"	# not a lord
+	female = yes
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 131300564
+	mother = 431300564
+
+	8243.1.1 = { birth = yes }
+	8295.1.1 = { death = yes }
+}
+136300564 = {
+	name = "Ланна"	# not a lord
+	female = yes
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300564
+	mother = 433300564
+
+	8270.1.1 = { birth = yes }
+}
+137300564 = {
+	name = "Орбела"	# not a lord
+	female = yes
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300564
+	mother = 433300564
+
+	8272.1.1 = { birth = yes }
+}
+138300564 = {
+	name = "Морео"	# not a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300564
+	mother = 433300564
+
+	8275.1.1 = { birth = yes }
+	8291.1.1 = { add_trait = poor_warrior }
+}
+139300564 = {
+	name = "Феррега"	# not a lord
+	female = yes
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300564
+	mother = 434300564
+
+	8271.1.1 = { birth = yes }
+}
+140300564 = {
+	name = "Морео"	# not a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300564
+	mother = 434300564
+
+	8273.1.1 = { birth = yes }
+	8289.1.1 = { add_trait = poor_warrior }
+}
+141300564 = {
+	name = "Джосс"	# not a lord
+	dynasty = 300564
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300564
+	mother = 434300564
+
+	8275.1.1 = { birth = yes }
+	8291.1.1 = { add_trait = trained_warrior }
+}
+
+### House Baroat
+345300565 = {
+	name = "Карго"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7810.1.1 = { birth = yes }
+	7871.1.1 = { death = yes }
+}
+344300565 = {
+	name = "Зирио"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 345300565
+
+	7833.1.1 = { birth = yes }
+	7895.1.1 = { death = yes }
+}
+343300565 = {
+	name = "Сиран"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 344300565
+
+	7859.1.1 = { birth = yes }
+	7915.1.1 = { death = yes }
+}
+342300565 = {
+	name = "Кобхо"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 343300565
+
+	7884.1.1 = { birth = yes }
+	7939.1.1 = { death = yes }
+}
+341300565 = {
+	name = "Зоронно"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 342300565
+
+	7907.1.1 = { birth = yes }
+	7960.1.1 = { death = yes }
+}
+340300565 = {
+	name = "Барго"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 341300565
+
+	7934.1.1 = { birth = yes }
+	7982.1.1 = { death = yes }
+}
+100300565 = {
+	name = "Меро"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 340300565
+
+	7962.1.1 = { birth = yes }
+	7978.1.1 = { add_trait = trained_warrior }
+	8025.1.1 = { death = yes }
+}
+101300565 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300565
+
+	7989.1.1 = { birth = yes }
+	8005.1.1 = { add_trait = poor_warrior }
+	8047.1.1 = { death = yes }
+}
+103300565 = {
+	name = "Морео"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300565
+
+	7993.1.1 = { birth = yes }
+	8009.1.1 = { add_trait = poor_warrior }
+	8055.1.1 = { death = yes }
+}
+105300565 = {
+	name = "Арео"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101300565
+
+	8012.1.1 = { birth = yes }
+	8028.1.1 = { add_trait = poor_warrior }
+	8087.1.1 = { death = yes }
+}
+107300565 = {
+	name = "Олло"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103300565
+
+	8021.1.1 = { birth = yes }
+	8037.1.1 = { add_trait = poor_warrior }
+	8077.1.1 = { death = yes }
+}
+114300565 = {
+	name = "Эззелино"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 105300565
+
+	8038.1.1 = { birth = yes }
+	8054.1.1 = { add_trait = poor_warrior }
+	8092.1.1 = { death = yes }
+}
+117300565 = {
+	name = "Гилоро"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 114300565
+
+	8064.1.1 = { birth = yes }
+	8080.1.1 = { add_trait = poor_warrior }
+	8115.1.1 = { death = yes }
+}
+121300565 = {
+	name = "Эззелино"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 117300565
+
+	8083.1.1 = { birth = yes }
+	8099.1.1 = { add_trait = poor_warrior }
+	8129.1.1 = { death = yes }
+}
+122300565 = {
+	name = "Варго"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 117300565
+
+	8085.1.1 = { birth = yes }
+	8101.1.1 = { add_trait = skilled_warrior }
+	8151.1.1 = { death = yes }
+}
+124300565 = {
+	name = "Орделло"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 121300565
+
+	8111.1.1 = { birth = yes }
+	8127.1.1 = { add_trait = trained_warrior }
+	8185.1.1 = { death = { death_reason = death_murder } }
+}
+127300565 = {
+	name = "Мералин"	# not a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 124300565
+
+	8134.1.1 = { birth = yes }
+	8150.1.1 = { add_trait = trained_warrior }
+	8169.1.1 = { death = yes }
+}
+129300565 = {
+	name = "Моредо"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 127300565
+
+	8158.1.1 = { birth = yes }
+	8174.1.1 = { add_trait = poor_warrior }
+	8218.1.1 = { death = yes }
+}
+131300565 = {
+	name = "Тобхо"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 127300565
+
+	8163.1.1 = { birth = yes }
+	8179.1.1 = { add_trait = poor_warrior }
+	8224.1.1 = { death = yes }
+}
+133300565 = {
+	name = "Тернесия"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 131300565
+
+	8190.1.1 = { birth = yes }
+	8266.1.1 = { death = yes }
+}
+134300565 = {
+	name = "Гилоро"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 131300565
+
+	8191.1.1 = { birth = yes }
+	8207.1.1 = { add_trait = poor_warrior }
+	8209.1.1 = { add_spouse = 434300565 }
+	8263.1.1 = { death = yes }
+}
+434300565 = {
+	name = "Орбела"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8191.1.1 = { birth = yes }
+	8263.1.1 = { death = yes }
+}
+135300565 = {
+	name = "Феррего"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300565
+	mother = 434300565
+
+	8215.1.1 = { birth = yes }
+	8231.1.1 = { add_trait = poor_warrior }
+	8233.1.1 = { add_spouse = 435300565 }
+	8271.1.1 = { death = yes }
+}
+435300565 = {
+	name = "Люсерра"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8215.1.1 = { birth = yes }
+	8271.1.1 = { death = yes }
+}
+137300565 = {
+	name = "Коссома"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300565
+	mother = 434300565
+
+	8217.1.1 = { birth = yes }
+	8264.1.1 = { death = yes }
+}
+138300565 = {
+	name = "Дения"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 135300565
+	mother = 435300565
+
+	8240.1.1 = { birth = yes }
+	8292.1.1 = { death = yes }
+}
+139300565 = {
+	name = "Нохия"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 135300565
+	mother = 435300565
+
+	8242.1.1 = { birth = yes }
+	8286.1.1 = { death = yes }
+}
+140300565 = {
+	name = "Луко"	# a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 135300565
+	mother = 435300565
+
+	8245.1.1 = { birth = yes }
+	8261.1.1 = { add_trait = trained_warrior }
+	8263.1.1 = { add_spouse = 440300565 }
+}
+440300565 = {
+	name = "Серенея"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8245.1.1 = { birth = yes }
+}
+141300565 = {
+	name = "Оро"	# not a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 135300565
+	mother = 435300565
+
+	8248.1.1 = { birth = yes }
+	8264.1.1 = { add_trait = poor_warrior }
+	8266.1.1 = { add_spouse = 441300565 }
+	8292.1.1 = { death = yes }
+}
+441300565 = {
+	name = "Нарба"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8248.1.1 = { birth = yes }
+	8292.1.1 = { death = yes }
+}
+142300565 = {
+	name = "Мералия"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 135300565
+	mother = 435300565
+
+	8251.1.1 = { birth = yes }
+	8278.1.1 = { death = yes }
+}
+143300565 = {
+	name = "Серра"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300565
+	mother = 440300565
+
+	8274.1.1 = { birth = yes }
+}
+144300565 = {
+	name = "Кварро"	# not a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300565
+	mother = 440300565
+
+	8276.1.1 = { birth = yes }
+	8292.1.1 = { add_trait = trained_warrior }
+}
+145300565 = {
+	name = "Феррего"	# not a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300565
+	mother = 440300565
+
+	8277.1.1 = { birth = yes }
+	8293.1.1 = { add_trait = poor_warrior }
+}
+146300565 = {
+	name = "Гилениос"	# not a lord
+	female = yes
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300565
+	mother = 440300565
+
+	8279.1.1 = { birth = yes }
+}
+147300565 = {
+	name = "Орделло"	# not a lord
+	dynasty = 300565
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 141300565
+	mother = 441300565
+
+	8268.1.1 = { birth = yes }
+	8284.1.1 = { add_trait = trained_warrior }
+}
+
+### House Qarit
+344300567 = {
+	name = "Варгорно"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7822.1.1 = { birth = yes }
+	7880.1.1 = { death = yes }
+}
+343300567 = {
+	name = "Киран"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 344300567
+
+	7845.1.1 = { birth = yes }
+	7901.1.1 = { death = yes }
+}
+342300567 = {
+	name = "Моро"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 343300567
+
+	7869.1.1 = { birth = yes }
+	7920.1.1 = { death = yes }
+}
+341300567 = {
+	name = "Малеро"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 342300567
+
+	7895.1.1 = { birth = yes }
+	7944.1.1 = { death = yes }
+}
+340300567 = {
+	name = "Сокво"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 341300567
+
+	7918.1.1 = { birth = yes }
+	7965.1.1 = { death = yes }
+}
+100300567 = {
+	name = "Даарио"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 340300567
+
+	7945.1.1 = { birth = yes }
+	7961.1.1 = { add_trait = trained_warrior }
+	8007.1.1 = { death = yes }
+}
+101300567 = {
+	name = "Моредо"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300567
+
+	7964.1.1 = { birth = yes }
+	7980.1.1 = { add_trait = poor_warrior }
+	8032.1.1 = { death = yes }
+}
+102300567 = {
+	name = "Якен"	# not a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100300567
+
+	7965.1.1 = { birth = yes }
+	7981.1.1 = { add_trait = poor_warrior }
+	8014.1.1 = { death = yes }
+}
+105300567 = {
+	name = "Орбело"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102300567
+
+	7988.1.1 = { birth = yes }
+	8004.1.1 = { add_trait = poor_warrior }
+	8055.1.1 = { death = yes }
+}
+107300567 = {
+	name = "Эззелино"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 105300567
+
+	8015.1.1 = { birth = yes }
+	8031.1.1 = { add_trait = poor_warrior }
+	8076.1.1 = { death = yes }
+}
+110300567 = {
+	name = "Лото"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 107300567
+
+	8034.1.1 = { birth = yes }
+	8050.1.1 = { add_trait = poor_warrior }
+	8085.1.1 = { death = yes }
+}
+112300567 = {
+	name = "Олло"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 110300567
+
+	8061.1.1 = { birth = yes }
+	8077.1.1 = { add_trait = poor_warrior }
+	8112.1.1 = { death = yes }
+}
+113300567 = {
+	name = "Бруско"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 110300567
+
+	8063.1.1 = { birth = yes }
+	8079.1.1 = { add_trait = trained_warrior }
+	8113.1.1 = { death = yes }
+}
+114300567 = {
+	name = "Сирио"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 112300567
+
+	8079.1.1 = { birth = yes }
+	8095.1.1 = { add_trait = poor_warrior }
+	8135.1.1 = { death = yes }
+}
+117300567 = {
+	name = "Гилоро"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 113300567
+
+	8090.1.1 = { birth = yes }
+	8106.1.1 = { add_trait = trained_warrior }
+	8162.1.1 = { death = yes }
+}
+120300567 = {
+	name = "Денио"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 114300567
+
+	8105.1.1 = { birth = yes }
+	8121.1.1 = { add_trait = poor_warrior }
+	8178.1.1 = { death = yes }
+}
+123300567 = {
+	name = "Мералин"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 120300567
+
+	8140.1.1 = { birth = yes }
+	8156.1.1 = { add_trait = poor_warrior }
+	8205.1.1 = { death = yes }
+}
+126300567 = {
+	name = "Гилено"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 123300567
+
+	8161.1.1 = { birth = yes }
+	8177.1.1 = { add_trait = trained_warrior }
+	8207.1.1 = { death = yes }
+}
+128300567 = {
+	name = "Феррего"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 126300567
+
+	8180.1.1 = { birth = yes }
+	8196.1.1 = { add_trait = trained_warrior }
+	8198.1.1 = { add_spouse = 428300567 }
+	8252.1.1 = { death = yes }
+}
+428300567 = {
+	name = "Рогга"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8180.1.1 = { birth = yes }
+	8252.1.1 = { death = yes }
+}
+131300567 = {
+	name = "Коссома"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 126300567
+
+	8186.1.1 = { birth = yes }
+	8265.1.1 = { death = yes }
+}
+132300567 = {
+	name = "Изембаро"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 128300567
+	mother = 428300567
+
+	8203.1.1 = { birth = yes }
+	8219.1.1 = { add_trait = poor_warrior }
+	8221.1.1 = { add_spouse = 432300567 }
+	8271.1.1 = { death = yes }
+}
+432300567 = {
+	name = "Тейна"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8203.1.1 = { birth = yes }
+	8271.1.1 = { death = yes }
+}
+133300567 = {
+	name = "Тернесио"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 128300567
+	mother = 428300567
+
+	8205.1.1 = { birth = yes }
+	8221.1.1 = { add_trait = trained_warrior }
+	8223.1.1 = { add_spouse = 433300567 }
+	8277.1.1 = { death = yes }
+}
+433300567 = {
+	name = "Тейна"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8205.1.1 = { birth = yes }
+	8277.1.1 = { death = yes }
+}
+134300567 = {
+	name = "Эззелино"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 132300567
+	mother = 432300567
+
+	8227.1.1 = { birth = yes }
+	8243.1.1 = { add_trait = trained_warrior }
+	8245.1.1 = { add_spouse = 434300567 }
+	8281.1.1 = { death = yes }
+}
+434300567 = {
+	name = "Якея"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8227.1.1 = { birth = yes }
+	8281.1.1 = { death = yes }
+}
+135300567 = {
+	name = "Коссомо"	# not a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300567
+	mother = 433300567
+
+	8227.1.1 = { birth = yes }
+	8243.1.1 = { add_trait = skilled_warrior }
+	8274.1.1 = { death = yes }
+}
+136300567 = {
+	name = "Якея"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300567
+	mother = 433300567
+
+	8228.1.1 = { birth = yes }
+	8262.1.1 = { death = yes }
+}
+137300567 = {
+	name = "Мера"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 133300567
+	mother = 433300567
+
+	8230.1.1 = { birth = yes }
+	8282.1.1 = { death = yes }
+}
+138300567 = {
+	name = "Коссомо"	# a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300567
+	mother = 434300567
+
+	8250.1.1 = { birth = yes }
+	8266.1.1 = { add_trait = trained_warrior }
+	8268.1.1 = { add_spouse = 438300567 }
+}
+438300567 = {
+	name = "Феррега"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8250.1.1 = { birth = yes }
+}
+139300567 = {
+	name = "Мералия"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300567
+	mother = 434300567
+
+	8252.1.1 = { birth = yes }
+}
+140300567 = {
+	name = "Тихо"	# not a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300567
+	mother = 434300567
+
+	8255.1.1 = { birth = yes }
+	8271.1.1 = { add_trait = trained_warrior }
+	8273.1.1 = { add_spouse = 440300567 }
+}
+440300567 = {
+	name = "Серра"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8255.1.1 = { birth = yes }
+}
+141300567 = {
+	name = "Торма"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 134300567
+	mother = 434300567
+
+	8256.1.1 = { birth = yes }
+}
+142300567 = {
+	name = "Мелларио"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 138300567
+	mother = 438300567
+
+	8268.1.1 = { birth = yes }
+}
+143300567 = {
+	name = "Варго"	# not a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300567
+	mother = 440300567
+
+	8274.1.1 = { birth = yes }
+	8290.1.1 = { add_trait = skilled_warrior }
+}
+144300567 = {
+	name = "Тернесио"	# not a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300567
+	mother = 440300567
+
+	8276.1.1 = { birth = yes }
+	8292.1.1 = { add_trait = trained_warrior }
+}
+145300567 = {
+	name = "Брея"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300567
+	mother = 440300567
+
+	8277.1.1 = { birth = yes }
+}
+146300567 = {
+	name = "Джосс"	# not a lord
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300567
+	mother = 440300567
+
+	8279.1.1 = { birth = yes }
+	8295.1.1 = { add_trait = trained_warrior }
+}
+147300567 = {
+	name = "Серенея"	# not a lord
+	female = yes
+	dynasty = 300567
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 140300567
+	mother = 440300567
+
+	8282.1.1 = { birth = yes }
+}
+
+###########################
+### Noble Feudal Houses ###
+###########################
+### House Nartos
+34569128 = {
+	name = "Варго"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7805.1.1 = { birth = yes }
+	7866.1.1 = { death = yes }
+}
+34469128 = {
+	name = "Зоро"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34569128
+
+	7829.1.1 = { birth = yes }
+	7892.1.1 = { death = yes }
+}
+34369128 = {
+	name = "Нерео"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34469128
+
+	7856.1.1 = { birth = yes }
+	7910.1.1 = { death = yes }
+}
+34269128 = {
+	name = "Шодо"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34369128
+
+	7880.1.1 = { birth = yes }
+	7932.1.1 = { death = yes }
+}
+34169128 = {
+	name = "Тородос"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34269128
+
+	7903.1.1 = { birth = yes }
+	7961.1.1 = { death = yes }
+}
+34069128 = {
+	name = "Зоро"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34169128
+
+	7931.1.1 = { birth = yes }
+	7995.1.1 = { death = yes }
+}
+100069128 = {
+	name = "Коллио"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34069128
+
+	7953.1.1 = { birth = yes }
+	7969.1.1 = { add_trait = poor_warrior }
+	8032.1.1 = { death = yes }
+}
+100269128 = {
+	name = "Меро"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100069128
+
+	7979.1.1 = { birth = yes }
+	7995.1.1 = { add_trait = poor_warrior }
+	8049.1.1 = { death = yes }
+}
+100469128 = {
+	name = "Денио"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100269128
+
+	8000.1.1 = { birth = yes }
+	8016.1.1 = { add_trait = trained_warrior }
+	8067.1.1 = { death = yes }
+}
+100969128 = {
+	name = "Баян"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100469128
+
+	8029.1.1 = { birth = yes }
+	8045.1.1 = { add_trait = skilled_warrior }
+	8083.1.1 = { death = yes }
+}
+101069128 = {
+	name = "Тихо"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100969128
+
+	8058.1.1 = { birth = yes }
+	8074.1.1 = { add_trait = poor_warrior }
+	8107.1.1 = { death = yes }
+}
+101169128 = {
+	name = "Тернесио"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101069128
+
+	8085.1.1 = { birth = yes }
+	8101.1.1 = { add_trait = poor_warrior }
+	8139.1.1 = { death = yes }
+}
+101469128 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101169128
+
+	8113.1.1 = { birth = yes }
+	8129.1.1 = { add_trait = trained_warrior }
+	8168.1.1 = { death = yes }
+}
+101769128 = {
+	name = "Трегар"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101469128
+
+	8135.1.1 = { birth = yes }
+	8151.1.1 = { add_trait = skilled_warrior }
+	8209.1.1 = { death = yes }
+}
+102169128 = {
+	name = "Йорко"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101769128
+
+	8161.1.1 = { birth = yes }
+	8177.1.1 = { add_trait = skilled_warrior }
+	8216.1.1 = { death = yes }
+}
+102269128 = {
+	name = "Тернесио"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102169128
+
+	8186.1.1 = { birth = yes }
+	8202.1.1 = { add_trait = poor_warrior }
+	8204.1.1 = { add_spouse = 402269128 }
+	8232.1.1 = { death = yes }
+}
+402269128 = {
+	name = "Пинта"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8186.1.1 = { birth = yes }
+	8232.1.1 = { death = yes }
+}
+102369128 = {
+	name = "Морео"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102269128
+	mother = 402269128
+
+	8217.1.1 = { birth = yes }
+	8233.1.1 = { add_trait = trained_warrior }
+	8235.1.1 = { add_spouse = 402369128 }
+	8270.1.1 = { death = yes }
+}
+402369128 = {
+	name = "Йорка"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8217.1.1 = { birth = yes }
+	8270.1.1 = { death = yes }
+}
+102469128 = {
+	name = "Алия"	# not a lord
+	female = yes
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102269128
+	mother = 402269128
+
+	8220.1.1 = { birth = yes }
+	8285.1.1 = { death = yes }
+}
+102569128 = {
+	name = "Тихо"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102369128
+	mother = 402369128
+
+	8246.1.1 = { birth = yes }
+	8262.1.1 = { add_trait = poor_warrior }
+	8264.1.1 = { add_spouse = 402569128 }
+	8280.1.1 = { death = yes }
+}
+402569128 = {
+	name = "Мелларио"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8246.1.1 = { birth = yes }
+	8280.1.1 = { death = yes }
+}
+102669128 = {
+	name = "Кваррия"	# not a lord
+	female = yes
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102369128
+	mother = 402369128
+
+	8248.1.1 = { birth = yes }
+	8298.1.1 = { death = yes }
+}
+102769128 = {
+	name = "Сфрона"	# not a lord
+	female = yes
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102569128
+	mother = 402569128
+
+	8271.1.1 = { birth = yes }
+}
+102869128 = {
+	name = "Меро"	# a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102569128
+	mother = 402569128
+
+	8274.1.1 = { birth = yes }
+	8290.1.1 = { add_trait = poor_warrior }
+	8292.1.1 = { add_spouse = 402869128 }
+}
+402869128 = {
+	name = "Тагганария"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8274.1.1 = { birth = yes }
+}
+102969128 = {
+	name = "Меро"	# not a lord
+	dynasty = 69128
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102569128
+	mother = 402569128
+
+	8277.1.1 = { birth = yes }
+	8293.1.1 = { add_trait = trained_warrior }
+}
+
+### House Voatar
+34469129 = {
+	name = "Аран"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7819.1.1 = { birth = yes }
+	7872.1.1 = { death = yes }
+}
+34369129 = {
+	name = "Зоро"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34469129
+
+	7844.1.1 = { birth = yes }
+	7901.1.1 = { death = yes }
+}
+34269129 = {
+	name = "Заргано"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34369129
+
+	7871.1.1 = { birth = yes }
+	7930.1.1 = { death = yes }
+}
+34169129 = {
+	name = "Сарго"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34269129
+
+	7899.1.1 = { birth = yes }
+	7953.1.1 = { death = yes }
+}
+34069129 = {
+	name = "Тихорос"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34169129
+
+	7925.1.1 = { birth = yes }
+	7990.1.1 = { death = yes }
+}
+100069129 = {
+	name = "Эззелино"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34069129
+
+	7958.1.1 = { birth = yes }
+	7974.1.1 = { add_trait = poor_warrior }
+	8024.1.1 = { death = yes }
+}
+100169129 = {
+	name = "Мералин"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100069129
+
+	7987.1.1 = { birth = yes }
+	8003.1.1 = { add_trait = poor_warrior }
+	8051.1.1 = { death = yes }
+}
+100269129 = {
+	name = "Якен"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100169129
+
+	8007.1.1 = { birth = yes }
+	8023.1.1 = { add_trait = trained_warrior }
+	8060.1.1 = { death = yes }
+}
+100769129 = {
+	name = "Тернесио"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100269129
+
+	8043.1.1 = { birth = yes }
+	8059.1.1 = { add_trait = poor_warrior }
+	8096.1.1 = { death = { death_reason = death_murder } }
+}
+100869129 = {
+	name = "Тобхо"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100769129
+
+	8067.1.1 = { birth = yes }
+	8083.1.1 = { add_trait = poor_warrior }
+	8126.1.1 = { death = yes }
+}
+101169129 = {
+	name = "Бегго"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100869129
+
+	8094.1.1 = { birth = yes }
+	8110.1.1 = { add_trait = poor_warrior }
+	8129.1.1 = { death = yes }
+}
+101269129 = {
+	name = "Нохо"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101169129
+
+	8119.1.1 = { birth = yes }
+	8135.1.1 = { add_trait = poor_warrior }
+	8164.1.1 = { death = yes }
+}
+101569129 = {
+	name = "Варго"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101269129
+
+	8138.1.1 = { birth = yes }
+	8154.1.1 = { add_trait = poor_warrior }
+	8188.1.1 = { death = yes }
+}
+101969129 = {
+	name = "Йорко"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101569129
+
+	8162.1.1 = { birth = yes }
+	8178.1.1 = { add_trait = poor_warrior }
+	8213.1.1 = { death = yes }
+}
+102269129 = {
+	name = "Тормо"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101969129
+
+	8183.1.1 = { birth = yes }
+	8199.1.1 = { add_trait = trained_warrior }
+	8201.1.1 = { add_spouse = 402269129 }
+	8252.1.1 = { death = yes }
+}
+402269129 = {
+	name = "Уна"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8183.1.1 = { birth = yes }
+	8252.1.1 = { death = yes }
+}
+102569129 = {
+	name = "Мирмеллиос"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102269129
+	mother = 402269129
+
+	8202.1.1 = { birth = yes }
+	8270.1.1 = { death = yes }
+}
+102669129 = {
+	name = "Нарбо"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102269129
+	mother = 402269129
+
+	8205.1.1 = { birth = yes }
+	8221.1.1 = { add_trait = master_warrior }
+	8223.1.1 = { add_spouse = 402669129 }
+	8261.1.1 = { death = yes }
+}
+402669129 = {
+	name = "Йорка"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8205.1.1 = { birth = yes }
+	8261.1.1 = { death = yes }
+}
+102769129 = {
+	name = "Умма"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102269129
+	mother = 402269129
+
+	8206.1.1 = { birth = yes }
+	8283.1.1 = { death = yes }
+}
+102869129 = {
+	name = "Лото"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102669129
+	mother = 402669129
+
+	8224.1.1 = { birth = yes }
+	8240.1.1 = { add_trait = poor_warrior }
+	8242.1.1 = { add_spouse = 402869129 }
+	8278.1.1 = { death = yes }
+}
+402869129 = {
+	name = "Ланна"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8224.1.1 = { birth = yes }
+	8278.1.1 = { death = yes }
+}
+102969129 = {
+	name = "Бетариос"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869129
+	mother = 402869129
+
+	8244.1.1 = { birth = yes }
+	8298.1.1 = { death = yes }
+}
+103069129 = {
+	name = "Пинто"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869129
+	mother = 402869129
+
+	8245.1.1 = { birth = yes }
+	8261.1.1 = { add_trait = skilled_warrior }
+	8263.1.1 = { add_spouse = 403069129 }
+	8298.1.1 = { death = yes }
+}
+403069129 = {
+	name = "Нарба"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8245.1.1 = { birth = yes }
+	8298.1.1 = { death = yes }
+}
+103169129 = {
+	name = "Эззера"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869129
+	mother = 402869129
+
+	8246.1.1 = { birth = yes }
+	8321.1.1 = { death = yes }
+}
+103269129 = {
+	name = "Изембара"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869129
+	mother = 402869129
+
+	8248.1.1 = { birth = yes }
+	8252.1.1 = { death = yes }
+}
+103369129 = {
+	name = "Серра"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869129
+	mother = 402869129
+
+	8250.1.1 = { birth = yes }
+}
+103469129 = {
+	name = "Аллакво"	# a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103069129
+	mother = 403069129
+
+	8265.1.1 = { birth = yes }
+	8281.1.1 = { add_trait = poor_warrior }
+	8283.1.1 = { add_spouse = 403469129 }
+}
+403469129 = {
+	name = "Серенея"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8265.1.1 = { birth = yes }
+}
+103569129 = {
+	name = "Мера"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103069129
+	mother = 403069129
+
+	8268.1.1 = { birth = yes }
+}
+103669129 = {
+	name = "Брея"	# not a lord
+	female = yes
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103069129
+	mother = 403069129
+
+	8269.1.1 = { birth = yes }
+}
+103769129 = {
+	name = "Орделло"	# not a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103069129
+	mother = 403069129
+
+	8271.1.1 = { birth = yes }
+	8287.1.1 = { add_trait = trained_warrior }
+}
+103869129 = {
+	name = "Орбело"	# not a lord
+	dynasty = 69129
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103069129
+	mother = 403069129
+
+	8274.1.1 = { birth = yes }
+	8290.1.1 = { add_trait = trained_warrior }
+}
+
+### House Taladorys
+34469130 = {
+	name = "Лобхо"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7831.1.1 = { birth = yes }
+	7885.1.1 = { death = yes }
+}
+34369130 = {
+	name = "Карго"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34469130
+
+	7856.1.1 = { birth = yes }
+	7910.1.1 = { death = yes }
+}
+34269130 = {
+	name = "Донар"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34369130
+
+	7880.1.1 = { birth = yes }
+	7938.1.1 = { death = yes }
+}
+34169130 = {
+	name = "Гарро"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34269130
+
+	7900.1.1 = { birth = yes }
+	7966.1.1 = { death = yes }
+}
+34069130 = {
+	name = "Бириос"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34169130
+
+	7929.1.1 = { birth = yes }
+	7985.1.1 = { death = yes }
+}
+100069130 = {
+	name = "Даарио"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34069130
+
+	7958.1.1 = { birth = yes }
+	7974.1.1 = { add_trait = poor_warrior }
+	8037.1.1 = { death = yes }
+}
+100169130 = {
+	name = "Аллакво"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100069130
+
+	7990.1.1 = { birth = yes }
+	8006.1.1 = { add_trait = poor_warrior }
+	8048.1.1 = { death = yes }
+}
+100469130 = {
+	name = "Варго"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100169130
+
+	8024.1.1 = { birth = yes }
+	8040.1.1 = { add_trait = trained_warrior }
+	8074.1.1 = { death = yes }
+}
+100769130 = {
+	name = "Гилоро"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100469130
+
+	8048.1.1 = { birth = yes }
+	8064.1.1 = { add_trait = poor_warrior }
+	8107.1.1 = { death = yes }
+}
+100969130 = {
+	name = "Морео"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100769130
+
+	8075.1.1 = { birth = yes }
+	8091.1.1 = { add_trait = skilled_warrior }
+	8108.1.1 = { death = { death_reason = death_murder } }
+}
+101069130 = {
+	name = "Тернесио"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100969130
+
+	8104.1.1 = { birth = yes }
+	8120.1.1 = { add_trait = poor_warrior }
+	8169.1.1 = { death = yes }
+}
+101469130 = {
+	name = "Рогго"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101069130
+
+	8125.1.1 = { birth = yes }
+	8141.1.1 = { add_trait = skilled_warrior }
+	8173.1.1 = { death = yes }
+}
+101669130 = {
+	name = "Коссомо"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101469130
+
+	8148.1.1 = { birth = yes }
+	8164.1.1 = { add_trait = poor_warrior }
+	8199.1.1 = { death = yes }
+}
+101769130 = {
+	name = "Аллакво"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101669130
+
+	8166.1.1 = { birth = yes }
+	8182.1.1 = { add_trait = poor_warrior }
+	8213.1.1 = { death = yes }
+}
+102069130 = {
+	name = "Моредо"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101769130
+
+	8189.1.1 = { birth = yes }
+	8205.1.1 = { add_trait = poor_warrior }
+	8207.1.1 = { add_spouse = 402069130 }
+	8226.1.1 = { death = yes }
+}
+402069130 = {
+	name = "Кваррия"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8189.1.1 = { birth = yes }
+	8226.1.1 = { death = yes }
+}
+102169130 = {
+	name = "Олло"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069130
+	mother = 402069130
+
+	8223.1.1 = { birth = yes }
+	8239.1.1 = { add_trait = poor_warrior }
+	8241.1.1 = { add_spouse = 402169130 }
+	8282.1.1 = { death = yes }
+}
+402169130 = {
+	name = "Эззера"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8223.1.1 = { birth = yes }
+	8282.1.1 = { death = yes }
+}
+102269130 = {
+	name = "Феррега"	# not a lord
+	female = yes
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069130
+	mother = 402069130
+
+	8224.1.1 = { birth = yes }
+	8284.1.1 = { death = yes }
+}
+102369130 = {
+	name = "Рогга"	# not a lord
+	female = yes
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069130
+	mother = 402069130
+
+	8225.1.1 = { birth = yes }
+	8292.1.1 = { death = yes }
+}
+102469130 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102169130
+	mother = 402169130
+
+	8247.1.1 = { birth = yes }
+	8263.1.1 = { add_trait = trained_warrior }
+	8265.1.1 = { add_spouse = 402469130 }
+}
+402469130 = {
+	name = "Рогга"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8247.1.1 = { birth = yes }
+}
+102569130 = {
+	name = "Ориос"	# not a lord
+	female = yes
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102169130
+	mother = 402169130
+
+	8249.1.1 = { birth = yes }
+}
+102669130 = {
+	name = "Умма"	# not a lord
+	female = yes
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102469130
+	mother = 402469130
+
+	8276.1.1 = { birth = yes }
+}
+102769130 = {
+	name = "Тормо"	# not a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102469130
+	mother = 402469130
+
+	8279.1.1 = { birth = yes }
+	8295.1.1 = { add_trait = poor_warrior }
+}
+102869130 = {
+	name = "Роро"	# not a lord
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102469130
+	mother = 402469130
+
+	8282.1.1 = { birth = yes }
+	8298.1.1 = { add_trait = trained_warrior }
+}
+102969130 = {
+	name = "Гилора"	# not a lord
+	female = yes
+	dynasty = 69130
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102469130
+	mother = 402469130
+
+	8283.1.1 = { birth = yes }
+}
+
+### House Ragat
+34569131 = {
+	name = "Паранис"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7820.1.1 = { birth = yes }
+	7898.1.1 = { death = yes } #dov
+}
+34469131 = {
+	name = "Зонио"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34569131
+
+	7843.1.1 = { birth = yes }
+	7899.1.1 = { death = yes }
+}
+34369131 = {
+	name = "Арго"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34469131
+
+	7865.1.1 = { birth = yes }
+	7915.1.1 = { death = yes }
+}
+34269131 = {
+	name = "Йорео"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34369131
+
+	7888.1.1 = { birth = yes }
+	7941.1.1 = { death = yes }
+}
+34169131 = {
+	name = "Тихорос"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34269131
+
+	7909.1.1 = { birth = yes }
+	7970.1.1 = { death = yes }
+}
+34069131 = {
+	name = "Зелекор"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34169131
+
+	7934.1.1 = { birth = yes }
+	7997.1.1 = { death = yes }
+}
+100069131 = {
+	name = "Даарио"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34069131
+
+	7958.1.1 = { birth = yes }
+	7974.1.1 = { add_trait = poor_warrior }
+	8031.1.1 = { death = yes }
+}
+100169131 = {
+	name = "Арео"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100069131
+
+	7991.1.1 = { birth = yes }
+	8007.1.1 = { add_trait = poor_warrior }
+	8051.1.1 = { death = yes }
+}
+100469131 = {
+	name = "Феррего"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100169131
+
+	8024.1.1 = { birth = yes }
+	8040.1.1 = { add_trait = poor_warrior }
+	8082.1.1 = { death = yes }
+}
+100969131 = {
+	name = "Орделло"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100469131
+
+	8047.1.1 = { birth = yes }
+	8063.1.1 = { add_trait = trained_warrior }
+	8109.1.1 = { death = yes }
+}
+101269131 = {
+	name = "Моредо"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100969131
+
+	8076.1.1 = { birth = yes }
+	8092.1.1 = { add_trait = trained_warrior }
+	8140.1.1 = { death = yes }
+}
+101469131 = {
+	name = "Оро"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101269131
+
+	8094.1.1 = { birth = yes }
+	8110.1.1 = { add_trait = trained_warrior }
+	8141.1.1 = { death = yes }
+}
+101669131 = {
+	name = "Сирио"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101469131
+
+	8116.1.1 = { birth = yes }
+	8132.1.1 = { add_trait = trained_warrior }
+	8163.1.1 = { death = yes }
+}
+102069131 = {
+	name = "Бегго"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101669131
+
+	8141.1.1 = { birth = yes }
+	8157.1.1 = { add_trait = poor_warrior }
+	8210.1.1 = { death = yes }
+}
+102369131 = {
+	name = "Олло"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069131
+
+	8175.1.1 = { birth = yes }
+	8191.1.1 = { add_trait = poor_warrior }
+	8211.1.1 = { death = yes }
+}
+102869131 = {
+	name = "Трегар"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102369131
+
+	8200.1.1 = { birth = yes }
+	8216.1.1 = { add_trait = poor_warrior }
+	8218.1.1 = { add_spouse = 402869131 }
+	8243.1.1 = { death = yes }
+}
+402869131 = {
+	name = "Йорка"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8200.1.1 = { birth = yes }
+	8243.1.1 = { death = yes }
+}
+103169131 = {
+	name = "Орделло"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869131
+	mother = 402869131
+
+	8221.1.1 = { birth = yes }
+	8237.1.1 = { add_trait = poor_warrior }
+	8239.1.1 = { add_spouse = 403169131 }
+	8282.1.1 = { death = yes }
+}
+403169131 = {
+	name = "Торма"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8221.1.1 = { birth = yes }
+	8282.1.1 = { death = yes }
+}
+103269131 = {
+	name = "Коссома"	# not a lord
+	female = yes
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869131
+	mother = 402869131
+
+	8224.1.1 = { birth = yes }
+	8288.1.1 = { death = yes }
+}
+103369131 = {
+	name = "Лото"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103169131
+	mother = 403169131
+
+	8241.1.1 = { birth = yes }
+	8257.1.1 = { add_trait = trained_warrior }
+	8259.1.1 = { add_spouse = 403369131 }
+	8296.1.1 = { death = yes }
+}
+403369131 = {
+	name = "Серала"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8241.1.1 = { birth = yes }
+	8296.1.1 = { death = yes }
+}
+103469131 = {
+	name = "Коссомо"	# a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103369131
+	mother = 403369131
+
+	8264.1.1 = { birth = yes }
+	8280.1.1 = { add_trait = poor_warrior }
+	8282.1.1 = { add_spouse = 403469131 }
+}
+403469131 = {
+	name = "Алия"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8264.1.1 = { birth = yes }
+}
+103569131 = {
+	name = "Бетариос"	# not a lord
+	female = yes
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103369131
+	mother = 403369131
+
+	8265.1.1 = { birth = yes }
+}
+103669131 = {
+	name = "Изембара"	# not a lord
+	female = yes
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103469131
+	mother = 403469131
+
+	8284.1.1 = { birth = yes }
+}
+103769131 = {
+	name = "Мералия"	# not a lord
+	female = yes
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103469131
+	mother = 403469131
+
+	8286.1.1 = { birth = yes }
+}
+103869131 = {
+	name = "Сирея"	# not a lord
+	female = yes
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103469131
+	mother = 403469131
+
+	8289.1.1 = { birth = yes }
+}
+103969131 = {
+	name = "Тагганаро"	# not a lord
+	dynasty = 69131
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103469131
+	mother = 403469131
+
+	8290.1.1 = { birth = yes }
+	8306.1.1 = { add_trait = trained_warrior }
+}
+
+### House Rolgott
+34469132 = {
+	name = "Дарго"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7829.1.1 = { birth = yes }
+	7884.1.1 = { death = yes }
+}
+34369132 = {
+	name = "Виронно"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34469132
+
+	7854.1.1 = { birth = yes }
+	7910.1.1 = { death = yes }
+}
+34269132 = {
+	name = "Варео"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34369132
+
+	7878.1.1 = { birth = yes }
+	7925.1.1 = { death = yes }
+}
+34169132 = {
+	name = "Саллорос"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34269132
+
+	7901.1.1 = { birth = yes }
+	7954.1.1 = { death = yes }
+}
+34069132 = {
+	name = "Заргано"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34169132
+
+	7927.1.1 = { birth = yes }
+	7995.1.1 = { death = yes }
+}
+100069132 = {
+	name = "Изембаро"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34069132
+
+	7953.1.1 = { birth = yes }
+	7969.1.1 = { add_trait = poor_warrior }
+	8028.1.1 = { death = yes }
+}
+100369132 = {
+	name = "Луко"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100069132
+
+	7983.1.1 = { birth = yes }
+	7999.1.1 = { add_trait = skilled_warrior }
+	8041.1.1 = { death = yes }
+}
+100569132 = {
+	name = "Изембаро"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100369132
+
+	8012.1.1 = { birth = yes }
+	8028.1.1 = { add_trait = poor_warrior }
+	8053.1.1 = { death = yes }
+}
+100869132 = {
+	name = "Нохо"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100569132
+
+	8041.1.1 = { birth = yes }
+	8057.1.1 = { add_trait = poor_warrior }
+	8113.1.1 = { death = yes }
+}
+101169132 = {
+	name = "Кварро"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100869132
+
+	8064.1.1 = { birth = yes }
+	8080.1.1 = { add_trait = poor_warrior }
+	8120.1.1 = { death = yes }
+}
+101369132 = {
+	name = "Моредо"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101169132
+
+	8097.1.1 = { birth = yes }
+	8113.1.1 = { add_trait = poor_warrior }
+	8127.1.1 = { death = yes }
+}
+101569132 = {
+	name = "Тобхо"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101369132
+
+	8115.1.1 = { birth = yes }
+	8131.1.1 = { add_trait = trained_warrior }
+	8149.1.1 = { death = yes }
+}
+101769132 = {
+	name = "Даарио"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101569132
+
+	8142.1.1 = { birth = yes }
+	8158.1.1 = { add_trait = poor_warrior }
+	8212.1.1 = { death = yes }
+}
+102069132 = {
+	name = "Меро"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101769132
+
+	8167.1.1 = { birth = yes }
+	8183.1.1 = { add_trait = poor_warrior }
+	8185.1.1 = { add_spouse = 402069132 }
+	8231.1.1 = { death = yes }
+}
+402069132 = {
+	name = "Серра"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8167.1.1 = { birth = yes }
+	8231.1.1 = { death = yes }
+}
+102269132 = {
+	name = "Ориос"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069132
+	mother = 402069132
+
+	8193.1.1 = { birth = yes }
+	8271.1.1 = { death = yes }
+}
+102369132 = {
+	name = "Рогго"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069132
+	mother = 402069132
+
+	8194.1.1 = { birth = yes }
+	8210.1.1 = { add_trait = skilled_warrior }
+	8212.1.1 = { add_spouse = 402369132 }
+	8234.1.1 = { death = yes }
+}
+402369132 = {
+	name = "Мера"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8194.1.1 = { birth = yes }
+	8234.1.1 = { death = yes }
+}
+102569132 = {
+	name = "Орбела"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102369132
+	mother = 402369132
+
+	8220.1.1 = { birth = yes }
+	8273.1.1 = { death = yes }
+}
+102669132 = {
+	name = "Тормо"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102369132
+	mother = 402369132
+
+	8222.1.1 = { birth = yes }
+	8238.1.1 = { add_trait = trained_warrior }
+	8240.1.1 = { add_spouse = 402669132 }
+	8273.1.1 = { death = yes }
+}
+402669132 = {
+	name = "Мирмеллиос"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8222.1.1 = { birth = yes }
+	8273.1.1 = { death = yes }
+}
+102769132 = {
+	name = "Изембара"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102669132
+	mother = 402669132
+
+	8249.1.1 = { birth = yes }
+}
+102869132 = {
+	name = "Олло"	# a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102669132
+	mother = 402669132
+
+	8252.1.1 = { birth = yes }
+	8268.1.1 = { add_trait = skilled_warrior }
+	8270.1.1 = { add_spouse = 402869132 }
+}
+402869132 = {
+	name = "Мелларио"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8252.1.1 = { birth = yes }
+}
+102969132 = {
+	name = "Дения"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102669132
+	mother = 402669132
+
+	8255.1.1 = { birth = yes }
+}
+103069132 = {
+	name = "Моредея"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869132
+	mother = 402869132
+
+	8270.1.1 = { birth = yes }
+}
+103169132 = {
+	name = "Иллирио"	# not a lord
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869132
+	mother = 402869132
+
+	8272.1.1 = { birth = yes }
+	8288.1.1 = { add_trait = trained_warrior }
+}
+103269132 = {
+	name = "Йорка"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869132
+	mother = 402869132
+
+	8273.1.1 = { birth = yes }
+}
+103369132 = {
+	name = "Коссома"	# not a lord
+	female = yes
+	dynasty = 69132
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102869132
+	mother = 402869132
+
+	8274.1.1 = { birth = yes }
+}
+
+### House Malavott
+34469133 = {
+	name = "Дагло"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	7835.1.1 = { birth = yes }
+	7898.1.1 = { death = yes } #dov
+}
+34369133 = {
+	name = "Араго"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34469133
+
+	7853.1.1 = { birth = yes }
+	7915.1.1 = { death = yes }
+}
+34269133 = {
+	name = "Зоро"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34369133
+
+	7881.1.1 = { birth = yes }
+	7933.1.1 = { death = yes }
+}
+34169133 = {
+	name = "Терро"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34269133
+
+	7905.1.1 = { birth = yes }
+	7949.1.1 = { death = yes }
+}
+34069133 = {
+	name = "Варго"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34169133
+
+	7931.1.1 = { birth = yes }
+	7995.1.1 = { death = yes }
+}
+100069133 = {
+	name = "Меро"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 34069133
+
+	7957.1.1 = { birth = yes }
+	7973.1.1 = { add_trait = poor_warrior }
+	8042.1.1 = { death = yes }
+}
+100269133 = {
+	name = "Морео"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100069133
+
+	7983.1.1 = { birth = yes }
+	7999.1.1 = { add_trait = poor_warrior }
+	8054.1.1 = { death = yes }
+}
+100969133 = {
+	name = "Нарбо"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100269133
+
+	8010.1.1 = { birth = yes }
+	8026.1.1 = { add_trait = poor_warrior }
+	8061.1.1 = { death = yes }
+}
+101269133 = {
+	name = "Гилоро"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 100969133
+
+	8038.1.1 = { birth = yes }
+	8054.1.1 = { add_trait = poor_warrior }
+	8097.1.1 = { death = yes }
+}
+101369133 = {
+	name = "Орделло"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101269133
+
+	8056.1.1 = { birth = yes }
+	8072.1.1 = { add_trait = poor_warrior }
+	8109.1.1 = { death = yes }
+}
+101669133 = {
+	name = "Орбело"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101369133
+
+	8081.1.1 = { birth = yes }
+	8097.1.1 = { add_trait = poor_warrior }
+	8160.1.1 = { death = yes }
+}
+101969133 = {
+	name = "Тагганаро"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101669133
+
+	8114.1.1 = { birth = yes }
+	8130.1.1 = { add_trait = poor_warrior }
+	8168.1.1 = { death = yes }
+}
+102069133 = {
+	name = "Роро"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 101969133
+
+	8141.1.1 = { birth = yes }
+	8157.1.1 = { add_trait = trained_warrior }
+	8193.1.1 = { death = yes }
+}
+102269133 = {
+	name = "Нохо"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102069133
+
+	8166.1.1 = { birth = yes }
+	8182.1.1 = { add_trait = trained_warrior }
+	8209.1.1 = { death = yes }
+}
+102469133 = {
+	name = "Коссомо"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102269133
+
+	8187.1.1 = { birth = yes }
+	8203.1.1 = { add_trait = trained_warrior }
+	8205.1.1 = { add_spouse = 402469133 }
+	8258.1.1 = { death = yes }
+}
+402469133 = {
+	name = "Тагганария"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8187.1.1 = { birth = yes }
+	8258.1.1 = { death = yes }
+}
+102969133 = {
+	name = "Мералин"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102469133
+	mother = 402469133
+
+	8210.1.1 = { birth = yes }
+	8226.1.1 = { add_trait = trained_warrior }
+	8228.1.1 = { add_spouse = 402969133 }
+	8288.1.1 = { death = yes }
+}
+402969133 = {
+	name = "Гилениос"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8210.1.1 = { birth = yes }
+	8288.1.1 = { death = yes }
+}
+103069133 = {
+	name = "Терро"	# not a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102469133
+	mother = 402469133
+
+	8211.1.1 = { birth = yes }
+	8227.1.1 = { add_trait = poor_warrior }
+	8286.1.1 = { death = yes }
+}
+103169133 = {
+	name = "Бруско"	# a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102969133
+	mother = 402969133
+
+	8241.1.1 = { birth = yes }
+	8257.1.1 = { add_trait = poor_warrior }
+	8259.1.1 = { add_spouse = 403169133 }
+}
+403169133 = {
+	name = "Кваррия"
+	female = yes
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	8241.1.1 = { birth = yes }
+}
+103269133 = {
+	name = "Гилениос"	# not a lord
+	female = yes
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102969133
+	mother = 402969133
+
+	8242.1.1 = { birth = yes }
+	8294.1.1 = { death = yes }
+}
+103369133 = {
+	name = "Серенея"	# not a lord
+	female = yes
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 102969133
+	mother = 402969133
+
+	8245.1.1 = { birth = yes }
+	8285.1.1 = { death = { death_reason = death_accident } }
+}
+103469133 = {
+	name = "Тобхо"	# not a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103169133
+	mother = 403169133
+
+	8273.1.1 = { birth = yes }
+	8289.1.1 = { add_trait = trained_warrior }
+}
+103569133 = {
+	name = "Гилено"	# not a lord
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103169133
+	mother = 403169133
+
+	8275.1.1 = { birth = yes }
+	8291.1.1 = { add_trait = skilled_warrior }
+}
+103669133 = {
+	name = "Сирея"	# not a lord
+	female = yes
+	dynasty = 69133
+
+	religion = "black_goat"
+	culture = "qohorik"
+
+	father = 103169133
+	mother = 403169133
+
+	8278.1.1 = { birth = yes }
+}

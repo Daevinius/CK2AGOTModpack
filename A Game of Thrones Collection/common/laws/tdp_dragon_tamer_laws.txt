@@ -1,0 +1,131 @@
+law_groups = {
+
+	tdp_dragon_tamer = {
+		law_type = realm
+		allowed_for_councillors = no
+	}
+
+}
+
+de_jure_laws = {
+
+
+	# DRAGONS
+
+	tdp_dragon_tamer_0 = { #Restricted
+		group = tdp_dragon_tamer
+		default = yes
+
+		allow = {
+			has_law = tdp_dragon_tamer_1
+		}
+		potential = {
+			holder_scope = {
+			    independent = yes
+				OR = {
+					trait = dragon_rider
+					any_realm_character = {
+						OR = {
+							trait = dragon
+							trait = dragon_rider
+						}
+					}
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = tdp_dragon_tamer_1
+				revoke_law = tdp_dragon_tamer_2
+			}
+		}
+	}
+
+	tdp_dragon_tamer_1 = { #Dynastic
+		group = tdp_dragon_tamer
+
+		allow = {
+			OR = {
+				has_law = tdp_dragon_tamer_0
+				has_law = tdp_dragon_tamer_2
+			}
+		}
+		potential = {
+			holder_scope = {
+			    independent = yes
+				OR = {
+					trait = dragon_rider
+					any_realm_character = {
+						OR = {
+							trait = dragon
+							trait = dragon_rider
+						}
+					}
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = tdp_dragon_tamer_0
+				revoke_law = tdp_dragon_tamer_2
+			}
+		}
+	}
+
+	tdp_dragon_tamer_2 = { #Free
+		group = tdp_dragon_tamer
+
+		allow = {
+			OR = {
+				has_law = tdp_dragon_tamer_1
+			}
+		}
+		potential = {
+			holder_scope = {
+			    independent = yes
+				OR = {
+					trait = dragon_rider
+					any_realm_character = {
+						OR = {
+							trait = dragon
+							trait = dragon_rider
+						}
+					}
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = tdp_dragon_tamer_1
+			}
+		}
+	}
+
+}

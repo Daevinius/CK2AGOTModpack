@@ -1,0 +1,282 @@
+ namespace = sb_missandeinaath
+
+#Missandei is sad and crying event
+narrative_event = {
+	id = sb_missandeinaath.1
+	desc = "EVTDESC_daenerys_missandei_friendship.1"
+	title = "EVTTITLEdaenerys_missandei_friendship.1"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		NOT = { has_global_flag = missandei_first_event }
+	}
+
+	immediate = { set_global_flag = missandei_first_event }
+
+	option = {
+		name = "EVTOPTAdaenerys_missandei_friendship.1A"    #Help the girl
+		ai_chance = { factor = 100 }
+		set_global_flag = naathi_friendship
+		c_12400102 = {
+			set_guardian = ROOT
+			set_focus = focus_ch_pride
+		}
+		c_12400102 = { tooltip = { show_portrait = yes } }
+		ROOT = {
+			narrative_event = {
+				id = sb_missandeinaath.2
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_loyalty.0
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAdaenerys_missandei_friendship.1B"     #Behave like and asshole
+		ai_chance = { factor = 0 }
+		piety = -20
+	}
+}
+#Daenerys befriend Missandei
+narrative_event = {
+	id = sb_missandeinaath.2
+	desc = EVTDESC_daenerys_missandei_friendship.2
+	title = "EVTTITLEdaenerys_missandei_friendship.2"
+	picture = GFX_evt_dany_meereen_2
+	portrait = 12400102
+
+	is_triggered_only = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = naathi_friendship
+		NOT = { has_global_flag = missandei_friendship }
+	}
+
+	immediate = { set_global_flag = missandei_friendship }
+
+	option = {
+		name = EVTDESC_daenerys_missandei_friendship2A      #Daenerys and Missanei Best friends
+		ai_chance = { factor = 100 }
+		c_12400102 = {
+			give_nickname = nick_the_scribe
+			add_friend = ROOT
+			culture = naathi_freedmen
+			create_bloodline = {
+				type = Missandei_Blood
+			}
+		}
+	}
+}
+#Daenerys gets a claim on Naath
+narrative_event = {
+	id = sb_missandeinaath.3
+	desc = "EVTDESC_daenerys_missandei_friendship.3"
+	title = "EVTTITLEdaenerys_missandei_friendship.3"
+	picture = GFX_naath_butterflies
+
+	is_triggered_only = yes
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		NOT = { has_global_flag = daenerys_claim_naath }
+	}
+
+	immediate = { set_global_flag = daenerys_claim_naath }
+
+	option = {
+		name = "EVTOPTA_daenerys_missandei_friendship.3A"     #Get claim for the future
+		ai_chance = { factor = 95 }
+		add_claim = c_naath
+		add_claim = d_naath
+	}
+
+	option = {
+		name = "EVTOPTA_daenerys_missandei_friendship.3B"     #No Naath claim, the chain can continue anyway
+		ai_chance = { factor = 5 }
+		prestige = -100
+	}
+}
+#Daenerys gives Duchy of Naath to Missandei
+character_event = {
+	id = sb_missandeinaath.4
+	desc = "EVTDESC_daenerys_missandei_friendship.4"
+	title = "EVTTITLE_daenerys_missandei_friendship.4"
+	picture = GFX_naath_butterflies
+	portrait = 12400102
+
+	is_triggered_only = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = naathi_friendship
+		NOT = { has_global_flag = missandei_lady_naath }
+		NOT = { has_global_flag = missandei_decision }
+		OR = {
+			has_landed_title = c_naath
+			any_vassal = {
+				has_landed_title = c_naath
+			}
+		}
+		c_12400102 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+			is_incapable = no
+		}
+	}
+
+	immediate = { set_global_flag = missandei_decision }
+
+	option = {
+		name = "EVTOPTA_daenerys_missandei_friendship.4A"      #Grant main Naath county to Missandei
+		ai_chance = { factor = 40 }
+		set_global_flag =  missandei_lady_naath
+		c_12400102 = {
+			c_naath = {
+				grant_title = PREV
+			}
+			d_naath = {
+				grant_title = PREV
+			}
+		}
+		c_12400102 = { tooltip = { show_portrait = yes } }
+	}
+	option = {
+		name = "EVTOPTB_daenerys_missandei_friendship.4"        #Gran just minor Naath county to Missandei
+		ai_chance = { factor = 40 }
+		c_12400102 = {
+			c_harmonyisle = {
+				grant_title = PREV
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTC_daenerys_missandei_friendship.4"         #Keep Missandei as courtier
+		ai_chance = { factor = 20 }
+		set_global_flag =  missandei_refused_naath
+		any_vassal = {
+			limit = { has_landed_title = c_naath }
+			d_naath = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#Daenerys grants Kingdom of Naath to Missandei
+ character_event = {
+	id = sb_missandeinaath.5
+	desc = "EVTDESC_daenerys_missandei_friendship.5"
+	title = "EVTTITLE_daenerys_missandei_friendship.5"
+	picture = GFX_naath_butterflies
+	portrait = 12400102
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = missandei_lady_naath
+		has_landed_title = e_ghiscar
+		has_landed_title = k_naath_sb
+		NOT = { has_global_flag = missandei_queen }
+		c_12400102 = {
+			is_alive = yes
+			is_ruler = yes
+			prisoner = no
+			is_incapable = no
+		}
+	}
+
+	immediate = { set_global_flag = missandei_queen }
+
+	option = {
+		name = "EVTOPTA_daenerys_missandei_friendship.5A"
+		ai_chance = { factor = 80 }
+		c_12400102 = {
+			k_naath_sb = {
+				recalc_succession = yes
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = true_cognatic
+			}
+			set_character_flag =  princess_naath
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_naath }
+			character_event = {
+				id = sb_missandeinaath.6
+				days = 40
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTA_daenerys_missandei_friendship.5B"
+		ai_chance = { factor = 20 }
+		any_playable_ruler = {
+			limit = { has_landed_title = c_harmonyisle }
+			k_naath_sb = {
+				recalc_succession = yes
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = true_cognatic
+			}
+		}
+		set_global_flag = missandei_refused_kingdom
+	}
+}
+#Missandei gets Unsullied troops
+character_event = {
+	id = sb_missandeinaath.6
+	desc = "EVTDESC_daenerys_missandei_friendship.6"
+	title = "EVTTITLE_daenerys_missandei_friendship.6"
+	picture = GFX_naath_butterflies
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		NOT = { has_global_flag = missandei_unsullied_event }
+	}
+
+	immediate = { set_global_flag = missandei_unsullied_event }
+
+	option = {
+		name = "EVTOPTA_daenerys_missandei_friendship.6A"
+		ai_chance = { factor = 100 }
+		piety = 100
+		c_12400102 = {
+			wealth = 300
+			prestige = 100
+			spawn_unit = {
+				province = 626
+				home = 626
+				owner = THIS
+				cannot_inherit = no
+				troops = {
+					unsullied = { 5500 5500 }
+				}
+				attrition = 0.5
+				earmark = dummy #needs or else it will CTD for some reason
+			}
+		set_character_flag = unsullied_naath
+		}
+	}
+}

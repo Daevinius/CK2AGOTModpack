@@ -1,0 +1,569 @@
+title_decisions = {
+#Quality of Life
+	raise_noble = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			higher_tier_than = COUNT
+		}
+
+		potential = {
+			owner = { character = FROM }
+			tier = count
+		}
+
+		allow = {
+			tier = count
+			owner = {
+				ai = no
+				character = FROM
+				OR = {
+					culture = high_valyrian
+					culture = eastern_valyrian
+				}
+			}
+			location = {
+				region = world_free_cities
+			}
+		}
+
+		effect = {
+			create_character = {
+				random_traits = yes
+				dynasty = none
+				religion = THIS
+				culture = THIS
+				female = no
+			}
+			new_character = {
+				gain_title_plus_barony_if_unlanded = PREV
+			}
+			any_title = {
+					limit = {
+						de_jure_liege_or_above = ROOT
+					}
+					new_character = {
+						gain_title = PREV
+					}
+			}
+			location = {
+				add_province_modifier = {
+					name = peasants_protected
+					duration = 3650
+					}
+			}
+
+		}
+
+		revoke_allowed = {
+		always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+		factor = 1
+	    }
+
+	}
+#Roads
+	build_imperial_road = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			AND = {
+				tier = emperor
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+		}
+
+		allow = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				region = world_free_cities
+				NOT = { has_province_modifier = imperial_road_modifier }
+				NOT = { has_province_modifier = imperial_road_modifier_2 }
+				NOT = { has_province_modifier = imperial_road_modifier_3 }
+				NOT = { has_province_modifier = imperial_road_modifier_4 }
+			}
+			FROM = {
+				wealth = 250
+			}
+		}
+
+		effect = {
+			FROM = {
+				wealth = -250
+				narrative_event = { id = dote_empire_events.6 }
+				any_realm_lord = {
+					narrative_event = {
+						id = dote_empire_events.6
+					}
+				}
+			}
+			location = {
+				add_province_modifier = {
+					modifier = imperial_road_modifier
+					duration = -1
+				}
+			}
+		}
+
+		revoke_allowed = {
+		always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+		factor = 1
+	    }
+
+	}
+
+	build_imperial_road_tier_2 = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			AND = {
+				tier = emperor
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				has_province_modifier = imperial_road_modifier
+				NOT = { has_province_modifier = dote_construction_in_progress }
+			}
+		}
+
+		allow = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				region = world_free_cities
+				has_province_modifier = imperial_road_modifier
+			}
+			FROM = {
+				wealth = 500
+			}
+		}
+
+		effect = {
+			location = {
+				add_province_modifier = {
+					modifier = dote_construction_in_progress
+					duration = -1
+				}
+			}
+			FROM = {
+				wealth = -500
+				character_event = {
+					id = dote_empire_events.9
+					days = 180
+				}
+			}
+		}
+
+		revoke_allowed = {
+			always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+			factor = 1
+	    }
+
+	}
+
+	build_imperial_road_tier_3 = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			AND = {
+				tier = emperor
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				has_province_modifier = imperial_road_modifier_2
+				NOT = { has_province_modifier = dote_construction_in_progress }
+			}
+
+		}
+
+		allow = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				region = world_free_cities
+				has_province_modifier = imperial_road_modifier_2
+			}
+			FROM = {
+				wealth = 1000
+			}
+		}
+
+		effect = {
+			location = {
+				add_province_modifier = {
+					modifier = dote_construction_in_progress
+					duration = -1
+				}
+			}
+			FROM = {
+				wealth = -1000
+				character_event = {
+					id = dote_empire_events.9
+					days = 360
+				}
+			}
+		}
+
+		revoke_allowed = {
+		always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+		factor = 1
+	    }
+
+	}
+
+	build_imperial_road_tier_4 = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			AND = {
+				tier = emperor
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				has_province_modifier = imperial_road_modifier_3
+				NOT = { has_province_modifier = dote_construction_in_progress }
+			}
+
+		}
+
+		allow = {
+			tier = count
+			owner = {
+				top_liege = {
+					character = from
+				}
+			}
+			location = {
+				region = world_free_cities
+				has_province_modifier = imperial_road_modifier_3
+			}
+			FROM = {
+				wealth = 2000
+			}
+		}
+
+		effect = {
+			location = {
+				add_province_modifier = {
+					modifier = dote_construction_in_progress
+					duration = -1
+				}
+			}
+			FROM = {
+				wealth = -2000
+				character_event = {
+					id = dote_empire_events.9
+					days = 1080
+				}
+			}
+		}
+
+		revoke_allowed = {
+		always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+		factor = 1
+	    }
+
+	}
+#Army Outposts
+	build_imperial_army_outpost = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			higher_tier_than = COUNT
+			AND = {
+				has_landed_title = e_valyrian_empire
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			owner = { character = FROM }
+			tier = count
+		}
+
+		allow = {
+			tier = count
+			owner = { character = FROM }
+			location = {
+				NOT = { has_province_modifier = imperial_army_outpost_modifier }
+				NOT = { has_province_modifier = imperial_army_outpost_modifier_2 }
+				NOT = { has_province_modifier = imperial_army_outpost_modifier_3 }
+				NOT = { has_province_modifier = imperial_army_outpost_modifier_4 }
+			}
+			FROM = {
+				has_dlc = "Legacy of Rome"
+				wealth = 50
+				higher_tier_than = COUNT
+				AND = {
+					has_landed_title = e_valyrian_empire
+					government = valyrian_imperial_government
+				}
+			}
+		}
+
+		effect = {
+			FROM = {
+				wealth = -50
+				narrative_event = { id = dote_empire_events.7 }
+			}
+			location = {
+				add_province_modifier = {
+					modifier = imperial_army_outpost_modifier
+					duration = -1
+				}
+			}
+		}
+
+		revoke_allowed = {
+		always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+		factor = 1
+	    }
+
+	}
+
+	build_imperial_army_outpost_tier_2 = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			higher_tier_than = COUNT
+			AND = {
+				has_landed_title = e_valyrian_empire
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			owner = { character = FROM }
+			tier = count
+			location = {
+				has_province_modifier = imperial_army_outpost_modifier
+				NOT = { has_province_modifier = dote_construction_in_progress }
+			}
+		}
+
+		allow = {
+			tier = count
+			owner = { character = FROM }
+			FROM = {
+				has_dlc = "Legacy of Rome"
+				wealth = 100
+				higher_tier_than = COUNT
+				AND = {
+					has_landed_title = e_valyrian_empire
+					government = valyrian_imperial_government
+				}
+			}
+		}
+
+		effect = {
+			FROM = {
+				wealth = -100
+				character_event = {
+					id = dote_empire_events.10
+					days = 30
+				}
+			}
+			location = {
+				add_province_modifier = {
+					modifier = dote_construction_in_progress
+					duration = -1
+				}
+			}
+		}
+
+		revoke_allowed = {
+		always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+		factor = 1
+	    }
+    }
+
+	build_imperial_army_outpost_tier_3 = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			higher_tier_than = COUNT
+			AND = {
+				has_landed_title = e_valyrian_empire
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			owner = { character = FROM }
+			tier = count
+		}
+
+		allow = {
+			tier = count
+			owner = { character = FROM }
+			FROM = {
+				has_dlc = "Legacy of Rome"
+				wealth = 200
+				higher_tier_than = COUNT
+				AND = {
+					has_landed_title = e_valyrian_empire
+					government = valyrian_imperial_government
+				}
+			}
+		}
+
+		effect = {
+			FROM = {
+				wealth = -200
+				narrative_event = {
+					id = dote_empire_events.7
+					days = 60
+				}
+			}
+			location = {
+				add_province_modifier = {
+					modifier = imperial_army_outpost_modifier
+					duration = -1
+				}
+			}
+		}
+
+		revoke_allowed = {
+			always = no #Not used in vanilla
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+	}
+
+	build_imperial_army_outpost_tier_4 = {
+		filter = owned
+		ai_target_filter = owned
+
+		from_potential = {
+			higher_tier_than = COUNT
+			AND = {
+				has_landed_title = e_valyrian_empire
+				government = valyrian_imperial_government
+			}
+		}
+
+		potential = {
+			owner = { character = FROM }
+			tier = count
+		}
+
+		allow = {
+			tier = count
+			owner = { character = FROM }
+			FROM = {
+				has_dlc = "Legacy of Rome"
+				wealth = 400
+				higher_tier_than = COUNT
+				AND = {
+					has_landed_title = e_valyrian_empire
+					government = valyrian_imperial_government
+				}
+			}
+		}
+
+		effect = {
+			FROM = {
+				wealth = -400
+				narrative_event = {
+					id = dote_empire_events.7
+					days = 120
+				}
+			}
+			location = {
+				add_province_modifier = {
+					modifier = imperial_army_outpost_modifier
+					duration = -1
+				}
+			}
+		}
+
+		revoke_allowed = {
+			always = no #Not used in vanilla
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+	}
+}

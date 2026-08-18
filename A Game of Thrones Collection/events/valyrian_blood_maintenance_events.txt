@@ -1,0 +1,840 @@
+namespace = valyrian_blood_maintenance
+
+character_event = { # Give blood traits to created characters, characters with unknown parents
+	id = valyrian_blood_maintenance.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+		OR = {
+			culture = high_valyrian
+			culture = eastern_valyrian
+			culture = western_valyrian
+			culture = mantaryan
+			culture = tolosi
+			culture = elyrian
+			culture = lysene
+		}
+		NOT = { has_character_flag = has_valyrian_blood_trait }
+		NOR = {
+			trait = full_blood
+			trait = slightly_diluted_blood
+			trait = half_blood
+			trait = mostly_diluted_blood
+			trait = dragon
+			culture = dragon_culture
+			graphical_culture =dragongfx
+		}
+	}
+
+	immediate = {
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				culture = high_valyrian
+				NOT = { has_character_flag = has_valyrian_blood_trait }
+				NOR = {
+					trait = full_blood
+					trait = slightly_diluted_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+				}
+			}
+			add_trait = full_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				#location = {
+					#NOT = {
+						#region = world_volantis
+					#}
+				#}
+				culture = lysene
+				NOT = { has_character_flag = has_valyrian_blood_trait }
+				NOR = {
+					trait = full_blood
+					trait = slightly_diluted_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+				}
+			}
+			add_trait = half_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+
+		#if = {
+			#limit = {
+				#NOR = {
+					#trait = dragon
+					#culture = dragon_culture
+					#graphical_culture = dragongfx
+				#}
+				#location = {
+					#region = world_volantis
+				#}
+				#OR = {
+					#culture = eastern_valyrian
+					#culture = western_valyrian
+					#culture = mantaryan
+					#culture = tolosi
+					#culture = elyrian
+					#culture = lysene
+				#}
+				#NOR = {
+					#trait = full_blood
+					#trait = slightly_diluted_blood
+					#trait = half_blood
+					#trait = mostly_diluted_blood
+					#has_character_flag = has_valyrian_blood_trait
+				#}
+			#}
+			#add_trait = slightly_diluted_blood
+			#set_character_flag = has_valyrian_blood_trait
+		#}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				#location = {
+					#NOT = {
+						#region = world_volantis
+					#}
+				#}
+				OR = {
+					culture = eastern_valyrian
+					culture = western_valyrian
+					culture = mantaryan
+					culture = tolosi
+					culture = elyrian
+				}
+				NOT = { has_character_flag = has_valyrian_blood_trait }
+				NOR = {
+					trait = full_blood
+					trait = slightly_diluted_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+				}
+			}
+			add_trait = mostly_diluted_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { # Remove flag upon death, called from on_death on_actions
+	id = valyrian_blood_maintenance.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = has_valyrian_blood_trait
+
+
+	immediate = {
+		clr_character_flag = has_valyrian_blood_trait
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { # Remove flag on already dead characters
+	id = valyrian_blood_maintenance.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = has_valyrian_blood_trait
+
+	trigger = {
+		is_alive = no
+	}
+
+	immediate = {
+		clr_character_flag = has_valyrian_blood_trait
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { # Add blood traits to those that should get them
+	id = valyrian_blood_maintenance.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+		NOR = {
+			trait = dragon
+			culture = dragon_culture
+			graphical_culture = dragongfx
+		}
+		NOT = { has_character_flag = has_valyrian_blood_trait }
+		OR = {
+			true_father_even_if_dead = {
+				OR = {
+					trait = full_blood
+					trait = slightly_diluted_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+				}
+			}
+			mother_even_if_dead = {
+				OR = {
+					trait = full_blood
+					trait = slightly_diluted_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+				}
+			}
+		}
+	}
+
+	immediate = {
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				true_father_even_if_dead = {
+					trait = full_blood
+				}
+				mother_even_if_dead = {
+					trait = full_blood
+				}
+			}
+			add_trait = full_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				true_father_even_if_dead = {
+					trait = slightly_diluted_blood
+				}
+				mother_even_if_dead = {
+					trait = slightly_diluted_blood
+				}
+			}
+			add_trait = slightly_diluted_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				true_father_even_if_dead = {
+					trait = half_blood
+				}
+				mother_even_if_dead = {
+					trait = half_blood
+				}
+			}
+			add_trait = half_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				true_father_even_if_dead = {
+					trait = mostly_diluted_blood
+				}
+				mother_even_if_dead = {
+					trait = mostly_diluted_blood
+				}
+			}
+			add_trait = mostly_diluted_blood
+			set_character_flag = has_valyrian_blood_trait
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = full_blood
+						}
+						mother_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+						mother_even_if_dead = { trait = full_blood }
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					add_trait = full_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = full_blood
+						}
+						mother_even_if_dead = {
+							trait = half_blood
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							trait = half_blood
+						}
+						mother_even_if_dead = {
+							trait = full_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					add_trait = full_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				25 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = full_blood
+						}
+						mother_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+						mother_even_if_dead = {
+							trait = full_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					add_trait = full_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				40 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				40 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				10 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = full_blood
+						}
+						mother_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+						mother_even_if_dead = {
+							trait = full_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					add_trait = full_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				20 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				20 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				5 = {
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+						mother_even_if_dead = {
+							trait = half_blood
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							trait = half_blood
+						}
+						mother_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+						mother_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+						mother_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				25 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+						mother_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+						mother_even_if_dead = {
+							trait = slightly_diluted_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					add_trait = slightly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				40 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				40 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				10 = {
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = half_blood
+						}
+						mother_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+						mother_even_if_dead = {
+							trait = half_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = half_blood
+						}
+						mother_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+						mother_even_if_dead = {
+							trait = half_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					add_trait = half_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				25 = {
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				NOR = {
+					trait = dragon
+					culture = dragon_culture
+					graphical_culture = dragongfx
+				}
+				OR = {
+					AND = {
+						true_father_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+						mother_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+					}
+					AND = {
+						true_father_even_if_dead = {
+							NOR = {
+								trait = full_blood
+								trait = slightly_diluted_blood
+								trait = half_blood
+								trait = mostly_diluted_blood
+							}
+						}
+						mother_even_if_dead = {
+							trait = mostly_diluted_blood
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					add_trait = mostly_diluted_blood
+					set_character_flag = has_valyrian_blood_trait
+				}
+				50 = {
+					set_character_flag = has_valyrian_blood_trait
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = valyrian_blood_maintenance.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_sibling = {
+			is_twin_of = ROOT
+			OR = {
+				trait = full_blood
+				trait = slightly_diluted_blood
+				trait = half_blood
+				trait = mostly_diluted_blood
+			}
+		}
+	}
+
+	immediate = {
+
+		if = {
+			limit = {
+				ROOT = {
+					NOT = {
+						trait = full_blood
+					}
+				}
+				any_sibling = {
+					is_twin_of = ROOT
+					trait = full_blood
+				}
+			}
+			add_trait = full_blood
+		}
+
+		else_if = {
+			limit = {
+				ROOT = {
+					NOR = {
+						trait = full_blood
+						trait = slightly_diluted_blood
+					}
+				}
+				any_sibling = {
+					is_twin_of = ROOT
+					trait = slightly_diluted_blood
+				}
+			}
+			add_trait = slightly_diluted_blood
+		}
+
+		else_if = {
+			limit = {
+				ROOT = {
+					NOR = {
+						trait = full_blood
+						trait = slightly_diluted_blood
+						trait = half_blood
+					}
+				}
+				any_sibling = {
+					is_twin_of = ROOT
+					trait = half_blood
+				}
+			}
+			add_trait = half_blood
+		}
+
+		else_if = {
+			limit = {
+				ROOT = {
+					NOR = {
+						trait = full_blood
+						trait = slightly_diluted_blood
+						trait = half_blood
+						trait = mostly_diluted_blood
+					}
+				}
+				any_sibling = {
+					is_twin_of = ROOT
+					trait = mostly_diluted_blood
+				}
+			}
+			add_trait = mostly_diluted_blood
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

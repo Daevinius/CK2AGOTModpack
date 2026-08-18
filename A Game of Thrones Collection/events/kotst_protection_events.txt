@@ -1,0 +1,997 @@
+namespace = kotstprotection
+
+character_event = {
+	id = kotstprotection.0
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		FROM = { long_character_event = { id = kotstprotection.1 } }
+	}
+
+	option = {
+		name = "OK"
+		FROM = { character_event = { id = kotstprotection.14 } }
+	}
+
+	option = {
+		name = "OK"
+		FROM = { character_event = { id = kotstprotection.19 } }
+	}
+
+	option = {
+		name = "OK"
+		FROM = { character_event = { id = kotstprotection.30 } }
+	}
+}
+
+long_character_event = {
+	id = kotstprotection.1 #KG Riot
+	desc = EVTDESCkotstprotection1
+	picture = GFX_evt_kg_riot_goldcloaks
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection1 #Get me out of here
+		custom_tooltip = { text = kotstprotection1a }
+		hidden_tooltip = {
+			character_event = { id = kotstprotection.11 } #Flee
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection1 #Arrest that man
+		custom_tooltip = { text = kotstprotection1b }
+		hidden_tooltip = {
+			FROM = {
+				character_event = { id = kotstprotection.12 } #KG arrest
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTCkotstprotection1 #Kill them all!
+		custom_tooltip = { text = kotstprotection1c }
+		hidden_tooltip = {
+			FROM = {
+				character_event = { id = kotstprotection.13 } #KG fight
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.11 #Flee / way is blocked
+	desc = EVTDESCkotstprotection11
+	picture = GFX_evt_kg_riot
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection11 #Push through them
+		hidden_tooltip = {
+			FROMFROM = {
+				character_event = { id = kotstprotection.13 } #KG fight
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection11 #Find another way
+		hidden_tooltip = {
+			character_event = { id = kotstprotection.112 } #Find safety/END
+			FROMFROM = {
+				set_variable = { which = "prot1_succ" value = 0 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.112 #Found another way /End
+	desc = EVTDESCkotstprotection112
+	picture = GFX_evt_kg_riot
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection112 #Safety /END
+		random = {
+			chance = 10
+			add_trait = craven
+		}
+		custom_tooltip = { text = prot1_success }
+	}
+}
+
+character_event = {
+	id = kotstprotection.12 #KG arrest
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		random_list = {
+			30 = {
+				modifier = {
+					factor = 1.2
+					combat_rating = 15
+				}
+				modifier = {
+					factor = 1.5
+					combat_rating = 30
+				}
+				modifier = {
+					factor = 2.0
+					combat_rating = 40
+				}
+				modifier = {
+					factor = 2.5
+					combat_rating = 50
+				}
+				modifier = {
+					factor = 3.0
+					combat_rating = 55
+				}
+				FROM = { character_event = { id = kotstprotection.121 } }
+				ROOT = { set_variable = { which = "prot1_succ" value = 0 } }	#Success
+			}
+			70 = {
+				FROM = { character_event = { id = kotstprotection.122 } }
+				ROOT = { set_variable = { which = "prot1_fail" value = 0 } } #Fail to arrest
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.121 #Arrest success
+	desc = EVTDESCkotstprotection121
+	picture = GFX_evt_kg_riot_goldcloaks
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection121 #To safety
+		create_character = {
+			random_traits = yes
+			culture = crownlander
+			dynasty = none
+			female = no
+			age = 24
+			trait = peasant_leader
+		}
+		new_character = {
+			imprison = ROOT
+		}
+		custom_tooltip = { text = prot1_success }
+	}
+}
+
+character_event = {
+	id = kotstprotection.122 #Arrest fail
+	desc = EVTDESCkotstprotection122
+	picture = GFX_evt_kg_riot_fail
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection122
+		FROM = {
+			if = {
+				limit = { trait = maimed }
+				add_trait = incapable
+			}
+			if = {
+				limit = { trait = wounded }
+				add_trait = maimed
+			}
+			if = {
+				limit = { NOT = { trait = wounded } }
+				add_trait = wounded
+			}
+			custom_tooltip = { text = prot1_failour }
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.13 #KG FIGHT
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		random_list = {
+			50 = {
+				modifier = {
+					factor = 1.1
+					combat_rating = 15
+				}
+				modifier = {
+					factor = 1.2
+					combat_rating = 30
+				}
+				modifier = {
+					factor = 1.4
+					combat_rating = 40
+				}
+				modifier = {
+					factor = 1.8
+					combat_rating = 50
+				}
+				modifier = {
+					factor = 2.0
+					combat_rating = 55
+				}
+				FROM = { character_event = { id = kotstprotection.131 } }
+				ROOT = { set_variable = { which = "prot1_succ" value = 0 } } #Succes Kill
+			}
+			50 = {
+				FROM = { character_event = { id = kotstprotection.132 } }
+				ROOT = { set_variable = { which = "prot1_fail" value = 0 } } #Fail Kill
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.131 #Success Kill
+	desc = EVTDESCkotstprotection131
+	picture = GFX_evt_kg_riot
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection131
+		random = {
+			chance = 10
+			add_trait = wroth
+		}
+		custom_tooltip = { text = prot1_success }
+	}
+}
+
+character_event = {
+	id = kotstprotection.132 #Fail Kill
+	desc = EVTDESCkotstprotection132
+	picture = GFX_evt_kg_riot_fail
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection132
+		FROM = { death = { death_reson = death_rabble } }
+	}
+}
+
+#SUSPICIOUS GARDENER EVENT#
+
+character_event = {
+	id = kotstprotection.14 #Gardener start
+	desc = {
+		trigger = {
+			OR = {
+				AND = {
+					is_female = no
+					trait = homosexual
+				}
+				AND = {
+					is_female = yes
+					NOT = { trait = homosexual }
+				}
+			}
+		}
+		text = EVTDESCkotstprotection14a
+	}
+	desc = {
+		trigger = {
+			OR = {
+				AND = {
+					is_female = no
+					NOT = { trait = homosexual }
+				}
+				AND = {
+					is_female = yes
+					trait = homosexual
+				}
+			}
+		}
+		text = EVTDESCkotstprotection14b
+	}
+	picture = GFX_evt_garden
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection14 #HAVE CHAT
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						is_female = no
+						trait = homosexual
+					}
+					AND = {
+						is_female = yes
+						NOT = { trait = homosexual }
+					}
+				}
+			}
+			create_character = {
+				random_traits = yes
+				culture = crownlander
+				dynasty = none
+				female = no
+				age = 16
+				trait = fair
+			}
+			new_character = {
+				save_event_target_as = target_gardener_assassin
+				character_event = { id = kotstprotection.141 }
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						is_female = no
+						NOT = { trait = homosexual }
+					}
+					AND = {
+						is_female = yes
+						trait = homosexual
+					}
+				}
+			}
+			create_character = {
+				random_traits = yes
+				culture = crownlander
+				dynasty = none
+				female = yes
+				age = 16
+				trait = fair
+			}
+			new_character = {
+				save_event_target_as = target_gardener_assassin
+				character_event = { id = kotstprotection.141 }
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection14 #IMPRISON
+		character_event = { id = kotstprotection.18 }
+	}
+}
+
+character_event = {
+	id = kotstprotection.141 #PING TO GARDENER
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		random_list = {
+			40 = {
+				FROM = { character_event = { id = kotstprotection.15 } } #NOT ASSASSIN
+			}
+			60 = {
+				FROMFROM = { character_event = { id = kotstprotection.142 } } #IS ASSASSIN
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.142 #KG CALC
+
+	is_triggered_only = yes
+
+	option = {
+		random_list = {
+			55 = {
+				modifier = {
+					factor = 1.1
+					combat_rating = 15
+				}
+				modifier = {
+					factor = 1.2
+					combat_rating = 30
+				}
+				modifier = {
+					factor = 1.4
+					combat_rating = 40
+				}
+				modifier = {
+					factor = 1.6
+					combat_rating = 50
+				}
+				modifier = {
+					factor = 1.8
+					combat_rating = 55
+				}
+				top_liege = { character_event = { id = kotstprotection.16 } }
+				ROOT = { set_variable = { which = "prot2_succ" value = 0 } } #Succes Kill
+			}
+			45 = {
+				top_liege = { long_character_event = { id = kotstprotection.17 } }
+				ROOT = { set_variable = { which = "prot2_fail" value = 0 } } #Fail Kill
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.15
+	desc = EVTDESCkotstprotection15 #Not assassin
+	picture = GFX_evt_garden
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection15
+		ROOT = {
+			add_lover = FROM
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection15
+	}
+}
+
+character_event = {
+	id = kotstprotection.16
+	desc = EVTDESCkotstprotection16 #Is assassin success kill
+	picture = GFX_evt_kg_assassin
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection16
+		FROM = { prestige = 50 }
+		hidden_tooltip = {
+			event_target:target_gardener_assassin = {
+				death = { death_reason = death_execution killer = FROM }
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection16
+		ROOT = { wealth = -10 }
+		FROM = { wealth = 10 }
+		hidden_tooltip = {
+			event_target:target_gardener_assassin = {
+				death = { death_reason = death_execution killer = FROM }
+			}
+		}
+	}
+}
+
+long_character_event = {
+	id = kotstprotection.17
+	desc = EVTDESCkotstprotection17 #Is assassin fail kill
+	picture = GFX_evt_kg_assassin
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection17
+		add_trait = wounded
+		prestige = -250
+		hidden_tooltip = {
+			event_target:target_gardener_assassin = { banish = yes }
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.18
+	desc = EVTDESCkotstprotection18 #Throw into dungeon anyway
+	picture = GFX_evt_into_the_dungeon
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection18
+	}
+}
+
+#BANDIT HUNT
+
+character_event = {
+	id = kotstprotection.19
+	desc = EVTDESCkotstprotection19
+	picture = GFX_evt_bandits
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection19 #Comply
+		custom_tooltip = { text = kotstprotection19a }
+		ROOT = { character_event = { id = kotstprotection.191 } }
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection19 #Run Away
+		custom_tooltip = { text = kotstprotection19b }
+		ROOT = { character_event = { id = kotstprotection.192 } }
+	}
+
+	option = {
+		name = EVTOPTCkotstprotection19 #Fight
+		custom_tooltip = { text = kotstprotection19c }
+		hidden_tooltip = {
+			random_list = {
+				30 = {
+					modifier = {
+						factor = 1.1
+						combat_rating = 15
+					}
+					modifier = {
+						factor = 1.5
+						combat_rating = 30
+					}
+					modifier = {
+						factor = 2.0
+						combat_rating = 40
+					}
+					modifier = {
+						factor = 2.5
+						combat_rating = 50
+					}
+					modifier = {
+						factor = 3.0
+						combat_rating = 55
+					}
+					ROOT = { character_event = { id = kotstprotection.1930 } } #Win Fight
+				}
+				70 = {
+					ROOT = { character_event = { id = kotstprotection.1931 } } #Fail Fight
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTDkotstprotection19 #Call KG
+		custom_tooltip = { text = kotstprotection19d }
+		FROM = { character_event = { id = kotstprotection.194 } }
+	}
+}
+
+character_event = {
+	id = kotstprotection.191
+	desc = EVTDESCkotstprotection191
+	picture = GFX_evt_bandits
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection191
+		ROOT = {
+			scaled_wealth = -0.2
+			prestige = -200
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.192
+	desc = EVTDESCkotstprotection192
+	picture = GFX_evt_bandits
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection192
+		ROOT = {
+			if = {
+				limit = { trait = brave }
+				remove_trait = brave
+			}
+			add_trait = craven
+			prestige = -500
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.1930
+	desc = EVTDESCkotstprotection1930
+	picture = GFX_evt_melee
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection1930
+		ROOT = {
+			if = {
+				limit = { NOT = { trait = brave } }
+				add_trait = brave
+			}
+			prestige = 100
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.1931
+	desc = EVTDESCkotstprotection1931
+	picture = GFX_evt_melee
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection1931
+		ROOT = {
+			add_trait = maimed
+			prestige = -100
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.194
+	desc = EVTDESCkotstprotection194
+	picture = GFX_evt_melee
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		random_list = {
+			50 = {
+				modifier = {
+					factor = 1.2
+					combat_rating = 15
+				}
+				modifier = {
+					factor = 1.4
+					combat_rating = 30
+				}
+				modifier = {
+					factor = 1.6
+					combat_rating = 40
+				}
+				modifier = {
+					factor = 1.8
+					combat_rating = 50
+				}
+				modifier = {
+					factor = 2.0
+					combat_rating = 55
+				}
+				FROM = { character_event = { id = kotstprotection.20 } }
+				ROOT = { set_variable = { which = "prot3_succ" value = 0 } }
+			}
+			50 = {
+				FROM = { character_event = { id = kotstprotection.21 } }
+				ROOT = { set_variable = { which = "prot3_fail" value = 0 } }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.20
+	desc = EVTDESCkotstprotection20
+	picture = GFX_evt_melee
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection20
+		FROM = {
+			change_martial = 1
+			prestige = 100
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.21
+	desc = EVTDESCkotstprotection21
+	picture = GFX_evt_melee
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection21
+		ROOT = {
+			wealth = -100
+			prestige = -300
+		}
+		FROM = {
+			add_trait = maimed
+			prestige = -100
+		}
+	}
+}
+
+#CRAZY MAN IN THE BEDROOM
+
+character_event = {
+	id = kotstprotection.30
+	desc = EVTDESCkotstprotection30
+	picture = GFX_evt_shadow
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection30
+		hidden_tooltip = {
+			create_character = {
+				min_age = 50
+				max_age = 70
+				culture_group = andal
+				trait = maester
+				trait = mastermind_theologian
+				random_traits = yes
+				dynasty = none
+				female = no
+			}
+			new_character = {
+				character_event = { id = kotstprotection.31 }
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection30
+		FROM = {
+			if = {
+				limit = { is_alive = yes }
+				character_event = { id = kotstprotection.32 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.31
+	desc = EVTDESCkotstprotection31
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		random_list = {
+			50 = {
+				FROM = { character_event = { id = kotstprotection.311 } }
+			}
+			50 = {
+				FROM = { character_event = { id = kotstprotection.312 } }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.311
+	desc = EVTDESCkotstprotection311
+	picture = GFX_evt_courtiers_talking
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection311
+		FROM = { move_character = ROOT }
+	}
+}
+
+character_event = {
+	id = kotstprotection.312
+	desc = EVTDESCkotstprotection312
+	picture = GFX_evt_lunatic
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection312
+		ROOT = {
+			add_trait = wounded
+		}
+		hidden_tooltip = {
+			FROM = { death = { death_reson = death_suicide } }
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.32
+	desc = EVTDESCkotstprotection32
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		random_list = {
+			50 = {
+				modifier = {
+					factor = 1.2
+					combat_rating = 15
+				}
+				modifier = {
+					factor = 1.4
+					combat_rating = 30
+				}
+				modifier = {
+					factor = 1.6
+					combat_rating = 40
+				}
+				modifier = {
+					factor = 1.8
+					combat_rating = 50
+				}
+				modifier = {
+					factor = 2.0
+					combat_rating = 55
+				}
+				FROM = { character_event = { id = kotstprotection.321 } }
+				ROOT = { set_variable = { which = "prot4_succ" value = 0 } }
+			}
+			50 = {
+				FROM = { character_event = { id = kotstprotection.322 } }
+				ROOT = { set_variable = { which = "prot4_fail" value = 0 } }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.321
+	desc = EVTDESCkotstprotection321
+	picture = GFX_evt_kg_stand
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection321
+		FROM = {
+			if = {
+				limit = { NOT = { trait = brave } }
+				add_trait = brave
+			}
+		}
+		hidden_tooltip = {
+			event_target:target_gardener_assassin = {
+				death = { death_reason = death_execution killer = FROM }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.322
+	desc = EVTDESCkotstprotection322
+	picture = GFX_evt_lunatic
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection322
+		FROM = {
+			if = {
+				limit = { NOT = { trait = blinded } }
+				add_trait = blinded
+			}
+		}
+		hidden_tooltip = {
+			event_target:target_gardener_assassin = {
+				death = { death_reason = death_execution killer = FROM }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.40
+	desc = EVTDESCkotstprotection40
+	picture = GFX_evt_hunt
+
+	hide_window = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+	}
+
+	mean_time_to_happen = {
+		years = 80
+	}
+
+	option = {
+		name = "OK"
+		random_realm_character = {
+			limit = { trait = kingsguard }
+			character_event = { id = kotstprotection.41 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.41
+	desc = EVTDESCkotstprotection40
+	picture = GFX_evt_hunt
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		top_liege = { character_event = { id = kotstprotection.42 } }
+	}
+
+	option = {
+		name = "OK"
+		top_liege = { character_event = { id = kotstprotection.43 } }
+	}
+}
+
+character_event = {
+	id = kotstprotection.42
+	desc = EVTDESCkotstprotection41
+	picture = GFX_evt_hunt
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection41
+		FROM = {
+			prestige = 100
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.43
+	desc = EVTDESCkotstprotection42
+	picture = GFX_evt_hunt
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstprotection42
+		ROOT = { wealth = -10 }
+		FROM = {
+			wealth = 10
+			add_trait = wounded
+		}
+	}
+
+	option = {
+		name = EVTOPTBkotstprotection42
+		FROM = {
+			add_trait = wounded
+		}
+	}
+}
+
+character_event = {
+	id = kotstprotection.100
+
+	hide_window = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+	}
+
+	mean_time_to_happen = {
+		years = 20
+	}
+
+	option = {
+		name = "OK"
+		random_realm_character = {
+			limit = {
+				trait = kingsguard
+				is_alive = yes
+			}
+			character_event = { id = kotstprotection.0 }
+		}
+	}
+}

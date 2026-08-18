@@ -1,0 +1,120 @@
+namespace = sb_maintenance
+
+#AI only - Prevent Targs from marrying their own kids
+character_event = {
+	id = sb_maintenance.1
+
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		dynasty = 496
+		OR = {
+			spouse = {
+				dynasty = PREV
+				is_child_of = PREV
+			}
+			betrothed = {
+				dynasty = PREV
+				is_child_of = PREV
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = OK
+		any_spouse = {
+			move_character = ROOT
+			remove_spouse = ROOT
+			add_trait = forbid_marriage
+			set_character_flag = cursed_marriage
+			character_event = { id = sb_maintenance.101 days = 60 }
+		}
+		betrothed = {
+			break_betrothal = ROOT
+			move_character = ROOT
+			add_trait = forbid_marriage
+			set_character_flag = cursed_marriage
+			character_event = { id = sb_maintenance.101 days = 60 }
+		}
+	}
+}
+#AI only - Remove Forbid Marriage from kid 2 months after parent tried to marry them
+character_event = {
+	id = sb_maintenance.101
+
+	is_triggered_only = yes
+
+	hide_window = yes
+
+	ai = yes
+	has_character_flag = cursed_marriage
+
+	trigger = {
+		trait = forbid_marriage
+	}
+
+	option = {
+		name = OK
+		clr_character_flag = parent_marriage
+		remove_trait = forbid_marriage
+	}
+}
+#AI only - Avoid Dragonriders from being "In Hiding" during ofensive dragon conquest
+character_event = {
+	id = sb_maintenance.2
+
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		trait = dragon_rider
+		trait = in_hiding
+		NOT = { trait = craven }
+		any_war = {
+			attacker = { character = ROOT }
+			using_cb = dragon_conquest
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = OK
+		ai_chance = { factor = 100 }
+		remove_trait = in_hiding
+	}
+}
+#AI only - Avoid Dragonriders from being "In Hiding" during defensive dragon conquest
+character_event = {
+	id = sb_maintenance.201
+
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		trait = dragon_rider
+		trait = in_hiding
+		NOT = { trait = craven }
+		any_war = {
+			defender = { character = ROOT }
+			using_cb = dragon_conquest
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = OK
+		ai_chance = { factor = 100 }
+		remove_trait = in_hiding
+	}
+}

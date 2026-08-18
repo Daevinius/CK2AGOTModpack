@@ -1,0 +1,1873 @@
+targeted_decisions = {
+	become_high_dothraki = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_adult = yes
+			culture = dothrak_tyroshi
+			NOR = {
+				religion = dothraki_bas
+				religion = valyrian_rel
+				religion = valyrian_bas
+				religion = winged_stallion
+				religion_group = essos_group
+			}
+			OR = {
+				capital_scope = { religion_group = essos_group }
+				spouse = { culture_group = free_cities }
+				top_liege = { religion_group = essos_group }
+				father_even_if_dead = { culture_group = free_cities }
+				mother_even_if_dead = { culture_group = free_cities }
+				father_even_if_dead = { religion_group = essos_group }
+				mother_even_if_dead = { religion_group = essos_group }
+			}
+		}
+		allow = {
+			piety = 150
+		}
+		effect = {
+			religion = dothraki_rhllor
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				religion = dothraki_rhllor
+			}
+			character_event = { id = royconv.8 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.6
+
+			modifier = {
+				factor = 0.75
+				spouse = { NOT = { religion_group = essos_group } }
+			}
+
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	spouse = { religion_group = essos_group }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion_group = essos_group }
+				}
+			}
+			modifier = {
+				factor = 0.25
+				ROOT = {
+				 	spouse = { NOT = { religion_group = essos_group } }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { culture_group = free_cities }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { culture_group = mixed_essosi_group }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion_group = essos_group }
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { culture_group = free_cities }
+			}
+		}
+	}
+	adopt_dragon_stallion_religion = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			age = 16
+			is_playable = yes
+			culture = valyrian_dothraki
+			NOT = {
+				religion = winged_stallion
+				religion = valyrian_rel
+				religion = valyrian_bas
+				}
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				spouse = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				father_even_if_dead = { religion = valyrian_rel }
+				mother_even_if_dead = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			piety = 150
+		}
+		effect = {
+			religion = winged_stallion
+			any_courtier = {
+				limit = {
+					employer = { character = ROOT }
+					OR = {
+					dynasty = ROOT
+					is_child_of = FROM
+					}
+				}
+				religion = winged_stallion
+			}
+			character_event = { id = royconv.7 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.6
+
+			modifier = {
+				factor = 0.75
+				spouse = { NOT = { religion = valyrian_rel } }
+			}
+
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 0.25
+				ROOT = {
+				 	spouse = { NOT = { religion = valyrian_rel } }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { culture_group = valyrian }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { culture_group = mixed_valyrian_group }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { culture_group = valyrian }
+			}
+		}
+	}
+	adopt_dragon_religion = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			age = 16
+			is_playable = yes
+			culture_group = mixed_valyrian_group
+			NOT = {
+				culture = valyrian_dothraki
+				religion = valyrian_rel
+				religion = valyrian_bas
+				religion = winged_stallion
+				religion = dothraki_bas
+				}
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				spouse = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				father_even_if_dead = { religion = valyrian_rel }
+				mother_even_if_dead = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			piety = 200
+		}
+		effect = {
+			religion = valyrian_bas
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				religion = valyrian_bas
+			}
+			character_event = { id = royconv.7 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.6
+
+			modifier = {
+				factor = 0.75
+				top_liege = { NOT = { religion = valyrian_rel } }
+			}
+
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 0.25
+				ROOT = {
+				 	spouse = { NOT = { religion = valyrian_rel } }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { culture_group = valyrian }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { culture_group = mixed_valyrian_group }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.5
+				top_liege = { culture_group = valyrian }
+			}
+		}
+	}
+	embrace_merchant_ways = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = dothraki
+			age = 14
+			prisoner = no
+			higher_tier_than = BARON
+			OR = {
+				capital_scope = {
+				 	religion = trios
+				}
+				capital_scope = {
+				 	culture = tyroshi
+				}
+				capital_scope = {
+				 	culture = pentosi
+				}
+				capital_scope = {
+				 	culture = braavosi
+				}
+				any_demesne_province = { culture_group = free_cities }
+				any_vassal = { culture_group = free_cities }
+				top_liege = { culture_group = free_cities }
+				top_liege = { religion_group = essos_group }
+				father_even_if_dead = { culture_group = free_cities }
+				mother_even_if_dead = { culture_group = free_cities }
+			}
+		}
+		allow = {
+			prestige = 200
+		}
+		effect = {
+			culture = dothrak_tyroshi
+			any_courtier = {
+				limit = {
+					culture = dothraki
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = dothrak_tyroshi
+			}
+			character_event = { id = royconv.3 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a dothraki empire
+				factor = 0
+				top_liege = { culture = dothraki }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion_group = essos_group }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion_group = essos_group }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion_group = essos_group }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion_group = essos_group
+				}
+			}
+		}
+	}
+	embrace_merchant_ways_summer = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = summer_islander
+			OR = {
+				capital_scope = {
+				 	religion = trios
+				}
+				capital_scope = {
+				 	culture = tyroshi
+				}
+				capital_scope = {
+				 	culture = pentosi
+				}
+				capital_scope = {
+				 	culture = braavosi
+				}
+				any_demesne_province = { culture_group = free_cities }
+				any_vassal = { culture_group = free_cities }
+				top_liege = { culture_group = free_cities }
+				top_liege = { religion_group = essos_group }
+			}
+		}
+		allow = {
+			prestige = 200
+		}
+		effect = {
+			culture = summer_tyroshi
+			any_courtier = {
+				limit = {
+					culture = summer_islander
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = summer_tyroshi
+			}
+			character_event = { id = royconv.4 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a summer islander realm
+				factor = 0
+				top_liege = { culture = summer_islander }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion_group = essos_group }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion_group = essos_group }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	culture = pentosi
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	culture = tyroshi
+				}
+			}
+			modifier = {
+				factor = 2.0
+				OR = {
+				liege = { culture = braavosi }
+				liege = { culture = tyroshi }
+				liege = { religion = trios }
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion_group = essos_group
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion_group = essos_group
+				}
+			}
+		}
+	}
+	embrace_dragon_ways = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture_group = ghiscari_group
+		}
+		allow = {
+			prestige = 400
+			culture_group = ghiscari_group
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		effect = {
+			culture = valyrian_ghiscari
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_ghiscari
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Ghiscari empire
+				factor = 0
+				top_liege = { culture_group = ghiscari_group }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_valyrian_ways = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = dothraki
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			prestige = 200
+		}
+		effect = {
+			culture = valyrian_dothraki
+			any_courtier = {
+				limit = {
+					culture = dothraki
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_dothraki
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a dothraki empire
+				factor = 0
+				top_liege = { culture = dothraki }
+			}
+
+			modifier = {
+				factor = 0.01
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_lengi = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = lengi
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			prestige = 200
+		}
+		effect = {
+			culture = valyrian_lengi
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_lengi
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Lengi empire
+				factor = 0
+				top_liege = { culture = lengi }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_yiti = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = yi_ti
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			prestige = 200
+		}
+		effect = {
+			culture = valyrian_yi_ti
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_yi_ti
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Yi Ti empire
+				factor = 0
+				top_liege = { culture = yi_ti }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_sarnor = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture_group = sarnor_group
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			prestige = 200
+		}
+		effect = {
+			culture = valyrian_sarnori
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_sarnori
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Sarnori empire
+				factor = 0
+				top_liege = { culture_group = sarnor_group }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_qartheen = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = qartheen
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		allow = {
+			prestige = 500
+		}
+		effect = {
+			culture = valyrian_qartheen
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_qartheen
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Qartheen empire
+				factor = 0
+				top_liege = { culture = qartheen }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_mountain = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			OR = {
+				culture = asabhadi
+				culture_group = hyrkoon_group
+			}
+		}
+		allow = {
+			OR = {
+				culture = asabhadi
+				culture_group = hyrkoon_group
+			}
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		effect = {
+			culture = mountain_valyrian
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = mountain_valyrian
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Hyrkoon empire
+				factor = 0
+				top_liege = { culture_group = hyrkoon_group }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_moraqi = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture_group = moraqi_group
+		}
+		allow = {
+			prestige = 200
+			culture_group = moraqi_group
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		effect = {
+			culture = valyrian_moraqi
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_moraqi
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Moraqi empire
+				factor = 0
+				top_liege = { culture_group = moraqi_group }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+	embrace_dragon_ways_shadow = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture_group = asshai_group
+		}
+		allow = {
+			prestige = 200
+			culture_group = asshai_group
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		effect = {
+			culture = shadow_valyrian
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = shadow_valyrian
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.5
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a Asshai empire
+				factor = 0
+				top_liege = { culture_group = asshai_group }
+			}
+
+			modifier = {
+				factor = 0.5
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+
+	embrace_valyrian_rel_ways = {
+		only_playable = yes
+
+		filter = self
+		ai_target_filter = self
+		ai_check_interval = 64
+
+
+		potential = {
+			is_playable = yes
+			culture = summer_islander
+		}
+		allow = {
+			prestige = 175
+			culture = summer_islander
+			OR = {
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+				any_demesne_province = { culture_group = valyrian }
+				any_demesne_province = { religion = valyrian_rel }
+				father_even_if_dead = { culture_group = valyrian }
+				mother_even_if_dead = { culture_group = valyrian }
+				top_liege = { culture_group = valyrian }
+				top_liege = { religion = valyrian_rel }
+			}
+		}
+		effect = {
+			culture = valyrian_summer_islander
+			any_courtier = {
+				limit = {
+					culture = summer_islander
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = valyrian_summer_islander
+			}
+			character_event = { id = royconv.0 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.75
+
+			modifier = {
+				factor = 0.5 # Slow it down a bit
+			}
+
+			modifier = { # Do not flip if we're in a summer islander empire
+				factor = 0
+				top_liege = { culture = summer_islander }
+			}
+
+			modifier = {
+				factor = 0.01
+				capital_scope = {
+					NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				liege = { religion = valyrian_rel }
+			}
+			modifier = {
+				factor = 3.0
+				capital_scope = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 3.0
+				ROOT = {
+				 	religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	spouse = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 2.0
+				ROOT = {
+				 	guardian = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 0.5
+				ROOT = {
+				 	NOT = { religion = valyrian_rel }
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 2
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 4
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 6
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 8
+					religion = valyrian_rel
+				}
+			}
+			modifier = {
+				factor = 1.1
+				num_culture_realm_provs = {
+					value = 10
+					religion = valyrian_rel
+				}
+			}
+		}
+	}
+}

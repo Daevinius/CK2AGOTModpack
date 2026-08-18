@@ -1,0 +1,44 @@
+
+namespace = valyrian_steel_cbb
+
+#Inform inherited sword
+character_event = {
+	id = 312815
+	picture = "GFX_evt_valyrian_armour"
+
+	is_triggered_only = yes
+
+	desc = {
+		text = EVTDESC312815
+		trigger = {
+			NOT = { has_character_flag = blacksmith_died }
+		}
+	}
+
+	desc = {
+		text = EVTDESC312815B
+		trigger = {
+			has_character_flag = blacksmith_died
+		}
+	}
+
+	immediate = {
+		#add_character_modifier = { name = owns_valyrian_steel_sword  duration = -1 }
+	}
+
+	option = {
+		name = {
+			text = "EVTOPTA312815"
+			trigger = {
+				NOT = { has_house_words_trigger = yes }
+			}
+		}
+		name = {
+			text = "EVTOPTGETHOUSEWORDS"
+			trigger = {
+				has_house_words_trigger = yes
+			}
+		}
+		clr_character_flag = blacksmith_died
+	}
+}

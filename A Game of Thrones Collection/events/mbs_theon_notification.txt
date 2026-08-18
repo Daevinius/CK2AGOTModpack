@@ -1,0 +1,109 @@
+namespace = mbs_theon_notification
+
+#mbs_theon_notification.1 - Theon Defects General
+narrative_event = {
+	id = mbs_theon_notification.1
+	title = "EVTtitlembs_theon_notification.1"
+	desc = "EVTDESCmbs_theon_notification.1"
+	picture = "GFX_GREYJOY"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_theon_notification.1" #
+
+		ai_chance = {
+			factor = 2
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_isles = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+#mbs_theon_notification.2 - Theon Defects Balon
+narrative_event = {
+	id = mbs_theon_notification.2
+	title = "EVTtitlembs_theon_notification.2"
+	desc = "EVTDESCmbs_theon_notification.2"
+	picture = "GFX_GREYJOY"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_theon_notification.2" #
+
+		ai_chance = {
+			factor = 2
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_isles = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+#mbs_theon_notification.3 - Theon Defects Robb
+narrative_event = {
+	id = mbs_theon_notification.3
+	title = "EVTtitlembs_theon_notification.3"
+	desc = "EVTDESCmbs_theon_notification.3"
+	picture = "GFX_GREYJOY"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_theon_notification.3" #
+
+		ai_chance = {
+			factor = 2
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_isles = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+#theon blooodline
+character_event = {
+	id = mbs_theon_notification.50
+
+	hide_window = yes
+
+	has_character_flag = theon_greyjoy
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 8107
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_destroy_theon
+		}
+		OR = {
+			has_landed_title = k_iron_isles
+			AND = {
+				has_character_modifier = elected_in_kingsmoot
+				has_landed_title = e_iron_isles
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_theon_notification.50" #
+		any_dynasty_member_even_if_dead = {
+			limit = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_destroy_theon
+				}
+			}
+			any_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_destroy_theon
+				}
+				remove_bloodline_member = PREV
+			}
+		}
+		any_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_destroy_theon
+			}
+			remove_bloodline_member = PREV
+		}
+		create_bloodline = {
+			type = bloodline_theon_robb_king
+		}
+	}
+}

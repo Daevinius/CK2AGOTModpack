@@ -1,0 +1,125 @@
+namespace = sb_acok_dany
+
+#After staying in Qarth and marrying Xaro, decide if kill him
+character_event = {
+	id = sb_acok_dany.1
+	desc = "EVTDESCsb_acok_dany.1"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+	has_character_flag = daenerys_targaryen
+
+	immediate = {
+		set_global_flag = stormborn_acok_events
+	}
+
+	option = {
+		name = "EVTOPTA_acok_dany.1"
+		ai_chance = { factor = 40 }
+		set_global_flag = xaro_murdered
+		c_13635000 = {
+			death = {
+				death_reason = death_murder
+				killer = ROOT
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_dany.2
+				days = 5
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_acok_dany.1"
+		ai_chance = { factor = 60 }
+		set_global_flag = xaro_dragon_consort
+		piety = 20
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_dany.2
+				days = 5
+			}
+		}
+	}
+}
+#Decide what Empire you shall conquer from Qarth
+narrative_event = {
+	id = sb_acok_dany.2
+	desc = "EVTDESCsb_acok_dany.2"
+	title = "EVTITLEsb_acok_dany.2"
+	picture = GFX_evt_map
+
+	is_triggered_only = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = stormborn_acok_events
+
+	option = {
+		name = "EVTOPTA_acok_dany.2"
+		ai_chance = { factor = 25 }
+		trigger = { has_global_flag = xaro_dragon_consort }
+		custom_tooltip = { text = EVTTOOLTIP_acokdanyqarth_TOOLTIP }
+		set_global_flag = dany_qarth_invasion
+	}
+
+	option = {
+		name = "EVTOPTB_acok_dany.2"
+		ai_chance = { factor = 25 }
+		custom_tooltip = { text = EVTTOOLTIP_acokdanyvalyria_TOOLTIP }
+		set_global_flag = dany_valyrian_invasion
+		activate_title = { status = yes title = k_great_grass_sea }
+			k_great_grass_sea = {
+				gain_title = ROOT
+				add_law = centralization_1
+				if = {
+					limit = { NOT = { has_game_rule = { name = slavery value = off } } }
+					add_law = slavery_0
+				}
+			}
+		activate_title = { status = no title = d_great_grass_sea }
+		d_great_grass_sea = { destroy_landed_title = THIS }
+	}
+
+	option = {
+		name = "EVTOPTC_acok_dany.2"
+		ai_chance = { factor = 25 }
+		custom_tooltip = { text = EVTTOOLTIP_acokdanysummersea_TOOLTIP }
+		set_global_flag = dany_summerisles_invasion
+		activate_title = { status = yes title = k_great_grass_sea }
+			k_great_grass_sea = {
+				gain_title = ROOT
+				add_law = centralization_1
+				if = {
+					limit = { NOT = { has_game_rule = { name = slavery value = off } } }
+					add_law = slavery_0
+				}
+			}
+		activate_title = { status = no title = d_great_grass_sea }
+		d_great_grass_sea = { destroy_landed_title = THIS }
+	}
+
+	option = {
+		name = "EVTOPTD_acok_dany.2"
+		ai_chance = { factor = 25 }
+		custom_tooltip = { text = EVTTOOLTIP_acokdanyyiti_TOOLTIP }
+		set_global_flag = dany_yiti_invasion
+		activate_title = { status = yes title = k_great_grass_sea }
+			k_great_grass_sea = {
+				gain_title = ROOT
+				add_law = centralization_1
+				if = {
+					limit = { NOT = { has_game_rule = { name = slavery value = off } } }
+					add_law = slavery_0
+				}
+			}
+		activate_title = { status = no title = d_great_grass_sea }
+		d_great_grass_sea = { destroy_landed_title = THIS }
+		ROOT = {
+			narrative_event = {
+				id = sb_acok_yiti.1
+				days = 3
+			}
+		}
+	}
+}

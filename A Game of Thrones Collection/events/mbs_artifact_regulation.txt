@@ -1,0 +1,78 @@
+namespace = mbs_artifact_regulation
+character_event = {
+	id = mbs_artifact_regulation.1
+	hide_window = yes
+
+	min_age = 12
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_artifact = {
+			OR = {
+				has_artifact_flag = family_armour
+				has_artifact_flag = family_cloak
+				has_artifact_flag = kingsguard_armour
+				artifact_type = lute
+				artifact_type = nw_cloak
+			}
+		}
+	}
+	immediate = {
+		any_artifact = {
+			limit = {
+				has_game_rule = { name = artifact_regulation value = on }
+				OR = {
+					has_artifact_flag = family_armour
+					has_artifact_flag = family_cloak
+					has_artifact_flag = kingsguard_armour
+				}
+				ROOT = {
+					current_heir = {
+						NOT = {
+							dynasty = ROOT
+						}
+					}
+				}
+			}
+			unsafe_destroy_artifact = yes
+		}
+		any_artifact = {
+			limit = {
+				OR = {
+					artifact_type = lute
+					artifact_type = nw_cloak
+				}
+			}
+			unsafe_destroy_artifact = yes
+		}
+	}
+}
+namespace = hand_pin_mbs
+character_event = {
+	id = hand_pin_mbs.1
+	hide_window = yes
+
+	has_character_flag = got_hand_pin_mbs
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_alive = no
+			is_dying = yes
+		}
+		any_artifact = {
+			has_artifact_flag = hand_pin_mbs
+		}
+	}
+	immediate = {
+		any_artifact = {
+			limit = {
+				has_artifact_flag = hand_pin_mbs
+			}
+			unsafe_destroy_artifact = yes
+		}
+		add_trait = hand_of_the_king
+	}
+}

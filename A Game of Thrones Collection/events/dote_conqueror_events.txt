@@ -1,0 +1,1228 @@
+namespace = dote_conqueror
+
+###Main Event###
+###Claim Removers###
+#
+###Daemon Targaryen###
+###Daemon Blackfyre###
+###Viserys Targaryen###
+###Rhaego, Son of Drogo###
+###Aegor Bittersteel### - in Progress
+
+
+###Main Event###
+narrative_event = {
+	id = dote_conqueror.1
+	title = EVTTITLEdote_conqueror.1
+	picture = GFX_dote_events_claimant
+
+	desc = { #Rogue Prince
+		trigger = {
+			character = 779496
+		}
+		text = EVTDESCAdote_conqueror.1
+		picture = GFX_tamingdragon
+	}
+
+	desc = { #Blackfyre
+		trigger = {
+			character = 77024
+		}
+		text = EVTDESCBdote_conqueror.1
+		picture = GFX_daemon_blackfyre
+	}
+
+	desc = { #Bittersteel
+		trigger = {
+			character = 77025
+		}
+		text = EVTDESCCdote_conqueror.1
+		picture = GFX_viserys_targaryen
+	}
+
+	desc = { #Beggar King
+		trigger = {
+			character = 77040
+		}
+		text = EVTDESCDdote_conqueror.1
+		picture = GFX_viserys_targaryen
+	}
+
+	ai = no
+    is_triggered_only = yes
+
+	trigger = {
+		is_landed = yes
+		NOT = { tier = EMPEROR }
+		NOT = { has_character_flag = dragon_of_the_east }
+		OR = {
+			character = 779496
+			character = 77024
+			character = 77025
+			character = 77040
+		}
+		has_game_rule = { name = shattered_realms value = off }
+	}
+
+	immediate = {
+		if = {
+			limit = { ROOT = { character = 779496 } }
+			hidden_tooltip = {
+				c_28052 = { #Laena
+					add_trait = refusing_marriage
+				}
+				c_600511 = { #Braavosi Betrothed
+					add_trait = refusing_marriage
+				}
+				c_26052 = { #Sea Snake
+					character_event = { id = dote_conqueror.20 days = 30 }
+				}
+			}
+		}
+		if = {
+			limit = { ROOT = { character = c_77040 } }
+			set_special_character_title = DORNEPRINCE
+			b_spicertowers = {
+				grant_title = c_600000040
+				copy_title_history = k_pentos
+			}
+			any_courtier = {
+				limit = {
+					OR = {
+						culture_group = dornish
+						culture_group = andal
+						culture_group = first_men
+					}
+				}
+				banish = yes
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTdote_rogue_prince
+		trigger = { character = 779496 } #Rogue Prince
+		character_event = { id = dote_conqueror.2 days = 15 }
+	}
+
+	option = {
+		name = EVTOPTAdote_conqueror.1
+		trigger = { character = 77024 } #Blackfyre
+		wealth = 800
+		custom_tooltip = {
+			text = TOOLTIPdote_black_dragon
+			hidden_tooltip = {
+
+				#Flags
+				set_character_flag = dragon_of_the_east
+				set_dynasty_flag = blackfyres_renounced_claims_in_westeros
+
+				#Removes claims in Westeros
+				remove_claim = e_iron_throne
+				remove_claim = d_kings_landing
+				remove_claim = c_kings_landing
+				remove_claim = k_dragonstone
+				remove_claim = d_dragonstone
+				remove_claim = c_dragonstone
+				any_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = dynastic_bloodline
+					}
+					clr_bloodline_flag = dynastic_claim_e_iron_throne
+					clr_bloodline_flag = dynastic_claim_d_kings_landing
+					clr_bloodline_flag = dynastic_claim_c_kings_landing
+					clr_bloodline_flag = dynastic_claim_k_dragonstone
+					clr_bloodline_flag = dynastic_claim_d_dragonstone
+					clr_bloodline_flag = dynastic_claim_c_dragonstone
+					set_bloodline_flag = dragon_of_the_east
+				}
+				c_77023 = {
+					gain_title = c_bramsfort
+				}
+
+				#Lands in the Stepstones with supporters and an army.
+
+				b_bloodstone = {
+					grant_title = ROOT
+				}
+				d_tyroshi_lands = {
+					grant_title = ROOT
+				}
+
+				narrative_event = {	id = dote_conqueror.3 days = 40 }
+
+				#Bittersteel
+				c_77025 = {
+					liege = {
+						c_77025 = {
+							abdicate_to = PREV
+						}
+					}
+					move_character = ROOT
+				}
+
+				#Adds Army
+				spawn_unit = {
+					owner = ROOT
+					province = 358
+					home = 358
+						troops = {
+						archers = { 1000 1000 }
+						light_infantry = { 3000 3000 }
+						heavy_infantry = { 600 600 }
+						light_cavalry = { 200 200 }
+						knights = { 100 100 }
+					}
+					attrition = 0
+					maintenance_multiplier  = 0
+				}
+				#Adds Fleet
+				spawn_fleet = {
+					owner = ROOT
+					province = 358
+					troops = {
+						galleys = { 150 150 }
+					}
+				}
+				#Sells lands and titles in Bramsfort
+				c_77023 = {
+					gain_title = c_bramsfort
+				}
+
+				set_defacto_liege = k_tyrosh
+				remove_claim = c_bramsfort
+			}
+		}
+	}
+	######################
+
+	option = {
+		name = EVTOPTAdote_beggar_king
+		trigger = { character = 77040 } #Marry Dany to Khal Drogo
+		hidden_tooltip = {
+			c_102 = {
+				move_character = PREV
+			}
+		}
+		c_77041 = {
+			move_character = PREV
+		}
+		narrative_event = { id = dote_conqueror.4 days = 7 }
+	}
+
+	option = {
+		name = EVTOPTBdote_beggar_king
+		trigger = { character = 77040 } #Marry Dany
+		hidden_tooltip = {
+			c_102 = {
+				move_character = PREV
+			}
+		}
+		c_77041 = {
+			add_spouse = PREV
+			move_character = PREV
+		}
+		narrative_event = { id = dote_conqueror.4 days = 3 }
+	}
+
+	option = {
+		name = EVTOPTCdote_beggar_king
+		trigger = { character = 77040 } #Dany does not marry yet
+		hidden_tooltip = {
+			c_102 = {
+				move_character = PREV
+			}
+		}
+		c_77041 = {
+			move_character = PREV
+		}
+		narrative_event = { id = dote_conqueror.4 days = 1 }
+	}
+
+	#######################
+
+	option = {
+		name = EVTOPTAdote_conqueror.1
+		trigger = { character = 77025 } #Bittersteel
+
+		narrative_event = { id = dote_conqueror.6 days = 1 }
+	}
+
+	#Focus on Westeros
+	option = {
+		name = EVTOPTBdote_conqueror.1
+		custom_tooltip = { text = TOOLTIPdote_conqueror.1 }
+		trigger = {
+			character = 77024
+		}
+	}
+
+
+}
+
+##############################################################################
+###Claim Removers###
+character_event = {
+	id = dote_conqueror.1997
+
+	hide_window = yes
+    is_triggered_only = yes
+
+	trigger = {
+		dynasty = 496
+		any_owned_bloodline = {
+			has_bloodline_flag = dragon_of_the_east
+		}
+	}
+
+	immediate = {
+		set_character_flag = dragon_of_the_east
+	}
+}
+
+
+character_event = {
+	id = dote_conqueror.1998
+
+	hide_window = yes
+    is_triggered_only = yes
+
+	has_character_flag = dragon_of_the_east
+
+	trigger = {
+		OR = {
+			has_claim = e_iron_throne
+			has_claim = d_kings_landing
+			has_claim = c_kings_landing
+			has_claim = k_dragonstone
+			has_claim = d_dragonstone
+			has_claim = c_dragonstone
+		}
+	}
+
+	immediate = {
+        remove_claim = e_iron_throne
+		remove_claim = d_kings_landing
+		remove_claim = c_kings_landing
+		remove_claim = k_dragonstone
+		remove_claim = d_dragonstone
+		remove_claim = c_dragonstone
+	}
+}
+
+#Check to remove any Targaryen's claim to Dragonstone and the Iron Throne if the Beggar King abandoned Westeros and left to Essos
+character_event = {
+	id = dote_conqueror.1999
+
+	hide_window = yes
+    is_triggered_only = yes
+
+	has_character_flag = dragon_of_the_east
+
+	trigger = {
+	    dynasty = 496
+		OR = {
+			has_claim = e_iron_throne
+			has_claim = d_kings_landing
+			has_claim = c_kings_landing
+			has_claim = k_dragonstone
+			has_claim = d_dragonstone
+			has_claim = c_dragonstone
+		}
+	}
+
+	immediate = {
+        remove_claim = e_iron_throne
+		remove_claim = d_kings_landing
+		remove_claim = c_kings_landing
+		remove_claim = k_dragonstone
+		remove_claim = d_dragonstone
+		remove_claim = c_dragonstone
+	}
+}
+
+
+##############################################################################
+###Daemon Targaryen###
+character_event = {
+	id = dote_conqueror.2
+	title = EVTTITLEdote_conqueror.2
+	desc = EVTDESCdote_conqueror.2
+    picture = GFX_tamingdragon
+
+    is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote_conqueror.2
+		inherit = c_30091871
+		c_30091871 = {
+			death = {
+				death_reason = death_accident
+			}
+		}
+		custom_tooltip = {
+			text = TOOLTIPdote_conqueror.1
+			remove_character_modifier = foothold_in_stepstones_6
+			remove_character_modifier = partial_tolling_narrow_sea
+			any_demesne_title = {
+				limit = {
+					higher_tier_than = COUNT
+					NOT = { title = d_runestone }
+				}
+				unsafe_destroy_landed_title = THIS
+			}
+			any_demesne_title = {
+				limit = {
+					tier = COUNT
+					NOT = { title = c_runestone }
+				}
+				random_character = {
+					limit = { trait = pirate }
+					gain_title = PREV
+				}
+			}
+			k_vale = {
+				set_defacto_vassal = c_coldwater_burn
+				set_defacto_vassal = c_gulltower_mbs
+				set_defacto_vassal = ROOT
+			}
+		}
+		character_event = { id = dynamic_coa.1 }
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.2
+		c_30091871 = {
+			death = {
+				death_reason = death_accident
+			}
+		}
+		custom_tooltip = {
+			text = TOOLTIPBdote_rogue_prince
+			hidden_tooltip = {
+				#Flags
+				set_character_flag = dragon_of_the_east
+
+				###Set New Dynasty###
+				dynasty = 190001
+				set_dynasty_flag = dragon_riding_dynasty
+				set_dynasty_flag = has_dynamic_coa
+				set_dynasty_flag = tdp_dragon_riding_dynasty
+				set_dynasty_flag = high_valyrian
+				set_dynasty_flag = doctrine_of_exceptionalism
+				set_dynasty_flag = has_traditional_names
+				#Make it a cadet house of the Targs
+				c_779496 = {
+					set_dynasty_flag = owned_cadet_house_779496
+					add_trait = assign_mission_target
+					set_dynasty_flag = has_cadet_house
+				}
+				add_trait = assign_mission_target
+				set_dynasty_flag = is_cadet_house
+				set_dynasty_flag = cadet_house_77008
+				if = {
+					limit = {
+						c_77008 = { has_dynasty_flag = coin_flip_dynasty }
+					}
+					set_dynasty_flag = coin_flip_dynasty
+				}
+
+				#Removes claims in Westeros
+				remove_claim = e_iron_throne
+				remove_claim = d_kings_landing
+				remove_claim = c_kings_landing
+				remove_claim = k_dragonstone
+				remove_claim = d_dragonstone
+				remove_claim = c_dragonstone
+				any_owned_bloodline = {
+					remove_bloodline_member = ROOT
+				}
+				create_bloodline = {
+					type = dote_rogueprince_bloodline
+				}
+				create_bloodline = {
+					type = drop_of_the_dragon
+				}
+				character_event = { id = dynamic_coa.1 }
+			}
+		}
+	}
+}
+
+#Corlys Velaryon invites Daemon to a feast
+character_event = {
+	id = dote_conqueror.20
+	desc = EVTDESCdote_conqueror.20
+
+	is_triggered_only = yes
+
+	trigger = {
+		FROM = { is_married = no }
+	}
+
+	option = {
+		name = EVTOPTAdote_conqueror.20
+		FROM = { long_character_event = { id = dote_conqueror.21 days = 4 } }
+		custom_tooltip = {
+			text = TOOLTIPdote_conqueror.20
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.20
+		hidden_tooltip = {
+			c_28052 = { #Laena
+				remove_trait = refusing_marriage
+			}
+			c_600511 = { #Braavosi Betrothed
+				remove_trait = refusing_marriage
+			}
+		}
+		c_28052 = { #Laena
+			c_600511 = {
+				add_spouse = PREV
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Daemon gets the invite
+long_character_event = {
+	id = dote_conqueror.21
+	desc = EVTDESCdote_conqueror.21
+
+	is_triggered_only = yes
+
+	option = { #Daemon accepts
+		name = EVTOPTAdote_conqueror.21
+		FROM = { character_event = { id = dote_conqueror.210 days = 3 } }
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = { #Daemon refuses
+		name = EVTOPTBdote_conqueror.21
+		FROM = { character_event = { id = dote_conqueror.211 days = 3 } }
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Accepted
+character_event = {
+	id = dote_conqueror.210
+	desc = EVTDESCdote_conqueror.210
+
+	is_triggered_only = yes
+
+	option = { #Daemon accepts
+		name = EVTOPTAdote_conqueror.210
+		hidden_tooltip = { c_600511 = { character_event = { id = dote_conqueror.2999 days = 7 } } }
+	}
+}
+
+#Rejected
+character_event = {
+	id = dote_conqueror.211
+	desc = EVTDESCdote_conqueror.211
+
+	is_triggered_only = yes
+
+	option = { #Daemon refuses
+		name = EVTOPTAdote_conqueror.211
+	}
+}
+
+#Scope to idiot
+character_event = {
+	id = dote_conqueror.2999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROMFROM = { long_character_event = { id = dote_conqueror.22 } }
+	}
+}
+
+#Feast - Daemon
+long_character_event = {
+	id = dote_conqueror.22
+	desc = EVTDESCdote_conqueror.22
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote_conqueror.22
+		long_character_event = { id = dote_conqueror.220 }
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.22
+		long_character_event = { id = dote_conqueror.220 }
+	}
+
+	option = {
+		name = EVTOPTCdote_conqueror.22
+		long_character_event = { id = dote_conqueror.220 }
+	}
+
+	option = {
+		name = EVTOPTDdote_conqueror.22
+		long_character_event = { id = dote_conqueror.220 }
+	}
+}
+
+long_character_event = {
+	id = dote_conqueror.220
+	desc = EVTDESCdote_conqueror.220
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote_conqueror.220
+		FROM = { character_event = { id = dote_conqueror.2998 } }
+		set_character_flag = dodge
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.220
+		FROM = { character_event = { id = dote_conqueror.2998 } }
+		set_character_flag = strong
+	}
+
+	option = {
+		name = EVTOPTCdote_conqueror.220
+		FROM = { character_event = { id = dote_conqueror.2998 } }
+		set_character_flag = swift
+	}
+}
+
+#Scope to idiot
+character_event = {
+	id = dote_conqueror.2998
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = { narrative_event = { id = dote_conqueror.221 } }
+	}
+}
+
+narrative_event = {
+	id = dote_conqueror.221
+	title = EVTTITLEdote_conqueror.2
+	desc = EVTDESCdote_conqueror.221
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote_conqueror.221
+		c_600511 = {
+			death = {
+				death_reason = death_duel
+				killer = ROOT
+			}
+		}
+		c_28052 = {
+			hidden_tooltip = {
+				remove_trait = refusing_marriage
+				c_77990003 = {
+					move_character = c_779496
+				}
+			}
+			add_spouse = ROOT
+		}
+		c_26052 = {
+			character_event = { id = dote_conqueror.222 }
+		}
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.221
+		c_600511 = {
+			death = {
+				death_reason = death_duel
+				killer = ROOT
+			}
+		}
+		c_26052 = {
+			character_event = { id = dote_conqueror.223 }
+		}
+	}
+}
+
+#Tell Corlys what happened
+#Marriage
+character_event = {
+	id = dote_conqueror.222
+	desc = EVTDESCAdote_conqueror.222
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTdote_conqueror.222
+	}
+}
+#No Marriage
+character_event = {
+	id = dote_conqueror.223
+	desc = EVTDESCAdote_conqueror.223
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTdote_conqueror.223
+	}
+}
+##############################################################################
+###Daemon Blackfyre###
+narrative_event = {
+	id = dote_conqueror.3
+	title = EVTTITLEdote_conqueror.3
+	desc = EVTDESCdote_conqueror.3
+    picture = GFX_daemon_blackfyre
+
+    is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote_conqueror.3
+		custom_tooltip = {
+			text = TOOLTIPAdote_conqueror.3
+			hidden_tooltip = {
+				prestige = -100
+				k_tyrosh = {
+					holder_scope = {
+						death = {
+							death_reason = murder
+						}
+					}
+				}
+				c_tyrosh = {
+					grant_title = ROOT
+				}
+				d_tyrosh = {
+					grant_title = ROOT
+				}
+				k_tyrosh = {
+					grant_title = ROOT
+				}
+				capital = c_tyrosh
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.3
+		custom_tooltip = {
+			text = TOOLTIPBdote_conqueror.3
+			hidden_tooltip = {	prestige = 100 }
+		}
+	}
+}
+
+
+##############################################################################
+###Viserys Targaryen###
+narrative_event = {
+	id = dote_conqueror.4
+	title = EVTTITLEdote_conqueror.4
+	desc = EVTDESCdote_conqueror.4
+    picture = GFX_viserys_targaryen
+
+    is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdote_conqueror.4
+		hidden_tooltip = {
+			c_102 = {
+				move_character = PREV
+			}
+		}
+		c_77041 = {
+			add_spouse = c_300100
+			move_character = c_300100
+		}
+		add_alliance = {
+			who = c_600000040
+			years = 5
+		}
+		add_alliance = {
+			who = c_300100
+			years = 5
+		}
+		spawn_unit = {
+			owner = ROOT
+			province = capital_scope
+			home = 704
+			reinforces = yes
+			reinforce_rate_multiplier = 0.25
+
+			troops = {
+				horse_archers = { 5000 5000 }
+				light_cavalry = { 2000 2000 }
+			}
+
+			maintenance_multiplier = 0.1
+		}
+		unsafe_war = {
+			target = k_braavos
+			casus_belli = duchy_adventure
+			thirdparty_title = k_braavos
+		}
+		hidden_tooltip = {
+			c_600000040 = {
+				join_attacker_wars = ROOT
+				opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+				reverse_opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+			}
+			c_300100 = {
+				join_attacker_wars = ROOT
+				opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+				reverse_opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+			}
+		}
+
+		hidden_tooltip = {
+			set_character_flag = dragon_of_the_east
+			set_dynasty_flag = targaryens_renounced_claims_in_westeros
+
+			#Removes claims in Westeros
+			remove_claim = e_iron_throne
+			remove_claim = d_kings_landing
+			remove_claim = c_kings_landing
+			remove_claim = k_dragonstone
+			remove_claim = d_dragonstone
+			remove_claim = c_dragonstone
+			any_owned_bloodline = {
+				limit = { has_bloodline_flag = dynastic_bloodline }
+				clr_bloodline_flag = dynastic_claim_e_iron_throne
+				clr_bloodline_flag = dynastic_claim_d_kings_landing
+				clr_bloodline_flag = dynastic_claim_c_kings_landing
+				clr_bloodline_flag = dynastic_claim_k_dragonstone
+				clr_bloodline_flag = dynastic_claim_d_dragonstone
+				clr_bloodline_flag = dynastic_claim_c_dragonstone
+				set_bloodline_flag = dragon_of_the_east
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBdote_conqueror.4
+		c_77041 = {
+			add_spouse = c_300100
+			move_character = c_300100
+		}
+		add_alliance = {
+			who = c_600000040
+			years = 5
+		}
+		add_alliance = {
+			who = c_300100
+			years = 5
+		}
+		hidden_tooltip = {
+			c_600000040 = {
+				opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+				reverse_opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+			}
+			c_300100 = {
+				opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+				reverse_opinion = {
+					name = opinion_ally
+					who = ROOT
+					years = 5
+				}
+			}
+		}
+	}
+}
+
+
+#Stallion Who Mounts the World event chain
+narrative_event = {
+	id = dote_conqueror.5
+	title = EVTTITLEdote_conqueror.5
+	desc = EVTDESCdote_conqueror.5
+	picture = GFX_evt_birth
+
+    is_triggered_only = yes
+
+	trigger = {
+		start_date = 8298.10.9
+		start_date < 8298.10.11
+		character = c_300100
+	}
+
+	option = {
+		name = EVTOPTdote_conqueror.5
+		custom_tooltip = { text = EVTTOOLTIPdote_conqueror.5 }
+		remove_trait = wounded
+		cure_illness = yes
+
+		show_portrait = c_2300100
+		hidden_tooltip = {
+			c_77041 = {
+				#Remove these in later decision for Rhaego
+				set_character_flag = no_court_invites
+				set_character_flag = dragon_of_the_east
+				set_dynasty_flag = targaryens_renounced_claims_in_westeros
+
+				#Removes claims in Westeros
+				remove_claim = e_iron_throne
+				remove_claim = d_kings_landing
+				remove_claim = c_kings_landing
+				remove_claim = k_dragonstone
+				remove_claim = d_dragonstone
+				remove_claim = c_dragonstone
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dynastic_bloodline }
+					clr_bloodline_flag = dynastic_claim_e_iron_throne
+					clr_bloodline_flag = dynastic_claim_d_kings_landing
+					clr_bloodline_flag = dynastic_claim_c_kings_landing
+					clr_bloodline_flag = dynastic_claim_k_dragonstone
+					clr_bloodline_flag = dynastic_claim_d_dragonstone
+					clr_bloodline_flag = dynastic_claim_c_dragonstone
+					set_bloodline_flag = dragon_of_the_east
+				}
+				any_owned_bloodline = {
+					add_bloodline_member = c_2300100
+				}
+			}
+			c_2300100 = {
+				save_event_target_as = child_of_destiny
+				set_character_flag = is_child_of_destiny
+				set_character_flag = ai_flag_refuse_concubinage
+				set_character_flag = no_court_invites
+				father = {
+					narrative_event = { id = HF.201 days = 15 }
+				}
+				mother = {
+					narrative_event = { id = HF.201 days = 15 }
+				}
+				child_of_destiny_journey_start_effect = yes
+				health = 1
+
+				change_variable = { which = global_children_of_destiny_on_birth value = 1 }
+				set_global_flag = child_of_destiny_@ROOT
+				if = {
+					limit = {
+						OR = {
+							father = { ai = no }
+							mother = { ai = no }
+						}
+					}
+					change_variable = { which = global_children_of_destiny_on_birth_player value = 1 }
+				}
+
+				if = {
+					limit = {
+						has_global_flag = cod_test_events
+					}
+					any_player = {
+						character_event = { id = HF.307 }
+					}
+				}
+			}
+		}
+	}
+}
+
+
+#event 1--detect succession change
+character_event = {
+	id = dote_conqueror.51
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	min_age = 1
+
+	trigger = {
+		NOT = { has_character_flag = rr_check }
+		OR = {
+			character = 2300100
+			character = 300100
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				age < 15
+				character = c_2300100
+				c_300100 = { is_alive = no }
+			}
+			character_event = { id = dote_conqueror.511 }
+			set_character_flag = rr_check
+		}
+		else = {
+			limit = {
+				character = c_300100
+				c_2300100 = { age = 15 }
+			}
+			character_event = { id = dote_conqueror.510 }
+		}
+	}
+}
+
+#Khal Drogo dies
+character_event = {
+	id = dote_conqueror.510
+	title = EVTTITLEdote_conqueror.5
+	desc = EVTDESCdote_conqueror.510
+	picture = GFX_evt_dothraki
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTdote_conqueror.510
+		death = { death_reason = death_murder }
+		any_demesne_title = {
+			limit = { NOT = { tier = EMPIRE } }
+			gain_title = c_2300100
+		}
+		c_2300100 = {
+			long_character_event = { id = dote_conqueror.511 days = 1 }
+			inherit = c_300100
+			set_character_flag = rr_check
+		}
+	}
+}
+
+#Khal Rhaego takes the Horde
+long_character_event = {
+	id = dote_conqueror.511
+	title = EVTTITLEdote_conqueror.5
+	desc = EVTDESCdote_conqueror.511
+	picture = GFX_evt_dothraki
+
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { FROM = { has_landed_title = e_khalasar } }
+			gain_title = e_khalasar
+		}
+	}
+
+	option = {
+		name = "EVTOPTArhaego_resurrection.2" #Drogo
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "EVTOPTBrhaego_resurrection.2" #Targaryen
+		hidden_tooltip = {
+			any_child_even_if_dead = {
+				limit = { dynasty = ROOT }
+				dynasty = 496
+				any_child_even_if_dead = {
+					limit = { dynasty = ROOT }
+					dynasty = 496
+					any_child_even_if_dead = {
+						limit = { dynasty = ROOT }
+						dynasty = 496
+					}
+				}
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = { character = 300100 }
+					AND = {
+						is_close_relative = 2300100
+						is_close_relative = 300100
+						is_close_relative = 77041
+					}
+				}
+				dynasty = 496
+			}
+		}
+		dynasty = 496
+		hidden_tooltip = {
+			c_77041 = {
+				remove_trait = dosh_khaleen
+				move_character = ROOT
+				add_trait = refusing_marriage
+				any_owned_bloodline = {
+					ROOT = {
+						add_to_bloodline = PREV
+						any_dynasty_member_even_if_dead = {
+							add_to_bloodline = PREVPREV
+						}
+					}
+					set_bloodline_flag = dynastic_claim_e_iron_throne
+					set_bloodline_flag = dynastic_claim_d_kings_landing
+					set_bloodline_flag = dynastic_claim_c_kings_landing
+					set_bloodline_flag = dynastic_claim_k_dragonstone
+					set_bloodline_flag = dynastic_claim_d_dragonstone
+					set_bloodline_flag = dynastic_claim_c_dragonstone
+				}
+				add_claim = e_iron_throne
+				add_claim = d_kings_landing
+				add_claim = c_kings_landing
+				add_claim = k_dragonstone
+				add_claim = d_dragonstone
+				add_claim = c_dragonstone
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "EVTOPTCrhaego_resurrection.2" #Vezhovo
+		hidden_tooltip = {
+			any_child_even_if_dead = {
+				limit = { dynasty = ROOT }
+				dynasty = 190000
+				any_child_even_if_dead = {
+					limit = { dynasty = ROOT }
+					dynasty = 190000
+					any_child_even_if_dead = {
+						limit = { dynasty = ROOT }
+						dynasty = 190000
+					}
+				}
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = { character = 300100 }
+					AND = {
+						is_close_relative = 2300100
+						is_close_relative = 300100
+						is_close_relative = 77041
+					}
+				}
+				dynasty = 496 #Keeping them Targaryen
+			}
+		}
+		dynasty = 190000
+		hidden_tooltip = {
+			c_77041 = {
+				remove_trait = dosh_khaleen
+				move_character = ROOT
+				add_trait = refusing_marriage
+				any_owned_bloodline = {
+					ROOT = {
+						add_to_bloodline = PREV
+						any_dynasty_member_even_if_dead = {
+							add_to_bloodline = PREVPREV
+						}
+					}
+					set_bloodline_flag = dynastic_claim_e_iron_throne
+					set_bloodline_flag = dynastic_claim_d_kings_landing
+					set_bloodline_flag = dynastic_claim_c_kings_landing
+					set_bloodline_flag = dynastic_claim_k_dragonstone
+					set_bloodline_flag = dynastic_claim_d_dragonstone
+					set_bloodline_flag = dynastic_claim_c_dragonstone
+				}
+				add_claim = e_iron_throne
+				add_claim = d_kings_landing
+				add_claim = c_kings_landing
+				add_claim = k_dragonstone
+				add_claim = d_dragonstone
+				add_claim = c_dragonstone
+			}
+		}
+		hidden_tooltip = { #Make it a cadet house of the Targs
+			c_77041 = {
+				set_dynasty_flag = owned_cadet_house_2300100
+				add_trait = assign_mission_target
+				set_dynasty_flag = has_cadet_house
+			}
+			add_trait = assign_mission_target
+			set_dynasty_flag = is_cadet_house
+			set_dynasty_flag = cadet_house_77041
+			c_2300100 = {
+				set_dynasty_flag = coin_flip_dynasty
+				set_dynasty_flag = high_valyrian
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	after = {
+		hidden_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						dynasty = 496
+						dynasty = 190000
+					}
+				}
+				any_character = {
+					limit = {
+						any_artifact = {
+							OR = {
+								artifact_type = blackfyre
+								artifact_type = darksister
+							}
+						}
+					}
+					any_artifact = {
+						limit = {
+							OR = {
+								artifact_type = blackfyre
+								artifact_type = darksister
+							}
+						}
+						if = {
+							limit = { NOT = { any_artifact_owner = { dynasty = ROOT } } }
+							set_artifact_flag = heirloom_@ROOT
+							transfer_artifact = { from = PREV to = ROOT }
+							transfer_artifact = { from = ROOT to = PREV }
+						}
+					}
+				}
+			}
+		}
+	}
+}

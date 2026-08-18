@@ -1,0 +1,743 @@
+namespace = sb_harpy
+
+#Inform Harpy followers are mad
+narrative_event = {
+	id = sb_harpy.0
+	desc = "EVTDESC_sb_harpy.0"
+	title = "EVTTITLEsb_sb_harpy.0"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = harpy_religion_problem }
+		NOT = { religion = harpy }
+	}
+
+	immediate = {
+		set_global_flag = harpy_religion_problem
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.0A"
+		ROOT = {
+			narrative_event = {
+				id = sb_harpy.1
+				days = 200
+			}
+		}
+	}
+}
+namespace = sb_harpy
+#An Offer to become Harpy or suffer consecuences in the future
+narrative_event = {
+	id = sb_harpy.1
+	desc = "EVTDESC_sb_harpy.1"
+	title = "EVTTITLEsb_sb_harpy.1"
+	picture = GFX_evt_yunkai
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { religion = harpy }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.1A"
+		prestige = -100
+		religion = harpy
+		add_trait = cynical
+		any_vassal = {
+			 limit = {
+				 capital_scope = {
+					 OR = {
+						 region = world_ghiscar
+						 region = world_slavers_bay
+					 }
+				 }
+				 religion = rhllor
+			 }
+			 opinion = { who = ROOT modifier = opinion_religion_threatened months = 100 }
+		 }
+		 any_courtier = {
+			 limit = {
+				religion = rhllor
+				is_adult = yes
+			 }
+		 opinion = { who = ROOT modifier = opinion_religion_threatened months = 100 }
+		 }
+		 any_vassal = {
+			 limit = {
+				 capital_scope = {
+					 OR = {
+						 region = world_ghiscar
+						 region = world_slavers_bay
+					 }
+				 }
+				 religion = the_seven
+			 }
+			 opinion = { who = ROOT modifier = opinion_religion_threatened months = 50 }
+		 }
+		 any_courtier = {
+			 limit = {
+				religion = the_seven
+				is_adult = yes
+			 }
+		 opinion = { who = ROOT modifier = opinion_religion_threatened months = 100 }
+		 }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.1B"
+		prestige = 100
+		set_global_flag = harpy_threatened
+		 any_vassal = {
+			 limit = {
+				 capital_scope = {
+					 OR = {
+						 region = world_ghiscar
+						 region = world_slavers_bay
+					 }
+				 }
+				 religion = harpy
+			 }
+			 opinion = { who = ROOT modifier = opinion_religion_threatened months = 100 }
+		 }
+		 any_courtier = {
+			 limit = {
+				religion = harpy
+				is_adult = yes
+			 }
+		 opinion = { who = ROOT modifier = opinion_religion_threatened months = 100 }
+		}
+	}
+}
+namespace = sb_harpy
+#Sons of the Harpy uprising
+character_event = {
+	id = sb_harpy.2
+	desc = "EVTDESC_sb_harpy.2"
+	title = "EVTTITLEsb_sb_harpy.2"
+	picture = GFX_evt_yunkai
+
+	only_independent = yes
+	has_global_flag = harpy_threatened
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_global_flag = dany_stormborn_events
+		d_sons_harpy = {
+			has_holder = no
+			OR = { #35 year cooldown
+				NOT = { has_title_flag = harpy_invasion }
+				had_title_flag = { flag = harpy_invasion days = 12775 }
+			}
+		}
+		any_character = {
+			NOT = { trait = shavepate }
+			is_lowborn = no
+			NOT = { trait = unsullied }
+			NOT = { trait = imperialguard }
+			NOT = { trait = liberator }
+			OR = {
+				culture = ghiscari
+				culture = astapori
+				culture = meereenese
+				culture = yunkaii
+			}
+			is_ruler = no
+			is_female = no
+			is_adult = yes
+			prisoner = no
+			religion = harpy
+			is_primary_heir = no
+			is_incapable = no
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 55
+		modifier = {
+			factor = 3
+			has_game_rule = {
+				name = non_lore_invasions
+				value = rare
+			}
+		}
+		modifier = {
+			factor = 0.5
+			e_ghiscar = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.2"
+		random_character = {
+			limit = {
+				NOT = { character = ROOT }
+				NOT = { trait = shavepate }
+				OR = {
+					culture = ghiscari
+					culture = astapori
+					culture = meereenese
+					culture = yunkaii
+				}
+				is_married = no
+				is_ruler = no
+				is_female = no
+				is_adult = yes
+				prisoner = no
+				religion = harpy
+				is_primary_heir = no
+				is_incapable = no
+				is_lowborn = no
+			}
+			hidden_tooltip = {
+				add_trait = disinherited
+				add_trait = ruthless
+				add_trait = zealous
+				add_trait = ambitious
+			}
+			activate_title = { title = d_sons_harpy status = yes }
+			d_sons_harpy = {
+				gain_title = PREV
+				clr_title_flag = harpy_invasion
+				set_title_flag = harpy_invasion
+			}
+			character_event = {
+				id = sb_harpy.3
+				days = 1
+			}
+			create_bloodline = {
+			type = son_harpy_blood
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_harpy.4
+				days = 3
+			}
+		}
+	}
+}
+namespace = sb_harpy
+#Spawn an Army
+character_event = {
+	id = sb_harpy.3
+	desc = "EVTDESC_sb_harpy.3"
+	picture = GFX_evt_yunkai
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok."
+		ROOT = {
+			character_event = {
+				id = sb_harpy.8
+				days = 7
+			}
+		}
+		FROM = {
+			ROOT = {
+				spawn_unit = {
+					province = 607
+					home = 607
+					troops = {
+						light_infantry = { 2123 2123 }
+						light_cavalry = { 133 133 }
+						archers = { 1133 1133 }
+						heavy_infantry = { 300 300 }
+						pikemen = { 1113 1113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = 611
+					home = 611
+					troops = {
+						light_infantry = { 2123 2123 }
+						light_cavalry = { 133 133 }
+						archers = { 1133 1133 }
+						heavy_infantry = { 300 300 }
+						pikemen = { 1113 1113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = 628
+					home = 628
+					troops = {
+						light_infantry = { 2123 2123 }
+						light_cavalry = { 133 133 }
+						archers = { 1133 1133 }
+						heavy_infantry = { 300 300 }
+						pikemen = { 1113 1113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+				spawn_unit = {
+					province = 635
+					home = 635
+					troops = {
+						light_infantry = { 2123 2123 }
+						light_cavalry = { 133 133 }
+						archers = { 1133 1133 }
+						heavy_infantry = { 300 300 }
+						pikemen = { 1113 1113 }
+					}
+					attrition = 0.2
+					earmark = dummy #needs or else it will CTD for some reason
+				}
+			}
+		}
+		#Spawn a few courtiers
+		create_random_soldier = {
+			female = no
+			culture = ghiscari
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+		create_random_soldier = {
+			female = no
+			culture = astapori
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+		create_random_soldier = {
+			female = no
+			culture = meereenese
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+		create_random_soldier = {
+			female = no
+			culture = yunkaii
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+		}
+		new_character = {
+			random_list = {
+				70 = { add_trait = trained_warrior }
+				20 = { add_trait = skilled_warrior }
+				10 = { add_trait = master_warrior }
+			}
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+		create_character = {
+			female = yes
+			culture = ghiscari
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+			age = 18
+		}
+		new_character = {
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+		create_character = {
+			female = yes
+			culture = ghiscari
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+			age = 25
+		}
+		new_character = {
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+		create_character = {
+			female = yes
+			culture = meereenese
+			religion = harpy
+			random_traits = yes
+			dynasty = none
+			age = 24
+		}
+		new_character = {
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			add_trait = zealous
+		}
+	}
+}
+namespace = sb_harpy
+#Inform Emperor of Ghiscar
+character_event = {
+	id = sb_harpy.4
+	desc = "EVTDESC_sb_harpy.4"
+	title = "EVTTITLEsb_sb_harpy.4"
+	picture = GFX_evt_yunkai
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { religion = harpy }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.4"
+		d_sons_harpy = { holder_scope = { tooltip = { show_portrait = yes } } }
+		ROOT = {
+			reverse_war = {
+				target = d_sons_harpy
+				casus_belli = sb_harpy_uprising
+			}
+		}
+	}
+}
+namespace = sb_harpy
+#Sons of the Harpy send assasins to capital
+character_event = {
+	id = sb_harpy.5
+	desc = "EVTDESC_sb_harpy.5"
+	title = "EVTTITLEsb_sb_harpy.5"
+	picture = GFX_evt_yunkai
+
+	religion = harpy
+
+	trigger = {
+		has_landed_title = d_sons_harpy
+	}
+
+	mean_time_to_happen = {
+		months = 25
+			modifier = {
+				factor = 0.5
+				any_character = {
+					trait = shavepate
+				}
+		}
+			modifier = {
+				factor = 0.5
+				any_character = {
+					trait = unsullied
+				}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.5"
+		e_ghiscar = {
+			holder_scope = {
+				random_courtier = {
+					limit = {
+						is_adult = yes
+						is_ruler = no
+						is_primary_heir = no
+					}
+					character_event = {
+						id = sb_harpy.6
+						days = 3
+					}
+				}
+			}
+		}
+	}
+}
+namespace = sb_harpy
+#Sons of the Harpy murder a courtier on the street
+character_event = {
+	id = sb_harpy.6
+	desc = "EVTDESC_sb_harpy.6"
+	title = "EVTTITLEsb_sb_harpy.6"
+	picture = "GFX_dark_corridor"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ruler = no
+		is_adult = yes
+		d_sons_harpy = { has_holder = yes }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.6"
+		ROOT = {
+			death = {
+				death_reason = death_murder_unknown
+				killer = FROM
+			}
+		}
+		any_character = {
+			limit = { has_landed_title = e_ghiscar }
+			character_event = {
+				id = sb_harpy.7
+				days = 1
+			}
+		}
+	}
+}
+namespace = sb_harpy
+#Emperor is informed of courtier death
+character_event = {
+	id = sb_harpy.7
+	desc = "EVTDESC_sb_harpy.7"
+	title = "EVTTITLEsb_sb_harpy.7"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { religion = harpy }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.7"
+		prestige = -10
+	}
+}
+namespace = sb_harpy
+#The Harpy asks harpy vassals for help
+character_event = {
+	id = sb_harpy.8
+	desc = "EVTDESC_sb_harpy.8"
+	title = "EVTTITLEsb_sb_harpy.8"
+	picture = GFX_evt_yunkai
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_sons_harpy
+		NOT = { has_character_flag = asked_help_harpy }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_harpy.8"
+		set_character_flag = asked_help_harpy
+			any_playable_ruler = {
+				limit = {
+					religion = harpy
+					is_adult = yes
+					higher_tier_than = BARON
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { has_landed_title = d_unsullied }
+					NOT = { has_landed_title = d_free_brothers }
+					NOT = { has_landed_title = d_stalwart_shields }
+					NOT = { has_landed_title = d_mothers_men }
+				}
+				character_event = {
+					id = sb_harpy.9
+					days = 5
+				}
+			}
+	}
+}
+namespace = sb_harpy
+#Harpy vassal decides if help uprising
+character_event = {
+	id = sb_harpy.9
+	desc = "EVTDESC_sb_harpy.9"
+	title = "EVTTITLEsb_sb_harpy.9"
+	picture = GFX_evt_yunkai
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_harpy.9"
+		trigger = { religion = harpy }
+		wealth = -30
+		set_character_flag = helped_harpy
+		FROM = { wealth = 30 }
+		ai_chance = {
+			factor = 40
+			modifier = {
+				factor = 6
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				trait = cruel
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 4
+				trait = slave_owner
+			}
+			modifier = {
+				factor = 1.5
+				trait = ruthless
+			}
+		}
+		d_sons_harpy = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+
+	option = {
+		name = "EVTOPTB_sb_harpy.9"
+		prestige = 60
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 10
+				trait = shavepate
+			}
+			modifier = {
+				factor = 2
+				trait = cynical
+			}
+			modifier = {
+				factor = 0.5
+				trait = cruel
+			}
+			modifier = {
+				factor = 5
+				trait = liberator
+			}
+			modifier = {
+				factor = 2
+				trait = honorable
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = just
+			}
+		}
+		e_ghiscar = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}

@@ -1,0 +1,436 @@
+#####################################################
+###############Расширено до Века Крови###############
+#####################################################
+700066 = {
+	name = "Хагон"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	7888.1.1 = { birth = yes }
+	7942.1.1 = { death = yes }
+}
+700067 = {
+	name = "Лодос"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 700066
+
+	7919.1.1 = { birth = yes }
+	7974.1.1 = { death = yes }
+}
+700068 = {
+	name = "Беннарион"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 700067
+
+	7951.1.1 = { birth = yes }
+	8000.1.1 = { death = yes }
+}
+#####################################################
+101353 = {
+    name = "Квеллон"
+    dynasty = 1500
+
+    religion = "drowned_god"
+    culture = "ironborn"
+
+	father = 700068
+
+    7975.1.1 = { birth = yes }
+    8022.1.1 = { death = yes }
+}
+181354 = {
+	name = "Берон"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101353
+
+	7994.1.1 = { birth = yes }
+	8010.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8066.1.1 = { death = yes }
+}
+101361 = {
+	name = "Харрас"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101353
+
+	7997.1.1 = { birth = yes }
+	8069.1.1 = { death = yes }
+}
+101355 = {
+	name = "Эндегар"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 181354
+
+	8020.1.1 = { birth = yes }
+	8069.1.1 = { death = yes }
+}
+101356 = {
+	name = "Ленвуд"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101355
+
+	8044.1.1 = { birth = yes }
+	8060.1.1 = { add_trait = skilled_warrior }
+	8104.1.1 = { death = yes }
+}
+101357 = {
+	name = "Дунстан"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101356
+
+	8090.1.1 = { birth = yes }
+	8106.1.1 = { add_trait = knight add_trait = trained_warrior }
+	8137.1.1 = { death = yes }
+}
+101362 = {
+	name = "Эурон"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101356
+
+	8093.1.1 = { birth = yes }
+	8130.1.1 = { death = yes }
+}
+101358 = {
+	name = "Саргон"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101357
+
+	8108.1.1 = { birth = yes }
+	8124.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8187.1.1 = { death = yes }
+}
+101359 = {
+	name = "Роггон"	# a lord
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101358
+
+	8133.1.1 = { birth = yes }
+	8201.1.1 = { death = yes }
+}
+101360 = {
+	name = "Торгон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 101359
+
+	8162.1.1 = { birth = yes }
+	8178.1.1 = { add_trait = knight }
+	8215.1.1 = { death = yes }
+}
+#
+1500 = {
+	name = "Эрик"
+	dynasty = 1500
+    father = 101360
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	martial = 10
+	stewardship = 14
+
+	add_trait = "thrifty_clerk"
+	add_trait = "ambitious"
+	add_trait = "strong"
+	add_trait = "just"
+	add_trait = "diligent"
+	add_trait = "gluttonous"
+
+	8211.1.1 = {
+		birth = yes
+		effect = { health = 4 }
+	}
+	8216.1.1 = {
+		create_bloodline = {
+			type = ironmaker_bloodline
+			has_dlc = "Holy Fury"
+		}
+	}
+	8227.1.1 = {
+		add_trait = viking
+		wealth = 100
+		prestige = 100
+		add_trait = "master_warrior"
+		give_nickname = nick_anvilbreaker
+	}
+	8261.1.1 = {
+		remove_trait = "master_warrior"
+		add_trait = "skilled_warrior"
+	}
+	8275.1.1 = {
+		add_trait = is_fat
+		effect = {
+			set_variable = { which = physique_variable value = 20 }
+		}
+	}
+	8284.1.1 = {
+		add_trait = "infirm"
+		effect = {
+			set_variable = { which = physique_variable value = 35 }
+			add_character_modifier = { name = obese_modifier duration = -1 }
+		}
+	}
+	8300.1.1 = {
+		add_spouse = 7107 #Asha
+	}
+}
+101500 = {
+	name = "Беннарион"	#non-canon name
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	add_trait = "strong"
+
+	father = 1500
+
+	8230.1.1 = {
+		birth = yes
+		employer = 17107
+	}
+	8246.1.1 = {
+		add_trait = "trained_warrior"
+	}
+	8258.1.1 = {
+		employer = 107
+	}
+	8270.1.1 = {
+		employer = 1107
+	}
+	8289.6.1 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+111500 = {
+	name = "Урек"	#canon
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	add_trait = "strong"
+
+	father = 101500
+
+	8250.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+	8266.1.1 = {
+		add_trait = "misguided_warrior"
+		add_trait = "trained_warrior"
+	}
+}
+141500 = {
+	name = "Викон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 111500
+
+	8270.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+151500 = {
+	name = "Верон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 111500
+
+	8272.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+161500 = {
+	name = "Квеллон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 111500
+
+	8274.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+121500 = {
+	name = "Тормор"	#canon
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	add_trait = "strong"
+
+	father = 101500
+
+	8251.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+	8267.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "skilled_warrior"
+	}
+}
+171500 = {
+	name = "Харлон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 121500
+
+	8271.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+181500 = {
+	name = "Бейлон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 121500
+
+	8274.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+191500 = {
+	name = "Квентон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 121500
+
+	8277.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+131500 = {
+	name = "Дагон"	#canon
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	add_trait = "strong"
+
+	father = 101500
+
+	8253.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+	8269.1.1 = {
+		add_trait = "misguided_warrior"
+		add_trait = "poor_warrior"
+	}
+}
+201500 = {
+	name = "Марон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 131500
+
+	8273.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+211500 = {
+	name = "Дальтон"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 131500
+
+	8277.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}
+221500 = {
+	name = "Харрен"
+	dynasty = 1500
+
+	religion = "drowned_god"
+	culture = "ironborn"
+
+	father = 131500
+
+	8281.1.1 = {
+		birth = yes
+		employer = 1107
+	}
+}

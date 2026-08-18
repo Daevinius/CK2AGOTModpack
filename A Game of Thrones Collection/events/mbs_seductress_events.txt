@@ -1,0 +1,289 @@
+namespace = mbs_seductress
+#Highborn girl may seduct a lowborn
+character_event = {
+	id = mbs_seductress.1
+	desc = "EVTDESCmbs_seductress.1"
+	picture = "GFX_evt_brothel"
+	min_age = 16
+
+	only_women = yes
+
+	is_triggered_only = yes
+
+
+	trigger = {
+		NOT_mythical_creature_trigger = yes
+		employer = { capital_scope = { region = world_westeros } }
+		is_married = no
+		is_ruler = no
+		trait = lustful
+		trait = proud
+		trait = envious
+		prisoner = no
+		is_incapable = no
+		NOT = { wildling_culture_trigger = yes }
+		NOT = { trait = dragon }
+		NOT = { is_inaccessible_trigger = yes }
+		is_lowborn = no
+		NOT = {
+			age = 35
+		}
+		NOR = {
+			trait = prostitute
+			trait = chaste
+			trait = celibate
+			trait = wildling
+			trait = salt_wife
+		}
+		NOT = {
+			has_character_flag = mbs_pr_no
+		}
+	}
+
+
+	option = {
+		name = "EVTOPTAmbs_seductress.1" #
+		any_playable_ruler = {
+			limit = {
+				is_parent_of = ROOT
+			}
+			character_event = {
+				id = mbs_seductress.2
+				days = 3
+			}
+			create_random_soldier = {
+				female = no
+				random_traits = yes
+				dynasty = none
+			}
+			new_character = {
+				random_list = {
+					10 = { add_trait = trained_warrior }
+					20 = { add_trait = skilled_warrior }
+					70 = { add_trait = master_warrior }
+				}
+				remove_trait = inbred
+				remove_trait = imbecile
+				remove_trait = infirm
+				remove_trait = incapable
+				remove_trait = dwarf
+				remove_trait = hunchback
+				remove_trait = clubfooted
+				remove_trait = weak
+				remove_trait = leper
+				remove_trait = possessed
+				remove_trait = ill
+				remove_trait = pneumonic
+				remove_trait = maimed
+				add_trait = fair
+				add_trait = proud
+				set_character_flag = seduced_lowborn
+			}
+		}
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				OR = {
+					trait = seducer
+					trait = seductress
+				}
+			}
+			modifier = {
+				factor = 1.2
+				trait = ambitious
+			}
+		}
+		add_trait = seductress
+		set_character_flag = seduced_lowborn
+	}
+	option = {
+		name = "EVTOPTBmbs_seductress.1" #
+		ai_chance = {
+			factor = 6
+			modifier = {
+				factor = 1.6
+				trait = diligent
+
+			}
+			modifier = {
+				factor = 1.6
+				trait = temperate
+
+			}
+			modifier = {
+				factor = 1.6
+				trait = content
+			}
+		}
+
+
+		set_character_flag = mbs_pr_no
+	}
+}
+#Parent finds out and decides
+character_event = {
+	id = mbs_seductress.2
+	desc = "EVTDESCmbs_seductress.2"
+	picture = "GFX_evt_accused"
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ruler = yes
+		any_child = {
+			has_character_flag = seduced_lowborn
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_seductress.2"
+		trigger = {
+			religion = the_seven
+		}
+		any_child = {
+			limit = {
+				has_character_flag = seduced_lowborn
+				trait = seductress
+			}
+			add_trait = silent_sister
+			clr_character_flag = seduced_lowborn
+			set_character_flag = highborn_silentister
+			character_event = {
+				id = mbs_seductress.3
+				days = 30
+			}
+		}
+		ROOT = {
+		character_event = {
+				id = mbs_seductress.4
+				days = 5
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_seductress.2"
+		trigger = {
+			NOT = { religion = the_seven }
+		}
+		any_child = {
+			limit = {
+				has_character_flag = seduced_lowborn
+				trait = seductress
+			}
+			banish = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTCmbs_seductress.2"
+		prestige = -50
+	}
+}
+#Girl sent to the Silent Sisters decides to escape or not
+character_event = {
+	id = mbs_seductress.3
+	desc = "EVTDESCmbs_seductress.3"
+	picture = "GFX_evt_brothel"
+
+	is_triggered_only = yes
+
+	only_women = yes
+	only_rulers = no
+	min_age = 16
+	is_married = no
+	religion = the_seven
+	has_character_flag = highborn_silentister
+
+	option = {
+		name = "EVTOPTAmbs_seductress.3"
+		remove_trait = silent_sister
+		banish = yes
+		clr_character_flag = highborn_silentister
+		add_trait = disinherited
+		add_trait = prostitute
+		set_character_flag = runaway_prostitute
+	}
+
+	option = {
+		name = "EVTOPTBmbs_seductress.3"
+		piety = 20
+	}
+}
+#Parent decides fate of guy who seduced daughter
+character_event = {
+	id = mbs_seductress.4
+	desc = "EVTDESCmbs_seductress.4"
+	picture = "GFX_evt_accused"
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ruler = yes
+		any_courtier = {
+			is_female = no
+			has_character_flag = seduced_lowborn
+			is_lowborn = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_seductress.4"
+		any_courtier = {
+			limit = {
+				is_female = no
+				has_character_flag = seduced_lowborn
+				is_lowborn = yes
+			}
+			banish = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_seductress.4"
+		trigger = {
+			trait = proud
+			trait = arbitrary
+		}
+		any_courtier = {
+			limit = {
+				is_female = no
+				has_character_flag = seduced_lowborn
+				is_lowborn = yes
+			}
+			death = {
+				death_reason = death_execution_strangle
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCmbs_seductress.4"
+		any_courtier = {
+			limit = {
+				is_female = no
+				has_character_flag = seduced_lowborn
+				is_lowborn = yes
+			}
+			prisoner = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTDmbs_seductress.4"
+		prestige = -10
+		piety = 10
+		any_courtier = {
+			limit = {
+				is_female = no
+				has_character_flag = seduced_lowborn
+				is_lowborn = yes
+			}
+			clr_character_flag = seduced_lowborn
+		}
+	}
+}

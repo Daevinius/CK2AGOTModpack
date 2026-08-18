@@ -1,0 +1,416 @@
+skinchanger_brotherhood = {
+	primary_attribute = martial
+	opinion_to_other_members = +10
+	opinion_per_rank_above = +5
+	sound = warrior_lodge_ambient_01
+	society_ranks_gfx = secret_ranks
+	is_secret = no
+	indestructible = yes
+	non_interference = {
+		always = yes
+	}
+
+	can_join_society = {
+		hidden_trigger = {
+			NAND = {
+				ai = yes
+				is_society_rank_full = {
+					society = skinchanger_brotherhood
+					rank = 1
+				}
+			}
+			NOT_mythical_creature_trigger = yes
+		}
+		skinchanger_trigger = yes
+		hidden_trigger = {
+			NOT = { has_character_flag = society_join_block }
+		}
+		trigger_if = {
+			limit = { prisoner = yes }
+			prisoner = no
+		}
+	}
+
+	show_society = {
+		always = yes
+	}
+
+	potential = {
+		age = 10
+		is_nomadic = no
+		OR = {
+			trait = crow
+			trait = wolf
+			trait = cata
+			trait = dog
+			trait = goat
+			trait = bat
+			trait = great_bat
+			trait = eagle
+			trait = deer
+			trait = boar
+			trait = brownbear
+			trait = snowbear
+			trait = sea_lion
+			trait = whale
+			trait = shadowcat
+			trait = crane
+			trait = lizardlion
+			trait = hrakkar
+			trait = lion
+			trait = vulture
+			trait = walrus
+			trait = panda
+			trait = great_ape
+			trait = fox_mbs
+			trait = mammoth
+			trait = unicorn_MBS
+			trait = direwolf
+			trait = greensight
+			trait = cotf
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_great_warg
+			}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_winged_wolf
+			}
+		}
+	}
+
+	society_rank = { #Skinchanger
+		level = 1
+		limit = 100
+		startup_limit = 20
+		modifier = {
+		}
+		decisions = {
+
+
+		}
+		custom_tooltip = skinchanger_brotherhood_powers_rank_1
+	}
+
+	society_rank = { #
+		level = 2
+		limit = 75
+		startup_limit = 20
+		modifier = {
+			martial = 1
+		}
+		decisions = {
+
+		}
+		custom_tooltip = skinchanger_brotherhood_powers_rank_2
+	}
+
+	society_rank = { #
+		level = 3
+		limit = 40
+		startup_limit = 10
+		modifier = {
+			martial = 2
+		}
+		decisions = {
+		}
+		custom_tooltip = skinchanger_brotherhood_powers_rank_3
+	}
+
+	society_rank = { #
+		level = 4
+		limit = 10
+		startup_limit = 2
+		modifier = {
+			martial = 3
+		}
+		decisions = {
+
+		}
+		custom_tooltip = skinchanger_brotherhood_powers_rank_4
+	}
+
+	plots = {
+	}
+
+	monthly_currency_gain = {
+		name = currency_name_skinchanger
+
+		has_trait = {
+			value = 20
+			trait = greenseer_weirwood
+		}
+		has_trait = {
+			value = 15
+			trait = greenseer
+		}
+		has_trait = {
+			value = 6
+			trait = greensight
+		}
+		has_trait = {
+			value = 10
+			trait = cotf
+		}
+		has_trait = {
+			value = 8
+			trait = mammoth
+		}
+		has_trait = {
+			value = 8
+			trait = unicorn_MBS
+		}
+		has_trait = {
+			value = 8
+			trait = panda
+		}
+		has_trait = {
+			value = 8
+			trait = great_ape
+		}
+		has_trait = {
+			value = 8
+			trait = direwolf
+		}
+		has_trait = {
+			value = 7
+			trait = brownbear
+		}
+		has_trait = {
+			value = 7
+			trait = snowbear
+		}
+		has_trait = {
+			value = 7
+			trait = shadowcat
+		}
+		has_trait = {
+			value = 7
+			trait = hrakkar
+		}
+		has_trait = {
+			value = 7
+			trait = lion
+		}
+		has_trait = {
+			value = 6
+			trait = lizardlion
+		}
+		has_trait = {
+			value = 6
+			trait = eagle
+		}
+		has_trait = {
+			value = 5
+			trait = great_bat
+		}
+		has_trait = {
+			value = 5
+			trait = sea_lion
+		}
+		has_trait = {
+			value = 5
+			trait = walrus
+		}
+		has_trait = {
+			value = 5
+			trait = whale
+		}
+		has_trait = {
+			value = 5
+			trait = crane
+		}
+		has_trait = {
+			value = 5
+			trait = vulture
+		}
+		has_trait = {
+			value = 4
+			trait = wolf
+		}
+		has_trait = {
+			value = 3
+			trait = mystic
+		}
+		has_trait = {
+			value = 2
+			trait = crow
+		}
+		has_trait = {
+			value = 2
+			trait = dog
+		}
+		has_trait = {
+			value = 2
+			trait = bat
+		}
+		has_trait = {
+			value = 2
+			trait = goat
+		}
+		has_trait = {
+			value = 2
+			trait = fox_mbs
+		}
+		has_trait = {
+			value = 2
+			trait = cata
+		}
+		has_trait = {
+			value = 2
+			trait = deer
+		}
+		has_trait = {
+			value = 2
+			trait = boar
+		}
+		society_rank = {
+			rank = 4
+			value = 10
+		}
+	}
+
+	member_score_per_attribute = 3
+	member_score_per_rank = 100
+
+	member_score = {
+		value = 10
+
+		modifier = {
+			factor = 20
+			trait = greenseer
+		}
+		modifier = {
+			factor = 30
+			trait = greenseer_weirwood
+		}
+		modifier = {
+			factor = 10
+			trait = greensight
+		}
+		modifier = {
+			factor = 9
+			trait = cotf
+		}
+		modifier = {
+			factor = 8
+			trait = mammoth
+		}
+		modifier = {
+			factor = 8
+			trait = unicorn_MBS
+		}
+		modifier = {
+			factor = 8
+			trait = panda
+		}
+		modifier = {
+			factor = 8
+			trait = great_ape
+		}
+		modifier = {
+			factor = 8
+			trait = direwolf
+		}
+		modifier = {
+			factor = 7
+			trait = snowbear
+		}
+		modifier = {
+			factor = 7
+			trait = brownbear
+		}
+		modifier = {
+			factor = 7
+			trait = shadowcat
+		}
+		modifier = {
+			factor = 7
+			trait = hrakkar
+		}
+		modifier = {
+			factor = 7
+			trait = lion
+		}
+		modifier = {
+			factor = 6
+			trait = lizardlion
+		}
+		modifier = {
+			factor = 6
+			trait = eagle
+		}
+		modifier = {
+			factor = 5
+			trait = great_bat
+		}
+		modifier = {
+			factor = 5
+			trait = sea_lion
+		}
+		modifier = {
+			factor = 5
+			trait = whale
+		}
+		modifier = {
+			factor = 5
+			trait = crane
+		}
+		modifier = {
+			factor = 5
+			trait = vulture
+		}
+		modifier = {
+			factor = 4
+			trait = wolf
+		}
+		modifier = {
+			factor = 3
+			trait = mystic
+		}
+		modifier = {
+			factor = 2
+			trait = crow
+		}
+		modifier = {
+			factor = 2
+			trait = fox_mbs
+		}
+		modifier = {
+			factor = 2
+			trait = dog
+		}
+		modifier = {
+			factor = 2
+			trait = bat
+		}
+		modifier = {
+			factor = 2
+			trait = goat
+		}
+		modifier = {
+			factor = 2
+			trait = cata
+		}
+		modifier = {
+			factor = 2
+			trait = deer
+		}
+		modifier = {
+			factor = 2
+			trait = boar
+		}
+		modifier = {
+			factor = 1.5
+			is_smart_incl_genius_trigger = yes
+		}
+		modifier = {
+			factor = 1.5
+			trait = ambitious
+		}
+	}
+
+	startup_populate = {
+	    trigger = {
+			always = yes
+		}
+	}
+}

@@ -1,0 +1,238 @@
+decisions = {
+
+    tdp_search_for_valyrian_forge = {
+		is_high_prio = yes
+
+		potential = {
+			NOR = {
+				has_character_flag = tdp_arranging_expedition
+				has_global_flag = tdp_valyria_expedition_active
+				has_global_flag = rediscovered_valyrian_forging
+			}
+			trait = dragon_rider
+			tier = EMPEROR
+			culture_group = valyrian
+			war = no
+			any_realm_lord = {
+				culture = qohorik
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = tdp_valyrian_empire.1 }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	tdp_forge_valyrian_steel = {
+		only_playable = yes
+		is_high_prio = yes
+		potential = {
+			has_global_flag = rediscovered_valyrian_forging
+			culture_group = valyrian
+		}
+		allow = {
+			wealth = 400
+			trait = dragon_rider
+			custom_tooltip = {
+				text = TOOLTIPforge_valyrian_steel_STORMSINGER
+				hidden_tooltip = {
+					any_courtier = {
+						religion_group = valyrian_rel_group
+						learning = 15
+						liege = { character = ROOT }
+						prisoner = no
+						is_incapable = no
+						is_inaccessible_trigger = no
+					}
+				}
+			}
+			custom_tooltip = {
+				text = TOOLTIPforge_valyrian_steel_VALYRIA
+				hidden_tooltip = {
+					any_demesne_province = {
+						region = world_valyria
+					}
+				}
+			}
+			custom_tooltip = {
+				text = TOOLTIPforge_valyrian_steel_FORGING
+				hidden_tooltip = {
+					NOT = { has_character_flag = forging_valyrian_steel }
+				}
+			}
+		}
+		effect = {
+			wealth = -400
+			character_event = { id = valyrian_steel.190 }
+			set_character_flag = forging_valyrian_steel
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.1
+			}
+			modifier = {
+				factor = 0.1
+				any_artifact = { has_artifact_flag = valyrian_steel }
+			}
+			modifier = {
+				factor = 0
+				war = yes
+			}
+			modifier = {
+				factor = 0
+				has_character_modifier = loan_timer
+				OR = {
+					stewardship = 9
+					trait = temperate
+					NOT = {
+						OR = {
+							trait = gluttonous
+							trait = hedonist
+							trait = slothful
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.05
+				OR = {
+					trait = content
+					trait = temperate
+				}
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					trait = ambitious
+					trait = greedy
+					trait = gluttonous
+					trait = envious
+				}
+			}
+		}
+	}
+
+	tdp_dothraki_reclamation = {
+		is_high_prio = yes
+
+		potential = {
+			start_date = 7980.1.1
+			trait = dragon_rider
+			tier = EMPEROR
+			any_independent_ruler = {
+				religion_group = dothraki_rel_group
+				shares_realm_border_with = ROOT
+			}
+			NOT = { has_character_flag = dothraki_reclamation }
+			NOT = { has_character_flag = chose_spare_dothraki }
+		}
+		allow = {
+			war = no
+			any_independent_ruler = {
+				religion_group = dothraki_rel_group
+				shares_realm_border_with = ROOT
+			}
+			trait = dragon_rider
+		}
+		effect = {
+			character_event = { id = tdp_valyrian_empire.2 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_force_convert_empire = {
+		is_high_prio = yes
+
+		potential = {
+			tier = EMPEROR
+			trait = zealous
+			trait = lunatic
+			culture_group = valyrian
+			OR = {
+				religion = rhllor
+				religion = rahlooism
+				religion = black_goat_reformed
+				religion = black_goat
+				religion = bearded_priests
+				religion = the_seven
+			}
+		}
+		allow = {
+			NOT = { has_character_flag = religious_warmonger }
+			OR = {
+				religion = rhllor
+				religion = rahlooism
+				religion = black_goat_reformed
+				religion = black_goat
+				religion = bearded_priests
+				religion = the_seven
+			}
+			OR = {
+				NOT = { religion = the_seven }
+				has_law = investiture_law_2
+			}
+			OR = {
+				trait = lunatic
+				AND = {
+					trait = cruel
+					trait = ruthless
+					trait = wroth
+				}
+			}
+			trait = zealous
+			tier = EMPEROR
+			culture_group = valyrian
+			war = no
+			any_realm_lord = {
+				NOT = { religion = ROOT }
+			}
+		}
+		effect = {
+			set_character_flag = religious_warmonger
+			custom_tooltip = { text = EVTTOOLTIPtdp_valyrian_empire.30 }
+			character_event = { id = tdp_valyrian_empire.30 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+targeted_decisions = {
+
+	tdp_select_for_expedition = {
+		filter = realm
+
+		from_potential = {
+			has_character_flag = tdp_arranging_expedition
+		}
+		potential = {
+			NOR = {
+				trait = incapable
+				trait = wounded
+				trait = maimed
+				trait = crippled
+				trait = craven
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			save_event_target_as = expedition_leader
+			FROM = { character_event = { id = tdp_valyrian_empire.10 } }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

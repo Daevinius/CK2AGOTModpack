@@ -1,0 +1,3076 @@
+namespace = mbs_patron
+
+
+long_character_event = {
+	id = mbs_patron.1
+	desc = "EVTDESCmbs_patron.1"
+	picture = "GFX_mazemakers"
+
+	religion_group = essos_group
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			religion = weeping_lady_reformed
+			religion = weeping_lady
+		}
+		OR = {
+			has_focus = focus_theology
+			trait = zealous
+			is_priest = yes
+		}
+		NOT = {
+			trait = pantera_lys
+			trait = saagael_lys
+			trait = trade_lys
+			trait = weeping_lady_lys
+			trait = yndros_lys
+			trait = bakkalon_lys
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_patron.1" #get weeping_lady
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = { #worshipped by old women
+				factor = 4
+				is_female = yes
+				age = 50
+			}
+			modifier = {
+				factor = 0.5
+				is_female = no
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+		}
+
+		add_trait = weeping_lady_lys
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.1" #get bakkalon
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				OR = {
+					in_command = yes
+					has_minor_title = title_commander
+					has_job_title = job_marshal
+				}
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = bakkalon_lys
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.1" #get trade
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+		add_trait = trade_lys
+
+		prestige = 15
+
+	}
+	option = {
+		name = "EVTOPTDmbs_patron.1" #get more
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				has_character_modifier = pet_cat
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 3
+				trait = shadowcat
+			}
+			modifier = {
+				factor = 5
+				trait = lustful
+			}
+			modifier = {
+				factor = 1.5
+				trait = gregarious
+			}
+			modifier = {
+				factor = 5
+				trait = fair
+			}
+			modifier = {
+				factor = 2
+				trait = homosexual
+			}
+			modifier = {
+				factor = 0.1
+				trait = chaste
+			}
+			modifier = {
+				factor = 0.1
+				trait = celibate
+			}
+			modifier = {
+				factor = 0.1
+				trait = eunuch
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+
+		}
+
+		character_event = { id = mbs_patron.2 }
+
+	}
+}
+#mbs_patron.2
+long_character_event = {
+	id = mbs_patron.2
+	desc = "EVTDESCmbs_patron.1"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.2" #get pantera
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				has_character_modifier = pet_cat
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 3
+				trait = shadowcat
+			}
+		}
+
+		if = {
+			limit =  { NOT = { has_character_modifier = pet_cat } }
+			add_cat_effect = yes
+		}
+		add_trait = pantera_lys
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.2" #get yndros
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				trait = lustful
+			}
+			modifier = {
+				factor = 1.5
+				trait = gregarious
+			}
+			modifier = {
+				factor = 5
+				trait = fair
+			}
+			modifier = {
+				factor = 2
+				trait = homosexual
+			}
+			modifier = {
+				factor = 0.1
+				trait = chaste
+			}
+			modifier = {
+				factor = 0.1
+				trait = celibate
+			}
+			modifier = {
+				factor = 0.1
+				trait = eunuch
+			}
+		}
+
+		add_trait = yndros_lys
+		if = {
+			limit = {
+				NOT = { trait = homosexual }
+			}
+			random = {
+				chance = 20
+				add_trait = homosexual
+			}
+		}
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.2" #get saagael
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+		}
+
+		add_trait = saagael_lys
+		if = {
+			limit = {
+				NOT = { trait = cruel }
+				personality_traits < 6
+			}
+			random = {
+				chance = 20
+				add_trait = cruel
+				hidden_tooltip = { character_event = { id = 38259 } }
+			}
+		}
+		if = {
+			limit = {
+				NOT = { trait = impaler }
+				lifestyle_traits < 1
+			}
+			add_trait = impaler
+		}
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.2" #go back
+
+		ai_chance = {
+			factor = 2
+		}
+
+		character_event = { id = mbs_patron.1 }
+
+	}
+}
+#mbs_patron.3 - Lose aspect
+character_event = {
+	id = mbs_patron.3
+	hide_window = yes
+	min_age = 6
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			religion = weeping_lady_reformed
+			religion = weeping_lady
+		}
+		OR = {
+			trait = pantera_lys
+			trait = saagael_lys
+			trait = trade_lys
+			trait = weeping_lady_lys
+			trait = yndros_lys
+			trait = bakkalon_lys
+		}
+	}
+
+
+	immediate = {
+		remove_trait = pantera_lys
+		remove_trait = saagael_lys
+		remove_trait = trade_lys
+		remove_trait = weeping_lady_lys
+		remove_trait = yndros_lys
+		remove_trait = bakkalon_lys
+	}
+
+	option = {
+		name = OK
+	}
+}
+long_character_event = {
+	id = mbs_patron.5
+	desc = "EVTDESCmbs_patron.5"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			religion = trios
+			religion = trios_reformed
+		}
+		OR = {
+			has_focus = focus_theology
+			trait = zealous
+			is_priest = yes
+		}
+		NOT = {
+			trait = pattern_tyrosh
+			trait = merling_king_tyrosh
+			trait = trios_tyrosh
+			trait = drunken_god_tyrosh
+		}
+	}
+
+		option = {
+		name = "EVTOPTAmbs_patron.5" #get pattern
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+		}
+
+		add_trait = pattern_tyrosh
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.5" #get merling king
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+		add_trait = merling_king_tyrosh
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.5" #get trios
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+		}
+
+		add_trait = trios_tyrosh
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.5" #get drunken god
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 5
+				trait = gregarious
+			}
+			modifier = {
+				factor = 5
+				trait = drunkard
+			}
+			modifier = {
+				factor = 1.5
+				trait = fair
+			}
+		}
+
+		add_trait = drunken_god_tyrosh
+
+		prestige = 15
+
+	}
+}
+#mbs_patron.6 - Lose God
+character_event = {
+	id = mbs_patron.6
+	hide_window = yes
+	min_age = 6
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = pattern_tyrosh
+			trait = merling_king_tyrosh
+			trait = trios_tyrosh
+			trait = drunken_god_tyrosh
+		}
+		NOR = {
+			religion = trios
+			religion = trios_reformed
+		}
+	}
+
+
+	immediate = {
+		remove_trait = pattern_tyrosh
+		remove_trait = merling_king_tyrosh
+		remove_trait = trios_tyrosh
+		remove_trait = drunken_god_tyrosh
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Myr
+long_character_event = {
+	id = mbs_patron.10
+	desc = "EVTDESCmbs_patron.10"
+	picture = "GFX_mazemakers"
+
+	religion = myrish_religion
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = myrish_religion
+		OR = {
+			has_focus = focus_theology
+			trait = zealous
+			is_priest = yes
+		}
+		NOT = {
+			trait = aquan_myr
+			trait = hooded_wayfarer_myr
+			trait = bakkalon_myr
+			trait = merling_king_myr
+			trait = moonpale_maiden_myr
+			trait = moonmother_myr
+			trait = lionofnight_myr
+			trait = father_waters_myr
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_patron.10" #get aquan
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+		}
+
+		add_trait = aquan_myr
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.10" #get bakkalon
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				OR = {
+					in_command = yes
+					has_minor_title = title_commander
+					has_job_title = job_marshal
+				}
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = bakkalon_myr
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.10" #get merling king
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+		add_trait = merling_king_myr
+
+		prestige = 15
+
+	}
+	option = {
+		name = "EVTOPTDmbs_patron.10" #get more
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = fair
+			}
+			modifier = {
+				factor = 0.1
+				trait = chaste
+			}
+			modifier = {
+				factor = 0.1
+				trait = celibate
+			}
+			modifier = {
+				factor = 0.1
+				trait = eunuch
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+
+		}
+
+		character_event = { id = mbs_patron.12 }
+
+	}
+}
+#mbs_patron.12
+long_character_event = {
+	id = mbs_patron.12
+	desc = "EVTDESCmbs_patron.10"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.12" #get hooded wayfarer
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+		}
+
+		add_trait = hooded_wayfarer_myr
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.12" #get moonpale maiden
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = fair
+			}
+			modifier = {
+				factor = 0.1
+				trait = chaste
+			}
+			modifier = {
+				factor = 0.1
+				trait = celibate
+			}
+			modifier = {
+				factor = 0.1
+				trait = eunuch
+			}
+		}
+
+		add_trait = moonpale_maiden_myr
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.12" #get moon mother
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+		}
+
+		add_trait = moonmother_myr
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.12" #go back
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		character_event = { id = mbs_patron.13 }
+
+	}
+}
+#mbs_patron.13
+long_character_event = {
+	id = mbs_patron.13
+	desc = "EVTDESCmbs_patron.10"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.13" #get lion of night
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = lionofnight_myr
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.13" #get father of waters
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+		}
+
+		add_trait = father_waters_myr
+		prestige = 15
+
+	}
+
+
+	option = {
+		name = "EVTOPTDmbs_patron.13" #go back
+
+		ai_chance = {
+			factor = 2
+		}
+
+		character_event = { id = mbs_patron.10 }
+
+	}
+}
+#mbs_patron.14 - Lose God
+character_event = {
+	id = mbs_patron.14
+	hide_window = yes
+	min_age = 6
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = aquan_myr
+			trait = hooded_wayfarer_myr
+			trait = bakkalon_myr
+			trait = merling_king_myr
+			trait = moonpale_maiden_myr
+			trait = moonmother_myr
+			trait = lionofnight_myr
+			trait = father_waters_myr
+		}
+		NOT = {
+			religion = myrish_religion
+		}
+	}
+
+
+	immediate = {
+		remove_trait = aquan_myr
+		remove_trait = hooded_wayfarer_myr
+		remove_trait = bakkalon_myr
+		remove_trait = merling_king_myr
+		remove_trait = moonpale_maiden_myr
+		remove_trait = moonmother_myr
+		remove_trait = lionofnight_myr
+		remove_trait = father_waters_myr
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Pentos
+long_character_event = {
+	id = mbs_patron.15
+	desc = "EVTDESCmbs_patron.15"
+	picture = "GFX_mazemakers"
+
+	religion = pentoshi_religion
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = pentoshi_religion
+		OR = {
+			has_focus = focus_theology
+			trait = zealous
+			is_priest = yes
+		}
+		NOT = {
+			trait = aquan_pentos
+			trait = hooded_wayfarer_pentos
+			trait = bakkalon_pentos
+			trait = merling_king_pentos
+			trait = lionofnight_pentos
+			trait = household_idol_pentos
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_patron.15" #get aquan_pentos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+		}
+
+		add_trait = aquan_pentos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.15" #get bakkalon
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				OR = {
+					in_command = yes
+					has_minor_title = title_commander
+					has_job_title = job_marshal
+				}
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = bakkalon_pentos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.15" #get hooded_wayfarer_pentos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+		}
+
+		add_trait = hooded_wayfarer_pentos
+
+		prestige = 15
+
+	}
+	option = {
+		name = "EVTOPTDmbs_patron.1" #get more
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 6
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 6
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 6
+				trait = honest
+			}
+			modifier = {
+				factor = 6
+				trait = diligent
+			}
+			modifier = {
+				factor = 6
+				trait = architect
+			}
+			modifier = {
+				factor = 6
+				trait = administrator
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		character_event = { id = mbs_patron.16 }
+
+	}
+}
+#mbs_patron.16
+long_character_event = {
+	id = mbs_patron.16
+	desc = "EVTDESCmbs_patron.15"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.16" #get merling_king_pentos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+
+		add_trait = merling_king_pentos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.16" #get lionofnight_pentos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = lionofnight_pentos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.16" #get household_idol_pentos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+		add_trait = household_idol_pentos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.16" #go back
+
+		ai_chance = {
+			factor = 2
+		}
+
+		character_event = { id = mbs_patron.15 }
+
+	}
+}
+#mbs_patron.17 - Lose aspect
+character_event = {
+	id = mbs_patron.17
+	hide_window = yes
+	min_age = 6
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			religion = pentoshi_religion
+		}
+		OR = {
+			trait = aquan_pentos
+			trait = hooded_wayfarer_pentos
+			trait = bakkalon_pentos
+			trait = merling_king_pentos
+			trait = lionofnight_pentos
+			trait = household_idol_pentos
+		}
+	}
+
+
+	immediate = {
+		remove_trait = aquan_pentos
+		remove_trait = hooded_wayfarer_pentos
+		remove_trait = bakkalon_pentos
+		remove_trait = merling_king_pentos
+		remove_trait = lionofnight_pentos
+		remove_trait = household_idol_pentos
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Braavos
+long_character_event = {
+	id = mbs_patron.20
+	desc = "EVTDESCmbs_patron.20"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			religion = moonsingers
+			religion = moonsingers_reformed
+		}
+		OR = {
+			has_focus = focus_theology
+			trait = zealous
+			is_priest = yes
+		}
+		NOT = {
+			trait = aquan_braavos
+			trait = hooded_wayfarer_braavos
+			trait = merling_king_braavos
+			trait = moonpale_maiden_braavos
+			trait = moonmother_braavos
+			trait = pattern_braavos
+			trait = father_waters_braavos
+			trait = gelenei_braavos
+			trait = many_faced_braavos
+			trait = moonsinger_braavos
+			trait = twins_braavos
+			trait = silent_god_braavos
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_patron.20" #get aquan_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+		}
+
+		add_trait = aquan_braavos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.20" #get twins_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				OR = {
+					in_command = yes
+					has_minor_title = title_commander
+					has_job_title = job_marshal
+				}
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = twins_braavos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.20" #get moonpale_maiden_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = fair
+			}
+			modifier = {
+				factor = 0.1
+				trait = chaste
+			}
+			modifier = {
+				factor = 0.1
+				trait = celibate
+			}
+			modifier = {
+				factor = 0.1
+				trait = eunuch
+			}
+		}
+
+		add_trait = moonpale_maiden_braavos
+
+		prestige = 15
+
+	}
+	option = {
+		name = "EVTOPTDmbs_patron.1" #get more
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 1.6
+				trait = just
+			}
+			modifier = {
+				factor = 1.6
+				trait = craven
+			}
+			modifier = {
+				factor = 1.6
+				trait = content
+			}
+			modifier = {
+				factor = 1.4
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = gardener
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+		}
+
+		character_event = { id = mbs_patron.21 }
+
+	}
+}
+#mbs_patron.21
+long_character_event = {
+	id = mbs_patron.21
+	desc = "EVTDESCmbs_patron.20"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.21" #get hooded wayfarer
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+		}
+
+		add_trait = hooded_wayfarer_braavos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.21" #get many_faced_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+		}
+
+		add_trait = many_faced_braavos
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.21" #get silent_god_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 1.6
+				trait = just
+			}
+			modifier = {
+				factor = 1.6
+				trait = craven
+			}
+			modifier = {
+				factor = 1.6
+				trait = content
+			}
+			modifier = {
+				factor = 1.4
+				trait = honorable
+			}
+		}
+
+		add_trait = silent_god_braavos
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.21" #go back
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = gardener
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+		}
+
+		character_event = { id = mbs_patron.22 }
+
+	}
+}
+#mbs_patron.22
+long_character_event = {
+	id = mbs_patron.22
+	desc = "EVTDESCmbs_patron.20"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.22" #get merling_king_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+		add_trait = merling_king_braavos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.22" #get gelenei_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = gardener
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+		}
+
+		add_trait = gelenei_braavos
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.22" #get father_waters_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+		}
+
+		add_trait = father_waters_braavos
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.22" #go back
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+		}
+
+		character_event = { id = mbs_patron.23 }
+
+	}
+}
+#mbs_patron.23
+long_character_event = {
+	id = mbs_patron.23
+	desc = "EVTDESCmbs_patron.20"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.23" #get moonsinger_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = charismatic_negotiator
+			}
+			modifier = {
+				factor = 3
+				trait = grey_eminence
+			}
+		}
+
+		add_trait = moonsinger_braavos
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.23" #get moonmother_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				has_ambition = obj_five_children
+			}
+			modifier = {
+				factor = 3
+				trait = charitable
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+			}
+		}
+
+		add_trait = moonmother_braavos
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.23" #get pattern_braavos
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+		}
+
+		add_trait = pattern_braavos
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.23" #go back
+
+		ai_chance = {
+			factor = 2
+		}
+
+		character_event = { id = mbs_patron.20 }
+
+	}
+}
+#mbs_patron.24 - Lose aspect
+character_event = {
+	id = mbs_patron.24
+	hide_window = yes
+	min_age = 6
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			religion = moonsingers
+			religion = moonsingers_reformed
+		}
+		OR = {
+			trait = aquan_braavos
+			trait = hooded_wayfarer_braavos
+			trait = merling_king_braavos
+			trait = moonpale_maiden_braavos
+			trait = moonmother_braavos
+			trait = pattern_braavos
+			trait = father_waters_braavos
+			trait = gelenei_braavos
+			trait = many_faced_braavos
+			trait = moonsinger_braavos
+			trait = twins_braavos
+			trait = silent_god_braavos
+		}
+	}
+
+
+	immediate = {
+		remove_trait = aquan_braavos
+		remove_trait = hooded_wayfarer_braavos
+		remove_trait = merling_king_braavos
+		remove_trait = moonpale_maiden_braavos
+		remove_trait = moonmother_braavos
+		remove_trait = pattern_braavos
+		remove_trait = father_waters_braavos
+		remove_trait = gelenei_braavos
+		remove_trait = many_faced_braavos
+		remove_trait = moonsinger_braavos
+		remove_trait = twins_braavos
+		remove_trait = silent_god_braavos
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Pentos
+long_character_event = {
+	id = mbs_patron.25
+	desc = "EVTDESCmbs_patron.25"
+	picture = "GFX_mazemakers"
+
+	religion_group = essos_group
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			religion = gods_lorath_reformed
+			religion = gods_lorath
+		}
+		OR = {
+			has_focus = focus_theology
+			trait = zealous
+			is_priest = yes
+		}
+		NOT = {
+			trait = aquan_lorath
+			trait = bakkalon_lorath
+			trait = merling_king_lorath
+			trait = moonpale_maiden_lorath
+			trait = silent_god_lorath
+			trait = pattern_lorath
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_patron.25" #get aquan_lorath
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+		}
+
+		add_trait = aquan_lorath
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.25" #get bakkalon
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				OR = {
+					in_command = yes
+					has_minor_title = title_commander
+					has_job_title = job_marshal
+				}
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_tactician
+			}
+			modifier = {
+				factor = 3
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 3
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 3
+				trait = hunter
+			}
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 1.3
+				is_female = no
+			}
+		}
+
+		add_trait = bakkalon_lorath
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.25" #get merling_king_lorath
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = fortune_builder
+			}
+			modifier = {
+				factor = 3
+				trait = midas_touched
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = diligent
+			}
+			modifier = {
+				factor = 3
+				trait = architect
+			}
+			modifier = {
+				factor = 3
+				trait = administrator
+			}
+		}
+
+		add_trait = merling_king_lorath
+
+		prestige = 15
+
+	}
+	option = {
+		name = "EVTOPTDmbs_patron.25" #get more
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+				modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 1.6
+				trait = just
+			}
+			modifier = {
+				factor = 1.6
+				trait = craven
+			}
+			modifier = {
+				factor = 1.6
+				trait = content
+			}
+			modifier = {
+				factor = 1.4
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = fair
+			}
+		}
+
+		character_event = { id = mbs_patron.26 }
+
+	}
+}
+#mbs_patron.26
+long_character_event = {
+	id = mbs_patron.26
+	desc = "EVTDESCmbs_patron.25"
+	picture = "GFX_mazemakers"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_patron.26" #get moonpale_maiden_lorath
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = lustful
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = fair
+			}
+			modifier = {
+				factor = 0.1
+				trait = chaste
+			}
+			modifier = {
+				factor = 0.1
+				trait = celibate
+			}
+			modifier = {
+				factor = 0.1
+				trait = eunuch
+			}
+		}
+
+
+		add_trait = moonpale_maiden_lorath
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTBmbs_patron.26" #get silent_god_lorath
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = intricate_webweaver
+			}
+			modifier = {
+				factor = 3
+				trait = elusive_shadow
+			}
+			modifier = {
+				factor = 3
+				trait = schemer
+			}
+			modifier = {
+				factor = 1.6
+				trait = just
+			}
+			modifier = {
+				factor = 1.6
+				trait = craven
+			}
+			modifier = {
+				factor = 1.6
+				trait = content
+			}
+			modifier = {
+				factor = 1.4
+				trait = honorable
+			}
+		}
+
+		add_trait = silent_god_lorath
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTCmbs_patron.26" #get pattern_lorath
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 3
+				trait = erudite
+			}
+			modifier = {
+				factor = 3
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				trait = scholar
+			}
+			modifier = {
+				factor = 3
+				trait = infirm
+			}
+			modifier = {
+				factor = 3
+				trait = patient
+			}
+		}
+
+		add_trait = pattern_lorath
+
+		prestige = 15
+
+	}
+
+	option = {
+		name = "EVTOPTDmbs_patron.26" #go back
+
+		ai_chance = {
+			factor = 2
+		}
+
+		character_event = { id = mbs_patron.15 }
+
+	}
+}
+#mbs_patron.27 - Lose aspect
+character_event = {
+	id = mbs_patron.27
+	hide_window = yes
+	min_age = 6
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			religion = gods_lorath_reformed
+			religion = gods_lorath
+		}
+		OR = {
+			trait = aquan_lorath
+			trait = bakkalon_lorath
+			trait = merling_king_lorath
+			trait = moonpale_maiden_lorath
+			trait = silent_god_lorath
+			trait = pattern_lorath
+		}
+	}
+
+
+	immediate = {
+		remove_trait = aquan_lorath
+		remove_trait = bakkalon_lorath
+		remove_trait = merling_king_lorath
+		remove_trait = moonpale_maiden_lorath
+		remove_trait = silent_god_lorath
+		remove_trait = pattern_lorath
+	}
+
+	option = {
+		name = OK
+	}
+}

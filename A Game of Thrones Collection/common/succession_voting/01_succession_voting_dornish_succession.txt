@@ -1,0 +1,339 @@
+# The entry should be named in the same way that the elective succession law is named to define its voter's logic
+# ROOT			Voter, the character voting in the election
+# FROM			Candidate, character considered for the title
+# FROMFROM		The title the nomination is for
+# FROMFROMFROM	The title owner's candidate
+# The voter will vote for the top score candidate calculated from this script
+
+dornish_succession = {
+	elector_vote_strength = {
+		days = 1
+
+		additive_modifier = {
+			value = 9
+			NOT = { has_landed_title = FROMFROM }
+		}
+	}
+
+	elector_selection = {
+		days = 1
+		max_amount = 1 # Determines max amount of electors, with the lower scoring ones being excluded (limit is optional)
+
+		trigger = {
+			ai = yes
+			FROMFROM = { holder_scope = { is_liege_of = PREVPREV } }
+		}
+
+		additive_modifier = {
+			value = 15
+			has_minor_title = title_regent
+		}
+
+		additive_modifier = {
+			value = 5
+			has_job_title = job_castellan
+		}
+
+		additive_modifier = {
+			value = 5
+			is_councillor = yes
+		}
+
+		additive_modifier = {
+			value = 1
+			is_ruler = yes
+		}
+	}
+
+	# ROOT is current title holder
+	# FROM is candidate
+	# FROMFROM is title
+	# FROMFROMFROM is null
+	candidate_trigger = { #Trigger to determine what characters are valid candidates that can be voted by electors.
+		NOT = { character = FROM }
+		FROM = {
+			can_inherit_titles_trigger = yes
+
+			OR = {
+				dynasty = ROOT
+				is_child_of = ROOT
+
+				AND = {
+					is_close_relative = ROOT
+					NAND = { # Not wrong parent
+						OR = {
+							is_parent_of = ROOT
+							is_grandparent_of = ROOT
+						}
+						NOT = { dynasty = ROOT }
+					}
+					NOR = {
+						mother_even_if_dead = {
+							trait = disinherited
+							dynasty = ROOT
+						}
+						mother_even_if_dead = {
+							mother_even_if_dead = {
+								trait = disinherited
+								dynasty = ROOT
+							}
+						}
+						father_even_if_dead = {
+							mother_even_if_dead = {
+								trait = disinherited
+								dynasty = ROOT
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	candidate_vote_score = { #Chance of an Elector voting for a candidate over the other. The candidate with the highest value will be picked.
+		days = 1
+
+		additive_modifier = { #Another relative takes precedence
+			value = -999
+			FROMFROM = {
+				NOT = { would_be_heir_under_law = { who = ROOT_FROM law = primogeniture } }
+				holder_scope = {
+					ROOT_FROM = {
+						any_close_relative = {
+							OR = {
+								trigger_if = { # Older sibling
+									limit = { sibling = PREV }
+									is_older_than = PREV
+									is_child_of = PREVPREV
+								}
+								trigger_else = { # ParentGrandparent
+									OR = {
+										is_parent_of = PREV
+										is_grandparent_of = PREV
+									}
+									is_close_relative = PREVPREV
+
+									ROOT_FROM = { NOT = { is_descendant_of = PREVPREVPREV } } #Not childgrandchild of current holder
+									NOT = { character = PREVPREV }
+								}
+							}
+
+							can_inherit_titles_trigger = yes
+							is_alive = yes
+
+							OR = {
+								ROOT_FROMFROM = { has_law = true_cognatic_succession }
+
+								trigger_if = {
+									limit = { is_female = no }
+									ROOT_FROMFROM = {
+										OR = {
+											has_law = cognatic_succession
+											has_law = agnatic_succession
+										}
+									}
+								}
+								trigger_else = {
+									ROOT_FROMFROM = {
+										OR = {
+											has_law = enatic_succession
+											has_law = enatic_cognatic_succession
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 1000
+			FROMFROM = { would_be_heir_under_law = { who = ROOT_FROM law = primogeniture } }
+		}
+
+		additive_modifier = {
+			value = 210
+			FROMFROM = { holder_scope = { ROOT_FROM = { is_child_of = PREV } } }
+		}
+
+		additive_modifier = {
+			value = 180
+			FROMFROM = {
+				holder_scope = {
+					ROOT_FROM = {
+						is_grandchild_of = PREV
+						NOT = { is_child_of = PREV }
+					}
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 45
+			FROMFROM = {
+				holder_scope = {
+					ROOT_FROM = {
+						is_grandchild_of = PREV
+						OR = {
+							father_even_if_dead = {
+								is_alive = no
+								is_child_of = PREVPREV
+								NOT = { any_sibling_even_if_dead = { is_older_than = PREV } }
+								ROOT_FROMFROM = {
+									OR = {
+										has_law = true_cognatic_succession
+										has_law = cognatic_succession
+										has_law = agnatic_succession
+									}
+								}
+							}
+							mother_even_if_dead = {
+								is_alive = no
+								is_child_of = PREVPREV
+								NOT = { any_sibling_even_if_dead = { is_older_than = PREV } }
+								ROOT_FROMFROM = {
+									OR = {
+										has_law = true_cognatic_succession
+										has_law = enatic_cognatic_succession
+										has_law = enatic_succession
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		additive_modifier = { # Great grandchildren
+			value = 150
+			FROMFROM = {
+				holder_scope = {
+					ROOT_FROM = {
+						is_descendant_of = PREV
+						NOT = { is_grandchild_of = PREV }
+						NOT = { is_child_of = PREV }
+					}
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 120
+			FROMFROM = { holder_scope = { ROOT_FROM = { sibling = PREV } } }
+		}
+
+		additive_modifier = {
+			value = 90
+			FROMFROM = { holder_scope = { ROOT_FROM = { is_nibling_of = PREV } } }
+		}
+
+		additive_modifier = {
+			value = 60
+			FROMFROM = { holder_scope = { ROOT_FROM = { is_aunt_uncle_of = PREV } } }
+		}
+
+		additive_modifier = {
+			value = 30
+			FROMFROM = {
+				holder_scope = {
+					ROOT_FROM = {
+						is_close_relative = PREV
+						NOR = {
+							is_nibling_of = PREV
+							sibling = PREV
+							is_grandchild_of = PREV
+							is_descendant_of = PREV
+							is_child_of = PREV
+							is_aunt_uncle_of = PREV
+						}
+					}
+				}
+			}
+		}
+		additive_modifier = {
+			value = 45
+			FROM = {
+				trigger_if = {
+					limit = { is_female = no }
+					ROOT_FROMFROM = {
+						OR = {
+							has_law = cognatic_succession
+							has_law = agnatic_succession
+						}
+					}
+				}
+				trigger_else = {
+					ROOT_FROMFROM = {
+						OR = {
+							has_law = enatic_succession
+							has_law = enatic_cognatic_succession
+						}
+					}
+				}
+			}
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 5 }
+		}
+		
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 10 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 15 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 20 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 25 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 30 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 35 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 40 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 45 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 50 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 55 }
+		}
+
+		additive_modifier = {
+			value = 1
+			FROM = { age >= 60 }
+		}
+	}
+}

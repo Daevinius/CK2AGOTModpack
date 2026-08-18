@@ -1,0 +1,482 @@
+namespace = mbs_alayne
+character_event = {
+	id = mbs_alayne.1
+	desc = "EVTDESCmega_wars.60"
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 6059
+		host = { character = 9316 }
+	}
+
+	option = {
+		name = "EVTOPTAmega_wars.60"
+		ai_chance = { factor = 5 }
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_alayne.2 days = 1 tooltip = "EVTTOOLTIPmega_wars.61" }
+			}
+		}
+	}
+}
+#I have a close relative of the enemy
+character_event = {
+	id = mbs_alayne.2
+	desc = EVTDESCmbs_alayne.2
+	picture = GFX_evt_judged_by_ruler
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmega_wars.61" #It's not his fault
+		ai_chance = {
+			factor = 30
+
+			modifier = {
+				factor = 0.33
+				has_cutthroat_religion_trigger = yes
+			}
+			modifier = { #More tolerent of ignorant AI
+				factor = 3
+				NOT = {
+					any_current_enemy = {
+						OR = {
+							is_child_of = FROM
+							is_parent_of = FROM
+							any_child = { is_parent_of = FROM }
+							sibling = FROM
+							is_married = FROM
+							AND = { #Can target dynasts only if enemy is close relative
+								dynasty = FROM
+								is_lowborn = no
+								NOT = { dynasty = ROOT }
+							}
+						}
+						war_with = ROOT
+						OR = {
+							ai = no
+							AND = {
+								has_character_flag = against_king
+								ROOT = { tier = EMPEROR trait = civil_war }
+							}
+							AND = {
+								has_character_flag = supporting_king
+								ROOT = { trait = rebel_leader }
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				dynasty = FROM
+			}
+			modifier = {
+				factor = 2
+				is_close_relative = FROM
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  25 }
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  50 }
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  75 }
+			}
+			modifier = {
+				factor = 1.2
+				trait = charitable
+			}
+			modifier = {
+				factor = 1.5
+				trait = kind
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 4
+				trait = trusting
+			}
+			modifier = {
+				factor = 10 #Enemy has your relative
+				any_current_enemy = {
+					dynasty = FROM
+					is_close_relative = FROM
+					any_courtier = {
+						host = { character = PREVPREV }
+						is_close_relative = ROOT
+						AND = {
+							is_lowborn = no
+							dynasty = ROOT
+						}
+					}
+				}
+			}
+		}
+		FROM = {
+			opinion = {
+				modifier = opinion_merciful
+				who = ROOT
+				years = 10
+			}
+			hidden_tooltip = {
+				character_event = { id = mega_wars.62 }
+			}
+		}
+		if = {
+			limit = { NOT = { dynasty = FROM } }
+			prestige = -40
+		}
+		if = {
+			limit = { dynasty = FROM }
+			prestige = -20
+		}
+		piety = 20
+		change_variable = { which = fear_actions value = -3 }
+		hidden_tooltip = { character_event = { id = faction_event_new.90 } }
+	}
+
+	option = {
+		name = "EVTOPTBmega_wars.61" #Imprison him
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -25 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -50 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -75 } }
+			}
+			modifier = {
+				factor = 1.2
+				trait = greedy
+			}
+			modifier = {
+				factor = 1.5
+				trait = craven
+			}
+			modifier = {
+				factor = 1.2
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.5
+				trait = envious
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+		}
+		FROM = {
+			hidden_tooltip = {
+				character_event = { id = mbs_alayne.3 }
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCmega_wars.61" #execute him!
+		ai_chance = {
+			factor = 30
+
+			modifier = {
+				factor = 2
+				has_cutthroat_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.1
+				NOT = { trait = lunatic }
+				OR = {
+					dynasty = FROM
+					is_close_relative = FROM
+				}
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -25 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -50 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -75 } }
+			}
+			modifier = {
+				factor = 1.2
+				trait = greedy
+			}
+			modifier = {
+				factor = 1.5
+				trait = craven
+			}
+			modifier = {
+				factor = 1.5
+				trait = envious
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 2
+				trait = lunatic
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 4
+				trait = paranoid
+			}
+			modifier = {
+				factor = 4
+				trait = cruel
+			}
+		}
+		FROM = {
+			hidden_tooltip = {
+				character_event = { id = mbs_alayne.3 }
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTDmega_wars.61" #torture
+		trigger = {
+			FROM = { age = 14 }
+			OR = {
+				trait = impaler
+				trait = cruel
+			}
+			NOT = { trait = honorable }
+			NOT = { trait = kind }
+		}
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 0.1
+				NOT = { trait = lunatic }
+				OR = {
+					dynasty = FROM
+					is_close_relative = FROM
+				}
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -25 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -50 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -75 } }
+			}
+			modifier = {
+				factor = 2
+				trait = lunatic
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 4
+				trait = paranoid
+			}
+			modifier = {
+				factor = 4
+				trait = impaler
+			}
+			modifier = {
+				factor = 4
+				trait = cruel
+			}
+		}
+		FROM = {
+			hidden_tooltip = {
+				character_event = { id = mbs_alayne.3 }
+			}
+		}
+	}
+}
+# Sansa flees
+character_event = {
+	id = mbs_alayne.3
+	desc = EVTDESCmbs_alayne.3
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAmbs_alayne.3
+		ai_chance = { factor = 5 }
+		c_6059 = {
+			if = {
+				limit = {
+					is_alive = yes
+				}
+				create_character = { #Create hidden character
+					name = Алейна
+					dna = "cdcbc00b0b0"
+					properties = "0a00f"
+					culture = THIS
+					religion = THIS
+					female = yes
+					dynasty = 171
+					age = 12
+					trait = proud
+					trait = groomed
+					trait = fair_2
+					trait = deceitful
+					trait = patient
+					trait = bastard
+					trait = chaste
+					historical = yes
+				}
+				new_character = {
+					set_graphical_culture = Tully_dyn
+					set_character_flag = sansa_stark
+					c_midlor_point = {
+						holder_scope = {
+							reverse_banish = PREVPREV
+						}
+					}
+					save_global_event_target_as = sansa_stark
+					give_nickname = nick_stone
+					set_focus = focus_ed_intrigue # Thanks, Littlefinger
+					set_character_flag = missing_stark_child
+					if = {
+						limit = { liege = { ai = yes } }
+						add_trait = forbid_marriage
+					}
+					if = {
+						limit = { NOT = { has_dlc = "Zeus" } }
+						add_character_modifier = {
+							name = court_education
+							duration = -1
+						}
+					}
+					copy_random_personality_trait = PREV
+					create_bloodline = {
+						type = bloodline_sansa_stark
+					}
+					set_father = 94043
+					set_immune_to_pruning = yes
+				}
+				add_trait = has_missing
+				death = { death_reason = death_missing }
+			}
+		}
+		c_94043 = {
+			character_event = { id = mbs_alayne.4 }
+			character_event = { id = feast_for_crows.21 years = 1 }
+		}
+		c_37 = {
+			death = { death_reason = death_murder killer = 94043 }
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_alayne.5 }
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_alayne.6 }
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_alayne.6 }
+			}
+		}
+		FROM = {
+			any_close_relative = {
+				limit = {
+					NOR = {
+						has_landed_title = k_riverlands
+						has_landed_title = e_north
+					}
+				}
+				character_event = { id = mbs_alayne.6 }
+			}
+		}
+	}
+}
+narrative_event = {
+	id = mbs_alayne.4
+	title = "EVTtitlembs_alayne.4"
+	desc = "EVTDESCmbs_alayne.4"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+narrative_event = {
+	id = mbs_alayne.5
+	title = "EVTtitlembs_alayne.5"
+	desc = "EVTDESCmbs_alayne.5"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+narrative_event = {
+	id = mbs_alayne.6
+	title = "EVTtitlembs_alayne.6"
+	desc = "EVTDESCmbs_alayne.6"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}

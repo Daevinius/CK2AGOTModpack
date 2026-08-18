@@ -1,0 +1,132 @@
+#####Events to spawn canon characters by PabloLara for Stormborn Submod. Modified and expanded from the original lore_children events written by Rodri/Rewritten by knuckey.#####
+namespace = sb_lore_children
+
+##Targaryen Lore Children##
+#Daenerys Stormborn in Roberts Rebellion Bookmark
+character_event = {
+	id = sb_lore_children.1
+
+	is_triggered_only = yes
+
+	trigger = {
+		year = 8284
+		year < 8285
+		character = 77038 #Rhaella
+		ai = yes
+		num_of_children < 7
+		NOT = { has_character_flag = daenerys_targaryen_mother }
+		spouse = {
+			dynasty = ROOT
+			NOT = { trait = eunuch }
+			NOT = { trait = celibate }
+		}
+		is_pregnant = no
+	}
+
+	option = {
+		name = OK
+		set_character_flag = daenerys_targaryen_mother
+		random = {
+			chance = 50
+			modifier = {
+			factor = 500
+				has_game_rule = {
+					name = baby_daenerys_birth
+					value = canon
+				}
+			}
+			spouse = {
+				create_character = {
+					name = Дейнерис
+					dna = "aghgitljaac"
+					properties = "0p00d"
+					female = yes
+					age = 0
+				}
+				new_character = {
+					set_father = PREV
+					set_mother = ROOT
+					dynasty = ROOT
+					add_trait = fair
+					character_event = { id = high_valyrian.3 days = 2000 }
+					set_character_flag = daenerys_targaryen
+					add_character_modifier = {
+						name = "abomination_of_incest"
+						duration = -1
+					}
+					if = {
+						limit = {
+							ROOT = { is_inaccessible_trigger = yes }
+						}
+						add_trait = in_hiding
+					}
+				}
+			}
+		}
+	}
+}
+#Maegor Targaryen in the War of Conquest Bookmark
+character_event = {
+	id = sb_lore_children.2
+
+	is_triggered_only = yes
+
+	trigger = {
+		year = 8010
+		year < 8012
+		character = 77002 #Visenya
+		ai = yes
+		num_of_children < 2
+		NOT = { has_character_flag = maegor_targaryen_mother }
+		spouse = {
+			dynasty = ROOT
+			has_character_flag = aegon_targaryen
+			NOT = { trait = eunuch }
+			NOT = { trait = celibate }
+		}
+		is_pregnant = no
+	}
+
+	option = {
+		name = OK
+		set_character_flag = maegor_targaryen_mother
+		random = {
+			chance = 50
+			modifier = {
+			factor = 500
+				has_game_rule = {
+					name = baby_daenerys_birth
+					value = canon
+				}
+			}
+			spouse = {
+				create_character = {
+					name = Мейгор
+					dna = "bggeeykdaay"
+					properties = "cm0cik"
+					female = no
+					age = 0
+				}
+				new_character = {
+					set_father = PREV
+					set_mother = ROOT
+					dynasty = ROOT
+					add_trait = cruel
+					character_event = { id = high_valyrian.3 days = 2000 }
+					set_character_flag = potential_targ_lunatic
+					set_character_flag = maegor_targaryen
+					add_character_modifier = {
+						name = "abomination_of_incest"
+						duration = -1
+					}
+					if = {
+						limit = {
+							ROOT = { is_inaccessible_trigger = yes }
+						}
+						add_trait = in_hiding
+					}
+				}
+			}
+		}
+	}
+}

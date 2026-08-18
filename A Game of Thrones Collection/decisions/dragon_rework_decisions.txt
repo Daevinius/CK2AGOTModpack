@@ -1,0 +1,2006 @@
+###Targetted Decisions###
+#Allow Taming
+#Motivate to Tame
+#Bring Dragon to dragonpit
+#Interact with Dragon
+#Train your Dragon
+#Take Eggs from Dragon
+#Make Clutch (Valyrian only)
+#Take Dragonstone
+#Move Dragon
+#Heal Dragon (wounded only)
+#Set to Tame
+#Unset to Tame (dragon)
+#Unset to Tame (self)
+#Take Egg from Dragonkeeper
+#Take All Eggs from Dragonkeeper
+#Give All Eggs to Dragonkeeper
+#Summon Dragonkeeper
+#Transfer One Egg to Dragonmont
+#Ask to put Dragon Eggs in Dragon Pit
+#Demand Dragon Eggs
+#Steal Dragon Eggs
+#Take Polygamous Spouse - Valyrian
+
+
+###Decisions###
+#Interact with Dragon
+#Train Dragon
+#Remove Riders from Hiding
+#Stop Calling for Riders
+#Establish Dragonkeepers
+#Transfer Eggs to Dragonmont
+#AI Dragon Tame Decision - Normal
+#AI Dragon Tame Decision - Adventurous
+#AI Dragon Tame Decision - Wild
+#AI Dragon Tame Decision - Dragonseed
+#Open the Wooden Chest
+#Personal Sigils
+
+
+targeted_decisions = {
+
+	#Allow Taming
+    tdp_allow_taming = {
+		filter = realm
+		ai_target_filter = close_relatives
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		from_potential = {
+			independent = yes
+			primary_title = {
+				OR = {
+					has_law = tdp_dragon_tamer_0
+					has_law = tdp_dragon_tamer_1
+					has_law = tdp_dragon_tamer_2
+				}
+			}
+		}
+		potential = {
+			NOT = { trait = dragon_rider }
+		}
+		allow = {
+			NOR = {
+				any_friend = {
+					trait = dragon
+				}
+				disallowed_from_dragon_trigger = yes
+				has_character_modifier = cannot_tame_dragon
+				trait = dragon_rider
+				trait = dragon
+				has_character_modifier = granted_dragon_access
+				trait = dragonkeeper
+			}
+		}
+		effect = {
+			add_character_modifier = {
+				name = granted_dragon_access
+				duration = -1
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				FROM = { is_dragon_hoarder_type = yes }
+				NOR = {
+					is_heir = FROM
+					AND = {
+						main_heir_trigger = yes
+						is_grandchild_of = FROM
+					}
+					AND = {
+						spare_heir_trigger = yes
+						OR = {
+							is_child_of = FROM
+							is_grandchild_of = FROM
+						}
+					}
+					AND = {
+						any_spouse = { has_character_modifier = granted_dragon_access }
+						dynasty = FROM
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				NOR = {
+					is_close_relative = FROM
+					dynasty = FROM
+				}
+			}
+			modifier = {
+				factor = 0
+				age < 6
+			}
+			modifier = {
+				factor = 0
+				has_character_modifier = cannot_tame_dragon
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					NOR = {
+						trait = arbitrary
+						trait = lunatic
+					}
+				}
+				trait = bastard
+			}
+
+		}
+	}
+
+	tdp_disallow_taming = {
+		filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		potential = {
+			has_character_modifier = granted_dragon_access
+		}
+		allow = {
+			has_character_modifier = granted_dragon_access
+			FROM = {
+				primary_title = {
+					has_law = tdp_dragon_tamer_0
+				}
+			}
+		}
+		effect = {
+			remove_character_modifier = granted_dragon_access
+			add_character_modifier = {
+				name = cannot_tame_dragon
+				duration = -1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Motivate to Tame
+	tdp_motivate_to_tame = {
+		filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			prisoner = no
+			age = 14
+			is_incapable = no
+			has_dragonpit_trigger = yes
+			any_realm_character = {
+				trait = dragon
+				NOT = { trait = cannibal_dragon }
+				NOT = {
+					AND = {
+						trait = shy_dragon
+						has_character_modifier = locked_in_dragonpit
+					}
+				}
+				NOT = { character = 77990022 }
+				num_of_friends < 1
+			}
+		}
+		potential = {
+			allowed_and_capable_tame_dragon = yes
+		}
+		allow = {
+			age = 14
+		}
+		effect = {
+			FROM = {
+				if = {
+					limit = { has_character_flag = has_set_dragon }
+					clr_character_flag = has_set_dragon
+				}
+			}
+			save_event_target_as = rider_looking
+			top_liege = {
+				if = {
+					limit = {
+						top_liege = { any_realm_character = { has_character_flag = marked_to_tame } }
+					}
+					random_character = {
+						limit = { has_character_flag = marked_to_tame }
+						save_event_target_as = dragon_being_tamed
+						clr_character_flag = marked_to_tame
+					}
+					character_event = { id = dragon_rework.7 }
+				}
+				#Dragon Pit first
+				if = {
+					limit = {
+						top_liege = { NOT = { any_realm_character = { has_character_flag = marked_to_tame } } }
+						any_realm_character = {
+							trait = dragon
+							has_character_modifier = locked_in_dragonpit
+							NOT = { trait = cannibal_dragon }
+							#NOT = { trait = shy_dragon }
+							NOT = { character = 77990022 }
+							num_of_friends < 1
+						}
+					}
+					random_realm_character = {
+						limit = {
+							trait = dragon
+							has_character_modifier = locked_in_dragonpit
+							NOT = { trait = cannibal_dragon }
+							#NOT = { trait = shy_dragon }
+							NOT = { character = 77990022 }
+							num_of_friends < 1
+						}
+						save_event_target_as = dragon_being_tamed
+					}
+					ROOT = { set_character_flag =  dragon_found }
+					character_event = { id = dragon_rework.7 }
+				}
+				#Then wild
+				if = {
+					limit = {
+						ROOT = { NOT = { has_character_flag = dragon_found } }
+						top_liege = { NOT = { any_realm_character = { has_character_flag = marked_to_tame } } }
+						any_realm_character = {
+							trait = dragon
+							NOT = { has_character_modifier = locked_in_dragonpit }
+							NOT = { trait = cannibal_dragon }
+							NOT = { trait = shy_dragon }
+							NOT = { character = 77990022 }
+							num_of_friends < 1
+						}
+					}
+					random_realm_character = {
+						limit = {
+							trait = dragon
+							NOT = { has_character_modifier = locked_in_dragonpit }
+							NOT = { trait = cannibal_dragon }
+							NOT = { trait = shy_dragon }
+							NOT = { character = 77990022 }
+							num_of_friends < 1
+						}
+						save_event_target_as = dragon_being_tamed
+					}
+					character_event = { id = dragon_rework.7 }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Bring Dragon to dragonpit
+	tdp_bring_dragon_to_pit = {
+		filter = realm
+		ai_target_filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		from_potential = {
+			prisoner = no
+			age = 14
+			is_incapable = no
+			NOT = { trait = infirm }
+			has_dragonpit_trigger = yes
+			independent = yes
+		}
+		potential = {
+			trait = dragon
+			num_of_friends < 1
+			NOT = { has_character_modifier = locked_in_dragonpit }
+			NOT = { trait = cannibal_dragon }
+		}
+		allow = {
+			OR = {
+				trait = wounded_dragon
+				trait = maimed_dragon
+				trait = obedient_dragon
+				trait = playful_dragon
+				trait = affectionate_dragon
+				trait = harmless_dragon
+			}
+			NOR = {
+				has_character_modifier = never_domesticated
+				trait = cannibal_dragon
+				trait = aggressive_dragon
+				trait = lunatic_dragon
+				trait = ravenous_dragon
+				trait = wroth_dragon
+				trait = shy_dragon
+				age = 80
+			}
+		}
+		effect = {
+			move_character = FROM
+			add_character_modifier = { name = locked_in_dragonpit duration = -1 }
+			clr_character_flag = has_dragon_location
+			random_province = {
+				limit = { ROOT = { has_character_flag = dragon_location_@PREV } }
+				ROOT = { clr_character_flag = dragon_location_@PREV }
+			}
+			liege = {
+				capital_scope = {
+					ROOT = {
+						set_character_flag = has_dragon_location
+						set_character_flag = dragon_location_@PREV
+					}
+				}
+			}
+			FROM = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_dragon_from_my_pit
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0.2
+				trait = ugly_dragon
+			}
+			modifier = {
+				factor = 8
+				trait = harmless_dragon
+			}
+			modifier = {
+				factor = 2
+				trait = obedient_dragon
+			}
+			modifier = {
+				factor = 2
+				trait = affectionate_dragon
+			}
+			modifier = {
+				factor = 2
+				trait = playful_dragon
+			}
+			modifier = {
+				factor = 5
+				trait = maimed_dragon
+			}
+			modifier = {
+				factor = 2
+				trait = wounded_dragon
+			}
+			modifier = {
+				factor = 2
+				NOT = { age = 40 }
+			}
+			modifier = {
+				factor = 2
+				NOT = { age = 30 }
+			}
+			modifier = {
+				factor = 2
+				NOT = { age = 20 }
+			}
+
+		}
+	}
+
+	#Interact with Dragon
+	tdp_interact_with_dragon = {
+		filter = friends
+		ai_target_filter = friends
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		from_potential = {
+			NOT = {	has_character_flag = interacted_with_dragon }
+			prisoner = no
+			age = 14
+			is_incapable = no
+			NOT = { trait = infirm }
+			war = no
+			in_command = no
+		}
+		potential = {
+			trait = dragon
+			is_friend = FROM
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			save_event_target_as = dragon_friend
+			FROM = {
+				set_character_flag = interacted_with_dragon
+				character_event = { id = tdp_dragon_interaction.1 }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#Train your Dragon
+	tdp_train_your_dragon = {
+		filter = realm
+		ai_target_filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		from_potential = {
+			NOT = {	has_character_flag = trained_with_dragon }
+			prisoner = no
+			age = 14
+			is_incapable = no
+			NOT = { trait = infirm }
+			any_friend = {
+				trait = dragon
+			}
+			OR = {
+				martial = 15
+				combat_rating = 80
+			}
+			war = no
+			in_command = no
+		}
+		potential = {
+			trait = dragon
+			is_friend = FROM
+		}
+		allow = {
+			in_command = no
+			war = no
+			FROM = {
+				NOT = {
+					any_friend = {
+						OR = {
+							trait = maimed_dragon
+							trait = wounded_dragon
+							trait = harmless_dragon
+							trait = infirm_dragon
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			save_event_target_as = dragon_friend
+			FROM = {
+				character_event = { id = tdp_dragon_interaction.7 }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#Take Eggs from Dragon
+	tdp_take_eggs_from_dragon = {
+		filter = realm
+		ai_target_filter = realm
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			NOT = { trait = dragon }
+			prisoner = no
+			age = 14
+			is_incapable = no
+			NOT = { trait = infirm }
+
+		}
+		potential = {
+			trait = dragon
+			has_artifact = dragon_egg
+			OR = {
+				is_friend = FROM
+				AND = {
+					FROM = { has_dragonpit_trigger = yes }
+					has_character_modifier = locked_in_dragonpit
+				}
+				AND = {
+					FROM = { culture = high_valyrian }
+					FROM = { religion_group = valyrian_rel_group }
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_artifact = {
+				limit = { artifact_type = dragon_egg }
+				transfer_artifact = {
+					from = ROOT
+					to = FROM
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#Make Clutch (Valyrian only)
+	tdp_valyrian_make_clutch = {
+		filter = realm
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		ai = no
+
+		from_potential = {
+			culture = high_valyrian
+			trait = dragon_rider
+			religion_group = valyrian_rel_group
+			prisoner = no
+			age = 14
+			NOR = {
+				trait = incapable
+				trait = infirm
+				has_artifact = dragon_egg
+				has_character_modifier = made_clutch
+				has_artifact = dragon_egg
+				any_courtier = { has_artifact = dragon_egg }
+			}
+		}
+		potential = {
+			trait = dragon
+			NOT = { has_artifact = dragon_egg }
+			NOT = { trait = sickly_dragon }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { add_character_modifier = { name = made_clutch days = 2000 } }
+			character_event = { id = dragon_rework.11 days = 1 }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	#Take Dragonstone
+	tdp_dragonstone = {
+		filter = vassals
+		ai_target_filter = vassals
+
+		from_potential = {
+			culture_group = valyrian
+			tier = EMPEROR
+		}
+		potential = {
+			OR = {
+				has_landed_title = c_dragonstone
+				has_landed_title = d_dragonstone
+				has_landed_title = k_dragonstone
+			}
+			NOT = { has_dynasty_flag = dragon_cold_war }
+			NOT = { dynasty = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				gain_title = d_dragonstone
+				gain_title = c_dragonstone
+
+				if = {
+					limit = { has_landed_title = k_dragonstone }
+
+					gain_title = k_dragonstone
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_dragonstone_appointment = {
+		filter = vassals
+		ai_target_filter = vassals
+
+		from_potential = {
+			culture_group = valyrian
+			tier = EMPEROR
+		}
+		potential = {
+			FROM = { is_liege_of = ROOT }
+			OR = {
+				has_landed_title = c_dragonstone
+				has_landed_title = d_dragonstone
+				has_landed_title = k_dragonstone
+			}
+		}
+		allow = {
+			NOT = { has_dynasty_flag = dragon_cold_war }
+			OR = {
+				#Heir
+				is_heir = FROM
+				#Same Dynasty + Not Defiant
+				AND = {
+					dynasty = FROM
+					NOT = { is_heir = FROM }
+					NOR = {
+						trait = stubborn
+						trait = ambitious
+						trait = wroth
+					}
+				}
+				#Not Dynasty
+				NOT = { dynasty = FROM }
+			}
+		}
+		effect = {
+			set_character_flag = succession_appointment
+			primary_title = {
+				succession = appointment
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	#Move Dragon
+	tdp_move_dragon = {
+		filter = friends
+		ai_target_filter = friends
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		from_potential = {
+			trait = dragon_rider
+			NOT = { in_command = yes }
+		}
+		potential = {
+			ai = yes
+
+			trait = dragon
+			NOT = { at_location = FROM }
+		}
+		allow = {
+			OR = {
+				is_friend = FROM
+				AND = {
+					has_character_modifier = locked_in_dragonpit
+					FROM = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = opinion_dragon_from_my_pit
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = { FROM = { is_ruler = yes } }
+				move_character = FROM
+				clr_character_flag = has_dragon_location
+				random_province = {
+					limit = { ROOT = { has_character_flag = dragon_location_@PREV } }
+					ROOT = { clr_character_flag = dragon_location_@PREV }
+				}
+				liege = {
+					capital_scope = {
+						ROOT = {
+							set_character_flag = has_dragon_location
+							set_character_flag = dragon_location_@PREV
+						}
+					}
+					if = {
+						limit = {
+							NOT = { has_dragonpit_trigger = yes }
+							ROOT = { has_character_modifier = locked_in_dragonpit }
+						}
+						ROOT = { remove_character_modifier = locked_in_dragonpit }
+					}
+				}
+			}
+			if = {
+				limit = { FROM = { is_ruler = no } }
+				FROM = {
+					liege = {
+						ROOT = {
+							move_character = PREV
+						}
+					}
+				}
+				clr_character_flag = has_dragon_location
+				random_province = {
+					limit = { ROOT = { has_character_flag = dragon_location_@PREV } }
+					ROOT = { clr_character_flag = dragon_location_@PREV }
+				}
+				liege = {
+					capital_scope = {
+						ROOT = {
+							set_character_flag = has_dragon_location
+							set_character_flag = dragon_location_@PREV
+						}
+					}
+					if = {
+						limit = {
+							NOT = { has_dragonpit_trigger = yes }
+							ROOT = { has_character_modifier = locked_in_dragonpit }
+						}
+						ROOT = { remove_character_modifier = locked_in_dragonpit }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	#Heal Dragon (wounded only)
+	tdp_heal_dragon = {
+		filter = realm
+		ai_target_filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		from_potential = {
+			trait = dragon_rider
+			NOT = { in_command = yes }
+			war = no
+		}
+		potential = {
+			is_friend = FROM
+			trait = dragon
+			at_location = FROM
+			trait = wounded_dragon
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = wounded_dragon
+		}
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
+	#Set to Tame
+	tdp_set_to_tame = {
+		filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			NOT = { has_character_flag = has_set_dragon }
+		}
+		potential = {
+			trait = dragon
+			NOT = { has_character_flag = marked_to_tame }
+			num_of_friends < 1
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { set_character_flag = has_set_dragon }
+			set_character_flag = marked_to_tame
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Unset to Tame (dragon)
+	tdp_unset_to_tame = {
+		filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		potential = {
+			trait = dragon
+			has_character_flag = marked_to_tame
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { clr_character_flag = has_set_dragon }
+			clr_character_flag = marked_to_tame
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Unset to Tame (self)
+	tdp_unset_to_tame_self = {
+		filter = self
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		potential = {
+			has_character_flag = has_set_dragon
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { clr_character_flag = has_set_dragon }
+			any_character = {
+				limit = { has_character_flag = marked_to_tame }
+				clr_character_flag = marked_to_tame
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Take Egg from Dragonkeeper
+	tdp_take_eggs_dragonkeeper = {
+		filter = vassals
+		ai_target_filter = vassals
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			any_vassal = {
+				trait = dragonkeeper
+			}
+		}
+		potential = {
+			has_artifact = dragon_egg
+			trait = dragonkeeper
+		}
+		allow = {
+			FROM = {
+				age = 12
+				NOR = {
+					trait = incapable
+					trait = infirm
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = { ai = yes }
+				set_character_flag = just_took_egg
+				character_event = { id = dragon_rework.200 days = 1500 }
+			}
+			random_artifact = {
+				limit = { artifact_type = dragon_egg }
+				transfer_artifact = {
+					from = ROOT
+					to = FROM
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				FROM = { is_dragon_hoarder_type = yes }
+			}
+			modifier = {
+				factor = 0
+				FROM = { has_character_flag = just_took_egg }
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_courtier = {
+						count = 6
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_courtier = {
+						count = 4
+						trait = dragon_rider
+						dynasty = FROM
+					}
+				}
+			}
+		}
+	}
+
+	#Take All Eggs from Dragonkeeper
+	tdp_take_all_eggs_dragonkeeper = {
+		filter = vassals
+		ai_target_filter = vassals
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			any_vassal = {
+				trait = dragonkeeper
+			}
+		}
+		potential = {
+			has_artifact = dragon_egg
+			trait = dragonkeeper
+		}
+		allow = {
+			FROM = {
+				age = 12
+				NOR = {
+					trait = incapable
+					trait = infirm
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = { ai = yes }
+				set_character_flag = just_took_egg
+				character_event = { id = dragon_rework.200 days = 1500 }
+			}
+			hidden_tooltip = {
+				any_artifact = {
+					limit = { artifact_type = dragon_egg }
+					transfer_artifact = {
+						from = ROOT
+						to = FROM
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Give All Eggs to Dragonkeeper
+	tdp_give_eggs_dragonkeeper = {
+		filter = vassals
+		ai_target_filter = vassals
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			any_vassal = {
+				trait = dragonkeeper
+			}
+			has_artifact = dragon_egg
+		}
+		potential = {
+			trait = dragonkeeper
+		}
+		allow = {
+			FROM = {
+				age = 12
+				NOR = {
+					trait = incapable
+					trait = infirm
+				}
+				is_liege_of = ROOT
+			}
+		}
+		effect = {
+			FROM = {
+				any_artifact = {
+					limit = { artifact_type = dragon_egg }
+					transfer_artifact = {
+						from = FROM
+						to = ROOT
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				FROM = { has_character_flag = just_took_egg }
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					any_courtier = {
+						has_character_modifier = granted_dragon_access
+						NOT = { trait = dragon_rider }
+						NOT = { any_friend = { trait = dragon } }
+						NOT = { has_character_modifier = cannot_tame_dragon }
+					}
+					any_realm_character = {
+						count >= 3
+						trait = dragon_rider
+					}
+				}
+			}
+		}
+	}
+
+	#Summon Dragonkeeper
+	tdp_summon_dragonkeeper = {
+		filter = self
+		ai_target_filter = self
+		diplomacy_icon = GFX_trait_dragonkeeper
+
+		potential = {
+			trait = dragonkeeper
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				character_event = { id = tdp_dragonkeepers.101 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Transfer One Egg to Dragonmont
+	tdp_transfer_one_egg_to_dragonstone = {
+		filter = realm
+		ai_target_filter = realm
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			any_vassal = {
+				trait = dragonkeeper
+				NOT = {
+					primary_title = {
+						has_title_flag = dragonkeeper_title_dragonstone
+					}
+				}
+				has_artifact = dragon_egg
+			}
+			any_realm_lord = {
+				trait = dragonkeeper
+				primary_title = {
+					has_title_flag = dragonkeeper_title_dragonstone
+				}
+			}
+		}
+		potential = {
+			trait = dragonkeeper
+			primary_title = {
+				has_title_flag = dragonkeeper_title_dragonstone
+			}
+		}
+		allow = {
+			FROM = {
+				NOR = {
+					trait = dragon
+					trait = dragonkeeper
+					prisoner = yes
+					trait = infirm
+					trait = incapable
+				}
+			}
+		}
+		effect = {
+			hidden_tooltip = {
+				FROM = {
+					random_vassal = {
+						limit = {
+							trait = dragonkeeper
+							NOT = {
+								primary_title = {
+									has_title_flag = dragonkeeper_title_dragonstone
+								}
+							}
+							has_artifact = dragon_egg
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							transfer_artifact = {
+								from = PREV
+								to = ROOT
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Ask to put Dragon Eggs in Dragon Pit
+	tdp_ask_to_store_eggs = {
+		filter = realm
+		ai_target_filter = realm
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			NOR = {
+				trait = dragon
+				trait = dragonkeeper
+			}
+			OR = {
+				ai = no
+				top_liege = {
+					any_realm_character = {
+						count = 5
+						trait = dragon
+					}
+				}
+			}
+			independent = yes
+			is_ruler = yes
+			has_dynasty_flag = dragon_riding_dynasty
+		}
+		potential = {
+			NOR = {
+				trait = dragon
+				trait = dragonkeeper
+				prisoner = yes
+				trait = infirm
+				trait = incapable
+			}
+			has_artifact = dragon_egg
+			OR = {
+				NOT = { independent = yes }
+				NOT = { is_ruler = yes }
+			}
+		}
+		allow = {
+			age = 12
+			has_artifact = dragon_egg
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM
+					modifier = opinion_asked_for_egg
+				}
+			}
+		}
+		effect = {
+			FROM = { save_event_target_as = decision_taker }
+			character_event = { id = dragon_rework.52 }
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					dynasty = FROM
+
+				}
+				NOT = { has_global_flag = age_of_dragons }
+			}
+		}
+	}
+
+	#Demand Dragon Eggs
+	tdp_demand_return_eggs = {
+		filter = independent_rulers
+		ai_target_filter = independent_rulers
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			NOR = {
+				trait = dragon
+				trait = dragonkeeper
+			}
+			has_dynasty_flag = dragon_riding_dynasty
+			independent = yes
+			is_ruler = yes
+			prisoner = no
+		}
+		potential = {
+			NOR = {
+				trait = dragon
+				trait = dragonkeeper
+				prisoner = yes
+				trait = infirm
+				trait = incapable
+			}
+			has_artifact = dragon_egg
+			independent = yes
+			NOT = {
+				has_opinion_modifier = {
+					who = FROM
+					modifier = opinion_asked_for_egg
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { save_event_target_as = decision_taker }
+			character_event = { id = dragon_rework.52 }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	#Steal Dragon Eggs
+	tdp_steal_egg = {
+		filter = court
+		ai_target_filter = court
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		from_potential = {
+			NOR = {
+				trait = dragon
+				trait = dragonkeeper
+			}
+			is_ruler = yes
+			has_dynasty_flag = dragon_riding_dynasty
+		}
+		potential = {
+			NOR = {
+				trait = dragon
+				trait = dragonkeeper
+			}
+			has_artifact = dragon_egg
+			prisoner = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = dragon_rework.53 }
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	take_polygamous_spouse_valyrian = {
+		ai_target_filter = sub_realm
+		filter = realm
+		diplomacy_icon = GFX_OFFER_MARRIGE_INTERACTION_icon
+
+		from_potential = {
+			has_polygamy = no
+			OR = {
+				has_dlc = "The Old Gods"
+				ai = yes
+			}
+			religion_group = valyrian_rel_group
+			is_female = no
+			age = 14
+			is_married = yes
+			num_of_consorts < 3
+		}
+		potential = {
+			is_female = yes
+			can_marry_trigger = yes
+		}
+		allow = {
+			age = 14
+			is_ruler = no
+			culture = high_valyrian
+			is_lover = FROM
+			NOT = { has_opinion_modifier = { who = FROM modifier = opinion_divorced } }
+			NOT = { has_opinion_modifier = { who = FROM modifier = opinion_set_aside } }
+		}
+		effect = {
+			FROM = {
+				show_scope_change = no
+				hidden_tooltip = { character_event = { id = high_valyrian.21 } }
+				set_character_flag = has_high_valyrian_polygamy_wife
+				add_consort = ROOT
+			}
+			set_character_flag = high_valyrian_polygamy_wife
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	dismiss_concubine = {
+		ai_target_filter = sub_realm
+		filter = sub_realm
+		diplomacy_icon = GFX_OFFER_MARRIGE_INTERACTION_icon
+
+		from_potential = {
+			is_senior_consort_party = yes
+		}
+		potential = {
+			is_consort = FROM
+			NOT = { has_character_flag = high_valyrian_polygamy_wife }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_consort = FROM
+			opinion = {
+				name = opinion_set_aside
+				who = FROM
+				years = 5
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					age < 35
+					is_lover = FROM
+					NOT = { trait = celibate }
+					NOT = { reverse_has_opinion_modifier = { who = FROM modifier = opinion_unfaithful_consort } }
+				}
+			}
+		}
+	}
+
+	arrange_divorce_polygamous = {
+		ai_target_filter = sub_realm
+		filter = sub_realm
+		diplomacy_icon = GFX_OFFER_MARRIGE_INTERACTION_icon
+
+		from_potential = {
+			is_senior_consort_party = yes
+		}
+		potential = {
+			is_consort = FROM
+			has_character_flag = high_valyrian_polygamy_wife
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_consort = FROM
+			opinion = {
+				name = opinion_divorced
+				who = FROM
+				years = 20
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = { is_rival = FROM }
+					reverse_opinion = { who = FROM value >= -25 }
+				}
+			}
+		}
+	}
+
+
+}
+
+
+decisions = {
+
+	#Interact with Dragon
+	tdp_interact_with_dragon_2 = {
+		is_high_prio = yes
+
+		potential = {
+			NOT = {	has_character_flag = interacted_with_dragon }
+			prisoner = no
+			age = 14
+			is_incapable = no
+			NOT = { trait = infirm }
+			any_friend = {
+				trait = dragon
+				NOT = { has_character_flag = tdp_dragon_too_old }
+			}
+		}
+		allow = {
+			war = no
+			in_command = no
+			any_friend = {
+				trait = dragon
+				NOR = {
+					trait = maimed_dragon
+					trait = harmless_dragon
+					trait = infirm_dragon
+				}
+			}
+		}
+		effect = {
+			any_friend = {
+				limit = {
+					trait = dragon
+				}
+				save_event_target_as = dragon_friend
+			}
+			set_character_flag = interacted_with_dragon
+			character_event = { id = tdp_dragon_interaction.1 }
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	#Train Dragon
+	tdp_train_your_dragon_2 = {
+		is_high_prio = yes
+
+		potential = {
+			NOT = {	has_character_flag = trained_with_dragon }
+			prisoner = no
+			age = 14
+			is_incapable = no
+			NOT = { trait = infirm }
+			any_friend = {
+				trait = dragon
+			}
+			OR = {
+				martial = 15
+				combat_rating = 80
+			}
+		}
+		allow = {
+			in_command = no
+			war = no
+			NOT = {
+				any_friend = {
+					OR = {
+						trait = maimed_dragon
+						trait = wounded_dragon
+						trait = harmless_dragon
+						trait = infirm_dragon
+					}
+				}
+			}
+		}
+		effect = {
+			any_friend = {
+				limit = {
+					trait = dragon
+				}
+				save_event_target_as = dragon_friend
+			}
+			character_event = { id = tdp_dragon_interaction.7 }
+		}
+		ai_will_do = {
+			factor = 5
+		}
+	}
+
+	#Remove Riders from Hiding
+	tdp_remove_hiding_dragon_riders = {
+		is_high_prio = yes
+
+		potential = {
+			higher_real_tier_than = BARON
+			OR = {
+				AND = {
+					trait = dragon_rider
+					trait = in_hiding
+				}
+				any_courtier = {
+					trait = dragon_rider
+					trait = in_hiding
+					age = 13
+					any_friend = {
+						trait = dragon
+						age = 10
+					}
+				}
+			}
+			war = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					trait = dragon_rider
+					trait = in_hiding
+				}
+				remove_trait = in_hiding
+			}
+			any_courtier = {
+				limit = {
+					trait = dragon_rider
+					trait = in_hiding
+					age = 14
+					any_friend = {
+						trait = dragon
+						age = 10
+					}
+				}
+				remove_trait = in_hiding
+			}
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	#Stop Calling for Riders
+	tdp_stop_calling_for_riders = {
+		is_high_prio = yes
+		ai = no
+
+		potential = {
+			has_character_modifier = calling_for_dragon_riders
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_character_modifier = calling_for_dragon_riders
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Establish Dragonkeepers
+	tdp_establish_dragonkeeper = {
+		is_high_prio = yes
+
+		ai = no
+
+		potential = {
+			has_global_flag = age_of_dragons
+			trait = dragon_rider
+			is_ruler = yes
+			NOT = {
+				any_vassal = {
+					trait = dragonkeeper
+				}
+			}
+			OR = {
+				capital_holding = { has_building = ca_dragon_pit }
+				family_palace = { has_building = fp_dragon_pit }
+			}
+			NOT = { is_capital = c_dragonstone }
+		}
+		allow = {
+			trait = dragon_rider
+			is_ruler = yes
+			NOT = {
+				any_vassal = {
+					trait = dragonkeeper
+				}
+			}
+			OR = {
+				capital_holding = { has_building = ca_dragon_pit }
+				family_palace = { has_building = fp_dragon_pit }
+			}
+			NOT = { is_capital = c_dragonstone }
+		}
+		effect = {
+			character_event = { id = tdp_dragonkeepers.100 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Transfer Eggs to Dragonmont
+	tdp_transfer_eggs_to_dragonstone = {
+		is_high_prio = yes
+
+		potential = {
+			any_vassal = {
+				trait = dragonkeeper
+				NOT = {
+					primary_title = {
+						has_title_flag = dragonkeeper_title_dragonstone
+					}
+				}
+				has_artifact = dragon_egg
+			}
+			any_realm_lord = {
+				trait = dragonkeeper
+				primary_title = {
+					has_title_flag = dragonkeeper_title_dragonstone
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				random_realm_lord = {
+					limit = {
+						trait = dragonkeeper
+						primary_title = {
+							has_title_flag = dragonkeeper_title_dragonstone
+						}
+					}
+					save_event_target_as = dragonstone_keeper
+				}
+
+				random_vassal = {
+					limit = {
+						trait = dragonkeeper
+						NOT = {
+							primary_title = {
+								has_title_flag = dragonkeeper_title_dragonstone
+							}
+						}
+						has_artifact = dragon_egg
+					}
+					any_artifact = {
+						limit = { artifact_type = dragon_egg }
+						transfer_artifact = {
+							from = PREV
+							to = event_target:dragonstone_keeper
+						}
+					}
+
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	#AI Dragon Tame Decision - Normal
+	tdp_normal_dragon_tame_ai = {
+		is_high_prio = yes
+
+		potential = {
+			age = 11
+			ai = yes
+			allowed_to_tame_dragon_trigger = yes
+			capable_of_taming_dragon_trigger = yes
+			NOR = {
+				has_character_modifier = cannot_tame_dragon
+				has_character_flag = taming_dragon
+				has_global_flag = dragon_being_tamed
+			}
+			age = 11
+			NOR = {
+				trait = dragon_rider
+				disallowed_from_dragon_trigger = yes
+			}
+			top_liege = {
+				any_realm_character = {
+					trait = dragon
+					NOR = {
+						#trait = shy_dragon
+						has_character_modifier = never_domesticated
+						has_character_flag = dragon_being_tamed
+					}
+					NOT = { character = 77990022 }
+					has_character_modifier = locked_in_dragonpit
+					num_of_friends < 1
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_global_flag = dragon_being_tamed
+			character_event = { id = dragon_rework.700 days = 1 }
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				age < 14
+			}
+			modifier = {
+				factor = 2
+				age = 14
+			}
+			modifier = {
+				factor = 2
+				age = 16
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					trait = brave
+					trait = ambitious
+				}
+			}
+		}
+	}
+
+	#AI Dragon Tame Decision - Adventurous
+	tdp_adventurous_dragon_tame_ai = {
+		is_high_prio = yes
+
+		potential = {
+			age = 11
+			ai = yes
+			allowed_to_tame_dragon_trigger = yes
+			capable_of_taming_dragon_trigger = yes
+			NOR = {
+				trait = dragon_rider
+				has_character_modifier = cannot_tame_dragon
+				has_character_flag = taming_dragon
+				disallowed_from_dragon_trigger = yes
+				has_global_flag = dragon_being_tamed
+				prisoner = yes
+				trait = incapable
+				trait = infirm
+				trait = content
+				trait = craven
+				is_weak_trigger = yes
+				is_lazy_trigger = yes
+			}
+			OR = {
+				trait = brave
+				trait = ambitious
+				trait = proud
+				trait = cruel
+				trait = greedy
+				trait = wroth
+				trait = ruthless
+				trait = lunatic
+				trait = willful
+				martial = 10
+			}
+			top_liege = {
+				any_realm_character = {
+					trait = dragon
+					NOR = {
+						#trait = shy_dragon
+						trait = infirm_dragon
+						trait = harmless_dragon
+						has_character_modifier = never_domesticated
+						has_character_flag = dragon_being_tamed
+					}
+					NOT = { character = 77990022 }
+					has_character_modifier = locked_in_dragonpit
+					num_of_friends < 1
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_global_flag = dragon_being_tamed
+			character_event = { id = dragon_rework.701 days = 1 }
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0.1
+				age < 14
+			}
+			modifier = {
+				factor = 2
+				age = 14
+			}
+			modifier = {
+				factor = 2
+				age = 16
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					trait = brave
+					trait = ambitious
+				}
+			}
+		}
+	}
+
+	#AI Dragon Tame Decision - Wild
+	tdp_wild_dragon_tame_ai = {
+		is_high_prio = yes
+
+		potential = {
+			age = 11
+			ai = yes
+			OR = {
+				allowed_to_tame_dragon_trigger = yes
+					has_ambition = obj_tame_a_dragon
+			}
+			capable_of_taming_dragon_trigger = yes
+			NOR = {
+				trait = dragon_rider
+				has_character_modifier = cannot_tame_dragon
+				has_character_flag = taming_dragon
+				disallowed_from_dragon_trigger = yes
+				has_global_flag = dragon_being_tamed
+				prisoner = yes
+				trait = incapable
+				trait = infirm
+				trait = content
+				trait = craven
+				is_lazy_trigger = yes
+			}
+			OR = {
+				trait = brave
+				trait = ambitious
+				trait = proud
+				trait = cruel
+				trait = greedy
+				trait = wroth
+				trait = ruthless
+				trait = lunatic
+				trait = willful
+				martial = 10
+			}
+			top_liege = {
+				any_realm_character = {
+					trait = dragon
+					NOR = {
+						trait = shy_dragon
+						trait = infirm_dragon
+						trait = harmless_dragon
+						has_character_modifier = never_domesticated
+						has_character_flag = dragon_being_tamed
+					}
+					age = 20
+					NOT = { character = 77990022 }
+					NOT = { has_character_modifier = locked_in_dragonpit }
+					num_of_friends < 1
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_global_flag = dragon_being_tamed
+			character_event = { id = dragon_rework.702 days = 1 }
+		}
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 0.05
+				age < 14
+			}
+			modifier = {
+				factor = 1.5
+				age = 14
+			}
+			modifier = {
+				factor = 1.5
+				age = 16
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					trait = brave
+					trait = ambitious
+				}
+			}
+		}
+	}
+
+	#AI Dragon Tame Decision - Dragonseed
+	tdp_dragonseed_dragon_tame_ai = {
+		is_high_prio = yes
+
+		potential = {
+			age = 11
+			ai = yes
+			has_character_flag = tdp_dragonseed_looking
+			NOR = {
+				trait = dragon_rider
+				has_character_modifier = cannot_tame_dragon
+				has_character_flag = taming_dragon
+				disallowed_from_dragon_trigger = yes
+				has_global_flag = dragon_being_tamed
+				prisoner = yes
+				trait = incapable
+				trait = infirm
+				trait = content
+				trait = craven
+			}
+			top_liege = {
+				has_character_modifier = calling_for_dragon_riders
+				any_realm_character = {
+					trait = dragon
+					NOT = { trait = cannibal_dragon }
+					NOT = { trait = shy_dragon }
+					NOR = {
+						has_character_flag = sheepstealer_dragon
+						character = 77990022
+					}
+					num_of_friends < 1
+					NOT = { has_character_flag = dragon_being_tamed }
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_global_flag = dragon_being_tamed
+			character_event = { id = tdp_dragonseeds.101 days = 1 }
+		}
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 1.5
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				trait = brilliant_strategist
+			}
+			modifier = {
+				factor = 2
+				trait = mystic
+			}
+			modifier = {
+				factor = 2
+				martial = 15
+			}
+			modifier = {
+				factor = 1.5
+				combat_rating = 150
+			}
+			modifier = {
+				factor = 3
+				is_female = no
+			}
+			modifier = {
+				factor = 5
+				c_24052 = { character = ROOT }
+			}
+			modifier = {
+				factor = 3
+				is_lowborn = yes
+			}
+			modifier = {
+				factor = 0.6
+				top_liege = { has_character_flag = promising_nothing }
+			}
+			modifier = {
+				factor = 2
+				top_liege = { has_character_flag = promising_moderate_rewards }
+			}
+			modifier = {
+				factor = 4
+				top_liege = { has_character_flag = promising_great_rewards }
+			}
+		}
+	}
+
+	#Open the Wooden Chest
+	tdp_open_wooden_chest = {
+		is_high_prio = yes
+
+		ai = no
+
+		potential = {
+			has_artifact = secret_box
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			custom_tooltip = {
+				text = TOOLTIPwooden_chest
+			}
+			character_event = { id = dragon_rework.92 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Personal Sigils
+	daemon_targaryen_sigil = {
+		is_high_prio = yes
+		potential = {
+			dynasty = 496
+			character = c_779496
+			NOT = {
+				has_character_flag = rogue_prince_coa
+			}
+		}
+		allow = {
+			age = 12
+		}
+		effect = {
+			set_character_flag = rogue_prince_coa
+			character_event = { id = dynamic_coa.1 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+
+}

@@ -1,0 +1,433 @@
+namespace = kotst
+
+character_event = {
+	id = kotst.0
+	desc = "Set as zero"
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		NOT = { has_global_flag = kingsguard_honor_on }
+		has_landed_title = e_iron_throne
+		is_title_active = d_kingsguard
+	}
+
+	immediate = {
+		set_global_flag = kingsguard_honor_on
+	}
+
+	option = {
+		name = "OK"
+		primary_title = {
+			set_variable = { which = "kingsguard_honor" value = 13 }
+		}
+		add_character_modifier = {
+			name = kingsguard_ordinary
+			duration = -1
+		}
+
+	}
+}
+
+character_event = {
+	id = kotst.1
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				ROOT = { has_character_modifier = kingsguard_disgraceful }
+			}
+			ROOT = {
+				set_variable = { which = "story_event" value = 1 }
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_character_modifier = kingsguard_dishonorable
+				}
+			}
+			ROOT = {
+				set_variable = { which = "story_event" value = 2 }
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_character_modifier = kingsguard_ordinary
+				}
+			}
+			ROOT = {
+				set_variable = { which = "story_event" value = 4 }
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_character_modifier = kingsguard_honorable
+				}
+			}
+			ROOT = {
+				set_variable = { which = "story_event" value = 7 }
+			}
+		}
+		if = {
+			limit = {
+				ROOT = {
+					has_character_modifier = kingsguard_virtuous
+				}
+			}
+			ROOT = {
+			set_variable = { which = "story_event" value = 11 }
+			}
+		}
+	}
+
+	option = {
+		name = "OK"
+		character_event = { id = kotst.100 }
+	}
+}
+
+character_event = {
+	id = kotst.100
+	desc = "Maintenance"
+	picture = GFX_evt_death
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		remove_character_modifier = kingsguard_disgraceful
+		remove_character_modifier = kingsguard_dishonorable
+		remove_character_modifier = kingsguard_ordinary
+		remove_character_modifier = kingsguard_honorable
+		remove_character_modifier = kingsguard_virtuous
+		if = {
+			limit = {
+				primary_title = {
+					NOT = { check_variable = { which = "kingsguard_honor" value = 0.5 } }
+				}
+			}
+			set_variable = { which = "kingsguard_honor" value = 1 }
+		}
+	}
+
+	option = {
+		name = "OK"
+		if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value = 1 }
+					NOT = { check_variable = { which = "kingsguard_honor" value = 5 } }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_disgraceful
+				duration = -1
+			}
+			ROOT = { change_variable = { which = "story_event" value = -1 } }
+		}
+		if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value = 5 }
+					NOT = { check_variable = { which = "kingsguard_honor" value = 10 } }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_dishonorable
+				duration = -1
+			}
+			ROOT = { change_variable = { which = "story_event" value = -2 } }
+		}
+		if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value = 10 }
+					NOT = { check_variable = { which = "kingsguard_honor" value = 15 } }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_ordinary
+				duration = -1
+			}
+			ROOT = { change_variable = { which = "story_event" value = -4 } }
+		}
+		if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value = 15 }
+					NOT = { check_variable = { which = "kingsguard_honor" value = 20 } }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_honorable
+				duration = -1
+			}
+			ROOT = { change_variable = { which = "story_event" value = -7 } }
+		}
+		if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value = 20 }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_virtuous
+				duration = -1
+			}
+			ROOT = { change_variable = { which = "story_event" value = -11 } }
+		}
+		character_event = { id = kotst.1000 }
+	}
+}
+
+character_event = {
+	id = kotst.101
+	desc = EVTDESCdisgraceful
+	picture = GFX_kingsguard
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdisgraceful
+	}
+}
+
+character_event = {
+	id = kotst.102
+	desc = EVTDESCdishonorable
+	picture = GFX_kingsguard
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdishonorable
+	}
+}
+
+character_event = {
+	id = kotst.103
+	desc = EVTDESCordinary
+	picture = GFX_kingsguard
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAordinary
+	}
+}
+
+character_event = {
+	id = kotst.104
+	desc = EVTDESChonorable
+	picture = GFX_kingsguard_good
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAhonorable
+	}
+}
+
+character_event = {
+	id = kotst.105
+	desc = EVTDESCvirtuous
+	picture = GFX_kingsguard_good
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAvirtuous
+	}
+}
+
+character_event = {
+	id = kotst.110
+	desc = "Add one honor"
+	picture = GFX_evt_death
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		primary_title = {
+			change_variable = { which = "kingsguard_honor" value = 2 }
+		}
+		character_event = { id = kotst.1 }
+	}
+}
+
+character_event = {
+	id = kotst.111
+	desc = "Add one honor"
+	picture = GFX_evt_death
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		primary_title = {
+			change_variable = { which = "kingsguard_honor" value = -2 }
+		}
+		character_event = { id = kotst.1 }
+	}
+}
+
+character_event = {
+	id = kotst.1000
+	desc = "Check Story"
+	picture = GFX_evt_death
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		if = {
+			limit = {
+				ROOT = {
+				is_variable_equal = { which = "story_event" value = 1 }
+				}
+			}
+			character_event = { id =  kotst.101 }
+		}
+		if = {
+			limit = {
+				OR = {
+					ROOT = {
+						is_variable_equal = { which = "story_event" value = -1 }
+					}
+					ROOT = {
+						is_variable_equal = { which = "story_event" value = 2 }
+					}
+				}
+			}
+			character_event = { id = kotst.102 }
+		}
+		if = {
+			limit = {
+				OR = {
+					ROOT = {
+						is_variable_equal = { which = "story_event" value = -2 }
+					}
+					ROOT = {
+						is_variable_equal = { which = "story_event" value = 3 }
+					}
+				}
+			}
+			character_event = { id = kotst.103 }
+		}
+		if = {
+			limit = {
+				OR = {
+					ROOT = {
+						is_variable_equal = { which = "story_event" value = -3 }
+					}
+					ROOT = {
+						is_variable_equal = { which = "story_event" value = 4 }
+					}
+				}
+			}
+			character_event = { id = kotst.104 }
+		}
+		if = {
+			limit = {
+				ROOT = {
+					is_variable_equal = { which = "story_event" value = -4 }
+				}
+			}
+			character_event = { id = kotst.105 }
+		}
+	}
+}
+
+character_event = { #Inherit Honor
+	id = kotst.1001
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		is_alive = yes
+
+		NOR = {
+			has_character_modifier = kingsguard_disgraceful
+			has_character_modifier = kingsguard_dishonorable
+			has_character_modifier = kingsguard_ordinary
+			has_character_modifier = kingsguard_honorable
+			has_character_modifier = kingsguard_virtuous
+		}
+
+		primary_title = {
+			check_variable = { which = "kingsguard_honor" value >= 1 }
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value < 5 }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_disgraceful
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value < 10 }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_dishonorable
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value < 15 }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_ordinary
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				primary_title = {
+					check_variable = { which = "kingsguard_honor" value < 20 }
+				}
+			}
+			add_character_modifier = {
+				name = kingsguard_honorable
+				duration = -1
+			}
+		}
+		else = {
+			add_character_modifier = {
+				name = kingsguard_virtuous
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}

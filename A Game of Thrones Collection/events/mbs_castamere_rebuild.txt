@@ -1,0 +1,782 @@
+namespace = mbs_castamere_rebuild
+#Begin Castamere Rebuild
+province_event = {
+	id = mbs_castamere_rebuild.1
+	desc = "EVTDESCcastamere_rebuild.1"
+	picture = "GFX_evt_castle_construction"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAcastamere.1"
+		set_global_flag = castamere_rebuilt
+		wealth = -800
+		if = {
+			limit = {
+				ai = yes
+				wealth < 800
+				NOT = { has_character_flag = loan_taken }
+				NOT = { has_character_modifier = loan_timer }
+				NOT = { has_character_flag = offended_moneylenders }
+			}
+			add_character_modifier = {
+				name = "loan_timer"
+				duration = 1825
+			}
+			set_character_flag = loan_taken
+			#600g loan
+			if = {
+				limit = {
+					monthly_income >= 10
+					monthly_income < 15
+				}
+				set_variable = { which = "loan_amount" value = 600 }
+			}
+			#800g loan
+			else_if = {
+				limit = {
+					monthly_income >= 15
+					monthly_income < 20
+				}
+				set_variable = { which = "loan_amount" value = 800 }
+			}
+			#1000g loan
+			else = {
+				limit = {
+					monthly_income >= 20
+				}
+				set_variable = { which = "loan_amount" value = 1000 }
+			}
+			set_character_flag = loan_amount_found
+			character_event = { id = bankruptcy.1 }
+		}
+		187 = {
+			add_province_modifier = {
+				name = rebuilding_castamere duration = -1
+			}
+			add_province_modifier = {
+				name = debris3 duration = -1
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBharrenhal.1" #you mad? curses and i am poor
+		ai_chance = { factor = 0 }
+	}
+}
+#Flavour event generator, yearly pulse
+character_event = {
+	id = mbs_castamere_rebuild.199
+
+	is_triggered_only = yes
+	only_playable = yes
+	hide_window = yes
+
+	trigger = {
+		has_landed_title = c_castamere
+		187 = {
+			has_province_modifier = rebuilding_castamere
+		}
+	}
+
+	immediate = {
+		random_list = {
+			500 = {
+			}
+			50 = { 	#Ballroom Bad Event
+				modifier = {
+					factor = 0
+					job_treasurer = {
+						OR = {
+							NOT = { has_job_action = action_oversee_construction }
+							NOT = { at_location = 187 }
+						}
+					}
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = diligent }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { learning < 5 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { learning = 10 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { learning = 15 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = paranoid }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = craven }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = brave }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = slothful }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = drunkard }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { stewardship < 12 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { stewardship = 18 }
+				}
+				job_treasurer = { narrative_event = { id = mbs_castamere_rebuild.6 } }
+			}
+			50 = { 	#Ballroom Good Event
+				modifier = {
+					factor = 0
+					job_treasurer = {
+						OR = {
+							NOT = { has_job_action = action_oversee_construction }
+							NOT = { at_location = 187 }
+						}
+					}
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { trait = diligent }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { learning < 5 }
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { learning = 10 }
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { learning = 15 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = paranoid }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = craven }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = brave }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = slothful }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = drunkard }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { stewardship < 12 }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { stewardship = 18 }
+				}
+				job_treasurer = { narrative_event = { id = mbs_castamere_rebuild.5 } }
+			}
+			50 = { #Steward, more money needed (made up)
+				modifier = {
+					factor = 0
+					job_treasurer = {
+						OR = {
+							NOT = { has_job_action = action_oversee_construction }
+							NOT = { at_location = 187 }
+							trait = honest
+							trait = honorable
+							NOR = {
+								trait = greedy
+								trait = deceitful
+								trait = ruthless
+								trait = envious
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0.5
+					trait = diligent
+				}
+				modifier = {
+					factor = 0.5
+					learning = 10
+				}
+				modifier = {
+					factor = 0.5
+					learning = 15
+				}
+				modifier = {
+					factor = 0.5
+					intrigue = 12
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = charitable }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = envious }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = slothful }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = greedy }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = deceitful }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { opinion = { who = ROOT value = 0 } }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { stewardship < 12 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { stewardship = 18 }
+				}
+				job_treasurer = { character_event = { id = harrenhal.4 } }
+			}
+			50 = { #Steward, more money needed (real)
+				modifier = {
+					factor = 0
+					job_treasurer = {
+						OR = {
+							NOT = { has_job_action = action_oversee_construction }
+							NOT = { at_location = 187 }
+						}
+					}
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { stewardship < 6 }
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { stewardship < 8 }
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { stewardship < 10 }
+				}
+				modifier = {
+					factor = 1.5
+					job_treasurer = { stewardship < 12 }
+				}
+				modifier = {
+					factor = 0.66
+					job_treasurer = { stewardship = 16 }
+				}
+				modifier = {
+					factor = 0.66
+					job_treasurer = { stewardship = 18 }
+				}
+				modifier = {
+					factor = 0.66
+					job_treasurer = { stewardship = 20 }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = diligent }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = charitable }
+				}
+				modifier = {
+					factor = 0.5
+					job_treasurer = { trait = ruthless }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = greedy }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = slothful }
+				}
+				modifier = {
+					factor = 2
+					job_treasurer = { trait = drunkard }
+				}
+				job_treasurer = { character_event = { id = harrenhal.6 } }
+			}
+		}
+	}
+
+	option = {
+		name = "Ok."
+	}
+}
+#Construction advances
+character_event = {
+	id = mbs_castamere_rebuild.2
+	desc = "EVTDESCcastamere_rebuild.2"
+	picture = "GFX_evt_castle_construction"
+
+	only_playable = yes
+
+	trigger = {
+		has_landed_title = c_castamere
+		187 = {
+			has_province_modifier = rebuilding_castamere
+			OR = {
+				has_province_modifier = debris3
+				has_province_modifier = debris2
+				has_province_modifier = debris1
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+
+		#Slavery helps
+		modifier = {
+			factor = 0.9
+			187 = { has_province_modifier = slave_modifier_1 }
+		}
+		modifier = {
+			factor = 0.85
+			187 = { has_province_modifier = slave_modifier_2 }
+		}
+		modifier = {
+			factor = 0.8
+			187 = { has_province_modifier = slave_modifier_3 }
+		}
+		modifier = {
+			factor = 0.75
+			187 = { has_province_modifier = slave_modifier_4 }
+		}
+		modifier = {
+			factor = 0.7
+			187 = { has_province_modifier = slave_modifier_5 }
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 14
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 16
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 20
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 22
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 24
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 26
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 28
+		}
+		modifier = {
+			factor = 0.9
+			trait = diligent
+		}
+		modifier = {
+			factor = 0.9
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.9
+			trait = ruthless
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = { trait = diligent }
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = { trait = ruthless }
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 14
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 16
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 18
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 22
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 24
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 26
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 28
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 30
+			}
+		}
+	}#end mtth
+
+	option = {
+		name = "EVTOPTAcastamere.2"
+		trigger = {
+			187 = { has_province_modifier = debris3 }
+		}
+		wealth = -250
+		187 = {
+			remove_province_modifier = debris3
+			add_province_modifier = { name = debris2 duration = -1 }
+			set_province_flag = important
+			clr_province_flag = important
+		}
+	}
+	option = {
+		name = "EVTOPTAcastamere.2"
+		trigger = {
+			187 = { has_province_modifier = debris2 }
+		}
+		wealth = -250
+		187 = {
+			add_province_modifier = { name = debris1 duration = -1 }
+			remove_province_modifier = debris2
+			set_province_flag = important
+			clr_province_flag = important
+		}
+	}
+	option = {
+		name = "EVTOPTAcastamere.2"
+		trigger = {
+			187 = { has_province_modifier = debris1 }
+		}
+		wealth = -250
+		187 = {
+			add_province_modifier = { name = debris0 duration = -1 }
+			remove_province_modifier = debris1
+			set_province_flag = important
+			clr_province_flag = important
+		}
+	}
+}
+#Part of the Castle is Finished
+character_event = {
+	id = mbs_castamere_rebuild.3
+	desc = "EVTDESCcastamere_rebuild.3"
+	picture = "GFX_evt_castle_construction"
+
+	only_playable = yes
+
+	trigger = {
+		has_landed_title = c_castamere
+		187 = {
+			has_province_modifier = rebuilding_castamere
+			OR = {
+				has_province_modifier = debris0
+				has_province_modifier = hbuild1
+				has_province_modifier = hbuild2
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 50
+
+		#Slavery helps
+		modifier = {
+			factor = 0.9
+			187 = { has_province_modifier = slave_modifier_1 }
+		}
+		modifier = {
+			factor = 0.85
+			187 = { has_province_modifier = slave_modifier_2 }
+		}
+		modifier = {
+			factor = 0.8
+			187 = { has_province_modifier = slave_modifier_3 }
+		}
+		modifier = {
+			factor = 0.75
+			187 = { has_province_modifier = slave_modifier_4 }
+		}
+		modifier = {
+			factor = 0.7
+			187 = { has_province_modifier = slave_modifier_5 }
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 14
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 16
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 20
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 22
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 24
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 26
+		}
+		modifier = {
+			factor = 0.9
+			stewardship = 28
+		}
+		modifier = {
+			factor = 0.9
+			trait = diligent
+		}
+		modifier = {
+			factor = 0.9
+			trait = ambitious
+		}
+		modifier = {
+			factor = 0.9
+			trait = ruthless
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = { trait = diligent }
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = { trait = ruthless }
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 14
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 16
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 18
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 20
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 22
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 24
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 26
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 28
+			}
+		}
+		modifier = {
+			factor = 0.9
+			job_treasurer = {
+				has_job_action = action_oversee_construction
+				stewardship = 30
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTAcastamere.3"
+		trigger = {
+			187 = { has_province_modifier = debris0 }
+		}
+		wealth = -300
+		187 = {
+			hidden_tooltip = {
+				remove_province_modifier = debris0
+			}
+			add_province_modifier = { name = hbuild1 duration = -1 }
+			set_province_flag = important
+			clr_province_flag = important
+		}
+	}
+
+	option = {
+		name = "EVTOPTAcastamere.3"
+		trigger = {
+			187 = { has_province_modifier = hbuild1 }
+		}
+		wealth = -300
+		187 = {
+			hidden_tooltip = {
+				remove_province_modifier = hbuild1
+			}
+			add_province_modifier = { name = hbuild2 duration = -1 }
+			set_province_flag = important
+			clr_province_flag = important
+		}
+	}
+
+	option = {
+		name = "EVTOPTAcastamere.3"
+		trigger = {
+			187 = { has_province_modifier = hbuild2 }
+		}
+		wealth = -300
+		187 = {
+			hidden_tooltip = {
+				remove_province_modifier = hbuild2
+			}
+			add_province_modifier = { name = hbuild3 duration = -1 }
+			set_province_flag = important
+			clr_province_flag = important
+		}
+		hidden_tooltip = { ROOT = { character_event = { id = mbs_castamere_rebuild.4 } } }
+	}
+}
+#Castamere finished
+character_event = {
+	id = mbs_castamere_rebuild.4
+	desc = "EVTDESCcastamere_rebuild.4"
+	picture = "GFX_KINGS_LANDING"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAharrenhal.14"
+		prestige = 250
+		187 = { remove_province_modifier = rebuilding_castamere }
+		b_castamere = {
+			add_building = ca_asoiaf_westerland_basevalue_5
+			remove_building = ca_castamere_ruins
+		}
+	}
+}
+#Ballroom Good Event
+narrative_event = {
+	id = mbs_castamere_rebuild.5
+	desc = "EVTDESCcastamere_rebuild.5"
+	picture = GFX_evt_feast
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAcastamere.5"
+		wealth = 25
+	}
+}
+#Ballroom Bad Event
+narrative_event = {
+	id = mbs_castamere_rebuild.6
+	desc = "EVTDESCcastamere_rebuild.6"
+	picture = "GFX_evt_into_the_dungeon"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAcastamere.6"
+		add_trait = stressed
+	}
+}

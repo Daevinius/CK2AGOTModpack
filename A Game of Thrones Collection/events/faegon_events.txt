@@ -1,0 +1,998 @@
+namespace = faegon
+
+# Leader of the Golden Company decides to tell him or not
+character_event = {
+	id = faegon.1
+	desc = EVTDESCfaegon.1
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			e_iron_throne = {
+				holder_scope = {
+					#war = no
+					character = 125009
+					dynasty = 496
+				}
+			}
+			e_iron_throne = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+						dynasty = 496
+					}
+				}
+			}
+		}
+	}
+
+	option = { # I will tell him the truth
+		name = EVTOPTAfaegon.1
+		ai_chance = { factor = 100 }
+		c_125009 = { narrative_event = { id = faegon.2 days = 5 } }
+	}
+	#after = {
+	#	narrative_event = { id = invasions.104 days = 5 } #disband golden company now
+	#}
+}
+# Aegon is informed of true lineage
+narrative_event = {
+	id = faegon.2
+	title = EVTTITLEfaegon.2
+	desc = EVTDESCfaegon.2
+	picture = GFX_evt_blackfyre
+
+	is_triggered_only = yes
+
+	trigger = {
+		dynasty = 496
+		character = 125009
+		father_even_if_dead = { character = 77039 } # Rhaegar
+		NOT = { has_character_flag = knows_lineage }
+		#war = no
+	}
+
+	immediate = { set_character_flag = knows_lineage }
+
+	option = {
+		name = EVTOPTAfaegon.2 # They would not follow me if they knew the truth
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = patient
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}
+		}
+		prestige = -150
+	}
+
+	option = {
+		name = EVTOPTBfaegon.2 # I am the Black Dragon!
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 3
+				trait = ambitious
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 2
+				trait = envious
+			}
+			modifier = {
+				factor = 2
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 2
+				trait = proud
+			}
+		}
+		c_125009 = {
+			character_event = { id = faegon.4 }
+			character_event = { id = faegon.5 }
+			create_bloodline = {
+				type = faegon
+			}
+		}
+		tooltip = { dynasty = 57 }
+		if = {
+			limit = {
+				has_game_rule = { name = faegon value = on }
+			}
+			hidden_tooltip = {
+				c_10757 = { c_400300519 = { set_father = PREV dynasty = 57 } } #Maelys Link
+			}
+			c_600000040 = { #Illyrio
+				ROOT = { set_father = PREV }
+			}
+			c_400300519 = {
+				ROOT = { set_mother = PREV }
+				dynasty = 57
+				hidden_tooltip = { culture = high_valyrian }
+				random_bloodline = {
+					limit = { has_bloodline_flag = blackfyre }
+					add_bloodline_member = PREV
+				}
+				random_bloodline = {
+					limit = { has_bloodline_flag = bloodline_daemon }
+					add_bloodline_member = PREV
+					add_bloodline_member = ROOT
+				}
+				random_bloodline = {
+					limit = { has_bloodline_flag = bloodline_maelys }
+					add_bloodline_member = PREV
+					add_bloodline_member = ROOT
+				}
+			}
+		}
+		hidden_tooltip = {
+			dynasty = 57
+			remove_trait = forbid_marriage
+			clr_character_flag = high_valyrian
+			if = {
+				limit = { has_landed_title = e_iron_throne }
+				e_iron_throne = { set_coa = k_daemon_blackfyres_host }
+			}
+			if = {
+				limit = { has_landed_title = e_new_valyria }
+				e_new_valyria = { set_coa = k_daemon_blackfyres_host }
+			}
+			any_playable_ruler = {
+				limit = {
+					ai = no
+					OR = {
+						dynasty = 496
+						dynasty = 59
+						capital_scope = { region = world_westeros }
+					}
+					NOT = { character = ROOT }
+				}
+				letter_event = { id = faegon.3 }
+			}
+			letter_event = { id = faegon.3 }
+			# Restore real Aegon Targaryen to family tree
+			c_77039 = { c_77043 = { set_father = PREV } }
+			c_1001 = { c_77043 = { set_mother = PREV } }
+			c_77043 = {
+				dynasty = 496
+				random_bloodline = {
+					limit = { has_bloodline_flag = targaryen }
+					add_bloodline_member = PREV
+				}
+				character_event = { id = faegon.4 }
+				character_event = { id = faegon.6 }
+			}
+			c_125009 = {
+				character_event = { id = faegon.4 }
+				character_event = { id = faegon.5 }
+			}
+			character_event = { id = invasions.3 } #A Blackfyre always gets the sword
+			set_dynasty_flag = has_dynamic_coa
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	after = {
+		father_even_if_dead = {
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		character_event = { id = traditional_claims.220 } #check mother bloodlines
+		character_event = { id = traditional_claims.199 days = 10 } #check for traditional dynastic claims
+	}
+}
+# Inform the realm
+letter_event = {
+	id = faegon.3
+	desc = EVTDESCfaegon.3
+
+	is_triggered_only = yes
+
+	option = { # This is an intersting revelation
+		name = EVTOPTAfaegon.3
+		trigger = {
+			NOT = { character = FROM }
+		}
+	}
+
+	option = { # He is from a bastard house!
+		name = EVTOPTBfaegon.3
+		trigger = {
+			NOT = { character = FROM }
+		}
+	}
+
+	option = { # I will reign strong
+		name = EVTOPTCfaegon.3
+		trigger = { character = FROM }
+	}
+}
+# Remove the saer- bloodlines
+character_event = {
+	id = faegon.4
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saerystos
+			}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saerynar
+			}
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saerys
+			}
+		}
+	}
+
+	immediate = {
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_saerystos
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_saerynar
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_saerys
+			}
+			remove_bloodline_member = PREV
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+# Remove some Targaryen bloodlines from Aegon Blackfyre
+character_event = {
+	id = faegon.5
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		character = 125009
+	}
+
+	immediate = {
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_aerys_ii
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_rhaegar
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_elia
+			}
+			remove_bloodline_member = PREV
+		}
+		random_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_aegon_vi
+			}
+			destroy_bloodline = yes
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+#Add some Targaryen bloodlines to baby Aegon VI Targaryen
+character_event = {
+	id = faegon.6
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		character = 77043
+	}
+
+	immediate = {
+		random_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_aerys_ii
+			}
+			add_bloodline_member = PREV
+		}
+		random_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_rhaegar
+			}
+			add_bloodline_member = PREV
+		}
+		random_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_elia
+			}
+			add_bloodline_member = PREV
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+###Arianne Martell Marriage###
+character_event = {
+	id = faegon.7
+	desc = EVTDESCfaegon.7
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+		NOT = { has_global_flag = faegon_dorne_alliance }
+		has_game_rule = { name = dornish_alliance value = on }
+
+	}
+
+	immediate = { set_global_flag = faegon_dorne_alliance }
+
+	option = { # Arianne Martell offers hand, accept and gain alliance with Dorne
+		name = EVTOPTAfaegon.7
+		ai_chance = { factor = 100 }
+
+		c_125009 = { long_character_event = { id = faegon.8 days = 10 } }
+	}
+}
+###Arianne Martell Marriage###
+long_character_event = {
+	id = faegon.8
+	desc = EVTDESCfaegon.8
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+	portrait = 125009
+	portrait = 4001
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+		character = 125009
+	}
+
+	option = { # Arianne Martell offers hand, accept and gain alliance with Dorne
+		name = EVTOPTAfaegon.8
+		ai_chance = { factor = 50 }
+
+		set_global_flag = faegon_arianne
+		c_4001 = {
+			add_spouse = 125009
+			add_trait = disinherited
+		}
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				k_dorne = { #Doran Martell
+					holder_scope = {
+						opinion = {
+							modifier = opinion_dynasty_loyalist
+							who = PREVPREV
+						}
+						reverse_opinion = {
+							modifier = opinion_my_loyalist
+							who = PREVPREV
+						}
+						add_alliance = { who = PREVPREV years = 10 }
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			c_1 = {
+				set_character_flag = matri_inheritance_check
+				any_demesne_title = {
+					limit = {
+						OR = {
+							has_law = succ_primogeniture
+							has_law = succ_gavelkind
+						}
+					}
+					add_law = {
+						law = dornish_succession
+						opinion_effect = no
+					}
+				}
+				recalc_succession = yes
+				narrative_event = {
+					id = faegon.11
+					days = 1
+				}
+			}
+		}
+	}
+	option = { # Arianne Martell offers hand, Deny
+		name = EVTOPTBfaegon.8
+		ai_chance = { factor = 50 }
+	}
+}
+###Loyal Reach Houses###
+character_event = {
+	id = faegon.9
+	desc = EVTDESCfaegon.9
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+		character = 125009
+		NOT = { has_global_flag = faegon_reach_supporters }
+		has_game_rule = { name = reach_supporters value = on }
+	}
+
+	immediate = { set_global_flag = faegon_reach_supporters }
+
+	option = { # I will call the loyal reach houses
+		name = EVTOPTAfaegon.9
+		ai_chance = { factor = 100 }
+
+		c_125009 = { character_event = { id = faegon.10 days = 12 } }
+	}
+}
+###Loyal Reach Houses###
+character_event = {
+	id = faegon.10
+	desc = EVTDESCfaegon.10
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+	portrait = 125009
+	portrait = 6298
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { # I will call the loyal reach houses
+		name = EVTOPTAfaegon.10
+		ai_chance = { factor = 50 }
+		# Peake, Osgrey, Ball, Costayne, Ambrose
+		k_young_griffs_host = {
+				holder_scope = {
+					set_character_flag = has_dynasty_loyalist
+					c_starpike = { #Peake
+						holder_scope = {
+							opinion = {
+								modifier = opinion_dynasty_loyalist
+								who = PREVPREV
+							}
+							reverse_opinion = {
+								modifier = opinion_my_loyalist
+								who = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		k_young_griffs_host = {
+				holder_scope = {
+					set_character_flag = has_dynasty_loyalist
+					c_manderford = { #Ball
+						holder_scope = {
+							opinion = {
+								modifier = opinion_dynasty_loyalist
+								who = PREVPREV
+							}
+							reverse_opinion = {
+								modifier = opinion_my_loyalist
+								who = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		k_young_griffs_host = {
+				holder_scope = {
+					set_character_flag = has_dynasty_loyalist
+					c_threetowers = { #Costayne
+						holder_scope = {
+							opinion = {
+								modifier = opinion_dynasty_loyalist
+								who = PREVPREV
+							}
+							reverse_opinion = {
+								modifier = opinion_my_loyalist
+								who = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		k_young_griffs_host = {
+				holder_scope = {
+					set_character_flag = has_dynasty_loyalist
+					c_standfast = { #Osgrey
+						holder_scope = {
+							opinion = {
+								modifier = opinion_dynasty_loyalist
+								who = PREVPREV
+							}
+							reverse_opinion = {
+								modifier = opinion_my_loyalist
+								who = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		k_young_griffs_host = {
+				holder_scope = {
+					set_character_flag = has_dynasty_loyalist
+					d_torrentpeak = { #Ambrose
+						holder_scope = {
+							opinion = {
+								modifier = opinion_dynasty_loyalist
+								who = PREVPREV
+							}
+							reverse_opinion = {
+								modifier = opinion_my_loyalist
+								who = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		c_1298 = { narrative_event = { id = faegon.12 days = 1 } }
+		c_88193 = { narrative_event = { id = faegon.13 days = 1 } }
+		c_287 = { narrative_event = { id = faegon.14 days = 1 } }
+		c_88054 = { narrative_event = { id = faegon.15 days = 1 } }
+		c_297 = { narrative_event = { id = faegon.16 days = 1 } }
+		}
+	option = { # I don't need their help
+		name = EVTOPTBfaegon.10
+		ai_chance = { factor = 50 }
+	}
+}
+narrative_event = {
+	id = faegon.11
+	desc = EVTDESCfaegon.11
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { #
+		name = EVTOPTAfaegon.11
+		ai_chance = { factor = 100 }
+
+
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				k_dorne = { #Dorne
+					holder_scope = {
+						set_defacto_liege = ROOT
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						k_young_griffs_host = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = faegon.12
+	desc = EVTDESCfaegon.12
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { #
+		name = EVTOPTAfaegon.12
+		ai_chance = { factor = 100 }
+
+
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				c_starpike = { #
+					holder_scope = {
+						set_defacto_liege = ROOT
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						any_demesne_title = {
+							limit = {
+								OR = {
+									tier = COUNT
+									tier = DUKE
+								}
+							}
+						set_variable = { which = "de_facto_kingdom" value = 6 } #reach
+						}
+						k_young_griffs_host = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = faegon.13
+	desc = EVTDESCfaegon.13
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { #
+		name = EVTOPTAfaegon.13
+		ai_chance = { factor = 100 }
+
+
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				c_manderford = { #
+					holder_scope = {
+						set_defacto_liege = ROOT
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						any_demesne_title = {
+							limit = {
+								OR = {
+									tier = COUNT
+									tier = DUKE
+								}
+							}
+						set_variable = { which = "de_facto_kingdom" value = 6 } #reach
+						}
+						k_young_griffs_host = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = faegon.14
+	desc = EVTDESCfaegon.14
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { #
+		name = EVTOPTAfaegon.14
+		ai_chance = { factor = 100 }
+
+
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				c_threetowers = { #
+					holder_scope = {
+						set_defacto_liege = ROOT
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						any_demesne_title = {
+							limit = {
+								OR = {
+									tier = COUNT
+									tier = DUKE
+								}
+							}
+						set_variable = { which = "de_facto_kingdom" value = 6 } #reach
+						}
+						k_young_griffs_host = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = faegon.15
+	desc = EVTDESCfaegon.15
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { #
+		name = EVTOPTAfaegon.15
+		ai_chance = { factor = 100 }
+
+
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				c_standfast = { #
+					holder_scope = {
+						set_defacto_liege = ROOT
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						any_demesne_title = {
+							limit = {
+								OR = {
+									tier = COUNT
+									tier = DUKE
+								}
+							}
+						set_variable = { which = "de_facto_kingdom" value = 6 } #reach
+						}
+						k_young_griffs_host = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = faegon.16
+	desc = EVTDESCfaegon.16
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					character = 125009
+				}
+			}
+			k_young_griffs_host = {
+				holder_scope = {
+					#war = no
+					any_spouse = {
+						character = 125009
+					}
+				}
+			}
+		}
+	}
+
+	option = { #
+		name = EVTOPTAfaegon.16
+		ai_chance = { factor = 100 }
+
+
+		k_young_griffs_host = {
+			holder_scope = {
+				set_character_flag = has_dynasty_loyalist
+				d_torrentpeak = { #
+					holder_scope = {
+						set_defacto_liege = ROOT
+						clr_character_flag = neutral
+						clr_character_flag = supporting_king
+						set_character_flag = against_king
+						any_demesne_title = {
+							limit = {
+								OR = {
+									tier = COUNT
+									tier = DUKE
+								}
+							}
+						set_variable = { which = "de_facto_kingdom" value = 6 } #reach
+						}
+						k_young_griffs_host = {
+							holder_scope = {
+								ROOT = { join_attacker_wars = PREV }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

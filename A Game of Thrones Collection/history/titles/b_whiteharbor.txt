@@ -1,0 +1,41 @@
+900.1.1 = {
+	liege = "c_whiteharbor"
+	law = succ_appointment
+	effect = {
+		set_title_flag = military_command
+		holder_scope = {
+			if = {
+				limit = { primary_title = { title = PREVPREV } }
+				set_government_type = military_command_government_city
+				PREV = { succession = appointment }
+				recalc_succession = yes
+			}
+		}
+	}
+}
+8240.1.1 = {
+	holder = 621059
+}
+8259.11.10 = {
+	holder = 1358002
+	effect = {
+		holder_scope = {
+			set_dynasty_flag = is_cadet_house
+			c_621059 = { #harstark father
+				set_dynasty_flag = has_cadet_house
+				set_dynasty_flag = owned_cadet_house_@PREV
+				ROOT = { holder_scope = { set_dynasty_flag = cadet_house_@PREVPREV } }
+			}
+		}
+	}
+}
+8289.11.10 = {
+	holder = 1358004
+}
+
+
+
+
+
+
+

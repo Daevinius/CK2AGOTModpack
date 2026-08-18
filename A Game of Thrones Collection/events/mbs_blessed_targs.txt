@@ -1,0 +1,257 @@
+namespace = mbs_blessed_targs
+
+#mbs_blessed_targs.1 - Mormont Snowbear
+narrative_event = {
+	id = mbs_blessed_targs.1
+	title = "EVTtitlembs_blessed_targs.1"
+	desc = "EVTDESCmbs_blessed_targs.1"
+	picture = "GFX_valyria_dragon"
+
+	min_age = 14
+	friends = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_friend = {
+			trait = dragon
+			age = 2
+		}
+		trait = dragon_rider
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_targaryen
+		}
+		num_of_children = 5
+		any_child  = {
+			count = 5
+			age < 22
+			NOT = {
+				has_character_flag = blessed_targ_siblings
+			}
+			NOT = {
+				trait = dragon_rider
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 2.5
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 496
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 57
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 1559
+		}
+		modifier = {
+			factor = 0.2
+			NOR = {
+				dynasty = 496
+				dynasty = 57
+				dynasty = 1559
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_blessed_targs.1" #get eggs
+
+		ai_chance = {
+			factor = 2
+
+		}
+
+		prestige = 15
+
+		random_friend = {
+			character_event = { id = mbs_blessed_targs.2 }
+		}
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_blessed_targs.1 }
+		}
+
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_blessed_targs.1 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = snowbear
+				}
+			}
+			character_event = { id = mbs_blessed_targs.1 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.1" #Nope
+
+		ai_chance = {
+			factor = 0
+
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = snowbear
+				}
+			}
+			character_event = { id = mbs_blessed_targs.1 }
+		}
+	}
+}
+#Dragon bears you a dragon egg - 5 kids
+character_event = {
+	id = mbs_blessed_targs.2
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+
+	immediate = {
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg1
+
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg2
+
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg3
+
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg4
+
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg5
+
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		random_friend = {
+			event_target:new_dragon_egg1 = {
+				transfer_artifact = { from = FROM to = ROOT }
+				set_artifact_flag = heirloom_@ROOT
+			}
+			event_target:new_dragon_egg2 = {
+				transfer_artifact = { from = FROM to = ROOT }
+				set_artifact_flag = heirloom_@ROOT
+			}
+			event_target:new_dragon_egg3 = {
+				transfer_artifact = { from = FROM to = ROOT }
+				set_artifact_flag = heirloom_@ROOT
+			}
+			event_target:new_dragon_egg4 = {
+				transfer_artifact = { from = FROM to = ROOT }
+				set_artifact_flag = heirloom_@ROOT
+			}
+			event_target:new_dragon_egg5 = {
+				transfer_artifact = { from = FROM to = ROOT }
+				set_artifact_flag = heirloom_@ROOT
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

@@ -1,0 +1,2019 @@
+#Mythical Dragons
+#Four pre-conquest unnamed Targaryen dragons
+#Dragons of Valyria
+
+#Mythical Dragons
+77990029 = {
+	name = "Дикий Дракон"
+	dynasty = 497001
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 62
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_2
+	add_trait = wroth_dragon
+	add_trait = lunatic_dragon
+	add_trait = red_flame
+
+	disallow_random_traits = yes
+
+	mother = 77991000
+
+	1.1.1 = {
+		birth = yes
+		effect = { death = yes }
+	}
+	421.1.1 = {
+		death = yes
+	}
+}
+
+#Nagga the Sea Dragon
+1836582 = {
+	name = "Нагга"
+	dynasty = 497001
+
+	religion = dragon_rel
+	culture = "dragon_culture"
+
+	martial = 120
+
+	add_trait = dragon
+	add_trait = misguided_warrior
+	add_trait = dragon_12
+	add_trait = strong_dragon
+	add_trait = wroth_dragon
+	add_trait = blue_flame
+
+	disallow_random_traits = yes
+
+	mother = 77990029
+
+	3.1.1 = {
+		birth = yes
+		give_nickname = nick_sea_dragon
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+		}
+	}
+	300.1.1 = {
+		death = {
+			# Killed by the Grey King
+			death_reason = death_duel
+			killer = 750066
+		}
+	}
+}
+
+
+106000285 = {
+	name = "Урракс"
+	dynasty = 497001
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_52
+
+	disallow_random_traits = yes
+
+	mother = 77990029
+
+	10.1.1 = {
+		birth = yes
+	}
+	25.1.1 = {
+		death = {
+			death_reason = death_duel_battle
+			killer = 6000285
+		}
+	}
+}
+107766001 = {
+	name = "Виллум" #Willum
+	dynasty = 497001
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_50
+
+	disallow_random_traits = yes
+
+	mother = 77990029
+
+	1950.1.1 = {
+		birth = yes
+	}
+	1977.1.1 = {
+		death = {
+			death_reason = death_duel_battle
+			killer = 7766001
+		}
+	}
+}
+10161402 = {
+	name = "Вирвел" #Vyrwel
+	dynasty = 497001
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_32
+
+	disallow_random_traits = yes
+
+	mother = 77990029
+
+	1950.1.1 = {
+		birth = yes
+	}
+	1977.1.1 = {
+		death = {
+			death_reason = death_duel_battle
+			killer = 161402
+		}
+	}
+}
+101030120 = {
+	name = "Морн" #Morne
+	dynasty = 497001
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_31
+
+	disallow_random_traits = yes
+
+	mother = 77990029
+
+	1950.1.1 = {
+		birth = yes
+	}
+	1977.1.1 = {
+		death = {
+			death_reason = death_duel_battle
+			killer = 1030120
+		}
+	}
+}
+10161401 = {
+	name = "Костолом" #Crackbones
+	dynasty = 497001
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_41
+
+	disallow_random_traits = yes
+
+	mother = 77990029
+
+	1950.1.1 = {
+		birth = yes
+	}
+	1977.1.1 = {
+		death = {
+			death_reason = death_duel_battle
+			killer = 161401
+		}
+	}
+}
+
+#############################################################################################################################
+
+#Four pre-conquest unnamed Targaryen dragons
+77990102 = {
+	name = "Верекс" #white
+	dynasty = 497000
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 45
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_33
+	add_trait = white_flame
+	add_trait = large_claws
+	add_trait = large_horns
+
+	disallow_random_traits = yes
+
+	mother = 77990000
+
+	7808.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			c_77001 = { add_friend = ROOT } #Aenar the Exile
+			c_dragonstone = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7888.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7898.1.1 = {
+		effect = {
+			add_character_modifier = {
+				name = dragon_combat_10
+				duration = -1
+			}
+		}
+	}
+	7901.1.1 = {
+		death = yes
+	}
+}
+77990103 = {
+	name = "Нессарион" #blue
+	dynasty = 497000
+	female = yes
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 28
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = "fair_dragon"
+	add_trait = dragon_35
+	add_trait = blue_flame
+	add_trait = thin_scales
+	add_trait = gleaming_scales
+
+	disallow_random_traits = yes
+
+	mother = 77990000
+
+	7850.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			c_77054 = { add_friend = ROOT } # Elaena Targaryen
+			c_dragonstone = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7865.1.1 = {
+		effect = {
+			set_character_flag = fair_dragon_bl_flag
+		}
+		create_bloodline = {
+			type = bloodline_dragon_fair
+			has_dlc = "Holy Fury"
+		}
+	}
+	7898.1.1 = {
+		effect = {
+			add_character_modifier = {
+				name = dragon_combat_10
+				duration = -1
+			}
+		}
+	}
+	7900.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7910.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7920.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7930.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+		effect = {
+			c_77055 = { add_friend = ROOT } # Maegon Targaryen
+		}
+	}
+	7940.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7950.1.1 = {
+		effect = {
+			c_77058 = { add_friend = ROOT } # Aelyx Targaryen
+		}
+	}
+	7954.1.1 = {
+		death = yes
+	}
+}
+77990104 = {
+	name = "Эбренис"
+	dynasty = 497000
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 20
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_31
+	add_trait = black_flame
+	add_trait = large_horns
+	add_trait = small_wingspan
+
+	disallow_random_traits = yes
+
+	mother = 77990000
+
+	7855.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			c_77052 = { add_friend = ROOT } # Gaemon the Glorious
+			c_dragonstone = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7895.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7898.1.1 = {
+		effect = {
+			add_character_modifier = {
+				name = dragon_combat_10
+				duration = -1
+			}
+		}
+	}
+	7905.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7915.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7925.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7930.1.1 = {
+		effect = {
+			c_77056 = { add_friend = ROOT } # Aerys 0 Targaryen
+		}
+	}
+	7935.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7956.1.1 = {
+		death = yes
+	}
+}
+77990105 = {
+	name = "Моргон"
+	dynasty = 497000
+	female = yes
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 5
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_37
+	add_trait = fertile_dragon
+	add_trait = golden_flame
+	add_trait = small_claws
+	add_trait = large_wingspan
+
+	disallow_random_traits = yes
+
+	mother = 77990103
+
+	7882.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			c_dragonstone = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7892.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7898.1.1 = {
+		effect = {
+			c_77053 = { add_friend = ROOT } # Aegon 0 Targaryen
+		}
+		effect = {
+			add_character_modifier = {
+				name = dragon_combat_4
+				duration = -1
+			}
+		}
+	}
+	7902.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7912.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+	}
+	7922.1.1 = {
+		effect_even_if_dead = { change_martial = 7 }
+		effect = {
+			add_character_modifier = {
+				name = dragon_combat_7
+				duration = -1
+			}
+		}
+	}
+	7931.1.1 = {
+		death = yes
+	}
+}
+
+#############################################################################################################################
+
+#Dragons of Valyria
+77991000 = {
+	name = "Первый Дракон"#first dragon
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_19
+
+	disallow_random_traits = yes
+
+	1.1.1 = {
+		birth = yes
+	}
+	500.1.1 = {
+		death = yes
+	}
+}
+
+77991001 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+
+	disallow_random_traits = yes
+
+	mother = 77991000
+
+	400.1.1 = {
+		birth = yes
+	}
+	2950.1.1 = {
+		death = yes
+	}
+}
+
+77991002 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_20
+
+	disallow_random_traits = yes
+
+	mother = 77991001
+
+	2900.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	3201.1.1 = {
+		death = yes
+	}
+}
+
+77991003 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_50
+
+	disallow_random_traits = yes
+
+	mother = 77991002
+
+	3100.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	3600.1.1 = {
+		death = yes
+	}
+}
+
+77991004 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_30
+
+	disallow_random_traits = yes
+
+	mother = 77991003
+
+	3550.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	4000.1.1 = {
+		death = yes
+	}
+}
+
+77991005 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_15
+
+	disallow_random_traits = yes
+
+	mother = 77991004
+
+	3900.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	4521.1.1 = {
+		death = yes
+	}
+}
+
+77991006 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_25
+
+	disallow_random_traits = yes
+
+	mother = 77991005
+
+	4916.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	5398.1.1 = {
+		death = yes
+	}
+}
+
+77991007 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_27
+
+	disallow_random_traits = yes
+
+	mother = 77991006
+
+	5812.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	6542.1.1 = {
+		death = yes
+	}
+}
+
+77991008 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_33
+
+	disallow_random_traits = yes
+
+	mother = 77991007
+
+	6346.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	6720.1.1 = {
+		death = yes
+	}
+}
+
+77991009 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_10
+
+	disallow_random_traits = yes
+
+	mother = 77991008
+
+	7162.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7499.1.1 = {
+		death = yes
+	}
+}
+
+77991012 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_2
+
+	disallow_random_traits = yes
+
+	mother = 77991001
+
+	2900.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	3201.1.1 = {
+		death = yes
+	}
+}
+
+77991013 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_5
+
+	disallow_random_traits = yes
+
+	mother = 77991002
+
+	3100.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	3600.1.1 = {
+		death = yes
+	}
+}
+
+77991014 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_42
+
+	disallow_random_traits = yes
+
+	mother = 77991003
+
+	3550.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	4000.1.1 = {
+		death = yes
+	}
+}
+
+77991015 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_15
+
+	disallow_random_traits = yes
+
+	mother = 77991004
+
+	3900.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	4521.1.1 = {
+		death = yes
+	}
+}
+
+77991016 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_43
+
+	disallow_random_traits = yes
+
+	mother = 77991005
+
+	4916.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	5398.1.1 = {
+		death = yes
+	}
+}
+
+77991017 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_22
+
+	disallow_random_traits = yes
+
+	mother = 77991006
+
+	5812.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	6542.1.1 = {
+		death = yes
+	}
+}
+
+77991018 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_38
+
+	disallow_random_traits = yes
+
+	mother = 77991007
+
+	6346.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	6720.1.1 = {
+		death = yes
+	}
+}
+
+77991019 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_13
+
+	disallow_random_traits = yes
+
+	mother = 77991008
+
+	7162.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7499.1.1 = {
+		death = yes
+	}
+}
+
+77991022 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_44
+
+	disallow_random_traits = yes
+
+	mother = 77991001
+
+	2900.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	3201.1.1 = {
+		death = yes
+	}
+}
+
+77991023 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_39
+
+	disallow_random_traits = yes
+
+	mother = 77991002
+
+	3100.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	3600.1.1 = {
+		death = yes
+	}
+}
+
+77991024 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_41
+
+	disallow_random_traits = yes
+
+	mother = 77991003
+
+	3550.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	4000.1.1 = {
+		death = yes
+	}
+}
+
+77991025 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_17
+
+	disallow_random_traits = yes
+
+	mother = 77991004
+
+	3900.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	4521.1.1 = {
+		death = yes
+	}
+}
+
+77991026 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_35
+
+	disallow_random_traits = yes
+
+	mother = 77991005
+
+	4916.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	5398.1.1 = {
+		death = yes
+	}
+}
+
+77991027 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_39
+
+	disallow_random_traits = yes
+
+	mother = 77991006
+
+	5812.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	6542.1.1 = {
+		death = yes
+	}
+}
+
+77991028 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_46
+
+	disallow_random_traits = yes
+
+	mother = 77991007
+
+	6346.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	6720.1.1 = {
+		death = yes
+	}
+}
+
+77991029 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_55
+
+	disallow_random_traits = yes
+
+	mother = 77991008
+
+	7162.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7499.1.1 = {
+		death = yes
+	}
+}
+
+
+
+77992000 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_7
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7421.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7769.1.1 = {
+		death = yes
+	}
+}
+
+77992005 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_24
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7453.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7751.1.1 = {
+		death = yes
+	}
+}
+
+77992006 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_21
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7433.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7773.1.1 = {
+		death = yes
+	}
+}
+
+77992007 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_45
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7402.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7763.1.1 = {
+		death = yes
+	}
+}
+
+77992008 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_40
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7492.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7780.1.1 = {
+		death = yes
+	}
+}
+
+77992009 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_51
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7414.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7720.1.1 = {
+		death = yes
+	}
+}
+
+77992010 = {
+	name = ""
+	dynasty = 497002
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_51
+
+	disallow_random_traits = yes
+
+	mother = 77991009
+
+	7414.1.1 = {
+		birth = yes
+		effect = {
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			b_valyria = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7720.1.1 = {
+		death = yes
+	}
+}
+
+#Targaryen
+77990000 = {
+	name = "Мейларис"
+	dynasty = 497000
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = dragon
+	add_trait = misguided_warrior
+	add_trait = dragon_29
+	add_trait = black_flame
+	add_trait = thick_scales
+
+	disallow_random_traits = yes
+
+	mother = 77992000
+
+	7770.1.1 = {
+		birth = yes
+	}
+	7850.1.1 = {
+		death = yes
+	}
+}
+
+#Mataeryon
+77990101 = {
+	name = "Бальгар"
+	dynasty = 497005
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 50
+
+	add_trait = dragon
+	add_trait = misguided_warrior
+	add_trait = dragon_5
+	add_trait = green_flame
+	add_trait = thin_scales
+	add_trait = small_wingspan
+
+	disallow_random_traits = yes
+
+	mother = 77992005
+
+	7825.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			set_character_flag = tamed_dragon
+			c_77694002 = { add_friend = ROOT } #Jaehaelor Mataeryon
+			c_qohor = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7900.1.1 = {
+		death = yes
+	}
+}
+
+#Varezys
+77990106 = {
+	name = "Васcарион"
+	dynasty = 497006
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 90
+
+	add_trait = "dragon"
+	add_trait = dragon_30
+	add_trait = "misguided_warrior"
+	add_trait = strong_dragon
+	add_trait = wroth_dragon
+	add_trait = golden_flame
+	add_trait = gleaming_scales
+	add_trait = shining_teeth
+	add_trait = large_wingspan
+
+	disallow_random_traits = yes
+
+	mother = 77992006
+
+	7758.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			set_character_flag = tamed_dragon
+			c_50012300 = { add_friend = ROOT } #Aurion Varezys
+			c_qohor = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7899.1.1 = {
+		add_trait = dead_target #used in e_new_valyria to change title
+		death = { death_reason = death_missing }
+	}
+}
+
+#Belaerys
+77990500 = {
+	name = "Терракс"
+	dynasty = 497007
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 45
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_32
+	add_trait = strong_dragon
+	add_trait = white_flame
+
+	disallow_random_traits = yes
+
+	mother = 77992007
+
+	7510.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			c_10096022 = {
+				if = {
+					limit = { is_alive = yes }
+					set_character_flag = tamed_dragon
+					add_friend = ROOT #Jaenaera
+					if = {
+						limit = { is_ruler = yes }
+						ROOT = { move_character = PREV }
+					}
+					else = {
+						liege = { ROOT = { move_character = PREV } }
+					}
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7600.1.1 = {
+		effect = {
+			while = {
+				limit = { martial < 45 }
+				change_martial = 1
+			}
+		}
+	}
+	7650.1.1 = {
+		death = yes
+		effect_even_if_dead = {
+			c_10096022 = { ROOT = { set_mother = PREV } } #for history purposes
+		}
+	}
+}
+
+#Urnebar
+77990110 = {
+	name = "Ровакс"
+	dynasty = 497008
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 35
+
+	add_trait = "dragon"
+	add_trait = dragon_34
+	add_trait = "misguided_warrior"
+	add_trait = green_flame
+	add_trait = large_horns
+	add_trait = large_wingspan
+	add_trait = thick_scales
+
+	disallow_random_traits = yes
+
+	mother = 77992008
+
+	7822.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenance
+			set_character_flag = tamed_dragon
+			c_600000071 = { add_friend = ROOT } #Rhogar Urnebar
+			c_tyrosh = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7898.6.1 = {
+		death = {
+			death_reason = death_murder
+			killer = 343300024 # Archon Izembaro Zokan
+		}
+	}
+}
+
+#Sonaryen
+77990112 = {
+	name = "Нелтарион"
+	dynasty = 497009
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 29
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_36
+	add_trait = white_flame
+	add_trait = small_wingspan
+	add_trait = small_horns
+	add_trait = nimble_dragon
+
+	disallow_random_traits = yes
+
+	mother = 77992009
+
+	7840.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenancen
+			set_character_flag = tamed_dragon
+			c_600000070 = { add_friend = ROOT } # Jaenarys Sonaryen
+			c_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7898.6.1 = {
+		death = {
+			death_reason = death_murder
+			killer = 34455925 # Magister Samarro Erosenes
+		}
+	}
+}
+
+77990113 = {
+	name = "Ратаксель"
+	dynasty = 497009
+
+	religion = "dragon_rel"
+	culture = "dragon_culture"
+
+	martial = 29
+
+	add_trait = "dragon"
+	add_trait = "misguided_warrior"
+	add_trait = dragon_18
+	add_trait = black_flame
+	add_trait = small_wingspan
+	add_trait = large_horns
+	add_trait = wyrm_dragon
+
+	disallow_random_traits = yes
+
+	mother = 77992010
+
+	7800.1.1 = {
+		birth = yes
+		effect = {
+			set_character_flag = tamed_dragon
+			set_immune_to_pruning = yes
+			character_event = { id = dragon.0 days = 1 }	#game start maintenancen
+			set_character_flag = tamed_dragon
+			c_77694031 = { add_friend = ROOT } # Helaera Ventaryan
+			c_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_character_modifier = {
+				name = hatched_in_valyria
+				duration = -1
+			}
+		}
+	}
+	7898.6.1 = {
+		death = {
+			death_reason = death_murder
+			killer = 34455925 # Magister Samarro Erosenes
+		}
+	}
+}

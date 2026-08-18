@@ -1,0 +1,48 @@
+namespace = cbb_cadet
+
+character_event = {
+	id = cbb_cadet.1
+	desc = EVTDESCcbb_cadet.1
+	picture = GFX_evt_knighted
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_defacto_liege = ROOT
+	}
+
+	option = {
+		name = "EVTOPTAcbb_cadet.1"
+		any_character = {
+			limit = {
+				has_character_flag = de_facto_liege_cbb
+			}
+			ROOT = {
+				set_defacto_liege = PREV
+			}
+		}
+	}
+}
+
+character_event = {
+	id = cbb_cadet.2
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		any_character = {
+				limit = {
+					has_character_flag = de_facto_liege_cbb
+				}
+				ROOT = {
+					clr_character_flag = de_facto_liege_cbb
+				}
+		}
+	}
+	option = {
+		name = "OK"
+	}
+
+}
+

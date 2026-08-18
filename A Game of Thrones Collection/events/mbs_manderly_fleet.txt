@@ -1,0 +1,480 @@
+namespace = mbs_manderly_fleet
+
+long_character_event = {
+	id = mbs_manderly_fleet.1
+	desc = "EVTDESCmbs_manderly_fleet.1"
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_whiteharbor
+		e_north = {
+			has_holder = yes
+			holder_scope = { character = 2059 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.1" # Go to the Harvest Feast
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_north = { holder_scope = { current_heir = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { job_physician = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { job_castellan = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_manderly_fleet.2 days = 5 } #
+	}
+	option = {
+		name = "EVTOPTBmbs_manderly_fleet.1" #Don't go to Harvest Feast
+		ai_chance = {
+			factor = 0
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.2
+	desc = "EVTDESCmbs_manderly_fleet.2"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.2" # Suggest the Fleet
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { character_event = { id = mbs_manderly_fleet.3 days = 5 } } }
+		e_north = { holder_scope = { current_heir = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { job_physician = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { job_castellan = { tooltip = { show_portrait = yes } } } }
+	}
+	option = {
+		name = "EVTOPTBmbs_manderly_fleet.2" #Don't suggest the fleet
+		ai_chance = {
+			factor = 0
+		}
+		e_north = {
+			holder_scope = {
+				current_heir = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 3
+					}
+				}
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.3
+	desc = "EVTDESCmbs_manderly_fleet.3"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.3" #Yes
+		ai_chance = {
+			factor = 5
+		}
+		character_event = { id = mbs_manderly_fleet.4 }
+		e_north = { holder_scope = { current_heir = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { job_physician = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { job_castellan = { tooltip = { show_portrait = yes } } } }
+		ROOT = { wealth = -50 }
+		d_whiteharbor = {
+			holder_scope = {
+				custom_tooltip = {
+					liege = {
+						reverse_opinion = {
+							who = PREV
+							modifier = opinion_very_grateful
+							years = 2
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_manderly_fleet.3" #No to the fleet
+		ai_chance = {
+			factor = 0
+		}
+		d_whiteharbor = {
+			holder_scope = {
+				custom_tooltip = {
+					liege = {
+						reverse_opinion = {
+							who = PREV
+							modifier = opinion_disgruntled
+							years = 2
+						}
+					}
+				}
+			}
+		}
+		FROM = { character_event = { id = mbs_manderly_fleet.301 } }
+	}
+}
+character_event = {
+	id = mbs_manderly_fleet.301
+	desc = "EVTDESCmbs_manderly_fleet.301"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.4
+	desc = "EVTDESCmbs_manderly_fleet.4"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.4" #Yes and talk to the Umbers for the timber
+		ai_chance = {
+			factor = 5
+		}
+		d_whiteharbor = { holder_scope = { character_event = { id = mbs_manderly_fleet.5 } } }
+		d_lasthearth = {
+			holder_scope = {
+				custom_tooltip = {
+					liege = {
+						reverse_opinion = {
+							who = PREV
+							modifier = opinion_very_grateful
+							years = 2
+						}
+					}
+				}
+			}
+		}
+		d_lasthearth = {
+			holder_scope = {
+				custom_tooltip = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_very_grateful
+						years = 2
+					}
+				}
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.5
+	desc = "EVTDESCmbs_manderly_fleet.5"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.5" #Yes I'll work with the Umbers
+		ai_chance = {
+			factor = 5
+		}
+		c_whiteharbor = {
+			set_title_flag = mbs_manderly_fleet
+		}
+		character_event = { id = mbs_manderly_fleet.6 days = 180 }
+		d_lasthearth = { holder_scope = { character_event = { id = mbs_manderly_fleet.501 } } }
+		e_north = { holder_scope = { character_event = { id = mbs_manderly_fleet.502 } } }
+		d_lasthearth = {
+			holder_scope = {
+				custom_tooltip = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_very_grateful
+						years = 10
+					}
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				custom_tooltip = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 2
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_manderly_fleet.5" #No I want to retain control
+		ai_chance = {
+			factor = 0
+		}
+		character_event = { id = mbs_manderly_fleet.20 days = 180 }
+		ROOT = { wealth = -10 }
+		e_north = { holder_scope = { character_event = { id = mbs_manderly_fleet.503 } } }
+		c_whiteharbor = {
+			set_title_flag = mbs_manderly_fleet
+		}
+		d_lasthearth = {
+			holder_scope = {
+				custom_tooltip = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_disgruntled
+						years = 10
+					}
+				}
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.501
+	desc = "EVTDESCmbs_manderly_fleet.501"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.501" #
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.502
+	desc = "EVTDESCmbs_manderly_fleet.502"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.502" #
+		ai_chance = {
+			factor = 1
+		}
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		any_courtier = {
+			limit = { c_2080 = { character = PREV } } #Wendel
+			give_minor_title = title_high_admiral
+			set_character_flag = minor_title_given
+			if = {
+				limit = { ai = no }
+				letter_event = { id = maintenance.8 }
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.503
+	desc = "EVTDESCmbs_manderly_fleet.503"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.503" #
+		ai_chance = {
+			factor = 1
+		}
+		any_courtier = {
+			limit = { c_2080 = { character = PREV } } #Wendel
+			give_minor_title = title_high_admiral
+			set_character_flag = minor_title_given
+			if = {
+				limit = { ai = no }
+				letter_event = { id = maintenance.8 }
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.6
+	desc = "EVTDESCmbs_manderly_fleet.6"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	immediate = {
+		c_whiteharbor = {
+			location = {
+				set_province_flag = mbs_manderly_fleet_smaller
+			}
+		}
+		c_sealshore = {
+			location = {
+				set_province_flag = mbs_manderly_fleet_umber
+			}
+		}
+		b_newcastle = {
+			add_building = ca_mbs_manderly_fleet_smaller
+		}
+		b_fisherhall = {
+			add_building = ca_mbs_umber_fleet
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.6" #
+		ai_chance = {
+			factor = 1
+		}
+		e_north = {
+			holder_scope = {
+				set_character_flag = construct_a_flagship
+				set_character_flag = regular_flagship
+			}
+		}
+		d_lasthearth = {
+			holder_scope = {
+				set_character_flag = construct_a_flagship
+				set_character_flag = regular_flagship
+			}
+		}
+		d_whiteharbor = {
+			holder_scope = {
+				set_character_flag = construct_a_flagship
+				set_character_flag = regular_flagship
+			}
+		}
+		character_event = { id = ironborn_events.86 }
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_manderly_fleet.601 }
+			}
+		}
+		d_lasthearth = {
+			holder_scope = {
+				character_event = { id = mbs_manderly_fleet.602 }
+			}
+		}
+		d_lasthearth = {
+			holder_scope = {
+				hidden_tooltip = {
+					any_demesne_title = {
+						limit = { tier = BARON }
+						refill_holding_levy = yes
+					}
+				}
+			}
+		}
+		d_whiteharbor = {
+			holder_scope = {
+				hidden_tooltip = {
+					any_demesne_title = {
+						limit = { tier = BARON }
+						refill_holding_levy = yes
+					}
+				}
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.601
+	desc = "EVTDESCmbs_manderly_fleet.601"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.601" #
+		ai_chance = {
+			factor = 1
+		}
+		character_event = { id = ironborn_events.86 }
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.602
+	desc = "EVTDESCmbs_manderly_fleet.602"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.602" #
+		ai_chance = {
+			factor = 1
+		}
+		character_event = { id = ironborn_events.86 }
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.20
+	desc = "EVTDESCmbs_manderly_fleet.20"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	immediate = {
+		c_whiteharbor = {
+			location = {
+				set_province_flag = mbs_manderly_fleet_larger
+			}
+		}
+		b_newcastle = {
+			add_building = ca_mbs_manderly_fleet_larger
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.20" #
+		ai_chance = {
+			factor = 1
+		}
+		e_north = {
+			holder_scope = {
+				set_character_flag = construct_a_flagship
+				set_character_flag = regular_flagship
+			}
+		}
+		d_whiteharbor = {
+			holder_scope = {
+				set_character_flag = construct_a_flagship
+				set_character_flag = regular_flagship
+			}
+		}
+		character_event = { id = ironborn_events.86 }
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_manderly_fleet.251 }
+			}
+		}
+		d_whiteharbor = {
+			holder_scope = {
+				hidden_tooltip = {
+					any_demesne_title = {
+						limit = { tier = BARON }
+						refill_holding_levy = yes
+					}
+				}
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_manderly_fleet.251
+	desc = "EVTDESCmbs_manderly_fleet.251"
+	picture = GFX_white_harbour_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_manderly_fleet.251" #
+		ai_chance = {
+			factor = 1
+		}
+		character_event = { id = ironborn_events.86 }
+	}
+}

@@ -1,0 +1,328 @@
+decisions = {
+
+	#Restore the Valyrian Empire
+    restore_valyrian_empire = {
+		is_high_prio = yes
+		ai = no
+		potential = {
+			#This is the title we are trying to create!
+			e_valyrian_empire = {
+				has_holder = no
+			}
+
+			#Must be independent and fully capable
+			independent = yes
+			has_regent = no
+			war = no
+
+			#Mainly to prevent the Iron Throne or the Kingdom of the Three Daughters from enacting this decision.
+			OR = {
+				NOT = { tier = EMPEROR }
+				AND = {
+					tier = EMPEROR
+					has_landed_title = e_new_valyria
+				}
+				character = 779496
+				character = 77024
+				character = 77025
+				character = 77040
+			}
+			capital_scope = { region = world_free_cities }
+		}
+
+		allow = {
+			#Must claim some sort of cultural continuity with the Freehold
+			OR = {
+				culture_group = valyrian
+				culture_group = free_cities
+			}
+			OR = {
+				#is Valyrian Conquerer
+				AND = {
+					OR = {
+						character = 779496
+						character = 77024
+						character = 77025
+						character = 77040
+					}
+					num_of_king_titles = 3
+					capital_scope = { region = world_free_cities }
+				}
+
+				#Must hold New Valyria
+				AND = {
+					primary_title = {
+						title = e_new_valyria
+					}
+					realm_size = 100
+				}
+				# Must rule the Free City of Volantis, plus another KING -tier title, and a big enough realm.
+				AND = {
+					any_demesne_title = {
+						title = k_volantis
+					}
+					any_demesne_title = {
+						NOT = { title = k_volantis }
+						tier = king
+						OR = {
+							region = world_free_cities
+							region = world_north_valyria
+							region = world_old_valyria
+
+						}
+					}
+					realm_size = 100
+				}
+				# Must rule the kingdom of Valyria, plus another KING -tier title, and a big enough realm.
+				# Alternative requirements for the "Colonise Valyria" sub-mod.
+				AND = {
+					any_demesne_title = {
+						title = k_valyria
+					}
+					any_demesne_title = {
+						NOT = { title = k_valyria }
+						tier = king
+						OR = {
+							region = world_free_cities
+							region = world_north_valyria
+							region = world_old_valyria
+						}
+					}
+					realm_size = 100
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = {
+				text = restore_valyrian_empire_custom_tooltip
+
+				# Global Flag
+                set_global_flag = valyrian_empire_restored
+
+				#Money to purchase new banners and stuff
+				scaled_wealth = -0.5
+				#Free Prestige! Yay!
+				prestige = 1000
+
+				#Create the Valyrian Empire
+				e_valyrian_empire = {
+					grant_title = PREV
+					# Succesion Laws
+					add_law = succ_primogeniture
+					# Crown Laws
+					add_law = dote_feudal_administration
+					add_law = dote_hereditary_governors
+					add_law = dote_autonomy_1
+					#Demesne Laws
+					add_law = dote_full_aristocratic
+					add_law = dote_centralisation_3
+				}
+
+				#Destroy New Valyria
+				e_new_valyria = {
+					any_direct_de_jure_vassal_title = { de_jure_liege = e_valyrian_empire }
+					destroy_landed_title = THIS
+				}
+
+				#Grant the title "The Restorer"
+				if = {
+					limit = {
+						NOR = {
+							character = 779496
+							character = 77024
+							character = 77025
+							character = 77040
+						}
+					}
+					give_nickname = nick_the_restorer
+				}
+
+				#Grants bloodline
+				create_bloodline = {
+					type = the_restorer_of_empire
+				}
+				if = {
+					limit = {
+						character = 779496
+					}
+					new_bloodline = {
+						set_description = dote_rogue_prince_bloodline_desc
+					}
+				}
+				else_if = {
+					limit = {
+						character = 77024
+					}
+					new_bloodline = {
+						set_description = dote_blackfyre_bloodline_desc
+					}
+				}
+				else_if = {
+					limit = {
+						character = 77025
+					}
+					new_bloodline = {
+						set_description = dote_bittersteel_bloodline_desc
+					}
+				}
+				else = {
+					limit = {
+						character = 77040
+					}
+					new_bloodline = {
+						set_description = dote_beggar_king_bloodline_desc
+					}
+				}
+
+
+				#Narrative Event
+				narrative_event = {
+					id = dote.2
+				}
+				character_event = { id = dynamic_coa.0 }
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	#Decree Imperial Crownlands
+	#Just in case, since the original titles are destroyed
+	decree_crownlands = {
+		ai = no
+	    potential = {
+			NOT = { has_landed_title = e_new_valyria }
+			k_valyrian_empire = {
+				has_holder = no
+			}
+		}
+
+	    allow = {
+			NOT = { has_landed_title = e_new_valyria }
+			k_valyrian_empire = {
+				has_holder = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = {
+				text = decree_crownlands_custom_tooltip
+
+				#Create the Crownlands
+				k_valyrian_empire = {
+					grant_title = PREV
+				}
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+#	build_imperial_palace = {
+#	    potential = {
+#			always = no
+#		}
+#		allow = {
+#			always = no
+#			#has_regent = no
+#			#has_landed_title = e_valyrian_empire
+#			#wealth = 2000
+#			#NOT = { any_demesne_province = { has_province_modifier = imperial_palace_modifier } }
+#			#NOT = { has_global_flag = imperial_palace_under_construction }
+#		}
+#
+#		effect = {
+#           custom_tooltip = {
+#			text = build_imperial_palace_custom_tooltip
+#			    hidden_tooltip = {
+#					set_global_flag = imperial_palace_under_construction
+#					FROM = {
+#						narrative_event = { id = dote_imperial_palace_events.0 }
+#						narrative_event = { id = dote_imperial_palace_events.1 days = 3650 }
+#						wealth = -2000
+#					}
+#				}
+#			}
+#		}
+#		revoke_allowed = {
+#			always = no
+#		}
+#		ai_will_do = {
+#			factor = 0
+#		}
+#	}
+
+
+#Organize the Dragon Guard
+	organize_dragonsguard = {
+		ai = no
+		potential = {
+			has_landed_title = e_valyrian_empire
+			NOT = { has_global_flag = dragon_guard_formed }
+		}
+
+		allow = {
+			has_landed_title = e_valyrian_empire
+			has_regent = no
+			OR = {
+				martial = 15
+				job_marshal = { martial = 15 }
+			}
+			wealth = 500
+		}
+
+		effect = {
+			custom_tooltip = {
+				text = organize_dragonsguard_custom_tooltip
+
+				set_global_flag = dragon_guard_formed
+				wealth = -500
+				prestige = 500
+
+				activate_title = { title = d_dragonsguard status = yes }
+
+				character_event = { id = dote.5 }
+				create_character = {
+					random_traits = yes
+					religion = valyrian_rel
+					culture = eastern_valyrian
+					dynasty = none
+					female = no
+					age = 30
+					martial = 15
+					trait = brilliant_strategist
+					trait = master_warrior
+					trait = strong
+					trait = ambitious
+					trait = diligent
+					trait = wroth
+					trait = dragon_guard
+				}
+				new_character = {
+					d_dragonsguard = {
+						grant_title = PREV
+					}
+					set_character_flag = leading_dragonsguard
+					set_character_flag = serving_dragonsguard
+					set_defacto_liege = ROOT
+				}
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

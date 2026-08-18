@@ -1,0 +1,2097 @@
+################################################################################
+############Daenerys Stormborn Destroys the Iron Throne by PabloLara############
+################################################################################
+namespace = sb_breakwheel
+
+#Break the Wheel? Triggered by Decision
+narrative_event = {
+	id = sb_breakwheel.1
+	desc = "EVTDESC_sb_breakwheel.1"
+	title = "EVTTITLEsb_breakwheel.1"
+	picture = GFX_evt_ironthrone
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_landed_title = e_iron_throne }
+		NOT = { has_character_flag = break_wheel }
+		NOT = { has_global_flag = refused_wheel }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.1"     #Declare War on the Iron Throne
+		ai_chance = {
+			factor = 35
+			modifier = {
+				factor = 500
+				has_game_rule = {
+					name = daenerys_break_wheel
+					value = always
+				}
+			}
+		}
+		set_character_flag = break_wheel
+		e_iron_throne = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_landed_title = k_north
+					has_landed_title = k_vale
+					has_landed_title = k_westerlands
+					has_landed_title = k_riverlands
+					has_landed_title = k_stormlands
+					has_landed_title = k_dorne
+					has_landed_title = k_iron_isles
+					has_landed_title = k_reach
+				}
+				NOT = { has_landed_title = e_iron_throne }
+			}
+			long_character_event = { id = sb_breakwheel.100 days = 2 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.1"    #No, to people who regret clicking the decision or for the AI
+		ai_chance = {
+			factor = 65
+			modifier = {
+				factor = 500
+				has_game_rule = {
+					name = daenerys_break_wheel
+					value = never
+				}
+			}
+		}
+		set_global_flag = refused_wheel
+		piety = 100
+	}
+}
+#Lords of Westeos may join Dany
+long_character_event = {
+	id = sb_breakwheel.100
+	desc = "EVTDESC_sb_breakwheel.100"
+	picture = GFX_evt_ironthrone
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { e_iron_throne = { holder_scope = { dynasty = ROOT } } }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_north }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_vale }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_riverlands }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_iron_isles }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_dorne }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_westerlands }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_stormlands }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.100"
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.7
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  100 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  0 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -20 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.4
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -40 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.6
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -60 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.8
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -80 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				e_iron_throne = {
+					holder_scope = {
+						opinion = { who = ROOT value =  -100 }
+					}
+				}
+			}
+		}
+		trigger = { has_landed_title = k_reach }
+		set_defacto_liege = THIS
+		ROOT = { join_attacker_wars = FROM }
+		e_iron_throne = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_joined_rebellion
+					who = PREVPREV
+					years = 20
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTI_sb_breakwheel.100"
+		ai_chance = { factor = 80 }
+		piety = 50
+	}
+}
+#After Winning the War, actually destroy the Iron Throne
+narrative_event = {
+	id = sb_breakwheel.2
+	desc = "EVTDESC_sb_breakwheel.2"
+	title = "EVTTITLEsb_breakwheel.2"
+	picture = GFX_evt_ironthrone
+
+	only_independent = yes
+	only_women = yes
+	war = no
+	has_character_flag = break_wheel
+	has_global_flag = dany_stormborn_events
+
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_iron_throne
+		NOT = { has_character_flag = destroyed_ironthrone }
+		NOT = { has_global_flag = kept_ironthrone }
+		NOT = {
+			any_war = {
+				attacker = { character = ROOT }
+				using_cb = dragon_conquest
+				defender = { has_landed_title = e_iron_throne }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.2"          #Iron Throne destroyed
+		ai_chance = { factor = 100 }
+		piety = 500
+		set_character_flag = destroyed_ironthrone
+		clr_character_flag = break_wheel
+		ROOT = {
+			character_event = {
+				id = sb_breakwheel.3
+				days = 1
+			}
+		}
+		e_iron_throne = { destroy_landed_title = THIS }
+		b_red_keep = {
+			remove_building = ca_iron_throne
+		}
+		k_dragonstone = {
+			grant_title = ROOT
+		}
+		d_dragonstone = {
+			grant_title = ROOT
+		}
+		c_dragonstone = {
+			grant_title = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_reach }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_north }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_dorne }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_riverlands }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_vale }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_westerlands }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_stormlands }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_iron_isles }
+			set_defacto_liege = THIS
+		}
+		hidden_tooltip = {
+			create_character = {
+			name = ""
+			religion = "ruins"
+			culture = "ruin"
+			attributes = {
+				martial = 0
+				diplomacy = 0
+				intrigue = 0
+				stewardship = 0
+				learning = 0
+			}
+			trait = ruin
+		  }
+		}
+		random_courtier = {
+			limit = { trait = ruin }
+				c_kings_landing = {
+				gain_title = PREV
+				}
+			set_defacto_liege = THIS
+			character_event = { id = unoccupied.101 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.2"                 #You regret again after all and take the thone, for cowards
+		ai_chance = { factor = 0 }
+		set_global_flag = kept_ironthrone
+		clr_character_flag = break_wheel
+		prestige = 500
+	}
+}
+#Iron Throne destroyed, sent ravens to all LPs
+character_event = {
+	id = sb_breakwheel.3
+	desc = "EVTDESC_sb_breakwheel.3"
+	title = "EVTTITLEsb_breakwheel.3"
+	picture = "GFX_dracarys"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.3"                 #Get the bordergore to minimun
+		ROOT = {
+			character_event = {
+				id = sb_breakwheel.4
+				days = 2
+			}
+		}
+		ROOT = {
+			any_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_mad_king
+				}
+				remove_bloodline_member = ROOT
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_westerlands }
+			d_blackwater_rush = {
+				set_defacto_liege = PREV
+			}
+			c_cornfield = {
+				set_defacto_liege = PREV
+			}
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_vale }
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_iron_isles }
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_stormlands }
+			d_tarth = {
+				set_defacto_liege = PREV
+			}
+			d_kingswood = {
+				set_defacto_liege = PREV
+			}
+			d_griffins_roost  = {
+				set_defacto_liege = PREV
+			}
+			d_wendwater = {
+				set_defacto_liege = PREV
+			}
+			d_red_watch = {
+				set_defacto_liege = PREV
+			}
+			c_grandview = {
+				set_defacto_liege = PREV
+			}
+			c_fawnton = {
+				set_defacto_liege = PREV
+			}
+			c_hadlow_keep = {
+				set_defacto_liege = PREV
+			}
+			c_nightsong = {
+				set_defacto_liege = PREV
+			}
+			c_harvest_hall = {
+				set_defacto_liege = PREV
+			}
+			c_poddingfield = {
+				set_defacto_liege = PREV
+			}
+			c_blackhaven = {
+				set_defacto_liege = PREV
+			}
+			d_rainwood = {
+				set_defacto_liege = PREV
+			}
+			d_cape_wrath = {
+				set_defacto_liege = PREV
+			}
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_dorne }
+			d_blackmont = {
+				set_defacto_liege = PREV
+			}
+			d_brimstone = {
+				set_defacto_liege = PREV
+			}
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_north }
+			c_castlecerwyn = {
+				set_defacto_liege = PREV
+			}
+			d_lasthearth = {
+				set_defacto_liege = PREV
+			}
+			d_karhold = {
+				set_defacto_liege = PREV
+			}
+			c_aylesvale = {
+				set_defacto_liege = PREV
+			}
+			d_whiteharbor = {
+				set_defacto_liege = PREV
+			}
+			d_mbs_blackpool = {
+				set_defacto_liege = PREV
+			}
+			d_oldcastle = {
+				set_defacto_liege = PREV
+			}
+			c_crowsedge = {
+				set_defacto_liege = PREV
+			}
+			c_arrendell = {
+				set_defacto_liege = PREV
+			}
+			c_pinesend = {
+				set_defacto_liege = PREV
+			}
+			c_shadowmoor = {
+				set_defacto_liege = PREV
+			}
+			c_flintkeep = {
+				set_defacto_liege = PREV
+			}
+			c_longwatch = {
+				set_defacto_liege = PREV
+			}
+			c_burley_vale = {
+				set_defacto_liege = PREV
+			}
+			d_bearisland = {
+				set_defacto_liege = PREV
+			}
+			c_moatcailin = {
+				set_defacto_liege = PREV
+			}
+			c_kingshouse = {
+				set_defacto_liege = PREV
+			}
+			c_deepdown = {
+				set_defacto_liege = PREV
+			}
+			c_driftwoodhall = {
+				set_defacto_liege = PREV
+			}
+			d_rills = {
+				set_defacto_liege = PREV
+			}
+			c_stonyshore = {
+				set_defacto_liege = PREV
+			}
+			c_bluehills = {
+				set_defacto_liege = PREV
+			}
+			c_seadragonpoint = {
+				set_defacto_liege = PREV
+			}
+			d_wolfswood = {
+				set_defacto_liege = PREV
+			}
+			c_blackgrove = {
+				set_defacto_liege = PREV
+			}
+			c_e_wolfwood = {
+				set_defacto_liege = PREV
+			}
+			d_barrowlands = {
+				set_defacto_liege = PREV
+			}
+			d_hornwood = {
+				set_defacto_liege = PREV
+			}
+			d_theneck = {
+				set_defacto_liege = PREV
+			}
+			d_flintsfinger = {
+				set_defacto_liege = PREV
+			}
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_reach }
+			d_brightwater = {
+				set_defacto_liege = PREV
+			}
+			c_grassy_vale = {
+				set_defacto_liege = PREV
+			}
+			c_longtable = {
+				set_defacto_liege = PREV
+			}
+			c_bitterbridge = {
+				set_defacto_liege = PREV
+			}
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_riverlands }
+			d_thecrossing = {
+				set_defacto_liege = PREV
+			}
+			d_blackwood = {
+				set_defacto_liege = PREV
+			}
+			c_fairmarket = {
+				set_defacto_liege = PREV
+			}
+			d_southstone = {
+				set_defacto_liege = PREV
+			}
+			d_oldstones = {
+				set_defacto_liege = PREV
+			}
+			d_acornsridge = {
+				set_defacto_liege = PREV
+			}
+			d_wayfarersrest = {
+				set_defacto_liege = PREV
+			}
+			d_bayofclaws = {
+				set_defacto_liege = PREV
+			}
+			d_willowwood = {
+				set_defacto_liege = PREV
+			}
+			d_trident = {
+				set_defacto_liege = PREV
+			}
+			d_trident = {
+				set_defacto_liege = PREV
+			}
+			narrative_event = {
+				id = sb_breakwheel.8
+				days = 2
+			}
+		}
+	}
+}
+#Fate of Rosby, Stokeworth and Hayford
+narrative_event = {
+	id = sb_breakwheel.5
+	desc = "EVTDESC_sb_breakwheel.5"
+	title = "EVTTITLEsb_breakwheel.5"
+	picture = GFX_KINGS_LANDING
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.5"           #Independent
+		ai_chance = { factor = 45 }
+		any_playable_ruler = {
+			limit = { has_landed_title = d_rosby }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_hayford }
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_stokeworth }
+			set_defacto_liege = THIS
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.6
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.5"               #Riverlands Vassals
+		ai_chance = { factor = 45 }
+		any_playable_ruler = {
+			limit = { has_landed_title = k_riverlands }
+			d_rosby = {
+				set_defacto_liege = PREV
+			}
+			d_stokeworth = {
+				set_defacto_liege = PREV
+			}
+			d_hayford = {
+				set_defacto_liege = PREV
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.6
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_breakwheel.5"              #Remain your vassals
+		ai_chance = { factor = 10 }
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.6
+				days = 2
+			}
+		}
+	}
+}
+#Fate of Duskendale
+narrative_event = {
+	id = sb_breakwheel.6
+	desc = "EVTDESC_sb_breakwheel.6"
+	title = "EVTTITLEsb_breakwheel.6"
+	picture = GFX_KINGS_LANDING
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.6"                 #Independent
+		ai_chance = { factor = 45 }
+		any_playable_ruler = {
+			limit = { has_landed_title = d_duskendale }
+			set_defacto_liege = THIS
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.7
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.6"                #Kingdom of the Dusklands
+		ai_chance = { factor = 45 }
+		any_playable_ruler = {
+			limit = { has_landed_title = d_duskendale }
+			k_duskendaleTK = {
+				grant_title = PREV
+			}
+			set_defacto_liege = THIS
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.7
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_breakwheel.6"           #Riverlands Vassals
+		ai_chance = { factor = 10 }
+		any_playable_ruler = {
+			limit = { has_landed_title = k_riverlands }
+			d_duskendale = {
+				set_defacto_liege = PREV
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.7
+				days = 2
+			}
+		}
+	}
+}
+#Fate of Clawman
+narrative_event = {
+	id = sb_breakwheel.7
+	desc = "EVTDESC_sb_breakwheel.7"
+	title = "EVTTITLEsb_breakwheel.7"
+	picture = GFX_KINGS_LANDING
+
+	is_triggered_only = yes
+
+	trigger = {
+		d_crackclaw_point = { has_holder = yes }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.7"                     #Independent
+		ai_chance = { factor = 45 }
+		any_playable_ruler = {
+			limit = { has_landed_title = d_crackclaw_point }
+			set_defacto_liege = THIS
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.7"                     #Kingdom of the Claw
+		ai_chance = { factor = 45 }
+		any_playable_ruler = {
+			limit = { has_landed_title = d_crackclaw_point }
+			k_crackclaw_point = {
+				grant_title = PREV
+			}
+			d_mbs_rooks_rest = {
+				set_defacto_liege = PREV
+			}
+			set_defacto_liege = THIS
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_breakwheel.7"                   #Remain your vassals
+		ai_chance = { factor = 10 }
+	}
+}
+#Lords of the Seven Kingdoms get news from Daenerys and declare Kingdoms
+narrative_event = {
+	id = sb_breakwheel.8
+	desc = "EVTDESC_sb_breakwheel.8"
+	title = "EVTTITLEsb_breakwheel.8"
+	picture = "GFX_dracarys"
+
+	is_triggered_only = yes
+
+	only_rulers = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		NOT = { has_landed_title = e_north }
+		NOT = { has_landed_title = e_riverlands }
+		NOT = { has_landed_title = e_vale }
+		NOT = { has_landed_title = e_westerlands }
+		NOT = { has_landed_title = e_reach }
+		NOT = { has_landed_title = e_stormlands }
+		NOT = { has_landed_title = e_dorne }
+		NOT = { has_landed_title = e_iron_isles }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.8"                  #Each LP declares their own Empire level title kingdom and destroys the kingdom level one
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_north = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_north
+			}
+		}
+		hidden_tooltip = {
+			k_north = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_north
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_north }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_riverlands = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_riverlands
+			}
+		}
+		hidden_tooltip = {
+			k_riverlands = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_riverlands
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_north }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_vale = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_vale
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_vale
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_north }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_westerlands = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_westerlands
+			}
+		}
+		hidden_tooltip = {
+			k_westerlands = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_westerlands
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTE_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_north }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_reach = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_reach
+			}
+		}
+		hidden_tooltip = {
+			k_reach = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_reach
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTF_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_north }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_stormlands = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_stormlands
+			}
+		}
+		hidden_tooltip = {
+			k_stormlands = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_stormlands
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTG_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_north }
+			NOT = { has_landed_title = k_iron_isles }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_dorne = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_dorne
+			}
+		}
+		hidden_tooltip = {
+			k_dorne = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_dorne
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTH_sb_breakwheel.8"
+		trigger = {
+			NOT = { has_landed_title = k_riverlands }
+			NOT = { has_landed_title = k_vale }
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = k_reach }
+			NOT = { has_landed_title = k_stormlands }
+			NOT = { has_landed_title = k_dorne }
+			NOT = { has_landed_title = k_north }
+		}
+		set_character_flag = changing_westerosi_kingdom_tier #to stop other maintenance triggering
+		e_iron_isles = {
+			gain_title = ROOT
+			hidden_tooltip = {
+				copy_title_laws = k_iron_isles
+			}
+		}
+		hidden_tooltip = {
+			k_iron_isles = {
+				destroy_landed_title = THIS
+				de_jure_liege = e_iron_isles
+			}
+			clr_character_flag = changing_westerosi_kingdom_tier
+			any_demesne_title = {
+				limit = {
+					NOT = { tier = BARON }
+					NOT = { tier = EMPEROR }
+				}
+				set_variable = { which = "de_facto_empire" value = 3 }
+			}
+			any_realm_lord = {
+				any_demesne_title = {
+					limit = {
+						NOT = { tier = BARON }
+						NOT = { tier = EMPEROR }
+					}
+					set_variable = { which = "de_facto_empire" value = 3 }
+				}
+			}
+		}
+	}
+}
+#Fate of Kings Landing
+narrative_event = {
+	id = sb_breakwheel.4
+	desc = "EVTDESC_sb_breakwheel.4"
+	title = "EVTTITLEsb_breakwheel.4"
+	picture = GFX_KINGS_LANDING
+
+	is_triggered_only = yes
+
+	has_character_flag = destroyed_ironthrone
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+	}
+
+	option = {
+		name = "EVTOPTA_sb_breakwheel.4"                    #The High Septon, Papal States of Westeros
+		ai_chance = { factor = 45 }
+		any_character = {
+			limit = { has_landed_title = k_the_most_devout }
+				c_kl_city = {
+				grant_title = PREV
+			}
+			d_kings_landing = {
+				grant_title = PREV
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_the_most_devout }
+			set_defacto_liege = THIS
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.5
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_breakwheel.4"               #A Peasant Leader
+		ai_chance = { factor = 45 }
+		hidden_tooltip = {
+			create_character = {
+				religion = the_seven
+				culture = crownlander
+				trait = peasant_leader
+				trait = liberator
+				trait = honorable
+				# trait = generous
+				trait = just
+				trait = skilled_tactician
+				dynasty = 0
+		    }
+		}
+		random_courtier = {
+			limit = { trait = peasant_leader }
+				c_kl_city = {
+					gain_title = PREV
+				}
+				d_kings_landing = {
+					grant_title = PREV
+				}
+			set_defacto_liege = THIS
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_the_most_devout }
+			set_defacto_liege = THIS
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.5
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_breakwheel.4"            #You keep it for yourself
+		ai_chance = { factor = 10 }
+		ROOT = {
+			narrative_event = {
+				id = sb_breakwheel.5
+				days = 2
+			}
+		}
+	}
+}

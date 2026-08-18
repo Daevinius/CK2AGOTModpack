@@ -1,0 +1,1012 @@
+namespace = royconv
+character_event = {
+	id = royconv.0
+	desc = "EVTDESCROYCONV"
+	picture = "GFX_valyria_dragon"
+
+	is_triggered_only = yes
+
+	option = {
+	name = "EVTROYCONV"
+		piety = -50
+		prestige = 20
+	}
+}
+character_event = {
+	id = royconv.1
+	desc = "EVTDESCROYCONV1"
+	picture = "GFX_summer_islanders"
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			culture = summer_tyroshi
+			AND = {
+				culture = summer_islander
+				top_liege = { culture = tyroshi }
+			}
+		}
+		NOT = { capital_scope = { culture = summer_tyroshi } }
+	}
+
+	option = {
+		name = "EVTROYCONV1"
+
+		piety = -10
+		ROOT = {
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = summer_tyroshi
+			}
+			capital_scope = { culture = summer_tyroshi }
+		}
+	}
+}
+character_event = {
+	id = royconv.2
+	desc = "EVTDESCROYCONV2"
+	picture = "GFX_dothraki_camp"
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			culture = dothrak_tyroshi
+			AND = {
+				culture = dothraki
+				top_liege = { culture = tyroshi }
+			}
+		}
+		NOT = { capital_scope = { culture = dothrak_tyroshi } }
+	}
+
+	option = {
+		name = "EVTROYCONV2"
+
+		piety = -10
+		ROOT = {
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = dothrak_tyroshi
+			}
+			capital_scope = { culture = dothrak_tyroshi }
+		}
+	}
+}
+character_event = {
+	id = royconv.3
+	desc = "EVTDESCROYCONV2"
+	picture = "GFX_dothraki_camp"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTROYCONV2"
+
+		piety = -10
+		prestige = 20
+	}
+}
+character_event = {
+	id = royconv.4
+	desc = "EVTDESCROYCONV1"
+	picture = "GFX_summer_islanders"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTROYCONV1"
+
+		piety = -10
+		prestige = 20
+	}
+}
+character_event = {
+	id = royconv.5
+	desc = "EVTDESCROYCONV5"
+	picture = "GFX_evt_valyria_2"
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			culture = iron_valyrian
+			AND = {
+				culture = ironborn
+				top_liege = { culture_group = valyrian }
+				NOT = { top_liege = { religion_group = westerosi_religion } }
+			}
+		}
+		NOT = { capital_scope = { culture = iron_valyrian } }
+	}
+
+	option = {
+		name = "EVTROYCONV5"
+
+		piety = 10
+		ROOT = {
+			any_courtier = {
+				limit = {
+					culture = ROOT
+					employer = { character = ROOT }
+					dynasty = ROOT
+				}
+				culture = iron_valyrian
+			}
+			capital_scope = { culture = iron_valyrian }
+		}
+	}
+}
+character_event = {
+	id = royconv.6
+	desc = "EVTDESCROYCONV6"
+	picture = GFX_evt_valyria_2
+
+	min_age = 16
+	only_playable = yes
+	war = no
+	in_command = no
+
+	is_triggered_only = yes
+
+	trigger = {
+		higher_tier_than = DUKE
+		prestige = 2000
+		OR = {
+			culture = valyrian_dothraki
+			culture = valyrian_yi_ti
+			culture = valyrian_lengi
+			culture = valyrian_summer_islander
+			culture = valyrian_ghiscari
+			culture = iron_valyrian
+			culture = mountain_valyrian
+			culture = shadow_valyrian
+			culture = valyrian_sarnori
+			culture = valyrian_qartheen
+		}
+		NOT = { has_artifact = dragon_egg }
+		NOT = {
+			trait = incapable
+			trait = infirm
+			trait = inbred
+			trait = imbecile
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV6"
+
+		prestige = 105
+		add_artifact = dragon_egg
+	}
+
+	option = {
+		name = "EVTBROYCONV6"
+
+		wealth = 250
+		prestige = -100
+	}
+}
+#Convert to new religion
+character_event = {
+	id = royconv.7
+	desc = "EVTDESCROYCONV7"
+	picture = "GFX_valyria_dragon"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTROYCONV7"
+
+		capital_scope = { religion = ROOT }
+		piety = -150
+		prestige = 20
+	}
+}
+#High Dothraki
+character_event = {
+	id = royconv.8
+	desc = "EVTDESCROYCONV8"
+	picture = "GFX_evt_dothraki"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTROYCONV8"
+
+		capital_scope = { religion = ROOT }
+		piety = -150
+		prestige = 20
+	}
+}
+#Winged Stallion Conversion
+character_event = {
+	id = royconv.9
+	desc = "EVTDESCROYCONV9"
+	picture = "GFX_dothraki_camp"
+
+	min_age = 16
+	only_playable = yes
+	religion = winged_stallion
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { capital_scope = { region = world_north_valyria } }
+		NOT = { capital_scope = { religion = winged_stallion } }
+	}
+
+	option = {
+		name = "EVTROYCONV8"
+
+		piety = 10
+		any_child = {
+			limit = { culture = ROOT }
+			religion = winged_stallion
+		}
+		capital_scope = { religion = winged_stallion }
+	}
+}
+#Mixed Valyrian Conversion
+character_event = {
+	id = royconv.10
+	desc = "EVTDESCROYCONV11"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+	only_playable = yes
+	culture_group = mixed_valyrian
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { capital_scope = { culture_group = valyrian } }
+		NOT = { capital_scope = { culture = ROOT } }
+		NOT = { capital_scope = { region = world_north_valyria } }
+	}
+
+	option = {
+		name = "EVTROYCONV8"
+
+		capital_scope = { culture = ROOT }
+	}
+}
+#Valyrian-Dothraki Conversion
+character_event = {
+	id = royconv.11
+	desc = "EVTDESCROYCONV12"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		graphical_culture = valyriandothrakigfx
+		NOR = {
+			religion = the_seven
+			culture = high_valyrian
+			culture = valyrian_dothraki
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV12"
+
+		ai_chance = { factor = 90 }
+
+		ROOT = {
+			culture = valyrian_dothraki
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_dothraki
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 10
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+
+#Valyrian-Ghiscari Conversion
+character_event = {
+	id = royconv.12
+	desc = "EVTDESCROYCONV13"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		graphical_culture = valyrianghiscarigfx
+		NOR = {
+			religion = the_seven
+			culture = high_valyrian
+			culture = valyrian_ghiscari
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV13"
+
+		ai_chance = { factor = 60 }
+
+		ROOT = {
+			culture = valyrian_ghiscari
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_ghiscari
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 40
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Mountain-Valyrian Conversion
+character_event = {
+	id = royconv.13
+	desc = "EVTDESCROYCONV14"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = valyrianmountaingfx
+			NOT = { culture = mountain_valyrian }
+			NOT = { culture = high_valyrian }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV14"
+
+		ai_chance = { factor = 90 }
+
+		ROOT = {
+			culture = mountain_valyrian
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = mountain_valyrian
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 10
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Summer-Valyrian Conversion
+character_event = {
+	id = royconv.14
+	desc = "EVTDESCROYCONV15"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = valyrianafricangfx
+			NOT = { culture = valyrian_summer_islander }
+			NOT = { culture = high_valyrian }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV15"
+
+		ai_chance = { factor = 90 }
+
+		ROOT = {
+			culture = valyrian_summer_islander
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_summer_islander
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 10
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Sarnori-Valyrian Conversion
+character_event = {
+	id = royconv.15
+	desc = "EVTDESCROYCONV16"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = valyriansarnorigfx
+			NOT = { culture = valyrian_sarnori }
+			NOT = { culture = high_valyrian }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV16"
+
+		ai_chance = { factor = 70 }
+
+		ROOT = {
+			culture = valyrian_sarnori
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_sarnori
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 30
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Qartheen-Valyrian Conversion
+character_event = {
+	id = royconv.16
+	desc = "EVTDESCROYCONV17"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = valyrianqartheengfx
+			NOT = { culture = valyrian_qartheen }
+			NOT = { culture = high_valyrian }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV17"
+
+		ai_chance = { factor = 90 }
+
+		ROOT = {
+			culture = valyrian_qartheen
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_qartheen
+			}
+		}
+	}
+
+	option = {
+	name = "EVTBROYCONV12"
+
+	add_trait = proud
+
+	ai_chance = {
+		factor = 10
+
+		modifier = {
+			factor = 100
+			OR = {
+				trait = proud
+				trait = ambitious
+				trait = zealous
+				trait = content
+				higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Moraqi-Valyrian Conversion
+character_event = {
+	id = royconv.17
+	desc = "EVTDESCROYCONV18"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = moraqvalyriangfx
+			NOT = { culture = valyrian_moraqi }
+			NOT = { culture = high_valyrian }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV18"
+
+		ai_chance = { factor = 80 }
+
+		ROOT = {
+			culture = valyrian_moraqi
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_moraqi
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Dothraki-Essosi Conversion
+character_event = {
+	id = royconv.18
+	desc = "EVTDESCROYCONV19"
+	picture = "GFX_evt_dothraki"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = dothrakityroshigfx
+			NOT = { culture = dothrak_tyroshi }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV19"
+
+		ai_chance = { factor = 80 }
+
+		ROOT = {
+			culture = dothrak_tyroshi
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = dothrak_tyroshi
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = zealous
+					trait = content
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Summer-Essosi Conversion
+character_event = {
+	id = royconv.19
+	desc = "EVTDESCROYCONV20"
+	picture = "GFX_summer_islanders"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		graphical_culture = summertyroshigfx
+		NOT = { culture = summer_tyroshi }
+	}
+
+	option = {
+		name = "EVTROYCONV20"
+
+		ai_chance = { factor = 80 }
+
+		ROOT = {
+			culture = summer_tyroshi
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = summer_tyroshi
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = zealous
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Mixed Religions Conversions
+character_event = {
+	id = royconv.20
+	desc = "EVTDESCROYCONV21"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+	only_independent = yes
+	only_playable = yes
+	culture_group = mixed_valyrian
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			NOT = { trait = zealous }
+			NOT = { religion = the_seven }
+			NOT = { capital_scope = { region = world_westeros } }
+			NOR = {
+				religion_group = bastard_valyrian
+				religion = valyrian_rel
+			}
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV21"
+
+		ai_chance = { factor = 40 }
+
+		religion = valyrian_bas
+		piety = -50
+		ROOT = {
+			any_courtier = {
+				limit = { dynasty = ROOT }
+				religion = valyrian_bas
+			}
+			capital_scope = {
+				religion = valyrian_bas
+			}
+		}
+	}
+
+	option = {
+		name = "EVTROYCONVB21"
+
+		ai_chance = { factor = 30 }
+
+		religion = winged_stallion
+		piety = -50
+		ROOT = {
+			any_courtier = {
+				limit = { dynasty = ROOT }
+				religion = winged_stallion
+			}
+			capital_scope = {
+				religion = winged_stallion
+			}
+		}
+	}
+
+	option = {
+		name = "EVTROYCONVC21"
+
+		ai_chance = { factor = 30 }
+
+		piety = 50
+		add_trait = zealous
+	}
+}
+#Yin-Valyrian Conversion
+character_event = {
+	id = royconv.21
+	desc = "EVTDESCROYCONV22"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		AND = {
+			graphical_culture = valyrianyitigfx
+			NOT = { culture = valyrian_yi_ti }
+			NOT = { culture = high_valyrian }
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV22"
+
+		ai_chance = { factor = 80 }
+
+		ROOT = {
+			culture = valyrian_yi_ti
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_yi_ti
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = zealous
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Essosi Valyrian Conversion
+character_event = {
+	id = royconv.22
+	desc = "EVTDESCROYCONV23"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { capital_scope = { region = world_westeros } }
+		AND = {
+			graphical_culture = valyriangfx
+			culture_group = mixed_valyrian
+		}
+	}
+
+	option = {
+		name = "EVTROYCONV23"
+
+		ai_chance = { factor = 80 }
+
+		ROOT = {
+			culture = eastern_valyrian
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = eastern_valyrian
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV23"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = content
+				}
+			}
+		}
+	}
+}
+#Northman-Valyrian Conversion
+character_event = {
+	id = royconv.23
+	desc = "EVTDESCROYCONV24"
+	picture = "GFX_evt_valyria_2"
+
+	min_age = 16
+
+	is_triggered_only = yes
+
+	trigger = {
+		graphical_culture = valyrianfirstmangfx
+		NOT = { culture = valyrian_northman }
+		NOT = { culture = high_valyrian }
+	}
+
+	option = {
+		name = "EVTROYCONV24"
+
+		ai_chance = { factor = 80 }
+
+		ROOT = {
+			culture = valyrian_northman
+			any_child = {
+				limit = { dynasty = ROOT }
+				culture = valyrian_northman
+			}
+		}
+	}
+
+	option = {
+		name = "EVTBROYCONV12"
+
+		add_trait = proud
+
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 100
+				OR = {
+					trait = proud
+					trait = zealous
+					higher_tier_than = DUKE
+				}
+			}
+		}
+	}
+}
+#Find Winter Dragon Sword
+character_event = {
+	id = royconv.24
+	desc = "EVTDESCROYCONV.25"
+	picture = "GFX_TARGARYEN"
+
+	min_age = 16
+	in_command = yes
+	war = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		graphical_culture = valyrianfirstmangfx
+		higher_tier_than = DUKE
+		martial = 20
+		location = { region = world_north  }
+		NOT = { has_artifact = ice_dragon_sword }
+	}
+
+	option = {
+		name = "EVTAroyconv.25"
+		add_artifact = ice_dragon_sword
+	}
+
+	option = {
+		name = "EVTBroyconv.25"
+		wealth = 200
+	}
+}

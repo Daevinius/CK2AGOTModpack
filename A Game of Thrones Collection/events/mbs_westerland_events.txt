@@ -1,0 +1,309 @@
+namespace = mbs_joffrey_westerlands
+#Joffrey gives the Westerland kingdom to a Lannister
+character_event = {
+	id = mbs_joffrey_westerlands.1
+	desc = "EVTDESC_mbs_joffrey_westerlands.1"
+	title = "EVTTITLEmbs_joffrey_westerlands.1"
+	picture = GFX_LANNISTER
+	hide_from = yes
+
+	only_independent = yes
+	only_men = yes
+	has_character_flag = joffrey_bastard
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 9316
+		has_landed_title = e_iron_throne
+		has_landed_title = k_westerlands
+		c_4190 = {
+			is_alive =	no
+		}
+		NOR = {
+			dynasty = 190
+			has_character_flag = mbs_joffrey_westerlands
+		}
+		any_realm_character = {
+			dynasty = 190
+			is_female = no
+		}
+	}
+
+	immediate = {
+		set_character_flag = mbs_joffrey_westerlands
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_joffrey_westerlands.1A"   #Kevan Lannister
+		trigger = {
+			c_7190 = {
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 50 }
+		c_7190 = {
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+		}
+		c_7190 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_joffrey_westerlands.1B"   #Stafford Lannister
+		trigger = {
+			c_9189 = {
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 30 }
+		c_9189 = {
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+		}
+		c_9189 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_joffrey_westerlands.1C"   #Damion Lannister
+		trigger = {
+			c_2227 = {
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 15 }
+		c_2227 = {
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+		}
+		c_2227 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_joffrey_westerlands.1D"  #Joffrey keeps it
+		ai_chance = { factor = 5 }
+		prestige = 100
+		add_trait = tyrant1
+	}
+	option = {
+		name = "EVTOPTA_mbs_joffrey_westerlands.1E"  #random lannister
+		trigger = {
+			c_7190 = {
+				is_alive =	no
+			}
+			c_9189 = {
+				is_alive =	no
+			}
+			c_2227 = {
+				is_alive =	no
+			}
+			any_realm_character = {
+				dynasty = 190
+				is_female = no
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 50 }
+		random_realm_character = {
+			limit = {
+				dynasty = 190
+				is_female = no
+				is_alive =	yes
+			}
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+			set_defacto_liege = ROOT
+		}
+	}
+}
+namespace = mbs_tommen_westerlands
+#Tommen gives the Westerland kingdom to a Lannister
+character_event = {
+	id = mbs_tommen_westerlands.1
+	desc = "EVTDESC_mbs_tommen_westerlands.1"
+	title = "EVTTITLEmbs_tommen_westerlands.1"
+	picture = GFX_LANNISTER
+	hide_from = yes
+
+	only_independent = yes
+	only_men = yes
+	has_character_flag = tommen_bastard
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 7316
+		has_landed_title = e_iron_throne
+		has_landed_title = k_westerlands
+		c_4190 = {
+			is_alive =	no
+		}
+		NOR = {
+			dynasty = 190
+			has_character_flag = mbs_tommen_westerlands
+		}
+		any_realm_character = {
+			dynasty = 190
+			is_female = no
+		}
+	}
+
+	immediate = {
+		set_character_flag = mbs_tommen_westerlands
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_tommen_westerlands.1A"   #Kevan Lannister
+		trigger = {
+			c_7190 = {
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 50 }
+		c_7190 = {
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+		}
+		c_7190 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_tommen_westerlands.1B"   #Daven Lannister
+		trigger = {
+			c_3188 = {
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 30 }
+		c_3188 = {
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+		}
+		c_3188 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_tommen_westerlands.1C"   #Lancel Lannister
+		trigger = {
+			c_2227 = {
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 15 }
+		c_2227 = {
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+		}
+		c_2227 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_tommen_westerlands.1D"  #Tommen keeps it
+		ai_chance = { factor = 5 }
+		prestige = 100
+		add_trait = tyrant1
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_tommen_westerlands.1E"  #random lannister
+		trigger = {
+			c_7190 = {
+				is_alive =	no
+			}
+			c_3188 = {
+				is_alive =	no
+			}
+			c_2227 = {
+				is_alive =	no
+			}
+			any_realm_character = {
+				dynasty = 190
+				is_female = no
+				is_alive =	yes
+			}
+		}
+		ai_chance = { factor = 50 }
+		random_realm_character = {
+			limit = {
+				dynasty = 190
+				is_female = no
+				is_alive =	yes
+			}
+			k_westerlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_casterly_rock = {
+				grant_title = PREV
+			}
+			c_casterly_rock = {
+				grant_title = PREV
+			}
+			set_defacto_liege = ROOT
+		}
+	}
+}

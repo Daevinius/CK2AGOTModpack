@@ -1,0 +1,126 @@
+decisions = {
+	break_wheel = {
+		only_playable = yes
+		is_high_prio = yes
+		only_independent = yes
+
+		potential = {
+			tier = EMPEROR
+			liege = { character = ROOT }
+			character = 77041
+			has_global_flag = dany_stormborn_events
+			NOT = { has_character_flag = break_wheel }
+			NOT = { has_global_flag = refused_wheel }
+			NOT = { has_character_flag = destroyed_ironthrone }
+			NOT = { has_global_flag = kept_ironthrone }
+			NOT = { has_landed_title = e_iron_throne }
+		}
+
+		allow = {
+			war = no
+			prisoner = no
+			is_incapable = no
+			NOT = { has_landed_title = e_iron_throne }
+			NOT = { has_character_flag = destroyed_ironthrone }
+			trait = dragon_rider
+		}
+
+		effect = {
+			narrative_event = { id = sb_breakwheel.1 tooltip = "breaking_the_wheel" }
+		}
+		ai_check_interval = 2
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 2
+				trait = ambitious
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 0.5
+				trait = craven
+			}
+		}
+	}
+	recover_darksister = {
+		only_playable = yes
+		is_high_prio = yes
+		only_independent = yes
+
+		potential = {
+			character = 77041
+			tier = EMPEROR
+			has_global_flag = dany_stormborn_events
+			NOT = { any_character = { has_artifact = darksister } }
+			NOT = { has_global_flag = darksister_quest_started }
+		}
+
+		allow = {
+			war = no
+			prisoner = no
+			is_incapable = no
+			wealth = 50
+		}
+
+		effect = {
+			narrative_event = { id = sb_darksister.0 tooltip = "recover_dark_sister" }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 2
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				trait = craven
+			}
+		}
+	}
+	the_imperial_book = {
+		ai = no
+		potential = {
+			imperialguard = { always = yes }
+		}
+
+		allow = {
+			has_landed_title = e_ghiscar
+			is_title_active = d_imperialguard
+		}
+
+		effect = {
+			hidden_tooltip = { character_event = { id = sb_imperialguard.2 } }
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	establish_imperialguard = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			has_landed_title = e_ghiscar
+			NOT = { is_title_active = d_imperialguard }
+			NOT = { has_global_flag = imperialguard_exists }
+		}
+		allow = {
+			has_landed_title = e_ghiscar
+			NOT = { is_title_active = d_imperialguard }
+		}
+		effect = { character_event = { id = sb_imperialguard.110 } }
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				NOT = { any_vassal = { tier = KING } }
+			}
+		}
+	}
+}

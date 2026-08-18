@@ -1,0 +1,227 @@
+namespace = kotstwhitebook
+
+character_event = {
+	id = kotstwhitebook.0
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		if = {
+			limit = {
+				NOR = {
+					has_character_flag = wb_tourney_1
+					has_character_flag = wb_tourney_2
+					has_character_flag = wb_tourney_3
+					has_character_flag = wb_tourney_4
+				}
+				has_character_modifier = grand_tourny_1st
+			}
+			random_list = {
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_tourney_grand_1" value = 0 }
+						set_character_flag = wb_tourney_1
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_tourney_grand_2" value = 0 }
+						set_character_flag = wb_tourney_2
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_tourney_grand_3" value = 0 }
+						set_character_flag = wb_tourney_3
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_tourney_grand_4" value = 0 }
+						set_character_flag = wb_tourney_4
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOR = {
+					has_character_flag = wb_mw_1
+					has_character_flag = wb_mw_2
+					has_character_flag = wb_mw_3
+					has_character_flag = wb_mw_4
+				}
+				OR = {
+					trait = master_warrior
+					combat_rating = 80
+				}
+			}
+			random_list = {
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_1" value = 0 }
+						set_character_flag = wb_mw_1
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_2" value = 0 }
+						set_character_flag = wb_mw_2
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_3" value = 0 }
+						set_character_flag = wb_mw_3
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_4" value = 0 }
+						set_character_flag = wb_mw_4
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				AND = {
+					has_landed_title = d_kingsguard
+					is_councillor = yes
+				}
+			}
+			ROOT = { set_variable = { which = "kotst_sc" value = 0 } }
+		}
+		FROMFROM = {
+			narrative_event = { id = kotstwhitebook.1 }
+		}
+	}
+}
+
+narrative_event = {
+	id = kotstwhitebook.1
+	picture = GFX_evt_whitebook
+	title = EVTNAMEkotstwhitebookname
+	desc = {
+		trigger = {
+			has_nickname = yes
+		}
+		text = EVTDESCkotstwhitebook1
+	}
+	desc = {
+		trigger = {
+			has_nickname = no
+		}
+		text = EVTDESCkotstwhitebook2
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstwhitebook1
+	}
+}
+
+character_event = {
+	id = kotstwhitebook.10
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		add_character_modifier = {
+			name = normal_tourny_1st
+			duration = -1
+		}
+	}
+}
+character_event = {
+	id = kotstwhitebook.11
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		add_character_modifier = {
+			name = grand_tourny_1st
+			duration = -1
+		}
+	}
+}
+
+character_event = {
+	id = kotstwhitebook.1000
+
+	is_triggered_only = yes
+
+	option = {
+		ROOT = {
+			set_variable = { which = "wb_testy" value = 0 }
+		}
+		ROOT = {
+			set_variable = { which = "wb_horsedick" value = 0 }
+		}
+		ROOT = {
+			set_variable = { which = "wb_dickdick" value = 0 }
+		}
+	}
+}
+
+narrative_event = {
+	id = kotstwhitebook.1001
+	desc = EVTDESCtestytesty
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		if = {
+			limit = {
+				NOR = {
+					ROOT = {
+						check_variable = { which = "wb_mw_1" value = 0 }
+					}
+					ROOT = {
+						check_variable = { which = "wb_mw_2" value = 0 }
+					}
+					ROOT = {
+						check_variable = { which = "wb_mw_3" value = 0 }
+					}
+					ROOT = {
+						check_variable = { which = "wb_mw_4" value = 0 }
+					}
+				}
+				OR = {
+					trait = master_warrior
+					combat_rating = 80
+				}
+			}
+			random_list = {
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_1" value = 0 }
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_2" value = 0 }
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_3" value = 0 }
+					}
+				}
+				25 = {
+					ROOT = {
+						set_variable = { which = "wb_mw_4" value = 0 }
+					}
+				}
+			}
+		}
+	}
+}
+

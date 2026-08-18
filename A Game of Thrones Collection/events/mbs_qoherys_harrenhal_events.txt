@@ -1,0 +1,61 @@
+namespace = mbs_qoherys_harrenhal
+
+narrative_event = {
+	id = mbs_qoherys_harrenhal.1
+	desc = "EVTDESC_mbs_qoherys_harrenhal.1"
+	title = "EVTTITLEmbs_qoherys_harrenhal.1"
+	picture = GFX_fallofharrenhal
+	hide_from = yes
+
+	has_character_flag = aegon_targaryen
+	only_independent = yes
+
+	trigger = {
+		character = 77000
+		trait = dragon_rider
+		has_landed_title = e_iron_throne
+		has_landed_title = c_harrenhal
+		has_landed_title = d_harrenhal
+		c_359 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+			is_incapable = no
+		}
+		NOT = { has_global_flag = qoherys_lordharrenhal }
+	}
+
+	immediate = {
+		set_global_flag = qoherys_lordharrenhal
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_qoherysharrennhal.1A"
+		ai_chance = { factor = 90 }
+		c_359 = {
+			c_harrenhal = {
+				grant_title = PREV
+			}
+			d_harrenhal = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = qoherys_bl
+			}
+		}
+		c_359 = { tooltip = { show_portrait = yes } }
+		wealth = 30
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_qoherysharrennhal.1B"
+		ai_chance = { factor = 10 }
+		piety = 100
+	}
+}

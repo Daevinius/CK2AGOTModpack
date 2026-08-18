@@ -1,0 +1,532 @@
+##ATTRACTIVENESS##
+
+has_attractive_trait_trigger = {
+	OR = {
+		trait = fair
+		trait = fair_1
+		trait = fair_2
+		has_fashionable_groomed_trigger = yes
+		trait = melodious_voice
+		trait = melodious_voice_1
+		trait = melodious_voice_2
+		trait = just
+		trait = brave
+		trait = gregarious
+		trait = seducer
+		trait = seductress
+		trait = robust
+		trait = agile
+		trait = agile_1
+		trait = agile_2
+		trait = strong
+		trait = strong_1
+		trait = strong_2
+		trait = socializer
+	}
+}
+
+is_attractive_trigger = {
+	has_attractive_trait_trigger = yes
+	has_unattractive_trait_trigger = no
+}
+
+has_unattractive_trait_trigger = {
+	OR = {
+		has_ugly_trait_trigger = yes
+		trait = feeble
+		trait = dwarf
+		trait = dwarf_1
+		trait = dwarf_2
+		trait = clubfooted
+		trait = harelip
+		trait = hunchback
+		trait = lisp
+		trait = lisp_1
+		trait = lisp_2
+		trait = weak
+		trait = weak_1
+		trait = weak_2
+		trait = lazy
+		trait = lazy_1
+		trait = lazy_2
+		trait = lunatic
+		trait = possessed
+		trait = has_aztec_disease
+		trait = syphilitic
+		trait = leper
+		trait = maimed
+		trait = drunkard
+		trait = is_fat
+		trait = craven
+		trait = arbitrary
+		trait = cruel
+		trait = stubborn
+		trait = blind
+		trait = blinded
+		trait = blinded_age
+		trait = horse
+		trait = one_eyed
+		trait = one_handed
+		trait = one_legged
+		trait = disfigured_AGOT
+		trait = disfigured
+		trait = mangled
+		trait = severely_injured
+		trait = flu
+		trait = dysentery
+		trait = food_poisoning
+		trait = rabies
+		trait = infection
+		trait = rash
+		trait = vomiting
+		trait = diarrhea
+		trait = cough
+		trait = greyscale_scarred
+		trait = has_greyscale
+		trait = burned
+	}
+}
+
+is_unattractive_trigger = {
+	has_unattractive_trait_trigger = yes
+	has_attractive_trait_trigger = no
+}
+
+
+##HEALTH/CONGENTIAL##
+
+is_smart_trigger = {
+	OR = {
+		#trait = genius
+		trait = quick
+		trait = quick_1
+		trait = shrewd
+	}
+}
+is_smart_incl_genius_trigger = {
+	OR = {
+		trait = genius
+		trait = genius_1
+		trait = quick
+		trait = quick_1
+		trait = shrewd
+	}
+}
+is_genius_trigger = {
+	OR = {
+		trait = genius
+		trait = genius_1
+	}
+}
+
+is_dumb_trigger = {
+	OR = {
+		trait = dull
+		trait = slow
+		trait = slow_1
+		#trait = imbecile
+	}
+}
+is_dumb_incl_imbecile_trigger = {
+	OR = {
+		trait = dull
+		trait = slow
+		trait = slow_1
+		trait = imbecile
+		trait = imbecile_1
+	}
+}
+is_imbecile_trigger = {
+	OR = {
+		trait = imbecile
+		trait = imbecile_1
+	}
+}
+
+#Physical Triggers
+is_strong_trigger = {
+	OR = {
+		trait = strong
+		trait = strong_1
+		trait = strong_2
+		trait = robust
+		trait = imposing
+	}
+}
+
+is_weak_trigger = {
+	OR = {
+		trait = weak
+		trait = weak_1
+		trait = weak_2
+		trait = feeble
+	}
+}
+is_agile_trigger = {
+	OR = {
+		trait = agile
+		trait = agile_1
+		trait = agile_2
+		trait = ambidextrous
+		#trait = lefthanded
+	}
+}
+is_lazy_trigger = {
+	OR = {
+		trait = lazy
+		trait = lazy_1
+		trait = lazy_2
+	}
+}
+is_tall_trigger = {
+	OR = {
+		trait = tall
+		trait = tall_1
+		trait = tall_2
+	}
+}
+is_short_trigger = {
+	OR = {
+		trait = dwarf
+		trait = dwarf_1
+		trait = dwarf_2
+	}
+}
+is_fair_trigger = {
+	OR = {
+		trait = fair
+		trait = fair_1
+		trait = fair_2
+	}
+}
+is_ugly_trigger = {
+	OR = {
+		trait = ugly
+		trait = ugly_1
+		trait = ugly_2
+	}
+}
+
+#Vocal Triggers
+has_lisp_trigger = {
+	OR = {
+		trait = lisp
+		trait = lisp_1
+		trait = lisp_2
+	}
+}
+has_stutter_trigger = {
+	OR = {
+		trait = stutter
+		trait = stutter_1
+		trait = stutter_2
+	}
+}
+has_calm_voice_trigger = {
+	OR = {
+		trait = calming_voice
+		trait = calming_voice_1
+		trait = calming_voice_2
+	}
+}
+has_powerful_voice_trigger = {
+	OR = {
+		trait = powerful_voice
+		trait = powerful_voice_1
+		trait = powerful_voice_2
+	}
+}
+has_melodious_voice_trigger = {
+
+	OR = {
+		trait = melodious_voice
+		trait = melodious_voice_1
+		trait = melodious_voice_2
+	}
+}
+
+has_severe_disability_trigger = {
+	custom_tooltip = {
+		text = TOOLTIPhas_severe_disability_trigger
+		hidden_tooltip = {
+			OR = {
+				trait = infirm
+				trait = mangled
+				trait = inbred
+				trait = blind
+				trait = blinded
+				trait = blinded_age
+				trait = incapable
+				trait = maimed
+				trait = crippled
+			}
+		}
+	}
+}
+
+has_medium_disability_trigger = {
+	custom_tooltip = {
+		text = TOOLTIPhas_medium_disability_trigger
+		hidden_tooltip = {
+			OR = {
+				trait = one_legged
+				trait = one_handed
+				trait = one_eyed
+				trait = clubfooted
+				trait = hunchback
+				trait = dwarf
+				trait = dwarf_1
+				trait = dwarf_2
+				trait = mute
+				trait = deaf
+			}
+		}
+	}
+}
+
+has_minor_disability_trigger = {
+	custom_tooltip = {
+		text = TOOLTIPhas_minor_disability_trigger
+		hidden_tooltip = {
+			OR = {
+				trait = disfigured_AGOT
+				trait = disfigured
+				trait = eunuch
+				trait = harelip
+				trait = stutter
+				trait = stutter_1
+				trait = stutter_2
+				trait = lisp
+				trait = lisp_1
+				trait = lisp_2
+			}
+		}
+	}
+}
+
+has_disability_trigger = {
+	custom_tooltip = {
+		text = TOOLTIPhas_disability_trigger
+		hidden_tooltip = {
+			OR = {
+				has_severe_disability_trigger = yes
+				has_medium_disability_trigger = yes
+				has_minor_disability_trigger = yes
+			}
+		}
+	}
+}
+
+has_mental_disorder_trigger = {
+	OR = {
+		trait = stressed
+		trait = depressed
+		trait = lunatic
+		trait = possessed
+		trait = drunkard
+	}
+}
+
+has_fertile_trait_trigger = {
+	OR = {
+		trait = underhanded_rogue
+		trait = charismatic_negotiator
+		trait = grey_eminence
+		trait = thrifty_clerk
+		trait = fortune_builder
+		trait = midas_touched
+		trait = strong
+		trait = strong_1
+		trait = strong_2
+		trait = hedonist
+		trait = lustful
+		trait = dancing_plague
+		trait = fertile
+		trait = fertile_1
+		trait = fertile_2
+	}
+}
+
+is_fertile_trigger = {
+	fertility = 0.05
+	has_fertile_trait_trigger = yes
+	has_infertile_trait_trigger = no
+}
+
+has_infertile_trait_trigger = {
+	OR = {
+		trait = homosexual
+		trait = eunuch
+		trait = scholarly_theologian
+		trait = mastermind_theologian
+		trait = stressed
+		trait = depressed
+		trait = ill
+		trait = pneumonic
+		trait = leper
+		trait = syphilitic
+		trait = has_aztec_disease
+		trait = infirm
+		trait = incapable
+		trait = inbred
+		trait = weak
+		trait = weak_1
+		trait = weak_2
+		trait = celibate
+		trait = chaste
+		trait = mangled
+		trait = severely_injured
+		trait = dysentery
+		trait = food_poisoning
+		trait = cancer
+		trait = infertile
+		trait = infertile_1
+		trait = infertile_2
+	}
+}
+
+useless_character_trigger = {
+	OR = {
+		health < 2.5
+		trait = lunatic
+		trait = maimed
+		trait = infirm
+		trait = incapable
+		trait = mangled
+		trait = severely_injured
+		trait = imbecile
+		trait = imbecile_1
+		trait = inbred
+		trait = crippled
+	}
+}
+interesting_face_trigger = {
+	OR = {
+		trait = fair
+		trait = fair_1
+		trait = fair_2
+		has_fashionable_groomed_trigger = yes
+		trait = ugly
+		trait = ugly_1
+		trait = ugly_2
+		trait = uncouth
+		has_scarred_trait_trigger = yes
+		is_ill = yes
+		trait = disfigured
+		trait = blinded
+		trait = one_eyed
+		trait = leper
+		trait = harelip
+		is_strong_trigger = yes
+		is_agile_trigger = yes
+		is_weak_trigger = yes
+		is_lazy_trigger = yes
+		trait = lunatic
+		trait = possessed
+		trait = rabies
+		trait = horse
+		trait = greyscale_scarred
+		trait = disfigured_AGOT
+		trait = has_greyscale
+		trait = burned
+	}
+}
+
+has_negative_congenital_trigger = {
+	OR = {
+		trait = blind
+		trait = mute
+		trait = ugly
+		trait = ugly_1
+		trait = ugly_2
+		trait = clubfooted
+		trait = hunchback
+		trait = dwarf
+		trait = dwarf_1
+		trait = dwarf_2
+		trait = harelip
+		trait = stutter
+		trait = stutter_1
+		trait = stutter_2
+		trait = lisp
+		trait = lisp_1
+		trait = lisp_2
+		trait = slow
+		trait = slow_1
+		trait = inbred
+		trait = weak
+		trait = weak_1
+		trait = weak_2
+		trait = lazy
+		trait = lazy_1
+		trait = lazy_2
+		trait = imbecile
+		trait = imbecile_1
+	}
+}
+
+has_positive_congenital_trigger = {
+	OR = {
+		trait = strong
+		trait = strong_1
+		trait = strong_2
+		trait = agile
+		trait = agile_1
+		trait = agile_2
+		trait = fair
+		trait = fair_1
+		trait = fair_2
+		trait = quick
+		trait = quick_1
+		trait = genius
+		trait = genius_1
+		trait = tall
+		trait = tall_1
+		trait = tall_2
+	}
+}
+
+has_fair_trait_trigger = {
+	OR = {
+		trait = fair
+		trait = fair_1
+		trait = fair_2
+		has_fashionable_groomed_trigger = yes
+	}
+}
+
+has_ugly_trait_trigger = {
+	OR = {
+		trait = ugly
+		trait = ugly_1
+		trait = ugly_2
+		trait = uncouth
+	}
+}
+
+is_slow_trigger = {
+	OR = {
+		trait = slow
+		trait = slow_1
+	}
+}
+
+is_quick_trigger = {
+	OR = {
+		trait = quick
+		trait = quick_1
+	}
+}
+
+is_capable_trigger = {
+	OR = {
+		trait = strong
+		trait = strong_1
+		trait = strong_2
+		trait = tall
+		trait = tall_1
+		trait = tall_2
+		trait = robust
+		trait = imposing
+	}
+}

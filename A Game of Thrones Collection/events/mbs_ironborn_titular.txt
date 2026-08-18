@@ -1,0 +1,440 @@
+namespace = mbs_honeywine
+#Maintenance event to remove flags and allow another ironborn king to reclaim the kingdom if its destroyed
+character_event = {
+	id = mbs_honeywine.0
+	desc = "EVTDESCmbs_honeywine.0"
+	picture = GFX_GREYJOY
+
+	hide_window = yes
+
+	only_independent = yes
+	culture = ironborn
+	has_global_flag = honeywine_realm
+
+	trigger = {
+		has_landed_title = e_iron_isles
+		k_mbs_honeywineTK = { has_holder = no }
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "Ok."
+		clr_global_flag = honeywine_realm
+	}
+}
+#Ironborn King proclaims Kingdom of the Honeywine, triggered by decision
+character_event = {
+	id = mbs_honeywine.1
+	desc = "EVTDESCmbs_honeywine.1"
+	title = "EVTTITLEmbs_honeywine.1"
+	picture = "GFX_oldtown"
+
+	only_independent = yes
+	culture = ironborn
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = e_iron_isles
+		NOT = { has_global_flag = honeywine_realm }
+		k_mbs_honeywineTK = { has_holder = no }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_honeywine.1"
+		set_global_flag = honeywine_realm
+		k_mbs_honeywineTK = { gain_title = ROOT }
+		k_mbs_honeywineTK = {
+			d_oldtown = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_the_arbor = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_the_shield_isles = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+		}
+	}
+}
+namespace = mbs_stonyshore
+#Maintenance event to remove flags and allow another ironborn king to reclaim the kingdom if its destroyed
+character_event = {
+	id = mbs_stonyshore.0
+	desc = "EVTDESCmbs_stonyshore.0"
+	picture = GFX_GREYJOY
+
+	hide_window = yes
+
+	only_independent = yes
+	culture = ironborn
+	has_global_flag = stonyshore_realm
+
+	trigger = {
+		has_landed_title = e_iron_isles
+		k_mbs_stonyshoreTK = { has_holder = no }
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "Ok."
+		clr_global_flag = stonyshore_realm
+	}
+}
+#Ironborn King proclaims Kingdom of the Stony Shore, triggered by decision
+character_event = {
+	id = mbs_stonyshore.1
+	desc = "EVTDESCmbs_stonyshore.1"
+	title = "EVTTITLEmbs_stonyshore.1"
+	picture = GFX_GREYJOY
+
+	only_independent = yes
+	culture = ironborn
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = e_iron_isles
+		NOT = { has_global_flag = stonyshore_realm }
+		k_mbs_stonyshoreTK = { has_holder = no }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_stonyshore.1"
+		set_global_flag = stonyshore_realm
+		k_mbs_stonyshoreTK = { gain_title = ROOT }
+		k_mbs_stonyshoreTK = {
+			d_stonyshore = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_flintsfinger = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_bearisland = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+		}
+	}
+}
+namespace = mbs_princewinterfell
+#Balon grants Winterfell to Theon after the war for the North is won
+narrative_event = {
+	id = mbs_princewinterfell.1
+	desc = "EVTDESCmbs_princewinterfell.1"
+	title = "EVTTITLEmbs_princewinterfell.1"
+	picture = GFX_GREYJOY
+
+	only_independent = yes
+	war = no
+	has_character_flag = balon_greyjoy
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 1107
+		has_landed_title = e_iron_isles
+		has_landed_title = c_winterfell
+		any_courtier = {
+			has_character_flag = theon_greyjoy
+			dynasty = ROOT
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_princewinterfell.1"
+		c_8107 = { c_winterfell =  { grant_title = PREV } }
+		c_8107 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTB_mbs_princewinterfell.1"
+		trigger = { ai = no }
+		prestige = 50
+	}
+}
+namespace = mbs_redhills
+#Maintenance event to remove flags and allow another king to reclaim the kingdom if its destroyed
+character_event = {
+	id = mbs_redhills.0
+	desc = "EVTDESCmbs_redhills.0"
+	picture = GFX_LANNISTER
+
+	hide_window = yes
+
+	only_playable = yes
+	has_global_flag = redhills_realm
+
+	trigger = {
+		has_landed_title = d_castamere
+		k_mbs_red_hillsTK = { has_holder = no }
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "Ok."
+		clr_global_flag = redhills_realm
+	}
+}
+#Proclaim Kingdom of the Red Hills by decision
+character_event = {
+	id = mbs_redhills.1
+	desc = "EVTDESCmbs_redhills.1"
+	title = "EVTTITLEmbs_redhills.1"
+	picture = GFX_LANNISTER
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_castamere
+		NOT = { has_global_flag = redhills_realm }
+		k_mbs_red_hillsTK = { has_holder = no }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_redhills.1"
+		set_global_flag = redhills_realm
+		k_mbs_red_hillsTK = { gain_title = ROOT }
+		k_mbs_red_hillsTK = {
+			d_castamere = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_the_crag = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_ashemark = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_golden_tooth = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+		}
+	}
+}
+#King of the North claims the Red Hills by event
+character_event = {
+	id = mbs_redhills.200
+	desc = "EVTDESCmbs_redhills.200"
+	title = "EVTtitlembs_redhills.200"
+	picture = GFX_STARK
+
+	only_independent = yes
+	war = no
+	has_character_flag = robb_stark
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = e_north
+		spouse = { character = 2199 }
+		NOT = { has_global_flag = war_for_redhills }
+		k_mbs_red_hillsTK = { has_holder = no }
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_redhills.200"
+		set_global_flag = war_for_redhills
+		k_westerlands = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = invasion_ironborn
+				thirdparty_title = d_castamere
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					has_landed_title = k_westerlands
+					has_landed_title = e_westerlands
+				}
+			}
+			character_event = {
+				id = mbs_redhills.201
+				days = 1
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_castamere }
+			character_event = {
+				id = mbs_redhills.202
+				days = 1
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_the_crag }
+			character_event = {
+				id = mbs_redhills.202
+				days = 1
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_ashemark }
+			character_event = {
+				id = mbs_redhills.202
+				days = 1
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_golden_tooth }
+			character_event = {
+				id = mbs_redhills.202
+				days = 1
+			}
+		}
+	}
+}
+#Inform Ruler of the Westerlands
+character_event = {
+	id = mbs_redhills.201
+	desc = "EVTDESCmbs_redhills.201"
+	title = "EVTtitlembs_redhills.201"
+	picture = GFX_STARK
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = k_westerlands
+			has_landed_title = e_westerlands
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_redhills.201"
+	}
+}
+#Inform Ruler of the disputed Duchies
+character_event = {
+	id = mbs_redhills.202
+	desc = "EVTDESCmbs_redhills.202"
+	title = "EVTtitlembs_redhills.202"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ruler = yes
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_redhills.202"
+	}
+}
+#War is won, Form the Redhills under the North kingdom
+character_event = {
+	id = mbs_redhills.3
+	desc = "EVTDESCmbs_redhills.3"
+	title = "EVTtitlembs_redhills.3"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	war = no
+	prisoner = no
+	has_global_flag = war_for_redhills
+
+	trigger = {
+		NOT = { has_global_flag = redhills_realm }
+		has_landed_title = e_north
+		has_landed_title = d_castamere
+		NOT = {
+			any_war = {
+				attacker = { character = ROOT }
+				using_cb = invasion_ironborn
+				defender = { has_landed_title = k_westerlands }
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_redhills.3"
+		set_global_flag = redhills_realm
+		k_mbs_red_hillsTK = { gain_title = ROOT }
+		e_north = {
+			d_castamere = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_the_crag = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_ashemark = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_golden_tooth = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = mbs_redhills.301
+				days = 3
+			}
+		}
+	}
+}
+#Move the Westerland Duchies into the new kingdom instead of the E_North
+character_event = {
+	id = mbs_redhills.301
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_north
+		has_landed_title = k_mbs_red_hillsTK
+	}
+
+	option = {
+		name = "Ok."
+		k_mbs_red_hillsTK = {
+			d_castamere = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_the_crag = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_ashemark = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+			d_golden_tooth = {
+				set_defacto_liege = PREV
+				de_jure_liege = PREV
+			}
+		}
+	}
+}

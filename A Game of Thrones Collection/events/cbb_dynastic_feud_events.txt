@@ -1,0 +1,1122 @@
+namespace = cbb_dynastic_rivalry
+
+
+#Darry/Vypren
+character_event = {
+	id = cbb_dynastic_rivalry.1
+	desc = "EVTDESCcbb_dynastic_rivalry.1"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Darry's
+		name = "EVTOPTAcbb_dynastic_rivalry.1"
+		trigger = {
+			dynasty = 131
+		}
+		c_darry = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Vypren
+		name = "EVTOPTBcbb_dynastic_rivalry.1"
+		trigger = {
+			dynasty = 137
+		}
+		c_stillfen = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Bettley/Yronwood
+character_event = {
+	id = cbb_dynastic_rivalry.3
+	desc = "EVTDESCcbb_dynastic_rivalry.3"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Bettley
+		name = "EVTOPTAcbb_dynastic_rivalry.3"
+		trigger = {
+			dynasty = 12
+		}
+		c_pendrick_hills = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Yronwood
+		name = "EVTOPTBcbb_dynastic_rivalry.3"
+		trigger = {
+			dynasty = 206
+		}
+		d_stoneway = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Bloodraven/Bittersteel
+character_event = {
+	id = cbb_dynastic_rivalry.4
+	desc = "EVTDESCcbb_dynastic_rivalry.4"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Bloodraven
+		name = "EVTOPTAcbb_dynastic_rivalry.4"
+		trigger = {
+			dynasty =  7000
+		}
+		d_ravens_teeth_mbs = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Bittersteel
+		name = "EVTOPTBcbb_dynastic_rivalry.4"
+		trigger = {
+			dynasty = 18878
+		}
+		d_golden_company = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Frey-Reed
+character_event = {
+	id = cbb_dynastic_rivalry.5
+	desc = "EVTDESCcbb_dynastic_rivalry.5"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Reed
+		name = "EVTOPTAcbb_dynastic_rivalry.5"
+		trigger = {
+			dynasty = 127
+		}
+		d_theneck = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Frey
+		name = "EVTOPTBcbb_dynastic_rivalry.5"
+		trigger = {
+			dynasty = 126
+		}
+		d_thecrossing = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Stark/Bolton
+character_event = {
+	id = cbb_dynastic_rivalry.6
+	desc = "EVTDESCcbb_dynastic_rivalry.6"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Stark
+		name = "EVTOPTAcbb_dynastic_rivalry.6"
+		trigger = {
+			dynasty = 87
+		}
+		d_nightswatch = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Bolton
+		name = "EVTOPTBcbb_dynastic_rivalry.6"
+		trigger = {
+			dynasty = 59
+		}
+		d_dreadfort = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Mallister/Greyjoy
+character_event = {
+	id = cbb_dynastic_rivalry.7
+	desc = "EVTDESCcbb_dynastic_rivalry.7"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { #Mallister
+		name = "EVTOPTAcbb_dynastic_rivalry.7"
+		trigger = {
+			dynasty = 107
+		}
+		c_seagard = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Greyjoy
+		name = "EVTOPTBcbb_dynastic_rivalry.7"
+		trigger = {
+			dynasty = 128
+		}
+		c_pyke = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Royce-Cobray
+character_event = {
+	id = cbb_dynastic_rivalry.9
+	desc = "EVTDESCcbb_dynastic_rivalry.9"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Royce
+		name = "EVTOPTAcbb_dynastic_rivalry.9"
+		trigger = {
+			dynasty =  176
+		}
+		d_runestone = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Cobray
+		name = "EVTOPTBcbb_dynastic_rivalry.9"
+		trigger = {
+			dynasty = 187
+		}
+		d_northweald = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Lannister/Osgrey
+character_event = {
+	id = cbb_dynastic_rivalry.10
+	desc = "EVTDESCcbb_dynastic_rivalry.10"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Lannister
+		name = "EVTOPTAcbb_dynastic_rivalry.10"
+		trigger = {
+			dynasty = 235
+		}
+		c_casterly_rock = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Osgrey
+		name = "EVTOPTBcbb_dynastic_rivalry.10"
+		trigger = {
+			dynasty = 190
+		}
+		c_standfast = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Mudd/Vance
+character_event = {
+	id = cbb_dynastic_rivalry.12
+	desc = "EVTDESCcbb_dynastic_rivalry.12"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { #Vance
+		name = "EVTOPTAcbb_dynastic_rivalry.12"
+		trigger = {
+			dynasty = 174399
+		}
+		d_wayfarersrest = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Mudd
+		name = "EVTOPTBcbb_dynastic_rivalry.12"
+		trigger = {
+			dynasty = 154
+		}
+		c_oldstones = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Fossoway/Fossoway
+character_event = {
+	id = cbb_dynastic_rivalry.15
+	desc = "EVTDESCcbb_dynastic_rivalry.15"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { #Fossoway(G)
+		name = "EVTOPTAcbb_dynastic_rivalry.15"
+		trigger = {
+			dynasty = 261
+		}
+		c_new_barrel = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Fossoway(R)
+		name = "EVTOPTBcbb_dynastic_rivalry.15"
+		trigger = {
+			dynasty = 262
+		}
+		c_cider_hall = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Manderely/Peake
+character_event = {
+	id = cbb_dynastic_rivalry.16
+	desc = "EVTDESCcbb_dynastic_rivalry.16"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Manderely's
+		name = "EVTOPTAcbb_dynastic_rivalry.16"
+		trigger = {
+			dynasty = 298
+		}
+		c_whiteharbor = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Peake
+		name = "EVTOPTBcbb_dynastic_rivalry.16"
+		trigger = {
+			dynasty = 80
+		}
+		c_starpike = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+
+#Goodbrother/Costayne
+character_event = {
+	id = cbb_dynastic_rivalry.17
+	desc = "EVTDESCcbb_dynastic_rivalry.17"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Goodbrother
+		name = "EVTOPTAcbb_dynastic_rivalry.17"
+		trigger = {
+			dynasty =  287
+		}
+		c_hammerhorn = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Costayne
+		name = "EVTOPTBcbb_dynastic_rivalry.17"
+		trigger = {
+			dynasty = 112
+		}
+		c_threetowers = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}
+#Dayne/Oakheart
+character_event = {
+	id = cbb_dynastic_rivalry.18
+	desc = "EVTDESCcbb_dynastic_rivalry.18"
+	picture = GFX_evt_feud_ambush
+
+	is_triggered_only = yes
+
+	hide_from = yes
+
+	option = { # Dayne
+		name = "EVTOPTAcbb_dynastic_rivalry.18"
+		trigger = {
+			dynasty =  237
+		}
+		d_redmountains = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Oakheart
+		name = "EVTOPTBcbb_dynastic_rivalry.18"
+		trigger = {
+			dynasty = 16
+		}
+		d_ocean_road = {
+			holder_scope = {
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					random_dynasty_member = {
+						limit = {
+							is_alive = yes
+							#is_ruler = no
+						}
+						add_trait = blood_feud #blood feud tracker
+					}
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				hidden_tooltip = {
+					any_dynasty_member = {
+						limit = {
+							is_alive = yes
+							NOT = { character = PREV }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						character_event = { id = dynastic_rivalry.7 days = 2 }
+					}
+				}
+			}
+		}
+	}
+}

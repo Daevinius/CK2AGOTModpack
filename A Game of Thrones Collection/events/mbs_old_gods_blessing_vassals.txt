@@ -1,0 +1,1346 @@
+namespace = mbs_old_gods_blessing_vassals
+
+#mbs_old_gods_blessing_vassals.1 - Mormont
+character_event = {
+	id = mbs_old_gods_blessing_vassals.1
+	hide_window = yes
+
+	only_playable = yes
+	only_capable = yes
+	min_age = 6
+	max_age = 29
+	has_character_flag = blessed_mormont_siblings
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = snowbear
+			trait = brownbear
+		}
+		NOT = {
+			has_character_flag = flag_mbs_blessed_intimidate
+		}
+		any_vassal = {
+			is_incapable = no
+			NOT = {
+				is_friend = ROOT
+			}
+			OR = {
+				trait = wroth
+				trait = drunkard
+			}
+		}
+	}
+	weight_multiplier = {
+		modifier = {
+			factor = 10
+			NOT = {
+				war = no
+			}
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				age = 25
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 18
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 15
+			}
+		}
+		modifier = {
+			factor = 1.2
+			trait = proud
+		}
+		modifier = {
+			factor = 1.2
+			trait = honorable
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				OR = {
+					trait = wroth
+					trait = drunkard
+				}
+				NOT = {
+					is_friend = ROOT
+				}
+				NOT = {
+					is_inaccessible_or_incapable_trigger = yes
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.2 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.1" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.2
+	title = "EVTtitlembs_old_gods_blessing_vassals.2"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.2"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.3 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.2" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.3
+	title = "EVTtitlembs_old_gods_blessing_vassals.3"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.3"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.5 }
+		}
+		set_character_flag = flag_mbs_blessed_intimidate
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.3" #
+
+		ai_chance = {
+			factor = 2
+		}
+		random_list = {
+			30 = { }
+			70 = { add_trait = authoritative }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.4
+	title = "EVTtitlembs_old_gods_blessing_vassals.4"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.4"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.4" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.401
+	title = "EVTtitlembs_old_gods_blessing_vassals.401"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.401"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.401" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.5
+	title = "EVTtitlembs_old_gods_blessing_vassals.5"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.5"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.5" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = authoritative
+			}
+		}
+		add_trait = scarred
+		add_friend = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.4 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.6 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing_vassals.5" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = possessed
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = envious
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+		}
+		add_trait = scarred
+		add_rival = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.401 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.7 }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.6
+	title = "EVTtitlembs_old_gods_blessing_vassals.6"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.6"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.6" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.7
+	title = "EVTtitlembs_old_gods_blessing_vassals.7"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.7"
+	picture = "GFX_brownbear"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.7" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+######################################################################################################
+#mbs_old_gods_blessing_vassals.8 - Blackwood
+character_event = {
+	id = mbs_old_gods_blessing_vassals.8
+	hide_window = yes
+
+	only_playable = yes
+	only_capable = yes
+	min_age = 6
+	max_age = 29
+	has_character_flag = blessed_blackwood_siblings
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = crow
+		NOT = {
+			has_character_flag = flag_mbs_blessed_intimidate
+		}
+		any_vassal = {
+			is_incapable = no
+			NOT = {
+				is_friend = ROOT
+			}
+			OR = {
+				trait = wroth
+				trait = drunkard
+			}
+		}
+	}
+	weight_multiplier = {
+		modifier = {
+			factor = 10
+			NOT = {
+				war = no
+			}
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				age = 25
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 18
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 15
+			}
+		}
+		modifier = {
+			factor = 1.2
+			trait = proud
+		}
+		modifier = {
+			factor = 1.2
+			trait = honorable
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				OR = {
+					trait = wroth
+					trait = drunkard
+				}
+				NOT = {
+					is_friend = ROOT
+				}
+				NOT = {
+					is_inaccessible_or_incapable_trigger = yes
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.9 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.8" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.9
+	title = "EVTtitlembs_old_gods_blessing_vassals.9"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.9"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.10 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.9" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.10
+	title = "EVTtitlembs_old_gods_blessing_vassals.10"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.10"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.12 }
+		}
+		set_character_flag = flag_mbs_blessed_intimidate
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.10" #
+
+		ai_chance = {
+			factor = 2
+		}
+		random_list = {
+			30 = { }
+			70 = { add_trait = authoritative }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.11
+	title = "EVTtitlembs_old_gods_blessing_vassals.11"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.11"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.11" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.1101
+	title = "EVTtitlembs_old_gods_blessing_vassals.1101"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.1101"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.1101" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.12
+	title = "EVTtitlembs_old_gods_blessing_vassals.12"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.12"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.12" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = authoritative
+			}
+		}
+		random_list = {
+			30 = { add_trait = one_eyed }
+			70 = { add_trait = scarred }
+		}
+		add_friend = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.11 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.13 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing_vassals.12" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = possessed
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = envious
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+		}
+		random_list = {
+			30 = { add_trait = one_eyed }
+			70 = { add_trait = scarred }
+		}
+		add_rival = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.1101 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.14 }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.13
+	title = "EVTtitlembs_old_gods_blessing_vassals.13"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.13"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.13" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.14
+	title = "EVTtitlembs_old_gods_blessing_vassals.14"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.14"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.14" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+######################################################################################################
+#mbs_old_gods_blessing_vassals.8 - Stark
+character_event = {
+	id = mbs_old_gods_blessing_vassals.15
+	hide_window = yes
+
+	only_playable = yes
+	only_capable = yes
+	min_age = 6
+	max_age = 29
+	has_character_flag = blessed_stark_siblings
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = direwolf
+		NOT = {
+			has_character_flag = flag_mbs_blessed_intimidate
+		}
+		any_vassal = {
+			is_incapable = no
+			NOT = {
+				is_friend = ROOT
+			}
+			OR = {
+				trait = wroth
+				trait = drunkard
+			}
+		}
+	}
+	weight_multiplier = {
+		modifier = {
+			factor = 10
+			NOT = {
+				war = no
+			}
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				age = 25
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 18
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 15
+			}
+		}
+		modifier = {
+			factor = 1.2
+			trait = proud
+		}
+		modifier = {
+			factor = 1.2
+			trait = honorable
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				OR = {
+					trait = wroth
+					trait = drunkard
+				}
+				NOT = {
+					is_friend = ROOT
+				}
+				NOT = {
+					is_inaccessible_or_incapable_trigger = yes
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.16 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.15" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.16
+	title = "EVTtitlembs_old_gods_blessing_vassals.16"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.16"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.17 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.16" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.17
+	title = "EVTtitlembs_old_gods_blessing_vassals.17"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.17"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.19 }
+		}
+		set_character_flag = flag_mbs_blessed_intimidate
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.17" #
+
+		ai_chance = {
+			factor = 2
+		}
+		random_list = {
+			30 = { }
+			70 = { add_trait = authoritative }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.18
+	title = "EVTtitlembs_old_gods_blessing_vassals.18"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.18"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.18" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.1801
+	title = "EVTtitlembs_old_gods_blessing_vassals.1801"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.1801"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.1801" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.19
+	title = "EVTtitlembs_old_gods_blessing_vassals.19"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.19"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.19" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = authoritative
+			}
+		}
+		random_list = {
+			30 = { add_trait = one_handed }
+			70 = { add_trait = scarred }
+		}
+		add_friend = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.18 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.20 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing_vassals.19" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = possessed
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = envious
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+		}
+		random_list = {
+			30 = { add_trait = one_handed }
+			70 = { add_trait = scarred }
+		}
+		add_rival = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.1801 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.21 }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.20
+	title = "EVTtitlembs_old_gods_blessing_vassals.20"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.20"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.20" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.21
+	title = "EVTtitlembs_old_gods_blessing_vassals.21"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.21"
+	picture = "GFX_wolf"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.21" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+######################################################################################################
+#mbs_old_gods_blessing_vassals.8 - Stark
+character_event = {
+	id = mbs_old_gods_blessing_vassals.22
+	hide_window = yes
+
+	only_playable = yes
+	only_capable = yes
+	min_age = 6
+	max_age = 29
+	has_character_flag = blessed_reed_siblings
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = lizardlion
+		NOT = {
+			has_character_flag = flag_mbs_blessed_intimidate
+		}
+		any_vassal = {
+			is_incapable = no
+			NOT = {
+				is_friend = ROOT
+			}
+			OR = {
+				trait = wroth
+				trait = drunkard
+			}
+		}
+	}
+	weight_multiplier = {
+		modifier = {
+			factor = 10
+			NOT = {
+				war = no
+			}
+		}
+		modifier = {
+			factor = 10
+			NOT = {
+				age = 25
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 18
+			}
+		}
+		modifier = {
+			factor = 3
+			NOT = {
+				age = 15
+			}
+		}
+		modifier = {
+			factor = 1.2
+			trait = proud
+		}
+		modifier = {
+			factor = 1.2
+			trait = honorable
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				OR = {
+					trait = wroth
+					trait = drunkard
+				}
+				NOT = {
+					is_friend = ROOT
+				}
+				NOT = {
+					is_inaccessible_or_incapable_trigger = yes
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.23 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.22" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.23
+	title = "EVTtitlembs_old_gods_blessing_vassals.23"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.23"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.24 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.23" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.24
+	title = "EVTtitlembs_old_gods_blessing_vassals.24"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.24"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.26 }
+		}
+		set_character_flag = flag_mbs_blessed_intimidate
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.24" #
+
+		ai_chance = {
+			factor = 2
+		}
+		random_list = {
+			30 = { }
+			70 = { add_trait = authoritative }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.25
+	title = "EVTtitlembs_old_gods_blessing_vassals.25"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.25"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.25" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.2501
+	title = "EVTtitlembs_old_gods_blessing_vassals.2501"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.2501"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.2501" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.26
+	title = "EVTtitlembs_old_gods_blessing_vassals.26"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.26"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.26" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				trait = kind
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honest
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = gregarious
+			}
+			modifier = {
+				factor = 3
+				trait = authoritative
+			}
+		}
+		random_list = {
+			30 = { add_trait = one_handed }
+			70 = { add_trait = scarred }
+		}
+		add_friend = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.25 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.27 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing_vassals.26" #
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 3
+				trait = ruthless
+			}
+			modifier = {
+				factor = 3
+				trait = cruel
+			}
+			modifier = {
+				factor = 3
+				trait = possessed
+			}
+			modifier = {
+				factor = 3
+				trait = impaler
+			}
+			modifier = {
+				factor = 3
+				trait = envious
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 1.5
+				trait = ambitious
+			}
+		}
+		random_list = {
+			30 = { add_trait = one_handed }
+			70 = { add_trait = scarred }
+		}
+		add_rival = FROM
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_old_gods_blessing_vassals.2501 }
+		}
+		FROM = {
+			character_event = { id = mbs_old_gods_blessing_vassals.28 }
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.27
+	title = "EVTtitlembs_old_gods_blessing_vassals.27"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.27"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.27" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+narrative_event = {
+	id = mbs_old_gods_blessing_vassals.28
+	title = "EVTtitlembs_old_gods_blessing_vassals.28"
+	desc = "EVTDESCmbs_old_gods_blessing_vassals.28"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing_vassals.28" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}

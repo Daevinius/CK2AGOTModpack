@@ -1,0 +1,106 @@
+# set_as_cadet_dynasty_effect
+
+set_as_cadet_dynasty_effect = {
+	hidden_effect = {
+		if = { # Fired from house customizer - father/sibling will be FROMFROMFROM
+			limit = { FROM = { character = ROOT } }
+
+			FROMFROMFROM = {
+				add_trait = assign_mission_target
+				set_dynasty_flag = has_cadet_house
+
+				any_owned_bloodline = {
+					ROOT = {
+						any_child = {
+							add_to_bloodline = PREVPREV
+						}
+					}
+				}
+
+				ROOT = {
+					any_child_even_if_dead = {
+						dynasty = ROOT
+					}
+					add_trait = assign_mission_target
+					set_dynasty_flag = is_cadet_house
+					set_dynasty_flag = cadet_house_@PREV
+					PREV = { set_dynasty_flag = owned_cadet_house_@ROOT }
+					set_dynasty_flag = has_dynamic_coa
+					character_event = { id = dynamic_coa.1 }
+				}
+
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_cadet_affection
+					years = 200
+				}
+
+				opinion = {
+					who = ROOT
+					modifier = opinion_cadet_affection
+					years = 200
+				}
+
+				any_dynasty_member = {
+					limit = { NOT = { character = PREV } }
+
+					reverse_opinion = {
+						who = ROOT
+						modifier = opinion_cadet_affection
+						years = 200
+					}
+
+					opinion = {
+						who = ROOT
+						modifier = opinion_cadet_affection
+						years = 200
+					}
+				}
+			}
+		}
+		else = { # Granting a cadet dynasty
+			add_trait = assign_mission_target
+			set_dynasty_flag = has_cadet_house
+
+			FROM = {
+				any_child_even_if_dead = {
+					dynasty = FROM
+				}
+				add_trait = assign_mission_target
+				set_dynasty_flag = is_cadet_house
+				set_dynasty_flag = cadet_house_@PREV
+				ROOT = { set_dynasty_flag = owned_cadet_house_@PREV }
+				set_dynasty_flag = has_dynamic_coa
+				character_event = { id = dynamic_coa.1 }
+			}
+
+			reverse_opinion = {
+				who = FROM
+				modifier = opinion_cadet_affection
+				years = 200
+			}
+
+			opinion = {
+				who = FROM
+				modifier = opinion_cadet_affection
+				years = 200
+			}
+
+			any_dynasty_member = {
+				limit = { NOT = { character = ROOT } }
+
+				reverse_opinion = {
+					who = FROM
+					modifier = opinion_cadet_affection
+					years = 200
+				}
+
+				opinion = {
+					who = FROM
+					modifier = opinion_cadet_affection
+					years = 200
+				}
+			}
+		}
+	}
+}

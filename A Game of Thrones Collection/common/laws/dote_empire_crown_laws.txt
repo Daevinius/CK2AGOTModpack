@@ -1,0 +1,326 @@
+law_groups = {
+	dote_administration_laws = {
+		law_type = realm
+		allowed_for_councillors = no
+	}
+
+	dote_governors_laws = {
+		law_type = realm
+		allowed_for_councillors = no
+	}
+
+	dote_autonomy_laws = {
+		law_type = realm
+		allowed_for_councillors = no
+	}
+
+}
+
+
+de_jure_laws = {
+
+# IMPERIAL ADMINISTRATION
+
+	dote_republic_administration = {
+		group = dote_administration_laws
+		default = yes
+
+		allow = {
+		    always = no
+		}
+
+		potential = {
+			holder_scope = {
+				has_landed_title = e_valyrian_empire
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = centralization_0
+				revoke_law = centralization_1
+				revoke_law = centralization_2
+				revoke_law = centralization_3
+				revoke_law = centralization_4
+				revoke_law = dote_imperial_administration
+				revoke_law = dote_feudal_administration
+			}
+		}
+	}
+
+	dote_imperial_administration = {
+		group = dote_administration_laws
+		default = yes
+
+		#vassal_opinion = -50 #Vassals don't like because it implies Appointed Governors, No Autonomy, and all that
+		vassal_opinion = 0
+
+		allow = {
+		    AND = {
+			    has_law = dote_feudal_administration
+				has_law = dote_appointed_governors
+				has_law = dote_autonomy_0
+			}
+		}
+
+		potential = {
+			holder_scope = {
+				has_landed_title = e_valyrian_empire
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = centralization_0
+				revoke_law = centralization_1
+				revoke_law = centralization_2
+				revoke_law = centralization_3
+				revoke_law = centralization_4
+				revoke_law = dote_feudal_administration
+				revoke_law = dote_republic_administration
+			}
+		}
+	}
+
+	dote_feudal_administration = {
+		group = dote_administration_laws
+
+		allow = {
+		    AND = {
+			    has_law = dote_imperial_administration
+				has_law = dote_hereditary_governors
+				has_law = dote_autonomy_2
+				has_law = dote_centralisation_1
+				has_law = dote_full_aristocratic
+			}
+		}
+
+
+		potential = {
+			holder_scope = {
+			        has_landed_title = e_valyrian_empire
+			}
+		}
+
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = centralization_0
+				revoke_law = centralization_1
+				revoke_law = centralization_2
+				revoke_law = centralization_3
+				revoke_law = centralization_4
+				revoke_law = dote_imperial_administration
+				revoke_law = dote_republic_administration
+			}
+		    set_allow_title_revokation = no
+		}
+
+	}
+
+    # GOVERNOR LAWS
+    dote_appointed_governors = {
+
+        group = dote_governors_laws
+		default = yes
+
+		vassal_opinion = -20 #Obviously vassals don't like
+
+		allow = {
+		    has_law = dote_hereditary_governors
+		}
+
+		potential = {
+			holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_hereditary_governors
+			    set_allow_title_revokation = yes
+			}
+		}
+
+	}
+
+    dote_hereditary_governors = {
+        group = dote_governors_laws
+
+		allow = {
+		    has_law = dote_appointed_governors
+		}
+
+		potential = {
+			holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_appointed_governors
+				set_allow_title_revokation = yes
+			}
+
+		}
+	}
+
+    # AUTONOMY
+
+
+    dote_autonomy_0 = {
+        group = dote_autonomy_laws
+		default = yes
+
+		vassal_opinion = -30 #Obviously vassals don't like
+
+		allow = {
+		    has_law = dote_autonomy_1
+		}
+
+		potential = {
+			holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_autonomy_1
+				revoke_law = dote_autonomy_2
+			}
+			set_the_kings_peace = yes
+			set_the_kings_full_peace = yes
+		}
+	}
+
+    dote_autonomy_1 = {
+        group = dote_autonomy_laws
+
+        vassal_opinion = -15 #Obviously vassals don't like
+
+		allow = {
+		    OR = {
+				has_law = dote_autonomy_0
+		        has_law = dote_autonomy_2
+			}
+		}
+
+		potential = {
+			holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				has_law = dote_autonomy_2
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_autonomy_0
+				revoke_law = dote_autonomy_2
+			}
+			set_the_kings_full_peace = no
+			set_the_kings_peace = yes
+		}
+	}
+
+    dote_autonomy_2 = {
+        group = dote_autonomy_laws
+
+		allow = {
+		    has_law = dote_autonomy_1
+		}
+
+		potential = {
+			holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_autonomy_0
+				revoke_law = dote_autonomy_1
+			}
+			set_the_kings_full_peace = no
+			set_the_kings_peace = no
+		}
+	}
+
+}

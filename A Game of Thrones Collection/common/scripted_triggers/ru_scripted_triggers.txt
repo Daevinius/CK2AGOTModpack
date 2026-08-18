@@ -1,0 +1,69 @@
+is_renamed_culture_trigger = {
+	custom_tooltip = {
+		text = is_renamed_culture_tt
+		AND = {
+			has_alternate_start_parameter = { key = culture_names value = random }
+			OR = {
+				AND = {
+					NOT = { culture_scope = { always = yes } }
+					has_flag = is_name_randomized_flag
+				}
+				culture_scope = { has_flag = is_name_randomized_flag }
+			}
+		}
+		#AND = {
+		#	has_alternate_start_parameter = { key = culture_names value = random }
+		#	culture_scope = { is_name_randomized = yes }
+		#}
+	}
+}
+is_renamed_religion_trigger = {
+	custom_tooltip = {
+		text = is_renamed_religion_tt
+		AND = {
+			has_alternate_start_parameter = { key = religion_names value = random }
+			OR = {
+				AND = {
+					NOT = { religion_scope = { always = yes } }
+					is_name_randomized = yes
+				}
+				religion_scope = { is_name_randomized = yes }
+			}
+		}
+	}
+}
+is_renamed_true_religion_trigger = {
+	custom_tooltip = {
+		text = is_renamed_true_religion_tt
+		AND = {
+			has_alternate_start_parameter = { key = religion_names value = random }
+			OR = {
+				AND = {
+					NOT = { true_religion_scope = { always = yes } }
+					is_name_randomized = yes
+				}
+				true_religion_scope = { is_name_randomized = yes }
+			}
+		}
+	}
+}
+is_renamed_secret_religion_trigger = {
+	custom_tooltip = {
+		text = is_renamed_secret_religion_tt
+		AND = {
+			has_alternate_start_parameter = { key = religion_names value = random }
+			OR = {
+				AND = {
+					NOT = { secret_religion_scope = { always = yes } }
+					is_name_randomized = yes
+				}
+				secret_religion_scope = { is_name_randomized = yes }
+			}
+		}
+	}
+}
+
+is_single_player_observer_mode = {
+	multiplayer = no
+	is_local_human_observer = yes
+}

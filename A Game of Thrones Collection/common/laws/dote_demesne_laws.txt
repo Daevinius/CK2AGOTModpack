@@ -1,0 +1,573 @@
+law_groups = {
+	dote_bureaucracy = {
+		law_type = realm
+		allowed_for_councillors = no
+	}
+
+    dote_centralisation = {
+		law_type = realm
+		allowed_for_councillors = no
+	}
+}
+
+
+laws = {
+
+# CASTLE BUREAUCRACY
+
+	dote_full_aristocratic = {
+		group = dote_bureaucracy
+		vassal_opinion = 20
+
+       allow = {
+			has_law = dote_partial_aristocratic
+		}
+
+		potential = {
+		   # NOT = { has_dlc = "Zeus" }
+			holder_scope = { NOT = { tier = baron } }
+			holder_scope = { government = valyrian_imperial_government }
+
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_full_aristocratic
+				revoke_law = dote_partial_aristocratic
+				revoke_law = dote_slightly_aristocratic
+				revoke_law = dote_slightly_plutocratic
+				revoke_law = dote_partial_plutocratic
+				revoke_law = dote_full_plutocratic
+
+				revoke_law = feudal_contract_0
+				revoke_law = feudal_contract_1
+				revoke_law = feudal_contract_2
+				revoke_law = feudal_contract_3
+				revoke_law = feudal_tax_0
+				revoke_law = feudal_tax_1
+				revoke_law = feudal_tax_2
+				revoke_law = feudal_tax_3
+				revoke_law = city_contract_0
+				revoke_law = city_contract_1
+				revoke_law = city_contract_2
+				revoke_law = city_contract_3
+				revoke_law = city_tax_0
+				revoke_law = city_tax_1
+				revoke_law = city_tax_2
+				revoke_law = city_tax_3
+			}
+		}
+
+		castle_vassal_tax_modifier = 0.1
+		city_vassal_tax_modifier = 0.1
+
+		castle_vassal_max_levy = 0
+		city_vassal_max_levy = 0
+		castle_vassal_min_levy = 0
+		city_vassal_min_levy = 0
+	}
+
+	dote_partial_aristocratic = {
+		group = dote_bureaucracy
+		vassal_opinion = 10
+
+       allow = {
+			OR = {
+				has_law = dote_full_aristocratic
+				has_law = dote_slightly_aristocratic
+			}
+		}
+
+		potential = {
+		   # NOT = { has_dlc = "Zeus" }
+			holder_scope = { NOT = { tier = baron } }
+			holder_scope = { government = valyrian_imperial_government }
+		}
+		revoke_allowed = {
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_full_aristocratic
+				revoke_law = dote_partial_aristocratic
+				revoke_law = dote_slightly_aristocratic
+				revoke_law = dote_slightly_plutocratic
+				revoke_law = dote_partial_plutocratic
+				revoke_law = dote_full_plutocratic
+
+				revoke_law = feudal_contract_0
+				revoke_law = feudal_contract_1
+				revoke_law = feudal_contract_2
+				revoke_law = feudal_contract_3
+				revoke_law = feudal_tax_0
+				revoke_law = feudal_tax_1
+				revoke_law = feudal_tax_2
+				revoke_law = feudal_tax_3
+				revoke_law = city_contract_0
+				revoke_law = city_contract_1
+				revoke_law = city_contract_2
+				revoke_law = city_contract_3
+				revoke_law = city_tax_0
+				revoke_law = city_tax_1
+				revoke_law = city_tax_2
+				revoke_law = city_tax_3
+			}
+		}
+		castle_vassal_tax_modifier = 0.2
+		city_vassal_tax_modifier = 0.2
+
+		castle_vassal_max_levy = -0.20
+		city_vassal_max_levy = -0.20
+		castle_vassal_min_levy = 0
+		city_vassal_min_levy = 0
+	}
+
+	dote_slightly_aristocratic = {
+		group = dote_bureaucracy
+		vassal_opinion = 0
+
+       allow = {
+			OR = {
+				has_law = dote_partial_aristocratic
+				has_law = dote_slightly_plutocratic
+			}
+		}
+
+		potential = {
+		   # NOT = { has_dlc = "Zeus" }
+			holder_scope = { NOT = { tier = baron } }
+			holder_scope = { government = valyrian_imperial_government }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_full_aristocratic
+				revoke_law = dote_partial_aristocratic
+				revoke_law = dote_slightly_aristocratic
+				revoke_law = dote_slightly_plutocratic
+				revoke_law = dote_partial_plutocratic
+				revoke_law = dote_full_plutocratic
+
+				revoke_law = feudal_contract_0
+				revoke_law = feudal_contract_1
+				revoke_law = feudal_contract_2
+				revoke_law = feudal_contract_3
+				revoke_law = feudal_tax_0
+				revoke_law = feudal_tax_1
+				revoke_law = feudal_tax_2
+				revoke_law = feudal_tax_3
+				revoke_law = city_contract_0
+				revoke_law = city_contract_1
+				revoke_law = city_contract_2
+				revoke_law = city_contract_3
+				revoke_law = city_tax_0
+				revoke_law = city_tax_1
+				revoke_law = city_tax_2
+				revoke_law = city_tax_3
+			}
+		}
+
+		castle_vassal_tax_modifier = 0.3
+		city_vassal_tax_modifier = 0.3
+
+		castle_vassal_max_levy = -0.40
+		city_vassal_max_levy = -0.40
+		castle_vassal_min_levy = 0
+		city_vassal_min_levy = 0
+	}
+
+    dote_slightly_plutocratic = {
+		group = dote_bureaucracy
+		default = yes
+		vassal_opinion = -10
+
+       allow = {
+			OR = {
+				has_law = dote_slightly_aristocratic
+				has_law = dote_partial_plutocratic
+			}
+		}
+
+		potential = {
+		   # NOT = { has_dlc = "Zeus" }
+			holder_scope = { NOT = { tier = baron } }
+			holder_scope = { government = valyrian_imperial_government }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_full_aristocratic
+				revoke_law = dote_partial_aristocratic
+				revoke_law = dote_slightly_aristocratic
+				revoke_law = dote_slightly_plutocratic
+				revoke_law = dote_partial_plutocratic
+				revoke_law = dote_full_plutocratic
+
+				revoke_law = feudal_contract_0
+				revoke_law = feudal_contract_1
+				revoke_law = feudal_contract_2
+				revoke_law = feudal_contract_3
+				revoke_law = feudal_tax_0
+				revoke_law = feudal_tax_1
+				revoke_law = feudal_tax_2
+				revoke_law = feudal_tax_3
+				revoke_law = city_contract_0
+				revoke_law = city_contract_1
+				revoke_law = city_contract_2
+				revoke_law = city_contract_3
+				revoke_law = city_tax_0
+				revoke_law = city_tax_1
+				revoke_law = city_tax_2
+				revoke_law = city_tax_3
+			}
+		}
+
+		castle_vassal_tax_modifier = 0.4
+		city_vassal_tax_modifier = 0.4
+
+		castle_vassal_max_levy = -0.60
+		city_vassal_max_levy = -0.60
+		castle_vassal_min_levy = 0
+		city_vassal_min_levy = 0
+	}
+
+	dote_partial_plutocratic = {
+		group = dote_bureaucracy
+        vassal_opinion = -20
+
+       allow = {
+			OR = {
+				has_law = dote_slightly_plutocratic
+				has_law = dote_full_plutocratic
+			}
+		}
+
+		potential = {
+		   # NOT = { has_dlc = "Zeus" }
+			holder_scope = { NOT = { tier = baron } }
+			holder_scope = { government = valyrian_imperial_government }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+				revoke_law = dote_full_aristocratic
+				revoke_law = dote_partial_aristocratic
+				revoke_law = dote_slightly_aristocratic
+				revoke_law = dote_slightly_plutocratic
+				revoke_law = dote_partial_plutocratic
+				revoke_law = dote_full_plutocratic
+
+				revoke_law = feudal_contract_0
+				revoke_law = feudal_contract_1
+				revoke_law = feudal_contract_2
+				revoke_law = feudal_contract_3
+				revoke_law = feudal_tax_0
+				revoke_law = feudal_tax_1
+				revoke_law = feudal_tax_2
+				revoke_law = feudal_tax_3
+				revoke_law = city_contract_0
+				revoke_law = city_contract_1
+				revoke_law = city_contract_2
+				revoke_law = city_contract_3
+				revoke_law = city_tax_0
+				revoke_law = city_tax_1
+				revoke_law = city_tax_2
+				revoke_law = city_tax_3
+		}
+		castle_vassal_tax_modifier = 0.5
+		city_vassal_tax_modifier = 0.5
+
+		castle_vassal_max_levy = -0.80
+		city_vassal_max_levy = -0.80
+		castle_vassal_min_levy = 0
+		city_vassal_min_levy = 0
+	}
+
+	dote_full_plutocratic = {
+		group = dote_bureaucracy
+		vassal_opinion = -50
+
+       allow = {
+			has_law = dote_partial_plutocratic
+		}
+
+		potential = {
+		   # NOT = { has_dlc = "Zeus" }
+			holder_scope = { NOT = { tier = baron } }
+			holder_scope = { government = valyrian_imperial_government }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+				revoke_law = dote_full_aristocratic
+				revoke_law = dote_partial_aristocratic
+				revoke_law = dote_slightly_aristocratic
+				revoke_law = dote_slightly_plutocratic
+				revoke_law = dote_partial_plutocratic
+				revoke_law = dote_full_plutocratic
+
+				revoke_law = feudal_contract_0
+				revoke_law = feudal_contract_1
+				revoke_law = feudal_contract_2
+				revoke_law = feudal_contract_3
+				revoke_law = feudal_tax_0
+				revoke_law = feudal_tax_1
+				revoke_law = feudal_tax_2
+				revoke_law = feudal_tax_3
+				revoke_law = city_contract_0
+				revoke_law = city_contract_1
+				revoke_law = city_contract_2
+				revoke_law = city_contract_3
+				revoke_law = city_tax_0
+				revoke_law = city_tax_1
+				revoke_law = city_tax_2
+				revoke_law = city_tax_3
+		}
+
+		castle_vassal_tax_modifier = 0.6
+		city_vassal_tax_modifier = 0.6
+
+		castle_vassal_max_levy = -1.0
+		city_vassal_max_levy = -1.0
+		castle_vassal_min_levy = 0
+		city_vassal_min_levy = 0
+	}
+
+# CENTRALISATION, MORE DEMESNE VS MORE VASSALS
+
+	dote_centralisation_1 = {
+		group = dote_centralisation
+
+        vassal_opinion = 20
+
+		allow = {
+		    has_law = dote_centralisation_2
+		}
+		potential = {
+		    holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_centralisation_2
+				revoke_law = dote_centralisation_3
+				revoke_law = dote_centralisation_4
+				revoke_law = dote_centralisation_5
+			}
+		}
+
+		vassal_limit = 20
+	}
+
+	dote_centralisation_2 = {
+		group = dote_centralisation
+
+        vassal_opinion = 10
+
+		allow = {
+		    OR = {
+				has_law = dote_centralisation_1
+				has_law = dote_centralisation_3
+			}
+		}
+		potential = {
+		    holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		ai_will_revoke = {
+			factor = 0
+			modifier = {
+				factor = 1
+				has_law = dote_centralisation_1
+			}
+		}
+
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_centralisation_1
+				revoke_law = dote_centralisation_3
+				revoke_law = dote_centralisation_4
+				revoke_law = dote_centralisation_5
+			}
+		}
+
+		vassal_limit = 10
+	}
+
+	dote_centralisation_3 = {
+		group = dote_centralisation
+
+		allow = {
+		    OR = {
+				has_law = dote_centralisation_2
+				has_law = dote_centralisation_4
+			}
+		}
+		potential = {
+		    holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				has_law = dote_centralisation_2
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_centralisation_1
+				revoke_law = dote_centralisation_2
+				revoke_law = dote_centralisation_4
+				revoke_law = dote_centralisation_5
+			}
+		}
+	}
+
+	dote_centralisation_4 = {
+		group = dote_centralisation
+		vassal_opinion = -10
+
+		allow = {
+		    OR = {
+				has_law = dote_centralisation_3
+				has_law = dote_centralisation_5
+			}
+		}
+		potential = {
+		    holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 1
+				has_law = dote_centralisation_3
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_centralisation_1
+				revoke_law = dote_centralisation_2
+				revoke_law = dote_centralisation_3
+				revoke_law = dote_centralisation_5
+			}
+		}
+		demesne_size = 6
+	}
+
+	dote_centralisation_5 = {
+		group = dote_centralisation
+		vassal_opinion = -20
+		default = yes
+
+		allow = {
+		    has_law = dote_centralisation_4
+		}
+		potential = {
+		    holder_scope = {
+			    government = valyrian_imperial_government
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+
+		effect = {
+			hidden_tooltip = {
+				revoke_law = dote_centralisation_1
+				revoke_law = dote_centralisation_2
+				revoke_law = dote_centralisation_3
+				revoke_law = dote_centralisation_4
+			}
+		}
+		demesne_size = 12
+	}
+
+
+}
+
+

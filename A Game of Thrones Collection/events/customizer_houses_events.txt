@@ -1,0 +1,2086 @@
+namespace = customizer_houses
+
+#Select either current house or extinct house
+character_event = {
+	id = customizer_houses.1
+	picture = GFX_TARGARYEN
+
+	is_triggered_only = yes
+	hide_from = yes
+
+	ai = no
+
+	trigger = {
+		trait = house_customizer
+	}
+
+	desc = {
+		text = "EVTDESCCUSTOMIZERHOUSES1"
+		trigger = { NOT = { is_nomadic = yes } }
+	}
+	desc = {
+		text = "EVTDESCCUSTOMIZERHOUSES1B"
+		trigger = { is_nomadic = yes }
+	}
+
+	option = {
+		name = "EVTOPTACUSTOMIZERHOUSES1" #Current House
+		trigger = { NOT = { is_nomadic = yes } }
+		custom_tooltip = { text = TOOLTIPhouse_customizerA }
+		hidden_tooltip = { character_event = { id = customizer_houses.4 days = 50 } } #valid for 50 days
+	}
+
+	option = {
+		name = "EVTOPTBCUSTOMIZERHOUSES1" #Extinct House
+		trigger = { NOT = { is_nomadic = yes } }
+		custom_tooltip = { text = TOOLTIPhouse_customizerB }
+		set_character_flag = page_1
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+
+	option = {
+		name = OK
+		trigger = { is_nomadic = yes }
+		remove_trait = house_customizer
+	}
+}
+#Pick Extinct House
+character_event = {
+	id = customizer_houses.2
+	desc = "EVTDESCCUSTOMIZERHOUSES2"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	ai = no
+
+	trigger = {
+		trait = house_customizer
+	}
+
+	option = {
+		name = "EVTOPTACUSTOMIZERHOUSES2" #Reyne
+		trigger = {
+			year = 8261
+			has_character_flag = page_1
+			NOT = {
+				any_character = {
+					dynasty = 197
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 197
+		any_child = { dynasty = 197 }
+		c_33197 = { # Rafford Reyne
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_1
+	}
+	option = {
+		name = "EVTOPTBCUSTOMIZERHOUSES2" #Tarbeck
+		trigger = {
+			year = 8261
+			NOT = {
+				any_character = {
+					dynasty = 225
+					is_alive = yes
+					NOT = { trait = silent_sister }
+				}
+			}
+			has_character_flag = page_1
+		}
+		dynasty = 225
+		any_child = { dynasty = 225 }
+		c_225 = { # Lucion Tarbeck
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_1
+	}
+	option = {
+		name = "EVTOPTCCUSTOMIZERHOUSES2" #Blackfyre
+		trigger = {
+			NOT = {
+				any_character = {
+					OR = {
+						character = 77024 #Daemon Blackfyre
+						dynasty = 57
+					}
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_1
+		}
+		dynasty = 57
+		any_child = { dynasty = 57 }
+		if = {
+			limit = { year = 8260 }
+			c_110757 = { # Daemon Blackfyre
+				ROOT = {
+					set_father = PREV
+				}
+				hidden_tooltip = { remove_trait = assign_mission_target }
+				any_owned_bloodline = {
+					ROOT = {
+						any_child = {
+							limit = { dynasty = ROOT }
+							add_to_bloodline = PREVPREV
+						}
+						character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_1
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_1
+		}
+		clr_character_flag = page_1
+		set_character_flag = page_2
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTDCUSTOMIZERHOUSES2" #Greystark
+		trigger = {
+			has_character_flag = page_2
+		}
+		dynasty = 63859
+		any_child = { dynasty = 63859 }
+		c_8480073 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_2
+	}
+	option = {
+		name = "EVTOPTECUSTOMIZERHOUSES2" #Durrandon
+		trigger = {
+			NOT = {
+				any_character = {
+					dynasty = 1544
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_2
+		}
+		dynasty = 1544
+		any_child = { dynasty = 1544 }
+		c_3003544 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_2
+	}
+	option = {
+		name = "EVTOPTFCUSTOMIZERHOUSES2" #Gardener
+		trigger = {
+			has_character_flag = page_2
+			NOT = {
+				any_character = {
+					dynasty = 1254
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 1254
+		any_child = { dynasty = 1254 }
+		c_8888180 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_2
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_2
+		}
+		clr_character_flag = page_2
+		set_character_flag = page_3
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTMCUSTOMIZERHOUSES2" #Bittersteel
+		trigger = {
+			has_character_flag = page_3
+			NOT = {
+				any_character = {
+					OR = {
+						character = 77025 #Bittersteel
+						dynasty = 7000
+					}
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 7000
+		any_child = { dynasty = 7000 }
+		if = {
+			limit = { year = 8241 }
+			c_77025 = { # Bittersteel
+				ROOT = { set_father = PREV }
+				hidden_tooltip = { remove_trait = assign_mission_target }
+				any_owned_bloodline = {
+					ROOT = {
+						any_child = {
+							limit = { dynasty = ROOT }
+							add_to_bloodline = PREVPREV
+						}
+						character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_3
+	}
+	option = {
+		name = "EVTOPTGCUSTOMIZERHOUSES2" #Hoare
+		trigger = {
+			has_character_flag = page_3
+			NOT = {
+				any_character = {
+					dynasty = 66
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 66
+		any_child = { dynasty = 66 }
+		c_11866 = { # Ygon Hoare
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_3
+	}
+
+	option = {
+		name = "EVTOPTICUSTOMIZERHOUSES2" #Greyiron
+		trigger = {
+			has_character_flag = page_3
+			NOT = {
+				any_character = {
+					dynasty = 1508
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 1508
+		any_child = { dynasty = 1508 }
+		c_5231508 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_3
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_3
+		}
+		clr_character_flag = page_3
+		set_character_flag = page_4
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTJCUSTOMIZERHOUSES2" #Teague
+		trigger = {
+			has_character_flag = page_4
+			NOT = {
+				any_character = {
+					dynasty = 174435
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 174435
+		any_child = { dynasty = 174435 }
+		c_612174435 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_4
+	}
+	option = {
+		name = "EVTOPTKCUSTOMIZERHOUSES2" #Fisher
+		trigger = {
+			has_character_flag = page_4
+			NOT = {
+				any_character = {
+					dynasty = 174430
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 174430
+		any_child = { dynasty = 174430 }
+		c_617174430 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_4
+	}
+	option = {
+		name = "EVTOPTLCUSTOMIZERHOUSES2" #Justman
+		trigger = {
+			has_character_flag = page_4
+			NOT = {
+				any_character = {
+					dynasty = 174432
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 174432
+		any_child = { dynasty = 174432 }
+		c_615174432 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_4
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_4
+		}
+		clr_character_flag = page_4
+		set_character_flag = page_5
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTNCUSTOMIZERHOUSES2" #Brightstone
+		trigger = {
+			has_character_flag = page_5
+			NOT = {
+				any_character = {
+					dynasty = 881801
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 881801
+		any_child = { dynasty = 881801 }
+		c_550881801 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_5
+	}
+	option = {
+		name = "EVTOPTOCUSTOMIZERHOUSES2" #Shell
+		trigger = {
+			has_character_flag = page_5
+			NOT = {
+				any_character = {
+					dynasty = 881800
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 881800
+		any_child = { dynasty = 881800 }
+		c_550881800 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_5
+	}
+	option = {
+		name = "EVTOPTPCUSTOMIZERHOUSES2" #Casterly
+		trigger = {
+			has_character_flag = page_5
+			NOT = {
+				any_character = {
+					dynasty = 174406
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 174406
+		any_child = { dynasty = 174406 }
+		c_25174406 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_5
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_5
+		}
+		clr_character_flag = page_5
+		set_character_flag = page_6
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTQCUSTOMIZERHOUSES2" #Seaworth
+		trigger = {
+			has_character_flag = page_6
+			year < 8275
+			NOT = {
+				any_character = {
+					OR = {
+						character = 1019110 #Davos
+						dynasty = 9110
+					}
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 9110
+		any_child = { dynasty = 9110 }
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_6
+	}
+	option = {
+		name = "EVTOPTRCUSTOMIZERHOUSES2" #Blackwater
+		trigger = {
+			has_character_flag = page_6
+			year < 8275
+			NOT = {
+				any_character = {
+					character = 200035 #Bronn
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 1440
+		any_child = { dynasty = 1440 }
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_6
+	}
+	option = {
+		name = "EVTOPTSCUSTOMIZERHOUSES2" #Towers
+		trigger = {
+			has_character_flag = page_6
+			NOT = {
+				any_character = {
+					dynasty = 358
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 358
+		any_child = { dynasty = 358 }
+		c_3358 = { # William Towers
+			ROOT = { set_father = PREV }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_6
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_6
+		}
+		clr_character_flag = page_6
+		set_character_flag = page_7
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTTCUSTOMIZERHOUSES2" #Clegane
+		trigger = {
+			has_character_flag = page_7
+			year < 8275
+			NOT = {
+				any_character = {
+					dynasty = 230
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 230
+		any_child = { dynasty = 230 }
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_7
+	}
+	option = {
+		name = "EVTOPTUCUSTOMIZERHOUSES2" #Slynt
+		trigger = {
+			has_character_flag = page_7
+			year < 8275
+			NOT = {
+				any_character = {
+					dynasty = 353
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 353
+		any_child = { dynasty = 353 }
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_7
+	}
+	option = {
+		name = "EVTOPTVCUSTOMIZERHOUSES2" #Kettleblack
+		trigger = {
+			has_character_flag = page_7
+			year < 8275
+			NOT = {
+				any_character = {
+					dynasty = 352
+					is_alive = yes
+				}
+			}
+		}
+		dynasty = 352
+		any_child = { dynasty = 352 }
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_7
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_7
+		}
+		clr_character_flag = page_7
+		set_character_flag = page_8
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTWCUSTOMIZERHOUSES2" #Qoherys
+		trigger = {
+			NOT = {
+				any_character = {
+					dynasty = 359
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_8
+		}
+		dynasty = 359
+		any_child = { dynasty = 359 }
+		c_2359 = { # Gargon Qoherys
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_8
+	}
+	option = {
+		name = "EVTOPTXCUSTOMIZERHOUSES2" #Darklyn
+		trigger = {
+			NOT = {
+				any_character = {
+					dynasty = 364
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_8
+		}
+		dynasty = 364
+		any_child = { dynasty = 364 }
+		c_6045364 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_8
+	}
+	option = {
+		name = "EVTOPTHCUSTOMIZERHOUSES2" #Woodfoot
+		trigger = {
+			NOT = {
+				any_character = {
+					dynasty = 882175
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_8
+		}
+		dynasty = 882175
+		any_child = { dynasty = 882175 }
+		c_2123002 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_8
+	}
+	option = {
+		name = "MORE"
+		trigger = {
+			has_character_flag = page_8
+		}
+		clr_character_flag = page_8
+		set_character_flag = page_9
+		hidden_tooltip = { character_event = { id = customizer_houses.2 } }
+	}
+	option = {
+		name = "EVTOPTYCUSTOMIZERHOUSES2" # Varezys
+		trigger = {
+			NOT = {
+				any_character = {
+					dynasty = 496029
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_9
+		}
+		dynasty = 496029
+		any_child = { dynasty = 496029 }
+		c_50012300 = { # Gargon Qoherys
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_9
+	}
+	option = {
+		name = "EVTOPTZCUSTOMIZERHOUSES2" # Beleyrys
+		trigger = {
+			NOT = {
+				any_character = {
+					dynasty = 496022
+					is_alive = yes
+				}
+			}
+			has_character_flag = page_9
+		}
+		dynasty = 496022
+		any_child = { dynasty = 496022 }
+		c_10096022 = {
+			ROOT = { set_father = PREV }
+			hidden_tooltip = { remove_trait = assign_mission_target }
+			any_owned_bloodline = {
+				ROOT = {
+					any_child = {
+						limit = { dynasty = ROOT }
+						add_to_bloodline = PREVPREV
+					}
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = house_customizer
+			character_event = { id = customizer_houses.7 } #Patrician/Clan maintenance
+
+			set_dynasty_flag = has_dynamic_coa #THESE HOUSES USE DYNAMIC COA SYSTEM
+			character_event = { id = dynamic_coa.1 }
+		}
+		clr_character_flag = page_9
+	}
+	option = {
+		name = "BACK"
+		clr_character_flag = page_1
+		clr_character_flag = page_2
+		clr_character_flag = page_3
+		clr_character_flag = page_4
+		clr_character_flag = page_5
+		clr_character_flag = page_6
+		clr_character_flag = page_7
+		clr_character_flag = page_8
+		clr_character_flag = page_9
+		hidden_tooltip = { character_event = { id = customizer_houses.1 } }
+	}
+}
+#Choose relation to customiser target
+character_event = {
+	id = customizer_houses.3
+	desc = "EVTDESCCUSTOMIZERHOUSES3"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	ai = no
+
+	trigger = {
+		dynasty = FROM
+	}
+
+	immediate = {
+		character_event = { id = customizer_houses.7 days = 1 } #Patrician/Clan maintenance
+		character_event = { id = dynamic_coa.1 } #check dynamic CoA
+	}
+
+	option = {
+		name = {
+			text = "EVTOPTACUSTOMIZERHOUSES3" #Child
+			trigger = {
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+		}
+		name = {
+			text = "EVTOPTGCUSTOMIZERHOUSES3" #Bastard child
+			trigger = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+		}
+		trigger = {
+			FROM = {
+				could_be_parent_of = ROOT
+				OR = {
+					is_female = no
+					is_married_matrilineally = yes
+				}
+				OR = {
+					is_female = yes
+					is_married_matrilineally = no
+					is_married = no
+				}
+			}
+		}
+		FROM = {
+			show_portrait = yes
+			if = {
+				limit = { is_female = no }
+				ROOT = { set_father = PREV }
+			}
+			if = {
+				limit = { is_female = yes }
+				ROOT = { set_mother = PREV }
+			}
+			recalc_succession = yes
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+		if = {
+			limit = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+			hidden_tooltip = { character_event = { id = customizer_houses.5 } }
+		}
+	}
+
+	option = {
+		name = {
+			text = "EVTOPTBCUSTOMIZERHOUSES3" #Sibling (father)
+			trigger = {
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+		}
+		name = {
+			text = "EVTOPTFCUSTOMIZERHOUSES3" #Bastard child
+			trigger = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+		}
+		trigger = {
+			FROM = {
+				father_even_if_dead = {
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+				}
+			}
+		}
+		FROM = {
+			father_even_if_dead = {
+				show_portrait = yes
+				ROOT = { set_father = PREV }
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+		if = {
+			limit = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+			hidden_tooltip = { character_event = { id = customizer_houses.5 } }
+		}
+	}
+
+	option = {
+		name = {
+			text = "EVTOPTBCUSTOMIZERHOUSES3" #Sibling (father)
+			trigger = {
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+		}
+		name = {
+			text = "EVTOPTFCUSTOMIZERHOUSES3" #Bastard child
+			trigger = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+		}
+		trigger = {
+			FROM = {
+				mother_even_if_dead = {
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+				}
+				NOT = {
+					father_even_if_dead = {
+						dynasty = ROOT
+						could_be_parent_of = ROOT
+					}
+				}
+			}
+		}
+		FROM = {
+			mother_even_if_dead = {
+				show_portrait = yes
+				ROOT = { set_mother = PREV }
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+		if = {
+			limit = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+			hidden_tooltip = { character_event = { id = customizer_houses.5 } }
+		}
+	}
+
+	option = { #Uncle (Pat Grandfather)
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3"
+			trigger = { is_female = no }
+		}
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3AUNT"
+			trigger = { is_female = yes }
+		}
+		trigger = {
+			FROM = {
+				father_even_if_dead = {
+					dynasty = ROOT
+					father_even_if_dead = {
+						dynasty = ROOT
+						could_be_parent_of = ROOT
+					}
+				}
+			}
+		}
+		FROM = {
+			father_even_if_dead = {
+				father_even_if_dead = {
+					show_portrait = yes
+					ROOT = { set_father = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+	}
+	option = { #Uncle (Mat Grandfather)
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3"
+			trigger = { is_female = no }
+		}
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3AUNT"
+			trigger = { is_female = yes }
+		}
+		trigger = {
+			FROM = {
+				mother_even_if_dead = {
+					dynasty = ROOT
+					father_even_if_dead = {
+						dynasty = ROOT
+						could_be_parent_of = ROOT
+					}
+				}
+			}
+		}
+		FROM = {
+			mother_even_if_dead = {
+				father_even_if_dead = {
+					show_portrait = yes
+					ROOT = { set_father = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+	}
+	option = { #Uncle (Mat Grandmother)
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3"
+			trigger = { is_female = no }
+		}
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3AUNT"
+			trigger = { is_female = yes }
+		}
+		trigger = {
+			FROM = {
+				mother_even_if_dead = {
+					dynasty = ROOT
+					mother_even_if_dead = {
+						dynasty = ROOT
+						could_be_parent_of = ROOT
+					}
+				}
+			}
+		}
+		FROM = {
+			mother_even_if_dead = {
+				mother_even_if_dead = {
+					show_portrait = yes
+					ROOT = { set_mother = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+	}
+	option = { #Uncle (Pat Grandmother)
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3"
+			trigger = { is_female = no }
+		}
+		name = {
+			text = "EVTOPTCCUSTOMIZERHOUSES3AUNT"
+			trigger = { is_female = yes }
+		}
+		trigger = {
+			FROM = {
+				father_even_if_dead = {
+					dynasty = ROOT
+					mother_even_if_dead = {
+						dynasty = ROOT
+						could_be_parent_of = ROOT
+					}
+				}
+			}
+		}
+		FROM = {
+			father_even_if_dead = {
+				mother_even_if_dead = {
+					show_portrait = yes
+					ROOT = { set_mother = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+	}
+
+	option = { #Great Uncle
+		name = {
+			text = "EVTOPTDCUSTOMIZERHOUSES3"
+			trigger = { is_female = no }
+		}
+		name = {
+			text = "EVTOPTDCUSTOMIZERHOUSES3AUNT"
+			trigger = { is_female = yes }
+		}
+		trigger = {
+			FROM = {
+				father_even_if_dead = {
+					dynasty = ROOT
+					father_even_if_dead = {
+						dynasty = ROOT
+						father_even_if_dead = {
+							dynasty = ROOT
+							could_be_parent_of = ROOT
+						}
+					}
+				}
+			}
+		}
+		FROM = {
+			father_even_if_dead = {
+				father_even_if_dead = {
+					father_even_if_dead = {
+						show_portrait = yes
+						ROOT = { set_father = PREV }
+					}
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+	}
+	option = { #Nephew/Niece
+		name = "EVTOPTKCUSTOMIZERHOUSES3"
+		trigger = {
+			FROM = {
+				any_sibling_even_if_dead = {
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+					OR = {
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+						AND = {
+							is_female = no
+							OR = {
+								is_married_matrilineally = no
+								is_married = no
+							}
+						}
+						ROOT = {
+							trait = bastard
+							trait = legit_bastard
+						}
+					}
+				}
+			}
+		}
+		FROM = {
+			random_sibling_even_if_dead = {
+				limit = {
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+					OR = {
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+						AND = {
+							is_female = no
+							OR = {
+								is_married_matrilineally = no
+								is_married = no
+							}
+						}
+						ROOT = {
+							trait = bastard
+							trait = legit_bastard
+						}
+					}
+				}
+				show_portrait = yes
+				if = {
+					limit = { is_female = no }
+					ROOT = { set_father = PREV }
+				}
+				if = {
+					limit = { is_female = yes }
+					ROOT = { set_mother = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+		if = {
+			limit = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+			hidden_tooltip = { character_event = { id = customizer_houses.5 } }
+		}
+	}
+	option = { #Great Nephew/Niece
+		name = "EVTOPTLCUSTOMIZERHOUSES3"
+		trigger = {
+			FROM = {
+				any_dynasty_member_even_if_dead = {
+					OR = {
+						father_even_if_dead = { sibling = ROOT_FROM }
+						mother_even_if_dead = { sibling = ROOT_FROM }
+					}
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+					OR = {
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+						AND = {
+							is_female = no
+							OR = {
+								is_married_matrilineally = no
+								is_married = no
+							}
+						}
+						ROOT = {
+							trait = bastard
+							trait = legit_bastard
+						}
+					}
+				}
+			}
+		}
+		FROM = {
+			random_dynasty_member_even_if_dead = {
+				limit = {
+					OR = {
+						father_even_if_dead = { sibling = ROOT_FROM }
+						mother_even_if_dead = { sibling = ROOT_FROM }
+					}
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+					OR = {
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+						AND = {
+							is_female = no
+							OR = {
+								is_married_matrilineally = no
+								is_married = no
+							}
+						}
+						ROOT = {
+							trait = bastard
+							trait = legit_bastard
+						}
+					}
+				}
+				show_portrait = yes
+				if = {
+					limit = { is_female = no }
+					ROOT = { set_father = PREV }
+				}
+				if = {
+					limit = { is_female = yes }
+					ROOT = { set_mother = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+		if = {
+			limit = {
+				OR = {
+					trait = bastard
+					trait = legit_bastard
+				}
+			}
+			hidden_tooltip = { character_event = { id = customizer_houses.5 } }
+		}
+	}
+	option = { #Random Cousin
+		name = "EVTOPTJCUSTOMIZERHOUSES3"
+		trigger = {
+			FROM = {
+				any_dynasty_member_even_if_dead = {
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+					NOR = {
+						character = PREV
+						is_parent_of = PREV
+						is_grandparent_of = PREV
+					}
+					OR = {
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+						AND = {
+							is_female = no
+							OR = {
+								is_married_matrilineally = no
+								is_married = no
+							}
+						}
+						ROOT = {
+							trait = bastard
+							trait = legit_bastard
+						}
+					}
+				}
+			}
+		}
+		FROM = {
+			random_dynasty_member_even_if_dead = {
+				limit = {
+					dynasty = ROOT
+					could_be_parent_of = ROOT
+					NOR = {
+						character = PREV
+						is_parent_of = PREV
+						is_grandparent_of = PREV
+					}
+					OR = {
+						AND = {
+							is_female = yes
+							is_married_matrilineally = yes
+						}
+						AND = {
+							is_female = no
+							OR = {
+								is_married_matrilineally = no
+								is_married = no
+							}
+						}
+						ROOT = {
+							trait = bastard
+							trait = legit_bastard
+						}
+					}
+				}
+				show_portrait = yes
+				if = {
+					limit = { is_female = no }
+					ROOT = { set_father = PREV }
+				}
+				if = {
+					limit = { is_female = yes }
+					ROOT = { set_mother = PREV }
+				}
+			}
+		}
+		hidden_tooltip = { character_event = { id = customizer_houses.399 } } #locate second parent
+		recalc_succession = yes
+	}
+
+	option = { #No relation
+		name = EVTOPTECUSTOMIZERHOUSES3
+		custom_tooltip = { text = TOOLTIPCUSTOMISERWARNING }
+	}
+
+	after = {
+		father_even_if_dead = {
+			any_owned_bloodline = {
+				add_bloodline_member = ROOT
+			}
+		}
+		character_event = { id = traditional_claims.220 } #check mother bloodlines
+		character_event = { id = traditional_claims.199 days = 10 } #check for traditional dynastic claims
+	}
+}
+character_event = { #set new parent's spouse as parent
+	id = customizer_houses.399
+	desc = "EVTDESCCUSTOMIZERHOUSES399"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	ai = no
+
+	trigger = {
+		NOR = {
+			trait = bastard
+			trait = legit_bastard
+			trait = child_of_consort
+			trait = adopted
+		}
+	}
+
+	immediate = {
+		mother_even_if_dead = {
+			if = {
+				limit = { dynasty = ROOT }
+				random_spouse_even_if_dead = {
+					limit = { could_be_parent_of = ROOT }
+					if = {
+						limit = { is_female = no }
+						ROOT = { set_father = PREV }
+					}
+					if = {
+						limit = { is_female = yes }
+						ROOT = { set_mother = PREV }
+					}
+				}
+			}
+		}
+		father_even_if_dead = {
+			if = {
+				limit = { dynasty = ROOT }
+				random_spouse_even_if_dead = {
+					limit = { could_be_parent_of = ROOT }
+					if = {
+						limit = { is_female = no }
+						ROOT = { set_father = PREV }
+					}
+					if = {
+						limit = { is_female = yes }
+						ROOT = { set_mother = PREV }
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Customiser time out
+character_event = {
+	id = customizer_houses.4
+	desc = "EVTDESCCUSTOMIZERHOUSES4"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		trait = house_customizer
+	}
+
+	immediate = { remove_trait = house_customizer }
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = customizer_houses.5
+	desc = "EVTDESCHOUSECUSTOMIZER5"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		any_child = {
+			character_event = { id = customizer_houses.6 days = 1 }
+		}
+	}
+
+	option = {
+		name = "OK"
+		trigger_switch = {
+			on_trigger = dynasty
+			59		= { character_event = { id = cadet.1  } } # Stark
+			496		= { character_event = { id = cadet.2  } } # Targ
+			190		= { character_event = { id = cadet.3  } } # Lannister
+			1		= { character_event = { id = cadet.4  } } # Martell
+			159		= { character_event = { id = cadet.5  } } # Tully
+			178		= { character_event = { id = cadet.6  } } # Arryn
+			317		= { character_event = { id = cadet.7  } } # Baratheon
+			1544	= { character_event = { id = cadet.7  } } # Durrandon
+			253		= { character_event = { id = cadet.8  } } # Tyrell
+			107		= { character_event = { id = cadet.9  } } # Greyjoy
+			127		= { character_event = { id = cadet.13 } } # Frey
+			38		= { character_event = { id = cadet.20 } } # Rosby
+			36		= { character_event = { id = cadet.22 } } # Rykker
+			30		= { character_event = { id = cadet.22 } } # Thorne
+			45		= { character_event = { id = cadet.23 } } # Bywater
+			52		= { character_event = { id = cadet.24 } } # Velaryon
+			50		= { character_event = { id = cadet.25 } } # Celtigar
+			46		= { character_event = { id = cadet.26 } } # Massey
+			150		= { character_event = { id = cadet.27 } } # Blackwood
+			149		= { character_event = { id = cadet.28 } } # Bracken
+			128		= { character_event = { id = cadet.29 } } # Mallister
+			157		= { character_event = { id = cadet.30 } } # Piper
+			301		= { character_event = { id = cadet.31 } } # Caron
+			306		= { character_event = { id = cadet.32 } } # Swann
+			319		= { character_event = { id = cadet.33 } } # Buckler
+			330		= { character_event = { id = cadet.34 } } # Estermont
+			329		= { character_event = { id = cadet.35 } } # Wylde
+			54		= { character_event = { id = cadet.36 } } # Tarth
+			307		= { character_event = { id = cadet.37 } } # Toyne
+			9		= { character_event = { id = cadet.38 } } # Allyrion
+			16		= { character_event = { id = cadet.39 } } # Dayne
+			14		= { character_event = { id = cadet.40 } } # Fowler
+			10		= { character_event = { id = cadet.41 } } # Jordayne
+			13		= { character_event = { id = cadet.42 } } # Uller
+			12		= { character_event = { id = cadet.43 } } # Yronwood
+			112		= { character_event = { id = cadet.44 } } # Goodbrother
+			122		= { character_event = { id = cadet.45 } } # Harlaw
+			121		= { character_event = { id = cadet.46 } } # Drumm
+			114		= { character_event = { id = cadet.47 } } # Farwynd
+			161		= { character_event = { id = cadet.48 } } # Belmore
+			176		= { character_event = { id = cadet.49 } } # Corbray
+			186		= { character_event = { id = cadet.50 } } # Grafton
+			177		= { character_event = { id = cadet.51 } } # Hunter
+			187		= { character_event = { id = cadet.52 } } # Royce
+			182		= { character_event = { id = cadet.53 } } # Waynwood
+			189		= { character_event = { id = cadet.54 } } # Waxley
+			363		= { character_event = { id = cadet.55 } } # Sunderland
+			171		= { character_event = { id = cadet.56 } } # Baelish
+			601		= { character_event = { id = cadet.56 } } # Baelish Mockingbird
+			87		= { character_event = { id = cadet.57 } } # Bolton
+			79		= { character_event = { id = cadet.58 } } # Dustin
+			84		= { character_event = { id = cadet.59 } } # Flint
+			89		= { character_event = { id = cadet.60 } } # Karstark
+			80		= { character_event = { id = cadet.61 } } # Manderly
+			102		= { character_event = { id = cadet.62 } } # Mormont
+			126		= { character_event = { id = cadet.63 } } # Reed
+			68		= { character_event = { id = cadet.64 } } # Ryswell
+			93		= { character_event = { id = cadet.65 } } # Umber
+			62		= { character_event = { id = cadet.66 } } # Glover
+			83		= { character_event = { id = cadet.67 } } # Hornwood
+			265		= { character_event = { id = cadet.68 } } # Ashford
+			285		= { character_event = { id = cadet.69 } } # Hightower
+			270		= { character_event = { id = cadet.70 } } # Meadows
+			237		= { character_event = { id = cadet.71 } } # Oakheart
+			298		= { character_event = { id = cadet.72 } } # Peake
+			288		= { character_event = { id = cadet.73 } } # Redwyne
+			250		= { character_event = { id = cadet.74 } } # Rowan
+			296		= { character_event = { id = cadet.75 } } # Tarly
+			248		= { character_event = { id = cadet.76 } } # Footly
+			234		= { character_event = { id = cadet.77 } } # Crane
+			281		= { character_event = { id = cadet.78 } } # Florent
+			1428	= { character_event = { id = cadet.79 } } # Strickland
+			235		= { character_event = { id = cadet.80 } } # Osgrey
+			216		= { character_event = { id = cadet.81 } } # Brax
+			227		= { character_event = { id = cadet.82 } } # Crakehall
+			195		= { character_event = { id = cadet.83 } } # Kenning
+			213		= { character_event = { id = cadet.84 } } # Lefford
+			208		= { character_event = { id = cadet.85 } } # Payne
+			233		= { character_event = { id = cadet.86 } } # Sarsfield
+			221		= { character_event = { id = cadet.87 } } # Serret
+			199		= { character_event = { id = cadet.88 } } # Westerling
+			212		= { character_event = { id = cadet.89 } } # Marbrand
+			228		= { character_event = { id = cadet.90 } } # Swyft
+			197		= { character_event = { id = cadet.91 } } # Reyne
+			196		= { character_event = { id = cadet.92 } } # Prester
+			207		= { character_event = { id = cadet.93 } } # Lorch
+			204		= { character_event = { id = cadet.94 } } # Foote
+			226		= { character_event = { id = cadet.95 } } # Plumm
+			## NORTH
+			92		= { character_event = { id = mbs_cadet.001 } } # Burley
+			60		= { character_event = { id = mbs_cadet.002 } } # Cassel
+			61		= { character_event = { id = mbs_cadet.003 } } # Cerwyn
+			351		= { character_event = { id = mbs_cadet.004 } } # Condon
+			105		= { character_event = { id = mbs_cadet.005 } } # Crowl
+			73		= { character_event = { id = mbs_cadet.006 } } # Fenn
+			18877	= { character_event = { id = mbs_cadet.007 } } # Flint of Widow's Watch
+			96		= { character_event = { id = mbs_cadet.008 } } # Harclay
+			350		= { character_event = { id = mbs_cadet.009 } } # Ironsmith
+			98		= { character_event = { id = mbs_cadet.010 } } # Knott
+			94		= { character_event = { id = mbs_cadet.011 } } # Lake
+			97		= { character_event = { id = mbs_cadet.012 } } # Liddle
+			91		= { character_event = { id = mbs_cadet.013 } } # Lightfoot
+			88		= { character_event = { id = mbs_cadet.014 } } # Locke
+			104		= { character_event = { id = mbs_cadet.015 } } # Magnar
+			78		= { character_event = { id = mbs_cadet.016 } } # Marsh
+			86		= { character_event = { id = mbs_cadet.017 } } # Mollen
+			72		= { character_event = { id = mbs_cadet.018 } } # Moss
+			100		= { character_event = { id = mbs_cadet.019 } } # Norrey
+			85		= { character_event = { id = mbs_cadet.020 } } # Overton
+			95		= { character_event = { id = mbs_cadet.021 } } # Poole
+			71		= { character_event = { id = mbs_cadet.022 } } # Slate
+			106		= { character_event = { id = mbs_cadet.023 } } # Stane
+			69		= { character_event = { id = mbs_cadet.024 } } # Stout
+			101		= { character_event = { id = mbs_cadet.025 } } # Tallhart
+			90		= { character_event = { id = mbs_cadet.026 } } # Waterman
+			81		= { character_event = { id = mbs_cadet.027 } } # Wells
+			70		= { character_event = { id = mbs_cadet.028 } } # Whitehill
+			82		= { character_event = { id = mbs_cadet.029 } } # Woolfield
+			99		= { character_event = { id = mbs_cadet.030 } } # Wull
+			1446	= { character_event = { id = mbs_cadet.031 } } # Bole
+			1445	= { character_event = { id = mbs_cadet.032 } } # Branch
+			1443	= { character_event = { id = mbs_cadet.033 } } # Forrester
+			65		= { character_event = { id = mbs_cadet.034 } } # Fisher
+			76		= { character_event = { id = mbs_cadet.035 } } # Hayes
+			1174344	= { character_event = { id = mbs_cadet.036 } } # Thenn
+			1444	= { character_event = { id = mbs_cadet.037 } } # Woods
+			74		= { character_event = { id = mbs_cadet.038 } } # Blackmyre
+			1448	= { character_event = { id = mbs_cadet.039 } } # Cray
+			1449	= { character_event = { id = mbs_cadet.040 } } # Greengood
+			1450	= { character_event = { id = mbs_cadet.041 } } # Peat
+			1451	= { character_event = { id = mbs_cadet.042 } } # Quagg
+			63859	= { character_event = { id = mbs_cadet.043 } } # Greystark
+			1872	= { character_event = { id = mbs_cadet.044 } } # Tuttle
+			800867	= { character_event = { id = mbs_cadet.045 } } # Silverfield
+			800838	= { character_event = { id = mbs_cadet.046 } } # Degore
+			800836	= { character_event = { id = mbs_cadet.047 } } # Amber
+			800841	= { character_event = { id = mbs_cadet.048 } } # Long
+			800837	= { character_event = { id = mbs_cadet.049 } } # Frost
+			800833	= { character_event = { id = mbs_cadet.050 } } # Harrow
+			1876	= { character_event = { id = mbs_cadet.051 } } # Brownbarrow
+			1877	= { character_event = { id = mbs_cadet.052 } } # Elliver
+			1874	= { character_event = { id = mbs_cadet.053 } } # Glenmore
+			1878	= { character_event = { id = mbs_cadet.054 } } # Grayson
+			800835	= { character_event = { id = mbs_cadet.055 } } # Towers
+			800834	= { character_event = { id = mbs_cadet.056 } } # Greenwood
+			18876	= { character_event = { id = mbs_cadet.057 } } # Flint of the Mountains
+			800842	= { character_event = { id = mbs_cadet.058 } } # Goodmen
+			1880	= { character_event = { id = mbs_cadet.059 } } # Dormund
+			882175	= { character_event = { id = mbs_cadet.060 } } # Woodfoot
+			800839	= { character_event = { id = mbs_cadet.061 } } # Ashwood
+			800840	= { character_event = { id = mbs_cadet.062 } } # Holt
+			1452	= { character_event = { id = mbs_cadet.063 } } # Boggs
+			1174345	= { character_event = { id = mbs_cadet.064 } } # Redbeard
+			174831	= { character_event = { id = mbs_cadet.065 } } # Warrick
+			## WESTERLANDS
+		#	191		= { character_event = { id = mbs_cadet.066 } } # Broom
+		#	193		= { character_event = { id = mbs_cadet.067 } } # Hamell
+			194		= { character_event = { id = mbs_cadet.068 } } # Farman
+			198		= { character_event = { id = mbs_cadet.069 } } # Drox
+		#	200		= { character_event = { id = mbs_cadet.070 } } # Banefort
+		#	201		= { character_event = { id = mbs_cadet.071 } } # Estren
+			202		= { character_event = { id = mbs_cadet.072 } } # Stackspear
+		#	203		= { character_event = { id = mbs_cadet.073 } } # Vikary
+			205		= { character_event = { id = mbs_cadet.074 } } # Yarwyck
+		#	214		= { character_event = { id = mbs_cadet.075 } } # Garner
+		#	215		= { character_event = { id = mbs_cadet.076 } } # Myatt
+			217		= { character_event = { id = mbs_cadet.077 } } # Lydden
+		#	218		= { character_event = { id = mbs_cadet.078 } } # Ferren
+		#	219		= { character_event = { id = mbs_cadet.079 } } # Peckledon
+		#	220		= { character_event = { id = mbs_cadet.080 } } # Hawthorne
+			222		= { character_event = { id = mbs_cadet.081 } } # Yew
+			223		= { character_event = { id = mbs_cadet.082 } } # Jast
+		#	229		= { character_event = { id = mbs_cadet.083 } } # Falwell
+			230		= { character_event = { id = mbs_cadet.084 } } # Clegane
+		#	231		= { character_event = { id = mbs_cadet.085 } } # Turnberry
+		#	232		= { character_event = { id = mbs_cadet.086 } } # Greenfield
+		#	2159	= { character_event = { id = mbs_cadet.087 } } # Sarwyck
+		#	2158	= { character_event = { id = mbs_cadet.088 } } # Westford
+		#	206		= { character_event = { id = mbs_cadet.089 } } # Bettley
+		#	225		= { character_event = { id = mbs_cadet.090 } } # Tarbeck
+		#	224		= { character_event = { id = mbs_cadet.091 } } # Algood
+		#	174409	= { character_event = { id = mbs_cadet.092 } } # Clifton
+		#	174362	= { character_event = { id = mbs_cadet.093 } } # Doggett
+		#	45000156= { character_event = { id = mbs_cadet.094 } } # Graymarch
+		#	174414	= { character_event = { id = mbs_cadet.095 } } # Hetherspoon
+		#	209		= { character_event = { id = mbs_cadet.096 } } # Moreland
+		#	2161	= { character_event = { id = mbs_cadet.097 } } # Parren
+			210		= { character_event = { id = mbs_cadet.098 } } # Ruttiger
+		#	192		= { character_event = { id = mbs_cadet.099 } } # Spicer
+		#	802043	= { character_event = { id = mbs_cadet.100 } } # Lanny
+		#	802044	= { character_event = { id = mbs_cadet.101 } } # Lannett
+		#	802045	= { character_event = { id = mbs_cadet.102 } } # Lantell
+		#	174406	= { character_event = { id = mbs_cadet.103 } } # Casterly
+		#	174830	= { character_event = { id = mbs_cadet.104 } } # Ruskyn
+			174832	= { character_event = { id = mbs_cadet.105 } } # Whitfield
+		#	802042	= { character_event = { id = mbs_cadet.106 } } # Kyndall
+		#	174842	= { character_event = { id = mbs_cadet.107 } } # Stilwood
+		#	174358	= { character_event = { id = mbs_cadet.108 } } # Lanster
+			## RIVERLANDS
+			125		= { character_event = { id = mbs_cadet.109 } } # Charlton
+			131		= { character_event = { id = mbs_cadet.110 } } # Vypren
+			132		= { character_event = { id = mbs_cadet.111 } } # Haigh
+			133		= { character_event = { id = mbs_cadet.112 } } # Grell
+			134		= { character_event = { id = mbs_cadet.113 } } # Paege
+			135		= { character_event = { id = mbs_cadet.114 } } # Lolliston
+			136		= { character_event = { id = mbs_cadet.115 } } # Wode
+			137		= { character_event = { id = mbs_cadet.116 } } # Darry
+			138		= { character_event = { id = mbs_cadet.117 } } # Mooton
+			139		= { character_event = { id = mbs_cadet.118 } } # Hawick
+			140		= { character_event = { id = mbs_cadet.119 } } # Wayn
+			141		= { character_event = { id = mbs_cadet.120 } } # Terrick
+			142		= { character_event = { id = mbs_cadet.121 } } # Keath
+			143		= { character_event = { id = mbs_cadet.122 } } # Butterwell
+			145		= { character_event = { id = mbs_cadet.123 } } # Roote
+			146		= { character_event = { id = mbs_cadet.124 } } # Whent
+			148		= { character_event = { id = mbs_cadet.125 } } # Goodbrook
+			151		= { character_event = { id = mbs_cadet.126 } } # Shawney
+			152		= { character_event = { id = mbs_cadet.127 } } # Ryger
+			153		= { character_event = { id = mbs_cadet.128 } } # Vance of Wayfarer's Rest
+			155		= { character_event = { id = mbs_cadet.129 } } # Blanetree
+			156		= { character_event = { id = mbs_cadet.130 } } # Smallwood
+			147		= { character_event = { id = mbs_cadet.131 } } # Lychester
+			69114	= { character_event = { id = mbs_cadet.132 } } # Kanet
+			69113	= { character_event = { id = mbs_cadet.133 } } # Rushmoor
+		#	2160	= { character_event = { id = mbs_cadet.134 } } # Harlton
+			129		= { character_event = { id = mbs_cadet.135 } } # Erenford
+			357		= { character_event = { id = mbs_cadet.136 } } # Harroway
+			355		= { character_event = { id = mbs_cadet.137 } } # Lothston
+			174399	= { character_event = { id = mbs_cadet.138 } } # Mudd
+			356		= { character_event = { id = mbs_cadet.139 } } # Strong
+			359		= { character_event = { id = mbs_cadet.140 } } # Qoherys
+			358		= { character_event = { id = mbs_cadet.141 } } # Towers
+			174429	= { character_event = { id = mbs_cadet.142 } } # Cox
+			211		= { character_event = { id = mbs_cadet.143 } } # Deddings
+			174430	= { character_event = { id = mbs_cadet.144 } } # Fisher
+			174431	= { character_event = { id = mbs_cadet.145 } } # Bromley
+			174432	= { character_event = { id = mbs_cadet.146 } } # Justman
+			174433	= { character_event = { id = mbs_cadet.147 } } # Longbough
+			174434	= { character_event = { id = mbs_cadet.148 } } # Nayland
+			174435	= { character_event = { id = mbs_cadet.149 } } # Teague
+			178454	= { character_event = { id = mbs_cadet.150 } } # Grey
+			178453	= { character_event = { id = mbs_cadet.151 } } # Chambers
+			178452	= { character_event = { id = mbs_cadet.152 } } # Bigglestone
+			154		= { character_event = { id = mbs_cadet.153 } } # Vance of Atranta
+			178450	= { character_event = { id = mbs_cadet.154 } } # Heddle
+			178455	= { character_event = { id = mbs_cadet.155 } } # Hook
+			174846	= { character_event = { id = mbs_cadet.156 } } # Pemford
+			178457	= { character_event = { id = mbs_cadet.157 } } # Perryn
+			178456	= { character_event = { id = mbs_cadet.158 } } # Nutt
+			174829	= { character_event = { id = mbs_cadet.159 } } # Groves
+			## VALE
+			165		= { character_event = { id = mbs_cadet.160 } } # Borrell
+			169		= { character_event = { id = mbs_cadet.161 } } # Coldwater
+			173		= { character_event = { id = mbs_cadet.162 } } # Donniger
+			175		= { character_event = { id = mbs_cadet.163 } } # Egen
+			168		= { character_event = { id = mbs_cadet.164 } } # Elesham
+			184		= { character_event = { id = mbs_cadet.165 } } # Hardyng
+			163		= { character_event = { id = mbs_cadet.166 } } # Hersy
+			174357	= { character_event = { id = mbs_cadet.167 } } # Long
+			174		= { character_event = { id = mbs_cadet.168 } } # Lynderly
+			181		= { character_event = { id = mbs_cadet.169 } } # Melcolm
+			179		= { character_event = { id = mbs_cadet.170 } } # Moore
+			167		= { character_event = { id = mbs_cadet.171 } } # Pryor
+			183		= { character_event = { id = mbs_cadet.172 } } # Redfort
+			174359	= { character_event = { id = mbs_cadet.173 } } # Hungerford
+			188		= { character_event = { id = mbs_cadet.174 } } # Ruthermont
+			185		= { character_event = { id = mbs_cadet.175 } } # Shett
+			172		= { character_event = { id = mbs_cadet.176 } } # Templeton
+			162		= { character_event = { id = mbs_cadet.177 } } # Tollett
+			801047	= { character_event = { id = mbs_cadet.178 } } # Breakstone
+			170		= { character_event = { id = mbs_cadet.179 } } # Upcliff
+			180		= { character_event = { id = mbs_cadet.180 } } # Wydman
+			10002	= { character_event = { id = mbs_cadet.181 } } # Back
+			10000	= { character_event = { id = mbs_cadet.182 } } # Badics
+			10001	= { character_event = { id = mbs_cadet.183 } } # Saul
+			164		= { character_event = { id = mbs_cadet.184 } } # Longthorpe
+			174437	= { character_event = { id = mbs_cadet.185 } } # Shady Glen
+			166		= { character_event = { id = mbs_cadet.186 } } # Torrent
+			801048	= { character_event = { id = mbs_cadet.187 } } # Lipps
+			174839	= { character_event = { id = mbs_cadet.188 } } # of the Vale
+			174851	= { character_event = { id = mbs_cadet.189 } } # Underleaf
+			174823	= { character_event = { id = mbs_cadet.190 } } # Crayne
+			174836	= { character_event = { id = mbs_cadet.191 } } # Woodhull
+			174835	= { character_event = { id = mbs_cadet.192 } } # Dutton
+			19993	= { character_event = { id = mbs_cadet.193 } } # Royce of the Gates
+		#	Unused	= { character_event = { id = mbs_cadet.194 } } # Blank
+			881801	= { character_event = { id = mbs_cadet.195 } } # Brightstone
+			881800	= { character_event = { id = mbs_cadet.196 } } # Shell
+			## STORMLANDS
+			311		= { character_event = { id = mbs_cadet.197 } } # Horpe
+			273		= { character_event = { id = mbs_cadet.198 } } # Peasebury
+			302		= { character_event = { id = mbs_cadet.199 } } # Selmy
+			303		= { character_event = { id = mbs_cadet.200 } } # Dondarrion
+			304		= { character_event = { id = mbs_cadet.201 } } # Trant
+			305		= { character_event = { id = mbs_cadet.202 } } # Lonmouth
+			308		= { character_event = { id = mbs_cadet.203 } } # Grandison
+			310		= { character_event = { id = mbs_cadet.204 } } # Cafferen
+			312		= { character_event = { id = mbs_cadet.205 } } # Hasty
+			313		= { character_event = { id = mbs_cadet.206 } } # Fell
+			316		= { character_event = { id = mbs_cadet.207 } } # Connington
+			318		= { character_event = { id = mbs_cadet.208 } } # Errol
+			320		= { character_event = { id = mbs_cadet.209 } } # Penrose
+			321		= { character_event = { id = mbs_cadet.210 } } # Morrigen
+			322		= { character_event = { id = mbs_cadet.211 } } # Rogers
+			323		= { character_event = { id = mbs_cadet.212 } } # Staedmon
+			324		= { character_event = { id = mbs_cadet.213 } } # Herston
+			325		= { character_event = { id = mbs_cadet.214 } } # Tudbury
+			327		= { character_event = { id = mbs_cadet.215 } } # Mertyns
+			328		= { character_event = { id = mbs_cadet.216 } } # Kellington
+			331		= { character_event = { id = mbs_cadet.217 } } # Rambton
+			326		= { character_event = { id = mbs_cadet.218 } } # Gower
+			9110	= { character_event = { id = mbs_cadet.219 } } # Seaworth
+			354		= { character_event = { id = mbs_cadet.220 } } # Wagstaff
+			361		= { character_event = { id = mbs_cadet.221 } } # Swygert
+			362		= { character_event = { id = mbs_cadet.222 } } # Musgood
+			332		= { character_event = { id = mbs_cadet.223 } } # Bolling
+			333		= { character_event = { id = mbs_cadet.224 } } # Wensington
+			174436	= { character_event = { id = mbs_cadet.225 } } # Greenpools
+			65100	= { character_event = { id = mbs_cadet.226 } } # of King's Mountain
+			805046	= { character_event = { id = mbs_cadet.227 } } # Whitehead
+			881808	= { character_event = { id = mbs_cadet.228 } } # Brownhill
+			## IRON ISLANDS
+			64		= { character_event = { id = mbs_cadet.229 } } # Botley
+			109		= { character_event = { id = mbs_cadet.230 } } # Saltcliffe
+			110		= { character_event = { id = mbs_cadet.231 } } # Merlyn
+			116		= { character_event = { id = mbs_cadet.232 } } # Orkwood
+			118		= { character_event = { id = mbs_cadet.233 } } # Blacktyde
+			119		= { character_event = { id = mbs_cadet.234 } } # Volmark
+			120		= { character_event = { id = mbs_cadet.235 } } # Stonetree
+			67		= { character_event = { id = mbs_cadet.236 } } # Wynch
+			117		= { character_event = { id = mbs_cadet.237 } } # Sunderly
+			113		= { character_event = { id = mbs_cadet.238 } } # Sparr
+			115		= { character_event = { id = mbs_cadet.239 } } # Kenning
+			111		= { character_event = { id = mbs_cadet.240 } } # Myre
+			108		= { character_event = { id = mbs_cadet.241 } } # Stonehouse
+			123		= { character_event = { id = mbs_cadet.242 } } # Tawney
+			66		= { character_event = { id = mbs_cadet.243 } } # Hoare
+			1507	= { character_event = { id = mbs_cadet.244 } } # Codd
+			1508	= { character_event = { id = mbs_cadet.245 } } # Greyiron
+			1506	= { character_event = { id = mbs_cadet.246 } } # Humble
+			1503	= { character_event = { id = mbs_cadet.247 } } # Netley
+			1504	= { character_event = { id = mbs_cadet.248 } } # Sharp
+			124		= { character_event = { id = mbs_cadet.249 } } # Shepherd
+			1505	= { character_event = { id = mbs_cadet.250 } } # Weaver
+			1501	= { character_event = { id = mbs_cadet.251 } } # Stern
+			1500	= { character_event = { id = mbs_cadet.252 } } # Ironmaker
+			1490	= { character_event = { id = mbs_cadet.253 } } # Salt
+			fallback= { character_event = { id = cadet.11 } } # New Dynasty
+		}
+	}
+}
+
+character_event = {
+	id = customizer_houses.6
+	is_triggered_only = yes
+	hide_window = yes
+	immediate = { dynasty = FROM }
+	option = {
+		name = OK
+	}
+}
+
+#Create new palace/clan to avoid CTD
+character_event = {
+	id = customizer_houses.7
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		if = {
+			limit = { is_patrician = yes }
+			family_palace = { destroy_settlement = THIS }
+			create_family_palace = yes
+		}
+		# if = {
+			# limit = { is_nomadic = yes }
+			# liege = { save_event_target_as = nomad_liege }
+			# clan_title = { destroy_landed_title = THIS }
+			# create_title = {
+				# tier = KING
+				# landless = yes
+				# temporary = no
+				# custom_created = yes
+				# culture = ROOT
+				# holder = ROOT
+				# nomad = yes
+				# name = CUSTOMISED_NOMAD_CLAN
+			# }
+			# primary_title = {
+				# set_title_nomad = { title = THIS status = yes }
+			# }
+			# event_target:nomad_liege = { ROOT = { set_defacto_liege = PREV } }
+		# }
+	}
+
+	option = {
+		name = OK
+	}
+}

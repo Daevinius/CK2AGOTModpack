@@ -1,0 +1,331 @@
+210997 = {
+	name = "Барба"	# Eddard Woolfield's sister, Halys' mother - not canon
+	dynasty = 82
+    female = yes
+
+	religion = "old_gods"
+	culture = "northman"
+
+	father = 341082
+
+	7925.1.1 = {
+        birth = yes
+    }
+	7977.1.1 = {
+        death = yes
+    }
+}
+
+100982 = {
+    name = "Халис"
+    dynasty = 80
+
+    father = 60180
+    mother = 210997
+
+    culture = "half_southron"
+    religion = "the_seven"
+    add_trait = "bastard"
+    give_nickname = "nick_snow"
+
+    7951.1.1 = {
+        birth = yes
+    }
+    7969.1.1 = {
+        dynasty = 800867
+        effect = {
+            if = {
+                limit = { NOT = { dynasty = 81 } }
+                set_dynasty_flag = is_cadet_house
+                c_60180 = { #Silverfield father
+                    set_dynasty_flag = has_cadet_house
+                    set_dynasty_flag = owned_cadet_house_@PREV
+                    ROOT = { set_dynasty_flag = cadet_house_@PREV }
+                }
+            }
+        }
+    }
+    8012.1.1 = {
+        death = yes
+    }
+}
+
+100983 = {
+    name = "Этан"
+    dynasty = 800867
+
+    father = 100982
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    7989.1.1 = {
+        birth = yes
+    }
+    8046.1.1 = {
+        death = yes
+    }
+}
+
+100984 = {
+    name = "Мейнард"
+    dynasty = 800867
+
+    father = 100983
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8009.1.1 = {
+        birth = yes
+    }
+    8067.1.1 = {
+        death = yes
+    }
+}
+
+
+100985 = {
+    name = "Джорон"
+    dynasty = 800867
+
+    father = 100984
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8038.1.1 = {
+        birth = yes
+    }
+    8074.1.1 = {
+        death = yes
+    }
+}
+
+100986 = {
+    name = "Рикард"
+    dynasty = 800867
+
+    father = 100985
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8062.1.1 = {
+        birth = yes
+    }
+    8112.1.1 = {
+        death = yes
+    }
+}
+
+100987 = {
+    name = "Эдвил"
+    dynasty = 800867
+
+    father = 100986
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8096.1.1 = {
+        birth = yes
+    }
+    8160.1.1 = {
+        death = yes
+    }
+}
+
+100988 = {
+    name = "Уоррик"
+    dynasty = 800867
+
+    father = 100987
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8134.1.1 = {
+        birth = yes
+    }
+    8165.1.1 = {
+        death = yes
+    }
+}
+
+100989 = {
+    name = "Артос"
+    dynasty = 800867
+
+    father = 100988
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8160.1.1 = {
+        birth = yes
+    }
+    8223.1.1 = {
+        death = yes
+    }
+}
+
+100990 = {
+    name = "Карлон"
+    dynasty = 800867
+
+    father = 100989
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8186.1.1 = {
+        birth = yes
+    }
+    8234.1.1 = {
+        death = yes
+    }
+}
+
+100991 = {
+    name = "Меджер"
+    dynasty = 800867
+
+    father = 100990
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8209.1.1 = {
+        birth = yes
+    }
+    8267.1.1 = {
+        death = yes
+    }
+}
+
+100992 = {
+    name = "Рикард"
+    dynasty = 800867
+
+    father = 100990
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8210.1.1 = {
+        birth = yes
+    }
+    8267.1.1 = {
+        death = yes
+    }
+}
+
+100993 = {
+    name = "Уоррик"
+    dynasty = 800867
+
+    father = 100992
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8236.1.1 = {
+        birth = yes
+    }
+    8295.1.1 = {
+        death = yes
+    }
+}
+
+152080 = { #Unnamed knight, perhaps son of manderly/woolfield. Changed into landed knight serving Wyman. Paxter Redwyne
+	name = "Медрик"
+	dynasty = 800867
+    father = 100992
+
+	martial = 4
+	stewardship = 3
+	diplomacy = 4
+	intrigue = 2
+	learning = 2
+
+	religion = "the_seven"
+	culture = "half_southron"
+
+	add_trait = "tough_soldier"
+	add_trait = "honorable"
+	add_trait = "wroth"
+	add_trait = "brave"
+
+	8237.1.1 = {
+		birth = yes
+		effect = {
+			if = {
+				limit = { is_ruler = no }
+				c_whiteharbor = { holder_scope = { ROOT = { move_character = PREV } } }
+			}
+		}
+	}
+	8253.1.1 = {
+		add_trait = trained_warrior
+		add_trait = knight
+	}
+}
+
+100994 = {
+    name = "Бельтазар"
+    dynasty = 800867
+
+    father = 100993
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8272.1.1 = {
+        birth = yes
+    }
+}
+
+100995 = {
+    name = "Крегард"
+    dynasty = 800867
+
+    father = 100994
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8296.1.1 = {
+        birth = yes
+    }
+}
+
+#Belthasar's brother
+
+100996 = {
+    name = "Теомор"
+    dynasty = 800867
+
+    father = 100993
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8275.1.1 = {
+        birth = yes
+    }
+}
+
+100997 = {
+    name = "Лотор"
+    dynasty = 800867
+
+    father = 100996
+
+    culture = "half_southron"
+    religion = "the_seven"
+
+    8299.1.1 = {
+        birth = yes
+    }
+}

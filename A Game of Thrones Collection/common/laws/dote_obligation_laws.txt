@@ -1,0 +1,1057 @@
+law_groups = {
+	tax_levy_law_imperial = {
+		law_type = obligations
+		left_value = TAX
+		right_value = LEVY
+		slider_sprite = GFX_tax_levy_slider
+		allowed_for_councillors = yes
+	}
+}
+
+laws = {
+	tax_levy_law_imperial_0 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			has_law = tax_levy_law_imperial_1
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				holder_scope = {
+					any_vassal = {
+						limit = {
+							is_feudal = yes
+							NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_likes_new_obligation_law
+							years = 5
+						}
+					}
+				}
+
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = 0.4
+		city_vassal_tax_modifier = 0.4
+		castle_vassal_max_levy = -0.7
+		city_vassal_max_levy = -0.7
+	}
+
+	tax_levy_law_imperial_1 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_0
+				has_law = tax_levy_law_imperial_2
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_0
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_2
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_0
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_2
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = 0.3
+		city_vassal_tax_modifier = 0.3
+		castle_vassal_max_levy = -0.6
+		city_vassal_max_levy = -0.6
+	}
+
+	tax_levy_law_imperial_2 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_1
+				has_law = tax_levy_law_imperial_3
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_1
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_3
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_1
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_3
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = 0.2
+		city_vassal_tax_modifier = 0.2
+		castle_vassal_max_levy = -0.5
+		city_vassal_max_levy = -0.5
+	}
+
+	tax_levy_law_imperial_3 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_2
+				has_law = tax_levy_law_imperial_4
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_2
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_4
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_2
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_4
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = 0.1
+		city_vassal_tax_modifier = 0.1
+		castle_vassal_max_levy = -0.4
+		city_vassal_max_levy = -0.4
+	}
+
+	tax_levy_law_imperial_4 = {
+		group = tax_levy_law_imperial
+		default = yes
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_3
+				has_law = tax_levy_law_imperial_5
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_3
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_5
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_3
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_5
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_max_levy = -0.3
+		city_vassal_max_levy = -0.3
+
+
+	}
+
+	tax_levy_law_imperial_5 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_4
+				has_law = tax_levy_law_imperial_6
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_4
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_6
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_4
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_6
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = -0.1
+		city_vassal_tax_modifier = -0.1
+		castle_vassal_max_levy = -0.2
+		city_vassal_max_levy = -0.2
+	}
+
+	tax_levy_law_imperial_6 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_5
+				has_law = tax_levy_law_imperial_7
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_5
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_7
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_5
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_7
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_7
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = -0.2
+		city_vassal_tax_modifier = -0.2
+		castle_vassal_max_levy = -0.4
+		city_vassal_max_levy = -0.4
+	}
+
+	tax_levy_law_imperial_7 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			OR = {
+				has_law = tax_levy_law_imperial_6
+				has_law = tax_levy_law_imperial_8
+			}
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						has_law = tax_levy_law_imperial_6
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_nomadic = yes
+							}
+						}
+					}
+					AND = {
+						has_law = tax_levy_law_imperial_8
+						holder_scope = {
+							is_feudal = yes
+						}
+					}
+					NOT = {
+						holder_scope = {
+							OR = {
+								is_republic = yes
+								is_feudal = yes
+								is_nomadic = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_6
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_dislikes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_law = tax_levy_law_imperial_8
+					}
+					holder_scope = {
+						any_vassal = {
+							limit = {
+								is_feudal = yes
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+								NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							}
+							opinion = {
+								who = ROOT
+								modifier = opinion_likes_new_obligation_law
+								years = 5
+							}
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_8
+			}
+		}
+		castle_vassal_tax_modifier = -0.3
+		city_vassal_tax_modifier = -0.3
+		castle_vassal_max_levy = -0.1
+		city_vassal_max_levy = -0.1
+	}
+
+    tax_levy_law_imperial_8 = {
+		group = tax_levy_law_imperial
+
+		potential = {
+			has_dlc = "Zeus"
+			NOT = { tier = baron }
+			holder_scope = {
+				government = valyrian_imperial_government
+			}
+		}
+		allow = {
+			has_law = tax_levy_law_imperial_7
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.01
+			modifier = {
+				factor = 0
+				NOT = {
+					holder_scope = {
+						is_feudal = yes
+					}
+				}
+			}
+		}
+		ai_will_revoke = {
+			factor = 0
+		}
+		effect = {
+			hidden_tooltip = {
+				holder_scope = {
+					any_vassal = {
+						limit = {
+							is_feudal = yes
+							NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_dislikes_new_obligation_law } }
+							NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_likes_new_obligation_law } }
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_dislikes_new_obligation_law
+							years = 5
+						}
+					}
+				}
+				revoke_law = tax_levy_law_feudal_0
+				revoke_law = tax_levy_law_feudal_1
+				revoke_law = tax_levy_law_feudal_2
+				revoke_law = tax_levy_law_feudal_3
+				revoke_law = tax_levy_law_feudal_4
+				revoke_law = tax_levy_law_feudal_5
+				revoke_law = tax_levy_law_feudal_6
+				revoke_law = tax_levy_law_feudal_7
+				revoke_law = tax_levy_law_feudal_8
+				revoke_law = tax_levy_law_republic_0
+				revoke_law = tax_levy_law_republic_1
+				revoke_law = tax_levy_law_republic_2
+				revoke_law = tax_levy_law_republic_3
+				revoke_law = tax_levy_law_republic_4
+				revoke_law = tax_levy_law_republic_5
+				revoke_law = tax_levy_law_republic_6
+				revoke_law = tax_levy_law_republic_7
+				revoke_law = tax_levy_law_republic_8
+				revoke_law = tax_levy_law_imperial_0
+				revoke_law = tax_levy_law_imperial_1
+				revoke_law = tax_levy_law_imperial_2
+				revoke_law = tax_levy_law_imperial_3
+				revoke_law = tax_levy_law_imperial_4
+				revoke_law = tax_levy_law_imperial_5
+				revoke_law = tax_levy_law_imperial_6
+				revoke_law = tax_levy_law_imperial_7
+			}
+		}
+		castle_vassal_tax_modifier = -0.4
+		city_vassal_tax_modifier = -0.4
+	}
+
+}

@@ -1,0 +1,27 @@
+namespace = mbs_kingsguard
+################################
+#mbs_kingsguard.1 - Former Kingsguard Death Maintenance
+character_event = {
+	id = mbs_kingsguard.1
+	hide_window = yes
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+        trait = former_kingsguard
+        NOT = {
+            trait = kingsguard
+        }
+    }
+
+	immediate = {
+        remove_trait = former_kingsguard
+        add_trait = kingsguard
+    }
+
+	option = {
+        name = OK
+    }
+}

@@ -1,0 +1,166 @@
+namespace = sb_freedmen
+
+#Grant Barony to Freedmen Companies in Meereen
+character_event = {
+	id = sb_freedmen.1
+	desc = "EVTDESCsb_freedmen.1"
+	picture = GFX_Freedmen
+
+	is_triggered_only = yes
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+	    has_global_flag = freedmen_companies
+	}
+
+	option = {
+		name = "EVTOPTA_sbfreedmen.1"
+		ai_chance = { factor = 90 }
+		any_character = {
+			limit = { has_landed_title = d_mothers_men }
+			b_pyramid_base = {
+				grant_title = PREV
+			}
+		}
+		any_character = {
+			limit = { has_landed_title = d_free_brothers }
+			b_master_vault = {
+				grant_title = PREV
+			}
+		}
+		any_character = {
+			limit = { has_landed_title = d_stalwart_shields }
+			b_slave_dorms = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sbfreedmen.1"
+		ai_chance = { factor = 10 }
+	}
+}
+#Avoid Slave Owners as Commander of Freedmen
+character_event = {
+	id = sb_freedmen.101
+	desc = "EVTDESCsb_freedmen.101"
+	picture = GFX_Freedmen
+
+	ai = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = freedmen_companies
+		OR = {
+			has_landed_title = d_mothers_men
+			has_landed_title = d_free_brothers
+			has_landed_title = d_stalwart_shields
+		}
+		NOT = { has_character_flag = freedmen_commander }
+		trait = slave_owner
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = OK
+		set_character_flag = freedmen_commander
+		remove_trait = slave_owner
+		add_trait = liberator
+	}
+}
+#Former Slaves can change their culture to Freedmen
+character_event = {
+	id = sb_freedmen.2
+	desc = "EVTDESCsb_freedmen.2"
+	picture = GFX_Freedmen
+
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		trait = former_slave
+		NOT = { has_character_flag = freedmen }
+		NOT = { has_character_flag = refused_freedmen }
+		OR = {
+			culture = astapori
+			culture = yunkaii
+			culture = meereenese
+			culture = ghiscari
+			culture = summer_islander
+			culture = naathi
+			culture = basilisk_islander
+			culture = pentosi
+			culture = lysene
+			culture = volantene
+		}
+		top_liege = {
+			dynasty = 496
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_canon_stormborn
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 18
+	}
+
+	option = {
+		name = OK
+		ai_chance = { factor = 90 }
+		set_character_flag = freedmen
+		if = {
+			limit = { culture = astapori }
+			culture = astapori_freedmen
+		}
+		if = {
+			limit = { culture = yunkaii  }
+			culture = yunkaii_freedmen
+		}
+		if = {
+			limit = { culture = meereenese  }
+			culture = meereenese_freedmen
+		}
+		if = {
+			limit = { culture = ghiscari  }
+			culture = ghiscari_freedmen
+		}
+		if = {
+			limit = { culture = summer_islander  }
+			culture = summer_islander_freedmen
+		}
+		if = {
+			limit = { culture = basilisk_islander  }
+			culture = basilisk_islander_freedmen
+		}
+		if = {
+			limit = { culture = naathi  }
+			culture = naathi_freedmen
+		}
+		if = {
+			limit = { culture = pentosi  }
+			culture = pentosi_freedmen
+		}
+		if = {
+			limit = { culture = lysene  }
+			culture = lysene_freedmen
+		}
+		if = {
+			limit = { culture = volantene  }
+			culture = volantene_freedmen
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sbfreedmen.2"
+		ai_chance = { factor = 10 }
+		add_trait = craven
+		set_character_flag = refused_freedmen
+	}
+}

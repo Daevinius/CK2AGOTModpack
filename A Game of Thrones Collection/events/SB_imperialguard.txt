@@ -1,0 +1,3878 @@
+namespace = sb_imperialguard
+#ImperialGuard 0 - LC dies and Starts event to choose new one
+character_event = {
+	id = sb_imperialguard.0
+	desc = "EVTDESC_sb_imperialguard.0"
+	title = "EVTTITLE_sb_imperialguard.0"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	has_character_flag = LC_imperialguard
+
+	trigger = {
+		has_landed_title = d_imperialguard
+		trait = imperialguard
+	}
+
+	option = {
+		name = "Ok."
+		set_global_flag = choose_new_imperialguard
+		any_playable_ruler = {
+			limit = { has_landed_title = e_ghiscar }
+			character_event = {
+				id = sb_imperialguard.4
+				days = 1
+			}
+		}
+	}
+}
+#ImperialGuard 1 - Daenerys Create Imperial Guard and Choose First LC
+narrative_event = {
+	id = sb_imperialguard.1
+	desc = "EVTDESC_sb_imperialguard.1"
+	title = "EVTTITLE_sb_imperialguard.1"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = imperialguard_exists }
+	}
+
+	immediate = { set_global_flag = imperialguard_exists }
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.1"
+		ai_chance = { factor = 85 }
+		trigger = {
+			c_201302 = {
+				is_alive = yes
+				is_ruler = no
+				prisoner = no
+				is_incapable = no
+			}
+		}
+		c_201302 = {
+			prestige = 200
+			activate_title = { title = d_imperialguard status = yes }
+			add_friend = 77041
+			set_character_flag = LC_imperialguard
+			add_trait = imperialguard
+			remove_trait = former_kingsguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.3
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_imperialguard.1"
+		ai_chance = { factor = 5 }
+		trigger = {
+			c_8300100 = {
+				is_alive = yes
+				is_ruler = no
+				prisoner = no
+				is_incapable = no
+			}
+		}
+		c_8300100 = {
+			prestige = 200
+			activate_title = { title = d_imperialguard status = yes }
+			add_trait = imperialguard
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.3
+				days = 5
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTC_sb_imperialguard.1"
+		ai_chance = { factor = 5 }
+		trigger = {
+			c_12300101 = {
+				is_alive = yes
+				is_ruler = no
+				prisoner = no
+				is_incapable = no
+			}
+		}
+		c_12300101 = {
+			prestige = 200
+			set_character_flag = LC_imperialguard
+			add_trait = imperialguard
+			activate_title = { title = d_imperialguard status = yes }
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.3
+				days = 5
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTD_sb_imperialguard.1"
+		ai_chance = { factor = 5 }
+		trigger = {
+			c_102 = {
+				is_alive = yes
+				is_ruler = no
+				prisoner = no
+				is_incapable = no
+			}
+		}
+		c_102 = {
+			prestige = 200
+			set_character_flag = LC_imperialguard
+			add_trait = imperialguard
+			activate_title = { title = d_imperialguard status = yes }
+			show_portrait = yes
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.3
+				days = 5
+			}
+		}
+	}
+}
+#ImperialGuard 110 - Random Emperor Create Imperial Guard and Choose First LC
+character_event = {
+	id = sb_imperialguard.110
+	desc = "EVTDESC_sb_imperialguard.110"
+	title = "EVTTITLE_sb_imperialguard.1"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = imperialguard_exists }
+	}
+
+	immediate = {
+		set_global_flag = imperialguard_exists
+		random_realm_character = {
+			limit = {
+				can_be_imperialguard_candidate_trigger = yes
+				is_ruler = no
+				is_alive = yes
+				NOT = { trait = imperialguard }
+				NOT = { has_character_flag = IG_candidate_2 }
+				NOT = { has_character_flag = IG_candidate_3 }
+			}
+			set_character_flag = IG_candidate_1
+			save_event_target_as = IG_1
+		}
+		random_realm_character = {
+			limit = {
+				can_be_imperialguard_candidate_trigger = yes
+				is_ruler = no
+				is_alive = yes
+				is_female = no
+				NOT = { trait = imperialguard }
+				NOT = { has_character_flag = IG_candidate_1 }
+				NOT = { has_character_flag = IG_candidate_3 }
+			}
+			set_character_flag = IG_candidate_2
+			save_event_target_as = IG_2
+		}
+		random_realm_character = {
+			limit = {
+				can_be_imperialguard_candidate_trigger = yes
+				is_ruler = no
+				is_alive = yes
+				is_female = no
+				NOT = { trait = imperialguard }
+				NOT = { has_character_flag = IG_candidate_1 }
+				NOT = { has_character_flag = IG_candidate_2 }
+			}
+			set_character_flag = IG_candidate_3
+			save_event_target_as = IG_3
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_imperialguard.16"
+		ai_chance = { factor = 85 }
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.111
+				days = 1
+			}
+		}
+		show_portrait = event_target:IG_1
+		event_target:IG_1 = {
+			prestige = 200
+			activate_title = { title = d_imperialguard status = yes }
+			set_character_flag = LC_imperialguard
+			add_trait = imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		hidden_tooltip = {
+			event_target:IG_3 = { clr_character_flag = IG_candidate_3 }
+			event_target:IG_2 = { clr_character_flag = IG_candidate_2 }
+			event_target:IG_1 = { clr_character_flag = IG_candidate_1 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_imperialguard.16"
+		ai_chance = { factor = 5 }
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.111
+				days = 1
+			}
+		}
+		event_target:IG_2 = {
+			prestige = 200
+			activate_title = { title = d_imperialguard status = yes }
+			add_trait = imperialguard
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTC_imperialguard.16"
+		ai_chance = { factor = 5 }
+		ROOT = {
+			narrative_event = {
+				id =  sb_imperialguard.111
+				days = 1
+			}
+		}
+		event_target:IG_3 = {
+			prestige = 200
+			set_character_flag = LC_imperialguard
+			add_trait = imperialguard
+			activate_title = { title = d_imperialguard status = yes }
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+	}
+}
+#ImperialGuard 111 - Choose the castle where the Guard shall live
+narrative_event = {
+	id = sb_imperialguard.111
+	desc = "EVTDESC_sb_imperialguard.3"
+	title = "EVTTITLE_sb_imperialguard.3"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.3"            #Meereen
+		set_global_flag = imperialguard_meereen
+		trigger = {
+			has_landed_title = k_meereen
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			b_harpy_castle = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_imperialguard.3"				#Yunkai
+		set_global_flag = imperialguard_yunkai
+		trigger = {
+			has_landed_title = k_yunkai
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			b_yellow_gates = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_imperialguard.3"				#Astapor
+		set_global_flag = imperialguard_astapor
+		trigger = {
+			has_landed_title = k_astapor
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			b_unsullied_barracks = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#ImperialGuard 2 -The Imperial Book
+character_event = {
+	id = sb_imperialguard.2
+	picture = "GFX_kingsguard"
+	desc = "EVTDESC_sb_imperialguard.2"
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_tooltip = {
+			imperialguard = {
+				limit = {
+					is_alive = yes
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { has_character_flag = ig_list_1 }
+					NOT = { has_character_flag = ig_list_2 }
+					NOT = { has_character_flag = ig_list_3 }
+					NOT = { has_character_flag = ig_list_4 }
+					NOT = { has_character_flag = ig_list_5 }
+					NOT = { imperialguard = { NOT = { has_landed_title = d_imperialguard } has_character_flag = ig_list_1 } }
+				}
+				set_character_flag = ig_list_1
+			}
+			imperialguard = {
+				limit = {
+					is_alive = yes
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { has_character_flag = ig_list_1 }
+					NOT = { has_character_flag = ig_list_2 }
+					NOT = { has_character_flag = ig_list_3 }
+					NOT = { has_character_flag = ig_list_4 }
+					NOT = { has_character_flag = ig_list_5 }
+					NOT = { imperialguard = { NOT = { has_landed_title = d_imperialguard } has_character_flag = ig_list_2 } }
+				}
+				set_character_flag = ig_list_2
+			}
+			imperialguard = {
+				limit = {
+					is_alive = yes
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { has_character_flag = ig_list_1 }
+					NOT = { has_character_flag = ig_list_2 }
+					NOT = { has_character_flag = ig_list_3 }
+					NOT = { has_character_flag = ig_list_4 }
+					NOT = { has_character_flag = ig_list_5 }
+					NOT = { imperialguard = { NOT = { has_landed_title = d_imperialguard } has_character_flag = ig_list_3 } }
+				}
+				set_character_flag = ig_list_3
+			}
+			imperialguard = {
+				limit = {
+					is_alive = yes
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { has_character_flag = ig_list_1 }
+					NOT = { has_character_flag = ig_list_2 }
+					NOT = { has_character_flag = ig_list_3 }
+					NOT = { has_character_flag = ig_list_4 }
+					NOT = { has_character_flag = ig_list_5 }
+					NOT = { imperialguard = { NOT = { has_landed_title = d_imperialguard } has_character_flag = ig_list_4 } }
+				}
+				set_character_flag = ig_list_4
+			}
+			imperialguard = {
+				limit = {
+					is_alive = yes
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { has_character_flag = ig_list_1 }
+					NOT = { has_character_flag = ig_list_2 }
+					NOT = { has_character_flag = ig_list_3 }
+					NOT = { has_character_flag = ig_list_4 }
+					NOT = { has_character_flag = ig_list_5 }
+					NOT = { imperialguard = { NOT = { has_landed_title = d_imperialguard } has_character_flag = ig_list_5 } }
+				}
+				set_character_flag = ig_list_5
+			}
+			imperialguard = { #notable past member
+				limit = {
+					is_alive = no
+					NOT = { has_landed_title = d_imperialguard }
+					OR = {
+						is_smart_incl_genius_trigger = yes
+						trait = brave
+						is_strong_trigger = yes
+						trait = valyrian_steel
+						trait = dawn
+						trait = ice
+						trait = longclaw
+						trait = blackfyre
+						trait = longclaw_snow
+						trait = brightroar
+						trait = heartsbane
+						trait = nightfall
+						trait = darksister
+						trait = ladyforlorn
+						trait = redrain
+						trait = widowswail
+						trait = oathkeeper
+						trait = crabspincer
+						trait = strangers_mercy
+						trait = vigilance
+						trait = orphan_maker
+						trait = truth
+						trait = lamentation
+						trait = poison
+						trait = seafoam
+						trait = anger
+						trait = black_death
+						trait = compassion
+						trait = concession
+						trait = del_pino
+						trait = el_swordo
+						trait = gold_sword
+						trait = happyness
+						trait = hubris
+						trait = justice
+						trait = kingmaker
+						trait = passion
+						trait = rage
+						trait = sightblinder
+						trait = the_monarchist
+						trait = the_usurper
+						trait = worldeater
+						trait = worlds_envy
+						trait = dragon_rider
+						trait = direwolf
+						is_any_kinslayer_trigger = yes
+						trait = dwarf
+						trait = dragon_slayer
+					}
+				}
+				save_event_target_as = ig_past_member_1
+				if = { #add ser title
+					limit = {
+						trait = knight
+						is_ruler = no
+						NOT = { has_minor_title = title_prince }
+						NOT = { has_minor_title = title_prince_AGOT }
+						NOT = { has_minor_title = title_queen_mother }
+						NOT = { has_minor_title = title_ruler_consort }
+					}
+					if = {
+						limit = { is_female = no }
+						set_special_character_title = title_ser
+					}
+					if = {
+						limit = { is_female = yes }
+						set_special_character_title = title_lady
+					}
+				}
+			}
+			imperialguard = { #notable past member
+				limit = {
+					is_alive = no
+					NOT = { has_landed_title = d_imperialguard }
+					NOT = { character = event_target:ig_past_member_1 }
+				}
+				save_event_target_as = ig_past_member_2
+				if = { #add ser title
+					limit = {
+						trait = knight
+						is_ruler = no
+						NOT = { has_minor_title = title_prince }
+						NOT = { has_minor_title = title_prince_AGOT }
+						NOT = { has_minor_title = title_queen_mother }
+						NOT = { has_minor_title = title_ruler_consort }
+					}
+					if = {
+						limit = { is_female = no }
+						set_special_character_title = title_ser
+					}
+					if = {
+						limit = { is_female = yes }
+						set_special_character_title = title_lady
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "OPTAkingsguard.65" #Living members
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				has_landed_title = d_imperialguard
+			}
+			custom_tooltip = { text = TOOLTIPIGCOMMANDER }
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				NOT = { has_landed_title = d_imperialguard }
+				has_character_flag = ig_list_1
+			}
+			custom_tooltip = { text = TOOLTIPKGCURRENT }
+			clr_character_flag = ig_list_1
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				NOT = { has_landed_title = d_imperialguard }
+				has_character_flag = ig_list_2
+			}
+			custom_tooltip = { text = TOOLTIPKGCURRENT }
+			clr_character_flag = ig_list_2
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				NOT = { has_landed_title = d_imperialguard }
+				has_character_flag = ig_list_3
+			}
+			custom_tooltip = { text = TOOLTIPKGCURRENT }
+			clr_character_flag = ig_list_3
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				NOT = { has_landed_title = d_imperialguard }
+				has_character_flag = ig_list_4
+			}
+			custom_tooltip = { text = TOOLTIPKGCURRENT }
+			clr_character_flag = ig_list_4
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				NOT = { has_landed_title = d_imperialguard }
+				has_character_flag = ig_list_5
+			}
+			custom_tooltip = { text = TOOLTIPKGCURRENT }
+			clr_character_flag = ig_list_5
+		}
+	}
+
+	option = {
+		name = "OPTBkingsguard.65" #Notable Past Commander
+		imperialguard = {
+			limit = {
+				is_alive = no
+				has_landed_title = d_imperialguard
+			}
+			custom_tooltip = { text = TOOLTIPKGNOTABLEPASTCOMMANDER }
+		}
+	}
+
+	option = {
+		name = "OPTCkingsguard.65" #Notable members
+		trigger = {
+			event_target:ig_past_member_1 = { always = yes }
+		}
+		event_target:ig_past_member_1 = {
+			custom_tooltip = { text = TOOLTIPKGPASTMEMBER }
+		}
+	}
+
+	option = {
+		name = "OPTCkingsguard.65" #Notable members
+		trigger = {
+			event_target:ig_past_member_2 = { always = yes }
+		}
+		event_target:ig_past_member_2 = {
+			custom_tooltip = { text = TOOLTIPKGPASTMEMBER }
+		}
+	}
+}
+#ImperialGuard 3 - Choose the castle where the Guard shall live
+narrative_event = {
+	id = sb_imperialguard.3
+	desc = "EVTDESC_sb_imperialguard.3"
+	title = "EVTTITLE_sb_imperialguard.3"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+	}
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.3"            #Meereen
+		set_global_flag = imperialguard_meereen
+		trigger = {
+			has_global_flag = meereen_capital
+			has_landed_title = c_the_great_pyramid
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			b_harpy_castle = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_imperialguard.3"				#Yunkai
+		set_global_flag = imperialguard_yunkai
+		trigger = {
+			has_global_flag = yunkai_capital
+			has_landed_title = c_yellowpyramid
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			b_yellow_gates = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_imperialguard.3"				#Astapor
+		set_global_flag = imperialguard_astapor
+		trigger = {
+			has_global_flag = astapor_capital
+			has_landed_title = c_red_pyramid
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			b_unsullied_barracks = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.3"				#Bhorash
+		trigger = { has_landed_title = c_bhorash }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+				has_character_flag = LC_imperialguard
+			}
+			c_bhorash = {
+				grant_title = PREV
+			}
+			b_bhorashcastle = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#ImperialGuard 4 - Choose new Lord Commander on death of the previous one
+character_event = {
+	id = sb_imperialguard.4
+	desc = "EVTDESC_sb_imperialguard.4"
+	title = "EVTTITLE_sb_imperialguard.4"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = choose_new_imperialguard
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = d_imperialguard
+	}
+
+	immediate = {
+		random_character = {
+			limit = {
+				trait = imperialguard
+				NOT = { has_character_flag = imperialguard_2 }
+				NOT = { has_character_flag = imperialguard_3 }
+				is_alive = yes
+			}
+			set_character_flag = imperialguard_1
+			save_event_target_as = LCIG_1
+		}
+		random_character = {
+			limit = {
+				trait = imperialguard
+				is_alive = yes
+				NOT = { has_character_flag = imperialguard_1 }
+				NOT = { has_character_flag = imperialguard_3 }
+			}
+			set_character_flag = imperialguard_2
+			save_event_target_as = LCIG_2
+		}
+		random_character = {
+			limit = {
+				trait = imperialguard
+				is_alive = yes
+				NOT = { has_character_flag = imperialguard_1 }
+				NOT = { has_character_flag = imperialguard_2 }
+			}
+			set_character_flag = imperialguard_3
+			save_event_target_as = LCIG_3
+		}
+		random_character = {
+			limit = {
+				trait = imperialguard
+				is_alive = yes
+				NOT = { has_character_flag = imperialguard_1 }
+				NOT = { has_character_flag = imperialguard_2 }
+				NOT = { has_character_flag = imperialguard_3 }
+			}
+			set_character_flag = imperialguard_4
+			save_event_target_as = LCIG_4
+		}
+	}
+
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_1 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_1 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_1
+		hidden_tooltip = {
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.12
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.13
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.14
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_2 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_2 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_2
+		hidden_tooltip = {
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.12
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.13
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.14
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_3 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_3 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_3
+		hidden_tooltip = {
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.12
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.13
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.14
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_4 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_4 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_4
+		hidden_tooltip = {
+			event_target:LCIG_4 = { clr_character_flag = imperialguard_4 }
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+	}
+}
+#ImperialGuard 5 - Choose new Lord Commander on revoked title instead of death
+character_event = {
+	id = sb_imperialguard.5
+	desc = "EVTDESC_sb_imperialguard.4"
+	title = "EVTTITLE_sb_imperialguard.4"
+	picture = "GFX_kingsguard"
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = d_imperialguard
+		NOT = { has_global_flag = choose_new_imperialguard }
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	immediate = {
+		random_character = {
+			limit = {
+				trait = imperialguard
+				NOT = { has_character_flag = imperialguard_2 }
+				NOT = { has_character_flag = imperialguard_3 }
+				is_alive = yes
+			}
+			set_character_flag = imperialguard_1
+			save_event_target_as = LCIG_1
+		}
+		random_character = {
+			limit = {
+				trait = imperialguard
+				is_alive = yes
+				NOT = { has_character_flag = imperialguard_1 }
+				NOT = { has_character_flag = imperialguard_3 }
+			}
+			set_character_flag = imperialguard_2
+			save_event_target_as = LCIG_2
+		}
+		random_character = {
+			limit = {
+				trait = imperialguard
+				is_alive = yes
+				NOT = { has_character_flag = imperialguard_1 }
+				NOT = { has_character_flag = imperialguard_2 }
+			}
+			set_character_flag = imperialguard_3
+			save_event_target_as = LCIG_3
+		}
+		random_character = {
+			limit = {
+				trait = imperialguard
+				is_alive = yes
+				NOT = { has_character_flag = imperialguard_1 }
+				NOT = { has_character_flag = imperialguard_2 }
+				NOT = { has_character_flag = imperialguard_3 }
+			}
+			set_character_flag = imperialguard_4
+			save_event_target_as = LCIG_4
+		}
+	}
+
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_1 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_1 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_1
+		hidden_tooltip = {
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.12
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.13
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.14
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_2 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_2 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_2
+		hidden_tooltip = {
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.12
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.13
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.14
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_3 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_3 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_3
+		hidden_tooltip = {
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.11
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.12
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.13
+				days = 1
+			}
+		}
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.14
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.4"
+		trigger = { any_character = { has_character_flag = imperialguard_4 } }
+		clr_global_flag = choose_new_imperialguard
+		event_target:LCIG_4 = {
+			set_character_flag = LC_imperialguard
+			d_imperialguard = {
+				gain_title = PREV
+				set_defacto_liege = ROOT
+			}
+			create_bloodline = {
+				type = lc_imperialguard_blood
+			}
+		}
+		show_portrait = event_target:LCIG_4
+		hidden_tooltip = {
+			event_target:LCIG_4 = { clr_character_flag = imperialguard_4 }
+			event_target:LCIG_3 = { clr_character_flag = imperialguard_3 }
+			event_target:LCIG_2 = { clr_character_flag = imperialguard_2 }
+			event_target:LCIG_1 = { clr_character_flag = imperialguard_1 }
+		}
+	}
+}
+#ImperialGuard 6 - Former LC unlanded loses character flag
+character_event = {
+	id = sb_imperialguard.6
+	desc = "EVTDESC_sb_imperialguard.6"
+	title = "EVTTITLE_sb_imperialguard.6"
+	picture = "GFX_kingsguard"
+
+	ai = yes
+	has_character_flag = LC_imperialguard
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		NOT = { has_landed_title = d_imperialguard }
+		trait = imperialguard
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "OK."
+		clr_character_flag = LC_imperialguard
+		remove_trait = imperialguard
+		add_trait = former_kingsguard
+	}
+}
+#ImperialGuard 7 - LC of the Imperial Guard tries to protect liege
+character_event = {
+	id = sb_imperialguard.7
+	desc = "EVTDESC_sb_imperialguard.7"
+	title = "EVTTITLE_sb_imperialguard.7"
+
+	ai = yes
+	only_capable = yes
+	prisoner = no
+	has_character_flag = LC_imperialguard
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = d_imperialguard
+		NOT = { has_landed_title = e_ghiscar }
+	}
+
+	mean_time_to_happen = {
+		years = 30
+	}
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.7"   #Liege saved
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 3
+				trait = duelist
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 4
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 0.5
+				trait = craven
+			}
+			modifier = {
+				factor = 0.25
+				trait = patient
+			}
+			modifier = {
+				factor = 0.5
+				combat_rating = -50
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = e_ghiscar }
+			narrative_event = {
+				id =  sb_imperialguard.8
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_imperialguard.7"   #Liege wounded
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 4
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				combat_rating = -50
+			}
+			modifier = {
+				factor = 1.5
+				trait = patient
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = e_ghiscar }
+			narrative_event = {
+				id =  sb_imperialguard.9
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_imperialguard.7"   #Liege Murdered
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 4
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				combat_rating = -50
+			}
+			modifier = {
+				factor = 1.5
+				trait = patient
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = e_ghiscar }
+			narrative_event = {
+				id =  sb_imperialguard.10
+				days = 1
+			}
+		}
+	}
+}
+#ImperialGuard 8 - Inform Liege has been saved
+narrative_event = {
+	id = sb_imperialguard.8
+	desc = "EVTDESC_sb_imperialguard.8"
+	title = "EVTTITLE_sb_imperialguard.8"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { has_landed_title = d_imperialguard }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.8"
+		d_imperialguard = { holder_scope = { wealth = 15 prestige = 100 } }
+	}
+}
+#ImperialGuard 9 - Inform Liege has been wounded
+narrative_event = {
+	id = sb_imperialguard.9
+	desc = "EVTDESC_sb_imperialguard.9"
+	title = "EVTTITLE_sb_imperialguard.9"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { has_landed_title = d_imperialguard }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.9"
+		ROOT = { add_trait = wounded }
+	}
+}
+#ImperialGuard 10 - Inform Liege has been murdered
+narrative_event = {
+	id = sb_imperialguard.10
+	desc = "EVTDESC_sb_imperialguard.10"
+	title = "EVTTITLE_sb_imperialguard.10"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { has_landed_title = d_imperialguard }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_imperialguard.10"
+		ROOT = {
+			death = {
+				death_reason = death_murder_unknown_slayed
+			}
+		}
+	}
+}
+#ImperialGuard 11 - Chosen Unlanded Lord Commander ask for his castle back (Meereen capital)
+character_event = {
+	id = sb_imperialguard.11
+	desc = "EVTDESC_sb_imperialguard.11"
+	title = "EVTTITLE_sb_imperialguard.11"
+	picture = "GFX_kingsguard"
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = b_harpy_castle
+		has_global_flag = imperialguard_meereen
+		NOT = { has_global_flag = choose_new_imperialguard }
+		NOT = { has_global_flag = oldghis_capital }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "Ok."
+		trigger = { has_global_flag = imperialguard_meereen }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			b_harpy_castle = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.3"				#Bhorash
+		trigger = { has_landed_title = c_bhorash }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			c_bhorash = {
+				grant_title = PREV
+			}
+			b_bhorashcastle = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#ImperialGuard 12 - Chosen Unlanded LC ask for his castle back (Yunkai capital)
+character_event = {
+	id = sb_imperialguard.12
+	desc = "EVTDESC_sb_imperialguard.11"
+	title = "EVTTITLE_sb_imperialguard.11"
+	picture = "GFX_kingsguard"
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = b_yellow_gates
+		has_global_flag = imperialguard_yunkai
+		NOT = { has_global_flag = choose_new_imperialguard }
+		NOT = { has_global_flag = oldghis_capital }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "Ok."
+		trigger = { has_global_flag = imperialguard_yunkai }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			b_yellow_gates = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.3"				#Bhorash
+		trigger = { has_landed_title = c_bhorash }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			c_bhorash = {
+				grant_title = PREV
+			}
+			b_bhorashcastle = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#ImperialGuard 13 - Chosen Unlanded LC ask for his castle back (Astapor capital)
+character_event = {
+	id = sb_imperialguard.13
+	desc = "EVTDESC_sb_imperialguard.11"
+	title = "EVTTITLE_sb_imperialguard.11"
+	picture = "GFX_kingsguard"
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = b_unsullied_barracks
+		has_global_flag = imperialguard_astapor
+		NOT = { has_global_flag = choose_new_imperialguard }
+		NOT = { has_global_flag = oldghis_capital }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "Ok."
+		trigger = { has_global_flag = imperialguard_astapor }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			b_unsullied_barracks = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.3"				#Bhorash
+		trigger = { has_landed_title = c_bhorash }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			c_bhorash = {
+				grant_title = PREV
+			}
+			b_bhorashcastle = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#ImperialGuard 14 - Chosen Unlanded LC ask for his castle back (Ghis capital)
+character_event = {
+	id = sb_imperialguard.14
+	desc = "EVTDESC_sb_imperialguard.11"
+	title = "EVTTITLE_sb_imperialguard.11"
+	picture = "GFX_kingsguard"
+
+	only_independent = yes
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = c_oldghis
+		has_landed_title = b_oldghis4
+		has_global_flag = oldghis_capital
+		NOT = { has_character_flag = relocate_imperialguard }
+		NOT = { has_global_flag = choose_new_imperialguard }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "Ok."				#OldGhis
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			hidden_tooltip = {
+				b_oldghis4 = {
+					grant_title = PREV
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.3"				#Bhorash
+		trigger = { has_landed_title = c_bhorash }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			c_bhorash = {
+				grant_title = PREV
+			}
+			b_bhorashcastle = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+#ImperialGuard 140 - Relocate Imperial Guard to Ghis?
+character_event = {
+	id = sb_imperialguard.140
+	desc = "EVTDESC_sb_imperialguard.140"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = relocate_imperialguard
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		has_landed_title = c_oldghis
+		has_global_flag = oldghis_capital
+		NOT = { has_global_flag = choose_new_imperialguard }
+	}
+
+	immediate = { clr_character_flag = relocate_imperialguard }
+
+	option = {
+		name = "EVTOPTAkingsguard.140"				#OldGhis
+		trigger = {
+			has_landed_title = c_oldghis
+			has_global_flag = oldghis_capital
+		}
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			hidden_tooltip = {
+				b_oldghis4 = {
+					grant_title = PREV
+					add_building = ca_asoiaf_ghiscari_basevalue_1
+					add_building = ca_asoiaf_ghiscari_basevalue_2
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_imperialguard.3"				#Bhorash
+		trigger = { has_landed_title = c_bhorash }
+		any_character = {
+			limit = {
+				has_landed_title = d_imperialguard
+			}
+			c_bhorash = {
+				grant_title = PREV
+			}
+			b_bhorashcastle = {
+				grant_title = PREV
+			}
+		}
+	}
+}
+# ImperialGuard 15 - Appointed Imperial Guard by decision accepts or refuses
+character_event = {
+	id = sb_imperialguard.15
+	desc = "EVTDESCkingsguard.8"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	trigger = {
+		ai = yes
+		is_ruler = no
+		NOT = { trait = imperialguard }
+	}
+
+	immediate = {
+		e_ghiscar = { holder_scope = { save_event_target_as = the_emperor } }
+		if = {
+			limit = {
+				#is_primary_heir = yes
+				mother = {
+					is_alive = yes
+					OR = {
+						is_primary_heir = yes
+						is_ruler = yes
+					}
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = e_ghiscar }
+				}
+			}
+			set_character_flag = mother_reaction
+		}
+		if = {
+			limit = {
+				#is_primary_heir = yes
+				father = {
+					is_alive = yes
+					OR = {
+						is_primary_heir = yes
+						is_ruler = yes
+					}
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = e_ghiscar }
+				}
+			}
+			set_character_flag = father_reaction
+		}
+	}
+
+	option = {
+		name = "EVTOPTAkingsguard.8" #Accept
+		ai_chance = {
+			factor = 80
+			modifier = {
+				factor = 0
+				OR = {
+					trait = chosen_by_rhllor
+					has_character_flag = demon_child_non_pagan
+				}
+			}
+			#consider father's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { NOT = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { NOT = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { NOT = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { NOT = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+			#consider mother's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { NOT = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+
+			modifier = {
+				factor = 3
+				combat_rating = 60
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { dynasty = ROOT }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { is_close_relative = ROOT }
+			}
+			modifier = {
+				factor = 2.5
+				trait = familyperson
+				event_target:the_emperor = {
+					OR = {
+						dynasty = ROOT
+						is_close_relative = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 3
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 70 } }
+				OR = {
+					trait = honorable
+					trait = diligent
+					trait = just
+					trait = content
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:the_emperor = { is_friend = ROOT }
+			}
+			modifier = {
+				factor = 0
+				event_target:the_emperor = { is_rival = ROOT }
+			}
+			modifier = { #Will not usually defend an Emperor I hate
+				factor = 0
+				event_target:the_emperor = {
+					NOT = { reverse_opinion = { who = ROOT value = -49 } }
+					ROOT = { is_foe = PREV }
+				}
+				OR = {
+					trait = proud
+					trait = just
+					trait = wroth
+					trait = honest
+					NOR = {
+						trait = humble
+						trait = arbitrary
+						trait = patient
+						trait = deceitful
+					}
+				}
+				NOT = { has_ambition = obj_become_kingsguard }
+			}
+
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { culture = high_valyrian }
+			}
+			modifier = {
+				factor = 4
+				trait = ambitious
+				NOR = {
+					is_primary_heir = yes
+					any_heir_title = { NOT = { holding_type = temple } }
+					is_pretender = yes
+					has_ambition = obj_get_married
+					has_ambition = obj_marry_ruler
+					has_ambition = obj_find_lover
+					has_ambition = obj_wants_landed_title
+					has_ambition = obj_become_heir
+					culture_group = iron_isles_culture
+					trait = dragon_rider
+					AND = {
+						num_of_claims = 1
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 1.5
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.5
+				culture_group = dothraki_group
+			}
+			modifier = {
+				factor = 3
+				trait = celibate
+			}
+			modifier = {
+				factor = 1.5
+				trait = proud
+			}
+			modifier = {
+				factor = 2
+				trait = brave
+			}
+			modifier = {
+				factor = 1.5
+				trait = just
+			}
+			modifier = {
+				factor = 1.5
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.5
+				trait = honorable
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 2
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 5
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 10
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+			modifier = {
+				factor = 1.25
+				FROMFROM = {
+					NOT = { has_landed_title = e_ghiscar }
+					reverse_opinion = { who = ROOT value = 25 }
+				}
+			}
+			modifier = {
+				factor = 1.5
+				FROMFROM = {
+					NOT = { has_landed_title = e_ghiscar }
+					reverse_opinion = { who = ROOT value = 50 }
+				}
+			}
+			modifier = {
+				factor = 1.75
+				FROMFROM = {
+					NOT = { has_landed_title = e_ghiscar }
+					reverse_opinion = { who = ROOT value = 75 }
+				}
+			}
+			modifier = {
+				factor = 2
+				FROMFROM = {
+					NOT = { has_landed_title = e_ghiscar }
+					reverse_opinion = { who = ROOT value = 100 }
+				}
+			}
+		}
+		add_trait = imperialguard
+		set_character_flag = no_court_invites
+		event_target:the_emperor = { character_event = { id = sb_imperialguard.150 } }
+		if = {
+			limit = { is_betrothed = yes }
+			betrothed = {
+				if = {
+					limit = {
+						is_ruler = yes
+						NOT = { has_landed_title = e_ghiscar }
+					}
+					opinion = {
+						who = ROOT
+						modifier = opinion_betrothal_broken
+					}
+				}
+				if = {
+					limit = {
+						is_ruler = no
+						liege = {
+							is_close_relative = PREV
+							NOT = { has_landed_title = e_ghiscar }
+						}
+					}
+					opinion = {
+						who = ROOT
+						modifier = opinion_betrothal_broken
+					}
+					liege = {
+						opinion = {
+							who = ROOT
+							modifier = opinion_betrothal_broken
+						}
+					}
+				}
+				break_betrothal = PREV
+			}
+		}
+		if = {
+			limit = { is_primary_heir = yes }
+			set_character_flag = renounced_inheritance
+		}
+		#Inform family/reaction
+		if = {
+			limit = { has_character_flag = father_reaction }
+			father = {
+				if = {
+					limit = { current_heir = { character = ROOT } }
+					set_character_flag = IG_renounced_inheritance
+				}
+				set_character_flag = IG_reaction_event
+				character_event = { id = sb_imperialguard.17 days = 1 }
+			}
+			clr_character_flag = father_reaction
+		}
+		if = {
+			limit = { has_character_flag = mother_reaction }
+			mother = {
+				if = {
+					limit = { current_heir = { character = ROOT } }
+					set_character_flag = IG_renounced_inheritance
+				}
+				set_character_flag = IG_reaction_event
+				character_event = { id = sb_imperialguard.17 days = 1 }
+			}
+			clr_character_flag = mother_reaction
+		}
+		any_dynasty_member = {
+			if = {
+				limit = {
+					is_ruler = yes
+					NOT = { is_parent_of = ROOT }
+					OR = {
+						ai = no
+						current_heir = { character = ROOT }
+						current_heir = { is_parent_of = ROOT }
+					}
+
+					is_alive = yes
+					NOT = { character = FROM }
+					NOT = { character = FROMFROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = e_ghiscar }
+				}
+				if = {
+					limit = { current_heir = { character = ROOT } }
+					set_character_flag = IG_renounced_inheritance
+				}
+				set_character_flag = IG_reaction_event
+				character_event = { id = sb_imperialguard.17 days = 1 }
+			}
+		}
+		if = { #If no other Imperialguard present, become lord Commander
+			limit = {
+				NOT = { imperialguard = { is_alive = yes } }
+				is_title_active = d_imperialguard
+			}
+			d_imperialguard = { grant_title = ROOT }
+			e_ghiscar = { holder_scope = { ROOT = { set_defacto_liege = PREV } } }
+			clr_global_flag = choosing_imperialguard
+			set_character_flag = ai_flag_never_transfer
+		}
+		if = {
+			limit = { trait = wikid }
+			remove_trait = wikid
+			if = {
+				limit = { has_character_flag = foreign_adventure }
+				clr_character_flag = foreign_adventure
+				prestige = 75
+				add_character_modifier = {
+					name = went_on_foreign_tour
+					duration = -1
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { father_even_if_dead = { always = yes } }
+				NOT = { mother_even_if_dead = { always = yes } }
+			}
+			set_immune_to_pruning = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAkingsguard.8" #Refuse
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				has_ambition = obj_become_kingsguard
+			}
+			#Motives for refusal
+			modifier = {
+				factor = 0
+				combat_rating = 40 #is a bad warrior
+				NOT = { is_female = yes }#is female
+				NAND = { #Is an ambitious claimant
+					OR = {
+						num_of_claims = 1
+						is_pretender = yes
+						has_ambition = obj_wants_landed_title
+					}
+					OR = {
+						trait = ambitious
+						trait = envious
+						trait = greedy
+					}
+					can_press_claims_trigger = yes
+				}
+				NOT = { #Iron Throne claimant
+					e_ghiscar = {
+						ROOT = {
+							OR = {
+								has_claim = PREV
+								father = { has_claim = PREVPREV }
+							}
+						}
+					}
+				}
+				NOR = { #Is an heir
+					is_primary_heir = yes
+					any_heir_title = { NOT = { holding_type = temple } }
+				}
+				NOT = { trait = dragon_rider } #Is a dragon rider
+				OR = { #Foreigner
+					event_target:the_emperor = { culture_group = ROOT }
+					culture_group = andal
+					culture_group = dornish
+					culture = high_valyrian
+					culture = western_valyrian
+					culture = eastern_valyrian
+					culture_group = freedmen_group
+				}
+				NOT = { #Is incapable of guarding
+					has_severe_disability_trigger = yes
+				}
+				OR = { #doesn't like celibacy
+					NOR = {
+						trait = hedonist
+						trait = lustful
+					}
+					trait = eunuch
+					trait = arbitrary #doesnt mind breaking vows
+				}
+				event_target:the_emperor = { #despises the king
+					reverse_opinion = { who = ROOT value = -49 }
+					NOT = { is_rival = ROOT }
+				}
+				FROMFROM = {  #Despises regent
+					OR = {
+						NOT = { has_landed_title = e_ghiscar }
+						reverse_opinion = { who = ROOT value = -49 }
+					}
+				}
+				event_target:the_emperor = {  #enemy dynasty
+					NOT = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_blood_feud } }
+				}
+				#Higher calling
+				NOT = { trait = chosen_by_rhllor }
+				NOT = { has_character_flag = demon_child_non_pagan }
+			}
+
+			#consider father's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = father_reaction
+				father = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+			#consider mother's reaction
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 1.5
+				has_character_flag = mother_reaction
+				mother = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+
+			modifier = {
+				factor = 2
+				combat_rating < 40
+			}
+			modifier = {
+				factor = 4
+				combat_rating < 20
+			}
+
+			modifier = {
+				factor = 0.5
+				culture_group = dothraki_group
+			}
+			modifier = {
+				factor = 30
+				is_female = yes
+				trait = just
+			}
+			modifier = {
+				factor = 30
+				is_female = yes
+				NOT = { trait = skilled_warrior }
+				NOT = { trait = master_warrior }
+			}
+			modifier = {
+				factor = 1.5
+				num_of_claims = 1
+				can_press_claims_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				is_pretender = yes
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					is_primary_heir = yes
+					any_heir_title = { NOT = { holding_type = temple } }
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = dragon_rider
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_ambition = obj_get_married
+					has_ambition = obj_marry_ruler
+					has_ambition = obj_find_lover
+					has_ambition = obj_wants_landed_title
+					has_ambition = obj_become_heir
+				}
+			}
+			modifier = {
+				factor = 1.5
+				e_ghiscar = {
+					ROOT = {
+						OR = {
+							has_claim = PREV
+							father = { has_claim = PREVPREV }
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 3
+				event_target:the_emperor = { NOT = { dynasty = ROOT } }
+				OR = {
+					trait = ambitious
+					trait = envious
+					trait = greedy
+				}
+				e_ghiscar = {
+					ROOT = {
+						OR = {
+							has_claim = PREV
+							father = { has_claim = PREVPREV }
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				age < 16
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { trait = knight }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { event_target:the_emperor = { culture_group = ROOT } }
+				NOT = { culture_group = andal }
+				NOT = { culture_group = dornish }
+				NOT = { culture = high_valyrian }
+				NOT = { culture_group = freedmen_group }
+				NOT = { culture_group = dothraki_group }
+				NOT = { culture = western_valyrian }
+				NOT = { culture = crackclawmen }
+			}
+			modifier = {
+				factor = 1.7
+				religion = harpy
+				NOT = { event_target:the_emperor = { religion = ROOT } }
+			}
+			modifier = {
+				factor = 1.5
+				is_ill = yes
+			}
+			modifier = {
+				factor = 3
+				trait = familyperson
+				event_target:the_emperor = {
+					NOT = { dynasty = ROOT }
+					NOT = { is_close_relative = ROOT }
+				}
+			}
+			modifier = {
+				factor = 10
+				has_severe_disability_trigger = yes
+			}
+			modifier = { #doesn't like celibacy
+				factor = 5
+				OR = {
+					trait = hedonist
+					trait = lustful
+				}
+				NOT = { trait = eunuch }
+			}
+			modifier = {
+				factor = 1.5
+				is_weak_trigger = yes
+			}
+			modifier = {
+				factor = 2
+				trait = poet
+			}
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 4
+				trait = ambitious
+				OR = {
+					is_primary_heir = yes
+					any_heir_title = { NOT = { holding_type = temple } }
+					is_pretender = yes
+					has_ambition = obj_get_married
+					has_ambition = obj_marry_ruler
+					has_ambition = obj_find_lover
+					has_ambition = obj_wants_landed_title
+					has_ambition = obj_become_heir
+					culture_group = iron_isles_culture
+					trait = dragon_rider
+					AND = {
+						can_press_claims_trigger = yes
+						num_of_claims = 1
+					}
+					e_ghiscar = { ROOT = { father = { has_claim = PREVPREV } } }
+				}
+			}
+			modifier = {
+				factor = 5
+				event_target:the_emperor = {
+					reverse_has_opinion_modifier = { who = ROOT modifier = opinion_blood_feud }
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = ruthless
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}
+			modifier = {
+				factor = 2
+				trait = slothful
+			}
+			modifier = {
+				factor = 2
+				trait = cynical
+			}
+			modifier = {
+				factor = 2
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 1.25
+				NOT = { event_target:the_emperor = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { event_target:the_emperor = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 3
+				NOT = { event_target:the_emperor = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 5
+				NOT = { event_target:the_emperor = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+			modifier = {
+				factor = 1.25
+				NOT = {
+					FROMFROM = {
+						NOT = { has_landed_title = e_ghiscar }
+						reverse_opinion = { who = ROOT value = -24 }
+					}
+				}
+			}
+			modifier = {
+				factor = 1.5
+				NOT = {
+					FROMFROM = {
+						NOT = { has_landed_title = e_ghiscar }
+						reverse_opinion = { who = ROOT value = -49 }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				NOT = {
+					FROMFROM = {
+						NOT = { has_landed_title = e_ghiscar }
+						reverse_opinion = { who = ROOT value = -74 }
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				NOT = {
+					FROMFROM = {
+						NOT = { has_landed_title = e_ghiscar }
+						reverse_opinion = { who = ROOT value = -99 }
+					}
+				}
+			}
+
+		}
+		event_target:the_emperor = { character_event = { id = sb_imperialguard.151 } }
+	}
+}
+# ImperialGuard 150 - Inform Liege- Accept
+character_event = {
+	id = sb_imperialguard.150
+	desc = "EVTDESC_sb_imperialguard.150"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		FROMFROMFROM = { tooltip = { show_portrait = yes } }
+		if = {
+			limit = { has_global_flag = choose_new_imperialguard }
+			clr_global_flag = choose_new_imperialguard
+		}
+		if = {
+			limit = { character = FROMFROMFROM }
+			FROM = {
+				prestige = 100
+				opinion = {
+					modifier = opinion_happy
+					who = ROOT
+					years = 20
+				}
+				clr_character_flag = renounced_inheritance
+			}
+		}
+		#Dynasty is happy
+		FROM = {
+			any_dynasty_member = {
+				limit = {
+					is_close_relative = PREV
+					OR = {
+						is_ruler = yes
+						is_father = PREV
+						is_mother = PREV
+					}
+					is_alive = yes
+					NOT = { character = ROOT_FROMFROMFROM }
+					NOT = { character = ROOT_FROMFROM }
+					NOT = { character = ROOT_FROM }
+					NOT = { character = ROOT }
+					NOT = { has_landed_title = e_ghiscar }
+					NOT = { has_character_flag = IG_reaction_event }
+				}
+				opinion = {
+					modifier = opinion_added_kin_to_kingsguard_pos
+					who = ROOT
+					years = 20
+				}
+			}
+		}
+		#Penalties for certain appointments
+		if = { #General unrest at females
+			limit = { FROM = { is_female = yes } }
+			add_character_modifier = {
+				name = appointed_female_kingsguard
+				duration = 730
+			}
+			prestige = -100
+		}
+	}
+}
+#ImperialGuard 151 - Inform Liege -Refuse
+character_event = {
+	id = sb_imperialguard.151
+	desc = "EVTDESC_sb_imperialguard.151"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		FROMFROMFROM = { tooltip = { show_portrait = yes } }
+		FROM = {
+			reverse_opinion = {
+				modifier = opinion_refused_kingsguard
+				who = ROOT
+				years = 10
+			}
+		}
+	}
+}
+#ImperialGuard 100 - One Imperial Guard died - Start Event to choose new one
+character_event = {
+	id = sb_imperialguard.100
+
+	only_independent = yes
+	hide_window = yes
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		OR = {
+			has_global_flag = imperialguard_exists
+			is_title_active = d_imperialguard
+		}
+		NOT = {
+			imperialguard = {
+				is_alive = yes
+				count = 6
+			}
+		}
+		NOT = { d_imperialguard = { holder_scope = { war_with = ROOT } } }
+		OR = {
+			NOT = { has_character_flag = selecting_imperialguard }
+			had_character_flag = { flag = selecting_imperialguard days = 30 }
+		}
+		OR = {
+			had_character_flag = { flag = ignore_ig days = 365 }
+			NOT = { has_character_flag = ignore_ig }
+		}
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		clr_character_flag = selecting_imperialguard
+		set_character_flag = selecting_imperialguard
+		if = {
+			limit = {
+				any_realm_character = {
+					can_be_imperialguard_candidate_trigger = yes
+				}
+			}
+			#Regent chooses
+			if = {
+				limit = {
+					has_regent = yes
+					OR = {
+						age < 16
+						prisoner = yes
+						is_incapable = yes
+					}
+				}
+				regent = { character_event = { id = sb_imperialguard.16 } }
+				break = yes
+			}
+			#Else King chooses
+			character_event = { id = sb_imperialguard.16 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#ImperialGuard 16 - Choose New Imperial Guard member event
+character_event = {
+	id = sb_imperialguard.16
+	desc = "EVTDESC_sb_imperialguard.16"
+	picture = GFX_kingsguard
+
+	only_independent = yes
+	has_character_flag = selecting_imperialguard
+	has_global_flag = imperialguard_exists
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		is_title_active = d_imperialguard
+		NOT = { trait = imperialguard }
+		NOT = {
+			imperialguard = {
+				is_alive = yes
+				count = 6
+			}
+		}
+		NOT = { d_imperialguard = { holder_scope = { war_with = ROOT } } }
+		OR = {
+			NOT = { has_character_flag = selecting_imperialguard }
+			had_character_flag = { flag = selecting_imperialguard days = 30 }
+		}
+		OR = {
+			had_character_flag = { flag = ignore_ig days = 365 }
+			NOT = { has_character_flag = ignore_ig }
+		}
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_be_imperialguard_candidate_trigger = yes
+				is_ruler = no
+				is_alive = yes
+				NOT = { trait = imperialguard }
+				NOT = { has_character_flag = IG_candidate_2 }
+				NOT = { has_character_flag = IG_candidate_3 }
+			}
+			set_character_flag = IG_candidate_1
+			save_event_target_as = IG_1
+		}
+		random_realm_character = {
+			limit = {
+				can_be_imperialguard_candidate_trigger = yes
+				is_ruler = no
+				is_alive = yes
+				is_female = no
+				NOT = { trait = imperialguard }
+				NOT = { has_character_flag = IG_candidate_1 }
+				NOT = { has_character_flag = IG_candidate_3 }
+			}
+			set_character_flag = IG_candidate_2
+			save_event_target_as = IG_2
+		}
+		random_realm_character = {
+			limit = {
+				can_be_imperialguard_candidate_trigger = yes
+				is_ruler = no
+				is_alive = yes
+				is_female = no
+				NOT = { trait = imperialguard }
+				NOT = { has_character_flag = IG_candidate_1 }
+				NOT = { has_character_flag = IG_candidate_2 }
+			}
+			set_character_flag = IG_candidate_3
+			save_event_target_as = IG_3
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_imperialguard.16"
+		event_target:IG_1 = {
+			character_event = { id = sb_imperialguard.15 tooltip = TOOLTIPinteraction.7 }
+		}
+		show_portrait = event_target:IG_1
+		hidden_tooltip = {
+			event_target:IG_3 = { clr_character_flag = IG_candidate_3 }
+			event_target:IG_2 = { clr_character_flag = IG_candidate_2 }
+			event_target:IG_1 = { clr_character_flag = IG_candidate_1 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_imperialguard.16"
+		event_target:IG_2 = {
+			character_event = { id = sb_imperialguard.15 tooltip = TOOLTIPinteraction.7 }
+		}
+		show_portrait = event_target:IG_2
+		hidden_tooltip = {
+			event_target:IG_3 = { clr_character_flag = IG_candidate_3 }
+			event_target:IG_2 = { clr_character_flag = IG_candidate_2 }
+			event_target:IG_1 = { clr_character_flag = IG_candidate_1 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_imperialguard.16"
+		event_target:IG_3 = {
+			character_event = { id = sb_imperialguard.15 tooltip = TOOLTIPinteraction.7 }
+		}
+		show_portrait = event_target:IG_3
+		hidden_tooltip = {
+			event_target:IG_3 = { clr_character_flag = IG_candidate_3 }
+			event_target:IG_2 = { clr_character_flag = IG_candidate_2 }
+			event_target:IG_1 = { clr_character_flag = IG_candidate_1 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_imperialguard.16"
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { has_character_flag = kingsguard_bozo }
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					kingsguard = {
+						is_alive = yes
+						count = 4
+					}
+				}
+			}
+		}
+		hidden_tooltip = {
+			event_target:IG_3 = { clr_character_flag = IG_candidate_3 }
+			event_target:IG_2 = { clr_character_flag = IG_candidate_2 }
+			event_target:IG_1 = { clr_character_flag = IG_candidate_1 }
+		}
+	}
+}
+#ImperialGuard 161 - Imperial Guard Dies. (On death and other things) - Only for Ai.
+character_event = {
+	id = sb_imperialguard.161
+	desc = "EVTDESCkingsguard.1"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = imperialguard
+		NOT = { has_landed_title = d_imperialguard }
+	}
+
+	option = {
+		name = "EVTOPTAkingsguard.1"
+		if = {
+			limit = {
+				is_alive = yes
+				is_dying = no
+			}
+			remove_trait = imperialguard
+			clr_character_flag = no_court_invites
+		}
+		e_ghiscar = {
+			holder_scope = { character_event = { id = sb_imperialguard.162 }
+				regent = {
+					if = {
+						limit = { NOT = { has_job_title = job_castellan } }
+						character_event = { id = sb_imperialguard.162 }
+					}
+				}
+			}
+		}
+	}
+}
+#ImperialGuard 162 - Emperor gets notified of the death of a member of the Imperial Guard
+character_event = {
+	id = sb_imperialguard.162
+	picture = GFX_kingsguard
+
+	desc = {
+		text = "EVTDESCimperialguard.162"
+		trigger = {
+			FROM = {
+				OR = {
+					is_alive = no
+					is_dying = yes
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCimperialguard.162B"
+		trigger = {
+			FROM = {
+				NOR = {
+					is_alive = no
+					is_dying = yes
+				}
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAkingsguard.22"
+		set_character_flag = selecting_imperialguard
+		ROOT = {
+			character_event = {
+				id = sb_imperialguard.16
+				days = 3
+			}
+		}
+	}
+}
+#ImperialGuard 17 - Father/Mother Reaction?
+character_event = {
+	id = sb_imperialguard.17
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	desc = {
+		text = "EVTDESCimperialguard.17A"
+		trigger = {
+			FROMFROMFROM = { has_landed_title = e_ghiscar }
+			NOT = { has_landed_title = d_imperialguard }
+		}
+	}
+	desc = {
+		text = "EVTDESCimperialguard.17B" #regent
+		trigger = {
+			FROMFROMFROM = { NOT = { has_landed_title = e_ghiscar } }
+			NOT = { has_landed_title = d_imperialguard }
+		}
+	}
+	desc = {
+		text = "EVTDESCimperialguard.17C" #regent
+		trigger = {
+			has_landed_title = d_imperialguard
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				ai = no
+			}
+			if = {
+				limit = {
+					has_landed_title = d_imperialguard
+					NOT = { dynasty = FROM }
+					NOT = { is_close_relative = FROM }
+				}
+				chronicle = {
+					entry = CHRONICLE_KG_APPOINTMENT_LC
+					portrait = [From.GetID]
+				}
+			}
+			else = {
+				chronicle = {
+					entry = CHRONICLE_KG_APPOINTMENT
+					portrait = [From.GetID]
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAkingsguard.11" #approves
+		trigger = {
+			NOT = { has_landed_title = d_imperialguard }
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 2
+				trait = proud
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				trait = honorable
+			}
+			modifier = {
+				factor = 2
+				trait = kind
+			}
+			modifier = {
+				factor = 2
+				trait = patient
+			}
+			modifier = {
+				factor = 2
+				trait = zealous
+			}
+
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 25 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 50 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 75 } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { reverse_opinion = { who = ROOT value = 100 } }
+			}
+		}
+		prestige = 25
+		hidden_tooltip = {
+			FROMFROMFROM = { character_event = { id = sb_imperialguard.171 } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBkingsguard.11" #disapprove
+		trigger = {
+			NOT = { has_landed_title = d_imperialguard }
+			OR = {
+				has_character_flag = IG_renounced_inheritance
+				is_parent_of = FROM
+				any_child = { is_parent_of = FROM }
+				current_heir = { is_parent_of = FROM }
+			}
+			NOT = { event_target:recommended_imperialguard = { character = ROOT } }
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 5
+				has_character_flag = IG_renounced_inheritance
+			}
+			modifier = {
+				factor = 2
+				NOT = { event_target:the_emperor = { religion = ROOT } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { culture_group = andal }
+				NOT = { culture_group = dornish }
+				NOT = { culture = high_valyrian }
+				NOT = { culture = western_valyrian }
+				NOT = { culture = crackclawmen }
+			}
+
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+			modifier = {
+				factor = 2
+				trait = familyperson
+			}
+			modifier = {
+				factor = 2
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 2
+				trait = ruthless
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 2
+				trait = cynical
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { NOT = { reverse_opinion = { who = ROOT value = -24 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { NOT = { reverse_opinion = { who = ROOT value = -49 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { NOT = { reverse_opinion = { who = ROOT value = -74 } } }
+			}
+			modifier = {
+				factor = 1.5
+				event_target:the_emperor = { NOT = { reverse_opinion = { who = ROOT value = -99 } } }
+			}
+		}
+		prestige = 25
+		hidden_tooltip = {
+			FROMFROMFROM = { character_event = { id = sb_imperialguard.172 } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTCkingsguard.11"
+		trigger = {
+			has_landed_title = d_imperialguard
+		}
+	}
+
+	after = {
+		clr_character_flag = IG_renounced_inheritance
+		clr_character_flag = IG_reaction_event
+	}
+}
+#ImperialGuard 172 - Relative Approves (emperor notification)
+character_event = {
+	id = sb_imperialguard.171
+	desc = "EVTDESCimperialguard.172"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+		reverse_opinion = {
+			modifier = opinion_added_kin_to_imperialguard_pos
+			who = FROM
+			years = 20
+		}
+	}
+}
+#ImperialGuard 172 - Relative Disapproves (emperor notification)
+character_event = {
+	id = sb_imperialguard.172
+	desc = "EVTDESCimperialguard.173"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+		reverse_opinion = {
+			modifier = opinion_added_kin_to_imperialguard_neg
+			who = FROM
+			years = 20
+		}
+	}
+}
+#ImperialGuard 18 - Imperial Guard family at war with the king.
+character_event = {
+	id = sb_imperialguard.18
+	desc = "EVTDESCimperialguard.18"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+	only_playable = yes
+
+	trigger = {
+		demesne_size = 1
+		e_ghiscar = {
+			holder_scope = {
+				war_with = ROOT
+				NOT = { dynasty = ROOT }
+				has_regent = no
+			}
+		}
+		is_lowborn = no
+		is_theocracy = no
+		imperialguard = {
+			is_alive = yes
+			dynasty = ROOT
+			NOT = { has_character_flag = imperialguard_kin_while_at_war }
+			has_pilgrimage_trait_trigger = no
+			prisoner = no
+			is_incapable = no
+			in_command = no
+		}
+	}
+
+	immediate = {
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				dynasty = ROOT
+				NOT = { has_character_flag = imperialguard_kin_while_at_war }
+				has_pilgrimage_trait_trigger = no
+				prisoner = no
+				is_incapable = no
+				in_command = no
+			}
+			save_event_target_as = imperialguard_kin_while_at_war
+		}
+	}
+
+	option = {
+		name = "EVTOPTAkingsguard.24" #What will the emperor decide?
+		e_ghiscar = {
+			holder_scope = {
+				character_event = { id = sb_imperialguard.180 }
+			}
+		}
+	}
+}
+#ImperialGuard 180 - You are at war with your Kingsguard family. (id = kingsguard.29 } } #Kingsguard Drama por hacer en imprison option)
+character_event = {
+	id = sb_imperialguard.180
+	desc = "EVTDESCimperialguard.180"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	trigger = {
+		event_target:imperialguard_kin_while_at_war = { dynasty = FROM }
+	}
+
+	immediate = {
+		event_target:imperialguard_kin_while_at_war = {
+			set_character_flag = imperialguard_kin_while_at_war
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_imperialguard.180" #I trust him!
+		#Trust
+		ai_chance = {
+			factor = 10
+
+			modifier = {
+				factor = 5
+				event_target:imperialguard_kin_while_at_war = { is_friend = ROOT }
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					reverse_opinion = { who = ROOT value =  10 }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					reverse_opinion = { who = ROOT value =  40 }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					reverse_opinion = { who = ROOT value =  70 }
+				}
+			}
+			modifier = {
+				factor = 4
+				event_target:imperialguard_kin_while_at_war = {
+					opinion = { who = ROOT value =  25 }
+				}
+			}
+			modifier = {
+				factor = 20
+				FROM = {
+					top_liege = { NOT = { character = ROOT_FROM } }
+					liege = { NOT = { character = ROOT } }
+				}
+			}
+			modifier = {
+				factor = 1.2
+				trait = charitable
+			}
+			modifier = {
+				factor = 1.5
+				trait = kind
+			}
+			modifier = {
+				factor = 1.5
+				trait = brave
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 4
+				trait = trusting
+			}
+		}
+		if = {
+			limit = {
+				personality_traits < 6
+				NOT = { trait = trusting }
+				NOT = { trait = paranoid }
+			}
+			random = {
+				chance = 20
+				add_trait = trusting
+				hidden_tooltip = {
+					character_event = {
+						id = 38250 #Notify
+					}
+				}
+			}
+		}
+		event_target:imperialguard_kin_while_at_war = {
+			if = {
+				limit = {
+					personality_traits < 6
+					NOT = { trait = trusting }
+					NOT = { trait = paranoid }
+				}
+				random = {
+					chance = 20
+					add_trait = trusting
+					hidden_tooltip = {
+						character_event = {
+							id = 38250 #Notify
+						}
+					}
+				}
+			}
+			opinion = {
+				modifier = opinion_defended_me
+				who = ROOT
+				years = 10
+			}
+			opinion = {
+				modifier = opinion_angry
+				who = FROM
+				years = 10
+			}
+			character_event = { id = sb_imperialguard.184 } #Duty to house or king?
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_imperialguard.180" #Imprison him!
+
+		#Imprison
+		ai_chance = {
+			factor = 5
+
+			modifier = {
+				factor = 0
+				NOR = {
+					trait = paranoid
+					trait = lunatic
+					trait = arbitrary
+					trait = wroth
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					trait = honorable
+					trait = just
+					event_target:imperialguard_kin_while_at_war = { reverse_opinion = { who = ROOT value =  20 } }
+				}
+				NOT = { trait = paranoid }
+				NOT = { trait = lunatic }
+			}
+			modifier = {
+				factor = 5
+				event_target:imperialguard_kin_while_at_war = { is_rival = ROOT }
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { reverse_opinion = { who = ROOT value =  -10 } }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { reverse_opinion = { who = ROOT value =  -70 } }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { opinion = { who = ROOT value =  -25 } }
+				}
+			}
+			modifier = {
+				factor = 4
+				trait = paranoid
+			}
+			modifier = {
+				factor = 4
+				trait = lunatic
+			}
+			modifier = {
+				factor = 1.5
+				trait = craven
+			}
+			modifier = {
+				factor = 1.2
+				trait = diligent
+			}
+			modifier = {
+				factor = 1.5
+				trait = envious
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+		}
+
+		event_target:imperialguard_kin_while_at_war = {
+			add_rival = ROOT
+			random_list = {
+				60 = {
+					modifier = {
+						factor = 0.57
+						ROOT = { realm_intrigue < 10 }
+					}
+					modifier = {
+						factor = 0.57
+						ROOT = { realm_intrigue < 18 }
+					}
+					modifier = {
+						factor = 1.75
+						ROOT = { realm_intrigue = 25 }
+					}
+					modifier = {
+						factor = 1.75
+						ROOT = { realm_intrigue = 37 }
+					}
+					imprison = ROOT
+					remove_trait = imperialguard
+					clr_character_flag = no_court_invites
+					ROOT = { character_event = { id = sb_imperialguard.186 } } #You imprisoned one of your imperialguard!
+					hidden_tooltip = { FROM = { character_event = { id = sb_imperialguard.182 } } } #Notification
+				}
+				40 = {
+					hidden_tooltip = { character_event = { id = kingsguard.29 } } #Kingsguard Drama. [Ai only]
+				}
+			}
+		}
+	}
+
+
+	option = {
+		name = "EVTOPTC_imperialguard.180" #Execute him!
+
+		#Execute him!
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 0
+				NOR = {
+					trait = paranoid
+					trait = lunatic
+					trait = arbitrary
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					trait = honorable
+					trait = just
+					event_target:imperialguard_kin_while_at_war = { reverse_opinion = { who = ROOT value =  0 } }
+				}
+				NOT = { trait = paranoid }
+				NOT = { trait = lunatic }
+			}
+			modifier = {
+				factor = 5
+				event_target:imperialguard_kin_while_at_war = { is_rival = ROOT }
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { reverse_opinion = { who = ROOT value =  -10 } }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { reverse_opinion = { who = ROOT value =  -70 } }
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:imperialguard_kin_while_at_war = {
+					NOT = { opinion = { who = ROOT value =  -25 } }
+				}
+			}
+			modifier = {
+				factor = 4
+				trait = paranoid
+			}
+			modifier = {
+				factor = 4
+				trait = lunatic
+			}
+			modifier = {
+				factor = 1.5
+				trait = craven
+			}
+			modifier = {
+				factor = 1.5
+				trait = envious
+			}
+			modifier = {
+				factor = 2
+				trait = wroth
+			}
+			modifier = {
+				factor = 1.5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 1.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 4
+				trait = cruel
+			}
+		}
+		event_target:imperialguard_kin_while_at_war = {
+			add_rival = ROOT
+
+			random_list = {
+				60 = {
+					modifier = {
+						factor = 0.57
+						ROOT = { realm_intrigue < 10 }
+					}
+					modifier = {
+						factor = 0.57
+						ROOT = { realm_intrigue < 18 }
+					}
+					modifier = {
+						factor = 1.75
+						ROOT = { realm_intrigue = 25 }
+					}
+					modifier = {
+						factor = 1.75
+						ROOT = { realm_intrigue = 37 }
+					}
+					imprison = ROOT
+					hidden_tooltip = {
+						FROM = { character_event = { id = sb_imperialguard.183 } } #Notification
+						FROM = { character_event = { id = 154 } } #'on execution event
+					}
+					death = {
+						death_reason = death_execution
+						killer = ROOT
+					}
+					ROOT = { character_event = { id = sb_imperialguard.185 } } #You successfuly executed one of your kingsguard.
+				}
+				40 = {
+					#hidden_tooltip = { character_event = { id = kingsguard.29 } } #Kingsguard Drama. [Ai only]
+				}
+			}
+		}
+	}
+}
+#ImperialGuard 181 - Your kin betrayed you and remained on the kingsguard. (Notification sent from .184 duty option)
+character_event = {
+	id = sb_imperialguard.181
+	desc = "EVTDESCimperialguard.181"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+		event_target:kingsguard_kin_while_at_war = {
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_angry
+				years = 10
+			}
+		}
+	}
+}
+#ImperialGuard 182 - Your kin has been imprisoned! (Notification sent from imprison option in .180)
+character_event = {
+	id = sb_imperialguard.182
+	desc = "EVTDESCimperialguard.182"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+	}
+}
+#ImperialGuard 183 - Your kin has been killed! (Notification sent from .180 execute option)
+character_event = {
+	id = sb_imperialguard.183
+	desc = "EVTDESCimperialguard.183"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+	}
+}
+#ImperialGuard 184 - Duty to house or king? (Sent by imperialguard.180)
+character_event = {
+	id = sb_imperialguard.184
+	desc = "EVTDESCkingsguard.66"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAkingsguard.66" #My duty is to my house
+		ai_chance = {
+			factor = 10
+
+			modifier = {
+				factor = 10
+				FROM = { FROM = { higher_tier_than = DUKE } } #is son of LP
+			}
+			modifier = {
+				factor = 10
+				FROM = { FROM = {  trait = rebel_leader }  } #is son of rebel leader
+			}
+			modifier = {
+				factor = 2
+				trait = familyperson
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = lunatic }
+			}
+			modifier = {
+				factor = 1.5
+				OR = {
+					trait = dishonorable1
+					trait =	dishonorable2
+					trait =	dishonorable3
+					trait =	dishonorable4
+					trait =	dishonorable5
+					trait =	dishonorable6
+					trait =	dishonorable7
+					trait =	dishonorable8
+					trait =	dishonorable9
+					trait =	dishonorable10
+				}
+
+
+			}
+
+		}#endai
+		#character_event = { id = kingsguard.29 } #Kingsguard drama start [ai only]
+		give_nickname = nick_the_oathbreaker
+	}#endopt
+
+	option = {
+		name = "EVTOPTBkingsguard.66" #My duty is to the king
+		ai_chance = {
+			factor = 100
+
+			modifier = {
+				factor = 5
+				trait = honorable
+			}
+			modifier = {
+				factor = 5
+				trait = just
+			}
+			modifier = {
+				factor = 5
+				trait = honest
+			}
+		}#endai
+
+		FROM = { FROM = { character_event = { id = sb_imperialguard.181 tooltip = EVTTOOLTIPkingsguard.26 } } }#Notification 'kin stays with king' to dynasty memeber
+	}
+}
+#ImperialGuard 185 - You succesfully executed one of your kingsguard! (Notification)
+character_event = {
+	id = sb_imperialguard.185
+	desc = "EVTDESCimperialguard.185"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+		if = {
+			limit = { personality_traits < 5 }
+			random_list = {
+				50 = {
+					if = {
+						limit = { NOT = { trait = wroth } }
+						if = {
+							limit = { trait = patient }
+							remove_trait = patient
+						}
+						add_trait = wroth
+						hidden_tooltip = {
+							character_event = {
+								id = 38254 #Notify
+							}
+						}
+					}
+				}
+				25 = {
+					if = {
+						limit = { NOT = { trait = arbitrary } }
+						if = {
+							limit = { trait = just }
+							remove_trait = just
+						}
+						add_trait = arbitrary
+						hidden_tooltip = {
+							character_event = {
+								id = 38266 #Notify
+							}
+						}
+					}
+				}
+				25 = {
+					if = {
+						limit = {
+							NOT = { trait = just }
+							NOT = { trait = arbitrary }
+						}
+						add_trait = just
+						hidden_tooltip = {
+							character_event = {
+								id = 38267 #Notify
+							}
+						}
+					}
+				}
+				100 = {
+					if = {
+						limit = { NOT = { trait = authoritative } }
+						add_trait = authoritative
+						hidden_tooltip = {
+							character_event = {
+								id = trait_notification.7 #Notify
+							}
+						}
+					}
+				}
+				100 = { }
+			}
+		}
+	}
+}
+#ImperialGuard 186 - You succesfully imprisoned one of your imperial guards! (Notification)
+character_event = {
+	id = sb_imperialguard.186
+	desc = "EVTDESCimperialguard.186"
+	picture = "GFX_kingsguard"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Ok"
+	}
+}
+#ImperialGuard 19 - Loan Imperial Guard Member
+character_event = {
+	id = sb_imperialguard.19
+
+	is_triggered_only = yes
+	hide_window = yes
+	only_rulers = yes
+
+	trigger = {
+		demesne_size = 1
+		e_ghiscar = { #Must either be child of King or married to a son of the king
+			holder_scope = {
+				OR = {
+					is_parent_of = ROOT
+					current_heir = {
+						dynasty = PREV
+						OR = {
+							character = ROOT
+							spouse = {
+								character = ROOT
+								top_liege = { has_landed_title = e_ghiscar }
+							}
+						}
+					}
+					any_child = {
+						is_female = no
+						is_ruler = no
+						NOT = { trait = bastard }
+						spouse = {
+							character = ROOT
+							top_liege = { has_landed_title = e_ghiscar }
+						}
+					}
+				}
+				NOT = { war_with = ROOT }
+				NOT = { character = ROOT }
+				NOT = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_withheld_kingsguard } }
+			}
+		}
+		NAND = {
+			prisoner = yes
+			host = { has_landed_title = e_ghiscar }
+		}
+		NOT = { trait = bastard }
+		NOT = { trait = imperialguard }
+		NOT = { trait = nightswatch }
+		NOT = { trait = archmaester }
+		NOT = { trait = maester }
+		NOT = { is_inaccessible_trigger = yes }
+		is_priest = no
+		is_theocracy = no
+		imperialguard = {
+			is_alive = yes
+			is_ruler = no
+			liege = { has_landed_title = d_imperialguard }
+			is_incapable = no
+			prisoner = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { has_severe_disability_trigger = yes }
+			is_ill = no
+		}
+		NOT = { any_courtier = { trait = imperialguard } }
+	}
+
+	immediate = {
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				is_ruler = no
+				liege = { has_landed_title = d_imperialguard }
+				prisoner = no
+				NOT = { is_inaccessible_trigger = yes }
+				NOT = { has_severe_disability_trigger = yes }
+				is_ill = no
+			}
+			set_character_flag = loan_candidate
+			save_event_target_as = loan_candidate_1
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				is_ruler = no
+				liege = { has_landed_title = d_imperialguard }
+				prisoner = no
+				NOT = { is_inaccessible_trigger = yes }
+				NOT = { has_severe_disability_trigger = yes }
+				is_ill = no
+				NOT = { has_character_flag = loan_candidate }
+			}
+			set_character_flag = loan_candidate
+			save_event_target_as = loan_candidate_2
+		}
+		imperialguard = {
+			limit = {
+				is_alive = yes
+				is_ruler = no
+				liege = { has_landed_title = d_imperialguard }
+				prisoner = no
+				NOT = { is_inaccessible_trigger = yes }
+				NOT = { has_severe_disability_trigger = yes }
+				is_ill = no
+				NOT = { has_character_flag = loan_candidate }
+			}
+			save_event_target_as = loan_candidate_3
+		}
+		e_ghiscar = { holder_scope = { character_event = { id = sb_imperialguard.191 } } }
+	}
+
+	option = {
+		name = OK
+	}
+}
+#ImperialGuard 191 - Send Imperial Guard with royal family member?
+character_event = {
+	id = sb_imperialguard.191
+	desc = "EVTDESCimperialguard.191"
+	picture = GFX_kingsguard
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_ghiscar
+		NOT = { character = FROM }
+	}
+
+	option = { #Send candidate 1
+		name = "EVTOPTAkingsguard.77"
+		trigger = {
+			is_incapable = no
+			event_target:loan_candidate_1 = { always = yes }
+		}
+		event_target:loan_candidate_1 = {
+			move_character = FROM
+			hidden_tooltip = { opinion = { who = FROM modifier = loan_kingsguard years = 100 } }
+			clr_character_flag = loan_candidate
+		}
+		hidden_tooltip = {
+			FROM = { letter_event = { id = sb_imperialguard.192 } }
+			event_target:loan_candidate_2 = { clr_character_flag = loan_candidate }
+		}
+	}
+
+	option = { #Send candidate 2
+		name = "EVTOPTBkingsguard.77"
+		trigger = {
+			is_incapable = no
+			event_target:loan_candidate_2 = { always = yes }
+		}
+		event_target:loan_candidate_2 = {
+			move_character = FROM
+			hidden_tooltip = { opinion = { who = FROM modifier = loan_kingsguard years = 100 } }
+			clr_character_flag = loan_candidate
+		}
+		hidden_tooltip = {
+			FROM = { letter_event = { id = sb_imperialguard.192 } }
+			event_target:loan_candidate_1 = { clr_character_flag = loan_candidate }
+		}
+	}
+
+	option = { #Send candidate 3
+		name = "EVTOPTCkingsguard.77"
+		trigger = {
+			is_incapable = no
+			event_target:loan_candidate_3 = { always = yes }
+		}
+		event_target:loan_candidate_3 = {
+			move_character = FROM
+			hidden_tooltip = { opinion = { who = FROM modifier = loan_kingsguard years = 100 } }
+		}
+		hidden_tooltip = {
+			FROM = { letter_event = { id = sb_imperialguard.192 } }
+			event_target:loan_candidate_1 = { clr_character_flag = loan_candidate }
+			event_target:loan_candidate_2 = { clr_character_flag = loan_candidate }
+		}
+	}
+
+	option = { #Send no-one
+		name = "EVTOPTD_imperialguard.191"
+		trigger = { is_incapable = no }
+		reverse_opinion = { who = FROM modifier = opinion_withheld_kingsguard years = 10 }
+		hidden_tooltip = {
+			FROM = { character_event = { id = sb_imperialguard.193 } }
+			event_target:loan_candidate_1 = { clr_character_flag = loan_candidate }
+			event_target:loan_candidate_2 = { clr_character_flag = loan_candidate }
+		}
+	}
+
+	option = { #incapable
+		name = "EVTOPTE_imperialguard.191"
+		trigger = { trait = incapable }
+		tooltip_info = incapable
+		event_target:loan_candidate_1 = {
+			move_character = FROM
+			hidden_tooltip = { opinion = { who = FROM modifier = loan_kingsguard years = 100 } }
+			clr_character_flag = loan_candidate
+		}
+		hidden_tooltip = {
+			FROM = { letter_event = { id = sb_imperialguard.192 } }
+			event_target:loan_candidate_2 = { clr_character_flag = loan_candidate }
+		}
+	}
+}
+#ImperialGuard 192 - Inform IG sent
+letter_event = {
+	id = sb_imperialguard.192
+	desc = "EVTDESCimperialguard.192"
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		random_courtier = {
+			limit = {
+				trait = imperialguard
+				has_opinion_modifier = { who = ROOT modifier = loan_kingsguard }
+			}
+			tooltip = { show_portrait = yes }
+		}
+	}
+}
+#ImperialGuard 193 -Inform IG not sent
+character_event = {
+	id = sb_imperialguard.193
+	desc = "EVTDESCimperialguard.193"
+	picture = GFX_kingsguard
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAkingsguard.79"
+	}
+}

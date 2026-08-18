@@ -1,0 +1,338 @@
+# Warrior Lodges decisions
+# By Milla Isaksson
+
+#targeted_decisions = {
+
+
+##############################
+########## POWERS ############
+##############################
+
+#}
+
+society_decisions = {
+
+
+	warrior_lodge_summon_skinchanger = {
+		is_in_society = yes
+		ai_check_interval = 36 #check only once every 36 months.
+		is_high_prio = yes
+		potential = {
+			has_dlc = "Holy Fury"
+			is_playable = yes
+			is_adult = yes
+			is_member_of_skinchangers_trigger = yes
+			society_rank = 3
+
+		}
+		allow = {
+			has_society_currency_medium_trigger = yes
+			is_inaccessible_trigger = no
+			OR = {
+				NOT = { has_character_flag = flag_hired_skinchanger }
+				had_character_flag = { flag = flag_hired_skinchanger days = 3650 }
+			}
+		}
+		effect = {
+			detract_society_currency_medium_effect = yes
+			custom_tooltip = { text = tooltip_summoning_lodge_commander }
+			set_character_flag = flag_hired_skinchanger
+			hidden_tooltip = {
+				random_list = {
+					50 = {
+						create_random_soldier = {
+							random_traits = yes
+							dynasty = random
+							female = no
+							attributes = {
+								martial = 5
+							}
+						}
+					}
+					50 = {
+						create_random_soldier = {
+							random_traits = yes
+							dynasty = random
+							female = yes
+							attributes = {
+								martial = 5
+							}
+						}
+					}
+				}
+			}
+			new_character = {
+				random_list = {
+					5 = { add_trait = greensight }
+					95 = {  }
+				}
+
+				random_list = {
+					2 = { add_trait = lizardlion }
+					8 = { add_trait = brownbear }
+					7 = { add_trait = snowbear }
+					3 = { add_trait = shadowcat }
+					10 = { add_trait = eagle }
+					50 = { add_trait = wolf }
+					20 = { add_trait = crow }
+					10 = { add_trait = crane }
+					15 = { add_trait = bat }
+					10 = { add_trait = goat }
+					15 = { add_trait = cata }
+					10 = { add_trait = deer }
+					20 = { add_trait = boar }
+					20 = { add_trait = fox_mbs }
+				}
+
+				add_trait = mystic
+				add_trait = dog
+				if = {
+					limit = {
+						NOT = {
+							society_member_of = skinchanger_brotherhood
+						}
+					}
+					leave_society = yes
+					join_society = skinchanger_brotherhood
+				}
+
+
+				random_list = { # Flavor Randomization
+					35 = {
+						# Nothing
+					}
+					15 = {
+						change_martial = 2
+					}
+					10 = {
+						add_trait = robust
+					}
+					10 = {
+						add_trait = duelist
+					}
+					10 = {
+						add_trait = hunter
+					}
+					5 = {
+						add_trait = strategist
+					}
+					5 = {
+						change_martial = 4
+					}
+					5 = {
+						if = {
+							limit = {
+								has_dlc = "Reapers"
+							}
+							add_trait = one_eyed
+						}
+					}
+					5 = {
+						add_trait = shrewd
+					}
+					3 = {
+						add_trait = tall
+					}
+				}
+
+				set_character_flag = invited_lodge_soldier
+				set_character_flag = lodge_warrior_original_court_@ROOT
+                set_character_flag = no_court_invites
+				save_event_target_as = invited_lodge_soldier
+			}
+			character_event = { id = more_bloodlines.310 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.5
+				war = no #Only summon in time of need.
+			}
+			modifier = {
+				factor = 0.1
+				any_courtier = { is_member_of_skinchangers_trigger = yes } #Less likely to invite if there is already someone else at court.
+			}
+			modifier = {
+				factor = 0.01
+				job_marshal = { martial = 16 }
+			}
+			modifier = {
+				factor = 0 #Fearful to be challenged for leadership.
+				OR = {
+					is_nomadic = yes
+					government = pirate_government
+					government = wildling_feudal_government
+				}
+				trait = paranoid
+			}
+			modifier = {
+				factor = 0 #Only use if empty commander spots.
+           		OR = {
+                	AND = {
+                    	tier = COUNT
+                        any_realm_character = {
+                            count = 2
+                            liege = { character = ROOT }
+                            has_minor_title = title_commander
+                        }
+                	}
+                	AND = {
+                    	tier = DUKE
+                        any_realm_character = {
+                            count = 4
+                            liege = { character = ROOT }
+                            has_minor_title = title_commander
+                        }
+                	}
+                	AND = {
+                    	tier = KING
+                   		 is_nomadic = no
+                        any_realm_character = {
+                            count = 6
+                            liege = { character = ROOT }
+                            has_minor_title = title_commander
+                        }
+                	}
+               		AND = {
+                	    tier = EMPEROR
+                	    is_nomadic = no
+                        any_realm_character = {
+                            count = 8
+                            liege = { character = ROOT }
+                            has_minor_title = title_commander
+                        }
+                	}
+                	AND = {
+                	    tier = KING
+                 	   is_nomadic = yes
+                        any_realm_character = {
+                            count = 2
+                            liege = { character = ROOT }
+                            has_minor_title = title_commander
+                        }
+                	}
+               		AND = {
+                	    tier = EMPEROR
+                	    is_nomadic = yes
+                        any_realm_character = {
+                            count = 4
+                            liege = { character = ROOT }
+                            has_minor_title = title_commander
+                        }
+                	}
+            	}
+			}
+		}
+	}
+	skinchanger_brotherhood_tame_mammoth = {
+		is_in_society = yes
+		is_high_prio = yes
+		ai_check_interval = 36 #check only once every 36 months.
+		potential = {
+			has_dlc = "Holy Fury"
+			is_playable = yes
+			is_adult = yes
+			is_member_of_skinchangers_trigger = yes
+			society_rank = 4
+			NOT = {
+				trait = mammoth
+			}
+			OR = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_great_warg
+				}
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_winged_wolf
+				}
+			}
+		}
+		allow = {
+			has_society_currency_major_trigger = yes
+			is_inaccessible_trigger = no
+			OR = {
+				NOT = { has_character_flag = tamed_exotic_beast }
+				had_character_flag = { flag = tamed_exotic_beast days = 1825 }
+			}
+			NOT = { has_character_flag = taming_exotic_beast }
+		}
+		effect = {
+			detract_society_currency_major_effect = yes
+			character_event = { id = mammoth.1 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 5 #
+				trait = brave
+			}
+			modifier = {
+				factor = 15 #
+				trait = greensight
+			}
+		}
+	}
+	skinchanger_brotherhood_tame_unicorn = {
+		is_in_society = yes
+		is_high_prio = yes
+		ai_check_interval = 36 #check only once every 36 months.
+		potential = {
+			has_dlc = "Holy Fury"
+			is_playable = yes
+			is_adult = yes
+			is_member_of_skinchangers_trigger = yes
+			society_rank = 4
+			NOT = {
+				trait = unicorn_MBS
+			}
+			OR = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_great_warg
+				}
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_winged_wolf
+				}
+			}
+		}
+		allow = {
+			has_society_currency_major_trigger = yes
+			is_inaccessible_trigger = no
+			OR = {
+				NOT = { has_character_flag = tamed_exotic_beast }
+				had_character_flag = { flag = tamed_exotic_beast days = 1825 }
+			}
+			NOT = { has_character_flag = taming_exotic_beast }
+		}
+		effect = {
+			detract_society_currency_major_effect = yes
+			character_event = { id = unicorn.1 }
+		}
+		revoke_allowed = {
+			always = no
+		}
+		ai_will_do = {
+			factor = 0.1
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 5 #
+				trait = brave
+			}
+			modifier = {
+				factor = 15 #
+				trait = greensight
+			}
+		}
+	}
+}

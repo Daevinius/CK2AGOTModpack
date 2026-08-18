@@ -1,0 +1,459 @@
+
+namespace = blackfyre_rebellion_cbb
+#########################################
+#blackfyre_rebellion_cbb.1 - Osgrey
+#blackfyre_rebellion_cbb.2 - Boggs
+#blackfyre_rebellion_cbb.3 - Mandrake
+#blackfyre_rebellion_cbb.4 - Ball
+#blackfyre_rebellion_cbb.5 - Frey
+#blackfyre_rebellion_cbb.6 - Daenerys Decision
+
+narrative_event = {
+	id = blackfyre_rebellion_cbb.1
+	title = "EVTblackfyre_rebellion_cbb.1"
+	desc = "EVTDESCblackfyre_rebellion_cbb.1"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		c_standfast = {
+			has_holder = yes
+			holder_scope = { character = 235 }
+			}
+		}
+
+	option = {
+		name = "EVTOPTAblackfyre_rebellion_cbb.1" #Os- Who?
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBblackfyre_rebellion_cbb.1" #Give back to the Osgreys
+		ai_chance = {
+			factor = 2
+		}
+		c_standfast = { holder_scope = { tooltip = { show_portrait = yes } } }
+		c_standfast = {
+			holder_scope = {
+				d_northmarch = {
+					usurp_title = { target = PREV }
+				}
+				c_coldmoat = {
+						usurp_title_plus_barony_if_unlanded = { target = PREV }
+					}
+				c_derring_downs = {
+						set_defacto_liege = d_northmarch
+				}
+				c_leafy_lake = {
+						set_defacto_liege = d_northmarch
+				}
+				c_dosk = {
+						set_defacto_liege = d_northmarch
+				}
+				set_defacto_liege = k_reach
+
+				}
+			}
+		}
+	}
+narrative_event = {
+	id = blackfyre_rebellion_cbb.2
+	title = "EVTblackfyre_rebellion_cbb.2"
+	desc = "EVTDESCblackfyre_rebellion_cbb.2"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		c_northern_crackclaw_point = {
+			has_holder = yes
+			holder_scope = { dynasty = 174410 }
+			}
+		}
+
+	option = {
+		name = "EVTOPTAblackfyre_rebellion_cbb.2" #Bog- Who?
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBblackfyre_rebellion_cbb.2" #Give back to the Boggs
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 2
+				trait = honorable
+			}
+		}
+		c_northern_crackclaw_point = { holder_scope = { tooltip = { show_portrait = yes } } }
+		c_northern_crackclaw_point = {
+			holder_scope = {
+				d_crackclaw_point = {
+					usurp_title = { target = PREV }
+				}
+				c_southern_crackclaw_point = {
+						set_defacto_liege = d_crackclaw_point
+				}
+				c_strongcliff = {
+						set_defacto_liege = d_crackclaw_point
+				}
+				c_dyre_den = {
+						set_defacto_liege = d_crackclaw_point
+				}
+				c_caylus = {
+						set_defacto_liege = d_crackclaw_point
+				}
+				c_the_whispers = {
+						set_defacto_liege = d_crackclaw_point
+				}
+					set_defacto_liege = e_iron_throne
+
+			}
+		}
+	}
+}
+
+narrative_event = {
+	id = blackfyre_rebellion_cbb.3
+	title = "EVTblackfyre_rebellion_cbb.3"
+	desc = "EVTDESCblackfyre_rebellion_cbb.3"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		c_bluefork = {
+			has_holder = yes
+			holder_scope = { dynasty = 1438 }
+			}
+		}
+
+	option = {
+		name = "EVTOPTAblackfyre_rebellion_cbb.3" #Man- Who?
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBblackfyre_rebellion_cbb.3" #Give back to the Mandrakes
+		ai_chance = {
+			factor = 2
+		}
+		c_bluefork = { holder_scope = { tooltip = { show_portrait = yes } } }
+		c_bluefork = {
+			holder_scope = {
+				d_trident = {
+					usurp_title = { target = PREV }
+				}
+				c_redfork = {
+						usurp_title_plus_barony_if_unlanded = { target = PREV }
+					}
+					set_defacto_liege = k_riverlands
+
+			}
+		}
+	}
+}
+
+narrative_event = {
+	id = blackfyre_rebellion_cbb.4
+	title = "EVTblackfyre_rebellion_cbb.4"
+	desc = "EVTDESCblackfyre_rebellion_cbb.4"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		c_manderford = {
+			has_holder = yes
+			holder_scope = { dynasty = 260 }
+			}
+		}
+
+	option = {
+		name = "EVTOPTAblackfyre_rebellion_cbb.4" #Ba- Who?
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBblackfyre_rebellion_cbb.4" #Give back to the Ball's
+		ai_chance = {
+			factor = 2
+		}
+		c_manderford = { holder_scope = { tooltip = { show_portrait = yes } } }
+		c_manderford = {
+			holder_scope = {
+				d_mandermouth = {
+					usurp_title = { target = PREV }
+				}
+				c_thornton_hall = {
+						set_defacto_liege = d_mandermouth
+				}
+				c_highwood = {
+						set_defacto_liege = d_mandermouth
+				}
+				c_westbrook = {
+						set_defacto_liege = d_mandermouth
+				}
+				c_smallwood = {
+						set_defacto_liege = d_mandermouth
+				}
+					set_defacto_liege = k_reach
+
+			}
+		}
+	}
+}
+
+narrative_event = {
+	id = blackfyre_rebellion_cbb.5
+	title = "EVTblackfyre_rebellion_cbb.5"
+	desc = "EVTDESCblackfyre_rebellion_cbb.5"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		d_thecrossing = {
+			has_holder = yes
+			holder_scope = { dynasty = 127 }
+			}
+		}
+
+	option = {
+		name = "EVTOPTAblackfyre_rebellion_cbb.5" #Fre- Who?
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = deceitful
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBblackfyre_rebellion_cbb.5" #Give back to the Frey's
+		ai_chance = {
+			factor = 2
+		}
+		d_thecrossing = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_thecrossing = {
+			holder_scope = {
+				c_capeofeagles = {
+						usurp_title_plus_barony_if_unlanded = { target = PREV }
+					}
+				d_thecrossing = {
+					c_capeofeagles = {
+						de_jure_liege = PREV
+						holder_scope = { set_defacto_liege = ROOT }
+					}
+				}
+		set_defacto_liege = k_riverlands
+
+			}
+		}
+	}
+}
+
+narrative_event = {
+	id = blackfyre_rebellion_cbb.6
+	title = "EVTblackfyre_rebellion_cbb.6"
+	desc = "EVTDESCblackfyre_rebellion_cbb.6"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		character = 77024
+	}
+
+	option = {
+		name = "EVTOPTAblackfyre_rebellion_cbb.6" #Marry Daenerys, Divorce Wife
+		ai_chance = { factor = 33 }
+
+				hidden_tooltip = {
+				remove_spouse = 77024496
+				add_spouse = 11496
+				}
+				add_rival = 11001
+				add_rival = 77024496
+				change_variable = { which = "tyrant" value = 15 }
+				hidden_tooltip = { character_event = { id = maintenance.1 } }#tyrant trait
+			c_11496 = {
+					remove_spouse = 11001
+					add_spouse = 77024
+			}
+			c_11001 = {
+					remove_spouse = 11496
+					opinion = {
+						modifier = opinion_stole_wife
+						who = ROOT
+						months = 120
+						multiplier = 2
+					}
+			}
+			c_77024496 = {
+					remove_spouse = 77024
+					opinion = {
+						modifier = opinion_put_aside
+						who = ROOT
+						months = 120
+						multiplier = 2
+					}
+			}
+			c_122300024 = {
+					opinion = {
+						modifier = opinion_put_daughter_aside
+						who = ROOT
+						months = 120
+						multiplier = 2
+					}
+			}
+			hidden_tooltip = {
+				c_122300024 = {
+						opinion = {
+							modifier = opinion_put_daughter_aside
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+				c_99002 = {
+						opinion = {
+							modifier = opinion_stole_mother
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+				c_20001 = {
+						opinion = {
+							modifier = opinion_stole_mother
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+				c_45294 = {
+						opinion = {
+							modifier = opinion_stole_mother
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+			}
+	}
+	option = {
+		name = "EVTOPTBblackfyre_rebellion_cbb.6" #Marry Daenerys, Keep Wife Also
+		ai_chance = { factor = 33 }
+
+				hidden_tooltip = {
+				remove_spouse = 77024496
+				add_spouse = 11496
+				}
+				add_rival = 11001
+				change_variable = { which = "tyrant" value = 15 }
+				hidden_tooltip = { character_event = { id = maintenance.1 } }#tyrant trait
+			c_11496 = {
+					remove_spouse = 11001
+					add_spouse = 77024
+			}
+			c_11001 = {
+					remove_spouse = 11496
+					opinion = {
+						modifier = opinion_stole_wife
+						who = ROOT
+						months = 120
+						multiplier = 2
+					}
+			}
+			c_77024496 = {
+					ROOT = { add_consort = PREV }
+					opinion = {
+						modifier = opinion_chose_another_spouse
+						who = ROOT
+						months = 120
+						multiplier = 2
+					}
+			}
+			hidden_tooltip = {
+				c_122300024 = {
+						opinion = {
+							modifier = opinion_chose_another_spouse
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+				c_99002 = {
+						opinion = {
+							modifier = opinion_stole_mother
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+				c_20001 = {
+						opinion = {
+							modifier = opinion_stole_mother
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+				c_45294 = {
+						opinion = {
+							modifier = opinion_stole_mother
+							who = ROOT
+							months = 120
+							multiplier = 2
+						}
+				}
+			}
+	}
+	option = {
+		name = "EVTOPTCblackfyre_rebellion_cbb.6" #Don't Marry Daenerys, Stay With Wife
+		ai_chance = { factor = 33 }
+
+			c_77024496 = {
+					opinion = {
+						modifier = opinion_stayed_faithful
+						who = ROOT
+						months = 120
+						multiplier = 2
+					}
+			}
+	}
+}

@@ -1,0 +1,1959 @@
+namespace = kotstevents
+
+character_event = {
+	id = kotstevents.0 #Flag Clearer
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+	}
+
+	option = {
+		clr_global_flag = kingsguard_stop
+	}
+}
+
+character_event = {
+	id = kotstevents.777 #Flag Clearer
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = kingsguard
+		had_character_flag = { flag = kingsguard_personality years = 40 }
+	}
+
+	option = {
+		clr_character_flag = kingsguard_personality
+	}
+}
+
+character_event = {
+	id = kotstevents.1 #Lust1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	only_men = yes
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = lustful
+			NOT = { trait = homosexual }
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+		top_liege = {
+			AND = {
+				is_female = no
+				is_married = yes
+			}
+			spouse = {
+				is_female = yes
+				OR = {
+					AND = {
+						has_ugly_trait_trigger = yes
+						OR = {
+							trait = lustful
+							trait = hedonist
+						}
+					}
+					AND = {
+						has_negative_congenital_trigger = yes
+						OR = {
+							trait = lustful
+							trait = hedonist
+						}
+					}
+					AND = {
+						is_pregnant = yes
+						OR = {
+							trait = lustful
+							trait = hedonist
+						}
+					}
+				}
+				NOR = {
+					ai = no
+					trait = chaste
+					is_ill = yes
+					AND = {
+						NOR = {
+							trait = lustful
+							trait = hedonist
+						}
+						is_lover = PREV
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.2 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.2 #Lust1 KING
+	desc = EVTDESCkotstlust1
+	picture = GFX_evt_lovers
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstlust1
+		FROM = { imprison = ROOT }
+		FROM = { add_rival = ROOT }
+		spouse = {
+			add_character_modifier = {
+				name = adulteress
+				years = 10
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_lust1 } } }
+				FROM = {
+					set_variable = { which = "kotst_lust11" value = 0 }
+					set_character_flag = kotst_lust1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTCkotstlust1
+		spouse = {
+			add_character_modifier = {
+				name = adulteress
+				years = 10
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_lust1 } } }
+				FROM = {
+					set_variable = { which = "kotst_lust12" value = 0 }
+					set_character_flag = kotst_lust1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstlust1
+		custom_tooltip = { text = lust1 }
+		hidden_tooltip = {
+			spouse = {
+				add_lover = FROM
+			}
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -3 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.3 #Lust2 KG
+
+	hide_window = yes
+
+	min_age = 16
+	only_men = yes
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = lustful
+			NOT = { trait = homosexual }
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.4 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.4 #Lust2 KING
+	desc = EVTDESCkotstlust2
+	picture = GFX_evt_market_muslim
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstlust2
+		prestige = -500
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.5 #Lust3 KG
+
+	hide_window = yes
+
+	min_age = 16
+	only_men = yes
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = lustful
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.6 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.6 #Lust3 KING
+	desc = EVTDESCkotstlust3
+	picture = GFX_evt_bad_news
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstlust3
+		prestige = -200
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.7 #Greed1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = greedy
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.8 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.8 #Greed1 KING
+	desc = EVTDESCkotstgreed1
+	picture = GFX_evt_bad_news
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstgreed1
+		prestige = -100
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.9 #Sloth1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = slothful
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.10 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.10 #Sloth1 KING
+	desc = EVTDESCkotstsloth1
+	picture = GFX_evt_recovery
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstsloth1
+		prestige = -100
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.11 #Sloth2 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = slothful
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.12 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.12 #Sloth2 KING
+	desc = EVTDESCkotstsloth2
+	picture = GFX_evt_victory_arch_byzantine
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstsloth2
+		prestige = -300
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.13 #Wroth1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = wroth
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.14 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.14 #Wroth1 KING
+	desc = EVTDESCkotstwroth1
+	picture = GFX_evt_quarrel
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstwroth1
+		FROM = {
+			imprison = ROOT
+		}
+		FROM = {
+			add_rival = ROOT
+		}
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_wroth1 } } }
+				FROM = {
+					set_variable = { which = "kotst_wroth11" value = 0 }
+					set_character_flag = kotst_wroth1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstwroth1
+		custom_tooltip = { text = kingsguard_minus_three }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -3 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_wroth1 } } }
+				FROM = {
+					set_variable = { which = "kotst_wroth12" value = 0 }
+					set_character_flag = kotst_wroth1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.15 #Wroth2 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = wroth
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.16 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.16 #Wroth2 KING
+	desc = EVTDESCkotstwroth2
+	picture = GFX_evt_melee_muslim
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstwroth2
+		tooltip_info = cruel
+		trigger = {
+			AND = {
+				trait = cruel
+				NOT = { trait = kind }
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstwroth2
+		tooltip_info = kind
+		trigger = {
+			AND = {
+				trait = kind
+				NOT = { trait = cruel }
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_three }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -3 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTCkotstwroth2
+		trigger = {
+			OR = {
+				AND = {
+					trait = kind
+					trait = cruel
+				}
+				AND = {
+					NOT = { trait = kind }
+					NOT = { trait = cruel }
+				}
+			}
+		}
+		prestige = -400
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.17 #Wroth3 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = wroth
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		location = {
+			random_province_character = {
+				limit = {
+					NOT = { character = ROOT }
+					is_ruler = no
+					is_lowborn = yes
+					prisoner = no
+					age = 16
+					NOT = { is_close_relative = ROOT }
+					NOT = { trait = dragon }
+				}
+				character_event = { id = kotstevents.171 }
+			}
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.171 #Wroth3 Ping Victim
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.18 }
+		}
+	}
+}
+long_character_event = {
+	id = kotstevents.18 #Wroth3 KING
+	desc = EVTDESCkotstwroth3
+	picture = GFX_evt_kingsguard_kill
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = { death = { death_reason = death_murder killer = FROMFROM } }
+	}
+
+	option = {
+		name = EVTOPTAkotstwroth3
+		tooltip_info = cruel
+		trigger = { trait = cruel }
+		prestige = -500
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			if = {
+				limit = { FROMFROM = { NOT = { has_character_flag = kotst_wroth2 } } }
+				FROMFROM = {
+					set_variable = { which = "kotst_wroth21" value = 0 }
+					set_character_flag = kotst_wroth2
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstwroth3
+		FROMFROM = {
+			imprison = ROOT
+		}
+		custom_tooltip = { text = kingsguard_minus_three }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -3 }
+			}
+			if = {
+				limit = { FROMFROM = { NOT = { has_character_flag = kotst_wroth2 } } }
+				FROMFROM = {
+					set_variable = { which = "kotst_wroth22" value = 0 }
+					set_character_flag = kotst_wroth2
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTCkotstwroth3
+		prestige = -200
+		ROOT = { wealth = -50 }
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			if = {
+				limit = { FROMFROM = { NOT = { has_character_flag = kotst_wroth2 } } }
+				FROMFROM = {
+					set_variable = { which = "kotst_wroth23" value = 0 }
+					set_character_flag = kotst_wroth2
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.19 #Proud1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = proud
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.20 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.20 #Proud1 KING
+	desc = EVTDESCkotstproud1
+	picture = GFX_evt_feast
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstproud1
+		tooltip_info = proud
+		trigger = {
+			AND = {
+				trait = proud
+				NOT = { trait = humble }
+			}
+		}
+		FROM = {
+			imprison = ROOT
+		}
+		FROM = {
+			add_rival = ROOT
+		}
+		hidden_tooltip = {
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstproud1
+		prestige = -200
+		custom_tooltip = { text = kingsguard_minus_one }
+			hidden_tooltip = {
+				primary_title = {
+					change_variable = { which = "kingsguard_honor" value = -1 }
+				}
+				character_event = { id = kotst.1 }
+			}
+	}
+	option = {
+		name = EVTOPTCkotstproud1
+		tooltip_info = humble
+		trigger = {
+			AND = {
+				trait = humble
+				NOT = { trait = proud }
+			}
+		}
+		ROOT = { prestige = -500 }
+	}
+}
+
+character_event = {
+	id = kotstevents.21 #Proud2
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = proud
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.22 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.22 #Proud2 KING
+	desc = EVTDESCkotstproud2
+	picture = GFX_evt_bad_news
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstproud2
+		prestige = -100
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.23 #Cruel1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = cruel
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.24 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+long_character_event = {
+	id = kotstevents.24 #Cruel1 KING
+	desc = EVTDESCkotstcruel1
+	picture = GFX_evt_torture
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstcruel1
+		tooltip_info = cruel
+		trigger = {
+			trait = cruel
+			NOT = { trait = kind }
+		}
+		ROOT = {
+			add_friend = FROM
+		}
+	}
+	option = {
+		name = EVTOPTBkotstcruel1
+		tooltip_info = kind
+		trigger = {
+			AND = {
+				trait = kind
+				NOT = { trait = cruel }
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTCkotstcruel1
+		trigger = {
+			OR = {
+				AND = {
+					trait = kind
+					trait = cruel
+				}
+				AND = {
+					NOT = { trait = kind }
+					NOT = { trait = cruel }
+				}
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.25 #Gluttony1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = gluttonous
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.26 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.26 #Gluttony1 KING
+	desc = EVTDESCkotstgluttony1
+	picture = GFX_evt_pope_feast
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstgluttony1
+		prestige = -100
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.27 #Drunkard1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = drunkard
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = {
+		set_character_flag = kingsguard_personality
+	}
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.28 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.28 #Drunkard1 KING
+	desc = EVTDESCkotstdrunkard1
+	picture = GFX_evt_drunk
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstdrunkard1
+		prestige = -200
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+#VIRTUES
+
+character_event = {
+	id = kotstevents.29 #Chastity1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = chaste
+			has_lover = no
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.30 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+character_event = {
+	id = kotstevents.30 #Chastity1 KING
+	desc = EVTDESCkotstchastity1
+	picture = GFX_evt_courtiers_talking
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstchastity1
+		custom_tooltip = { text = kingsguard_plus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.31 #Diligence KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = diligent
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.32 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+character_event = {
+	id = kotstevents.32 #Diligent1 KING
+	desc = EVTDESCkotstdiligence1
+	picture = GFX_evt_longbowman_muslim
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstdiligence1
+		custom_tooltip = { text = kingsguard_plus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.33 #Patience1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = patient
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.34 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+character_event = {
+	id = kotstevents.34 #Patience1 KING
+	desc = EVTDESCkotstpatient1
+	picture = GFX_evt_council
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstpatient1
+		custom_tooltip = { text = kingsguard_plus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.35 #Kindness1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = kind
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.36 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+long_character_event = {
+	id = kotstevents.36 #Kindness1 KING
+	desc = EVTDESCkotstkindness1
+	picture = GFX_evt_guardian
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstkindness1
+		FROM = {
+			if = {
+				limit = { has_nickname = no }
+				give_nickname = nick_the_kind
+			}
+		}
+		custom_tooltip = { text = kingsguard_plus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 2 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstkindness1
+		tooltip_info = cruel
+		trigger = { trait = cruel }
+		custom_tooltip = { text = kingsguard_plus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 2 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.37 #Humble1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = humble
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.38 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+long_character_event = {
+	id = kotstevents.38 #Humble1 KING
+	desc = EVTDESCkotsthumble1
+	picture = GFX_evt_son_asking_father
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotsthumble1
+		custom_tooltip = { text = kingsguard_plus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.39 #Zealous1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = zealous
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.40 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+character_event = {
+	id = kotstevents.40 #Zealous KING
+	desc = EVTDESCkotstzealous1
+	picture = GFX_evt_pilgrims_epic_journey
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstzealous1
+		wealth = -25
+		piety = 15
+		custom_tooltip = { text = kingsguard_plus_three }
+		hidden_tooltip = {
+			FROM = {
+				add_trait = on_pilgrimage
+				character_event = { id = kotstevents.401 days = 12 }
+			}
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 3 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstzealous1
+		add_character_modifier = {
+			name = special_protection
+			years = 1
+		}
+		piety = -50
+	}
+}
+character_event = {
+	id = kotstevents.401 #Zealous1.1 KG
+
+	is_triggered_only = yes
+
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.402 }
+		}
+	}
+}
+character_event = {
+	id = kotstevents.402 #Zealous1.1 KING
+	desc = EVTDESCkotstzealous11
+	picture = GFX_evt_emissary_byzantine
+
+	is_triggered_only = yes
+
+	option = {
+		custom_tooltip = {
+			text = EVTOPTAkotstzealous11
+			FROM = {
+				remove_trait = on_pilgrimage
+				piety = 50
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.41 #Brave1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = brave
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.42 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+long_character_event = {
+	id = kotstevents.42 #Brave1 KING
+	desc = EVTDESCkotstbrave1
+	picture = GFX_evt_feast
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstbrave1
+		FROM = {
+			if = {
+				limit = { has_nickname = no }
+				give_nickname = nick_the_brave
+			}
+		}
+		custom_tooltip = { text = kingsguard_plus_three }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 3 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_brave1 } } }
+				FROM = {
+					set_variable = { which = "kotst_brave11" value = 0 }
+					set_character_flag = kotst_brave1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstbrave1
+		custom_tooltip = { text = compensation_tiger }
+		hidden_tooltip = {
+			wealth = 50
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 2 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_brave1 } } }
+				FROM = {
+					set_variable = { which = "kotst_brave12" value = 0 }
+					set_character_flag = kotst_brave1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.43 #Greed2 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = greedy
+			NOT = { has_character_flag = kingsguard_personality }
+			top_liege = {
+				any_lover = {
+					NOT = { character = ROOT }
+					NOT = { is_married = PREV }
+				}
+			}
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.44 }
+		}
+		character_event = { id = kotstevents.101 }
+	}
+}
+character_event = {
+	id = kotstevents.44 #Greed2 KING
+	desc = EVTDESCkotstgreed2
+	picture = GFX_evt_bad_news
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstgreed2
+		if = {
+			limit = {
+				wealth = 100
+				wealth < 200
+			}
+			wealth = -50
+		}
+		if = {
+			limit = {
+				wealth = 200
+				wealth < 300
+			}
+			wealth = -75
+		}
+		if = {
+			limit = {
+				wealth = 300
+				wealth < 400
+			}
+			wealth = -125
+		}
+		if = {
+			limit = { wealth = 400 }
+			wealth = -150
+		}
+		custom_tooltip = { text = kingsguard_minus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -2 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstgreed2
+		if = {
+			limit = { is_female = no }
+			add_character_modifier = {
+				name = adulterer
+				years = 20
+			}
+		}
+		if = {
+			limit = { is_female = yes }
+			add_character_modifier = {
+					name = adulteress
+					years = 20
+			}
+		}
+		custom_tooltip = { text = kingsguard_minus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -1 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_greed1 } } }
+				FROM = {
+					set_variable = { which = "kotst_greed11" value = 0 }
+					set_character_flag = kotst_greed1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTCkotstgreed2
+		FROM = { imprison = ROOT }
+		FROM = { add_rival = ROOT }
+		custom_tooltip = { text = kingsguard_minus_three }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = -3 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_greed1 } } }
+				FROM = {
+					set_variable = { which = "kotst_greed12" value = 0 }
+					set_character_flag = kotst_greed1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.45 #Humble2 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = humble
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			character_event = { id = kotstevents.46 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+character_event = {
+	id = kotstevents.46 #Humble2 KING
+	desc = EVTDESCkotsthumble2
+	picture = GFX_evt_guardian
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotsthumble2
+		custom_tooltip = { text = kingsguard_plus_two }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 2 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_humble2 } } }
+				FROM = {
+					set_variable = { which = "kotst_humble21" value = 0 }
+					set_character_flag = kotst_humble2
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.47 #Kindness2/AKA CHARITABLE KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = charitable
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.48 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+long_character_event = {
+	id = kotstevents.48 #Kindness2/AKA CHARITABLE #KING
+	desc = EVTDESCkotstkindness2
+	picture = GFX_evt_market_muslim
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstkindness2
+		FROM = { wealth = -10 }
+		custom_tooltip = { text = kingsguard_plus_three }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 3 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_kind1 } } }
+				FROM = {
+					set_variable = { which = "kotst_kind11" value = 0 }
+					set_character_flag = kotst_kind1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.49 #Brave2 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = brave
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.50 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+long_character_event = {
+	id = kotstevents.50 #Brave2 KING
+	desc = EVTDESCkotstbrave2
+	picture = GFX_evt_garden
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstbrave2
+		custom_tooltip = { text = kingsguard_plus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 1 }
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.51 #Just1 KG
+
+	hide_window = yes
+
+	min_age = 16
+	prisoner = no
+	only_capable = yes
+	ai = yes
+
+	trigger = {
+		AND = {
+			trait = kingsguard
+			trait = just
+			NOT = { has_character_flag = kingsguard_personality }
+		}
+	}
+
+	immediate = { set_character_flag = kingsguard_personality }
+
+	mean_time_to_happen = {
+		years = 40
+	}
+	option = {
+		top_liege = {
+			long_character_event = { id = kotstevents.52 }
+		}
+		character_event = { id = kotstevents.102 }
+	}
+}
+long_character_event = {
+	id = kotstevents.52 #Just KING
+	desc = EVTDESCkotstjust1
+	picture = GFX_evt_garden
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAkotstjust1
+		prestige = -500
+		custom_tooltip = { text = kingsguard_plus_one }
+		hidden_tooltip = {
+			primary_title = {
+				change_variable = { which = "kingsguard_honor" value = 1 }
+			}
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_just1 } } }
+				FROM = {
+					set_variable = { which = "kotst_just11" value = 0 }
+					set_character_flag = kotst_just1
+				}
+			}
+			character_event = { id = kotst.1 }
+		}
+	}
+	option = {
+		name = EVTOPTBkotstjust1
+		FROM = { imprison = ROOT }
+		FROM = { add_rival = ROOT }
+		custom_tooltip = { text = reverse_justice }
+		hidden_tooltip = {
+			wealth = 150
+			if = {
+				limit = { FROM = { NOT = { has_character_flag = kotst_just1 } } }
+				FROM = {
+					set_variable = { which = "kotst_just12" value = 0 }
+					set_character_flag = kotst_just1
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.101
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	option = {
+		if = {
+			limit = { has_character_modifier = kingsguard_disreputable }
+			add_character_modifier = { name = kingsguard_degenerate duration = -1 }
+			remove_character_modifier = kingsguard_disreputable
+		}
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						has_character_modifier = kingsguard_degenerate
+						has_character_modifier = kingsguard_disreputable
+						has_character_modifier = kingsguard_valiant
+						has_character_modifier = kingsguard_heroic
+					}
+				}
+			}
+			add_character_modifier = { name = kingsguard_disreputable duration = -1 }
+		}
+		if = {
+			limit = { has_character_modifier = kingsguard_valiant }
+			remove_character_modifier = kingsguard_valiant
+		}
+		if = {
+			limit = { has_character_modifier = kingsguard_heroic }
+			add_character_modifier = { name = kingsguard_valiant duration = -1 }
+			remove_character_modifier = kingsguard_heroic
+		}
+	}
+}
+
+character_event = {
+	id = kotstevents.102
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	option = {
+		if = {
+			limit = { has_character_modifier = kingsguard_valiant }
+			remove_character_modifier = kingsguard_valiant
+			add_character_modifier = { name = kingsguard_heroic duration = -1 }
+		}
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						has_character_modifier = kingsguard_degenerate
+						has_character_modifier = kingsguard_disreputable
+						has_character_modifier = kingsguard_valiant
+						has_character_modifier = kingsguard_heroic
+					}
+				}
+			}
+			add_character_modifier = { name = kingsguard_valiant duration = -1 }
+		}
+		if = {
+			limit = { has_character_modifier = kingsguard_disreputable }
+			remove_character_modifier = kingsguard_disreputable
+		}
+		if = {
+			limit = { has_character_modifier = kingsguard_degenerate }
+			remove_character_modifier = kingsguard_degenerate
+			add_character_modifier = { name = kingsguard_disreputable duration = -1 }
+		}
+	}
+}

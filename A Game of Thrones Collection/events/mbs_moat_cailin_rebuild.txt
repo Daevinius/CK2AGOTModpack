@@ -1,0 +1,347 @@
+namespace = mbs_moat_cailin_rebuild
+
+province_event = {
+	id = mbs_moat_cailin_rebuild.1
+
+	hide_window = yes
+
+	trigger = {
+		province_id = 66
+		NOT = { has_province_flag = scrolls_found }
+		has_province_modifier = mbs_mc_rebuild_flag
+		owner = { NOT = { culture_group = unoccupied_group } }
+	}
+
+	mean_time_to_happen = {
+		years = 4
+	}
+
+	immediate = { set_province_flag = scrolls_found owner = { character_event = { id = unoccupied.1301 } } }
+
+	option = {
+		name = OK
+	}
+}
+province_event = {
+	id = mbs_moat_cailin_rebuild.2
+
+	hide_window = yes
+
+	trigger = {
+		province_id = 66
+		NOT = { has_province_flag = mbs_weapons_found_1 }
+		has_province_modifier = mbs_mc_rebuild_flag
+		owner = { NOT = { culture_group = unoccupied_group } }
+	}
+
+	mean_time_to_happen = {
+		years = 5
+	}
+
+	immediate = { set_province_flag = mbs_weapons_found_1 owner = { narrative_event = { id = mbs_moat_cailin_rebuild.201 } } }
+
+	option = {
+		name = OK
+	}
+}
+narrative_event = {
+	id = mbs_moat_cailin_rebuild.201
+	title = "EVTTITLEmbs_moat_cailin_rebuild.201"
+	desc = "EVTDESCmbs_moat_cailin_rebuild.201"
+	picture = "GFX_evt_into_the_dungeon"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_moat_cailin_rebuild.201"
+		ai_chance = {
+			factor = 100
+		}
+		add_artifact = weirwood_brooch
+		random_list = {
+			100 = { add_artifact = weirwood_bow }
+			100 = { add_artifact = weirwood_spear }
+		}
+		prestige = 20
+	}
+	option = {
+		name = "EVTOPTBmbs_moat_cailin_rebuild.201" #sell it
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = brave
+					trait = honorable
+				}
+			}
+		}
+		wealth = 20
+	}
+}
+province_event = {
+	id = mbs_moat_cailin_rebuild.3
+
+	hide_window = yes
+
+	trigger = {
+		province_id = 66
+		NOT = { has_province_flag = mbs_weapons_found_2 }
+		has_province_modifier = mbs_mc_rebuild_flag
+		owner = { NOT = { culture_group = unoccupied_group } }
+	}
+
+	mean_time_to_happen = {
+		years = 5
+	}
+
+	immediate = { set_province_flag = mbs_weapons_found_2 owner = { narrative_event = { id = mbs_moat_cailin_rebuild.301 } } }
+
+	option = {
+		name = OK
+	}
+}
+narrative_event = {
+	id = mbs_moat_cailin_rebuild.301
+	title = "EVTTITLEmbs_moat_cailin_rebuild.301"
+	desc = "EVTDESCmbs_moat_cailin_rebuild.301"
+	picture = "GFX_evt_into_the_dungeon"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_moat_cailin_rebuild.301"
+		ai_chance = {
+			factor = 100
+		}
+		random_list = {
+			100 = { add_artifact = dragonglass_spear }
+			100 = { add_artifact = dragonglass_dagger }
+		}
+		prestige = 20
+	}
+	option = {
+		name = "EVTOPTBmbs_moat_cailin_rebuild.301" #sell it
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					trait = proud
+					trait = ambitious
+					trait = brave
+					trait = honorable
+				}
+			}
+		}
+		wealth = 20
+	}
+}
+province_event = {
+	id = mbs_moat_cailin_rebuild.4
+
+	hide_window = yes
+
+	trigger = {
+		province_id = 66
+		NOT = { has_province_flag = lizard_lion_protection }
+		has_province_modifier = mbs_mc_rebuild_flag
+		owner = { NOT = { culture_group = unoccupied_group } }
+	}
+
+	mean_time_to_happen = {
+		years = 2
+	}
+
+	immediate = { owner = { narrative_event = { id = mbs_moat_cailin_rebuild.401 } } }
+
+	option = {
+		name = OK
+	}
+}
+narrative_event = {
+	id = mbs_moat_cailin_rebuild.401
+	title = "EVTTITLEmbs_moat_cailin_rebuild.401"
+	desc = "EVTDESCmbs_moat_cailin_rebuild.401"
+	picture = "GFX_evt_hunting_scene"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_moat_cailin_rebuild.401" #pay to protect the workers
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 10
+				trait = charitable
+			}
+			modifier = {
+				factor = 25
+				trait = just
+			}
+			modifier = {
+				factor = 20
+				trait = honorable
+			}
+			modifier = {
+				factor = 0.1
+				trait = lunatic
+			}
+			modifier = {
+				factor = 0.5
+				trait = wroth
+			}
+			modifier = {
+				factor = 0.25
+				trait = possessed
+			}
+			modifier = {
+				factor = 0.1
+				trait = impaler
+			}
+			modifier = {
+				factor = 0.1
+				trait = envious
+			}
+			modifier = {
+				factor = 0.3
+				trait = arbitrary
+			}
+		}
+		FROM = { province_event = { id = mbs_moat_cailin_rebuild.5 } }
+		wealth = -20
+	}
+	option = {
+		name = "EVTOPTBmbs_moat_cailin_rebuild.401" #leave it to chance
+
+		ai_chance = {
+			factor = 2.5
+
+			modifier = {
+				factor = 0.3
+				trait = content
+			}
+			modifier = {
+				factor = 0.1
+				trait = familyperson
+			}
+			modifier = {
+				factor = 0.1
+				trait = charitable
+			}
+			modifier = {
+				factor = 0.1
+				trait = just
+			}
+			modifier = {
+				factor = 0.2
+				trait = honorable
+			}
+			modifier = {
+				factor = 15
+				trait = wroth
+			}
+			modifier = {
+				factor = 15
+				trait = cruel
+			}
+			modifier = {
+				factor = 25
+				trait = lunatic
+			}
+			modifier = {
+				factor = 25
+				trait = impaler
+			}
+			modifier = {
+				factor = 25
+				trait = possessed
+			}
+			modifier = {
+				factor = 5
+				trait = envious
+			}
+			modifier = {
+				factor = 5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 5
+				trait = paranoid
+			}
+			modifier = {
+				factor = 5
+				trait = deceitful
+			}
+			modifier = {
+				factor = 2
+				trait = drunkard
+			}
+			modifier = {
+				factor = 25
+				trait = cannibal_trait
+			}
+		}
+		random_list = {
+			45 = {
+			}
+			25 = {
+				trigger = {
+					NOT = { trait = arbitrary }
+				}
+				add_trait = arbitrary
+			}
+			15 = {
+				trigger = {
+					NOT = { trait = cruel }
+				}
+				add_trait = cruel
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_moat_cailin_rebuild.401" #tame the lizard lion
+		trigger = {
+			skinchanger_trigger = yes
+		}
+		ai_chance = {
+			factor = 20
+
+			modifier = {
+				factor = 10
+				trait = charitable
+			}
+			modifier = {
+				factor = 25
+				trait = just
+			}
+			modifier = {
+				factor = 20
+				trait = honorable
+			}
+		}
+		FROM = { province_event = { id = mbs_moat_cailin_rebuild.5 } }
+		if = {
+			limit = { NOT = { trait = lizardlion } }
+			add_trait = lizardlion
+		}
+	}
+}
+province_event = {
+	id = mbs_moat_cailin_rebuild.5
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = { set_province_flag = lizard_lion_protection }
+
+	option = {
+		name = OK
+	}
+}

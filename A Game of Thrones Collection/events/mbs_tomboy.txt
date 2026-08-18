@@ -1,0 +1,88 @@
+namespace = mbs_tomboy
+
+################################
+character_event = {
+	id = mbs_tomboy.1
+	desc = "EVTDESCmbs_tomboy.1"
+	picture = "GFX_knighted"
+
+	only_capable = yes
+	only_women = yes
+	min_age = 6
+	max_age = 18
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			trait = crippled
+			trait = poor_warrior
+			trait = trained_warrior
+			trait = skilled_warrior
+			trait = master_warrior
+		}
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_tomboy_mbs
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.8
+			trait = duelist
+		}
+		modifier = {
+			factor = 1.8
+			is_tall_trigger = yes
+		}
+		modifier = {
+			factor = 1.8
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 1.8
+			is_smart_trigger = yes
+		}
+		modifier = {
+			factor = 1.8
+			is_genius_trigger = yes
+		}
+		modifier = {
+			factor = 1.6
+			trait = hunter
+		}
+		modifier = {
+			factor = 2
+			trait = brave
+		}
+	}
+
+	immediate = {
+		father = { character_event = { id = mbs_tomboy.2 } }
+		mother = { character_event = { id = mbs_tomboy.2 } }
+	}
+
+	option = {
+		name = "EVTOPTAmbs_tomboy.1" #
+
+		ai_chance = {
+			factor = 2
+		}
+		add_trait = poor_warrior
+	}
+}
+character_event = {
+	id = mbs_tomboy.2
+	desc = "EVTDESCmbs_tomboy.2"
+	picture = "GFX_knighted"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_tomboy.2" #
+
+		ai_chance = {
+			factor = 2
+		}
+	}
+}

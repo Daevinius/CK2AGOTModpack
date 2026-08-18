@@ -1,0 +1,165 @@
+namespace = robb_heir
+
+character_event = {
+	id = robb_heir.1
+	desc = EVTDESCrobb_heir.1
+	picture = GFX_evt_young_griff
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = robb_bastard value = off }
+		start_date = 8300.2.12
+		NOT = { has_global_flag = robb_bastard_killed }
+	}
+
+	immediate = {
+		set_global_flag = robb_bastard_killed
+	}
+
+
+	option = {
+		name = EVTOPTArobb_heir.1
+		ai_chance = { factor = 100 }
+		c_12059 = { character_event = { id = robb_heir.2 days = 1 } }
+	}
+}
+character_event = {
+	id = robb_heir.2
+	desc = EVTDESCrobb_heir.2
+	picture = GFX_evt_young_griff
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 12059
+	}
+
+	option = {
+		name = EVTOPTArobb_heir.2
+		ai_chance = { factor = 100 }
+		c_12059 = {
+			death = { death_reason = death_murder_unknown }
+		}
+	}
+}
+character_event = {
+	id = robb_heir.3
+	desc = EVTDESCrobb_heir.3
+	picture = GFX_evt_young_griff
+	hide_window = yes
+
+	is_triggered_only = yes
+
+
+	trigger = {
+		has_game_rule = { name = robb_bastard value = on }
+		start_date = 8300.2.12
+		NOT = { has_global_flag = robb_bastard_lives }
+	}
+
+	immediate = {
+		set_global_flag = robb_bastard_lives
+	}
+
+
+	option = {
+		name = EVTOPTArobb_heir.3
+		ai_chance = { factor = 100 }
+		c_12059 = { character_event = { id = robb_heir.4 days = 1 } }
+	}
+}
+character_event = {
+	id = robb_heir.4
+	desc = EVTDESCrobb_heir.4
+	picture = GFX_evt_young_griff
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 12059
+	}
+
+	option = {
+		name = EVTOPTArobb_heir.4
+		dynasty = 59
+		c_2059 = { #Robb
+			ROOT = { set_father = PREV }
+				any_owned_bloodline = {
+					add_bloodline_member = ROOT
+				}
+		}
+		c_2199 = { ROOT = { set_mother = PREV } }
+	}
+}
+#################################################################################################################################
+namespace = cbb_nickname
+
+character_event = {
+	id = cbb_nickname.1
+	desc = "EVTDESCcbb_nickname.1"
+	hide_window = yes
+
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = cbb_nicknames }
+	}
+
+	immediate = {
+
+		set_global_flag = cbb_nicknames
+
+		if = {
+		    limit = { start_date = 8116.9.1 }
+			any_character = {
+				limit = {
+					has_nickname = nick_the_realms_delight
+				}
+				ROOT = {
+            					remove_nickname = yes
+				}
+			}
+		}
+		if = {
+		    limit = { start_date = 8207.1.1 }
+			any_character = {
+				limit = {
+					has_nickname = nick_the_anvil
+				}
+				ROOT = {
+            					remove_nickname = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+#################################################################################################################################
+character_event = {
+	id = rhaego_son_drogo.1
+	picture = GFX_evt_young_griff
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = rhaego_son_drogo value = off }
+		start_date = 8298.10.10
+		NOT = { has_global_flag = rhaego_son_drogo_death }
+	}
+
+	immediate = {
+		set_global_flag = rhaego_son_drogo_death
+		ROOT = {
+			death = { death_reason = death_stillborn }
+		}
+	}
+}

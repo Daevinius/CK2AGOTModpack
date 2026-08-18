@@ -1,0 +1,468 @@
+namespace = tdp_more
+
+#
+#
+#
+#
+
+character_event = {
+	id = tdp_more.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		opinion = {
+			modifier = insulted
+			who = event_target:decision_taker
+			years = 2
+		}
+	}
+
+	option = {
+		name = "agree"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = craven
+			}
+			modifier = {
+				factor = 2
+				trait = shy
+			}
+			modifier = {
+				factor = 2
+				trait = chaste
+			}
+		}
+		any_lover = {
+			remove_lover = ROOT
+		}
+		event_target:decision_taker = { character_event = { id = tdp_more.10 } }
+	}
+
+	option = {
+		name = "refuse"
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 2
+				trait = lustful
+			}
+			modifier = {
+				factor = 2
+				trait = authoritative
+			}
+			modifier = {
+				factor = 2
+				trait = greedy
+			}
+			modifier = {
+				factor = 2
+				trait = proud
+			}
+			modifier = {
+				factor = 2
+				trait = hedonist
+			}
+			modifier = {
+				factor = 2
+				trait = selfish
+			}
+		}
+		event_target:decision_taker = { character_event = { id = tdp_more.11 } }
+	}
+}
+
+character_event = {
+	id = tdp_more.10
+	desc = EVTDESCtdp_more.10
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Good."
+	}
+
+}
+
+character_event = {
+	id = tdp_more.11
+	desc = EVTDESCtdp_more.11
+
+	is_triggered_only = yes
+
+	option = {
+		name = "How dare they!"
+		opinion = {
+			modifier = insulted
+			who = FROM
+			years = 2
+		}
+	}
+
+}
+
+
+character_event = {
+	id = tdp_more.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = maester_education
+
+	trigger = {
+		NOT = { trait = will_not_marry }
+	}
+
+	immediate = {
+		add_trait = will_not_marry
+	}
+}
+
+#Fool / Jester events
+character_event = {
+	id = tdp_more.3
+	desc = EVTDESCtdp_more.3
+	picture = GFX_fool_event
+
+	is_triggered_only = yes
+
+	immediate = {
+		create_character = {
+			random_traits = yes
+			dynasty = none
+			female = no
+			culture = ROOT
+			age = 15
+
+			add_trait = fool
+		}
+		new_character = {
+			give_minor_title = title_court_jester
+			save_event_target_as = the_fool
+			random_list = {
+				1 = { set_name = "Пухлощёкий" } # Bubble-Cheek
+				1 = { set_name = "Вертун" } # Wiggles
+				1 = { set_name = "Жонглёр" } # Juggles
+				1 = { set_name = "Пуговка" } # Button Pop
+				1 = { set_name = "Каляка-Боб" } # Doodlebob
+				1 = { set_name = "Хихикало" } # Chuckles
+				1 = { set_name = "Бозо" } # Bozo
+				1 = { set_name = "Звездочёт" } # Twinkle-Toes
+				1 = { set_name = "Хихибрюх" } # Gigglegut
+				1 = { set_name = "Счастливчик" } # Happy
+				1 = { set_name = "Вальдо" } # Waldo
+				1 = { set_name = "Неуклюжий" } # Clumsy
+				1 = { set_name = "Дамбо" } # Dumbo
+				1 = { set_name = "Лохматый" } # Shaggy
+				1 = { set_name = "Бубу" } # Booboo
+				1 = { set_name = "Вальдо" } # Waldo
+				1 = { set_name = "Чумопал" } # Poxfinger
+				1 = { set_name = "Ухмылка Джим" } # Grinny Jim
+				1 = { set_name = "Слюнявчик" } # Dribbletongue
+				1 = { set_name = "Лоскутник" } # Tattercap
+				1 = { set_name = "Звонколап" } # Jinglejack
+				1 = { set_name = "Бормотун" } # Mumblefoot
+				1 = { set_name = "Слепник" } # Blindberry
+				1 = { set_name = "Глупичок" } # Fiddlewit
+				1 = { set_name = "Дёргач" } # Twitcher
+				1 = { set_name = "Хромоног" } # Hobber Hob
+				1 = { set_name = "Безумная Марн" } # Mad Marn
+				1 = { set_name = "Шевельпрут" } # Skitterstick
+				1 = { set_name = "Кудахтало" } # Cluckleby
+				1 = { set_name = "Колючий Пит" } # Prickle Pete
+				1 = { set_name = "Моргало" } # Wimple Wink
+				1 = { set_name = "Блошник" } # Fleaberry
+				1 = { set_name = "Сопляк" } # Snotts
+				1 = { set_name = "Тараторка" } # Jibberjack
+				1 = { set_name = "Угрюмый Гас" } # Gloomy Gus
+				1 = { set_name = "Подкрад" } # Slinksy
+				1 = { set_name = "Пип" } # Pippet
+				1 = { set_name = "Сопун" } # Wheezelump
+				1 = { set_name = "Лапшоголов" } # Noodleknob
+				1 = { set_name = "Загадкорень" } # Riddleroot
+				1 = { set_name = "Мим" set_special_character_title = duke } # Mime
+				1 = { set_name = "Говяжья-Лопатка" set_special_character_title = duke } # Loin-Of-Beef
+				1 = { set_name = "Багз-Кролик" } # Bugs the Rabbit
+				1 = { set_name = "Даффи" } # Daffy
+				1 = { set_name = "Порки" } # Porky
+				1 = { set_name = "Краснобрюх" } # Red-Belly
+				1 = { set_name = "Толстяк" } # Fat Boy
+				1 = { set_name = "Гадкий Утёнок" } # Ugly Duck
+				1 = { set_name = "Кармашек" } # Pocket
+				1 = { set_name = "Попрыгун-Лягушка" } # Hop-Frog
+				1 = { set_name = "Арлекин" } # Harlequin
+				1 = { set_name = "Тявк" } # Towser
+				1 = { set_name = "Дагонет" } # Dagonet
+				1 = { set_name = "Клопен" } # Clopin
+				1 = { set_name = "Джокер" add_trait = lunatic } # Joker
+				1 = { set_name = "Вуди" } # Woody - Вуди Вудпекер или Вуди из "Истории игрушек", оставляем)
+				1 = { set_name = "Стич" } # Stitch
+				1 = { set_name = "Рокко" } # Rocko
+			}
+			random_list = {
+				1 = {
+					culture = crownlander
+					set_graphical_culture = crownlander
+				}
+				1 = {
+					culture = stormlander
+					set_graphical_culture = stormlander
+				}
+				1 = {
+					culture = reachman
+					set_graphical_culture = reachman
+				}
+				1 = {
+					culture = westerman
+					set_graphical_culture = westerman
+				}
+				1 = {
+					culture = riverlander
+					set_graphical_culture = riverlander
+				}
+				1 = {
+					culture = valeman
+					set_graphical_culture = valeman
+				}
+				1 = {
+					culture = lysene
+					set_graphical_culture = lysene
+				}
+				1 = {
+					culture = salt_dornish
+					set_graphical_culture = salt_dornish
+				}
+				1 = {
+					culture = sand_dornish
+					set_graphical_culture = sand_dornish
+				}
+				1 = {
+					culture = stone_dornish
+					set_graphical_culture = stone_dornish
+				}
+				1 = {
+					culture = northman
+					set_graphical_culture = northman
+				}
+				1 = {
+					culture = ironborn
+					set_graphical_culture = ironborn
+				}
+				1 = {
+					culture = braavosi
+					set_graphical_culture = braavosi
+				}
+				1 = {
+					culture = pentosi
+					set_graphical_culture = pentosi
+				}
+				1 = {
+					culture = tyroshi
+					set_graphical_culture = tyroshi
+				}
+				1 = {
+					culture = myrman
+					set_graphical_culture = myrman
+				}
+				1 = {
+					culture = volantene
+					set_graphical_culture = volantene
+				}
+			}
+			random_list = {
+				1 = { add_trait = ugly }
+				1 = { add_trait = ugly_1 }
+				1 = { add_trait = ugly_2 }
+				1 = { add_trait = dwarf }
+				1 = { add_trait = dwarf_1 }
+				1 = { add_trait = dwarf_2 }
+				1 = { add_trait = slow }
+				1 = { add_trait = slow_1 }
+				1 = { add_trait = imbecile }
+				1 = { add_trait = imbecile_1 }
+				4 = { add_trait = rude }
+				4 = { add_trait = gregarious }
+				4 = { add_trait = hedonist }
+				4 = { add_trait = cynical }
+				4 = { add_trait = gluttonous }
+				4 = { add_trait = poet }
+				4 = { add_trait = dull }
+				4 = { add_trait = is_fat }
+			}
+			random_list = {
+				1 = { add_trait = ugly }
+				1 = { add_trait = ugly_1 }
+				1 = { add_trait = ugly_2 }
+				1 = { add_trait = dwarf }
+				1 = { add_trait = dwarf_1 }
+				1 = { add_trait = dwarf_2 }
+				1 = { add_trait = slow }
+				1 = { add_trait = slow_1 }
+				1 = { add_trait = imbecile }
+				1 = { add_trait = imbecile_1 }
+				4 = { add_trait = rude }
+				4 = { add_trait = gregarious }
+				4 = { add_trait = hedonist }
+				4 = { add_trait = cynical }
+				4 = { add_trait = gluttonous }
+				4 = { add_trait = poet }
+				4 = { add_trait = dull }
+				4 = { add_trait = is_fat }
+			}
+
+		}
+	}
+
+	option = {
+		name = EVTOPTtdp_more.3
+
+	}
+}
+
+character_event = {
+	id = tdp_more.30
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	min_age = 8
+
+	trigger = {
+		NOT = { has_global_flag = fool_startup }
+		OR = {
+			character = c_30509007 #Mushroom
+			character = c_2004994 #Patchface
+			character = c_93217 #Jinglebells
+			character = c_80012563 #Shagwell
+			character = c_696969102 #Moon Boy
+		}
+	}
+
+	immediate = {
+		set_global_flag = fool_startup
+
+		add_trait = fool
+		give_minor_title = title_court_jester
+	}
+}
+
+character_event = {
+	id = tdp_more.31
+	desc = EVTDESCtdp_more.31
+
+	trigger = {
+		NOT = { has_global_flag = april_fools }
+		real_month_of_year = 4
+		NOT = { real_month_of_year = 5 }
+		real_day_of_year = 1
+		NOT = { real_day_of_year = 2 }
+		any_courtier = {
+			trait = fool
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		set_global_flag = april_fools
+	}
+
+	option = {
+		name = EVTOPTtdp_more.31
+		add_artifact = valyrian_steel
+		new_artifact = { set_artifact_flag = april_fools }
+
+		add_artifact = valyrian_armour
+		new_artifact = { set_artifact_flag = april_fools }
+
+		add_artifact = dragonbone_bracelet
+		new_artifact = { set_artifact_flag = april_fools }
+
+		add_artifact = dragonbone_amulet
+		new_artifact = { set_artifact_flag = april_fools }
+
+		add_artifact = dragonbone_whip
+		new_artifact = { set_artifact_flag = april_fools }
+
+		add_artifact = dragon_binder
+		new_artifact = { set_artifact_flag = april_fools }
+
+
+		random_courtier = {
+			limit = { trait = fool }
+			character_event = { id = tdp_more.310 }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_more.310
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		FROM = { character_event = { id = tdp_more.311 } }
+	}
+}
+
+character_event = {
+	id = tdp_more.311
+	desc = EVTDESCtdp_more.311
+	picture = GFX_fool_event
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_more.311
+		any_artifact = {
+			limit = { has_artifact_flag = april_fools }
+			unsafe_destroy_artifact = yes
+		}
+	}
+}
+
+character_event = {
+	id = tdp_more.4
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8286.3.1
+		NOT = { has_global_flag = tyrek_is_a_horse }
+		character = 6189 #Tyrek Lannister
+	}
+
+	immediate = {
+		set_global_flag = tyrek_is_a_horse
+		add_trait = horse
+	}
+}
+
+character_event = {
+	id = tdp_more.5
+
+	hide_window = yes
+
+	has_character_flag = princed
+
+	trigger = {
+		tier = EMPEROR
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		clr_character_flag = princed
+		remove_special_character_title = yes
+	}
+}

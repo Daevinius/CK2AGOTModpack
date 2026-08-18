@@ -1,0 +1,395 @@
+########################################################
+# MINOR TITLES
+# Characters can have any number of these
+########################################################
+#	grant_limit: Max number of holders.
+#	realm_in_name: Append the name of the country after the title (Queen [of Sweden])
+#	allowed_to_hold: conditions for the character to hold the title
+#	allowed_to_grant: conditions for a ruler to grant the title
+#	regent: This is the title for regents (not really "minor")
+#	gain_effect: fires when the title is granted
+#	lose_effect: fires when a title is lost through most causes
+#	retire_effect: fires when a title is lost due to the character stepping down
+#	death_effect: fires when a title is lost due to the character dying
+#	message: should fire a message to the its owner when set
+#	The other fields are all character modifiers.
+
+title_court_singer_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = diplomacy
+
+	monthly_salary = 0.1
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+		trait = poet
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_ruler = yes
+		demesne_size = 1
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_kennelmaster_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = martial
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+		trait = hunter
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+
+title_defender_of_dispossessed = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		dynasty = 80
+		dynasty_head = { character = ROOT }
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+
+title_beacon_of_south = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		has_landed_title = c_oldtown
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_lord_of_port = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		has_landed_title = c_oldtown
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_protector_of_citadel = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		has_landed_title = c_oldtown
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_son_of_sea_wind = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		OR = {
+			has_landed_title = k_iron_isles
+			has_landed_title = e_iron_isles
+		}
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_king_of_winter = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		has_landed_title = e_north
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_stark_in_winterfell = {
+	dignity = 0.05
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	opinion_effect = 10
+	revoke_allowed = yes
+	attribute = diplomacy
+
+	monthly_salary = 0
+	monthly_prestige = 0.1
+
+	allowed_to_hold = {
+		dynasty = 59
+		prisoner = no
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		dynasty = 59
+		has_landed_title = c_winterfell
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_defender_marches = {
+	dignity = 0
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+	revoke_allowed = no
+
+	monthly_salary = 0
+	monthly_prestige = 0
+	opinion_effect = 0
+
+	allowed_to_hold = {
+		is_ruler = yes
+		has_landed_title = e_reach
+		has_landed_title = k_reach
+	}
+	allowed_to_grant = {
+		always = no
+	}
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+
+title_wetnurse_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = diplomacy
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+		is_female = yes
+		age = 16
+		NOT = {
+			age = 50
+		}
+		any_child_even_if_dead  = {
+			count = 1
+		}
+		OR = {
+			is_lowborn = yes
+			trait = bastard
+		}
+		is_incapable = no
+		NOT = {
+			any_spouse = {
+				is_lowborn = no
+			}
+		}
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}

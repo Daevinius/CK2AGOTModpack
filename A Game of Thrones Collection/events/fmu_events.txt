@@ -1,0 +1,500 @@
+namespace = fmu
+
+#0 - Kill all abominations
+#1 - Doctrine of Exceptionalism
+#2 - Dynamic Faith Militant Uprising
+#3 - Exceptionalism Removes Excommunication
+
+#Kill Abominations
+long_character_event = {
+	id = fmu.0
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_character_flag = crusader_against_abominations
+
+	trigger = {
+		NOT = { has_global_flag = fmu_resolved }
+	}
+
+	immediate = {
+		event_target:deposed_liege = {
+			imprison = ROOT
+			any_dynasty_member = {
+				limit = { location = { region = world_westeros } }
+				imprison = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = OK
+		character_event = { id = fmu.1999 days = 2 }
+		any_player = {
+			limit = { religion = the_seven }
+			character_event = { id = fmu.1995 days = 1 }
+		}
+	}
+}
+
+character_event = {
+	id = fmu.1999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		any_courtier = {
+			limit = {
+				OR = {
+					has_character_modifier = abomination_of_incest
+					has_character_modifier = grandchild_of_incest
+				}
+			}
+			death = {
+				death_reason = death_execution
+				killer = ROOT
+			}
+		}
+		set_global_flag = abominations_cleansed
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = fmu.1995
+	title = EVTTITLEfmu.0
+	desc = "EVTDESCfmu.0"
+	picture = GFX_high_septon
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+
+#Doctrine of Exceptionalism
+narrative_event = { #Sends alert to Realm about Doctrine
+	id = fmu.1
+	title = EVTTITLEfmu.1
+	desc = "EVTDESCfmu.1"
+	picture = GFX_jaehaerys_alysanne
+
+	is_triggered_only = yes
+	hide_new = yes
+
+	only_independent = yes
+
+	culture = high_valyrian
+	religion = the_seven
+
+	trigger = {
+		NOT = { has_global_flag = abominations_cleansed }
+		NOT = { has_dynasty_flag = doctrine_of_exceptionalism }
+		is_divine_blood_dynasty_trigger = yes
+		has_landed_title = e_iron_throne
+		NOR = {
+			character = 77000 #Aegon I
+			war_with = k_the_most_devout
+		}
+	}
+
+	immediate = {
+		set_dynasty_flag = doctrine_of_exceptionalism
+		set_global_flag = fmu_resolved
+		if = {
+			any_demesne_title = {
+				limit = {
+					OR = {
+						tier = king
+						tier = emperor
+					}
+					OR = {
+						has_law = investiture_law_2
+						has_law = investiture_law_3
+					}
+				}
+				add_law = investiture_law_1
+			}
+		}
+		any_vassal = {
+			limit = {
+				is_landed = yes
+				higher_real_tier_than = COUNT
+			}
+			narrative_event = { id = fmu.10 }
+		}
+	}
+
+	option = {
+		name = EVTOPTAfmu.1
+	}
+}
+
+narrative_event = { #Alert for Vassals
+	id = fmu.10
+	title = EVTTITLEfmu.1
+	desc = "EVTDESCfmu.1"
+	picture = GFX_jaehaerys_alysanne
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAfmu.10
+	}
+	option = {
+		name = EVTOPTBfmu.10
+	}
+}
+
+#this is for canon post-Doctrine starts
+character_event = {
+	id = fmu.11
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	culture = high_valyrian
+	religion = the_seven
+
+	trigger = {
+		NOT = { has_global_flag = fmu_resolved }
+		NOT = { has_global_flag = abominations_cleansed }
+		start_date = 8054.1.1
+		has_landed_title = e_iron_throne
+		NOT = { has_dynasty_flag = doctrine_of_exceptionalism }
+		dynasty = 496
+	}
+
+	immediate = {
+		narrative_event = { id = fmu.1 days = 2 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Non-Canon Post-War Doctrine
+character_event = {
+	id = fmu.12
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_global_flag = fmu_resolved }
+		FROM = {
+			has_landed_title = k_the_most_devout
+		}
+		ROOT = {
+			NOT = { has_dynasty_flag = doctrine_of_exceptionalism }
+			is_divine_blood_dynasty_trigger = yes
+			has_landed_title = e_iron_throne
+		}
+	}
+
+	immediate = {
+		ROOT = {
+			character_event = { id = fmu.13 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = fmu.13
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		NOT = { has_dynasty_flag = doctrine_of_exceptionalism }
+		is_divine_blood_dynasty_trigger = yes
+		has_landed_title = e_iron_throne
+	}
+
+	immediate = {
+		narrative_event = { id = fmu.1 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#High Septon chooses what to do with Targaryen abominations
+character_event = {
+	id = fmu.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		start_date < 8054.1.1
+		has_landed_title = k_the_most_devout
+		NOT = {	war_with = e_iron_throne }
+		liege = {
+			has_landed_title = e_iron_throne
+			NOT = { character = 77000 } #Aegon I
+			OR = {
+				has_character_modifier = abomination_of_incest
+				has_character_modifier = grandchild_of_incest
+			}
+			NOT = { has_dynasty_flag = doctrine_of_exceptionalism }
+			war = no
+		}
+		e_iron_throne = {
+			OR = {
+				has_law = investiture_law_2
+				has_law = investiture_law_3
+			}
+		}
+	}
+
+	immediate = {
+		character_event = { id = fmu.2999 days = 3 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = fmu.2999
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date < 8054.1.1
+		has_landed_title = k_the_most_devout
+		NOT = {	war_with = e_iron_throne }
+		liege = {
+			has_landed_title = e_iron_throne
+			NOT = { character = 77000 } #Aegon I
+			OR = {
+				has_character_modifier = abomination_of_incest
+				has_character_modifier = grandchild_of_incest
+			}
+			NOT = { has_dynasty_flag = doctrine_of_exceptionalism }
+			war = no
+		}
+		e_iron_throne = {
+			OR = {
+				has_law = investiture_law_2
+				has_law = investiture_law_3
+			}
+		}
+	}
+
+	option = { #War
+		name = OK
+		trigger = {
+			liege = {
+				OR = {
+					NOT = { religion = the_seven }
+					trait = craven
+					trait = cruel
+					trait = paranoid
+					trait = greedy
+					trait = ruthless
+					trait = wroth
+					trait = lunatic
+					trait = gluttonous
+					trait = hedonist
+					trait = lustful
+				}
+			}
+		}
+		liege = { character_event = { id = fmu.22 days = 7 } }
+		set_character_flag = crusader_against_abominations
+		character_event = { id = fmu.20 days = 7 }
+
+		ai_chance = {
+			factor = 90
+		}
+	}
+
+	option = { #Negotiate
+		name = OK
+		trigger = {
+			liege = {
+				religion = the_seven
+				NOR = {
+					trait = craven
+					trait = cruel
+					trait = paranoid
+					trait = greedy
+					trait = ruthless
+					trait = wroth
+					trait = lunatic
+					trait = gluttonous
+					trait = hedonist
+					trait = lustful
+				}
+			}
+		}
+		liege = { character_event = { id = fmu.21 days = 7 } }
+
+		ai_chance = {
+			factor = 90
+		}
+	}
+}
+
+character_event = { #War against abominations
+	id = fmu.20
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		unsafe_war = {
+			target = e_iron_throne
+			casus_belli = faith_uprising
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #Valyrian King negotiates
+	id = fmu.21
+	title = EVTTITLEfmu.21
+	desc = "EVTDESCfmu.21"
+	picture = GFX_targaryen_incest
+
+	is_triggered_only = yes
+
+	option = { #Abide by Andal Laws
+		name = EVTOPTAfmu.21
+		character_event = { id = fmu.210 days = 2 }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				is_dumb_trigger = yes
+			}
+			modifier = {
+				factor = 0
+				NOR = {
+					trait = charismatic_negotiator
+					trait = grey_eminence
+					trait = authoritative
+					trait = lustful
+					trait = proud
+				}
+			}
+		}
+	}
+
+	option = { #Doctrine of Exceptionalism
+		name = EVTOPTBfmu.21
+		character_event = { id = fmu.1 days = 2 }
+		change_variable = { which = concilitator value = 1 }
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+character_event = { #Abide by Andal Laws
+	id = fmu.210
+	title = EVTTITLEfmu.210
+	desc = "EVTDESCfmu.210"
+	picture = GFX_high_septon
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAfmu.210
+		set_dynasty_flag = kneeling_to_faith_demands
+		set_global_flag = fmu_resolved
+		set_divine_blood = no
+		any_dynasty_member = {
+			limit = { spouse = { dynasty = ROOT } }
+			remove_spouse = yes
+		}
+		if = {
+			any_demesne_title = {
+				limit = {
+					OR = {
+						tier = king
+						tier = emperor
+					}
+					OR = {
+						has_law = investiture_law_2
+						has_law = investiture_law_3
+					}
+				}
+				add_law = investiture_law_1
+			}
+		}
+		any_dynasty_member = {
+			limit = {
+				trait = excommunicated
+				NOR = {
+					trait = familial_kinslayer
+					trait = dynastic_kinslayer
+				}
+			}
+			remove_trait = excommunicated
+		}
+	}
+}
+
+character_event = { #King gets message of War
+	id = fmu.22
+	title = EVTTITLEfmu.22
+	desc = "EVTDESCfmu.22"
+	picture = GFX_high_septon
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAfmu.22
+	}
+}
+
+
+character_event = {
+	id = fmu.3
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	culture = high_valyrian
+
+	trigger = {
+		has_dynasty_flag = doctrine_of_exceptionalism
+		NOR = {
+			trait = familial_kinslayer
+			trait = dynastic_kinslayer
+		}
+		trait = excommunicated
+	}
+
+	immediate = {
+		remove_trait = excommunicated
+	}
+
+	option = {
+		name = OK
+	}
+}

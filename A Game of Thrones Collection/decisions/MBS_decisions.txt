@@ -1,0 +1,6187 @@
+decisions = {
+	reactivate_mbs_moat_cailin_dec = {
+		only_playable = yes
+		potential = {
+			OR = {
+				has_landed_title = c_moatcailin
+				AND = {
+					OR = {
+						has_landed_title = e_north
+						has_landed_title = k_north
+					}
+					completely_controls = c_moatcailin
+				}
+			}
+			OR = {
+				b_cailin_giants = { holder_scope = { culture = ruin } }
+				b_cailin_wolfs = { holder_scope = { culture = ruin } }
+				b_cailin_glutton = { holder_scope = { culture = ruin } }
+				b_cailin_lizardlion = { holder_scope = { culture = ruin } }
+			}
+		}
+		allow = {
+			wealth = 150
+			66 = { NOT = { has_province_modifier = hbuild3 } }
+			NOT = { has_character_modifier = in_seclusion }
+		}
+		effect = {
+			wealth = -150
+			custom_tooltip = { text = TOOLTIPGETCASTLE }
+			hidden_tooltip = {
+				set_province_flag = colony_province_mc_mbs
+				66 = {
+					if = {
+						limit = {
+							NOT = { has_province_modifier = hbuild3 }
+							b_cailin_giants = { holder_scope = { culture = ruin } }
+						}
+						b_cailin_giants = { gain_title = ROOT remove_building = ca_sub_barony_ruin clr_title_flag = sub_barony_ruin }
+						add_province_modifier = { name = hbuild3 duration = 180 }
+						add_province_modifier = { name = mbs_mc_rebuild_flag duration = 730 }
+					}
+					if = {
+						limit = {
+							NOT = { has_province_modifier = hbuild3 }
+							b_cailin_wolfs = { holder_scope = { culture = ruin } }
+						}
+						b_cailin_wolfs = { gain_title = ROOT remove_building = ca_sub_barony_ruin clr_title_flag = sub_barony_ruin }
+						add_province_modifier = { name = hbuild3 duration = 180 }
+						add_province_modifier = { name = mbs_mc_rebuild_flag duration = 730 }
+					}
+					if = {
+						limit = {
+							NOT = { has_province_modifier = hbuild3 }
+							b_cailin_glutton = { holder_scope = { culture = ruin } }
+						}
+						b_cailin_glutton = { gain_title = ROOT remove_building = ca_sub_barony_ruin clr_title_flag = sub_barony_ruin }
+						add_province_modifier = { name = hbuild3 duration = 180 }
+						add_province_modifier = { name = mbs_mc_rebuild_flag duration = 730 }
+					}
+					if = {
+						limit = {
+							NOT = { has_province_modifier = hbuild3 }
+							b_cailin_lizardlion = { holder_scope = { culture = ruin } }
+						}
+						b_cailin_lizardlion = { gain_title = ROOT remove_building = ca_sub_barony_ruin clr_title_flag = sub_barony_ruin }
+						add_province_modifier = { name = hbuild3 duration = 180 }
+						add_province_modifier = { name = mbs_mc_rebuild_flag duration = 730 }
+					}
+				}
+			}
+		}
+		ai_check_interval = 4
+		ai_will_do = { factor = 1 }
+	}
+	raventree_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			b_raventreehall  = {
+				has_building = ca_raventree_weirwood_1
+				NOT = {
+					has_building = ca_raventree_weirwood_2
+				}
+			}
+			has_character_flag = flag_raventree_quest
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			in_command = no
+			NOT = {
+				trait = incapable
+				has_character_flag = flag_raventree_quest_done
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.4501 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	oakenseat_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			has_character_flag = flag_oakenseat_quest
+				b_highgarden   = {
+					has_building = ca_oaken_throne_1
+					NOT = {
+						has_building = ca_oaken_throne_2
+					}
+				}
+			}
+		allow = {
+			age = 12
+			prisoner = no
+			in_command = no
+			NOT = {
+				trait = incapable
+				has_character_flag = flag_oakenseat_quest_done
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.46001 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	stark_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_stark_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.500 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	bolton_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_bolton_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.558 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	targ_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_targ_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.501 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	baratheon_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_baratheon_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.502 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tully_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tully_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.503 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	martell_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_martell_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.504 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	bracken_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_bracken_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.505 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	ryswell_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_ryswell_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.506 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	lannister_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_lannister_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.507 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tyrell_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tyrell_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.508 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	teague_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_teague_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.509 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	greyjoy_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_greyjoy_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.510 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hoare_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hoare_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.511 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	osgrey_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_osgrey_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.512 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	velaryon_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_velaryon_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.513 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	arryn_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_arryn_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.514 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	reyne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_reyne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.515 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hunter_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hunter_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.516 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hightower_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hightower_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.532 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	frey_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_frey_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.519 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	mallister_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mallister_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.520 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	piper_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_piper_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.521 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	blackwood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blackwood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.522 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	dondarrion_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_dondarrion_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.523 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	caron_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_caron_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.524 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	swann_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_swann_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.525 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	connington_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_connington_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.526 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	lothston_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_lothston_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.527 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	whent_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_whent_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.528 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	gardener_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_gardener_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.529 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	dustin_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_dustin_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.530 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	glover_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_glover_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.531 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	redfort_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_redfort_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.517 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tarly_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tarly_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.533 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hornwood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hornwood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.534 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	massey_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_massey_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.535 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	royce_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_royce_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.536 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	crakehall_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_crakehall_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.537 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	bulwer_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_bulwer_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.538 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	oakheart_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_oakheart_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.539 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	mormont_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mormont_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.540 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	umber_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_umber_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.541 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	kraken_helm_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_greyjoy_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 100
+			in_command = no
+			trait = master_warrior
+			NOT = {
+				any_artifact = { has_artifact_flag = kraken_helm }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.542 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	rayder_helm_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_rayder_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 100
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = raven_helm }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.543 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	golden_armbands_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tormund_armband
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 40
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = golden_armband }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.544 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	beesbury_beehive_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_beesbury_beehive
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 40
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = beesbury_beehive_flag }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.545 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	golden_apple_forge_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_gold_apple
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = golden_apple_flag }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.546 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	golden_apple_pray_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_gold_apple
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			trait = greensight
+			NOT = {
+				any_artifact = { has_artifact_flag = golden_apple_flag }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.547 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	silver_harp_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_silver_harp
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			trait = poet
+			NOT = {
+				any_artifact = { has_artifact_flag = harp_mbs_flag }
+			}
+			NOT = { has_artifact = rhaegar_harp }
+			NOT = { has_artifact = rhaegar_harp_a }
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.548 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	umber_greatsword_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_umber_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = umber_sword_flag }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.549 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	baratheon_warhammer_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_robert
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = robert_hammer_flag }
+			}
+			NOT = { has_artifact = roberts_hammer }
+			NOT = { has_artifact = roberts_hammer_a }
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.550 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	apple_bow_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_apple_bow
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_bow }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.551 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	yew_bow_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_yew_bow
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_bow }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.552 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hunter_spear_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hunter
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_spear }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.553 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	vulture_cloak_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_vulture_cloak
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_cloak }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.554 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	raven_cloak_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_raven_cloak
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_cloak }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.556 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	crane_cloak_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_crane_cloak
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_cloak }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.555 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	edmure_cloak_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_edmure_cloak
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 60
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_cloak }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.557 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	banefort_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_banefort_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.559 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	brax_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_brax_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.560 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	jast_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_jast_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.561 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	manderly_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_manderly_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.562 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	waynwood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_waynwood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.518 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	blackfyre_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blackfyre_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.563 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	varezys_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_varezys_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.564 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	saerynar_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saerynar_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.565 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	saerys_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saerys_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.566 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	saerystos_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saerystos_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.567 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	stark_targaryen_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_stark_targaryen_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.568 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	karstark_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_karstark_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.569 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	harroway_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_harroway_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.570 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	mudd_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mudd_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.571 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	toyne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_toyne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.572 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	errol_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_errol_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.573 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	penrose_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_penrose_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.574 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	estermont_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_estermont_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.575 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	seaworth_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_seaworth_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.576 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	selmy_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_selmy_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.577 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	reed_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_reed_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.578 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	forrester_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_forrester_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.579 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	vance_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_vance_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.580 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	belmore_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_belmore_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.581 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	coldwater_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_coldwater_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.582 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	corbray_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_corbray_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.583 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	egen_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_egen_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.584 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	grafton_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_grafton_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.585 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	sunderland_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_sunderland_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.586 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	royce_otgotm_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_royce_otgotm_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.587 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	strong_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_strong_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.588 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	qoherys_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_qoherys_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.589 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	templeton_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_templeton_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = more_bloodlines.590 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	fowler_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_fowler_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.1 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	dayne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_dayne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.2 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	yronwood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_yronwood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.3 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tarth_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tarth_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.4 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tollett_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tollett_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.5 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	florent_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_florent_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.6 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	marbrand_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_marbrand_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.7 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	steadmon_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_steadmon_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.8 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	darry_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_darry_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.9 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	butterwell_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_butterwell_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.10 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	towers_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_towers_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.11 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	mooton_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mooton_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.12 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	blackwater_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blackwater_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.13 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	bar_emmon_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_bar_emmon_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.14 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	darklyn_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_darklyn_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.15 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	farring_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_farring_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.16 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hayford_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hayford_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.17 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	rosby_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_rosby_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.18 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	rykker_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_rykker_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.19 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	stokeworth_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_stokeworth_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.20 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	smallwood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_smallwood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.21 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	harlaw_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_harlaw_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.22 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	goodbrother_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_goodbrother_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.23 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	farwynd_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_farwynd_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.24 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	drumm_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_drumm_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.25 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	volmark_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_volmark_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.26 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	greyiron_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_greyiron_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.27 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	saltcliffe_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_saltcliffe_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.28 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	orkwood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_orkwood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.29 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	botley_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_botley_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.30 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	wynch_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_wynch_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.31 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	sunderly_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_sunderly_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.32 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	myre_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_myre_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.33 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tawney_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tawney_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.34 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	sparr_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_sparr_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.35 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	stonetree_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_stonetree_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.36 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	stonehouse_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_stonehouse_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.37 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	merlyn_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_merlyn_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.38 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	clegane_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_clegane_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.39 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	payne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_payne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.40 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	farman_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_farman_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.41 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	kenning_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_kenning_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			OR = {
+				culture = ironborn
+				culture = old_ironborn
+				religion = drowned_god
+				religion = drowned_god_reformed
+				NOT = {
+					dynasty = 195
+				}
+			}
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.42 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	blacktyde_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blacktyde_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.43 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	westerling_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_westerling_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.44 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	westford_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_westford_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.45 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	tarbeck_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_tarbeck_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.46 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	kenning_kayce_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_kenning_kayce_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.47 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	serrett_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_serrett_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.48 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	harras_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_harras_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.49 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	rowan_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_rowan_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.50 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	justman_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_justman_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.51 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	ambrose_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_ambrose_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.52 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	ashford_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_ashford_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.53 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	caswell_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_caswell_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.54 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	peake_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_peake_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.55 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	roxton_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_roxton_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.56 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	plumm_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_plumm_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.57 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	redwyne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_redwyne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.58 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	ball_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_ball_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.59 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	beesbury_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_beesbury_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.60 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	footly_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_footly_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.61 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	hewett_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_hewett_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.62 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	fossoway_red_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_fossoway_red_armour
+			}
+			NOT = {
+				dynasty = 262
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.63 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	fossoway_green_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_fossoway_green_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.64 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	blackbar_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blackbar_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.65 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	meadows_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_meadows_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.66 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	webber_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_webber_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.67 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	crane_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_crane_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.68 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	chester_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_chester_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.69 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	serry_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_serry_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.70 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	grimm_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_grimm_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.71 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	leygood_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_leygood_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.72 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	merryweather_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_merryweather_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.73 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	costayne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_costayne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.74 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	rhysling_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_rhysling_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.75 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	vaith_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_vaith_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.76 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	uller_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_uller_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.77 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	toland_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_toland_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.78 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	jordayne_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_jordayne_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.79 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	gargalen_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_gargalen_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.80 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	wyl_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_wyl_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.81 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	ladybright_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_ladybright_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.82 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	dalt_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_dalt_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.83 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	qorgyle_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_qorgyle_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.84 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	santagar_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_santagar_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.85 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	blackmont_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blackmont_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.86 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	allyrion_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_allyrion_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.87 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	manwoody_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_manwoody_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.88 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	risley_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_risley_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.89 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	slynt_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_slynt_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.90 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	celtigar_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_celtigar_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.91 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	fisher_armour_dec = {
+		is_high_prio = yes
+		potential = {
+			#ai = no
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_fisher_armour
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = family_armour }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_armours.92 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 100
+		}
+	}
+	construct_a_flagship_mbs = {
+		is_high_prio = yes
+		potential = {
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_mariner_mbs
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_flag = flagship
+				}
+			}
+			OR = {
+				NOT = { has_character_flag = construct_a_flagship }
+				had_character_flag = { flag = construct_a_flagship days = 9400 }
+			}
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 50
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = flagship }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			set_character_flag = construct_a_flagship
+			character_event = { id = ironborn_events.85 tooltip = ironborn_events.85 }
+		}
+		ai_check_interval = 12
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.12
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					war = yes
+					wealth < 150
+				}
+			}
+			modifier = {
+				factor = 0
+				has_character_modifier = loan_timer
+				OR = {
+					stewardship = 9
+					trait = temperate
+					NOT = {
+						OR = {
+							trait = gluttonous
+							trait = hedonist
+							trait = slothful
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					trait = ambitious
+					trait = proud
+				}
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					trait = content
+					trait = humble
+				}
+			}
+		}
+	}
+	construct_a_flagship_mbs_non_bl = {
+		only_playable = yes
+		potential = {
+			is_ruler = yes
+			demesne_size = 1
+			is_nomadic = no
+			OR = {
+				tier = COUNT
+				tier = DUKE
+				tier = KING
+			}
+			NOR = {
+				is_patrician = yes
+				trait = pirate
+				is_seafarer = yes
+				tier = EMPEROR
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_mariner_mbs
+				}
+			}
+			NOT = {
+				any_artifact = {
+					has_artifact_flag = flagship
+				}
+			}
+			OR = {
+				NOT = { has_character_flag = construct_a_flagship }
+				had_character_flag = { flag = construct_a_flagship days = 9400 }
+			}
+		}
+		allow = {
+			has_regent = no
+			wealth = 40
+			capital_scope = { port = yes }
+		}
+		effect = {
+			set_character_flag = construct_a_flagship
+			character_event = { id = mbs_shipbuilding.1 tooltip = ironborn_events.85 }
+		}
+		ai_check_interval = 12
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0.12
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					war = yes
+					wealth < 150
+				}
+			}
+			modifier = {
+				factor = 0
+				has_character_modifier = loan_timer
+				OR = {
+					stewardship = 9
+					trait = temperate
+					NOT = {
+						OR = {
+							trait = gluttonous
+							trait = hedonist
+							trait = slothful
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					trait = ambitious
+					trait = proud
+				}
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					trait = content
+					trait = humble
+				}
+			}
+		}
+	}
+
+
+	find_singer_mbs = {
+		only_playable = yes
+		potential = {
+			is_ruler = yes
+			demesne_size = 1
+			OR = {
+				ai = no
+				wealth = 200
+			}
+			OR = {
+				culture_group = andal
+				culture_group = dornish
+				culture_group = first_men
+				culture_group = free_folk
+				culture_group = iron_isles_culture
+				primary_title = {
+					capital_scope = { region = world_westeros }
+				}
+			}
+		}
+		allow = {
+			hidden_tooltip = {
+				NOT = {
+					any_courtier = {
+						trait = poet
+						is_lowborn = yes
+						is_incapable = no
+						prisoner = no
+						liege = { character = ROOT }
+						NAND = {
+							has_minor_title = title_regent
+							NOT = { has_job_title = job_physician }
+							NOT = { trait = in_hiding }
+							is_ruler = no
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			character_event = { id = mbs_singer.1 }
+		}
+		ai_check_interval = 48
+		ai_will_do = {
+			factor = 25
+
+		}
+	}
+	make_lute_mbs_dec = {
+		potential = {
+			#ai = no
+			trait = poet
+		}
+		allow = {
+			age = 12
+			prisoner = no
+			wealth = 150
+			in_command = no
+			NOT = {
+				any_artifact = { has_artifact_flag = mbs_lute_flag }
+			}
+			has_epidemic = no
+		}
+		effect = {
+			add_artifact = lute
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 25
+		}
+	}
+	bloodlines_raise_ravens_teeth_army_dec = {
+		is_high_prio = yes
+		only_rulers = yes
+		potential = {
+			is_ruler = yes
+			# ai = no
+			NOT = {
+				has_earmarked_regiments = ravens_teeth_army_mbs
+			}
+			war = yes
+			has_landed_title = d_ravens_teeth_mbs
+		}
+		allow = {
+			war = yes
+		}
+		effect = {
+			wealth = -20
+			liege = {
+				capital_scope = {
+					PREV = {
+						spawn_unit = {
+							owner = ROOT
+							province = PREV
+							home = PREV
+							troops = {
+								archers = { 500 500 }
+							}
+							attrition = 1.0
+							disband_on_peace = yes
+							earmark = ravens_teeth_army_mbs
+							maintenance_multiplier = 0.5
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	mbs_search_for_secretbastard_dec = {
+		only_playable = yes
+		potential = {
+			has_game_rule = { name = search_secretbastard value = on }
+			is_lowborn = no
+			is_female = no
+			is_theocracy = no
+			age = 30
+			NOT_mythical_creature_trigger = yes
+			NOT = {
+				any_dynasty_member_even_if_dead  = {
+					count = 2
+					is_female = no
+					is_alive = yes
+				}
+			}
+			NOT = {
+				has_character_flag = secret_bastard_come_forward
+			}
+			NOT = {
+				character = 317
+			}
+			NOT = {
+				trait = eunuch
+			}
+			NOT = {
+				trait = homosexual
+			}
+			NOT = {
+				trait = celibate
+			}
+			NOT = {
+				has_character_flag = secret_bastard_come_forward
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+		}
+		effect = {
+			character_event = { id = mbs_bastard.20 }
+		}
+		ai_check_interval = 4
+		ai_will_do = { factor = 1 }
+	}
+	mbs_velaryon_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 52
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_driftmark
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 52
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.1 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_grafton_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 186
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_gulltown
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 186
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.11 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_mallister_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 128
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_seagard
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						dynasty = 128
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.21 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_farman_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 194
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_fair_isle
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 194
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.31 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_seaworth_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 9110
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_rainwood
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 9110
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.41 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_manderly_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 80
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_whiteharbor
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 80
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.51 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_hightower_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 285
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_oldtown
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 285
+							dynasty = 288
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.61 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_redwyne_demand_admiralty_dec = {
+		only_playable = yes
+		potential = {
+			war = no
+			is_ruler = yes
+			has_job_title = no
+			has_dlc = "Zeus"
+			dynasty = 288
+			NOT_mythical_creature_trigger = yes
+			independent = no
+			liege = {
+				any_courtier_or_vassal = {
+					has_minor_title = title_high_admiral
+				}
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			has_landed_title = c_the_arbor
+			NOT = {
+				has_minor_title = title_high_admiral
+			}
+			NOT = {
+				liege = {
+					any_courtier_or_vassal = {
+						has_minor_title = title_high_admiral
+						OR = {
+							dynasty = 285
+							dynasty = 288
+							any_owned_bloodline = {
+								has_bloodline_flag = admiral_bloodline
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			long_character_event = { id = mbs_admiralty.71 }
+		}
+		ai_check_interval = 24
+		ai_will_do = { factor = 1 }
+	}
+	mbs_colonise_targ_isles_dec = {
+		only_playable = yes
+		potential = {
+			is_ruler = yes
+			NOT_mythical_creature_trigger = yes
+			year = 8056
+			c_mbs_rhaenys_isle = {
+				holder_scope = {
+					culture_group = unoccupied_group
+				}
+			}
+			c_mbs_visenya_isle = {
+				holder_scope = {
+					culture_group = unoccupied_group
+				}
+			}
+			c_mbs_aegon_isle = {
+				holder_scope = {
+					culture_group = unoccupied_group
+				}
+			}
+			OR = {
+				has_landed_title = c_the_arbor
+				has_landed_title = c_oldtown
+				has_landed_title = c_golden_exile
+				completely_controls = c_the_arbor
+				completely_controls = c_oldtown
+				completely_controls = c_golden_exile
+			}
+		}
+		allow = {
+			prisoner = no
+			has_epidemic = no
+			wealth = 2000
+		}
+		effect = {
+			wealth = -2000
+			c_mbs_rhaenys_isle = { gain_title = ROOT }
+			c_mbs_visenya_isle = { gain_title = ROOT }
+			c_mbs_aegon_isle = { gain_title = ROOT }
+			d_mbs_sunset_isles = { gain_title = ROOT }
+			ROOT = {
+				capital_scope = {
+					kingdom = {
+						d_mbs_sunset_isles = { de_jure_liege = PREV }
+					}
+				}
+			}
+			1239 = {
+				if = {
+					limit = {
+						OR = {
+							has_province_flag = ca_colony_1
+							NOR = {
+								has_province_flag = ca_colony_1
+								has_province_flag = ca_colony_2
+								has_province_flag = ca_colony_3
+								has_province_flag = ca_colony_4
+								has_province_flag = ca_colony_5
+								has_province_flag = ca_colony_6
+							}
+						}
+					}
+					set_province_flag = ca_colony_1
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_1
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_2 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_2
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_3 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_3
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_4 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_4
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_4
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_5 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_5
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_5
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_6 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_6
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_6
+						}
+					}
+				}
+				set_province_flag = colony_province
+				hidden_tooltip = {
+					if = {
+						limit = { has_province_modifier = ruined_province }
+						remove_province_modifier = ruined_province
+					}
+					if = {
+						limit = { has_province_modifier = dothraki_domain }
+						remove_province_modifier = dothraki_domain
+					}
+					if = {
+						limit = { has_province_modifier = jogos_nhai_domain }
+						remove_province_modifier = jogos_nhai_domain
+					}
+					add_province_modifier = {
+						name = colony
+						duration = -1
+					}
+				}
+			}
+			1240 = {
+				if = {
+					limit = {
+						OR = {
+							has_province_flag = ca_colony_1
+							NOR = {
+								has_province_flag = ca_colony_1
+								has_province_flag = ca_colony_2
+								has_province_flag = ca_colony_3
+								has_province_flag = ca_colony_4
+								has_province_flag = ca_colony_5
+								has_province_flag = ca_colony_6
+							}
+						}
+					}
+					set_province_flag = ca_colony_1
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_1
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_2 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_2
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_3 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_3
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_4 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_4
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_4
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_5 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_5
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_5
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_6 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_6
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_6
+						}
+					}
+				}
+				set_province_flag = colony_province
+				hidden_tooltip = {
+					if = {
+						limit = { has_province_modifier = ruined_province }
+						remove_province_modifier = ruined_province
+					}
+					if = {
+						limit = { has_province_modifier = dothraki_domain }
+						remove_province_modifier = dothraki_domain
+					}
+					if = {
+						limit = { has_province_modifier = jogos_nhai_domain }
+						remove_province_modifier = jogos_nhai_domain
+					}
+					add_province_modifier = {
+						name = colony
+						duration = -1
+					}
+				}
+			}
+			1241 = {
+				if = {
+					limit = {
+						OR = {
+							has_province_flag = ca_colony_1
+							NOR = {
+								has_province_flag = ca_colony_1
+								has_province_flag = ca_colony_2
+								has_province_flag = ca_colony_3
+								has_province_flag = ca_colony_4
+								has_province_flag = ca_colony_5
+								has_province_flag = ca_colony_6
+							}
+						}
+					}
+					set_province_flag = ca_colony_1
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_1
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_1
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_2 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_2
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_2
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_3 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_3
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_3
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_4 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_4
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_4
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_5 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_5
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_5
+						}
+					}
+				}
+				if = {
+					limit = { has_province_flag = ca_colony_6 }
+					capital_holding = {
+						if = {
+							limit = { holding_type = castle }
+							add_building = ca_colony_6
+						}
+						if = {
+							limit = { holding_type = city }
+							add_building = ct_colony_6
+						}
+					}
+				}
+				set_province_flag = colony_province
+				hidden_tooltip = {
+					if = {
+						limit = { has_province_modifier = ruined_province }
+						remove_province_modifier = ruined_province
+					}
+					if = {
+						limit = { has_province_modifier = dothraki_domain }
+						remove_province_modifier = dothraki_domain
+					}
+					if = {
+						limit = { has_province_modifier = jogos_nhai_domain }
+						remove_province_modifier = jogos_nhai_domain
+					}
+					add_province_modifier = {
+						name = colony
+						duration = -1
+					}
+				}
+			}
+		}
+		ai_check_interval = 4
+		ai_will_do = { factor = 1 }
+	}
+	rebuild_castamere_dec = {
+		only_playable = yes
+		is_high_prio = yes
+
+		potential = {
+			is_ruler = yes
+			has_landed_title = c_castamere
+			b_castamere  = {
+				has_building = ca_castamere_ruins
+			}
+			NOT = { has_global_flag = castamere_rebuilt }
+			187 = {
+				NOT = { has_province_modifier = rebuilding_castamere }
+			}
+		}
+		allow = {
+			has_regent = no
+
+			trigger_if = {
+				limit = { ai = yes }
+				OR = {
+					wealth = 800
+
+					# AI may take loan to rebuild
+					AND = {
+						wealth >= 200
+						monthly_income >= 10
+						NOT = { has_character_flag = loan_taken }
+						NOT = { has_character_modifier = loan_timer }
+						NOT = { has_character_flag = offended_moneylenders }
+					}
+				}
+			}
+			trigger_else = {
+				wealth = 800
+			}
+
+			has_landed_title = c_castamere
+			NOT = { has_global_flag = castamere_rebuilt }
+			NOT = {
+				187 = { has_province_modifier = rebuilding_castamere }
+			}
+		}
+		effect = {
+			c_castamere = {
+				location = {
+					province_event = { id = mbs_castamere_rebuild.1 tooltip = TOOTLIPharrenhal.1 }
+				}
+			}
+		}
+		ai_check_interval = 6
+		ai_will_do = {
+			factor = 0.06
+
+			modifier = {
+				factor = 0.1
+				wealth < 400
+			}
+			modifier = {
+				factor = 0
+				war = yes
+			}
+			modifier = {
+				factor = 2
+				culture_group = westerman
+			}
+			modifier = {
+				factor = 4
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.25
+				trait = content
+			}
+			modifier = {
+				factor = 4
+				trait = diligent
+			}
+			modifier = {
+				factor = 0.25
+				trait = slothful
+			}
+		}
+	}
+	mbs_proclaim_honeywine_dec = {
+		only_independent = yes
+		is_high_prio = yes
+
+		potential = {
+			has_landed_title = e_iron_isles
+			culture = ironborn
+			NOT = { has_landed_title = k_mbs_honeywineTK }
+			NOT = { k_mbs_honeywineTK = { has_holder = yes } }
+			NOT = { has_character_flag = honeywine_king	}
+			NOT = { has_global_flag = honeywine_realm }
+		}
+		allow = {
+			has_regent = no
+			has_landed_title = e_iron_isles
+			culture = ironborn
+			OR = {
+				has_landed_title = d_oldtown
+				any_vassal = { has_landed_title = d_oldtown }
+			}
+			OR = {
+				has_landed_title = d_the_arbor
+				any_vassal = { has_landed_title = d_the_arbor }
+			}
+			OR = {
+				has_landed_title = d_the_shield_isles
+				any_vassal = { has_landed_title = d_the_shield_isles }
+			}
+
+		}
+		effect = {
+			character_event = { id = mbs_honeywine.1 }
+			prestige = 100
+		}
+		ai_check_interval = 1
+		ai_will_do = { factor = 100 }
+	}
+	mbs_proclaim_stonyshore_dec = {
+		only_independent = yes
+		is_high_prio = yes
+
+		potential = {
+			has_landed_title = e_iron_isles
+			culture = ironborn
+			NOT = { has_landed_title = k_mbs_stonyshoreTK }
+			NOT = { k_mbs_stonyshoreTK = { has_holder = yes } }
+			NOT = { has_character_flag = stonyshore_king	}
+			NOT = { has_global_flag = stonyshore_realm }
+		}
+		allow = {
+			has_regent = no
+			has_landed_title = e_iron_isles
+			culture = ironborn
+			OR = {
+				has_landed_title = d_stonyshore
+				any_vassal = { has_landed_title = d_stonyshore }
+			}
+			OR = {
+				has_landed_title = d_flintsfinger
+				any_vassal = { has_landed_title = d_flintsfinger }
+			}
+			OR = {
+				has_landed_title = d_bearisland
+				any_vassal = { has_landed_title = d_bearisland }
+			}
+
+		}
+		effect = {
+			character_event = { id = mbs_stonyshore.1 }
+			prestige = 100
+		}
+		ai_check_interval = 1
+		ai_will_do = { factor = 100 }
+	}
+	mbs_proclaim_red_hills_dec = {
+		only_independent = yes
+		is_high_prio = yes
+
+		potential = {
+			has_landed_title = d_castamere
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = e_westerlands }
+			NOT = { has_landed_title = k_mbs_red_hillsTK }
+			NOT = { k_mbs_red_hillsTK = { has_holder = yes } }
+			NOT = { has_character_flag = redhills_king	}
+			NOT = { has_global_flag = redhills_realm }
+		}
+		allow = {
+			has_regent = no
+			has_landed_title = d_castamere
+			OR = {
+				has_landed_title = d_the_crag
+				any_vassal = { has_landed_title = d_the_crag }
+			}
+			OR = {
+				has_landed_title = d_ashemark
+				any_vassal = { has_landed_title = d_ashemark }
+			}
+			OR = {
+				has_landed_title = d_golden_tooth
+				any_vassal = { has_landed_title = d_golden_tooth }
+			}
+
+		}
+		effect = {
+			character_event = { id = mbs_redhills.1 }
+			prestige = 100
+		}
+		ai_check_interval = 1
+		ai_will_do = { factor = 100 }
+	}
+	mbs_claim_redhills_dec = {
+		only_independent = yes
+		is_high_prio = yes
+
+		potential = {
+			has_character_flag = robb_stark
+			has_landed_title = e_north
+			war = no
+			OR = {
+				has_landed_title = e_riverlands
+				any_vassal = { has_landed_title = k_riverlands }
+			}
+			NOT = { has_landed_title = k_westerlands }
+			NOT = { has_landed_title = e_westerlands }
+			NOT = { has_landed_title = k_mbs_red_hillsTK }
+			NOT = { k_mbs_red_hillsTK = { has_holder = yes } }
+			NOT = { has_character_flag = redhills_king	}
+			NOT = { has_global_flag = redhills_realm }
+			NOT = { has_global_flag = war_for_redhills }
+		}
+		allow = {
+			has_regent = no
+			has_landed_title = e_north
+			war = no
+			prisoner = no
+			OR = {
+				has_landed_title = e_riverlands
+				any_vassal = { has_landed_title = k_riverlands }
+			}
+		}
+		effect = {
+			character_event = { id = mbs_redhills.200 }
+		}
+		ai_check_interval = 1
+		ai_will_do = { factor = 100 }
+	}
+}

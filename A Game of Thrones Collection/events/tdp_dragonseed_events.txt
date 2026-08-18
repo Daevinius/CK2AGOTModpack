@@ -1,0 +1,1364 @@
+namespace = tdp_dragonseeds
+
+#
+#
+#
+#
+
+long_character_event = {
+	id = tdp_dragonseeds.0
+	title = EVTTITLEtdp_dragonseeds.0
+	desc = EVTDESCtdp_dragonseeds.0
+	picture = GFX_evt_dragon_knight_approach
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_dragonseeds.0
+		set_character_flag = promising_nothing
+		add_character_modifier = {
+			name = calling_for_dragon_riders
+			duration = 365
+		}
+		character_event = { id = dragon.170 tooltip = TOOLTIPAdragonseeds.0 }
+	}
+
+	option = {
+		name = EVTOPTBtdp_dragonseeds.0
+		set_character_flag = promising_moderate_rewards
+		add_character_modifier = {
+			name = calling_for_dragon_riders
+			duration = 365
+		}
+		character_event = { id = dragon.170 tooltip = TOOLTIPBdragonseeds.0 }
+	}
+
+	option = {
+		name = EVTOPTCtdp_dragonseeds.0
+		set_character_flag = promising_great_rewards
+		add_character_modifier = {
+			name = calling_for_dragon_riders
+			duration = 365
+		}
+		character_event = { id = dragon.170 tooltip = TOOLTIPCdragonseeds.0 }
+	}
+
+	option = {
+		name = EVTOPTDtdp_dragonseeds.0
+	}
+}
+
+
+
+###Dragonseeds###
+character_event = {
+	id = tdp_dragonseeds.1099
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_character_flag = tdp_dragonseed }
+		trait = dragon_rider
+		OR = {
+			character = 30509002 #Hugh
+			character = 30509003 #Ulf
+			character = 30509001 #Nettles
+			character = 25052 #Addam
+			character = 77012 #Rhaenyra for promise
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					character = 30509002 #Hugh
+					character = 30509003 #Ulf
+					character = 30509001 #Nettles
+					character = 25052 #Addam
+				}
+			}
+			set_character_flag = tdp_dragonseed
+			set_character_flag = promised_moderate_rewards
+		}
+		if = {
+			limit = { character = 77012 }
+			set_character_flag = promising_moderate_rewards
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragonseeds.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_global_flag = tdp_using_valyrian_blood_bloodlines
+			}
+			add_character_modifier = {
+				name = dragonseed
+				months = 12
+			}
+		}
+		set_character_flag = tdp_dragonseed
+		set_character_flag = tdp_dragonseed_looking
+		character_event = { id = tdp_dragonseeds.1999 days = 360 }
+		if = {
+			limit = {
+				trait = mystic
+				is_smart_incl_genius_trigger = yes
+			}
+			set_character_flag = tdp_nettles
+		}
+	}
+}
+
+#Set the Tag
+character_event = {
+	id = tdp_dragonseeds.10
+
+	hide_window = yes
+
+	min_age = 14
+	max_age = 45
+
+	trigger = {
+		is_dragonseed_trigger = yes
+		NOT = { has_dynasty_flag = dragon_riding_dynasty }
+		any_liege = {
+			has_character_modifier = calling_for_dragon_riders
+		}
+		NOR = {
+			has_character_flag = tdp_dragonseed
+			has_character_flag = tdp_dragonseed_looking
+		}
+		OR = {
+			higher_real_tier_than = BARON
+			NOT = { is_ruler = yes }
+		}
+		NOR = {
+			trait = dragon_rider
+			has_character_modifier = cannot_tame_dragon
+			trait = incapable
+			trait = infirm
+			trait = wounded
+			trait = maimed
+			trait = crippled
+			trait = pregnant
+			trait = cancer
+			trait = scurvy
+			trait = slothful
+			trait = blind
+			trait = blinded
+			trait = dragon
+			trait = craven
+			trait = content
+			trait = septa
+			trait = septon
+			trait = silent_sister
+			trait = maester
+			trait = archmaester
+			trait = prostitute
+			trait = kingsguard
+			trait = nightswatch
+			trait = has_missing
+			trait = dragonkeeper
+			is_lazy_trigger = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		set_character_flag = tdp_dragonseed
+		set_character_flag = tdp_dragonseed_looking
+		character_event = { id = tdp_dragonseeds.1999 days = 360 }
+		if = {
+			limit = {
+				trait = mystic
+				is_smart_incl_genius_trigger = yes
+			}
+			set_character_flag = tdp_nettles
+		}
+	}
+}
+
+
+#Pick the Seeds
+character_event = {
+	id = tdp_dragonseeds.101
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		save_event_target_as = dragonseed_rider_looking
+		top_liege = {
+			random_realm_character = {
+				limit = {
+					trait = dragon
+					NOT = { trait = cannibal_dragon }
+					NOT = { trait = shy_dragon }
+					NOR = {
+						has_character_flag = sheepstealer_dragon
+						character = 77990022
+					}
+					num_of_friends < 1
+					age = 10
+					NOT = { has_character_flag = dragon_being_tamed }
+				}
+				set_character_flag = dragon_being_tamed
+				save_event_target_as = dragon_being_tamed
+				character_event = { id = tdp_dragonseeds.104 days = 7 }
+			}
+		}
+		clr_global_flag = dragon_being_tamed
+		random_list = {
+			25 = { #Not Tamed
+				character_event = { id = tdp_dragonseeds.103 }
+			}
+			75 = { #Tamed
+				modifier = {
+					factor = 0
+					is_dumb_trigger = yes
+				}
+				modifier = {
+					factor = 0
+					is_weak_trigger = yes
+				}
+				top_liege = {
+					character_event = { id = tdp_dragonseeds.102 }
+				}
+			}
+		}
+	}
+}
+
+
+character_event = {
+	id = tdp_dragonseeds.102
+	title = EVTTITLEtdp_dragonseeds.0
+	picture = GFX_dragon_riding_3
+	desc = EVTDESCtdp_dragonseeds.101
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_dragonseeds.102
+		event_target:dragonseed_rider_looking = {
+			add_friend = event_target:dragon_being_tamed
+			add_trait = dragon_rider
+			set_character_flag = dragonseed_rider_match
+			clr_character_flag = tdp_dragonseed_looking
+			hidden_tooltip = {
+				create_bloodline = {
+					type = dragon_rider_tracker
+				}
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = event_target:dragon_being_tamed
+					remove_bloodline_member = event_target:dragonseed_rider_looking
+				}
+			}
+			if = {
+				limit = { is_landed = no }
+				move_character = ROOT
+			}
+			#Rewards
+			if = {
+				limit = { liege = { has_character_flag = promising_moderate_rewards } }
+				set_character_flag = promised_moderate_rewards
+				if = {
+					limit = {
+						is_female = no
+						NOT = { trait = knight }
+					}
+					add_trait = knight
+				}
+			}
+			if = {
+				limit = { liege = { has_character_flag = promising_great_rewards } }
+				set_character_flag = promised_great_rewards
+				if = {
+					limit = {
+						is_female = no
+						NOT = { trait = knight }
+					}
+					add_trait = knight
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_character_flag = promised_nothing }
+					is_lowborn = yes
+				}
+				character_event = { id = tdp_dragonseeds.1198 days = 1 }
+			}
+			create_bloodline = {
+				type = tdp_dragonseed_bloodline
+			}
+		}
+		event_target:dragon_being_tamed = {
+			clr_character_flag = dragon_being_tamed
+			if = {
+				limit = { event_target:dragonseed_rider_looking = { is_landed = no } }
+				move_character = ROOT
+			}
+			else = {
+				limit = { event_target:dragonseed_rider_looking = { is_landed = yes } }
+				move_character = event_target:dragonseed_rider_looking
+				remove_character_modifier = locked_in_dragonpit
+			}
+			if = {
+				limit = {
+					any_artifact = { artifact_type = dragons_whip }
+				}
+				random_artifact = {
+					limit = { artifact_type = dragons_whip }
+					transfer_artifact = { from = event_target:dragon_being_tamed to = event_target:dragonseed_rider_looking }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { persistent_event_target:whip = { owner = { always = yes } } }
+				}
+				event_target:dragonseed_rider_looking = {
+					add_artifact = dragons_whip
+					new_artifact = {
+						set_name = [dragon_being_tamed.GetDragonWhipName]
+						event_target:dragon_being_tamed = { save_persistent_event_target = { name = whip scope = PREV } }
+					}
+				}
+			}
+			else = {
+				limit = { NOT = { persistent_event_target:whip = { owner = { character = event_target:dragonseed_rider_looking } } } }
+				persistent_event_target:whip = {
+					transfer_artifact = { from = owner to = event_target:dragonseed_rider_looking }
+				}
+			}
+		}
+	}
+}
+
+#Failed Dragonseeds
+character_event = {
+	id = tdp_dragonseeds.103
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	has_character_flag = tdp_dragonseed_looking
+
+	trigger = {
+		is_alive = yes
+		NOT = { trait = dragon_rider }
+		NOT = { trait = dragonkeeper }
+		top_liege = {
+			has_character_modifier = calling_for_dragon_riders
+			any_realm_character = {
+				trait = dragon
+				NOT = { trait = shy_dragon }
+				num_of_friends < 1
+				age = 10
+			}
+			NOT = { has_character_flag = dragon_being_tamed }
+		}
+	}
+
+	immediate = {
+		save_event_target_as = dragonseed_rider_looking
+		top_liege = {
+			random_realm_character = {
+				limit = {
+					trait = dragon
+					NOT = { trait = shy_dragon }
+					num_of_friends < 1
+					age = 10
+					NOT = { has_character_flag = dragon_being_tamed }
+				}
+				clr_character_flag = dragon_being_tamed
+				save_event_target_as = the_dragon
+			}
+		}
+		top_liege = {
+			character_event = { id = tdp_dragonseeds.1030 }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragonseeds.1030
+	title = EVTTITLEtdp_dragonseeds.0
+	desc = EVTDESCtdp_dragonseeds.1030
+	picture = GFX_dragonseeds_fail
+
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:dragonseed_rider_looking = {
+			death = {
+				death_reason = death_dragon
+				killer = event_target:the_dragon
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_dragonseeds.104
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		clr_character_flag = dragon_being_tamed
+	}
+}
+
+#Dragonseed Dynasty
+character_event = {
+	id = tdp_dragonseeds.1198
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		#Dragon color
+		random_list = {
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_black
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+							trait = dragon
+							NOT = { trait = black_flame }
+					}
+				}
+				dynasty = 99977001
+				set_global_flag = dragonseed_dynasty_black
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990001 } } #Balerion
+						}
+						set_dynasty_name = "Чёрный Ужас"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990001 } } #Balerion
+						}
+						set_dynasty_name = "Балерион"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_gold
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+						trait = dragon
+						NOT = { trait = golden_flame }
+					}
+				}
+				dynasty = 99977002
+				set_global_flag = dragonseed_dynasty_gold
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990012 } } #Sunfyre
+						}
+						set_dynasty_name = "Санфайр"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990011 } } #Syrax
+						}
+						set_dynasty_name = "Сиракс"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_blue
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+						trait = dragon
+						NOT = { trait = blue_flame }
+					}
+				}
+				dynasty = 99977003
+				set_global_flag = dragonseed_dynasty_blue
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990006 } } #Dreamfyre
+						}
+						set_dynasty_name = "Дримфайр"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990011 } } #Tessarion
+						}
+						set_dynasty_name = "Тессарион"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_green
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+						trait = dragon
+						NOT = { trait = green_flame }
+					}
+				}
+				dynasty = 99977004
+				set_global_flag = dragonseed_dynasty_green
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990017 } } #Moondancer
+						}
+						set_dynasty_name = "Мунденсер"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990017 } } #Moondancer
+						}
+						set_dynasty_name = "Хурлилио"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_bronze
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+						trait = dragon
+						NOT = { trait = orange_flame }
+					}
+				}
+				dynasty = 99977005
+				set_global_flag = dragonseed_dynasty_bronze
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990003 } } #Vhagar
+						}
+						set_dynasty_name = "Вхагар"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990005 } } #Vermithor
+						}
+						set_dynasty_name = "Вермитор"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990005 } } #Vermithor
+						}
+						set_dynasty_name = "Бронзовая Ярость"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_white
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+						trait = dragon
+						NOT = { trait = white_flame }
+					}
+				}
+				dynasty = 99977006
+				set_global_flag = dragonseed_dynasty_white
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990002 } } #Meraxes
+						}
+						set_dynasty_name = "Мераксес"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990004 } } #Quicksilver
+						}
+						set_dynasty_name = "Ртуть"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990007 } } #Silverwing
+						}
+						set_dynasty_name = "Сильвервинг"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_global_flag = dragonseed_dynasty_red
+				}
+				modifier = {
+					factor = 0
+					any_friend = {
+						trait = dragon
+						NOT = { trait = red_flame }
+					}
+				}
+				dynasty = 99977007
+				set_global_flag = dragonseed_dynasty_red
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990008 } } #Meleys
+						}
+						set_dynasty_name = "Мелеис"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990008 } } #Redqueen
+						}
+						set_dynasty_name = "Редкуин"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990007 } } #Caraxes
+						}
+						set_dynasty_name = "Караксес"
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							NOT = { any_friend = { character = c_77990007 } } #Bloodwyrm
+						}
+						set_dynasty_name = "Блудвирм"
+					}
+					1 = { }
+				}
+			}
+			1 = {
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_99977008
+						}
+						dynasty = 99977008
+						set_global_flag = flag_99977008
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_99977009
+						}
+						dynasty = 99977009
+						set_global_flag = flag_99977009
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_99977010
+						}
+						dynasty = 99977010
+						set_global_flag = flag_99977010
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_99977011
+						}
+						dynasty = 99977011
+						set_global_flag = flag_99977011
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_99977012
+						}
+						dynasty = 99977012
+						set_global_flag = flag_99977012
+					}
+				}
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Dravenmont
+						}
+						set_dynasty_name = "Дрейвенмонт"
+						set_global_flag = flag_Dravenmont
+					}
+
+					#Bastard name inspired
+					#Waters
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Scorchwaters
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_waters }
+						}
+						set_dynasty_name = "Скорчуотерс"
+						set_global_flag = flag_Scorchwaters
+					}
+					#Snow
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Sintersnow
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_snow }
+						}
+						set_dynasty_name = "Синтерсноу"
+						set_global_flag = flag_Sintersnow
+					}
+					#Stone
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Flintstone
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_stone }
+						}
+						set_dynasty_name = "Флинтстоун"
+						set_global_flag = flag_Flintstone
+					}
+					#Sand
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Hotsand
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_sand }
+						}
+						set_dynasty_name = "Хотсэнд"
+						set_global_flag = flag_Hotsand
+					}
+					#Rivers
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Burnrivers
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_rivers }
+						}
+						set_dynasty_name = "Бурнриверс"
+						set_global_flag = flag_Burnrivers
+					}
+					#Hill
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Pyrehill
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_hill }
+						}
+						set_dynasty_name = "Пирхилл"
+						set_global_flag = flag_Pyrehill
+					}
+					#Storm
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Fyrestorm
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_storm }
+						}
+						set_dynasty_name = "Файршторм"
+						set_global_flag = flag_Fyrestorm
+					}
+					#Pyke
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Wyrmpyke
+						}
+						modifier = {
+							factor = 0
+							NOT = { has_nickname = nick_pyke }
+						}
+						set_dynasty_name = "Вирмпайк"
+						set_global_flag = flag_Wyrmpyke
+					}
+
+					#Generic
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Dragonseed
+						}
+						set_global_flag = flag_Dragonseed
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Dragonblood
+						}
+						set_dynasty_name = "Драгонблуд"
+						set_global_flag = flag_Dragonblood
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Kingsblood
+						}
+						set_dynasty_name = "Кингсблуд"
+						set_global_flag = flag_Kingsblood
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Silverhair
+						}
+						modifier = {
+							factor = 0
+							NOT = { graphical_culture = valyriangfx }
+						}
+						set_dynasty_name = "Сильверхейр"
+						set_global_flag = flag_Silverhair
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Violet
+						}
+						modifier = {
+							factor = 0
+							NOT = { graphical_culture = valyriangfx }
+						}
+						set_dynasty_name = "Виолет"
+						set_global_flag = flag_Violet
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Graybeard
+						}
+						modifier = {
+							factor = 0
+							is_female = yes
+						}
+						modifier = {
+							factor = 0
+							NOT = { graphical_culture = valyriangfx }
+						}
+						set_dynasty_name = "Грейбирд"
+						set_global_flag = flag_Graybeard
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_White
+						}
+						set_dynasty_name = "Уайт"
+						set_global_flag = flag_White
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Silver
+						}
+						set_dynasty_name = "Сильвер"
+						set_global_flag = flag_Silver
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Warhammer
+						}
+						modifier = {
+							factor = 0
+							NOT = { is_strong_trigger = yes }
+						}
+						set_dynasty_name = "Вархаммер"
+						set_global_flag = flag_Warhammer
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Swordsmith
+						}
+						modifier = {
+							factor = 0
+							NOT = { is_strong_trigger = yes }
+						}
+						set_dynasty_name = "Свордсмит"
+						set_global_flag = flag_Swordsmith
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_Battleaxe
+						}
+						modifier = {
+							factor = 0
+							NOT = { is_strong_trigger = yes }
+						}
+						set_dynasty_name = "Баттлэкс"
+						set_global_flag = flag_Battleaxe
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							has_global_flag = flag_location_name
+						}
+						modifier = {
+							factor = 0.2
+						}
+						set_dynasty_name = "из [Root.Location.GetName]"
+						set_global_flag = flag_location_name
+					}
+				}
+			}
+		}
+		any_child_even_if_dead = {
+			limit = { is_lowborn = yes }
+			dynasty = ROOT
+			any_child_even_if_dead = {
+					limit = { is_lowborn = yes }
+					dynasty = ROOT
+			}
+		}
+	}
+}
+
+#Lore Dragonseeds
+character_event = {
+	id = tdp_dragonseeds.1199
+
+	hide_window = yes
+
+	has_character_flag = tdp_dragonseed
+	ai = yes
+
+	trigger = {
+		start_date < 8129.3.1
+		is_lowborn = yes
+		trait = dragon_rider
+		NOT = { has_character_flag = promised_nothing }
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	immediate = {
+		#Hammer
+		if = {
+			limit = {
+				is_strong_trigger = yes
+				trait = brave
+				trait = ambitious
+				trait = deceitful
+				trait = wroth
+				any_friend = {
+					trait = dragon
+					character = 77990005 #Vermithor
+				}
+				NOT = { has_global_flag = tdp_flag_hammer }
+			}
+			set_global_flag = tdp_flag_hammer
+			set_dynasty_flag = dragonseed_dynasty
+			dynasty = 502
+		}
+		#White
+		else_if = {
+			limit = {
+				trait = drunkard
+				trait = brave
+				trait = deceitful
+				trait = arbitrary
+				any_friend = {
+					trait = dragon
+					character = 77990007 #Silverwing
+				}
+				NOT = { has_global_flag = tdp_flag_white }
+			}
+			set_global_flag = tdp_flag_white
+			set_dynasty_flag = dragonseed_dynasty
+			dynasty = 503
+		}
+		#Nettles
+		else_if = {
+			limit = {
+				trait = mystic
+				trait = gregarious
+				trait = brave
+				trait = honorable
+				NOT = { has_global_flag = tdp_flag_nettles }
+			}
+			set_global_flag = tdp_flag_nettles
+			set_dynasty_flag = dragonseed_dynasty
+			dynasty = 504
+		}
+		else = {
+			break = yes
+		}
+	}
+
+}
+
+#Dragonseed wants more than promised
+character_event = {
+	id = tdp_dragonseeds.12
+
+	hide_window = yes
+
+	trigger = {
+		prisoner = no
+		NOR = {
+			has_character_flag = spurned_dragonseed
+			has_opinion_modifier = {
+				who = liege
+				name = opinion_tdp_satisfied
+			}
+		}
+		OR = {
+			has_character_flag = promised_moderate_rewards
+			has_character_flag = promised_nothing
+		}
+		trait = dragon_rider
+		is_landed = no
+		trait = ambitious
+		OR = {
+			trait = deceitful
+			trait = greedy
+			trait = wroth
+			trait = arbitrary
+		}
+		NOR = {
+			trait = honorable
+			trait = content
+		}
+		top_liege = {
+			war = yes
+			OR = {
+				has_character_flag = tdp_rebel_dragon_lead
+				has_character_flag = tdp_crown_dragon_lead
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 1
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = tdp_dragonseeds.120 }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragonseeds.120
+	desc = EVTDESCtdp_dragonseeds.120
+	picture = GFX_evt_ironthrone
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_dragonseeds.120
+		FROM = { set_character_flag = spurned_dragonseed }
+	}
+
+	option = {
+		name = EVTOPTBtdp_dragonseeds.120
+		if = {
+			limit = { FROM = { has_character_flag = promised_moderate_rewards } }
+			FROM = {
+				clr_character_flag = promised_moderate_rewards
+				set_character_flag = promised_great_rewards
+			}
+		}
+		if = {
+			limit = { FROM = { has_character_flag = promised_nothing } }
+			FROM = {
+				clr_character_flag = promised_nothing
+				set_character_flag = promised_moderate_rewards
+			}
+		}
+	}
+
+}
+
+
+character_event = {
+	id = tdp_dragonseeds.1999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+	}
+
+	immediate = {
+		clr_character_flag = tdp_dragonseed_looking
+	}
+}
+
+### Add Bloodlines ###
+character_event = {
+	id = tdp_dragonseeds.2
+
+	hide_window = yes
+	ai = yes
+
+	has_character_flag = tdp_dragonseed
+
+	trigger = {
+		is_lowborn = no
+		trait = dragon_rider
+		NOT = { any_owned_bloodline = { has_bloodline_flag = blood_of_the_dragon } }
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		create_bloodline = {
+			type = blood_of_the_dragon
+		}
+	}
+}
+
+
+### End of War ###
+character_event = {
+	id = tdp_dragonseeds.3
+
+	hide_window = yes
+	ai = yes
+
+	has_character_flag = tdp_dragonseed
+
+	trigger = {
+		NOT = { is_heir = yes }
+		NOR = {
+			has_character_flag = dragonseed_rewarded
+			has_character_flag = promised_nothing
+			has_character_flag = denied_rewards
+			has_character_flag = awaiting_reward
+		}
+		top_liege = {
+			war = no
+			OR = {
+				has_opinion_modifier = {
+					name = opinion_joined_cause
+					who = ROOT
+				}
+				has_opinion_modifier = {
+					name = opinion_loyal_to_liege
+					who = ROOT
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		if = {
+			limit = { is_landed = no }
+			top_liege = { character_event = { id = tdp_dragonseeds.30 days = 1 } }
+		}
+		if = {
+			limit = {
+				is_landed = yes
+				NOT = { tier = KING	}
+				has_character_flag = promised_great_rewards
+			}
+			clr_character_flag = promised_great_rewards
+			top_liege = { character_event = { id = tdp_dragonseeds.30 days = 1 } }
+		}
+		if = {
+			limit = {
+				is_landed = yes
+				NOT = { tier = KING	}
+				has_character_flag = promised_moderate_rewards
+			}
+			clr_character_flag = promised_moderate_rewards
+			set_character_flag = dragonseed_rewarded
+		}
+		if = {
+			limit = {
+				is_landed = yes
+				tier = KING
+				has_character_flag = promised_great_rewards
+			}
+			clr_character_flag = promised_great_rewards
+			set_character_flag = dragonseed_rewarded
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragonseeds.30
+	desc = EVTDESCtdp_dragonseeds.30
+	picture = GFX_evt_ironthrone
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_dragonseeds.30
+		custom_tooltip = {
+			text = TOOLTIPAdragonseeds.30
+
+			FROM = {
+				set_character_flag = awaiting_reward
+				character_event = { id = tdp_dragonseeds.31 days = 30 }
+				if = {
+					limit = {
+						is_female = no
+					}
+					add_trait = knight
+				}
+				if = {
+					limit = {
+						has_character_flag = promised_moderate_rewards
+					}
+					wealth = 20
+					ROOT = { wealth = -20 }
+				}
+				if = {
+					limit = {
+						has_character_flag = promised_great_rewards
+					}
+					wealth = 50
+					ROOT = { wealth = -50 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_dragonseeds.30
+		custom_tooltip = {
+			text = TOOLTIPBdragonseeds.30
+
+			FROM = {
+				clr_character_flag = promised_great_rewards
+				clr_character_flag = promised_moderate_rewards
+				set_character_flag = spurned_dragonseed
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragonseeds.31
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		clr_character_flag = awaiting_reward
+		if = {
+			limit = { is_landed = no }
+			clr_character_flag = promised_moderate_rewards
+			clr_character_flag = promised_great_rewards
+			set_character_flag = spurned_dragonseed
+			set_character_flag = denied_rewards
+		}
+		if = {
+			limit = {
+				is_landed = yes
+				NOT = { tier = KING	}
+				has_character_flag = promised_great_rewards
+			}
+			clr_character_flag = promised_great_rewards
+			set_character_flag = spurned_dragonseed
+			set_character_flag = denied_rewards
+		}
+	}
+}
+
+
+character_event = {
+	id = tdp_dragonseeds.32
+
+	hide_window = yes
+	ai = yes
+
+	has_character_flag = spurned_dragonseed
+
+	mean_time_to_happen = {
+		years = 10
+	}
+
+	immediate = {
+		set_character_flag = candidate_for_war
+	}
+
+}

@@ -1,0 +1,321 @@
+# Types:
+# 0 - Light Infantry
+# 1 - Heavy Infantry
+# 2 - Pikemen
+# 3 - Light Cavalry
+# 4 - Heavy Cavalry
+# 5 - Archers
+# 6 - Special troops
+
+RETTYPE_INF1 = {
+	first_type = 1
+	first_amount = 200
+	second_type = 5
+	second_amount = 50
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+	}
+
+	modifier = {
+		archers_offensive = 0.2
+		heavy_infantry_defensive = 0.1
+		heavy_infantry_offensive = 0.1
+	}
+}
+
+RETTYPE_INF2 = {
+	first_type = 2
+	first_amount = 250
+	second_type = 5
+	second_amount = 50
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+	}
+
+	modifier = {
+		archers_defensive = 0.2
+		pikemen_defensive = 0.4
+		pikemen_offensive = 0.2
+	}
+}
+
+RETTYPE_CAV1 = {
+	first_type = 4
+	first_amount = 50
+	second_type = 3
+	second_amount = 200
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+	}
+
+	modifier = {
+		light_cavalry_offensive = 0.2
+		light_cavalry_defensive = 0.2
+	}
+}
+
+RETTYPE_SKIR1 = {
+	first_type = 5
+	first_amount = 200
+	second_type = 1
+	second_amount = 50
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+	}
+
+	modifier = {
+		archers_offensive = 0.2
+		archers_defensive = 0.1
+		heavy_infantry_defensive = 0.1
+	}
+}
+
+RETTYPE_SKIR2 = {
+	first_type = 5
+	first_amount = 150
+	second_type = 0
+	second_amount = 400
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+	}
+
+	modifier = {
+		archers_offensive = 0.2
+		archers_defensive = 0.1
+		light_infantry_defensive = 0.2
+		light_infantry_morale = 0.2
+	}
+}
+
+
+#dote_free_cities_guard_retinue = {
+#	first_type = 2
+#	first_amount = 500
+#
+#	potential = {
+#		is_nomadic = no
+#		any_demesne_province = {
+#			region = world_free_cities
+#		}
+#
+#	}
+#
+#	modifier = {
+#		#Pikemen Modifiers
+#		pikemen_defensive = 0.30
+#		pikemen_morale = 0.10
+#	}
+#}
+
+dote_tiger_cloaks_retinue = {
+	first_type = 0
+	first_amount = 500
+	second_type = 2
+	second_amount = 250
+
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		has_landed_title = c_volantis
+	}
+
+	modifier = {
+		#Light Infantry Modifiers
+		light_infantry_defensive = 0.25
+		light_infantry_morale = 0.10
+		pikemen_defensive = 0.25
+		pikemen_morale = 0.10
+	}
+}
+
+dote_fiery_hands_retinue = {
+	first_type = 1
+	first_amount =  250
+	second_type = 2
+	second_amount = 250
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		religion = rhllor
+		any_vassal = {
+			has_landed_title = d_rhllor
+		}
+	}
+
+	modifier = {
+		heavy_infantry_morale = 0.50
+		pikemen_morale = 0.50
+	}
+}
+
+dote_elephant_retinues = {
+	first_type = 6
+	first_amount = 50
+	second_type = 5
+	second_amount = 200
+
+	special_troops = war_elephants
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		capital_scope = {
+			region = world_volantis
+		}
+	}
+
+	modifier = {
+		archers_offensive = 0.50
+	}
+}
+
+#dote_bravos_retinues = {
+#	first_type = 1
+#	first_amount = 100
+#
+#	potential = {
+#		is_nomadic = no
+#		NOT = { primary_title = { has_title_flag = sellsword_company } }
+#		OR = {
+#			has_landed_title = c_braavos
+#			any_vassal = {
+#				has_landed_title = c_braavos
+#			}
+#		}
+#	}
+#
+#	modifier = {
+#		light_infantry_offensive = 0.50
+#		light_infantry_morale = 0.50
+#	}
+#}
+
+dote_andal_knights_retinue = {
+	first_type = 3
+	second_type = 4
+	first_amount = 100
+	second_amount = 300
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		any_realm_province = {
+			region = world_andalos
+		}
+	}
+
+	modifier = {
+		#Light Cavalry
+		light_cavalry_offensive = 0.25
+		light_cavalry_morale = 0.10
+		#Knights
+		knights_offensive = 0.25
+		knights_morale = 0.10
+	}
+}
+
+dote_dothraki_horselords = {
+	first_type = 3
+	first_amount = 120
+	second_type = 6
+	second_amount = 150
+
+	special_troops = horse_archers
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		any_realm_province = {
+			region = world_essos
+		}
+	}
+
+	modifier = {
+		#Light Cavalry
+		light_cavalry_offensive = 0.50
+		#Horse Archers
+		horse_archers_offensive = 0.50
+	}
+}
+
+dote_ghiscari_legionnaries_retinues = {
+	first_type = 1
+	first_amount = 250
+	second_type = 2
+	second_amount = 500
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		OR = {
+			culture_group = ghiscari_group
+			any_realm_province = {
+				region = world_ghiscar
+			}
+		}
+	}
+
+	modifier = {
+		heavy_infantry_defensive = 0.50
+		heavy_infantry_morale = 0.25
+		pikemen_defensive = 0.50
+		pikemen_morale = 0.25
+	}
+}
+
+dote_valyrian_azantyr_retinues = {
+	first_type = 0
+	first_amount = 500
+	second_type = 1
+	second_amount = 250
+
+	potential = {
+		is_nomadic = no
+		NOT = { primary_title = { has_title_flag = sellsword_company } }
+		OR = {
+			culture_group = valyrian
+			any_realm_province = {
+				region = world_north_valyria
+			}
+		}
+		capital_scope = { region = world_essos }
+	}
+
+	modifier = {
+		heavy_infantry_defensive = 0.50
+		heavy_infantry_morale = 0.25
+		light_infantry_defensive = 0.50
+		light_infantry_morale = 0.25
+	}
+}
+
+dote_wyvern_knight_retinues = {
+	first_type = 6
+	first_amount = 10
+
+	special_troops = wyvern_knights
+
+	potential = {
+		has_landed_title = e_valyrian_empire
+	}
+
+	modifier = {
+		#none
+	}
+}
+
+
+
+

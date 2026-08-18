@@ -1,0 +1,252 @@
+namespace = sb_asha_greyjoy
+#Asha goes to Daenerys in Meereen
+narrative_event = {
+	id = sb_asha_greyjoy.1
+	desc = "EVTDESC_sb_ashagreyjoy.1"
+	title = "EVTTITLE_sb_ashagreyjoy.1"
+	picture = GFX_evt_kraken
+
+	only_women = yes
+	only_playable = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		is_ruler = yes
+		NOT = { has_character_flag = kraken_friendship }
+		NOT = { has_global_flag = asha_questline }
+		NOT = { trait = has_missing }
+		c_7107 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+			NOT = { trait = wikid }
+		}
+		c_1500 = { is_alive = no }
+	}
+
+	immediate = {
+		set_global_flag = asha_questline
+	}
+
+	mean_time_to_happen = {
+		days = 10
+	}
+
+	option = {
+		name = "EVTOPTA_sb_ashagreyjoy.1"
+		ai_chance = { factor = 90 }
+		set_character_flag = kraken_friendship
+		c_7107 = {
+			add_friend = ROOT
+			move_character = ROOT
+			set_character_flag = joined_daenerys
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_ashagreyjoy.1"
+		ai_chance = { factor = 10 }
+		prestige = 30
+	}
+}
+namespace = sb_basilisk
+#Corsair King invades Naath on AFFC bookmark start
+narrative_event = {
+	id = sb_basilisk.0
+	desc = "EVTDESC_sb_basilisk.0"
+	title = "EVTTITLE_sb_basilisk.0"
+	picture = GFX_sothoryos
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 6800123
+		has_landed_title = k_basilisk_isles
+		NOT = { has_character_flag = naath_invasion }
+		NOT = { has_global_flag = sb_basilisk_invasion }
+		NOT = { trait = wikid }
+	}
+
+	immediate = { set_global_flag = sb_basilisk_invasion }
+
+	option = {
+		name = "EVTOPTA_sb_friendship_basilisk.0"
+		ai_chance = { factor = 100 }
+		set_character_flag = naath_invasion
+		d_naath = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = invasion
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_friendship_basilisk.0"
+		ai_chance = { factor = 0 }
+	}
+}
+#Send news of Naath conquest to Daenerys
+character_event = {
+	id = sb_basilisk.100
+
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	has_character_flag = naath_invasion
+
+	trigger = {
+		has_landed_title = k_basilisk_isles
+		NOT = { has_global_flag = naaht_conquest_notification }
+		OR = {
+			has_landed_title = c_naath
+			any_vassal = { has_landed_title = c_naath }
+		}
+	}
+
+	immediate = { set_global_flag = naath_conquest_notification }
+
+	option = {
+		name = OK
+		any_playable_ruler = {
+			limit = { has_landed_title = k_meereen }
+			narrative_event = { id = sb_missandeinaath.3 days = 7 }
+		}
+	}
+}
+#Asha suggest invasion of the Basilisk Isles
+narrative_event = {
+	id = sb_basilisk.1
+	desc = "EVTDESC_sb_basilisk.1"
+	title = "EVTTITLE_sb_basilisk.1"
+	picture = GFX_sothoryos
+
+	only_independent = yes
+	has_character_flag = kraken_friendship
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		c_7107 = {
+			is_alive = yes
+			is_ruler = no
+			prisoner = no
+			has_character_flag = joined_daenerys
+		}
+		NOT = { has_global_flag = asha_stormborn_event }
+	}
+
+	mean_time_to_happen = {
+		months = 24
+	}
+
+	immediate = { set_global_flag = asha_stormborn_event }
+
+	option = {
+		name = "EVTOPTA_sb_basilisk.1"
+		ai_chance = { factor = 90 }
+		c_7107 = {
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+		add_claim = c_islemonkeys
+		add_claim = k_basilisk_isles
+		set_character_flag = basilisk_invasion
+	}
+
+	option = {
+		name = "EVTOPTB_sb_basilisk.1"
+		ai_chance = { factor = 10 }
+		piety = 50
+	}
+}
+#Name Asha the Queen of the Basilisk Isles?
+narrative_event = {
+	id = sb_basilisk.2
+	desc = "EVTDESC_sb_basilisk.2"
+	title = "EVTTITLE_sb_basilisk.2"
+	picture = GFX_sothoryos
+
+	is_triggered_only = yes
+
+	has_character_flag = basilisk_invasion
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		OR = {
+			has_landed_title = k_basilisk_isles
+			any_vassal = { has_landed_title = k_basilisk_isles }
+		}
+		NOT = { has_global_flag = basilisk_greyjoy_established }
+		c_7107 = {
+			is_alive = yes
+			prisoner = no
+			has_character_flag = joined_daenerys
+		}
+	}
+
+	immediate = { set_global_flag = basilisk_greyjoy_established }
+
+	option = {
+		name = "EVTOPTA_sb_basilisk.2"
+		ai_chance = { factor = 75 }
+		c_7107 = {
+			spawn_unit = {
+				province = 753
+				home = 753
+				owner = THIS
+				cannot_inherit = no
+				troops = {
+					heavy_infantry = { 5500 5500 }
+				}
+				attrition = 0.5
+				earmark = dummy #needs or else it will CTD for some reason
+			}
+			c_islemonkeys = {
+				grant_title = PREV
+				recalc_succession = yes
+			    succession = kingsmoot_elective
+			}
+			k_basilisk_isles = {
+				grant_title = PREV
+				recalc_succession = yes
+			    add_law = succ_kingsmoot_elective
+				set_defacto_liege = ROOT
+			}
+			set_character_flag = basilisk_greyjoy
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_basilisk.2"
+		ai_chance = { factor = 20 }
+		random_realm_character = {
+			limit = {
+				is_ruler = no
+				OR = {
+					culture = basilisk_islander
+					culture = summer_islander
+				}
+			}
+			c_islemonkeys = {
+				grant_title = PREV
+			}
+			k_basilisk_isles = {
+				grant_title = PREV
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_basilisk.2"
+		ai_chance = { factor = 5 }
+		prestige = 100
+	}
+}

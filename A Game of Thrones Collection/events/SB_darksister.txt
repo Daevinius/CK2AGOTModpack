@@ -1,0 +1,465 @@
+namespace = sb_darksister
+
+#Lore and Start Quest
+narrative_event = {
+	id = sb_darksister.0
+	desc = "EVTDESCdarksister.0"
+	title = "EVTITLEdarksister.0"
+	picture = "GFX_evt_valyrian_steel"
+
+	is_triggered_only = yes
+	only_capable = yes
+	prisoner = no
+
+	option = {
+		name = "EVTOPTA_darksister.0"
+		add_trait = wikid
+		set_global_flag = darksister_quest_started
+		ROOT = {
+			character_event = {
+				id = sb_darksister.1
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.0"
+	}
+}
+#Choose transport to the Wall
+character_event = {
+	id = sb_darksister.1
+	desc = "EVTDESCdarksister.1"
+	title = "EVTITLEdarksister.1"
+	picture = "GFX_evt_dany_ship"
+
+	is_triggered_only = yes
+	only_capable = yes
+	prisoner = no
+
+	option = {
+		name = "EVTOPTA_darksister.1"              #Small Ship
+		wealth = -50
+		custom_tooltip = { text = CUSTOMTOOLTIP_darksistersmallship }
+		ROOT = {
+			character_event = {
+				id = sb_darksister.2
+				days = 9
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.1"			   #Fly there on dragon
+		trigger = { trait = dragon_rider }
+		wealth = -100
+		set_character_flag = dragon_darksister
+		custom_tooltip = { text = CUSTOMTOOLTIP_darksisterdragon }
+		ROOT = {
+			character_event = {
+				id = sb_darksister.3
+				days = 18
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_darksister.1"			   #Big Safe Ship
+		wealth = -150
+		custom_tooltip = { text = CUSTOMTOOLTIP_darksisterbigship }
+		ROOT = {
+			character_event = {
+				id = sb_darksister.4
+				days = 30
+			}
+		}
+	}
+}
+#Travel Small Ship
+character_event = {
+	id = sb_darksister.2
+	desc = "EVTDESCdarksister.2"
+	title = "EVTITLEdarksister.2"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.2"
+		random = {
+			chance = 40
+			add_trait = wounded
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.5
+				days = 4
+			}
+		}
+	}
+}
+#Travel Dragon
+character_event = {
+	id = sb_darksister.3
+	desc = "EVTDESCdarksister.3"
+	title = "EVTITLEdarksister.3"
+	picture = GFX_evt_dragon_riding_1
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.3"
+		random = {
+			chance = 30
+			add_trait = stressed
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.5
+				days = 4
+			}
+		}
+	}
+}
+#Travel Big Ship
+character_event = {
+	id = sb_darksister.4
+	desc = "EVTDESCdarksister.4"
+	title = "EVTITLEdarksister.4"
+	picture = "GFX_evt_dany_astapor"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.4"
+		random = {
+			chance = 5
+			add_trait = wounded
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.5
+				days = 4
+			}
+		}
+	}
+}
+#Arrive at the Wall
+narrative_event = {
+	id = sb_darksister.5
+	desc = "EVTDESCdarksister.5"
+	title = "EVTITLEdarksister.5"
+	picture = GFX_evt_the_wall
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.5"     #Greeted by random Lord Commander
+		trigger = {
+			NOT = {
+				c_1002059 = {
+					trait = nightswatch
+					has_landed_title = d_nightswatch
+				}
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = d_nightswatch
+				NOT = { trait = wildling }
+				NOT = { culture_group = winter_group }
+			}
+			set_character_flag = hosting_queen
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.6
+				days = 1
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTB_darksister.5"      #Jon Snow is still the Lord Commander
+		set_character_flag = ice_and_fire
+		trigger = {
+			c_1002059 = {
+				trait = nightswatch
+				has_landed_title = d_nightswatch
+				is_alive = yes
+			}
+		}
+		c_1002059 = { set_character_flag = ice_and_fire }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.7
+				days = 1
+			}
+		}
+	}
+}
+#Negotate with the NW
+narrative_event = {
+	id = sb_darksister.6
+	desc = "EVTDESCdarksister.6"
+	title = "EVTITLEdarksister.6"
+	picture = GFX_evt_the_wall
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.6"      #Buy some maps
+		set_character_flag = northern_maps
+		wealth = -25
+		ROOT = {
+			character_event = {
+				id = sb_darksister.8
+				days = 4
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.6"      #Talk to the rangers
+		set_character_flag = rangers_help
+		wealth = -50
+		ROOT = {
+			character_event = {
+				id = sb_darksister.8
+				days = 4
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_darksister.6"      #Get no help
+		set_character_flag = north_alone
+		wealth = -10
+		ROOT = {
+			character_event = {
+				id = sb_darksister.8
+				days = 4
+			}
+		}
+	}
+}
+#Jon Snow the Lord Commander
+narrative_event = {
+	id = sb_darksister.7
+	desc = "EVTDESCdarksister.7"
+	title = "EVTITLEdarksister.7"
+	picture = GFX_evt_the_wall
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTA_darksister.7"      #Dany and Jon become friends
+		c_1002059 = { tooltip = { show_portrait = yes } }
+		add_friend = c_1002059
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.6
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.7"     #Dany and Jon fall in love
+		c_1002059 = { tooltip = { show_portrait = yes } }
+		add_lover = c_1002059
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.6
+				days = 2
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_darksister.7"     #Dany and Jon dont like each other that much
+		c_1002059 = { tooltip = { show_portrait = yes } }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.6
+				days = 2
+			}
+		}
+	}
+}
+#Abandon the Wall
+narrative_event = {
+	id = sb_darksister.8
+	desc = "EVTDESCdarksister.8"
+	title = "EVTITLEdarksister.8"
+	picture = GFX_evt_the_wall
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.8"
+		trigger = { has_character_flag = northern_maps }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.9
+				days = 4
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.8"
+		trigger = { has_character_flag = rangers_help }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.9
+				days = 8
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_darksister.8"
+		trigger = { has_character_flag = north_alone }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.9
+				days = 15
+			}
+		}
+	}
+}
+#Find a weird cave in the north
+narrative_event = {
+	id = sb_darksister.9
+	desc = "EVTDESCdarksister.9"
+	title = "EVTITLEdarksister.9"
+	picture = "GFX_winter_1"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.9"
+		clr_character_flag = north_alone
+		clr_character_flag = rangers_help
+		clr_character_flag = northern_maps
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.10
+				days = 1
+			}
+		}
+	}
+}
+#You engage the Three Eyed Crow inside the cave
+narrative_event = {
+	id = sb_darksister.10
+	desc = "EVTDESCdarksister.10"
+	title = "EVTITLEdarksister.10"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.10"
+		c_1993002 = { tooltip = { show_portrait = yes } }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.11
+				days = 1
+			}
+		}
+	}
+}
+#The Three Eyed Crow asks if you are truly worthy
+narrative_event = {
+	id = sb_darksister.11
+	desc = "EVTDESCdarksister.11"
+	title = "EVTITLEdarksister.11"
+	picture = "GFX_crow"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.11"
+		trigger = { trait = dragon_rider }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.12
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.11"
+		trigger = { has_character_flag = destroyed_ironthrone }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.12
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_darksister.11"
+		trigger = { has_character_flag = dragon_darksister }
+		ROOT = {
+			narrative_event = {
+				id = sb_darksister.13
+				days = 1
+			}
+		}
+	}
+}
+#The Three Eyed Crow grants you the sword
+narrative_event = {
+	id = sb_darksister.12
+	desc = "EVTDESCdarksister.12"
+	title = "EVTITLEdarksister.12"
+	picture = "GFX_evt_valyrian_steel"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.12"
+		add_artifact = darksister
+		remove_trait = wikid
+	}
+}
+#The Three Eyed Crow grants you the sword and dies
+narrative_event = {
+	id = sb_darksister.13
+	desc = "EVTDESCdarksister.13"
+	title = "EVTITLEdarksister.13"
+	picture = "GFX_dracarys"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_darksister.13"
+		add_artifact = darksister
+		remove_trait = wikid
+		c_1993002 = {
+			death = {
+				death_reason = death_execution
+				killer = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_darksister.13"
+		trigger = { has_character_flag = dragon_darksister }
+		add_artifact = darksister
+		remove_trait = wikid
+		c_1993002 = {
+			death = {
+				death_reason = death_execution_dragon
+				killer = ROOT
+			}
+		}
+	}
+}

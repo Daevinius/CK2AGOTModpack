@@ -1,0 +1,98 @@
+namespace = mbs_shipbuilding
+###################################
+
+character_event = {
+	id = mbs_shipbuilding.1
+	desc = "EVTDESCironborn_events.85"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+	immediate = {
+		#find councillor for loc
+		random_courtier_or_vassal = {
+			limit = {
+				OR = {
+					# has_minor_title = title_master_of_ships
+					# has_minor_title = title_master_of_ships_B
+					has_minor_title = title_high_admiral
+					has_minor_title = title_high_admiral_B
+				}
+			}
+			save_event_target_as = master_of_ships
+			break = yes
+		}
+		job_marshal = { save_event_target_as = master_of_ships }
+	}
+
+	option = {
+		name = "EVTOPTAironborn_events.85" #Enormous
+		trigger = {
+			primary_title = { higher_tier_than = DUKE }
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 2
+				trait = proud
+			}
+			modifier = {
+				factor = 2
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0
+				trait = humble
+			}
+			modifier = {
+				factor = 0
+				trait = content
+			}
+		}
+		wealth = -150
+		set_character_flag = enormous_flagship
+		long_character_event = { id = ironborn_events.86 days = 400 random = 100 tooltip = ironborn_events.86A }
+	}
+	option = {
+		name = "EVTOPTBironborn_events.85" #Regular
+		trigger = {
+			primary_title = { higher_tier_than = COUNT }
+		}
+		ai_chance = {
+			factor = 50
+		}
+		wealth = -80
+		set_character_flag = regular_flagship
+		long_character_event = { id = ironborn_events.86 days = 250 random = 75 tooltip = ironborn_events.86B }
+	}
+	option = {
+		name = "EVTOPTCironborn_events.85" #Small
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0
+				trait = proud
+			}
+			modifier = {
+				factor = 0
+				trait = ambitious
+			}
+			modifier = {
+				factor = 2
+				trait = humble
+			}
+			modifier = {
+				factor = 2
+				trait = content
+			}
+		}
+		wealth = -40
+		set_character_flag = small_flagship
+		long_character_event = { id = ironborn_events.86 days = 150 random = 50 tooltip = ironborn_events.86C }
+	}
+	option = {
+		name = "EVTOPTDironborn_events.85" #Cancel
+		trigger = { ai = no }
+		clr_character_flag = construct_a_flagship
+	}
+}

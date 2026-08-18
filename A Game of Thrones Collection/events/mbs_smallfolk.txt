@@ -1,0 +1,322 @@
+namespace = mbs_smallfolk
+
+character_event = {
+	id = mbs_smallfolk.1
+	desc = "EVTDESCmbs_smallfolk.1"
+	picture = "GFX_evt_brothel"
+
+	only_women = yes
+	only_rulers = no
+	only_capable = yes
+	min_age = 16
+	is_married = no
+	prisoner = no
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = lustful
+		is_lowborn = yes
+		location = { region = world_westeros }
+		NOT = { culture_group = free_folk }
+		NOT = { culture_group = old_races }
+		NOT = { culture_group = horse_group }
+		NOT = { culture_group = unoccupied_group }
+		NOT = { culture_group = dragon_group }
+		NOT = { culture_group = winter_group }
+		NOT = { trait = dragon }
+		NOT = { is_inaccessible_trigger = yes }
+		NOT = { has_character_flag = mbs_pr_no }
+		age < 35
+		NOR = {
+			trait = prostitute
+			trait = chaste
+			trait = celibate
+			trait = wildling
+			trait = salt_wife
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_smallfolk.1" #
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				OR = {
+					trait = seducer
+					trait = seductress
+				}
+			}
+			modifier = {
+				factor = 1.2
+				trait = ambitious
+			}
+		}
+		add_trait = prostitute
+		ROOT = {
+			character_event = {
+				id = mbs_smallfolk.2
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_smallfolk.1" #
+		ai_chance = {
+			factor = 6
+			modifier = {
+				factor = 1.6
+				trait = diligent
+
+			}
+			modifier = {
+				factor = 1.6
+				trait = temperate
+
+			}
+			modifier = {
+				factor = 1.6
+				trait = content
+			}
+		}
+		set_character_flag = mbs_pr_no
+	}
+}
+character_event = {
+	id = mbs_smallfolk.2
+	desc = "EVTDESCmbs_smallfolk.2"
+	picture = "GFX_evt_brothel"
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_smallfolk.2" #
+		trigger = {
+			b_wintertown = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_north } }
+				culture = hill_clansman
+				culture = crannogman
+				culture = skagosi
+				culture = northman
+				culture = half_southron
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_wintertown = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTBmbs_smallfolk.2" #
+		trigger = {
+			b_moles_town = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_north } }
+				culture = hill_clansman
+				culture = crannogman
+				culture = skagosi
+				culture = northman
+				culture = half_southron
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_moles_town = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTCmbs_smallfolk.2" #
+		trigger = {
+			b_hardmead = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_north } }
+				culture = hill_clansman
+				culture = northman
+				culture = skagosi
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_hardmead = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTDmbs_smallfolk.2" #
+		trigger = {
+			b_saltpans = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_riverlands } }
+				culture = riverlander
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_saltpans = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTEmbs_smallfolk.2" #
+		trigger = {
+			b_innatthecrossroads = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_riverlands } }
+				culture = riverlander
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_innatthecrossroads = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTFmbs_smallfolk.2" #
+		trigger = {
+			b_gulltown = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_vale } }
+				employer = { capital_scope = { region = world_the_sisters } }
+				culture = valeman
+				culture = sisterman
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_gulltown = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPGFmbs_smallfolk.2" #
+		trigger = {
+			b_oltown_city = {
+				has_holder = yes
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_oltown_city = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTHmbs_smallfolk.2" #
+		trigger = {
+			b_lannisportone = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_westerlands } }
+				culture = westerman
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_lannisportone = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTImbs_smallfolk.2" #
+		trigger = {
+			b_weeping_town = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_stormlands } }
+				culture = stormlander
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_weeping_town = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTJmbs_smallfolk.2" #
+		trigger = {
+			b_kl_flea_bottom = {
+				has_holder = yes
+			}
+		}
+		ai_chance = {
+			factor = 3
+		}
+
+		b_kl_flea_bottom = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTKmbs_smallfolk.2" #
+		trigger = {
+			b_oltown_city = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_reach } }
+				culture = reachman
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_oltown_city = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTLmbs_smallfolk.2" #
+		trigger = {
+			b_lordsport = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_iron_isles } }
+				culture = ironborn
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_lordsport = { holder_scope = { reverse_banish = ROOT } }
+	}
+	option = {
+		name = "EVTOPTMmbs_smallfolk.2" #
+		trigger = {
+			b_plankytown = {
+				has_holder = yes
+			}
+			OR = {
+				employer = { capital_scope = { region = world_dorne } }
+				culture = stone_dornish
+				culture = sand_dornish
+				culture = salt_dornish
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+
+		b_plankytown = { holder_scope = { reverse_banish = ROOT } }
+	}
+}

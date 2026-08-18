@@ -1,0 +1,43 @@
+targeted_decisions = {
+
+	open_white_book = {
+		filter = realm
+		ai = no
+		from_potential = {
+			is_ruler = yes
+		}
+		potential = {
+			trait = kingsguard
+		}
+		allow = {
+			trait = kingsguard
+		}
+		effect = {
+			ROOT = { character_event = { id = kotstwhitebook.0 } }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	send_on_quest = {
+		filter = realm
+		ai = no
+		from_potential = {
+			is_ruler = yes
+			has_landed_title = e_iron_throne
+			NOT = { has_global_flag = kingsguard_glory_stop }
+		}
+		potential = {
+			trait = kingsguard
+		}
+		effect = {
+			FROM = { character_event = { id = kotstglory.0 days = 1 random = 10 } }
+			set_global_flag = kingsguard_glory_stop
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+

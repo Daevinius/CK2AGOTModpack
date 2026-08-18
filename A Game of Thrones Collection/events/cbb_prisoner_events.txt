@@ -1,0 +1,440 @@
+namespace = cbb_prisoner_events
+###################################
+### Prisoner Events
+
+# Jailer Tongue Removed
+character_event = {
+	id = cbb_prisoner_events.1
+	desc = "EVTDESCCBB.1"
+	picture = "GFX_evt_torture"
+
+	is_triggered_only = yes
+	ai = no
+
+	option = {
+		name = "EVTOPTACBB.1"
+		tooltip = { FROM = { add_trait = tongueless } }
+		if = {
+			limit = {
+				FROM = { is_ruler = yes }
+			}
+			chronicle = {
+				entry = CHRONICLE_TONGUELESS_RULER
+				portrait = [From.GetID]
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						dynasty = ROOT
+						is_close_relative = ROOT
+						is_married = ROOT
+					}
+				}
+			}
+			chronicle = {
+				entry = CHRONICLE_TONGUELESS_RELATIVE
+				portrait = [From.GetID]
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				FROM = {
+					liege = {
+						OR = {
+							dynasty = PREV
+							is_close_relative = PREV
+							is_married = PREV
+						}
+					}
+				}
+			}
+			chronicle = {
+				entry = CHRONICLE_TONGUELESS_RULER_RELATIVE
+				portrait = [From.GetID]
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				FROM = { trait = dragon_rider }
+			}
+			chronicle = {
+				entry = CHRONICLE_TONGUELESS_DRAGON_RIDER
+				portrait = [From.GetID]
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				FROM = { trait = kingsguard }
+			}
+			chronicle = {
+				entry = CHRONICLE_TONGUELESS_KINGSGUARD
+				portrait = [From.GetID]
+			}
+			break = yes
+		}
+		if = {
+			limit = {
+				FROM = {
+					OR = {
+						prestige = 250
+						any_claim = { higher_tier_than = COUNT }
+					}
+				}
+			}
+			chronicle = {
+				entry = CHRONICLE_TONGUELESS_CHARACTER
+				portrait = [From.GetID]
+			}
+			break = yes
+		}
+	}
+}
+
+# Prisoner Tongue Removed
+character_event = {
+	id = cbb_prisoner_events.2
+	desc = "EVTDESCCBB.2"
+	picture = "GFX_evt_torture"
+
+	show_from_from = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTACBB.2"
+		add_trait = tongueless
+		if = {
+			limit = {
+				has_game_rule = {
+					name = punishment_release_prisoner
+					value = on
+				}
+			}
+			prisoner = no
+		}
+		hidden_tooltip = {
+			if = {
+				limit = {
+					is_ruler = yes
+					has_nickname = no
+					is_feudal_monarch_trigger = yes
+					OR = {
+						tier = KING
+						culture_group = andal
+						culture_group = first_men
+						culture_group = free_folk
+						culture_group = iron_isles_culture
+						primary_title = { title = e_iron_throne }
+					}
+					NOT = { culture_group = hyrkoon_group }
+					NOT = { culture_group = dornish }
+				}
+				random = {
+					chance = 20
+					if = {
+						limit = { is_female = no }
+						give_nickname = nick_the_tongueless_king
+					}
+					if = {
+						limit = { is_female = yes }
+						give_nickname = nick_the_tongueless_queen
+					}
+				}
+			}
+			if = {
+				limit = { ai = no }
+				chronicle = {
+					entry = CHRONICLE_TONGUELESS
+					portrait = [FromFrom.GetID]
+				}
+			}
+			e_rebels = {
+				persistent_event_target:chronicle_player = {
+					if = {
+						limit = {
+							NOT = { character = ROOT }
+							OR = {
+								dynasty = ROOT
+								is_close_relative = ROOT
+								is_liege_or_above = ROOT
+								AND = {
+									ROOT = { trait = kingsguard }
+									has_landed_title = e_iron_throne
+								}
+							}
+						}
+						chronicle = {
+							entry = CHRONICLE_RELATIVE_TONGUELESS
+							portrait = [Root.GetID]
+						}
+					}
+				}
+			}
+		}
+	}
+}
+character_event = { #Inform relatives
+	id = cbb_prisoner_events.3
+	desc = "EVTDESCCBB.3"
+	picture = "GFX_evt_torture"
+
+	is_triggered_only = yes
+
+	trigger = { NOT = { character = FROMFROM } }
+
+	option = {
+		name = "EVTOPTACBB.3"
+		tooltip = { FROM = { add_trait = tongueless } }
+		FROMFROM = { tooltip = { show_portrait = yes } }
+	}
+}
+character_event = {
+	id = cbb_prisoner_events.4
+
+	hide_from = yes
+	is_triggered_only = yes
+	hide_window = yes
+
+	option = {
+		name = OK
+		#Lanny
+		create_character = {
+			dynasty = 999113
+			random_traits = yes
+			female = no
+			religion = the_seven
+			culture = reachman
+			age = 20
+			dna = ljjefnamfnm
+		}
+		new_character = {
+			random_list = {
+				50 = { add_trait = trained_warrior }
+				40 = { add_trait = poor_warrior }
+				10 = { add_trait = skilled_warrior }
+			}
+			random = {
+				chance = 50
+				knight_character_effect = yes
+			}
+			create_character = {
+				dynasty = none
+				random_traits = yes
+				religion = the_seven
+				culture = westerman
+				female = yes
+				dna = ahongqoafqg
+			}
+			new_character = {
+				add_spouse = PREV
+				create_character = {
+					dynasty = 802043
+					random_traits = yes
+					age = 3
+					female = no
+					religion = the_seven
+					culture = westerman
+					dna = inakhfklfee
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+				create_character = {
+					dynasty = 802043
+					random_traits = yes
+					age = 1
+					female = yes
+					religion = the_seven
+					culture = westerman
+					dna = ookqpdlqfej
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+				create_character = {
+					dynasty = 802043
+					random_traits = yes
+					age = 2
+					female = no
+					religion = the_seven
+					culture = westerman
+					dna = bqlajbbnfea
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+			}
+		}
+		#Lannett
+		create_character = {
+			dynasty = 999114
+			random_traits = yes
+			female = no
+			religion = the_seven
+			culture = reachman
+			age = 20
+			dna = fgfqqgecfck
+		}
+		new_character = {
+			random_list = {
+				50 = { add_trait = trained_warrior }
+				40 = { add_trait = poor_warrior }
+				10 = { add_trait = skilled_warrior }
+			}
+			random = {
+				chance = 50
+				knight_character_effect = yes
+			}
+			create_character = {
+				dynasty = none
+				random_traits = yes
+				religion = the_seven
+				culture = westerman
+				female = yes
+				age = 50
+				dna = ghmfkddjfbh
+			}
+			new_character = {
+				add_spouse = PREV
+				create_character = {
+					dynasty = 802044
+					random_traits = yes
+					age = 23
+					female = no
+					religion = the_seven
+					culture = westerman
+					dna = pengepkkfhb
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+					random_list = {
+						50 = { add_trait = trained_warrior }
+						40 = { add_trait = poor_warrior }
+						10 = { add_trait = skilled_warrior }
+					}
+					random = {
+						chance = 50
+						knight_character_effect = yes
+					}
+				}
+				create_character = {
+					dynasty = 802044
+					random_traits = yes
+					age = 24
+					female = yes
+					religion = the_seven
+					culture = westerman
+					dna = jlpoajphfli
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+				create_character = {
+					dynasty = 802044
+					random_traits = yes
+					age = 20
+					female = no
+					religion = the_seven
+					culture = westerman
+					dna = ihggeaeqfbg
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+					random_list = {
+						50 = { add_trait = trained_warrior }
+						40 = { add_trait = poor_warrior }
+						10 = { add_trait = skilled_warrior }
+					}
+					random = {
+						chance = 50
+						knight_character_effect = yes
+					}
+				}
+			}
+		}
+		#Lantell
+		create_character = {
+			dynasty = 999115
+			random_traits = yes
+			female = no
+			religion = the_seven
+			culture = reachman
+			age = 20
+			dna = giciekjcfpl
+		}
+		new_character = {
+			random_list = {
+				50 = { add_trait = trained_warrior }
+				40 = { add_trait = poor_warrior }
+				10 = { add_trait = skilled_warrior }
+			}
+			random = {
+				chance = 50
+				knight_character_effect = yes
+			}
+			create_character = {
+				dynasty = none
+				random_traits = yes
+				religion = the_seven
+				culture = westerman
+				female = yes
+				age = 36
+				dna = igbnhmkofad
+			}
+			new_character = {
+				add_spouse = PREV
+				create_character = {
+					dynasty = 802045
+					random_traits = yes
+					age = 14
+					female = no
+					religion = the_seven
+					culture = westerman
+					dna = bbfcajljfob
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+				create_character = {
+					dynasty = 802045
+					random_traits = yes
+					age = 10
+					female = no
+					religion = the_seven
+					culture = westerman
+					dna = dlhgclpjfbm
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+				create_character = {
+					dynasty = 802045
+					random_traits = yes
+					age = 9
+					female = yes
+					religion = the_seven
+					culture = westerman
+					dna = ghidfbkcfpb
+				}
+				new_character = {
+					set_mother = PREV
+					set_father = PREVPREV
+				}
+			}
+		}
+	}
+}

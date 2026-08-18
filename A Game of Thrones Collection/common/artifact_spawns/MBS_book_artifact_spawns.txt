@@ -1,0 +1,127 @@
+book_chronicles_of_maidenpool = {
+	max_amount = 10
+	spawn_date = -1.1.1
+
+	artifacts = {
+		book_chronicles_of_maidenpool = {
+			value = 1
+		}
+	}
+
+	spawn_chance = {
+		value = 100
+	}
+
+	weight = {
+		value = 0
+
+		additive_modifier = {
+			value = 100
+			year = 8117
+			character = 176138 # Maester Norren
+		}
+		additive_modifier = {
+			value = 100
+			religion = the_seven
+			is_ruler = yes
+			year = 8117
+			learning = 10
+			OR = {
+				trait = zealous
+				is_theocracy = yes
+			}
+		}
+		additive_modifier = {
+			value = 100
+			year = 8117
+			has_landed_title = c_maidenpool
+		}
+	}
+}
+
+book_kingdoms_of_the_sky = {
+	max_amount = 10
+	spawn_date = 8080.1.1
+
+	artifacts = {
+		book_kingdoms_of_the_sky = {
+			value = 1
+		}
+	}
+
+	spawn_chance = {
+		value = 100
+
+		trigger = {
+			year = 8079
+		}
+	}
+
+	weight = {
+		value = 0
+
+		additive_modifier = {
+			value = 1
+			higher_tier_than = BARON
+			year = 8108
+			capital_scope = {
+				region = world_westeros
+				NOT = { region = world_beyond_the_wall }
+			}
+			NOT_mythical_creature_trigger = yes
+		}
+		additive_modifier = {
+			value = 100
+			year = 8108
+			character = 3006777 # Grand Maester Munkun
+		}
+		additive_modifier = {
+			value = 100
+			year = 8136
+			has_landed_title = e_iron_throne
+		}
+	}
+}
+
+book_of_law = {
+	max_amount = 1
+	spawn_date = 8055.1.1
+
+	artifacts = {
+		book_of_law = {
+			value = 1
+		}
+	}
+
+	spawn_chance = {
+		value = 100
+
+		trigger = {
+			year = 8054
+		}
+	}
+
+	weight = {
+		value = 0
+
+		additive_modifier = {
+			value = 1
+			higher_tier_than = BARON
+			year = 8098
+			capital_scope = {
+				region = world_westeros
+				NOT = { region = world_beyond_the_wall }
+			}
+			NOT_mythical_creature_trigger = yes
+		}
+		additive_modifier = {
+			value = 100
+			year = 8098
+			character = 3006777 # Grand Maester Munkun
+		}
+		additive_modifier = {
+			value = 100
+			has_landed_title = e_iron_throne
+		}
+	}
+}

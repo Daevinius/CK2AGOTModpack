@@ -1,0 +1,976 @@
+namespace = tdp_dragon_interaction
+
+###Interaction Events###
+	#Tiers
+	#Events
+###Domesticating Dragon###
+###Train Dragon###
+###Taunt Disliked Character###
+
+
+###Interaction Events###
+#Tiers
+character_event = {
+	id = tdp_dragon_interaction.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_character_modifier = interaction_tier_10 }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_character_modifier = interaction_tier_9
+				NOT = { has_character_modifier = interaction_tier_10 }
+			}
+			remove_character_modifier = interaction_tier_9
+			add_character_modifier = {
+				name = interaction_tier_10
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_8
+				NOR = {
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_8
+			add_character_modifier = {
+				name = interaction_tier_9
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_7
+				NOR = {
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_7
+			add_character_modifier = {
+				name = interaction_tier_8
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_6
+				NOR = {
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_6
+			add_character_modifier = {
+				name = interaction_tier_7
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_5
+				NOR = {
+					has_character_modifier = interaction_tier_6
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_5
+			add_character_modifier = {
+				name = interaction_tier_6
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_4
+				NOR = {
+					has_character_modifier = interaction_tier_5
+					has_character_modifier = interaction_tier_6
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_4
+			add_character_modifier = {
+				name = interaction_tier_5
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_3
+				NOR = {
+					has_character_modifier = interaction_tier_4
+					has_character_modifier = interaction_tier_5
+					has_character_modifier = interaction_tier_6
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_3
+			add_character_modifier = {
+				name = interaction_tier_4
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_2
+				NOR = {
+					has_character_modifier = interaction_tier_3
+					has_character_modifier = interaction_tier_4
+					has_character_modifier = interaction_tier_5
+					has_character_modifier = interaction_tier_6
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_2
+			add_character_modifier = {
+				name = interaction_tier_3
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = interaction_tier_1
+				NOR = {
+					has_character_modifier = interaction_tier_2
+					has_character_modifier = interaction_tier_3
+					has_character_modifier = interaction_tier_4
+					has_character_modifier = interaction_tier_5
+					has_character_modifier = interaction_tier_6
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			remove_character_modifier = interaction_tier_1
+			add_character_modifier = {
+				name = interaction_tier_2
+				duration = -1
+			}
+		}
+		else = {
+			limit = {
+				NOR = {
+					has_character_modifier = interaction_tier_1
+					has_character_modifier = interaction_tier_2
+					has_character_modifier = interaction_tier_3
+					has_character_modifier = interaction_tier_4
+					has_character_modifier = interaction_tier_5
+					has_character_modifier = interaction_tier_6
+					has_character_modifier = interaction_tier_7
+					has_character_modifier = interaction_tier_8
+					has_character_modifier = interaction_tier_9
+					has_character_modifier = interaction_tier_10
+				}
+			}
+			add_character_modifier = {
+				name = interaction_tier_1
+				duration = -1
+			}
+		}
+	}
+}
+
+#Events
+character_event = {
+	id = tdp_dragon_interaction.1
+	title = EVTTITLEtdp_dragon_interaction
+	picture = GFX_tamingdragon3
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age = 3
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCtdp_dragon_interaction.1
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age < 3
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCtdp_dragon_interaction.1
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Поиграем в игру!"
+		if = {
+			limit = {
+				OR = {
+					ai = no
+					event_target:dragon_friend = {
+						NAND = {
+							age = 160
+							OR = {
+								character = 77990001
+								has_character_flag = remembers_valyria
+							}
+							trait = infirm_dragon
+						}
+					}
+				}
+			}
+			character_event = { id = tdp_dragon_interaction.10 }
+		}
+		if = {
+			limit = {
+				ai = yes
+				NOR = {
+					trait = authoritative
+					has_character_modifier = interaction_tier_5
+					martial = 10
+					trait = diligent
+					is_strong_trigger = yes
+				}
+				event_target:dragon_friend = {
+					AND = {
+						age = 160
+						OR = {
+							character = 77990001
+							has_character_flag = remembers_valyria
+						}
+						NOT = { trait = infirm_dragon }
+					}
+				}
+			}
+			character_event = { id = tdp_dragon_interaction.1098 }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = "Пойдем покатаемся!"
+		trigger = {
+			event_target:dragon_friend = {
+				age = 3
+			}
+		}
+		random_list = {
+			8 = { character_event = { id = tdp_dragon_interaction.20 } }
+			2 = { character_event = { id = tdp_dragon_interaction.21 } }
+			2 = { character_event = { id = tdp_dragon_interaction.22 } }
+			2 = { long_character_event = { id = tdp_dragon_interaction.23 } }
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "Отправимся с драконом на охоту!"
+		trigger = {
+			has_focus = focus_hunting
+			event_target:dragon_friend = {
+				age = 3
+			}
+		}
+		#character_event = { id = tdp_dragon_interaction.30 }
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "Неважно."
+		clr_character_flag = interacted_with_dragon
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+#Play a Game - Basic Level Up
+character_event = {
+	id = tdp_dragon_interaction.10
+	title = EVTTITLEtdp_dragon_interaction
+	picture = GFX_tamingdragon3
+	#Dragon Cant Fly Yet
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age < 3
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCAtdp_dragon_interaction.10
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age < 3
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCAtdp_dragon_interaction.10
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age < 3
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCAtdp_dragon_interaction.10
+	}
+	#Dragon Can Fly - Not Huge
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age = 3
+				age < 160
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCDtdp_dragon_interaction.10
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age = 3
+				age < 160
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCEtdp_dragon_interaction.10
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age = 3
+				age < 160
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCFtdp_dragon_interaction.10
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age = 3
+				age < 160
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCGtdp_dragon_interaction.10
+	}
+	#Huge Dragon
+	desc = {
+		trigger = {
+			event_target:dragon_friend = {
+				age = 160
+			}
+		}
+		picture = GFX_tamingdragon3
+		text = EVTDESCHtdp_dragon_interaction.10
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		character_event = { id = tdp_dragon_interaction.0 }
+	}
+
+	option = {
+		name = EVTOPTbestfriend
+		trigger = {
+			event_target:dragon_friend = {
+				age < 160
+			}
+		}
+		hidden_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						trait = stressed
+						trait = depressed
+						is_ill = yes
+					}
+				}
+				random_list = {
+					20 = { }
+					1 = { character_event = { id = tdp_dragon_interaction.101 } }
+				}
+			}
+		}
+		character_event = { id = tdp_dragon_interaction.1999 days = 800 }
+	}
+
+	option = {
+		name = "Я полагаю, [dragon_friend.GetSheHe] заслужил [dragon_friend.GetHerHis] пенсию."
+		trigger = {
+			event_target:dragon_friend = {
+				age = 160
+			}
+		}
+		event_target:dragon_friend = { set_character_flag = tdp_dragon_too_old }
+		character_event = { id = tdp_dragon_interaction.1999 days = 800 }
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.101
+	desc = EVTDESCtdp_dragon_interaction.101
+	picture = GFX_aegon_sunfyre
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_dragon_interaction.101
+		if = {
+			limit = { trait = stressed }
+			remove_trait = stressed
+		}
+		if = {
+			limit = { trait = depressed }
+			remove_trait = depressed
+		}
+		if = {
+			limit = { is_ill = yes }
+			cure_illness = yes
+		}
+	}
+}
+
+
+
+#Balerion (or whoever) flies off
+character_event = {
+	id = tdp_dragon_interaction.1098
+	title = EVTTITLEtdp_dragon_interaction.1098
+	picture = GFX_evt_dragon_riding_2
+	desc = EVTDESCtdp_dragon_interaction.1098
+
+	is_triggered_only = yes
+
+	immediate = {
+		any_friend = {
+			limit = { trait = dragon }
+			save_event_target_as = dragon_friend
+		}
+	}
+
+	option = {
+		name = EVTOPTtdp_dragon_interaction.1098
+		random_friend = {
+			limit = { trait = dragon }
+			add_trait = has_missing
+			death = { death_reason = death_missing }
+		}
+		add_trait = has_missing
+		death = { death_reason = death_missing }
+		hidden_tooltip = {
+			any_dynasty_member = {
+				character_event = { id = tdp_dragon_interaction.1099 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.1099
+	title = EVTTITLEtdp_dragon_interaction.1098
+	picture = GFX_evt_dragon_riding_2
+	desc = EVTDESCtdp_dragon_interaction.1099
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_dragon_interaction.1099
+		random = {
+			chance = 25
+			add_trait = stressed
+		}
+		random = {
+			chance = 15
+			add_trait = depressed
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.1999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		clr_character_flag = interacted_with_dragon
+	}
+}
+
+
+#Go Out for Ride
+character_event = {
+	id = tdp_dragon_interaction.20
+	title = EVTTITLEtdp_dragon_interaction
+	picture = GFX_tamingdragon3
+	desc = EVTDESCtdp_dragon_interaction.20
+
+	is_triggered_only = yes
+
+	immediate = {
+		#Interaction Level
+		character_event = { id = tdp_dragon_interaction.0 }
+	}
+
+	option = {
+		name = EVTOPTbestfriend
+		character_event = { id = tdp_dragon_interaction.1999 days = 800 }
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.21
+	title = EVTTITLEtdp_dragon_interaction
+	picture = GFX_tamingdragon3
+	desc = EVTDESCtdp_dragon_interaction.21
+
+	is_triggered_only = yes
+
+	immediate = {
+		#Interaction Level
+		character_event = { id = tdp_dragon_interaction.0 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.22
+	title = EVTTITLEtdp_dragon_interaction
+	picture = GFX_tamingdragon3
+	desc = EVTDESCtdp_dragon_interaction.22
+
+	is_triggered_only = yes
+
+	immediate = {
+		#Interaction Level
+		character_event = { id = tdp_dragon_interaction.0 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+long_character_event = {
+	id = tdp_dragon_interaction.23
+	title = EVTTITLEtdp_dragon_interaction
+	picture = GFX_tamingdragon3
+	desc = EVTDESCtdp_dragon_interaction.23
+
+	is_triggered_only = yes
+
+	immediate = {
+		#Interaction Level
+		character_event = { id = tdp_dragon_interaction.0 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+
+
+###Combat Train Dragon###
+character_event = {
+	id = tdp_dragon_interaction.7
+	title = EVTTITLEtdp_dragon_interaction.7
+	picture = GFX_tamingdragon2
+	desc = {
+		trigger = {
+			any_friend = {
+				trait = dragon
+				NOR = {
+					AND = {
+						trait = infirm_dragon
+						age = 200
+					}
+					trait = depressed_dragon
+				}
+			}
+		}
+		text = EVTDESCAtdp_dragon_interaction.7
+	}
+	desc = {
+		trigger = {
+			any_friend = {
+				trait = dragon
+				NOR = {
+					AND = {
+						trait = infirm_dragon
+						age = 200
+					}
+					trait = depressed_dragon
+				}
+			}
+		}
+		text = EVTDESCBtdp_dragon_interaction.7
+	}
+	desc = {
+		trigger = {
+			any_friend = {
+				trait = dragon
+				NOR = {
+					AND = {
+						trait = infirm_dragon
+						age = 200
+					}
+					trait = depressed_dragon
+				}
+			}
+		}
+		text = EVTDESCCtdp_dragon_interaction.7
+	}
+	desc = {
+		trigger = {
+			any_friend = {
+				trait = dragon
+				trait = depressed_dragon
+			}
+		}
+		text = EVTDESCDtdp_dragon_interaction.7
+	}
+	desc = {
+		trigger = {
+			any_friend = {
+				trait = dragon
+				trait = infirm_dragon
+				age = 200
+			}
+		}
+		text = EVTDESCEtdp_dragon_interaction.7
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_dragon_interaction.7
+		trigger = {
+			any_friend = {
+				NOR = {
+					AND = {
+						trait = infirm_dragon
+						age = 200
+					}
+					trait = depressed_dragon
+				}
+			}
+		}
+		any_friend = {
+			limit = { trait = dragon }
+			character_event = { id = tdp_dragon_interaction.7999 }
+		}
+		set_character_flag = trained_with_dragon
+		character_event = { id = tdp_dragon_interaction.70 days = 1600 }
+	}
+
+	option = {
+		name = EVTOPTAtdp_dragon_interaction.7
+		trigger = {
+			any_friend = {
+				trait = dragon
+				trait = infirm_dragon
+			}
+		}
+		long_character_event = { id = tdp_dragon_interaction.700 }
+	}
+
+	option = {
+		name = EVTOPTBtdp_dragon_interaction.7
+		trigger = {
+			any_friend = {
+				trait = dragon
+				trait = depressed_dragon
+			}
+		}
+		set_character_flag = trained_with_dragon
+		character_event = { id = tdp_dragon_interaction.70 days = 1600 }
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.70
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		clr_character_flag = trained_with_dragon
+	}
+}
+
+long_character_event = {
+	id = tdp_dragon_interaction.700
+	desc = EVTDESCtdp_dragon_interaction.700
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_dragon_interaction.700
+		any_friend = {
+			limit = {
+				trait = dragon
+				trait = infirm_dragon
+			}
+			death = { death_reason = death_natural }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.7999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_character_modifier = dragon_combat_9
+				NOT = { has_character_modifier = dragon_combat_10 }
+			}
+			remove_character_modifier = dragon_combat_9
+			add_character_modifier = { name = dragon_combat_10 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_8
+				NOR = {
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_8
+			add_character_modifier = { name = dragon_combat_9 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_7
+				NOR = {
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_7
+			add_character_modifier = { name = dragon_combat_8 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_6
+				NOR = {
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_6
+			add_character_modifier = { name = dragon_combat_7 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_5
+				NOR = {
+					has_character_modifier = dragon_combat_6
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_5
+			add_character_modifier = { name = dragon_combat_6 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_4
+				NOR = {
+					has_character_modifier = dragon_combat_5
+					has_character_modifier = dragon_combat_6
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_4
+			add_character_modifier = { name = dragon_combat_5 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_3
+				NOR = {
+					has_character_modifier = dragon_combat_4
+					has_character_modifier = dragon_combat_5
+					has_character_modifier = dragon_combat_6
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_3
+			add_character_modifier = { name = dragon_combat_4 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_2
+				NOR = {
+					has_character_modifier = dragon_combat_3
+					has_character_modifier = dragon_combat_4
+					has_character_modifier = dragon_combat_5
+					has_character_modifier = dragon_combat_6
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_2
+			add_character_modifier = { name = dragon_combat_3 duration = -1 }
+		}
+		else_if = {
+			limit = {
+				has_character_modifier = dragon_combat_1
+				NOR = {
+					has_character_modifier = dragon_combat_2
+					has_character_modifier = dragon_combat_3
+					has_character_modifier = dragon_combat_4
+					has_character_modifier = dragon_combat_5
+					has_character_modifier = dragon_combat_6
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			remove_character_modifier = dragon_combat_1
+			add_character_modifier = { name = dragon_combat_2 duration = -1 }
+		}
+		else = {
+			limit = {
+				NOR = {
+					has_character_modifier = dragon_combat_1
+					has_character_modifier = dragon_combat_2
+					has_character_modifier = dragon_combat_3
+					has_character_modifier = dragon_combat_4
+					has_character_modifier = dragon_combat_5
+					has_character_modifier = dragon_combat_6
+					has_character_modifier = dragon_combat_7
+					has_character_modifier = dragon_combat_8
+					has_character_modifier = dragon_combat_9
+					has_character_modifier = dragon_combat_10
+				}
+			}
+			add_character_modifier = { name = dragon_combat_1 duration = -1 }
+		}
+	}
+
+	option = {
+		name = "OK"
+	}
+}
+
+
+
+###Taunt Disliked Character###
+character_event = {
+	id = tdp_dragon_interaction.8
+	picture = GFX_tamingdragon2
+	desc = EVTDESCtdp_dragon_interaction.85
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Уходите!!"
+		opinion = {
+			name = opinion_taunted_with_dragon
+			who = event_target:decision_taker
+		}
+		random = {
+			chance = 5
+			add_rival = event_target:decision_taker
+		}
+		event_target:decision_taker = { character_event = { id = tdp_dragon_interaction.81 days = 700 } }
+	}
+
+	option = {
+		name = "Я тебе покажу!"
+		trigger = {
+			trait = dragon_rider
+		}
+		opinion = {
+			name = opinion_taunted_with_dragon
+			who = event_target:decision_taker
+		}
+		event_target:decision_taker = {
+			character_event = { id = tdp_dragon_interaction.80 }
+			character_event = { id = tdp_dragon_interaction.81 days = 700 }
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.80
+	picture = GFX_tamingdragon2
+	desc = EVTDESCtdp_dragon_interaction.850
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_dragon_interaction.81
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+	}
+
+	immediate = {
+		clr_character_flag = taunted_someone_with_dragon
+	}
+}
+
+

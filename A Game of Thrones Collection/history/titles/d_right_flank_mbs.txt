@@ -1,0 +1,26 @@
+1.1.1 = {
+	active = no
+	law = succ_primogeniture
+}
+4301.1.1 = { holder = 0 }
+8195.3.7 = {
+	active = yes
+    liege = "k_daemon_blackfyres_host"
+	holder = 77025
+	effect = {
+		set_title_flag = military_command
+		holder_scope = {
+			if = {
+				limit = { primary_title = { title = PREVPREV } }
+				set_government_type = military_command_government
+				PREV = { succession = appointment }
+				recalc_succession = yes
+			}
+		}
+	}
+}
+8196.6.1 = {
+	active = no
+    liege = 0
+	holder = 0
+}

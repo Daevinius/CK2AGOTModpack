@@ -1,0 +1,2781 @@
+namespace = dragon_rework
+
+
+###Dragon Egg Laying### - 1
+###Flags### - 2
+###Maintenance### - 3
+
+###Eggs Distribution### - 5
+
+###Dragon Rider Matcher### - 7
+
+###Hatching### - 9
+
+
+###Dragon Egg Laying###
+
+#triggered from tdp_dragon_maintenance.1
+character_event = {
+	id = dragon_rework.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		change_variable = { which = dragon_clutches_laid value = 1 }
+		set_global_flag = layed_startup_eggs
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg_1
+			random_list = {
+				1 = {
+					set_picture = GFX_dragon_egg_blue
+					set_artifact_flag = blue_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_black
+					set_artifact_flag = black_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_silver
+					set_artifact_flag = silver_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_gold
+					set_artifact_flag = gold_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_red
+					set_artifact_flag = red_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_green
+					set_artifact_flag = green_egg
+				}
+				2 = { set_artifact_flag = orange_egg } #Default
+			}
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg_2
+			random_list = {
+				1 = {
+					set_picture = GFX_dragon_egg_blue
+					set_artifact_flag = blue_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_black
+					set_artifact_flag = black_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_silver
+					set_artifact_flag = silver_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_gold
+					set_artifact_flag = gold_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_red
+					set_artifact_flag = red_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_green
+					set_artifact_flag = green_egg
+				}
+				2 = { set_artifact_flag = orange_egg } #Default
+			}
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg_3
+			random_list = {
+				1 = {
+					set_picture = GFX_dragon_egg_blue
+					set_artifact_flag = blue_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_black
+					set_artifact_flag = black_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_silver
+					set_artifact_flag = silver_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_gold
+					set_artifact_flag = gold_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_red
+					set_artifact_flag = red_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_green
+					set_artifact_flag = green_egg
+				}
+				2 = { set_artifact_flag = orange_egg } #Default
+			}
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg_1 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			random_lover = { event_target:new_dragon_egg_2 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			random_lover = { event_target:new_dragon_egg_3 = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		if = {
+			limit = {
+				NOT = { has_lover = yes }
+				OR = {
+					character = c_77990003
+					character = c_77990002
+				}
+			}
+			c_77990001 = { event_target:new_dragon_egg_1 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			c_77990001 = { event_target:new_dragon_egg_2 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			c_77990001 = { event_target:new_dragon_egg_3 = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		add_character_modifier = {
+			name = recently_laid_eggs
+			years = 2
+		}
+		if = {
+			limit = {
+				any_friend = {
+					liege = {
+						any_vassal = {
+							trait = dragonkeeper
+						}
+					}
+				}
+			}
+			any_friend = {
+				liege = {
+					random_vassal = {
+						limit = { trait = dragonkeeper }
+						character_event = { id = dragon_rework.12 }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					num_of_friends = 1
+					has_character_modifier = locked_in_dragonpit
+				}
+				liege = {
+					any_vassal = {
+						has_character_flag = head_dragonkeeper
+					}
+				}
+			}
+			liege = {
+				random_vassal = {
+					limit = { has_character_flag = head_dragonkeeper }
+					character_event = { id = dragon_rework.12 }
+				}
+			}
+		}
+		else = {
+			limit = { num_of_friends = 1 }
+			random_friend = {
+				character_event = { id = dragon_rework.12 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = dragon_rework.11
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_global_flag = layed_startup_eggs
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg_1
+			random_list = {
+				1 = {
+					set_picture = GFX_dragon_egg_blue
+					set_artifact_flag = blue_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_black
+					set_artifact_flag = black_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_silver
+					set_artifact_flag = silver_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_gold
+					set_artifact_flag = gold_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_red
+					set_artifact_flag = red_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_green
+					set_artifact_flag = green_egg
+				}
+				2 = { set_artifact_flag = orange_egg } #Default
+			}
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg_2
+			random_list = {
+				1 = {
+					set_picture = GFX_dragon_egg_blue
+					set_artifact_flag = blue_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_black
+					set_artifact_flag = black_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_silver
+					set_artifact_flag = silver_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_gold
+					set_artifact_flag = gold_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_red
+					set_artifact_flag = red_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_green
+					set_artifact_flag = green_egg
+				}
+				2 = { set_artifact_flag = orange_egg } #Default
+			}
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = dragon_egg_mother_@ROOT
+			set_name = [Root.GetDynamicDragonEggName]
+			save_event_target_as = new_dragon_egg_3
+			random_list = {
+				1 = {
+					set_picture = GFX_dragon_egg_blue
+					set_artifact_flag = blue_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_black
+					set_artifact_flag = black_egg
+				}
+				3 = {
+					set_picture = GFX_dragon_egg_silver
+					set_artifact_flag = silver_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_gold
+					set_artifact_flag = gold_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_red
+					set_artifact_flag = red_egg
+				}
+				1 = {
+					set_picture = GFX_dragon_egg_green
+					set_artifact_flag = green_egg
+				}
+				2 = { set_artifact_flag = orange_egg } #Default
+			}
+		}
+		if = {
+			limit = { has_lover = yes }
+			random_lover = { event_target:new_dragon_egg_1 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			random_lover = { event_target:new_dragon_egg_2 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			random_lover = { event_target:new_dragon_egg_3 = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		if = {
+			limit = {
+				NOT = { has_lover = yes }
+				OR = {
+					character = c_77990003
+					character = c_77990002
+				}
+			}
+			c_77990001 = { event_target:new_dragon_egg_1 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			c_77990001 = { event_target:new_dragon_egg_2 = { set_artifact_flag = dragon_egg_father_@PREV } }
+			c_77990001 = { event_target:new_dragon_egg_3 = { set_artifact_flag = dragon_egg_father_@PREV } }
+		}
+		add_character_modifier = {
+			name = recently_laid_eggs
+			years = 2
+		}
+		if = {
+			limit = {
+				any_friend = {
+					liege = {
+						any_vassal = {
+							trait = dragonkeeper
+						}
+					}
+				}
+			}
+			any_friend = {
+				liege = {
+					random_vassal = {
+						limit = { trait = dragonkeeper }
+						character_event = { id = dragon_rework.12 }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					num_of_friends = 1
+					has_character_modifier = locked_in_dragonpit
+				}
+				liege = {
+					any_vassal = {
+						has_character_flag = head_dragonkeeper
+					}
+				}
+			}
+			liege = {
+				random_vassal = {
+					limit = { has_character_flag = head_dragonkeeper }
+					character_event = { id = dragon_rework.12 }
+				}
+			}
+		}
+		else = {
+			limit = { num_of_friends = 1 }
+			random_friend = {
+				character_event = { id = dragon_rework.12 }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = dragon_rework.12
+	desc = "EVTDESCdragon.10"
+	picture = "GFX_targaryen_eggs"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_alive = yes
+	}
+
+	option = {
+		name = EVTOPTdragon_rework.7
+		event_target:new_dragon_egg_1 = {
+			transfer_artifact = { from = FROM to = ROOT }
+			set_artifact_flag = heirloom_@ROOT
+		}
+		event_target:new_dragon_egg_2 = {
+			transfer_artifact = { from = FROM to = ROOT }
+			set_artifact_flag = heirloom_@ROOT
+		}
+		event_target:new_dragon_egg_3 = {
+			transfer_artifact = { from = FROM to = ROOT }
+			set_artifact_flag = heirloom_@ROOT
+		}
+	}
+}
+
+#Move Dragon from Decision
+character_event = {
+	id = dragon_rework.130
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	religion = dragon_rel
+
+	trigger = {
+		trait = dragon
+		any_friend = { NOT = { at_location = ROOT } }
+	}
+
+	immediate = {
+		if = {
+			limit = { any_friend = { is_ruler = no } }
+			any_friend = {
+				liege = {
+					ROOT = {
+						move_character = PREV
+					}
+				}
+			}
+		}
+		else = {
+			limit = { any_friend = { is_ruler = yes } }
+			any_friend = {
+				ROOT = {
+					move_character = PREV
+				}
+			}
+		}
+	}
+}
+
+
+#Tags
+character_event = {
+	id = dragon_rework.200
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		clr_character_flag = just_took_egg
+	}
+}
+
+character_event = {
+	id = dragon_rework.201
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		clr_character_flag = just_gave_egg
+	}
+}
+
+
+###Maintenance###
+
+#triggered from tdp_dragon_maintenance.2
+character_event = {
+	id = dragon_rework.3999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_character_flag = dragon_rider_tracker_set
+		any_friend = {
+			limit = { trait = dragon }
+			save_event_target_as = the_dragon
+		}
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
+		new_bloodline = {
+			add_bloodline_member = event_target:the_dragon
+			remove_bloodline_member = ROOT
+		}
+	}
+}
+
+
+###Eggs Distribution###
+#######################################################
+#Ask for Eggs decision
+#(Character with Egg)
+character_event = {
+	id = dragon_rework.52
+	desc = {
+		trigger = {
+			event_target:decision_taker = { is_liege_or_above = ROOT }
+		}
+		text = EVTDESCAdragon_rework.52
+	}
+	desc = {
+		trigger = {
+			is_ruler = yes
+			independent = yes
+		}
+		text = EVTDESCBdragon_rework.52
+	}
+	picture = GFX_targaryen_eggs
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.52 #Accept
+		event_target:decision_taker = { character_event = { id = dragon_rework.520 days = 1 } }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.5
+				opinion = {
+					who = event_target:decision_taker
+					value = -25
+				}
+			}
+			modifier = {
+				factor =  0.01
+				opinion = {
+					who = event_target:decision_taker
+					value = -50
+				}
+			}
+			modifier = {
+				factor = 0.2
+				OR = {
+					trait = greedy
+					trait = ambitious
+					trait = paranoid
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					trait = craven
+					trait = content
+					is_weak_trigger = yes
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.52 #Reject
+		event_target:decision_taker = { character_event = { id = dragon_rework.521 days = 1 } }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				event_target:decision_taker = {
+					OR = {
+						is_father = ROOT
+						is_mother = ROOT
+						is_grandparent_of = ROOT
+						is_child_of = ROOT
+						is_grandchild_of = ROOT
+						AND = {
+							OR = {
+								trait = authoritative
+								trait = ruthless
+							}
+							NOR = {
+								trait = craven
+								has_character_modifier = is_weak_king
+							}
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				opinion = {
+					who = event_target:decision_taker
+					value = 25
+				}
+			}
+			modifier = {
+				factor = 0.01
+				opinion = {
+					who = event_target:decision_taker
+					value = 50
+				}
+			}
+			modifier = {
+				factor = 6
+				OR = {
+					trait = greedy
+					trait = ambitious
+					trait = paranoid
+				}
+			}
+			modifier = {
+				factor = 0.5
+				OR = {
+					trait = craven
+					trait = content
+					is_weak_trigger = yes
+				}
+			}
+		}
+	}
+}
+
+#Accepted
+character_event = {
+	id = dragon_rework.520
+	desc = EVTDESCdragon_rework.520
+	picture = GFX_targaryen_eggs
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		if = {
+			limit = { any_vassal = { trait = dragonkeeper } }
+			random_vassal = {
+				limit = { trait = dragonkeeper }
+				save_event_target_as = to_dragonkeeper
+			}
+			FROM = {
+				any_artifact = {
+					limit = { artifact_type = dragon_egg }
+					transfer_artifact = {
+						from = FROM
+						to = event_target:to_dragonkeeper
+					}
+				}
+			}
+		}
+		else = {
+			FROM = {
+				any_artifact = {
+					limit = { artifact_type = dragon_egg }
+					transfer_artifact = {
+						from = FROM
+						to = ROOT
+					}
+				}
+			}
+		}
+	}
+}
+
+#Rejected
+character_event = {
+	id = dragon_rework.521
+	desc = EVTDESCdragon_rework.521
+	picture = GFX_targaryen_eggs
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.521 #Outrage
+		opinion = {
+			who = FROM
+			modifier = opinion_refused_to_give_egg
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_asked_for_egg
+		}
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.521 #Threaten
+		trigger = {
+			FROM = { independent = yes }
+		}
+		opinion = {
+			who = FROM
+			modifier = opinion_refused_to_give_egg
+		}
+		reverse_opinion = {
+			who = FROM
+			modifier = opinion_asked_for_egg
+		}
+		FROM = { character_event = { id = dragon_rework.5210 days = 1 } }
+	}
+}
+
+character_event = {
+	id = dragon_rework.5210
+	desc = EVTDESCdragon_rework.5210
+	picture = GFX_targaryen_eggs
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.5210 #Accept
+		FROM = { character_event = { id = dragon_rework.520 days = 1 } }
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.5210 #Set up for War
+		FROM = { character_event = { id = dragon_rework.5211 days = 1 } }
+	}
+}
+
+#War choice
+character_event = {
+	id = dragon_rework.5211
+	desc = EVTDESCdragon_rework.5211
+	picture = GFX_targaryen_eggs
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS
+		FROM = { set_character_flag = refused_to_surrender_eggs }
+	}
+
+	option = {
+		name = EVTOPTdragon_rework.5211
+	}
+}
+
+#Stolen Eggs
+character_event = {
+	id = dragon_rework.53
+	desc = EVTDESCdragon_rework.53
+	picture = GFX_targaryen_eggs
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROMFROM = {
+			if = {
+				limit = { any_vassal = { trait = dragonkeeper } }
+				random_vassal = {
+					limit = { trait = dragonkeeper }
+					save_event_target_as = to_dragonkeeper
+				}
+				ROOT = {
+					any_artifact = {
+						limit = { artifact_type = dragon_egg }
+						transfer_artifact = {
+							from = ROOT
+							to = event_target:to_dragonkeeper
+						}
+					}
+				}
+			}
+			else = {
+				FROM = {
+					any_artifact = {
+						limit = { artifact_type = dragon_egg }
+						transfer_artifact = {
+							from = ROOT
+							to = FROMFROM
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTdragon_rework.53
+		opinion = {
+			who = FROMFROM
+			modifier = opinion_stole_my_egg
+		}
+	}
+}
+#######################################################
+character_event = {
+	id = dragon_rework.54
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = secret_box_given }
+		start_date = 8054.1.1
+		start_date < 8298.1.1
+		OR = {
+			#Stolen by Elissa
+			AND = {
+				character = c_88000268
+				start_date = 8054.1.1
+				start_date < 8054.6.1
+			}
+			#Sold to Sealord of Braavos
+			AND = {
+				character = c_800515
+				start_date = 8054.6.1
+				start_date < 8063.1.1
+			}
+			#Kept in family for a few generations
+			AND = {
+				dynasty = 300515
+				start_date = 8063.1.1
+				start_date < 8295.1.1
+			}
+			#Ended up with Illyrio Mopatis
+			AND = {
+				character = c_600000040
+				start_date = 8295.1.1
+				start_date < 8298.1.1
+			}
+		}
+	}
+
+	immediate = {
+		set_global_flag = secret_box_given
+		if = {
+			limit = {
+				start_date = 8054.1.1
+				start_date < 8054.6.1
+				character = c_88000268 #Elissa
+			}
+			add_artifact = secret_box
+			new_artifact = {
+				set_artifact_flag = elissa_dragon_eggs
+			}
+		}
+		else_if = {
+			limit = {
+				start_date = 8054.6.1
+				start_date < 8063.1.1
+				character = c_800515 #Sealord of Braavos
+			}
+			add_artifact = secret_box
+			new_artifact = {
+				set_artifact_flag = elissa_dragon_eggs
+			}
+		}
+		else_if = {
+			limit = {
+				start_date = 8063.1.1
+				start_date < 8295.1.1
+				dynasty = 300515 #Sealord's family
+				NOT = { any_dynasty_member = { has_artifact = secret_box } }
+			}
+			add_artifact = secret_box
+			new_artifact = {
+				set_artifact_flag = elissa_dragon_eggs
+			}
+		}
+		else = {
+			limit = {
+				start_date = 8295.1.1
+				start_date < 8298.1.1
+				character = c_600000040 #Illyrio
+			}
+			add_artifact = secret_box
+			new_artifact = {
+				set_artifact_flag = elissa_dragon_eggs
+			}
+		}
+
+	}
+
+}
+
+
+#######################################################
+
+
+#######################################################
+###Dragon Rider Matcher###
+character_event = {
+	id = dragon_rework.7
+	picture = GFX_tamingdragon
+	desc = {
+		trigger = {
+			event_target:dragon_being_tamed = { has_character_modifier = locked_in_dragonpit }
+			OR = {
+				event_target:rider_looking = { has_character_modifier = granted_dragon_access }
+				ROOT = { has_law = tdp_dragon_tamer_2 }
+			}
+		}
+		text = EVTDESCAdragon_rework.7
+	}
+	desc = {
+		trigger = {
+			event_target:dragon_being_tamed = { NOT = { has_character_modifier = locked_in_dragonpit } }
+			OR = {
+				event_target:rider_looking = { has_character_modifier = granted_dragon_access }
+				ROOT = { has_law = tdp_dragon_tamer_2 }
+			}
+		}
+		text = EVTDESCBdragon_rework.7
+	}
+	desc = {
+		trigger = {
+			event_target:rider_looking = { NOT = { has_character_modifier = granted_dragon_access } }
+			OR = {
+				has_law = tdp_dragon_tamer_0
+				has_law = tdp_dragon_tamer_1
+			}
+		}
+		text = EVTDESCCdragon_rework.7
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.7
+		trigger = {
+			event_target:rider_looking = {
+				has_character_modifier = granted_dragon_access
+			}
+		}
+
+		event_target:rider_looking = {
+			add_friend = event_target:dragon_being_tamed
+			set_character_flag = rider_match
+			add_trait = dragon_rider
+			clr_character_flag = motivated_to_tame
+			clr_character_flag = dragon_found
+			clr_character_flag = taming_dragon
+			hidden_tooltip = {
+				remove_character_modifier = granted_dragon_access
+				add_character_modifier = {
+					name = cannot_tame_dragon
+					duration = -1
+				}
+				create_bloodline = {
+					type = dragon_rider_tracker
+				}
+				new_bloodline = {
+					add_bloodline_member = event_target:dragon_being_tamed
+					remove_bloodline_member = event_target:rider_looking
+				}
+			}
+			character_event = { id = dragon_rework.7999 days = 2 } #Check to clear trait and reset modifier
+		}
+		event_target:dragon_being_tamed = {
+			clr_character_flag = dragon_being_tamed
+			set_character_flag = tamed_dragon
+			if = {
+				limit = {
+					any_artifact = { artifact_type = dragons_whip }
+				}
+				random_artifact = {
+					limit = { artifact_type = dragons_whip }
+					transfer_artifact = { from = event_target:dragon_being_tamed to = event_target:rider_looking }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { persistent_event_target:whip = { owner = { always = yes } } }
+				}
+				event_target:rider_looking = {
+					add_artifact = dragons_whip
+					new_artifact = {
+						set_name = [dragon_being_tamed.GetDragonWhipName]
+						event_target:dragon_being_tamed = { save_persistent_event_target = { name = whip scope = PREV } }
+					}
+				}
+			}
+			else = {
+				limit = { NOT = { persistent_event_target:whip = { owner = { character = event_target:rider_looking } } } }
+				persistent_event_target:whip = {
+					transfer_artifact = { from = owner to = event_target:rider_looking }
+				}
+			}
+			if = {
+				limit = {
+					has_character_modifier = locked_in_dragonpit
+					event_target:rider_looking = { NOT = { at_location = PREV } }
+				}
+				remove_character_modifier = locked_in_dragonpit
+				move_character = event_target:rider_looking
+			}
+		}
+		clr_global_flag = dragon_being_tamed
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.7
+		trigger = {
+			OR = {
+				trait = greedy
+				trait = paranoid
+				trait = authoritative
+				trait = selfish
+				trait = cruel
+			}
+			NOR = {
+				trait = kind
+				trait = shy
+				trait = craven
+				trait = trusting
+				AND = {
+					event_target:rider_looking = { is_close_relative = ROOT }
+					trait = family_person
+				}
+			}
+			event_target:rider_looking = {
+				NOT = { has_character_flag = motivated_to_tame }
+				has_character_modifier = granted_dragon_access
+			}
+		}
+		event_target:rider_looking = {
+			clr_character_flag = dragon_found
+			clr_character_flag = taming_dragon
+		}
+		event_target:dragon_being_tamed = {
+			clr_character_flag = dragon_being_tamed
+		}
+
+		clr_global_flag = dragon_being_tamed
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+
+	option = {
+		name = EVTOPTCdragon_rework.7
+		trigger = {
+			event_target:rider_looking = {
+				NOT = { has_character_modifier = granted_dragon_access }
+			}
+		}
+
+		event_target:rider_looking = {
+			add_friend = event_target:dragon_being_tamed
+			set_character_flag = rider_match
+			add_trait = dragon_rider
+			clr_character_flag = motivated_to_tame
+			clr_character_flag = dragon_found
+			clr_character_flag = taming_dragon
+			hidden_tooltip = {
+				remove_character_modifier = granted_dragon_access
+				add_character_modifier = {
+					name = cannot_tame_dragon
+					duration = -1
+				}
+				create_bloodline = {
+					type = dragon_rider_tracker
+				}
+				new_bloodline = {
+					add_bloodline_member = event_target:dragon_being_tamed
+					remove_bloodline_member = event_target:rider_looking
+				}
+			}
+			character_event = { id = dragon_rework.7999 days = 2 } #Check to clear trait and reset modifier
+		}
+		event_target:dragon_being_tamed = {
+			clr_character_flag = dragon_being_tamed
+			set_character_flag = tamed_dragon
+			if = {
+				limit = {
+					any_artifact = { artifact_type = dragons_whip }
+				}
+				random_artifact = {
+					limit = { artifact_type = dragons_whip }
+					transfer_artifact = { from = event_target:dragon_being_tamed to = event_target:rider_looking }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { persistent_event_target:whip = { owner = { always = yes } } }
+				}
+				event_target:rider_looking = {
+					add_artifact = dragons_whip
+					new_artifact = {
+						set_name = [dragon_being_tamed.GetDragonWhipName]
+						event_target:dragon_being_tamed = { save_persistent_event_target = { name = whip scope = PREV } }
+					}
+				}
+			}
+			else = {
+				limit = { NOT = { persistent_event_target:whip = { owner = { character = event_target:rider_looking } } } }
+				persistent_event_target:whip = {
+					transfer_artifact = { from = owner to = event_target:rider_looking }
+				}
+			}
+			if = {
+				limit = {
+					has_character_modifier = locked_in_dragonpit
+					event_target:rider_looking = { NOT = { at_location = PREV } }
+				}
+				remove_character_modifier = locked_in_dragonpit
+				move_character = event_target:rider_looking
+			}
+		}
+		clr_global_flag = dragon_being_tamed
+
+		ai_chance = {
+			factor = 50
+		}
+	}
+
+	option = {
+		name = EVTOPTDdragon_rework.7
+		trigger = {
+			NOT = { has_law = tdp_dragon_tamer_2 }
+			event_target:rider_looking = {
+				NOR = {
+					has_character_flag = motivated_to_tame
+					has_character_modifier = granted_dragon_access
+				}
+			}
+		}
+		custom_tooltip = {
+			text = TOOLTIPDdragon_rework.7
+			random_list = {
+				1 = {
+					event_target:rider_looking = {
+						clr_character_flag = dragon_found
+						clr_character_flag = taming_dragon
+					}
+					event_target:dragon_being_tamed = {
+						clr_character_flag = dragon_being_tamed
+					}
+					clr_global_flag = dragon_being_tamed
+					reverse_opinion = {
+						name = opinion_separated_from_dragon
+						who = event_target:rider_looking
+					}
+				}
+				1 = {
+					modifier = {
+						factor = 4
+						event_target:rider_looking = { trait = brilliant_strategist }
+					}
+					modifier = {
+						factor = 2
+						event_target:rider_looking = { trait = skilled_tactician }
+					}
+					modifier = {
+						factor = 10
+						event_target:rider_looking = { trait = lunatic }
+					}
+					modifier = {
+						factor = 2
+						event_target:rider_looking = { trait = possessed }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { trait = bastard }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { trait = greedy }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { trait = wroth }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { trait = envious }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { trait = proud }
+					}
+					modifier = {
+						factor = 2
+						event_target:rider_looking = { trait = ambitious }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { trait = brave }
+					}
+					modifier = {
+						factor = 3
+						event_target:rider_looking = { trait = deceitful }
+					}
+					modifier = {
+						factor = 3
+						event_target:rider_looking = { is_strong_trigger = yes }
+					}
+					modifier = {
+						factor = 3
+						event_target:rider_looking = { culture = high_valyrian }
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = { culture_group = valyrian }
+					}
+					modifier = {
+						factor = 0.5
+						event_target:rider_looking = { trait = just }
+					}
+					modifier = {
+						factor = 0.5
+						event_target:rider_looking = { trait = honest }
+					}
+					modifier = {
+						factor = 0.2
+						event_target:rider_looking = { trait = content }
+					}
+					modifier = {
+						factor = 0
+						event_target:rider_looking = { trait = craven }
+					}
+					modifier = {
+						factor = 0.1
+						event_target:rider_looking = { is_weak_trigger = yes }
+					}
+					modifier = {
+						factor = 0.5
+						event_target:rider_looking = { trait = humble }
+					}
+					modifier = {
+						factor = 0.5
+						event_target:rider_looking = { trait = kind }
+					}
+					modifier = {
+						factor = 0.5
+						event_target:rider_looking = { trait = honorable }
+					}
+		event_target:rider_looking = {
+			add_friend = event_target:dragon_being_tamed
+			set_character_flag = rider_match
+			add_trait = dragon_rider
+			clr_character_flag = motivated_to_tame
+			clr_character_flag = dragon_found
+			clr_character_flag = taming_dragon
+			hidden_tooltip = {
+				remove_character_modifier = granted_dragon_access
+				add_character_modifier = {
+					name = cannot_tame_dragon
+					duration = -1
+				}
+				create_bloodline = {
+					type = dragon_rider_tracker
+				}
+				new_bloodline = {
+					add_bloodline_member = event_target:dragon_being_tamed
+					remove_bloodline_member = event_target:rider_looking
+				}
+			}
+			character_event = { id = dragon_rework.7999 days = 2 } #Check to clear trait and reset modifier
+		}
+		event_target:dragon_being_tamed = {
+			clr_character_flag = dragon_being_tamed
+			set_character_flag = tamed_dragon
+			if = {
+				limit = {
+					any_artifact = { artifact_type = dragons_whip }
+				}
+				random_artifact = {
+					limit = { artifact_type = dragons_whip }
+					transfer_artifact = { from = event_target:dragon_being_tamed to = event_target:rider_looking }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { persistent_event_target:whip = { owner = { always = yes } } }
+				}
+				event_target:rider_looking = {
+					add_artifact = dragons_whip
+					new_artifact = {
+						set_name = [dragon_being_tamed.GetDragonWhipName]
+						event_target:dragon_being_tamed = { save_persistent_event_target = { name = whip scope = PREV } }
+					}
+				}
+			}
+			else = {
+				limit = { NOT = { persistent_event_target:whip = { owner = { character = event_target:rider_looking } } } }
+				persistent_event_target:whip = {
+					transfer_artifact = { from = owner to = event_target:rider_looking }
+				}
+			}
+			if = {
+				limit = {
+					has_character_modifier = locked_in_dragonpit
+					event_target:rider_looking = { NOT = { at_location = PREV } }
+				}
+				remove_character_modifier = locked_in_dragonpit
+				move_character = event_target:rider_looking
+			}
+		}
+		clr_global_flag = dragon_being_tamed
+	}
+}
+		}
+
+		character_event = { id = dragon_rework.70 days = 3 }
+
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 5
+				OR = {
+					trait = greedy
+					trait = paranoid
+					trait = authoritative
+					trait = selfish
+					trait = cruel
+				}
+				NOR = {
+					trait = kind
+					trait = shy
+					trait = craven
+					trait = trusting
+					AND = {
+						event_target:rider_looking = { is_close_relative = ROOT }
+						trait = family_person
+					}
+				}
+			}
+		}
+	}
+}
+
+#Threat sent
+character_event = {
+	id = dragon_rework.70
+	desc = {
+		trigger = {
+			event_target:rider_looking = {
+				NOT = { trait = dragon_rider }
+			}
+		}
+		text = EVTDESCAdragon_rework.70
+	}
+	desc = {
+		trigger = {
+			event_target:rider_looking = {
+				trait = dragon_rider
+			}
+		}
+		text = EVTDESCBdragon_rework.70
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.70
+		trigger = {
+			event_target:rider_looking = {
+				NOT = { trait = dragon_rider }
+			}
+		}
+		custom_tooltip = {
+			text = TOOLTIPAdragon_rework.70
+		}
+		reverse_opinion = {
+			name = opinion_separated_from_dragon
+			who = event_target:rider_looking
+		}
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.70
+		trigger = {
+			event_target:rider_looking = {
+				trait = dragon_rider
+			}
+		}
+		custom_tooltip = {
+			text = TOOLTIPBdragon_rework.70
+		}
+		hidden_tooltip = {
+			random_list = {
+				1 = {
+					event_target:rider_looking = {
+						imprison = ROOT
+					}
+					opinion = {
+						name = opinion_unlawful_dragon_tame
+						who = event_target:rider_looking
+					}
+					reverse_opinion = {
+						name = opinion_tried_to_separate_from_dragon
+						who = event_target:rider_looking
+					}
+				}
+				1 = {
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 20
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 40
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 60
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 80
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 100
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 120
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 140
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 160
+							}
+						}
+					}
+					random_independent_ruler = {
+						limit = {
+							NOT = { character = ROOT }
+							higher_real_tier_than = DUKE
+						}
+						event_target:rider_looking = {
+							set_character_flag = fled_from_arrest
+							banish = PREV
+							any_friend = {
+								limit = {
+									trait = dragon
+								}
+								banish = PREVPREV
+							}
+						}
+					}
+
+					opinion = {
+						name = opinion_unlawful_dragon_tame
+						who = event_target:rider_looking
+					}
+					reverse_opinion = {
+						name = opinion_tried_to_separate_from_dragon
+						who = event_target:rider_looking
+					}
+				}
+				1 = {
+					modifier = {
+						factor = 0
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								NOT = { martial = 40 }
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 40
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 50
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 60
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 70
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 80
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 90
+							}
+						}
+					}
+					modifier = {
+						factor = 1.3
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 100
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								martial = 110
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 20
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 40
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 60
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 80
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 100
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 120
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 140
+							}
+						}
+					}
+					modifier = {
+						factor = 1.5
+						event_target:rider_looking = {
+							any_friend = {
+								trait = dragon
+								combat_rating = 160
+							}
+						}
+					}
+					save_event_target_as = crown_dragon
+					any_demesne_title = {
+						limit = { tier = EMPEROR }
+						save_event_target_as = emperor_title
+					}
+					opinion = {
+						name = opinion_traitor
+						who = event_target:rider_looking
+					}
+					opinion = {
+						name = opinion_unlawful_dragon_tame
+						who = event_target:rider_looking
+					}
+					reverse_opinion = {
+						name = opinion_tried_to_separate_from_dragon
+						who = event_target:rider_looking
+					}
+
+					###Kick Off War###
+					#Set up camp
+					#Westeros
+					if = {
+						limit = { event_target:rider_looking = { is_landed = no } }
+						k_rebel_dragon_host = {
+							gain_title = event_target:rider_looking
+							add_law = succ_primogeniture
+							recalc_succession = yes
+							set_title_flag = has_dynamic_coa
+							set_dynamic_coa_effect = yes
+							set_name = event_target:emperor_title
+						}
+						event_target:crown_dragon = {
+							random_realm_province = {
+								limit = {
+									any_province_holding = {
+										holding_type = castle
+										owner = {
+											NOT = { higher_tier_than = BARON }
+											NOT = { liege = { character = event_target:crown_dragon } }
+											NOT = { has_dynasty_flag = has_dynamic_coa }
+										}
+									}
+								}
+								random_province_holding = {
+									limit = {
+										holding_type = castle
+										owner = {
+											NOT = { higher_tier_than = BARON }
+											NOT = { liege = { character = event_target:crown_dragon } }
+											NOT = { has_dynasty_flag = has_dynamic_coa }
+										}
+									}
+									gain_title = event_target:rider_looking
+									add_holding_modifier = {
+										name = b_rebel_camp
+										duration = -1
+									}
+								}
+							}
+						}
+						#spawn troops
+						event_target:rider_looking = {
+							if = {
+								limit = {
+									ROOT = {
+										capital_scope = { region = world_westeros }
+									}
+								}
+								spawn_unit = {
+									province = 218 #North Cracklaw Point
+									home = ROOT
+									owner = event_target:rider_looking
+									leader = event_target:rider_looking
+									troops = {
+										archers = { 200 200 }
+										heavy_infantry = { 5400 5400 }
+										light_infantry = { 2400 2400 }
+										light_cavalry = { 1200 1200 }
+										knights = { 150 150 }
+									}
+									attrition = 1.0
+								}
+							}
+							else_if = {
+								limit = {
+									ROOT = {
+										capital_scope = { region = world_free_cities }
+									}
+								}
+								spawn_unit = {
+									province = 428 #Dagger Lake
+									home = ROOT
+									owner = event_target:rider_looking
+									leader = event_target:rider_looking
+									troops = {
+										archers = { 200 200 }
+										heavy_infantry = { 5400 5400 }
+										light_infantry = { 2400 2400 }
+										light_cavalry = { 1200 1200 }
+										knights = { 150 150 }
+									}
+									attrition = 1.0
+								}
+							}
+							else_if = {
+								limit = {
+									ROOT = {
+										capital_scope = { region = world_ghiscar }
+									}
+								}
+								spawn_unit = {
+									province = 605 #Demon Road
+									home = ROOT
+									owner = event_target:rider_looking
+									leader = event_target:rider_looking
+									troops = {
+										archers = { 200 200 }
+										heavy_infantry = { 5400 5400 }
+										light_infantry = { 2400 2400 }
+										light_cavalry = { 1200 1200 }
+										knights = { 150 150 }
+									}
+									attrition = 1.0
+								}
+							}
+							else_if = {
+								limit = {
+									ROOT = {
+										capital_scope = { region = world_valyrian_peninsula }
+									}
+								}
+								spawn_unit = {
+									province = 484 #Little Valyria
+									home = ROOT
+									owner = event_target:rider_looking
+									leader = event_target:rider_looking
+									troops = {
+										archers = { 200 200 }
+										heavy_infantry = { 5400 5400 }
+										light_infantry = { 2400 2400 }
+										light_cavalry = { 1200 1200 }
+										knights = { 150 150 }
+									}
+									attrition = 1.0
+								}
+							}
+							else = {
+								limit = {
+									ROOT = {
+										capital_scope = {
+											NOR = {
+												region = world_free_cities
+												region = world_ghiscar
+												region = world_westeros
+												region = world_valyrian_peninsula
+											}
+										}
+									}
+								}
+								spawn_unit = {
+									province = 484 #Little Valyria
+									home = ROOT
+									owner = event_target:rider_looking
+									leader = event_target:rider_looking
+									troops = {
+										archers = { 200 200 }
+										heavy_infantry = { 5400 5400 }
+										light_infantry = { 2400 2400 }
+										light_cavalry = { 1200 1200 }
+										knights = { 150 150 }
+									}
+									attrition = 1.0
+								}
+							}
+						}
+					}
+				}
+			}
+			character_event = { id = dragon_rework.71 days = 1 }
+		}
+	}
+
+	option = {
+		name = EVTOPTCdragon_rework.70 #Arrest anyway after surrender
+		trigger = {
+			event_target:rider_looking = {
+				NOT = { trait = dragon_rider }
+			}
+		}
+		opinion = {
+			name = opinion_unlawful_dragon_tame
+			who = event_target:rider_looking
+		}
+		reverse_opinion = {
+			name = opinion_betrayed
+			who = event_target:rider_looking
+		}
+		reverse_opinion = {
+			name = opinion_separated_from_dragon
+			who = event_target:rider_looking
+		}
+		custom_tooltip = {
+			text = TOOLTIPCdragon_rework.70
+		}
+	}
+}
+
+character_event = {
+	id = dragon_rework.71
+	desc = {
+		trigger = {
+			event_target:rider_looking = {
+				prisoner = no
+				has_character_flag = fled_from_arrest
+			}
+		}
+		text = EVTDESCAdragon_rework.71
+	}
+	desc = {
+		trigger = {
+			event_target:rider_looking = {
+				prisoner = no
+				NOT = { has_character_flag = fled_from_arrest }
+			}
+		}
+		text = EVTDESCBdragon_rework.71
+	}
+
+	desc = {
+		trigger = {
+			event_target:rider_looking = {
+				prisoner = yes
+			}
+		}
+		text = EVTDESCCdragon_rework.71
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.71 #Escaped
+		trigger = {
+			event_target:rider_looking = {
+				prisoner = no
+				has_character_flag = fled_from_arrest
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS #War
+		trigger = {
+			event_target:rider_looking = {
+				prisoner = no
+				NOT = { has_character_flag = fled_from_arrest }
+			}
+		}
+		save_event_target_as = crown_dragon
+		event_target:rider_looking = {
+			save_event_target_as = rebel_dragon
+			narrative_event = { id = tdp_anti_dragon.132 }
+			event_target:emperor_title = {
+				reverse_unsafe_war = {
+					target = event_target:rider_looking
+					casus_belli = tdp_dance_of_dragons
+				}
+			}
+		}
+
+		narrative_event = { id = tdp_anti_dragon.132 }
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.71 #Arrested
+		trigger = {
+			event_target:rider_looking = {
+				prisoner = yes
+			}
+		}
+	}
+
+}
+
+character_event = {
+	id = dragon_rework.7999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		trait = dragon_rider
+		NOT = { any_friend = { trait = dragon } }
+	}
+
+	immediate = {
+		clr_character_flag = rider_match
+		remove_trait = dragon_rider
+		remove_character_modifier = cannot_tame_dragon
+		add_character_modifier = {
+			name = granted_dragon_access
+			duration = -1
+		}
+	}
+}
+
+#Dragon Pit - Normal
+character_event = {
+	id = dragon_rework.700
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_character_flag = taming_dragon
+		save_event_target_as = rider_looking
+		set_global_flag = dragon_being_tamed
+		top_liege = {
+			if = {
+				limit = {
+					any_realm_character = {
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+
+						NOR = {
+							has_character_modifier = never_domesticated
+							has_character_flag = dragon_being_tamed
+						}
+						NOT = { character = 77990022 }
+						num_of_friends < 1
+					}
+				}
+				random_realm_character = {
+					limit = {
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+						NOR = {
+							has_character_modifier = never_domesticated
+							has_character_flag = dragon_being_tamed
+						}
+						NOT = { character = 77990022 }
+						num_of_friends < 1
+					}
+					preferred_limit = {
+						NOR = {
+							trait = shy_dragon
+							trait = infirm_dragon
+							trait = harmless_dragon
+							trait = maimed_dragon
+						}
+					}
+					preferred_limit = {
+						age = 100
+					}
+					preferred_limit = {
+						age = 80
+					}
+					preferred_limit = {
+						age = 60
+					}
+					preferred_limit = {
+						age = 40
+					}
+					set_character_flag = dragon_being_tamed
+					save_event_target_as = dragon_being_tamed
+				}
+				ROOT = { set_character_flag =  dragon_found }
+				character_event = { id = dragon_rework.7 }
+			}
+		}
+	}
+}
+
+
+#Dragon Pit - Adventurous
+character_event = {
+	id = dragon_rework.701
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_character_flag = taming_dragon
+		save_event_target_as = rider_looking
+		set_global_flag = dragon_being_tamed
+		top_liege = {
+			if = {
+				limit = {
+					ROOT = { NOT = { has_character_flag = dragon_found } }
+					any_realm_character = {
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+
+						NOR = {
+							trait = shy_dragon
+							trait = infirm_dragon
+							trait = harmless_dragon
+							has_character_modifier = never_domesticated
+							has_character_flag = dragon_being_tamed
+						}
+						age = 20
+						NOT = { character = 77990022 }
+						num_of_friends < 1
+					}
+				}
+				random_realm_character = {
+					limit = {
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+
+						NOR = {
+							trait = shy_dragon
+							trait = infirm_dragon
+							trait = harmless_dragon
+							has_character_modifier = never_domesticated
+							has_character_flag = dragon_being_tamed
+						}
+						age = 20
+						NOT = { character = 77990022 }
+						num_of_friends < 1
+					}
+					preferred_limit = {
+						age = 100
+					}
+					preferred_limit = {
+						age = 80
+					}
+					preferred_limit = {
+						age = 60
+					}
+					preferred_limit = {
+						age = 40
+					}
+					set_character_flag = dragon_being_tamed
+					save_event_target_as = dragon_being_tamed
+				}
+				ROOT = { set_character_flag =  dragon_found }
+				character_event = { id = dragon_rework.7 }
+			}
+
+			else = {
+				limit = {
+					ROOT = { NOT = { has_character_flag = dragon_found } }
+					any_realm_character = {
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+
+						NOR = {
+							trait = shy_dragon
+							trait = infirm_dragon
+							trait = harmless_dragon
+							has_character_modifier = never_domesticated
+							has_character_flag = dragon_being_tamed
+						}
+						NOT = { character = 77990022 }
+						num_of_friends < 1
+					}
+				}
+				random_realm_character = {
+					limit = {
+						trait = dragon
+						has_character_modifier = locked_in_dragonpit
+
+						NOR = {
+							trait = shy_dragon
+							trait = infirm_dragon
+							trait = harmless_dragon
+							has_character_modifier = never_domesticated
+							has_character_flag = dragon_being_tamed
+						}
+						NOT = { character = 77990022 }
+						num_of_friends < 1
+					}
+					preferred_limit = {
+						age = 100
+					}
+					preferred_limit = {
+						age = 80
+					}
+					preferred_limit = {
+						age = 60
+					}
+					preferred_limit = {
+						age = 40
+					}
+					set_character_flag = dragon_being_tamed
+					save_event_target_as = dragon_being_tamed
+				}
+				ROOT = { set_character_flag =  dragon_found }
+				character_event = { id = dragon_rework.7 }
+			}
+		}
+	}
+}
+
+#In the Wild
+character_event = {
+	id = dragon_rework.702
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_character_flag = taming_dragon
+		save_event_target_as = rider_looking
+		top_liege = {
+			random_character = {
+				limit = {
+					trait = dragon
+					NOT = { has_character_modifier = locked_in_dragonpit }
+					NOR = {
+						trait = shy_dragon
+						trait = infirm_dragon
+						trait = harmless_dragon
+						has_character_modifier = never_domesticated
+						has_character_flag = dragon_being_tamed
+					}
+					age = 20
+					NOT = { character = 77990022 }
+					num_of_friends < 1
+				}
+				preferred_limit = {
+					age = 100
+				}
+				preferred_limit = {
+					age = 80
+				}
+				preferred_limit = {
+					age = 60
+				}
+				preferred_limit = {
+					age = 40
+				}
+				set_character_flag = dragon_being_tamed
+				save_event_target_as = dragon_being_tamed
+			}
+		}
+		random_list = {
+			5 = {
+				modifier = {
+					factor = 10
+					culture = high_valyrian
+				}
+				modifier = {
+					factor = 10
+					culture_group = valyrian
+				}
+				modifier = {
+					factor = 5
+					event_target:dragon_being_tamed = { has_character_flag = tamed_dragon }
+				}
+				modifier = {
+					factor = 0.7
+					event_target:dragon_being_tamed = { trait = ravenous_dragon }
+				}
+				modifier = {
+					factor = 0.3
+					event_target:dragon_being_tamed = { trait = lunatic_dragon }
+				}
+				modifier = {
+					factor = 0.7
+					event_target:dragon_being_tamed = { trait = wroth_dragon }
+				}
+				top_liege = { character_event = { id = dragon_rework.7 } }
+			}
+			1 = {
+				top_liege = { character_event = { id = dragon_rework.7020 } }
+			}
+		}
+	}
+}
+
+character_event = {
+	id = dragon_rework.7020
+	desc = EVTDESCdragon_rework.7020
+
+	is_triggered_only = yes
+
+	immediate = {
+		FROM = {
+			random_list = {
+				5 = {
+					add_trait = wounded
+				}
+				5 = {
+					add_trait = burned
+				}
+				90 = {
+
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTdragon_rework.7020
+	}
+}
+
+
+#######################################################
+###Hatching###
+character_event = {
+	id = dragon_rework.9
+
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		OR = {
+			trait = dragon
+			trait = dragonkeeper
+			AND = {
+				age < 3
+				culture = high_valyrian
+			}
+		}
+		is_alive = yes
+		has_artifact = dragon_egg
+		OR = {
+			location = { is_volcano_location_trigger = yes }
+			primary_title = {
+				has_title_flag = dragonkeeper_title_dragonstone
+			}
+			AND = {
+				age < 3
+				culture = high_valyrian
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 15
+		modifier = {
+			factor = 0.8
+			age < 3
+			culture = high_valyrian
+		}
+		modifier = {
+			factor = 0.2
+			trait = dragon_dreams
+		}
+		modifier = {
+			factor = 0.2
+			has_dynasty_flag = dragon_cold_war
+		}
+		modifier = {
+			factor = 0.5
+			has_game_rule = { name = tdp_egg_hatch_speed value = faster }
+		}
+		modifier = {
+			factor = 2
+			has_game_rule = { name = tdp_egg_hatch_speed value = slower }
+		}
+		modifier = {
+			factor = 0.1
+			trait = dragonkeeper
+			any_artifact = {
+				count = 10
+				artifact_type = dragon_egg
+			}
+		}
+		modifier = {
+			factor = 0.1
+			trait = dragonkeeper
+			any_artifact = {
+				count = 20
+				artifact_type = dragon_egg
+			}
+		}
+		modifier = {
+			factor = 0.1
+			trait = dragonkeeper
+			any_character = {
+				count = 7
+				trait = dragon
+				age = 50
+			}
+			NOT = {
+				any_character = {
+					count = 4
+					trait = dragon
+					age = 30
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = {
+					any_artifact = {
+						artifact_type = dragon_egg
+						has_artifact_flag = dany_dragon_eggs
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					create_character = {
+						dynasty = none
+						age = 0
+						culture = dragon_culture
+						religion = dragon_rel
+						historical = yes
+					}
+				}
+				70 = {
+					create_character = {
+						female = yes
+						dynasty = none
+						age = 0
+						culture = dragon_culture
+						religion = dragon_rel
+						historical = yes
+					}
+				}
+			}
+			new_character = {
+				save_event_target_as = new_dragon
+				add_trait = dragon
+				add_trait = incapable_dragon
+				character_event = { id = dragon.599 }
+				random = {
+					chance = 5
+					add_trait = fair_dragon
+				}
+				random = {
+					chance = 5
+					if = {
+						limit = { NOT = { trait = fair_dragon } }
+						add_trait = ugly_dragon
+					}
+				}
+				if = {
+					limit = {
+						ROOT = {
+							has_dragonpit_trigger = yes
+						}
+					}
+					add_character_modifier = { name = locked_in_dragonpit duration = -1 }
+					random = {
+						chance = 8
+						add_trait = sickly_dragon
+						modifier = {
+							factor = 0
+							NOT = { has_global_flag = maester_conspiracy }
+						}
+					}
+					if = {
+						limit = { NOT = { trait = sickly_dragon } }
+						random = {
+							chance = 2
+							add_trait = strong_dragon
+						}
+						random = {
+							chance = 2
+							add_trait = bulky_dragon
+						}
+						random = {
+							chance = 25
+							modifier = {
+								factor = 0
+								is_female = no
+							}
+							add_trait = fertile_dragon
+						}
+					}
+					if = {
+						limit = {
+							NOR = {
+								trait = sickly_dragon
+								trait = bulky_dragon
+								trait = strong_dragon
+							}
+						}
+						random = {
+							chance = 2
+							add_trait = wyrm_dragon
+						}
+					}
+				}
+				if = {
+					limit = {
+						NOT = { has_character_modifier = locked_in_dragonpit }
+					}
+					random = {
+						chance = 2
+						add_trait = sickly_dragon
+						modifier = {
+							factor = 0
+							NOT = { has_global_flag = maester_conspiracy }
+						}
+					}
+					if = {
+						limit = { NOT = { trait = sickly_dragon } }
+						random = {
+							chance = 5
+							add_trait = strong_dragon
+						}
+						random = {
+							chance = 10
+							modifier = {
+								factor = 3
+								is_female = yes
+							}
+							add_trait = fertile_dragon
+						}
+					}
+				}
+				random = {
+					chance = 33
+					add_trait = nimble_dragon
+				}
+				random_list = {
+					25 = { add_trait = large_horns }
+					25 = { add_trait = small_horns }
+					25 = { remove_trait = large_horns }
+					25 = { remove_trait = small_horns }
+				}
+				random_list = {
+					25 = { add_trait = large_claws }
+					25 = { add_trait = small_claws }
+					25 = { remove_trait = large_claws }
+					25 = { remove_trait = small_claws }
+				}
+				random_list = {
+					25 = { add_trait = large_wingspan }
+					25 = { add_trait = small_wingspan }
+					25 = { remove_trait = large_wingspan }
+					25 = { remove_trait = small_wingspan }
+				}
+				random_list = {
+					25 = { add_trait = thick_scales }
+					25 = { add_trait = thin_scales }
+					25 = { remove_trait = thick_scales }
+					25 = { remove_trait = thin_scales }
+				}
+				random_list = {
+					25 = { add_trait = melodious_dragon }
+					25 = { add_trait = loud_dragon }
+					25 = { remove_trait = melodious_dragon }
+					25 = { remove_trait = loud_dragon }
+				}
+				random_list = {
+					1 = { add_trait = smart_dragon }
+					3 = { add_trait = silly_dragon }
+					100 = { }
+				}
+				random = {
+					chance = 25
+					add_trait = gleaming_scales
+				}
+				random = {
+					chance = 25
+					add_trait = shining_teeth
+				}
+
+				#Dragon hatches
+				if = {
+					limit = { ROOT = { trait = dragon } }
+					add_character_modifier = {
+						name = hatched_in_wild
+						duration = -1
+					}
+					if = {
+						limit = { num_of_friends = 1 }
+						add_artifact = dragons_whip
+						new_artifact = {
+							set_name = [new_dragon.GetDragonWhipName]
+							new_character = { save_persistent_event_target = { name = whip scope = THIS } }
+						}
+					}
+					if = {
+						limit = {
+							NOR = {
+								num_of_friends = 1
+								any_artifact = {
+									artifact_type = dragons_whip
+								}
+							}
+						}
+						add_artifact = dragons_whip
+						new_artifact = {
+							set_name = [new_dragon.GetDragonWhipName]
+							event_target:new_dragon = { save_persistent_event_target = { name = whip scope = PREV } }
+						}
+					}
+				}
+				#Dragonkeeper hatches
+				if = {
+					limit = { ROOT = { trait = dragonkeeper } }
+					add_character_modifier = {
+						name = hatched_in_hatchery
+						duration = -1
+					}
+					if = {
+						limit = {
+							NOT = {
+								any_artifact = {
+									artifact_type = dragons_whip
+								}
+							}
+						}
+						add_artifact = dragons_whip
+						new_artifact = {
+							set_name = [new_dragon.GetDragonWhipName]
+							event_target:new_dragon = { save_persistent_event_target = { name = whip scope = PREV } }
+						}
+					}
+					ROOT = {
+						top_liege = {
+							if = {
+								limit = { ai = no }
+								character_event = { id = dragon_rework.91 }
+							}
+						}
+					}
+				}
+				#Kid hatches
+				if = {
+					limit = {
+						ROOT = {
+							NOR = {
+								trait = dragonkeeper
+								trait = dragon
+							}
+						}
+					}
+					add_character_modifier = {
+						name = hatched_with_bond
+						duration = -1
+					}
+					hidden_tooltip = {
+						ROOT = {
+							create_bloodline = {
+								type = dragon_rider_tracker
+							}
+							any_owned_bloodline = {
+								limit = { has_bloodline_flag = dragon_rider_tracker }
+								add_bloodline_member = event_target:new_dragon
+								remove_bloodline_member = ROOT
+							}
+						}
+					}
+					add_friend = ROOT
+					set_character_flag = tamed_dragon
+					ROOT = {
+						any_liege = {
+							limit = { ai = no }
+							character_event = { id = dragon_rework.90 }
+						}
+					}
+				}
+				liege = {
+					capital_scope = {
+						event_target:new_dragon = {
+							set_character_flag = has_dragon_location
+							set_character_flag = dragon_location_@PREV
+						}
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTdragon.5
+		trigger = {
+			NOT = {
+				any_artifact = {
+					artifact_type = dragon_egg
+					has_artifact_flag = dany_dragon_eggs
+				}
+			}
+		}
+		hidden_tooltip = {
+			if = {
+				limit = {
+					NOT = { any_province = { has_province_flag = dragon_intel_rebirth } }
+					NOT = { dragon = { is_alive = yes NOT = { has_character_flag = shadow_lands_dragon } } }
+				}
+				location = {
+					set_province_flag = dragon_intel_rebirth
+				}
+			}
+		}
+		custom_tooltip = { text = TOOLTIPdragon.5RENAMEINFO }
+		random_friend = {
+			limit = { trait = dragon }
+			tooltip = { show_portrait = yes }
+		}
+		if = {
+			limit = {
+				OR = {
+					has_global_flag = age_of_dragons
+					any_close_relative = { is_alive = yes can_use_dragon_abilities_trigger = yes }
+				}
+			}
+			prestige = 200
+		}
+		if = {
+			limit = {
+				NOT = { has_global_flag = age_of_dragons }
+				NOT = { any_close_relative = { is_alive = yes can_use_dragon_abilities_trigger = yes } }
+			}
+			prestige = 1000
+		}
+		if = {
+			limit = {
+				NOT = { trait = ambitious }
+				OR = {
+					is_lowborn = yes
+					NOT = { any_close_relative = { is_alive = yes can_use_dragon_abilities_trigger = yes } }
+				}
+			}
+			random = {
+				chance = 50
+				modifier = {
+					factor = 0.2
+					trait = content
+				}
+				hidden_tooltip = { remove_trait = content }
+				add_trait = ambitious
+				hidden_tooltip = {
+					character_event = {
+						id = 38278 #Notify Ambitious
+					}
+				}
+			}
+		}
+		set_character_flag = dragon_intel_eggs
+	}
+
+}
+
+#######################################################
+#Kid hatches Egg
+character_event = {
+	id = dragon_rework.90
+	picture = GFX_tamingdragon3
+	desc = EVTDESCdragon_rework.90
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_character_flag = no_dragon_hatching_inform }
+	}
+
+	option = {
+		name = EVTOPTAdragon.799
+	}
+}
+
+#######################################################
+#Dragonkeeper informs
+character_event = {
+	id = dragon_rework.91
+	picture = GFX_tamingdragon3
+	desc = EVTDESCdragon_rework.91
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_character_flag = no_dragon_hatching_inform }
+	}
+
+	option = {
+		name = OK
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = EVTOPTAdragon_rework.91
+		trigger = {
+			has_dragonpit_trigger = yes
+		}
+		event_target:new_dragon = {
+			move_character = ROOT
+			add_character_modifier = {
+				name = locked_in_dragonpit
+				duration = -1
+			}
+			clr_character_flag = dragon_location_@PREV
+			clr_character_flag = has_dragon_location
+			liege = {
+				capital_scope = {
+					event_target:new_dragon = {
+						set_character_flag = has_dragon_location
+						set_character_flag = dragon_location_@PREV
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				event_target:new_dragon = {
+					OR = {
+						trait = ugly_dragon
+						trait = ravenous_dragon
+						trait = lunatic_dragon
+						trait = wroth_dragon
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBdragon_rework.91
+		set_character_flag = no_dragon_hatching_inform
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+#######################################################
+character_event = {
+	id = dragon_rework.92
+	picture = GFX_targaryen_eggs
+	desc = EVTDESCdragon_rework.92
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAdragon_rework.92
+		hidden_tooltip = {
+			random_artifact = {
+				limit = { artifact_type = secret_box }
+				unsafe_destroy_artifact = yes
+			}
+		}
+		add_artifact = dragon_egg
+		new_artifact = {
+			set_artifact_flag = heirloom_@PREV
+			set_artifact_flag = dany_dragon_eggs
+			set_name = ThreeDragonEggs
+			set_artifact_flag = black_egg
+			set_picture = GFX_dany_eggs
+		}
+	}
+	option = {
+		name = EVTOPTBdragon_rework.92
+	}
+}
+#######################################################
+
+
+
+

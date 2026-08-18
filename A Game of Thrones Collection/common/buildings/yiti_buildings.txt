@@ -1,0 +1,376 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	piety_cost = piety cost to build the building
+ #	prestige_cost = prestige cost to build the building
+ #	Be aware that you can only use one of gold, piety, and prestige cost
+ #	build_time = time to build, in days
+ #
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+
+ # Castle
+castle = {
+	ca_bloodline_irigation_1 = {
+		desc = ca_bloodline_irigation_1_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		gold_cost = 50
+		build_time = 100
+		monthly_character_prestige = 0.50
+		tax_income = 0.5
+		ai_creation_factor = 110
+	}
+	ca_bloodline_irigation_2 = {
+		desc = ca_bloodline_irigation_2_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_irigation_1
+		gold_cost = 100
+		build_time = 150
+		monthly_character_prestige = 0.50
+		tax_income = 1
+		ai_creation_factor = 110
+	}
+	ca_peasant_commune_1 = {
+		desc = ca_peasant_commune_1_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		gold_cost = 50
+		build_time = 100
+		monthly_character_prestige = 0.50
+		global_revolt_risk = -0.025
+		tax_income = 0.5
+		light_infantry = 90
+		ai_creation_factor = 110
+	}
+	ca_peasant_commune_2 = {
+		desc = ca_peasant_commune_2_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		prerequisites = { ca_bloodline_irigation_1 }
+		upgrades_from = ca_peasant_commune_1
+		gold_cost = 100
+		build_time = 150
+		monthly_character_prestige = 0.50
+		global_revolt_risk = -0.05
+		tax_income = 1
+		light_infantry = 150
+		archers = 50
+		ai_creation_factor = 110
+	}
+	ca_peasant_commune_3 = {
+		desc = ca_peasant_commune_3_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		upgrades_from = ca_peasant_commune_2
+		gold_cost = 200
+		build_time = 190
+		monthly_character_prestige = 0.75
+		global_revolt_risk = -0.075
+		tax_income = 2
+		light_infantry = 400
+		archers = 100
+		ai_creation_factor = 110
+	}
+	ca_peasant_commune_4 = {
+		desc = ca_peasant_commune_4_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		prerequisites = { ca_bloodline_irigation_2 }
+		upgrades_from = ca_peasant_commune_3
+		gold_cost = 300
+		build_time = 210
+		monthly_character_prestige = 0.75
+		global_revolt_risk = -0.1
+		tax_income = 3
+		light_infantry = 600
+		archers = 200
+		ai_creation_factor = 110
+	}
+	ca_peasant_commune_5 = {
+		desc = ca_peasant_commune_5_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+		}
+		upgrades_from = ca_peasant_commune_4
+		gold_cost = 300
+		build_time = 210
+		monthly_character_prestige = 0.75
+		global_revolt_risk = -0.15
+		tax_income = 5
+		light_infantry = 800
+		archers = 400
+		ai_creation_factor = 110
+	}
+	ca_bloodline_school_1 = {
+		desc = ca_bloodline_school_1_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_bureaucrat
+				}
+			}
+		}
+		gold_cost = 50
+		build_time = 100
+		monthly_character_prestige = 0.50
+		global_revolt_risk = -0.015
+		tax_income = 0.75
+		ai_creation_factor = 110
+	}
+	ca_bloodline_school_2 = {
+		desc = ca_bloodline_school_2_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_bureaucrat
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_school_1
+		gold_cost = 100
+		build_time = 150
+		monthly_character_prestige = 0.50
+		global_revolt_risk = -0.02
+		tax_income = 1.75
+		archers = 20
+		heavy_infantry = 40
+		pikemen = 50
+		light_cavalry = 20
+		knights = 10
+		ai_creation_factor = 110
+	}
+	ca_bloodline_school_3 = {
+		desc = ca_bloodline_school_3_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_bureaucrat
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_school_2
+		gold_cost = 200
+		build_time = 190
+		monthly_character_prestige = 0.75
+		global_revolt_risk = -0.05
+		tax_income = 2
+		archers = 80
+		heavy_infantry = 120
+		pikemen = 100
+		light_cavalry = 90
+		knights = 40
+		ai_creation_factor = 110
+	}
+	ca_bloodline_embassy_1 = {
+		desc = ca_bloodline_embassy_1_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_diplomat
+				}
+			}
+		}
+		gold_cost = 50
+		build_time = 100
+		monthly_character_prestige = 0.50
+		tax_income = 0.75
+		ai_creation_factor = 110
+	}
+	ca_bloodline_embassy_2 = {
+		desc = ca_bloodline_embassy_2_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_diplomat
+				}
+			}
+		}
+		prerequisites = { ca_bloodline_merchant_q_1 }
+		upgrades_from = ca_bloodline_embassy_1
+		gold_cost = 100
+		build_time = 150
+		monthly_character_prestige = 0.50
+		tax_income = 1.25
+		ai_creation_factor = 110
+	}
+	ca_bloodline_embassy_3 = {
+		desc = ca_bloodline_embassy_3_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_diplomat
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_merchant_q_2
+		gold_cost = 100
+		build_time = 150
+		monthly_character_prestige = 0.50
+		tax_income = 1.75
+		ai_creation_factor = 110
+	}
+	ca_bloodline_merchant_q_1 = {
+		desc = ca_bloodline_merchant_q_1_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_diplomat
+				}
+			}
+		}
+		gold_cost = 50
+		build_time = 100
+		monthly_character_prestige = 0.50
+		tax_income = 1
+		ai_creation_factor = 110
+	}
+	ca_bloodline_merchant_q_2 = {
+		desc = ca_bloodline_merchant_q_2_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_diplomat
+				}
+			}
+		}
+		prerequisites = { ca_bloodline_embassy_1 }
+		upgrades_from = ca_bloodline_merchant_q_1
+		gold_cost = 100
+		build_time = 150
+		global_revolt_risk = 0.025
+		monthly_character_prestige = 0.50
+		tax_income = 3
+		ai_creation_factor = 110
+	}
+	ca_bloodline_merchant_q_3 = {
+		desc = ca_bloodline_merchant_q_3_desc
+		potential = {
+			culture = yi_ti
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_diplomat
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_merchant_q_2
+		gold_cost = 100
+		build_time = 150
+		global_revolt_risk = 0.075
+		monthly_character_prestige = 0.50
+		tax_income = 5
+		ai_creation_factor = 110
+	}
+	ca_bloodline_zorse_pens_1 = {
+		desc = ca_bloodline_zorse_pens_1_desc
+		potential = {
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_scion
+				}
+			}
+		}
+		gold_cost = 50
+		build_time = 100
+		monthly_character_prestige = 0.50
+		global_revolt_risk = 0.015
+		archers = 80
+		light_cavalry = 30
+		horse_archers = 10
+		ai_creation_factor = 110
+	}
+	ca_bloodline_zorse_pens_2 = {
+		desc = ca_bloodline_zorse_pens_2_desc
+		potential = {
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_scion
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_zorse_pens_1
+		gold_cost = 100
+		build_time = 150
+		monthly_character_prestige = 0.50
+		global_revolt_risk = 0.035
+		archers = 100
+		light_cavalry = 80
+		horse_archers = 30
+		ai_creation_factor = 110
+	}
+	ca_bloodline_zorse_pens_3 = {
+		desc = ca_bloodline_zorse_pens_3_desc
+		potential = {
+			FROM = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_scion
+				}
+			}
+		}
+		upgrades_from = ca_bloodline_zorse_pens_2
+		gold_cost = 200
+		build_time = 190
+		monthly_character_prestige = 0.75
+		global_revolt_risk = 0.05
+		archers = 250
+		light_cavalry = 200
+		horse_archers = 90
+		ai_creation_factor = 110
+	}
+}

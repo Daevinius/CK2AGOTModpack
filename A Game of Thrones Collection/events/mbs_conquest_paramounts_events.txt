@@ -1,0 +1,101 @@
+namespace = mbs_tully_lordparamount
+narrative_event = {
+	id = mbs_tully_lordparamount.1
+	desc = "EVTDESC_mbs_tully_lordparamount.1"
+	title = "EVTTITLEmbs_tully_lordparamount.1"
+	picture = GFX_evt_riverrun
+	hide_from = yes
+
+	only_independent = yes
+	has_character_flag = aegon_targaryen
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 77000
+		trait = dragon_rider
+		has_landed_title = e_iron_throne
+		has_landed_title = k_riverlands
+		c_17159 = {
+			is_alive = yes
+			prisoner = no
+			is_incapable = no
+		}
+		NOT = { has_global_flag = edmyn_lordparamount }
+	}
+
+	immediate = {
+		set_global_flag = edmyn_lordparamount
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_edmynparamount.1"
+		ai_chance = { factor = 90 }
+		c_17159 = {
+			k_riverlands = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = edmyn_tully
+			}
+		}
+		c_17159 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTB_mbs_edmynparamount.1"
+		ai_chance = { factor = 10 }
+		prestige = 10
+	}
+}
+namespace = mbs_greyjoy_lordparamount
+narrative_event = {
+	id = mbs_greyjoy_lordparamount.1
+	desc = "EVTDESC_mbs_greyjoy_lordparamount.1"
+	title = "EVTTITLEmbs_greyjoy_lordparamount.1"
+	picture = GFX_GREYJOY
+	hide_from = yes
+
+	only_independent = yes
+	has_character_flag = aegon_targaryen
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 77000
+		trait = dragon_rider
+		has_landed_title = e_iron_throne
+		has_landed_title = k_iron_isles
+		c_26107 = {
+			is_alive = yes
+			prisoner = no
+			is_incapable = no
+		}
+		NOT = { has_global_flag = greyjoy_lordparamount }
+	}
+
+	immediate = {
+		set_global_flag = greyjoy_lordparamount
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_greyjoyparamount.1"
+		ai_chance = { factor = 90 }
+		c_26107 = {
+			k_iron_isles = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = agnatic
+			}
+		}
+		c_26107 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTB_mbs_greyjoyparamount.1"
+		ai_chance = { factor = 10 }
+		prestige = 10
+	}
+}

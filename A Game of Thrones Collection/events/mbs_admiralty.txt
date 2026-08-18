@@ -1,0 +1,4068 @@
+namespace = mbs_admiralty
+
+long_character_event = {
+	id = mbs_admiralty.1
+	desc = "EVTDESCmbs_admiralty.1"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.1" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.2 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.1" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 52
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 5
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.3 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.1" #
+		trigger = {
+			any_courtier = {
+				dynasty = 52
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 5
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 52
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.4 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.1" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.2
+	desc = "EVTDESCmbs_admiralty.2"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.2" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_driftmark = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.2" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.3
+	desc = "EVTDESCmbs_admiralty.3"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.3" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 52
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.3" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.4
+	desc = "EVTDESCmbs_admiralty.4"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.4" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 52
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.4" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.101
+	desc = "EVTDESCmbs_admiralty.101"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.101" #
+		ai_chance = {
+			factor = 5
+		}
+		FROM = {
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.102
+	desc = "EVTDESCmbs_admiralty.102"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.102" #
+		ai_chance = {
+			factor = 5
+		}
+		FROM = {
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.103
+	desc = "EVTDESCmbs_admiralty.103"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.103" #
+		ai_chance = {
+			factor = 5
+		}
+		FROM = {
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_disgruntled
+				years = 20
+			}
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.11
+	desc = "EVTDESCmbs_admiralty.11"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.11" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.12 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.11" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 186
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.13 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.11" #
+		trigger = {
+			any_courtier = {
+				dynasty = 186
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 186
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.14 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.11" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.12
+	desc = "EVTDESCmbs_admiralty.12"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.12" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_gulltown = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.12" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.13
+	desc = "EVTDESCmbs_admiralty.13"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.13" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 186
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.13" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.14
+	desc = "EVTDESCmbs_admiralty.14"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.14" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 186
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.14" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.21
+	desc = "EVTDESCmbs_admiralty.21"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.21" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.22 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.21" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 128
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.23 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.21" #
+		trigger = {
+			any_courtier = {
+				dynasty = 128
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 128
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.24 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.21" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.22
+	desc = "EVTDESCmbs_admiralty.22"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.22" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_seagard = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.22" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.23
+	desc = "EVTDESCmbs_admiralty.23"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.23" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 128
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.23" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.24
+	desc = "EVTDESCmbs_admiralty.24"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.24" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 128
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.24" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.31
+	desc = "EVTDESCmbs_admiralty.31"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.31" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.32 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.31" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 194
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.33 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.31" #
+		trigger = {
+			any_courtier = {
+				dynasty = 194
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 194
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.34 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.31" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.32
+	desc = "EVTDESCmbs_admiralty.32"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.32" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_fair_isle = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.32" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.33
+	desc = "EVTDESCmbs_admiralty.33"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.33" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 194
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.33" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.34
+	desc = "EVTDESCmbs_admiralty.34"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.34" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 194
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.34" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.41
+	desc = "EVTDESCmbs_admiralty.41"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.41" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.42 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.41" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 9110
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.43 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.41" #
+		trigger = {
+			any_courtier = {
+				dynasty = 9110
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 9110
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.44 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.41" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.42
+	desc = "EVTDESCmbs_admiralty.42"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.42" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_rainwood = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.42" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.43
+	desc = "EVTDESCmbs_admiralty.43"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.43" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 9110
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.43" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.44
+	desc = "EVTDESCmbs_admiralty.44"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.44" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 9110
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.44" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.51
+	desc = "EVTDESCmbs_admiralty.51"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.51" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.52 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.51" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 80
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.53 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.51" #
+		trigger = {
+			any_courtier = {
+				dynasty = 80
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 80
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.54 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.51" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.52
+	desc = "EVTDESCmbs_admiralty.52"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.52" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_whiteharbor = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.52" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.53
+	desc = "EVTDESCmbs_admiralty.53"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.53" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 80
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.53" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.54
+	desc = "EVTDESCmbs_admiralty.54"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.54" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 80
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.54" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.61
+	desc = "EVTDESCmbs_admiralty.61"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.61" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.62 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.61" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 285
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.63 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.61" #
+		trigger = {
+			any_courtier = {
+				dynasty = 285
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 285
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.64 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.61" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.62
+	desc = "EVTDESCmbs_admiralty.62"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.62" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_oldtown = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.62" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.63
+	desc = "EVTDESCmbs_admiralty.63"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.63" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 285
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.63" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.64
+	desc = "EVTDESCmbs_admiralty.64"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.64" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 285
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.64" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.71
+	desc = "EVTDESCmbs_admiralty.71"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.71" #
+		trigger = {
+			is_adult = yes
+			prisoner = no
+		}
+		ai_chance = {
+			factor = 5
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.72 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.71" #
+		trigger = {
+			liege = {
+				any_courtier = {
+					dynasty = 288
+					is_adult = yes
+					prisoner = no
+				}
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			long_character_event = { id = mbs_admiralty.73 }
+		}
+	}
+	option = {
+		name = "EVTOPTCmbs_admiralty.71" #
+		trigger = {
+			any_courtier = {
+				dynasty = 288
+				is_adult = yes
+				prisoner = no
+			}
+		}
+		ai_chance = {
+			factor = 0
+		}
+
+		liege = {
+			ROOT = {
+				random_courtier = {
+					limit = {
+						dynasty = 288
+						is_adult = yes
+						prisoner = no
+					}
+					move_character = PREVPREV
+					opinion = {
+						who = ROOT
+						modifier = opinion_grateful
+						years = 20
+					}
+				}
+			}
+		}
+		liege = {
+			long_character_event = { id = mbs_admiralty.74 }
+		}
+	}
+	option = {
+		name = "EVTOPTDmbs_admiralty.71" #
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.72
+	desc = "EVTDESCmbs_admiralty.72"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.72" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		c_the_arbor = {
+			holder_scope = {
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.101 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.72" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.73
+	desc = "EVTDESCmbs_admiralty.73"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.73" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		random_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 288
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+			opinion = {
+				who = FROM
+				modifier = opinion_grateful
+				years = 20
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.73" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}
+long_character_event = {
+	id = mbs_admiralty.74
+	desc = "EVTDESCmbs_admiralty.74"
+	picture = GFX_evt_busy_trading_dock_republic
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_admiralty.74" #
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0.1
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 0.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 1.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 2
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+
+		any_courtier_or_vassal = {
+			limit = {
+				has_minor_title = title_high_admiral
+			}
+			remove_title = title_high_admiral
+		}
+		random_courtier = {
+			limit = {
+				dynasty = 288
+				is_adult = yes
+				prisoner = no
+			}
+				give_minor_title = title_high_admiral
+				set_character_flag = minor_title_given
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.102 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_admiralty.74" #
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 1.5
+				NOT = { opinion = { who = FROM value = 0 } }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 25 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 50 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 75 }
+			}
+			modifier = {
+				factor = 0.5
+				opinion = { who = FROM value = 100 }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { NOT = { relative_power = { who = ROOT power = 0.1 } } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.25 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.4 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.6 } }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { relative_power = { who = ROOT power = 0.8 } }
+			}
+			modifier = {
+				factor = 0.1
+				FROM = { relative_power = { who = ROOT power = 1 } }
+			}
+		}
+		FROM = {
+			long_character_event = { id = mbs_admiralty.103 }
+		}
+	}
+}

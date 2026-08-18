@@ -1,0 +1,602 @@
+namespace = mbs_dragon_rider_tracker
+
+#
+#
+#
+#
+
+
+character_event = {
+	id = mbs_dragon_rider_tracker.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_global_flag = dragon_rider_tracker }
+	}
+
+	immediate = {
+		set_global_flag = dragon_rider_tracker
+		any_character = {
+			limit = { trait = dragon }
+			any_owned_bloodline = {
+				limit = { NOT = { has_bloodline_flag = dragon_rider_tracker } }
+				remove_bloodline_member = PREV
+			}
+			any_dynasty_member_even_if_dead = {
+				any_owned_bloodline = {
+					limit = { NOT = { has_bloodline_flag = dragon_rider_tracker } }
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+
+		#Balerion
+		if = {
+			limit = { start_date = 7898.1.1 }
+			c_77051 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990001
+					remove_bloodline_member = c_77051
+				}
+			}
+		}
+		if = {
+			limit = { start_date = 7950.1.1 }
+			c_77060 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990001
+					remove_bloodline_member = c_77060
+				}
+			}
+		}
+		if = { #Aegon the Conqueror
+			limit = { start_date = 7973.1.15 }
+			c_77000 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990001
+					remove_bloodline_member = c_77000
+				}
+			}
+		}
+		if = { #Maegor
+			limit = { start_date = 8037.9.9 }
+			c_77005 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990001
+					remove_bloodline_member = c_77005
+				}
+			}
+		}
+		if = { #Aerea
+			limit = { start_date = 8054.12.1 }
+			c_60670496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990001
+					remove_bloodline_member = c_60670496
+				}
+			}
+		}
+		if = { #Viserys I
+			limit = { start_date = 8093.1.1 }
+			c_77009 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990001
+					remove_bloodline_member = c_77009
+				}
+			}
+		}
+
+		#Meraxes
+		if = {
+			limit = { start_date = 7935.1.1 }
+			c_77059 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990002
+					remove_bloodline_member = c_77059
+				}
+			}
+		}
+		if = {
+			limit = { start_date = 7963.1.1 }
+			c_77064 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990002
+					remove_bloodline_member = c_77064
+				}
+			}
+		}
+		if = { #Rhaenys
+			limit = { start_date = 7996.1.1 }
+			c_77003 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990002
+					remove_bloodline_member = c_77003
+				}
+			}
+		}
+
+		#Vhagar
+		if = { #Visenya
+			limit = { start_date = 7971.1.1 }
+			c_77002 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990003
+					remove_bloodline_member = c_77002
+				}
+			}
+		}
+		if = { #Baelon the Brave
+			limit = { start_date = 8073.1.1 }
+			c_77008 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990003
+					remove_bloodline_member = c_77008
+				}
+			}
+		}
+		if = { #Laena Velaryon
+			limit = { start_date = 8104.1.1 }
+			c_28052 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990003
+					remove_bloodline_member = c_28052
+				}
+			}
+		}
+		if = { #Aemond One-Eye
+			limit = { start_date = 8120.1.1 }
+			c_77014 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990003
+					remove_bloodline_member = c_77014
+				}
+			}
+		}
+
+		#Quicksilver
+		if = { #Aenys I
+			limit = { start_date = 8009.1.1 }
+			c_77004 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990004
+					remove_bloodline_member = c_77004
+				}
+			}
+		}
+		if = { #Aegon the Uncrowned
+			limit = { start_date = 8042.1.1 }
+			c_60650496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990004
+					remove_bloodline_member = c_60650496
+				}
+			}
+		}
+
+		#Vermithor
+		if = { #Jaehaerys I
+			limit = { start_date = 8032.1.1 }
+			c_77006 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990005
+					remove_bloodline_member = c_77006
+				}
+			}
+		}
+		if = { #Hugh the Hammer
+			limit = { start_date = 8129.1.1 }
+			c_30509002 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990005
+					remove_bloodline_member = c_30509002
+				}
+			}
+		}
+
+		#Dreamfyre
+		if = { #Rhaena
+			limit = { start_date = 8032.1.1 }
+			c_60540496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990006
+					remove_bloodline_member = c_60540496
+				}
+			}
+		}
+		if = { #Helaena
+			limit = { start_date = 8123.1.1 }
+			c_77120 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990006
+					remove_bloodline_member = c_77120
+				}
+			}
+		}
+
+		#Silverwing
+		if = { #Alysanne the Good Queen
+			limit = { start_date = 8032.1.1 }
+			c_77007 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990007
+					remove_bloodline_member = c_77007
+				}
+			}
+		}
+		if = { #Ulf the White
+			limit = { start_date = 8129.1.1 }
+			c_30509003 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990007
+					remove_bloodline_member = c_30509003
+				}
+			}
+		}
+
+		#Meleys
+		if = { #Alyssa
+			limit = { start_date = 8075.1.1 }
+			c_77008496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990008
+					remove_bloodline_member = c_77008496
+				}
+			}
+		}
+		if = { #Rhaenys the Queen Who Never Was
+			limit = { start_date = 8087.1.1 }
+			c_60530496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990008
+					remove_bloodline_member = c_60530496
+				}
+			}
+		}
+
+		#Caraxes
+		if = { #Aemon
+			limit = { start_date = 8072.1.1 }
+			c_60520496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990009
+					remove_bloodline_member = c_60520496
+				}
+			}
+		}
+		if = { #Daemon the Rogue Prince
+			limit = { start_date = 8094.1.1 }
+			c_779496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990009
+					remove_bloodline_member = c_779496
+				}
+			}
+		}
+
+		#Seasmoke
+		if = { #Laenor Velaryon
+			limit = { start_date = 8112.1.1 }
+			c_39052 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990010
+					remove_bloodline_member = c_39052
+				}
+			}
+		}
+		if = { #Addam Velaryon
+			limit = { start_date = 8129.2.12 }
+			c_30509003 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990010
+					remove_bloodline_member = c_30509003
+				}
+			}
+		}
+
+		#Syrax
+		if = { #Rhaenyra
+			limit = { start_date = 8104.1.1 }
+			c_77012 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990011
+					remove_bloodline_member = c_77012
+				}
+			}
+		}
+
+		#Sunfyre
+		if = { #Aegon II
+			limit = { start_date = 8121.1.1 }
+			c_77013 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990012
+					remove_bloodline_member = c_77013
+				}
+			}
+		}
+
+		#Tessarion
+		if = { #Daeron the Daring
+			limit = { start_date = 8127.1.1 }
+			c_77119 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990013
+					remove_bloodline_member = c_77119
+				}
+			}
+		}
+
+		#Vermax
+		if = { #Jacaerys 'Velaryon'
+			limit = { start_date = 8115.1.1 }
+			c_33561496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990014
+					remove_bloodline_member = c_33561496
+				}
+			}
+		}
+
+		#Arrax
+		if = { #Lucerys 'Velaryon'
+			limit = { start_date = 8116.1.1 }
+			c_33562496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990015
+					remove_bloodline_member = c_33562496
+				}
+			}
+		}
+
+		#Tyraxes
+		if = { #Joffrey 'Velaryon'
+			limit = { start_date = 8117.1.1 }
+			c_33563496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990016
+					remove_bloodline_member = c_33563496
+				}
+			}
+		}
+
+		#Moondancer
+		if = { #Baela
+			limit = { start_date = 8125.1.1 }
+			c_550052 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990017
+					remove_bloodline_member = c_550052
+				}
+			}
+		}
+
+		#Stormcloud
+		if = { #Aegon the Dragonbane
+			limit = { start_date = 8124.1.1 }
+			c_77015 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990018
+					remove_bloodline_member = c_77015
+				}
+			}
+		}
+
+		#Morghul
+		if = { #Jaehaera
+			limit = { start_date = 8128.1.1 }
+			c_77138 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990019
+					remove_bloodline_member = c_77138
+				}
+			}
+		}
+
+		#Shrykos
+		if = { #Little Jaehaerys
+			limit = { start_date = 8128.1.1 }
+			c_60500496 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990020
+					remove_bloodline_member = c_60500496
+				}
+			}
+		}
+
+		#Sheepstealer
+		if = { #Nettles
+			limit = { start_date = 8120.1.1 }
+			c_30509001 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990022
+					remove_bloodline_member = c_30509001
+				}
+			}
+		}
+
+		#Morning
+		if = { #Rhaena
+			limit = { start_date = 8135.1.1 }
+			c_31052 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990024
+					remove_bloodline_member = c_31052
+				}
+			}
+		}
+
+		#Drogon
+		if = { #
+			limit = { start_date = 8298.1.1 }
+			c_77041 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990026
+					remove_bloodline_member = c_77041
+				}
+			}
+		}
+
+
+		#### Extra Dragons ####
+		#Terrax
+		if = {
+			limit = { start_date = 7510.1.1 }
+			c_10096022 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990500
+					remove_bloodline_member = c_10096022
+				}
+			}
+		}
+		#Vassarion
+		if = {
+			limit = { start_date = 7758.1.1 }
+			c_50012300 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990106
+					remove_bloodline_member = c_50012300
+				}
+			}
+		}
+		#Rovax
+		if = {
+			limit = { start_date = 7822.1.1 }
+			c_600000071 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990110
+					remove_bloodline_member = c_600000071
+				}
+			}
+		}
+		#Neltharion
+		if = {
+			limit = { start_date = 7840.1.1 }
+			c_600000070 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990112
+					remove_bloodline_member = c_600000070
+				}
+			}
+		}
+		#
+		if = {
+			limit = { start_date = 7808.1.1 }
+			c_77001 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990102
+					remove_bloodline_member = c_77001
+				}
+			}
+		}
+		#Nessarion
+		if = {
+			limit = { start_date = 7850.1.1 }
+			c_77054 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990103
+					remove_bloodline_member = c_77054
+				}
+			}
+		}
+		if = {
+			limit = { start_date = 7930.1.1 }
+			c_77055 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990103
+					remove_bloodline_member = c_77055
+				}
+			}
+		}
+		if = {
+			limit = { start_date = 7950.1.1 }
+			c_77058 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990103
+					remove_bloodline_member = c_77058
+				}
+			}
+		}
+		#
+		if = {
+			limit = { start_date = 7855.1.1 }
+			c_77052 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990104
+					remove_bloodline_member = c_77052
+				}
+			}
+		}
+		if = {
+			limit = { start_date = 7930.1.1 }
+			c_77056 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990104
+					remove_bloodline_member = c_77056
+				}
+			}
+		}
+		#Morghon
+		if = {
+			limit = { start_date = 7898.1.1 }
+			c_77053 = {
+				any_owned_bloodline = {
+					limit = { has_bloodline_flag = dragon_rider_tracker }
+					add_bloodline_member = c_77990105
+					remove_bloodline_member = c_77053
+				}
+			}
+		}
+	}
+}

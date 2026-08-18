@@ -1,0 +1,105 @@
+decisions = {
+	renounce_cannibalism_icelaker = {
+		is_high_prio = yes
+		ai = no
+
+		potential = {
+			culture = icelaker
+			trait = cannibal_trait
+		}
+		allow = {
+			trait = cannibal_trait
+			age = 16
+		}
+		effect = {
+			remove_trait = cannibal_trait
+            set_character_flag = refusedcanibalism
+			prestige = -50
+			any_dynasty_member = {
+				limit = { trait = cannibal_trait }
+				opinion = {
+					modifier = opinion_hate
+					who = ROOT
+					years = 60
+				}
+			}
+			any_vassal = {
+				limit =  { trait = cannibal_trait }
+				opinion = {
+					modifier = opinion_hate
+					who = ROOT
+					years = 30
+				}
+			}
+			any_dynasty_member = {
+				limit = {
+					NOT = { trait = cannibal_trait }
+				}
+				opinion = {
+					modifier = approves_of_my_behaviour
+					who = ROOT
+					years = 60
+				}
+			}
+		}
+	}
+
+	adopt_cannibalism_icelaker = {
+		is_high_prio = yes
+		ai = no
+
+		potential = {
+			OR = {
+				mother = {
+					culture = icelaker
+				}
+				father = {
+					culture = icelaker
+				}
+				culture = icelaker
+			}
+			NOT = {
+				trait = cannibal_trait
+			}
+		}
+		allow = {
+			NOT = {
+				trait = cannibal_trait
+			}
+			age = 16
+		}
+		effect = {
+			add_trait = cannibal_trait
+            set_character_flag = chosencanibalism
+			prestige = 50
+			any_dynasty_member = {
+				limit = { trait = cannibal_trait }
+				opinion = {
+					modifier = approves_of_my_behaviour
+					who = ROOT
+					years = 60
+				}
+			}
+			any_vassal = {
+				limit = {
+					NOT = { trait = cannibal_trait }
+				}
+				opinion = {
+					modifier = opinion_hate
+					who = ROOT
+					years = 30
+				}
+			}
+			any_dynasty_member = {
+				limit = {
+					NOT = { trait = cannibal_trait }
+				}
+				opinion = {
+					modifier = opinion_hate
+					who = ROOT
+					years = 60
+				}
+			}
+		}
+	}
+}

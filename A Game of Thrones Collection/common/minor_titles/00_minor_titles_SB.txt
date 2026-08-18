@@ -1,0 +1,369 @@
+########################################################
+# MINOR TITLES
+# Characters can have any number of these
+########################################################
+#	grant_limit: Max number of holders.
+#	realm_in_name: Append the name of the country after the title (Queen [of Sweden])
+#	allowed_to_hold: conditions for the character to hold the title
+#	allowed_to_grant: conditions for a ruler to grant the title
+#	regent: This is the title for regents (not really "minor")
+#	gain_effect: fires when the title is granted
+#	lose_effect: fires when a title is lost through most causes
+#	retire_effect: fires when a title is lost due to the character stepping down
+#	death_effect: fires when a title is lost due to the character dying
+#	message: should fire a message to the its owner when set
+#	The other fields are all character modifiers.
+
+title_commander_shavepate = {
+	is_high_prio = yes
+	dignity = 0.33
+	grant_limit = 1
+	opinion_effect = 10
+	monthly_salary = 0.1
+	monthly_prestige = 0.1
+	is_voter = yes
+
+	allowed_to_hold = {
+		trait = shavepate
+	}
+	allowed_to_grant = {
+		has_landed_title =  c_the_great_pyramid
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+	}
+
+	message = yes
+}
+title_commander_brazen_beasts_watch = {
+	is_high_prio = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_meereen
+		c_meereen = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_the_great_pyramid
+		c_meereen = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_meereen = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_unsullied = {
+	is_high_prio = yes
+	is_voter = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = d_unsullied
+		trait = unsullied
+	}
+	allowed_to_grant = {
+		higher_tier_than = DUKE
+		dynasty = 496
+		has_global_flag = dany_stormborn_events
+	}
+	ai_will_do = {
+		factor = 100
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_lord_commander_imperial_guard_voter = {
+	is_high_prio = yes
+	is_voter = yes
+
+	dignity = 5
+	grant_limit = 1
+
+	show_as_title = no
+	realm_in_name = no
+
+	monthly_salary = 0.1
+	monthly_prestige = 0.5
+	opinion_effect = 5
+
+	allowed_to_hold = {
+		has_landed_title = d_imperialguard
+		is_married = no
+		is_adult = yes
+		combat_rating = 60
+		OR = {
+			combat_rating = 50
+			NOT = { is_close_relative = FROM }
+		}
+		NOT = { has_severe_disability_trigger = yes }
+		NOT = { trait = dragon }
+		NOT = { trait = kingsguard }
+	}
+	allowed_to_grant = {
+		has_landed_title = e_ghiscar
+		NAND = { #Uses the kingsguard instead
+			has_landed_title = e_iron_throne
+			is_title_active = d_kingsguard
+		}
+		NOT = { culture = dothraki } #Uses Bloodriders
+	}
+	ai_will_do = {
+		factor = 100
+		modifier = {
+			factor = 0
+			NOT = { reverse_opinion = { who = FROM value = 0 } }
+		}
+		modifier = {
+			factor = 5
+			trait = skilled_warrior
+		}
+		modifier = {
+			factor = 10
+			trait = master_warrior
+		}
+	}
+
+	gain_effect = { }
+	lose_effect = { }
+
+	message = yes
+}
+title_commander_iron_legions = {
+	is_high_prio = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_newghis
+		c_newghis = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_new_pyramid
+		c_newghis = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_newghis = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_iron_legions_voter = {
+	is_high_prio = yes
+	is_voter = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_newghis
+		c_newghis = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_new_pyramid
+		c_newghis = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_newghis = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_yellow_watch = {
+	is_high_prio = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_yunkai
+		c_yunkai = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_yellowpyramid
+		c_yunkai = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_yunkai = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_blood_watch = {
+	is_high_prio = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_astapor
+		c_astapor = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_red_pyramid
+		c_astapor = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_astapor = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_blood_watch_voter = {
+	is_high_prio = yes
+	is_voter = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_astapor
+		c_astapor = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_red_pyramid
+		c_astapor = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_astapor = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}
+title_commander_yellow_watch_voter = {
+	is_high_prio = yes
+	is_voter = yes
+
+	dignity = 0.3
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = no
+
+	#monthly_salary = 0.1
+	monthly_prestige = 0.25
+
+	allowed_to_hold = {
+		has_landed_title = c_yunkai
+		c_yunkai = { has_title_flag = military_command }
+		is_military_command_trigger = yes
+	}
+	allowed_to_grant = {
+		has_landed_title = c_yellowpyramid
+		c_yunkai = { has_title_flag = military_command }
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+		c_yunkai = { succession = appointment }
+		recalc_succession = yes
+	}
+	lose_effect = {
+	}
+
+	message = no
+}

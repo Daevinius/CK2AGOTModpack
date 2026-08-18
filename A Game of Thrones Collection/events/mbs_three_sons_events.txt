@@ -1,0 +1,186 @@
+namespace = mbs_three_sons
+
+###Phase 1: Formation###
+
+
+character_event = {
+	id = mbs_three_sons.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		NOT = { has_global_flag = n_triarchy_initiated }
+		has_landed_title = e_three_sons
+	}
+
+	immediate = {
+		set_global_flag = n_triarchy_initiated
+	}
+}
+
+
+###Phase 1: Formation###
+long_character_event = {
+	id = mbs_three_sons.1
+	title = EVTTITLEmbs_three_sons.1
+	desc = EVTDESCmbs_three_sons.1
+	picture = GFX_free_cities_planning
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { start_date = 8096.1.1 }
+		OR = {
+			has_landed_title = k_qohor
+			any_realm_character = {
+				has_landed_title = k_qohor
+			}
+		}
+		OR = {
+			has_landed_title = k_norvos
+			any_realm_character = {
+				has_landed_title = k_norvos
+			}
+		}
+		OR = {
+			has_landed_title = k_lorath
+			any_realm_character = {
+				has_landed_title = k_lorath
+			}
+		}
+		OR = {
+			culture = qohorik
+			culture = norvosi
+			culture = lorathi
+		}
+	}
+
+	option = {
+		name = OK
+		set_global_flag = n_triarchy_initiated
+		grant_title = e_three_sons
+		if = {
+			limit = { government = feudal }
+			set_government_type = alliance_government
+			recalc_succession = yes
+		}
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = first_men
+					culture_group = andal
+					culture_group = free_cities
+					culture_group = valyrian
+				}
+			}
+			long_character_event = { id = mbs_three_sons.11 }
+		}
+	}
+}
+
+#AI only
+character_event = {
+	id = mbs_three_sons.10
+
+	hide_window = yes
+
+	ai = yes
+	only_rulers = yes
+
+	culture_group = free_cities
+
+	trigger = {
+		NOT = { start_date = 8096.1.1 }
+		NOT = { has_global_flag = n_triarchy_initiated }
+		government = feudal_government
+		OR = {
+			culture = lorathi
+			culture = norvosi
+			culture = qohorik
+		}
+		NOR = {
+			trait = incapable
+			trait = crippled
+			trait = sick_incapable
+			trait = craven
+			is_dumb_trigger = yes
+			is_weak_trigger = yes
+		}
+		trait = ambitious
+		diplomacy = 10
+		martial = 10
+		age = 30
+		any_independent_ruler = {
+			has_landed_title = k_norvos
+			ai = yes
+		}
+		any_independent_ruler = {
+			has_landed_title = k_qohor
+			ai = yes
+		}
+		any_independent_ruler = {
+			has_landed_title = k_lorath
+			ai = yes
+		}
+
+	}
+
+	mean_time_to_happen = {
+		years = 300
+	}
+
+	immediate = {
+		grant_title = e_three_sons
+		grant_title = c_axe
+		grant_title = b_axe
+		capital = b_axe
+		k_norvos = {
+			set_defacto_liege = ROOT
+		}
+		k_lorath = {
+			set_defacto_liege = ROOT
+		}
+		k_qohor = {
+			set_defacto_liege = ROOT
+		}
+		set_government_type = alliance_government
+		recalc_succession = yes
+		set_global_flag = n_triarchy_initiated
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = first_men
+					culture_group = andal
+					culture_group = free_cities
+					culture_group = valyrian
+				}
+				NOR = {
+					culture = tyroshi
+					culture = lysene
+					culture = myrman
+				}
+			}
+			long_character_event = { id = mbs_three_sons.11 }
+		}
+	}
+	option = {
+		name = OK
+	}
+}
+
+long_character_event = {
+	id = mbs_three_sons.11
+	title = EVTTITLEmbs_three_sons.1
+	desc = EVTDESCmbs_three_sons.11
+	picture = GFX_free_cities_planning
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTmbs_three_sons.11
+	}
+}
+

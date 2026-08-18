@@ -1,0 +1,46 @@
+#c_dragonfly_fort
+1903001 = {
+    name = " "
+
+    religion = "ruin_rel"
+    culture = "ruin"
+
+    6000.1.1 = {
+        birth = yes
+        effect = {
+            if = {
+                limit = { is_ruler = no }
+                death = yes
+            }
+            if = {
+                limit = { is_ruler = yes }
+                add_trait = ruin
+                set_defacto_liege = THIS
+                c_dragonfly_fort = {
+                    location = {
+                        set_province_flag = ct_colony_2
+                        set_province_flag = ruined_province
+                    }
+                }
+                character_event = { id = unoccupied.101 }
+                create_character = {
+                    name = ""
+                    religion = "ruin_rel"
+                    culture = "ruin"
+                    dynasty = none
+                    attributes = {
+                        martial = 0
+                        diplomacy = 0
+                        intrigue = 0
+                        stewardship = 0
+                        learning = 0
+                    }
+                    trait = ruin
+                }
+                new_character = {
+                    b_dragonfly = { gain_title = PREV }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,211 @@
+namespace = sb_faegon
+#Faegon comes to Meereen if he is unlanded and not at war anymore, which means he lost.
+ narrative_event = {
+	id = sb_faegon.1
+	desc = "EVTDESC_sb_faegon.1"
+	title = "EVTTITLE_sb_faegon.1"
+	picture = GFX_evt_young_griff
+
+	only_playable = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		c_125009 = {
+			is_alive = yes
+			prisoner = no
+			is_ruler = no
+		}
+		NOT = { has_global_flag = faegon_stormborn_event }
+		NOT = { trait = wikid }
+	}
+
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	immediate = {
+		set_global_flag = faegon_stormborn_event
+	}
+
+	option = {
+		name = "EVTOPTA_sb_faegon.1A"
+		ai_chance = { factor = 90 }
+		set_character_flag = faegon_joined
+		c_125009 = {
+			move_character = ROOT
+			set_character_flag = joined_daenerys
+		}
+		ROOT = {
+			character_event = {
+				id = sb_faegon.2
+				days = 10
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTA_sb_faegon.1B"
+		ai_chance = { factor = 10 }
+		prestige = 30
+		c_125009 = { imprison = PREV }
+		c_125009 = { tooltip = { show_portrait = yes } }
+	}
+}
+#As Daenerys you declare the defeated Aegon is the true son of Rhaegar and a member of House Targaryen, or a Blackfyre pretender.
+character_event = {
+	id = sb_faegon.2
+	desc = "EVTDESC_sb_faegon.2"
+	title = "EVTTITLE_sb_faegon.2"
+	picture = GFX_evt_young_griff
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = faegon_joined
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		tier = EMPEROR
+		has_global_flag = faegon_stormborn_event
+		NOT = { has_global_flag = sb_targaryen_faegon }
+		NOT = { has_global_flag = sb_blackfyre_faegon }
+		NOT = { has_global_flag = sb_faegon_choice }
+		c_125009 = {
+			is_alive = yes
+			has_character_flag = joined_daenerys
+			prisoner = no
+		}
+	}
+
+	immediate = { set_global_flag = sb_faegon_choice }
+
+	option = {
+		name = "EVTOPTA_sb_faegon.2A"  # Targaryen
+		ai_chance = { factor = 50 }
+		set_global_flag = sb_targaryen_faegon
+		c_125009 = { # Faegon
+			dynasty = 496
+			prestige = 100
+				hidden_tooltip = {
+				any_child_even_if_dead = {
+					limit = { dynasty = ROOT }
+					dynasty = 496
+					any_child_even_if_dead = {
+						limit = { dynasty = ROOT }
+						dynasty = 496
+						any_child_even_if_dead = {
+							limit = { dynasty = ROOT }
+							dynasty = 496
+						}
+					}
+				}
+			}
+			father_even_if_dead = {
+				any_owned_bloodline = {
+					add_bloodline_member = PREV
+				}
+			}
+			character_event = { id = traditional_claims.220 } #check mother bloodlines
+			character_event = { id = traditional_claims.199 days = 10 } #check for traditional dynastic claims
+		}
+		c_77039 = { #Rhaegar Targaryen
+			c_125009 = { set_father = PREV }
+		}
+		c_1001 = { #Elia Martell
+			c_125009 = { set_mother = PREV }
+		}
+		c_125009 = {
+			add_character_modifier = {
+				name = "grandchild_of_incest"
+				duration = -1
+			}
+		}
+		has_missing = {
+			limit = { character = 77043 }
+			father_even_if_dead = {
+				c_125009 = { set_father = PREV }
+			}
+			mother_even_if_dead = {
+				c_125009 = { set_mother = PREV }
+			}
+		}
+		create_character = {
+			female = yes
+			dynasty = random
+			age = 25
+		}
+		new_character = {
+			has_missing = {
+				limit = { character = 77043 }
+				set_mother = PREV
+				dynasty = PREV
+			}
+			death = yes
+		}
+		create_character = {
+			female = no
+			dynasty = random
+			age = 25
+		}
+		new_character = {
+			has_missing = {
+				limit = { character = 77043 }
+				set_father = PREV
+				remove_trait = has_missing
+			}
+			death = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTA_sb_faegon.2B"  # Blackfyre
+		ai_chance = { factor = 50 }
+		set_global_flag = sb_blackfyre_faegon
+		c_125009 = {
+			dynasty = 57
+			prestige = 100
+				hidden_tooltip = {
+					any_child_even_if_dead = {
+						limit = { dynasty = ROOT }
+						dynasty = 57
+					}
+					any_child_even_if_dead = {
+						limit = { dynasty = ROOT }
+						dynasty = 57
+					}
+					any_child_even_if_dead = {
+						limit = { dynasty = ROOT }
+						dynasty = 57
+					}
+				random_bloodline = {
+					limit = { has_bloodline_flag = blackfyre }
+					add_bloodline_member = PREV
+				}
+				random_bloodline = {
+					limit = { has_bloodline_flag = bloodline_daemon }
+					add_bloodline_member = PREV
+				}
+				random_bloodline = {
+					limit = { has_bloodline_flag = bloodline_maelys }
+					add_bloodline_member = PREV
+				}
+			}
+			c_600000040 = { #Illyrio
+				c_125009 = { set_father = PREV }
+			}
+			c_400300519 = {
+				c_125009 = { set_mother = PREV }
+			}
+			mother_even_if_dead = {
+				any_owned_bloodline = {
+					add_bloodline_member = c_125009
+				}
+				hidden_tooltip = {
+					c_10757 = { c_400300519 = { set_father = PREV dynasty = 57 } } #Maelys Link
+				}
+		    }
+		}
+	}
+}

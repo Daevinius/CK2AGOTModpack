@@ -1,0 +1,513 @@
+namespace = sb_azorahai
+#Priest of Rhllor decides if start chain
+narrative_event = {
+	id = sb_azorahai.1
+	desc = "EVTDESC_sb_azorahai.1"
+	title = "EVTTITLEsb_azorahai.1"
+	picture = GFX_evt_red_priest_approaches
+
+	trigger = {
+		has_landed_title = d_rhllor
+		NOT = { has_global_flag = sb_azorahai }
+		c_77041 = {
+			religion = rhllor
+			is_alive = yes
+			prisoner = no
+			NOT = { trait = wikid }
+		}
+	}
+
+	immediate = {
+		set_global_flag = sb_azorahai
+	}
+
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.1"
+		ai_chance = { factor = 95 }
+		set_global_flag = sb_azorahai
+		piety = 100
+		any_playable_ruler = {
+			limit = { has_landed_title = e_ghiscar }
+			narrative_event = {
+				id =  sb_azorahai.2
+				days = 7
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_azorahai.1"
+		ai_chance = { factor = 5 }
+		prestige = 100
+	}
+}
+#Daenerys gets letter from Red Priest
+narrative_event = {
+	id = sb_azorahai.2
+	desc = "EVTDESC_sb_azorahai.2"
+	title = "EVTTITLEsb_azorahai.2"
+	picture = GFX_evt_red_priest_approaches
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.2"
+		ai_chance = { factor = 60 }
+		set_character_flag = rhllor_vassal
+		piety = 50
+		any_playable_ruler = {
+			limit = { has_landed_title = d_rhllor }
+			set_defacto_liege = THIS
+			show_portrait = yes
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_volantis }
+			show_portrait = yes
+			narrative_event = {
+				id = sb_azorahai.3
+				days = 7
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_azorahai.2"
+		ai_chance = { factor = 40 }
+		prestige = 50
+		any_playable_ruler = {
+			limit = { has_landed_title = k_volantis }
+			show_portrait = yes
+		}
+	}
+}
+#Ruler of Volantis acts agains the Temple
+narrative_event = {
+	id = sb_azorahai.3
+	desc = "EVTDESC_sb_azorahai.3"
+	title = "EVTTITLEsb_azorahai.3"
+	picture = GFX_evt_volantis
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = k_volantis
+	}
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.3"
+		ai_chance = { factor = 95 }
+		add_claim = c_templelordoflight
+		any_playable_ruler = {
+			limit = { has_landed_title = e_ghiscar }
+			narrative_event = {
+				id =  sb_azorahai.4
+				days = 3
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_azorahai.3"
+		ai_chance = { factor = 5 }
+		prestige = -200
+	}
+}
+#Daenerys gets news of the war on Volantis
+narrative_event = {
+	id = sb_azorahai.4
+	desc = "EVTDESC_sb_azorahai.4"
+	title = "EVTTITLEsb_azorahai.4"
+	picture = GFX_evt_volantis
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.4"
+		trigger = { trait = dragon_rider }
+		set_character_flag = sb_volantiswar
+		ai_chance = { factor = 90 }
+		k_volantis = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = d_rhllor }
+			set_defacto_liege = ROOT
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_azorahai.4"
+		ai_chance = { factor = 10 }
+		piety = -100
+		d_rhllor = {
+			reverse_unsafe_war = {
+				target = k_volantis
+				casus_belli = dejure_county_claim
+			}
+		}
+	}
+}
+#War Won, Decide Fate of Volantis
+narrative_event = {
+	id = sb_azorahai.5
+	desc = "EVTDESC_sb_azorahai.5"
+	title = "EVTTITLEsb_azorahai.5"
+	picture = GFX_evt_volantis
+
+	only_independent = yes
+	only_women = yes
+	war = no
+	has_character_flag = sb_volantiswar
+
+	trigger = {
+		character = 77041
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = fate_volantis }
+		any_vassal = {
+			has_landed_title = k_volantis
+			NOT = { character = ROOT }
+		}
+		NOT = {
+			any_war = {
+				attacker = { character = ROOT }
+				using_cb = dragon_conquest
+				defender = { has_landed_title = k_volantis }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = volantis_fate
+	}
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.5"
+		ai_chance = { factor = 25 }
+		clr_character_flag = sb_volantiswar
+		any_playable_ruler = {
+			limit = { has_landed_title = d_rhllor }
+			k_volantis = {
+				grant_title = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_azorahai.5"
+		ai_chance = { factor = 25 }
+		clr_character_flag = sb_volantiswar
+		prestige = 100
+	}
+
+	option = {
+		name = "EVTOPTC_sb_azorahai.5"
+		ai_chance = { factor = 25 }
+		clr_character_flag = sb_volantiswar
+		k_firstdaughterTK = { gain_title = ROOT }
+		c_oldvolantis = {
+			grant_title = ROOT
+		}
+		b_blackwall = {
+			grant_title = ROOT
+		}
+		d_volantis = {
+			grant_title = ROOT
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = k_volantis }
+			set_defacto_liege = THIS
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_azorahai.6
+				days = 1
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_azorahai.5"
+		ai_chance = { factor = 25 }
+		clr_character_flag = sb_volantiswar
+		k_firstdaughterTK = { gain_title = ROOT }
+		c_oldvolantis = {
+			grant_title = ROOT
+		}
+		b_blackwall = {
+			grant_title = ROOT
+		}
+		d_volantis = {
+			grant_title = ROOT
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_azorahai.6
+				days = 1
+			}
+		}
+	}
+}
+#Kingdom of the First Daughter
+narrative_event = {
+	id = sb_azorahai.6
+	desc = "EVTDESC_sb_azorahai.6"
+	title = "EVTTITLEsb_azorahai.6"
+	picture = GFX_evt_volantis
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.6"
+		set_global_flag = first_daughter_realm
+		e_ghiscar = {
+			k_firstdaughterTK = { de_jure_liege = PREV }
+		}
+		k_firstdaughterTK = {
+			d_volantis = { de_jure_liege = PREV }
+			d_selhorys = { de_jure_liege = PREV }
+			d_volaena = { de_jure_liege = PREV }
+		}
+		d_volontherys = {
+			c_volantis = { de_jure_liege = PREV }
+			c_tyvis = { de_jure_liege = PREV }
+		}
+		any_playable_ruler = {
+			limit = { has_landed_title = c_selhorys }
+			set_defacto_liege = ROOT
+		}
+		ROOT = {
+			narrative_event = {
+				id = sb_azorahai.7
+				days = 1
+			}
+		}
+		if = {
+			any_playable_ruler = {
+				limit = {
+					has_landed_title = k_volantis
+					has_landed_title = c_little_valyria
+				}
+				random_realm_character = {
+					limit = {
+						is_female = no
+						prisoner = no
+						is_ruler = no
+						is_adult = yes
+						dynasty = 174371
+					}
+					c_little_valyria = { grant_title = PREV }
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_landed_title = k_volantis
+					has_landed_title = c_volantenecoast
+				}
+				random_realm_character = {
+					limit = {
+						is_female = no
+						prisoner = no
+						is_ruler = no
+						is_adult = yes
+						dynasty = 174373
+					}
+					c_volantenecoast = { grant_title = PREV }
+				}
+			}
+			any_playable_ruler = {
+				limit = {
+					has_landed_title = k_volantis
+					has_landed_title = c_vasyugys
+				}
+				random_realm_character = {
+					limit = {
+						is_female = no
+						prisoner = no
+						is_ruler = no
+						is_adult = yes
+						dynasty = 174396
+					}
+					c_vasyugys = { grant_title = PREV }
+				}
+			}
+		}
+	}
+}
+#Choose lord of the First Daughter realm
+narrative_event = {
+	id = sb_azorahai.7
+	desc = "EVTDESC_sb_azorahai.7"
+	title = "EVTTITLEsb_azorahai.7"
+	picture = GFX_evt_volantis
+
+	is_triggered_only = yes
+	has_global_flag = first_daughter_realm
+
+	trigger = {
+		character = 77041
+		NOT = { has_global_flag = choosing_volantisking }
+	}
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.7"
+		ai_chance = { factor = 30 }
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_volantenecoast
+				is_alive =	yes
+				is_ruler = yes
+				dynasty = 174373
+			}
+			k_firstdaughterTK = {
+				grant_title = PREV
+			}
+			create_bloodline = {
+				type = first_daughter_blood
+			}
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = { has_landed_title = c_vasyugys }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_volantenecoast }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_little_valyria }
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_azorahai.7"
+		ai_chance = { factor = 30 }
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_little_valyria
+				is_alive =	yes
+				is_ruler = yes
+				dynasty = 174371
+			}
+			k_firstdaughterTK = {
+				grant_title = PREV
+			}
+			create_bloodline = {
+				type = first_daughter_blood
+			}
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = { has_landed_title = c_vasyugys }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_volantenecoast }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_little_valyria }
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTC_sb_azorahai.7"
+		ai_chance = { factor = 30 }
+		any_playable_ruler = {
+			limit = {
+				has_landed_title = c_vasyugys
+				is_alive =	yes
+				is_ruler = yes
+				dynasty = 174396
+			}
+			k_firstdaughterTK = {
+				grant_title = PREV
+			}
+			create_bloodline = {
+				type = first_daughter_blood
+			}
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = { has_landed_title = c_vasyugys }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_volantenecoast }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_little_valyria }
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTD_sb_azorahai.7"
+		ai_chance = { factor = 10 }
+		set_global_flag = choosing_firstdaughter
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = { has_landed_title = c_vasyugys }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_volantenecoast }
+				set_defacto_liege = ROOT
+			}
+			any_playable_ruler = {
+				limit = { has_landed_title = c_little_valyria }
+				set_defacto_liege = ROOT
+			}
+		}
+	}
+}
+#Random Lord of the First Daughter gets Bloodline
+character_event = {
+	id = sb_azorahai.8
+	desc = "EVTDESC_sb_azorahai.8"
+	title = "EVTTITLEsb_azorahai.8"
+	picture = GFX_evt_volantis
+
+	has_global_flag = choosing_firstdaughter
+	only_playable = yes
+
+	trigger = {
+		NOT = { character = 77041 }
+		has_landed_title = k_firstdaughterTK
+		NOT = { has_global_flag = firstdaughter_bloodline }
+	}
+
+	immediate = {
+		set_global_flag = firstdaughter_bloodline
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA_sb_azorahai.8"
+		clr_global_flag = choosing_firstdaughter
+		set_character_flag = first_daughterlord
+		create_bloodline = {
+			type = first_daughter_blood
+		}
+	}
+}

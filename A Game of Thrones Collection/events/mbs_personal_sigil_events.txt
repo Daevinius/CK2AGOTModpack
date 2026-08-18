@@ -1,0 +1,5740 @@
+namespace = mbs_personal_sigil_events
+###################################
+
+###
+
+character_event = {
+	id = mbs_personal_sigil_events.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Stark
+character_event = {
+	id = mbs_personal_sigil_events.2
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_character_flag = no_special_coa_mbs }
+
+		trigger_if = {
+			limit = { dynasty = 178 }
+
+			NOR = {
+				has_character_flag = arryn_martial
+				has_character_flag = arryn_second
+				has_character_flag = arryn_third
+				has_character_flag = arryn_fourth
+				has_character_flag = arryn_baratheon
+				has_character_flag = arryn_blackfyre
+				has_character_flag = arryn_bolton
+				has_character_flag = arryn_gardener
+				has_character_flag = arryn_greyjoy
+				has_character_flag = arryn_hightower
+				has_character_flag = arryn_hoare
+				has_character_flag = arryn_lannister
+				has_character_flag = arryn_martell
+				has_character_flag = arryn_reyne
+				has_character_flag = arryn_royce
+				has_character_flag = arryn_stark
+				has_character_flag = arryn_targaryen
+				has_character_flag = arryn_tully
+				has_character_flag = arryn_tyrell
+				has_character_flag = arryn_velaryon
+				has_character_flag = arryn_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = {
+				OR = {
+					dynasty = 317	# Baratheon
+					dynasty = 1544	# Durrandon
+				}
+			}
+
+			NOR = {
+				has_character_flag = baratheon_martial
+				has_character_flag = baratheon_second
+				has_character_flag = baratheon_third
+				has_character_flag = baratheon_fourth
+				has_character_flag = baratheon_arryn
+				has_character_flag = baratheon_blackfyre
+				has_character_flag = baratheon_bolton
+				has_character_flag = baratheon_gardener
+				has_character_flag = baratheon_greyjoy
+				has_character_flag = baratheon_hightower
+				has_character_flag = baratheon_hoare
+				has_character_flag = baratheon_lannister
+				has_character_flag = baratheon_martell
+				has_character_flag = baratheon_reyne
+				has_character_flag = baratheon_royce
+				has_character_flag = baratheon_stark
+				has_character_flag = baratheon_targaryen
+				has_character_flag = baratheon_tully
+				has_character_flag = baratheon_tyrell
+				has_character_flag = baratheon_velaryon
+				has_character_flag = baratheon_yronwood
+				has_character_flag = lyonel_baratheon_coa
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 57 }
+
+			NOR = {
+				has_character_flag = blackfyre_martial
+				has_character_flag = blackfyre_second
+				has_character_flag = blackfyre_third
+				has_character_flag = blackfyre_fourth
+				has_character_flag = blackfyre_arryn
+				has_character_flag = blackfyre_baratheon
+				has_character_flag = blackfyre_bolton
+				has_character_flag = blackfyre_gardener
+				has_character_flag = blackfyre_greyjoy
+				has_character_flag = blackfyre_hightower
+				has_character_flag = blackfyre_hoare
+				has_character_flag = blackfyre_lannister
+				has_character_flag = blackfyre_martell
+				has_character_flag = blackfyre_reyne
+				has_character_flag = blackfyre_royce
+				has_character_flag = blackfyre_stark
+				has_character_flag = blackfyre_tully
+				has_character_flag = blackfyre_tyrell
+				has_character_flag = blackfyre_velaryon
+				has_character_flag = blackfyre_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 87 }
+
+			NOR = {
+				has_character_flag = bolton_arryn
+				has_character_flag = bolton_baratheon
+				has_character_flag = bolton_blackfyre
+				has_character_flag = bolton_gardener
+				has_character_flag = bolton_greyjoy
+				has_character_flag = bolton_hightower
+				has_character_flag = bolton_hoare
+				has_character_flag = bolton_lannister
+				has_character_flag = bolton_martell
+				has_character_flag = bolton_reyne
+				has_character_flag = bolton_royce
+				has_character_flag = bolton_stark
+				has_character_flag = bolton_targaryen
+				has_character_flag = bolton_tully
+				has_character_flag = bolton_tyrell
+				has_character_flag = bolton_velaryon
+				has_character_flag = bolton_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 1254 }
+
+			NOR = {
+				has_character_flag = gardener_martial
+				has_character_flag = gardener_second
+				has_character_flag = gardener_third
+				has_character_flag = gardener_fourth
+				has_character_flag = gardener_arryn
+				has_character_flag = gardener_baratheon
+				has_character_flag = gardener_blackfyre
+				has_character_flag = gardener_bolton
+				has_character_flag = gardener_greyjoy
+				has_character_flag = gardener_hightower
+				has_character_flag = gardener_hoare
+				has_character_flag = gardener_lannister
+				has_character_flag = gardener_martell
+				has_character_flag = gardener_reyne
+				has_character_flag = gardener_royce
+				has_character_flag = gardener_stark
+				has_character_flag = gardener_targaryen
+				has_character_flag = gardener_tully
+				has_character_flag = gardener_tyrell
+				has_character_flag = gardener_velaryon
+				has_character_flag = gardener_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 107 }
+
+			NOR = {
+				has_character_flag = greyjoy_martial
+				has_character_flag = greyjoy_second
+				has_character_flag = greyjoy_third
+				has_character_flag = greyjoy_fourth
+				has_character_flag = greyjoy_arryn
+				has_character_flag = greyjoy_baratheon
+				has_character_flag = greyjoy_blackfyre
+				has_character_flag = greyjoy_bolton
+				has_character_flag = greyjoy_gardener
+				has_character_flag = greyjoy_hightower
+				has_character_flag = greyjoy_hoare
+				has_character_flag = greyjoy_lannister
+				has_character_flag = greyjoy_martell
+				has_character_flag = greyjoy_reyne
+				has_character_flag = greyjoy_royce
+				has_character_flag = greyjoy_stark
+				has_character_flag = greyjoy_targaryen
+				has_character_flag = greyjoy_tully
+				has_character_flag = greyjoy_tyrell
+				has_character_flag = greyjoy_velaryon
+				has_character_flag = greyjoy_yronwood
+				has_character_flag = greyjoy_albino
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 285 }
+
+			NOR = {
+				has_character_flag = hightower_arryn
+				has_character_flag = hightower_baratheon
+				has_character_flag = hightower_blackfyre
+				has_character_flag = hightower_bolton
+				has_character_flag = hightower_gardener
+				has_character_flag = hightower_greyjoy
+				has_character_flag = hightower_hoare
+				has_character_flag = hightower_lannister
+				has_character_flag = hightower_martell
+				has_character_flag = hightower_reyne
+				has_character_flag = hightower_royce
+				has_character_flag = hightower_stark
+				has_character_flag = hightower_targaryen
+				has_character_flag = hightower_tully
+				has_character_flag = hightower_tyrell
+				has_character_flag = hightower_velaryon
+				has_character_flag = hightower_yronwood
+				has_character_flag = hightower_wildfire
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 66 }
+
+			NOR = {
+				has_character_flag = hoare_martial
+				has_character_flag = hoare_arryn
+				has_character_flag = hoare_baratheon
+				has_character_flag = hoare_blackfyre
+				has_character_flag = hoare_gardener
+				has_character_flag = hoare_greyjoy
+				has_character_flag = hoare_hightower
+				has_character_flag = hoare_lannister
+				has_character_flag = hoare_martell
+				has_character_flag = hoare_reyne
+				has_character_flag = hoare_stark
+				has_character_flag = hoare_targaryen
+				has_character_flag = hoare_tully
+				has_character_flag = hoare_tyrell
+				has_character_flag = hoare_velaryon
+				has_character_flag = hoare_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 190 }
+
+			NOR = {
+				has_character_flag = lannister_martial
+				has_character_flag = lannister_second
+				has_character_flag = lannister_third
+				has_character_flag = lannister_fourth
+				has_character_flag = lannister_arryn
+				has_character_flag = lannister_baratheon
+				has_character_flag = lannister_blackfyre
+				has_character_flag = lannister_bolton
+				has_character_flag = lannister_gardener
+				has_character_flag = lannister_greyjoy
+				has_character_flag = lannister_hightower
+				has_character_flag = lannister_hoare
+				has_character_flag = lannister_martell
+				has_character_flag = lannister_reyne
+				has_character_flag = lannister_royce
+				has_character_flag = lannister_stark
+				has_character_flag = lannister_targaryen
+				has_character_flag = lannister_tully
+				has_character_flag = lannister_tyrell
+				has_character_flag = lannister_velaryon
+				has_character_flag = lannister_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 1 }
+
+			NOR = {
+				has_character_flag = martell_martial
+				has_character_flag = martell_second
+				has_character_flag = martell_third
+				has_character_flag = martell_fourth
+				has_character_flag = martell_arryn
+				has_character_flag = martell_baratheon
+				has_character_flag = martell_blackfyre
+				has_character_flag = martell_bolton
+				has_character_flag = martell_gardener
+				has_character_flag = martell_greyjoy
+				has_character_flag = martell_hightower
+				has_character_flag = martell_hoare
+				has_character_flag = martell_lannister
+				has_character_flag = martell_reyne
+				has_character_flag = martell_royce
+				has_character_flag = martell_stark
+				has_character_flag = martell_targaryen
+				has_character_flag = martell_tully
+				has_character_flag = martell_tyrell
+				has_character_flag = martell_velaryon
+				has_character_flag = martell_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 197 }
+
+			NOR = {
+				has_character_flag = reyne_martial
+				has_character_flag = reyne_second
+				has_character_flag = reyne_third
+				has_character_flag = reyne_fourth
+				has_character_flag = reyne_arryn
+				has_character_flag = reyne_baratheon
+				has_character_flag = reyne_blackfyre
+				has_character_flag = reyne_bolton
+				has_character_flag = reyne_gardener
+				has_character_flag = reyne_greyjoy
+				has_character_flag = reyne_hightower
+				has_character_flag = reyne_hoare
+				has_character_flag = reyne_lannister
+				has_character_flag = reyne_martell
+				has_character_flag = reyne_royce
+				has_character_flag = reyne_stark
+				has_character_flag = reyne_targaryen
+				has_character_flag = reyne_tully
+				has_character_flag = reyne_tyrell
+				has_character_flag = reyne_velaryon
+				has_character_flag = reyne_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 187 }
+
+			NOR = {
+				has_character_flag = royce_arryn
+				has_character_flag = royce_baratheon
+				has_character_flag = royce_blackfyre
+				has_character_flag = royce_gardener
+				has_character_flag = royce_greyjoy
+				has_character_flag = royce_hightower
+				has_character_flag = royce_hoare
+				has_character_flag = royce_lannister
+				has_character_flag = royce_martell
+				has_character_flag = royce_reyne
+				has_character_flag = royce_stark
+				has_character_flag = royce_targaryen
+				has_character_flag = royce_tully
+				has_character_flag = royce_tyrell
+				has_character_flag = royce_velaryon
+				has_character_flag = royce_yronwood
+				has_character_flag = moon_royce
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 59 }
+
+			NOR = {
+				has_character_flag = stark_martial
+				has_character_flag = stark_second
+				has_character_flag = stark_third
+				has_character_flag = stark_fourth
+				has_character_flag = stark_arryn
+				has_character_flag = stark_baratheon
+				has_character_flag = stark_blackfyre
+				has_character_flag = stark_bolton
+				has_character_flag = stark_gardener
+				has_character_flag = stark_greyjoy
+				has_character_flag = stark_hightower
+				has_character_flag = stark_hoare
+				has_character_flag = stark_lannister
+				has_character_flag = stark_martell
+				has_character_flag = stark_reyne
+				has_character_flag = stark_royce
+				has_character_flag = stark_targaryen
+				has_character_flag = stark_tully
+				has_character_flag = stark_tyrell
+				has_character_flag = stark_velaryon
+				has_character_flag = stark_yronwood
+				has_character_flag = jonnel_stark_coa
+				has_character_flag = barthogan_stark_coa
+				has_character_flag = rodrik_stark_coa
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 496 }
+
+			NOR = {
+				has_character_flag = targaryen_martial
+				has_character_flag = targaryen_second
+				has_character_flag = targaryen_third
+				has_character_flag = targaryen_fourth
+				has_character_flag = targaryen_arryn
+				has_character_flag = targaryen_baratheon
+				has_character_flag = targaryen_blackfyre
+				has_character_flag = targaryen_bolton
+				has_character_flag = targaryen_gardener
+				has_character_flag = targaryen_greyjoy
+				has_character_flag = targaryen_hightower
+				has_character_flag = targaryen_hoare
+				has_character_flag = targaryen_lannister
+				has_character_flag = targaryen_martell
+				has_character_flag = targaryen_reyne
+				has_character_flag = targaryen_royce
+				has_character_flag = targaryen_stark
+				has_character_flag = targaryen_tully
+				has_character_flag = targaryen_tyrell
+				has_character_flag = targaryen_velaryon
+				has_character_flag = targaryen_yronwood
+				has_character_flag = targaryen_wildfire
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 159 }
+
+			NOR = {
+				has_character_flag = tully_martial
+				has_character_flag = tully_second
+				has_character_flag = tully_third
+				has_character_flag = tully_fourth
+				has_character_flag = tully_arryn
+				has_character_flag = tully_baratheon
+				has_character_flag = tully_blackfyre
+				has_character_flag = tully_bolton
+				has_character_flag = tully_gardener
+				has_character_flag = tully_greyjoy
+				has_character_flag = tully_hightower
+				has_character_flag = tully_hoare
+				has_character_flag = tully_lannister
+				has_character_flag = tully_martell
+				has_character_flag = tully_reyne
+				has_character_flag = tully_royce
+				has_character_flag = tully_stark
+				has_character_flag = tully_targaryen
+				has_character_flag = tully_tyrell
+				has_character_flag = tully_velaryon
+				has_character_flag = tully_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1544	# Durrandon
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 253	# Tyrell
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 253 }
+
+			NOR = {
+				has_character_flag = tyrell_martial
+				has_character_flag = tyrell_second
+				has_character_flag = tyrell_third
+				has_character_flag = tyrell_fourth
+				has_character_flag = tyrell_arryn
+				has_character_flag = tyrell_baratheon
+				has_character_flag = tyrell_blackfyre
+				has_character_flag = tyrell_bolton
+				has_character_flag = tyrell_gardener
+				has_character_flag = tyrell_greyjoy
+				has_character_flag = tyrell_hightower
+				has_character_flag = tyrell_hoare
+				has_character_flag = tyrell_lannister
+				has_character_flag = tyrell_martell
+				has_character_flag = tyrell_reyne
+				has_character_flag = tyrell_royce
+				has_character_flag = tyrell_stark
+				has_character_flag = tyrell_targaryen
+				has_character_flag = tyrell_tully
+				has_character_flag = tyrell_velaryon
+				has_character_flag = tyrell_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 317	# Baratheon
+						dynasty = 1544	# Durrandon
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 52	# Velaryon
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 52 }
+
+			NOR = {
+				has_character_flag = velaryon_second
+				has_character_flag = velaryon_third
+				has_character_flag = velaryon_fourth
+				has_character_flag = velaryon_arryn
+				has_character_flag = velaryon_blackfyre
+				has_character_flag = velaryon_bolton
+				has_character_flag = velaryon_gardener
+				has_character_flag = velaryon_greyjoy
+				has_character_flag = velaryon_hightower
+				has_character_flag = velaryon_hoare
+				has_character_flag = velaryon_lannister
+				has_character_flag = velaryon_martell
+				has_character_flag = velaryon_reyne
+				has_character_flag = velaryon_royce
+				has_character_flag = velaryon_stark
+				has_character_flag = velaryon_targaryen
+				has_character_flag = velaryon_tully
+				has_character_flag = velaryon_tyrell
+				has_character_flag = velaryon_yronwood
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 12	# Yronwood
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+						dynasty = 12	# Yronwood
+					}
+				}
+			}
+		}
+		trigger_else_if = {
+			limit = { dynasty = 12 }
+
+			NOR = {
+				has_character_flag = yronwood_arryn
+				has_character_flag = yronwood_blackfyre
+				has_character_flag = yronwood_bolton
+				has_character_flag = yronwood_gardener
+				has_character_flag = yronwood_greyjoy
+				has_character_flag = yronwood_hightower
+				has_character_flag = yronwood_hoare
+				has_character_flag = yronwood_lannister
+				has_character_flag = yronwood_martell
+				has_character_flag = yronwood_reyne
+				has_character_flag = yronwood_royce
+				has_character_flag = yronwood_stark
+				has_character_flag = yronwood_targaryen
+				has_character_flag = yronwood_tully
+				has_character_flag = yronwood_tyrell
+			}
+			OR = {
+				father_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+					}
+				}
+				mother_even_if_dead = {
+					OR = {
+						dynasty = 178	# Arryn
+						dynasty = 57	# Blackfyre
+						dynasty = 87	# Bolton
+						dynasty = 1254	# Gardener
+						dynasty = 107	# Greyjoy
+						dynasty = 285	# Hightower
+						dynasty = 66	# Hoare
+						dynasty = 190	# Lannister
+						dynasty = 1		# Martell
+						dynasty = 197	# Reyne
+						dynasty = 187	# Royce
+						dynasty = 59	# Stark
+						dynasty = 496	# Targaryen
+						dynasty = 159	# Tully
+						dynasty = 253	# Tyrell
+					}
+				}
+			}
+		}
+		trigger_else = {
+			always = no
+		}
+	}
+
+
+	immediate = {
+		if = {
+			limit = { dynasty = 178 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = arryn_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = arryn_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = arryn_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = arryn_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = arryn_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = arryn_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = arryn_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = arryn_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = arryn_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = arryn_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = arryn_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = arryn_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = arryn_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = arryn_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = arryn_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = arryn_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = arryn_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = arryn_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = arryn_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = arryn_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = arryn_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = arryn_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = arryn_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = arryn_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = arryn_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = arryn_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = arryn_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = arryn_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = arryn_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = arryn_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = arryn_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = arryn_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = arryn_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = arryn_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				OR = {
+					dynasty = 317	# Baratheon
+					dynasty = 1544	# Durrandon
+				}
+			}
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = baratheon_arryn }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = baratheon_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = baratheon_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = baratheon_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = baratheon_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = baratheon_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = baratheon_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = baratheon_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = baratheon_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = baratheon_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = baratheon_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = baratheon_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = baratheon_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = baratheon_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = baratheon_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = baratheon_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = baratheon_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = baratheon_arryn }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = baratheon_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = baratheon_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = baratheon_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = baratheon_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = baratheon_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = baratheon_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = baratheon_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = baratheon_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = baratheon_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = baratheon_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = baratheon_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = baratheon_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = baratheon_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = baratheon_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = baratheon_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = baratheon_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 57 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = blackfyre_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = blackfyre_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = blackfyre_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = blackfyre_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = blackfyre_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = blackfyre_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = blackfyre_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = blackfyre_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = blackfyre_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = blackfyre_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = blackfyre_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = blackfyre_stark }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = blackfyre_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = blackfyre_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = blackfyre_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = blackfyre_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = blackfyre_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = blackfyre_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = blackfyre_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = blackfyre_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = blackfyre_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = blackfyre_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = blackfyre_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = blackfyre_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = blackfyre_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = blackfyre_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = blackfyre_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = blackfyre_stark }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = blackfyre_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = blackfyre_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = blackfyre_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = blackfyre_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 87 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = bolton_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = bolton_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = bolton_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = bolton_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = bolton_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = bolton_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = bolton_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = bolton_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = bolton_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = bolton_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = bolton_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = bolton_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = bolton_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = bolton_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = bolton_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = bolton_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = bolton_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = bolton_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = bolton_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = bolton_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = bolton_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = bolton_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = bolton_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = bolton_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = bolton_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = bolton_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = bolton_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = bolton_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = bolton_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = bolton_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = bolton_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = bolton_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = bolton_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = bolton_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 1254 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = gardener_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = gardener_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = gardener_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = gardener_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = gardener_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = gardener_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = gardener_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = gardener_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = gardener_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = gardener_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = gardener_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = gardener_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = gardener_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = gardener_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = gardener_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = gardener_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = gardener_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = gardener_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = gardener_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = gardener_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = gardener_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = gardener_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = gardener_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = gardener_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = gardener_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = gardener_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = gardener_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = gardener_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = gardener_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = gardener_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = gardener_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = gardener_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = gardener_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = gardener_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 107 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = greyjoy_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = greyjoy_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = greyjoy_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = greyjoy_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = greyjoy_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = greyjoy_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = greyjoy_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = greyjoy_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = greyjoy_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = greyjoy_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = greyjoy_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = greyjoy_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = greyjoy_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = greyjoy_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = greyjoy_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = greyjoy_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = greyjoy_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = greyjoy_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = greyjoy_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = greyjoy_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = greyjoy_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = greyjoy_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = greyjoy_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = greyjoy_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = greyjoy_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = greyjoy_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = greyjoy_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = greyjoy_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = greyjoy_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = greyjoy_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = greyjoy_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = greyjoy_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = greyjoy_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = greyjoy_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 285 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = hightower_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = hightower_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = hightower_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = hightower_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = hightower_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = hightower_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = hightower_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = hightower_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = hightower_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = hightower_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = hightower_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = hightower_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = hightower_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = hightower_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = hightower_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = hightower_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = hightower_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = hightower_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = hightower_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = hightower_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = hightower_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = hightower_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = hightower_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = hightower_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = hightower_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = hightower_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = hightower_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = hightower_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = hightower_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = hightower_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = hightower_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = hightower_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = hightower_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = hightower_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 66 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = hoare_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = hoare_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = hoare_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = hoare_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = hoare_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = hoare_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = hoare_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = hoare_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = hoare_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = hoare_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = hoare_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = hoare_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = hoare_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = hoare_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = hoare_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = hoare_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = hoare_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = hoare_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = hoare_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = hoare_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = hoare_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = hoare_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = hoare_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = hoare_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = hoare_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = hoare_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = hoare_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = hoare_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = hoare_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = hoare_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 190 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = lannister_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = lannister_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = lannister_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = lannister_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = lannister_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = lannister_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = lannister_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = lannister_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = lannister_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = lannister_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = lannister_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = lannister_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = lannister_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = lannister_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = lannister_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = lannister_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = lannister_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = lannister_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = lannister_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = lannister_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = lannister_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = lannister_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = lannister_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = lannister_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = lannister_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = lannister_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = lannister_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = lannister_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = lannister_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = lannister_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = lannister_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = lannister_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = lannister_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = lannister_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 1 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = martell_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = martell_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = martell_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = martell_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = martell_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = martell_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = martell_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = martell_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = martell_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = martell_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = martell_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = martell_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = martell_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = martell_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = martell_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = martell_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = martell_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = martell_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = martell_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = martell_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = martell_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = martell_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = martell_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = martell_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = martell_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = martell_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = martell_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = martell_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = martell_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = martell_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = martell_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = martell_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = martell_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = martell_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 197 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = reyne_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = reyne_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = reyne_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = reyne_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = reyne_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = reyne_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = reyne_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = reyne_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = reyne_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = reyne_martell }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = reyne_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = reyne_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = reyne_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = reyne_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = reyne_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = reyne_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = reyne_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = reyne_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = reyne_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = reyne_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = reyne_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = reyne_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = reyne_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = reyne_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = reyne_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = reyne_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = reyne_martell }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = reyne_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = reyne_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = reyne_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = reyne_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = reyne_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = reyne_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = reyne_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 187 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = royce_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = royce_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = royce_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = royce_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = royce_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = royce_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = royce_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = royce_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = royce_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = royce_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = royce_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = royce_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = royce_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = royce_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = royce_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = royce_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = royce_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = royce_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = royce_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = royce_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = royce_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = royce_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = royce_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = royce_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = royce_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = royce_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = royce_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = royce_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = royce_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = royce_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = royce_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = royce_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 59 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = stark_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = stark_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = stark_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = stark_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = stark_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = stark_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = stark_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = stark_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = stark_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = stark_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = stark_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = stark_royce }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = stark_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = stark_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = stark_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = stark_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = stark_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = stark_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = stark_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = stark_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = stark_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = stark_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = stark_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = stark_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = stark_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = stark_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = stark_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = stark_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = stark_royce }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = stark_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = stark_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = stark_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = stark_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = stark_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 496 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = targaryen_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = targaryen_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = targaryen_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = targaryen_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = targaryen_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = targaryen_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = targaryen_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = targaryen_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = targaryen_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = targaryen_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = targaryen_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = targaryen_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = targaryen_stark }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = targaryen_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = targaryen_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = targaryen_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = targaryen_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = targaryen_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = targaryen_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = targaryen_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = targaryen_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = targaryen_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = targaryen_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = targaryen_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = targaryen_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = targaryen_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = targaryen_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = targaryen_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = targaryen_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = targaryen_stark }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = targaryen_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = targaryen_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = targaryen_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = targaryen_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 159 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = tully_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = tully_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = tully_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = tully_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = tully_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = tully_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = tully_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = tully_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = tully_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = tully_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = tully_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = tully_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = tully_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = tully_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = tully_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = tully_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = tully_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = tully_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = tully_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = tully_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = tully_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = tully_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = tully_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = tully_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = tully_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = tully_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = tully_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = tully_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = tully_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = tully_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = tully_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = tully_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = tully_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = tully_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 253 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = tyrell_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = tyrell_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = tyrell_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = tyrell_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = tyrell_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = tyrell_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = tyrell_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = tyrell_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = tyrell_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = tyrell_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = tyrell_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = tyrell_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = tyrell_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = tyrell_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = tyrell_tully }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = tyrell_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = tyrell_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = tyrell_arryn }
+					}
+					else_if = {
+						limit = {
+							OR = {
+								dynasty = 317	# Baratheon
+								dynasty = 1544	# Durrandon
+							}
+						}
+						ROOT = { set_character_flag = tyrell_baratheon }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = tyrell_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = tyrell_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = tyrell_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = tyrell_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = tyrell_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = tyrell_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = tyrell_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = tyrell_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = tyrell_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = tyrell_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = tyrell_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = tyrell_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = tyrell_tully }
+					}
+					else_if = {
+						limit = { dynasty = 52 }
+						ROOT = { set_character_flag = tyrell_velaryon }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = tyrell_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 52 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = velaryon_arryn }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = velaryon_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = velaryon_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = velaryon_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = velaryon_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = velaryon_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = velaryon_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = velaryon_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = velaryon_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = velaryon_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = velaryon_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = velaryon_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = velaryon_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = velaryon_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = velaryon_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = velaryon_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = velaryon_arryn }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = velaryon_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = velaryon_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = velaryon_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = velaryon_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = velaryon_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = velaryon_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = velaryon_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = velaryon_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = velaryon_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = velaryon_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = velaryon_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = velaryon_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = velaryon_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = velaryon_tyrell }
+					}
+					else_if = {
+						limit = { dynasty = 12 }
+						ROOT = { set_character_flag = velaryon_yronwood }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		else_if = {
+			limit = { dynasty = 12 }
+
+			if = {
+				limit = { father_even_if_dead = { NOT = { dynasty = ROOT } } }
+
+				father_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = yronwood_arryn }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = yronwood_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = yronwood_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = yronwood_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = yronwood_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = yronwood_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = yronwood_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = yronwood_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = yronwood_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = yronwood_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = yronwood_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = yronwood_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = yronwood_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = yronwood_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = yronwood_tyrell }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+			else = {
+
+				mother_even_if_dead = {
+					if = {
+						limit = { dynasty = 178 }
+						ROOT = { set_character_flag = yronwood_arryn }
+					}
+					else_if = {
+						limit = { dynasty = 57 }
+						ROOT = { set_character_flag = yronwood_blackfyre }
+					}
+					else_if = {
+						limit = { dynasty = 87 }
+						ROOT = { set_character_flag = yronwood_bolton }
+					}
+					else_if = {
+						limit = { dynasty = 1254 }
+						ROOT = { set_character_flag = yronwood_gardener }
+					}
+					else_if = {
+						limit = { dynasty = 107 }
+						ROOT = { set_character_flag = yronwood_greyjoy }
+					}
+					else_if = {
+						limit = { dynasty = 285 }
+						ROOT = { set_character_flag = yronwood_hightower }
+					}
+					else_if = {
+						limit = { dynasty = 66 }
+						ROOT = { set_character_flag = yronwood_hoare }
+					}
+					else_if = {
+						limit = { dynasty = 190 }
+						ROOT = { set_character_flag = yronwood_lannister }
+					}
+					else_if = {
+						limit = { dynasty = 1 }
+						ROOT = { set_character_flag = yronwood_martell }
+					}
+					else_if = {
+						limit = { dynasty = 197 }
+						ROOT = { set_character_flag = yronwood_reyne }
+					}
+					else_if = {
+						limit = { dynasty = 187 }
+						ROOT = { set_character_flag = yronwood_royce }
+					}
+					else_if = {
+						limit = { dynasty = 59 }
+						ROOT = { set_character_flag = yronwood_stark }
+					}
+					else_if = {
+						limit = { dynasty = 496 }
+						ROOT = { set_character_flag = yronwood_targaryen }
+					}
+					else_if = {
+						limit = { dynasty = 159 }
+						ROOT = { set_character_flag = yronwood_tully }
+					}
+					else_if = {
+						limit = { dynasty = 253 }
+						ROOT = { set_character_flag = yronwood_tyrell }
+					}
+					else = {
+						ROOT = { set_character_flag = no_special_coa_mbs }
+					}
+				}
+			}
+		}
+		character_event = { id = dynamic_coa.1 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Martial
+character_event = {
+	id = mbs_personal_sigil_events.30
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			trait = brilliant_strategist
+			trait = strategist
+			trait = master_warrior
+		}
+
+		trigger_if = {
+			limit = { dynasty = 59 }
+			NOT = { has_character_flag = stark_martial }
+		}
+		trigger_else_if = {
+			limit = {
+				OR = {
+					dynasty = 317	# Baratheon
+					dynasty = 1544	# Durrandon
+				}
+			}
+			NOT = { has_character_flag = baratheon_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 57 }
+			NOT = { has_character_flag = blackfyre_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 1254 }
+			NOT = { has_character_flag = gardener_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 107 }
+			NOT = { has_character_flag = greyjoy_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 66 }
+			NOT = { has_character_flag = hoare_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 190 }
+			NOT = { has_character_flag = lannister_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 1 }
+			NOT = { has_character_flag = martell_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 197 }
+			NOT = { has_character_flag = reyne_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 496 }
+			NOT = { has_character_flag = targaryen_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 159 }
+			NOT = { has_character_flag = tully_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 253 }
+			NOT = { has_character_flag = tyrell_martial }
+		}
+		trigger_else_if = {
+			limit = { dynasty = 178 }
+			NOT = { has_character_flag = arryn_martial }
+		}
+		trigger_else = {
+			always = no
+		}
+	}
+
+
+	immediate = {
+		if = {
+			limit = {
+				dynasty = 59	# Stark
+			}
+			set_character_flag = stark_martial
+		}
+		else_if = {
+			limit = {
+				OR = {
+					dynasty = 317	# Baratheon
+					dynasty = 1544	# Durrandon
+				}
+			}
+			set_character_flag = baratheon_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 57	# Blackfyre
+			}
+			set_character_flag = blackfyre_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 1254	# Gardener
+			}
+			set_character_flag = gardener_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 107	# Greyjoy
+			}
+			set_character_flag = greyjoy_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 178	# Arryn
+			}
+			set_character_flag = arryn_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 66	# Hoare
+			}
+			set_character_flag = hoare_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 190	# Lannister
+			}
+			set_character_flag = lannister_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 1		# Martell
+			}
+			set_character_flag = martell_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 197	# Reyne
+			}
+			set_character_flag = reyne_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 496	# Targaryen
+			}
+			set_character_flag = targaryen_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 159	# Tully
+			}
+			set_character_flag = tully_martial
+		}
+		else_if = {
+			limit = {
+				dynasty = 253	# Tyrell
+			}
+			set_character_flag = tyrell_martial
+		}
+		character_event = { id = dynamic_coa.1 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Multiples
+character_event = {
+	id = mbs_personal_sigil_events.40
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_sibling_even_if_dead  = {
+			count = 1
+			is_female = no
+			is_older_than = ROOT
+			AND = {
+				NOT = {
+					trait = bastard
+				}
+			}
+		}
+		NOR = {
+			any_sibling_even_if_dead  = {
+				count = 2
+				is_female = no
+				is_older_than = ROOT
+				AND = {
+					NOT = {
+						trait = bastard
+					}
+				}
+			}
+			any_sibling_even_if_dead  = {
+				count = 3
+				is_female = no
+				is_older_than = ROOT
+				AND = {
+					NOT = {
+					trait = bastard
+					}
+				}
+			}
+		}
+		OR = {
+			dynasty = 1		# Martell
+			dynasty = 52	# Velaryon
+			dynasty = 57	# Blackfyre
+			dynasty = 59	# Stark
+			dynasty = 66	# Hoare
+			dynasty = 107	# Greyjoy
+			dynasty = 159	# Tully
+			dynasty = 178	# Arryn
+			dynasty = 190	# Lannister
+			dynasty = 197	# Reyne
+			dynasty = 253	# Tyrell
+			dynasty = 317	# Baratheon
+			dynasty = 496	# Targaryen
+			dynasty = 1254	# Gardener
+			dynasty = 1544	# Durrandon
+		}
+		NOR = {
+			has_character_flag = stark_martial
+			has_character_flag = stark_fourth
+			has_character_flag = stark_third
+			has_character_flag = stark_second
+			has_character_flag = stark_arryn
+			has_character_flag = velaryon_martial
+			has_character_flag = velaryon_fourth
+			has_character_flag = velaryon_third
+			has_character_flag = velaryon_second
+			has_character_flag = targaryen_martial
+			has_character_flag = targaryen_fourth
+			has_character_flag = targaryen_third
+			has_character_flag = targaryen_second
+			has_character_flag = blackfyre_martial
+			has_character_flag = blackfyre_fourth
+			has_character_flag = blackfyre_third
+			has_character_flag = blackfyre_second
+			has_character_flag = tully_martial
+			has_character_flag = tully_fourth
+			has_character_flag = tully_third
+			has_character_flag = tully_second
+			has_character_flag = arryn_martial
+			has_character_flag = arryn_fourth
+			has_character_flag = arryn_third
+			has_character_flag = arryn_second
+			has_character_flag = lannister_martial
+			has_character_flag = lannister_fourth
+			has_character_flag = lannister_third
+			has_character_flag = lannister_second
+			has_character_flag = reyne_martial
+			has_character_flag = reyne_fourth
+			has_character_flag = reyne_third
+			has_character_flag = reyne_second
+			has_character_flag = tyrell_martial
+			has_character_flag = tyrell_fourth
+			has_character_flag = tyrell_third
+			has_character_flag = tyrell_second
+			has_character_flag = gardener_martial
+			has_character_flag = gardener_fourth
+			has_character_flag = gardener_third
+			has_character_flag = gardener_second
+			has_character_flag = baratheon_martial
+			has_character_flag = baratheon_fourth
+			has_character_flag = baratheon_third
+			has_character_flag = baratheon_second
+			has_character_flag = martell_martial
+			has_character_flag = martell_fourth
+			has_character_flag = martell_third
+			has_character_flag = martell_second
+			has_character_flag = greyjoy_martial
+			has_character_flag = greyjoy_fourth
+			has_character_flag = greyjoy_third
+			has_character_flag = greyjoy_second
+			has_character_flag = greyjoy_second
+			has_character_flag = stark_arryn
+			has_character_flag = stark_targaryen
+			has_character_flag = stark_baratheon
+			has_character_flag = stark_blackfyre
+			has_character_flag = stark_gardener
+			has_character_flag = stark_greyjoy
+			has_character_flag = stark_hoare
+			has_character_flag = stark_hightower
+			has_character_flag = stark_lannister
+			has_character_flag = stark_martell
+			has_character_flag = stark_reyne
+			has_character_flag = stark_royce
+			has_character_flag = stark_tully
+			has_character_flag = stark_tyrell
+			has_character_flag = stark_yronwood
+			has_character_flag = stark_velaryon
+			has_character_flag = arryn_stark
+			has_character_flag = arryn_targaryen
+			has_character_flag = arryn_baratheon
+			has_character_flag = arryn_blackfyre
+			has_character_flag = arryn_gardener
+			has_character_flag = arryn_greyjoy
+			has_character_flag = arryn_hoare
+			has_character_flag = arryn_hightower
+			has_character_flag = arryn_lannister
+			has_character_flag = arryn_martell
+			has_character_flag = arryn_reyne
+			has_character_flag = arryn_royce
+			has_character_flag = arryn_tully
+			has_character_flag = arryn_tyrell
+			has_character_flag = arryn_yronwood
+			has_character_flag = arryn_velaryon
+			has_character_flag = targaryen_arryn
+			has_character_flag = targaryen_stark
+			has_character_flag = targaryen_baratheon
+			has_character_flag = targaryen_blackfyre
+			has_character_flag = targaryen_gardener
+			has_character_flag = targaryen_greyjoy
+			has_character_flag = targaryen_hoare
+			has_character_flag = targaryen_hightower
+			has_character_flag = targaryen_lannister
+			has_character_flag = targaryen_martell
+			has_character_flag = targaryen_reyne
+			has_character_flag = targaryen_royce
+			has_character_flag = targaryen_tully
+			has_character_flag = targaryen_tyrell
+			has_character_flag = targaryen_yronwood
+			has_character_flag = targaryen_wildfire
+			has_character_flag = targaryen_coa
+			has_character_flag = blackfyre_coa
+			has_character_flag = velaryon_coa
+			has_character_flag = bywater_coa
+			has_character_flag = pyle_coa
+			has_character_flag = stark_coa
+			has_character_flag = bolton_coa
+			has_character_flag = karstark_coa
+			has_character_flag = hornwood_coa
+			has_character_flag = tully_coa
+			has_character_flag = frey_coa
+			has_character_flag = darry_coa
+			has_character_flag = waynwood_coa
+			has_character_flag = lannister_coa
+			has_character_flag = lorch_coa
+			has_character_flag = arryn_coa
+			has_character_flag = clegane_coa
+			has_character_flag = plumm_coa
+			has_character_flag = tyrell_coa
+			has_character_flag = hightower_coa
+			has_character_flag = redwyne_coa
+			has_character_flag = fossoway_coa
+			has_character_flag = baratheon_coa
+			has_character_flag = caron_coa
+			has_character_flag = martell_coa
+			has_character_flag = allyrion_coa
+			has_character_flag = greyjoy_coa
+			has_character_flag = brunedyreden_coa
+			has_character_flag = footenightsong_coa
+			has_character_flag = celtigar_coa
+			has_character_flag = aemon_rivers_coa
+			has_character_flag = targaryen_velaryon
+			has_character_flag = lannister_stark
+			has_character_flag = lannister_targaryen
+			has_character_flag = lannister_baratheon
+			has_character_flag = lannister_blackfyre
+			has_character_flag = lannister_gardener
+			has_character_flag = lannister_greyjoy
+			has_character_flag = lannister_hoare
+			has_character_flag = lannister_hightower
+			has_character_flag = lannister_arryn
+			has_character_flag = lannister_martell
+			has_character_flag = lannister_reyne
+			has_character_flag = lannister_royce
+			has_character_flag = lannister_tully
+			has_character_flag = lannister_tyrell
+			has_character_flag = lannister_yronwood
+			has_character_flag = lannister_velaryon
+			has_character_flag = baratheon_stark
+			has_character_flag = baratheon_targaryen
+			has_character_flag = baratheon_lannister
+			has_character_flag = baratheon_blackfyre
+			has_character_flag = baratheon_gardener
+			has_character_flag = baratheon_greyjoy
+			has_character_flag = baratheon_hoare
+			has_character_flag = baratheon_hightower
+			has_character_flag = baratheon_arryn
+			has_character_flag = baratheon_martell
+			has_character_flag = baratheon_reyne
+			has_character_flag = baratheon_royce
+			has_character_flag = baratheon_tully
+			has_character_flag = baratheon_tyrell
+			has_character_flag = baratheon_yronwood
+			has_character_flag = baratheon_velaryon
+			has_character_flag = martell_stark
+			has_character_flag = martell_targaryen
+			has_character_flag = martell_baratheon
+			has_character_flag = martell_blackfyre
+			has_character_flag = martell_gardener
+			has_character_flag = martell_greyjoy
+			has_character_flag = martell_hoare
+			has_character_flag = martell_hightower
+			has_character_flag = martell_arryn
+			has_character_flag = martell_lannister
+			has_character_flag = martell_reyne
+			has_character_flag = martell_royce
+			has_character_flag = martell_tully
+			has_character_flag = martell_tyrell
+			has_character_flag = martell_yronwood
+			has_character_flag = martell_velaryon
+			has_character_flag = tyrell_stark
+			has_character_flag = tyrell_targaryen
+			has_character_flag = tyrell_baratheon
+			has_character_flag = tyrell_blackfyre
+			has_character_flag = tyrell_gardener
+			has_character_flag = tyrell_greyjoy
+			has_character_flag = tyrell_hoare
+			has_character_flag = tyrell_hightower
+			has_character_flag = tyrell_arryn
+			has_character_flag = tyrell_lannister
+			has_character_flag = tyrell_reyne
+			has_character_flag = tyrell_royce
+			has_character_flag = tyrell_tully
+			has_character_flag = tyrell_martell
+			has_character_flag = tyrell_yronwood
+			has_character_flag = tyrell_velaryon
+			has_character_flag = tully_stark
+			has_character_flag = tully_targaryen
+			has_character_flag = tully_baratheon
+			has_character_flag = tully_blackfyre
+			has_character_flag = tully_gardener
+			has_character_flag = tully_greyjoy
+			has_character_flag = tully_hoare
+			has_character_flag = tully_hightower
+			has_character_flag = tully_arryn
+			has_character_flag = tully_lannister
+			has_character_flag = tully_reyne
+			has_character_flag = tully_royce
+			has_character_flag = tully_tyrell
+			has_character_flag = tully_martell
+			has_character_flag = tully_yronwood
+			has_character_flag = tully_velaryon
+			has_character_flag = no_special_coa_mbs
+		}
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				100 = {
+					if = {
+						limit = {
+							dynasty = 59	# Stark
+						}
+						set_character_flag = stark_second
+					}
+					if = {
+						limit = {
+							dynasty = 317	# Baratheon
+						}
+						set_character_flag = baratheon_second
+					}
+					if = {
+						limit = {
+							dynasty = 1544	# Durrandon
+						}
+						set_character_flag = baratheon_second
+					}
+					if = {
+						limit = {
+							dynasty = 178	# Arryn
+						}
+						set_character_flag = arryn_second
+					}
+					if = {
+						limit = {
+							dynasty = 57	# Blackfyre
+						}
+						set_character_flag = blackfyre_second
+					}
+					if = {
+						limit = {
+							dynasty = 1254	# Gardener
+						}
+						set_character_flag = gardener_second
+					}
+					if = {
+						limit = {
+							dynasty = 107	# Greyjoy
+						}
+						set_character_flag = greyjoy_second
+					}
+					if = {
+						limit = {
+							dynasty = 66	# Hoare
+						}
+						set_character_flag = hoare_second
+					}
+					if = {
+						limit = {
+							dynasty = 190	# Lannister
+						}
+						set_character_flag = lannister_second
+					}
+					if = {
+						limit = {
+							dynasty = 1		# Martell
+						}
+						set_character_flag = martell_second
+					}
+					if = {
+						limit = {
+							dynasty = 197	# Reyne
+						}
+						set_character_flag = reyne_second
+					}
+					if = {
+						limit = {
+							dynasty = 496	# Targaryen
+						}
+						set_character_flag = targaryen_second
+					}
+					if = {
+						limit = {
+							dynasty = 159	# Tully
+						}
+						set_character_flag = tully_second
+					}
+					if = {
+						limit = {
+							dynasty = 253	# Tyrell
+						}
+						set_character_flag = tyrell_second
+					}
+				}
+				300 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_personal_sigil_events.41
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_sibling_even_if_dead  = {
+			count = 2
+			is_female = no
+			is_older_than = ROOT
+			AND = {
+				NOT = {
+					trait = bastard
+				}
+			}
+		}
+		NOT = {
+			any_sibling_even_if_dead  = {
+				count = 3
+				is_female = no
+				is_older_than = ROOT
+				AND = {
+					NOT = {
+					trait = bastard
+					}
+				}
+			}
+		}
+		OR = {
+			dynasty = 59	# Stark
+			dynasty = 52	# Velaryon
+			dynasty = 317	# Baratheon
+			dynasty = 1544	# Durrandon
+			dynasty = 57	# Blackfyre
+			dynasty = 1254	# Gardener
+			dynasty = 107	# Greyjoy
+			dynasty = 66	# Hoare
+			dynasty = 190	# Lannister
+			dynasty = 1		# Martell
+			dynasty = 197	# Reyne
+			dynasty = 496	# Targaryen
+			dynasty = 159	# Tully
+			dynasty = 178	# Arryn
+			dynasty = 253	# Tyrell
+		}
+		NOR = {
+			has_character_flag = stark_martial
+			has_character_flag = stark_fourth
+			has_character_flag = stark_third
+			has_character_flag = stark_second
+			has_character_flag = stark_arryn
+			has_character_flag = velaryon_martial
+			has_character_flag = velaryon_fourth
+			has_character_flag = velaryon_third
+			has_character_flag = velaryon_second
+			has_character_flag = targaryen_martial
+			has_character_flag = targaryen_fourth
+			has_character_flag = targaryen_third
+			has_character_flag = targaryen_second
+			has_character_flag = blackfyre_martial
+			has_character_flag = blackfyre_fourth
+			has_character_flag = blackfyre_third
+			has_character_flag = blackfyre_second
+			has_character_flag = tully_martial
+			has_character_flag = tully_fourth
+			has_character_flag = tully_third
+			has_character_flag = tully_second
+			has_character_flag = arryn_martial
+			has_character_flag = arryn_fourth
+			has_character_flag = arryn_third
+			has_character_flag = arryn_second
+			has_character_flag = lannister_martial
+			has_character_flag = lannister_fourth
+			has_character_flag = lannister_third
+			has_character_flag = lannister_second
+			has_character_flag = reyne_martial
+			has_character_flag = reyne_fourth
+			has_character_flag = reyne_third
+			has_character_flag = reyne_second
+			has_character_flag = tyrell_martial
+			has_character_flag = tyrell_fourth
+			has_character_flag = tyrell_third
+			has_character_flag = tyrell_second
+			has_character_flag = gardener_martial
+			has_character_flag = gardener_fourth
+			has_character_flag = gardener_third
+			has_character_flag = gardener_second
+			has_character_flag = baratheon_martial
+			has_character_flag = baratheon_fourth
+			has_character_flag = baratheon_third
+			has_character_flag = baratheon_second
+			has_character_flag = martell_martial
+			has_character_flag = martell_fourth
+			has_character_flag = martell_third
+			has_character_flag = martell_second
+			has_character_flag = greyjoy_martial
+			has_character_flag = greyjoy_fourth
+			has_character_flag = greyjoy_third
+			has_character_flag = greyjoy_second
+			has_character_flag = greyjoy_second
+			has_character_flag = stark_arryn
+			has_character_flag = stark_targaryen
+			has_character_flag = stark_baratheon
+			has_character_flag = stark_blackfyre
+			has_character_flag = stark_gardener
+			has_character_flag = stark_greyjoy
+			has_character_flag = stark_hoare
+			has_character_flag = stark_hightower
+			has_character_flag = stark_lannister
+			has_character_flag = stark_martell
+			has_character_flag = stark_reyne
+			has_character_flag = stark_royce
+			has_character_flag = stark_tully
+			has_character_flag = stark_tyrell
+			has_character_flag = stark_yronwood
+			has_character_flag = stark_velaryon
+			has_character_flag = arryn_stark
+			has_character_flag = arryn_targaryen
+			has_character_flag = arryn_baratheon
+			has_character_flag = arryn_blackfyre
+			has_character_flag = arryn_gardener
+			has_character_flag = arryn_greyjoy
+			has_character_flag = arryn_hoare
+			has_character_flag = arryn_hightower
+			has_character_flag = arryn_lannister
+			has_character_flag = arryn_martell
+			has_character_flag = arryn_reyne
+			has_character_flag = arryn_royce
+			has_character_flag = arryn_tully
+			has_character_flag = arryn_tyrell
+			has_character_flag = arryn_yronwood
+			has_character_flag = arryn_velaryon
+			has_character_flag = targaryen_arryn
+			has_character_flag = targaryen_stark
+			has_character_flag = targaryen_baratheon
+			has_character_flag = targaryen_blackfyre
+			has_character_flag = targaryen_gardener
+			has_character_flag = targaryen_greyjoy
+			has_character_flag = targaryen_hoare
+			has_character_flag = targaryen_hightower
+			has_character_flag = targaryen_lannister
+			has_character_flag = targaryen_martell
+			has_character_flag = targaryen_reyne
+			has_character_flag = targaryen_royce
+			has_character_flag = targaryen_tully
+			has_character_flag = targaryen_tyrell
+			has_character_flag = targaryen_yronwood
+			has_character_flag = targaryen_velaryon
+			has_character_flag = targaryen_wildfire
+			has_character_flag = targaryen_coa
+			has_character_flag = blackfyre_coa
+			has_character_flag = velaryon_coa
+			has_character_flag = bywater_coa
+			has_character_flag = pyle_coa
+			has_character_flag = stark_coa
+			has_character_flag = bolton_coa
+			has_character_flag = karstark_coa
+			has_character_flag = hornwood_coa
+			has_character_flag = tully_coa
+			has_character_flag = frey_coa
+			has_character_flag = darry_coa
+			has_character_flag = waynwood_coa
+			has_character_flag = lannister_coa
+			has_character_flag = lorch_coa
+			has_character_flag = arryn_coa
+			has_character_flag = clegane_coa
+			has_character_flag = plumm_coa
+			has_character_flag = tyrell_coa
+			has_character_flag = hightower_coa
+			has_character_flag = redwyne_coa
+			has_character_flag = fossoway_coa
+			has_character_flag = baratheon_coa
+			has_character_flag = caron_coa
+			has_character_flag = martell_coa
+			has_character_flag = allyrion_coa
+			has_character_flag = greyjoy_coa
+			has_character_flag = brunedyreden_coa
+			has_character_flag = footenightsong_coa
+			has_character_flag = celtigar_coa
+			has_character_flag = aemon_rivers_coa
+			has_character_flag = lannister_stark
+			has_character_flag = lannister_targaryen
+			has_character_flag = lannister_baratheon
+			has_character_flag = lannister_blackfyre
+			has_character_flag = lannister_gardener
+			has_character_flag = lannister_greyjoy
+			has_character_flag = lannister_hoare
+			has_character_flag = lannister_hightower
+			has_character_flag = lannister_arryn
+			has_character_flag = lannister_martell
+			has_character_flag = lannister_reyne
+			has_character_flag = lannister_royce
+			has_character_flag = lannister_tully
+			has_character_flag = lannister_tyrell
+			has_character_flag = lannister_yronwood
+			has_character_flag = lannister_velaryon
+			has_character_flag = baratheon_stark
+			has_character_flag = baratheon_targaryen
+			has_character_flag = baratheon_lannister
+			has_character_flag = baratheon_blackfyre
+			has_character_flag = baratheon_gardener
+			has_character_flag = baratheon_greyjoy
+			has_character_flag = baratheon_hoare
+			has_character_flag = baratheon_hightower
+			has_character_flag = baratheon_arryn
+			has_character_flag = baratheon_martell
+			has_character_flag = baratheon_reyne
+			has_character_flag = baratheon_royce
+			has_character_flag = baratheon_tully
+			has_character_flag = baratheon_tyrell
+			has_character_flag = baratheon_yronwood
+			has_character_flag = baratheon_velaryon
+			has_character_flag = martell_stark
+			has_character_flag = martell_targaryen
+			has_character_flag = martell_baratheon
+			has_character_flag = martell_blackfyre
+			has_character_flag = martell_gardener
+			has_character_flag = martell_greyjoy
+			has_character_flag = martell_hoare
+			has_character_flag = martell_hightower
+			has_character_flag = martell_arryn
+			has_character_flag = martell_lannister
+			has_character_flag = martell_reyne
+			has_character_flag = martell_royce
+			has_character_flag = martell_tully
+			has_character_flag = martell_tyrell
+			has_character_flag = martell_yronwood
+			has_character_flag = martell_velaryon
+			has_character_flag = tyrell_stark
+			has_character_flag = tyrell_targaryen
+			has_character_flag = tyrell_baratheon
+			has_character_flag = tyrell_blackfyre
+			has_character_flag = tyrell_gardener
+			has_character_flag = tyrell_greyjoy
+			has_character_flag = tyrell_hoare
+			has_character_flag = tyrell_hightower
+			has_character_flag = tyrell_arryn
+			has_character_flag = tyrell_lannister
+			has_character_flag = tyrell_reyne
+			has_character_flag = tyrell_royce
+			has_character_flag = tyrell_tully
+			has_character_flag = tyrell_martell
+			has_character_flag = tyrell_yronwood
+			has_character_flag = tyrell_velaryon
+			has_character_flag = tully_stark
+			has_character_flag = tully_targaryen
+			has_character_flag = tully_baratheon
+			has_character_flag = tully_blackfyre
+			has_character_flag = tully_gardener
+			has_character_flag = tully_greyjoy
+			has_character_flag = tully_hoare
+			has_character_flag = tully_hightower
+			has_character_flag = tully_arryn
+			has_character_flag = tully_lannister
+			has_character_flag = tully_reyne
+			has_character_flag = tully_royce
+			has_character_flag = tully_tyrell
+			has_character_flag = tully_martell
+			has_character_flag = tully_yronwood
+			has_character_flag = tully_velaryon
+			has_character_flag = no_special_coa_mbs
+		}
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				150 = {
+					if = {
+						limit = {
+							dynasty = 59	# Stark
+						}
+						set_character_flag = stark_third
+					}
+					if = {
+						limit = {
+							dynasty = 317	# Baratheon
+						}
+						set_character_flag = baratheon_third
+					}
+					if = {
+						limit = {
+							dynasty = 1544	# Durrandon
+						}
+						set_character_flag = baratheon_third
+					}
+					if = {
+						limit = {
+							dynasty = 178	# Arryn
+						}
+						set_character_flag = arryn_third
+					}
+					if = {
+						limit = {
+							dynasty = 57	# Blackfyre
+						}
+						set_character_flag = blackfyre_third
+					}
+					if = {
+						limit = {
+							dynasty = 1254	# Gardener
+						}
+						set_character_flag = gardener_third
+					}
+					if = {
+						limit = {
+							dynasty = 107	# Greyjoy
+						}
+						set_character_flag = greyjoy_third
+					}
+					if = {
+						limit = {
+							dynasty = 66	# Hoare
+						}
+						set_character_flag = hoare_third
+					}
+					if = {
+						limit = {
+							dynasty = 190	# Lannister
+						}
+						set_character_flag = lannister_third
+					}
+					if = {
+						limit = {
+							dynasty = 1		# Martell
+						}
+						set_character_flag = martell_third
+					}
+					if = {
+						limit = {
+							dynasty = 197	# Reyne
+						}
+						set_character_flag = reyne_third
+					}
+					if = {
+						limit = {
+							dynasty = 496	# Targaryen
+						}
+						set_character_flag = targaryen_third
+					}
+					if = {
+						limit = {
+							dynasty = 159	# Tully
+						}
+						set_character_flag = tully_third
+					}
+					if = {
+						limit = {
+							dynasty = 253	# Tyrell
+						}
+						set_character_flag = tyrell_third
+					}
+				}
+				250 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_personal_sigil_events.42
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_sibling_even_if_dead  = {
+			count = 3
+			is_female = no
+			is_older_than = ROOT
+			AND = {
+				NOT = {
+					trait = bastard
+				}
+			}
+		}
+		NOT = {
+			any_sibling_even_if_dead  = {
+				count = 5
+				is_female = no
+				is_older_than = ROOT
+				AND = {
+					NOT = {
+						trait = bastard
+					}
+				}
+			}
+		}
+		OR = {
+			dynasty = 59	# Stark
+			dynasty = 52	# Velaryon
+			dynasty = 317	# Baratheon
+			dynasty = 1544	# Durrandon
+			dynasty = 57	# Blackfyre
+			dynasty = 1254	# Gardener
+			dynasty = 107	# Greyjoy
+			dynasty = 66	# Hoare
+			dynasty = 190	# Lannister
+			dynasty = 1		# Martell
+			dynasty = 197	# Reyne
+			dynasty = 496	# Targaryen
+			dynasty = 159	# Tully
+			dynasty = 178	# Arryn
+			dynasty = 253	# Tyrell
+		}
+		NOR = {
+			has_character_flag = stark_martial
+			has_character_flag = stark_fourth
+			has_character_flag = stark_third
+			has_character_flag = stark_second
+			has_character_flag = stark_arryn
+			has_character_flag = velaryon_martial
+			has_character_flag = velaryon_fourth
+			has_character_flag = velaryon_third
+			has_character_flag = velaryon_second
+			has_character_flag = targaryen_martial
+			has_character_flag = targaryen_fourth
+			has_character_flag = targaryen_third
+			has_character_flag = targaryen_second
+			has_character_flag = blackfyre_martial
+			has_character_flag = blackfyre_fourth
+			has_character_flag = blackfyre_third
+			has_character_flag = blackfyre_second
+			has_character_flag = tully_martial
+			has_character_flag = tully_fourth
+			has_character_flag = tully_third
+			has_character_flag = tully_second
+			has_character_flag = arryn_martial
+			has_character_flag = arryn_fourth
+			has_character_flag = arryn_third
+			has_character_flag = arryn_second
+			has_character_flag = lannister_martial
+			has_character_flag = lannister_fourth
+			has_character_flag = lannister_third
+			has_character_flag = lannister_second
+			has_character_flag = reyne_martial
+			has_character_flag = reyne_fourth
+			has_character_flag = reyne_third
+			has_character_flag = reyne_second
+			has_character_flag = tyrell_martial
+			has_character_flag = tyrell_fourth
+			has_character_flag = tyrell_third
+			has_character_flag = tyrell_second
+			has_character_flag = gardener_martial
+			has_character_flag = gardener_fourth
+			has_character_flag = gardener_third
+			has_character_flag = gardener_second
+			has_character_flag = baratheon_martial
+			has_character_flag = baratheon_fourth
+			has_character_flag = baratheon_third
+			has_character_flag = baratheon_second
+			has_character_flag = martell_martial
+			has_character_flag = martell_fourth
+			has_character_flag = martell_third
+			has_character_flag = martell_second
+			has_character_flag = greyjoy_martial
+			has_character_flag = greyjoy_fourth
+			has_character_flag = greyjoy_third
+			has_character_flag = greyjoy_second
+			has_character_flag = greyjoy_second
+			has_character_flag = stark_arryn
+			has_character_flag = stark_targaryen
+			has_character_flag = stark_baratheon
+			has_character_flag = stark_blackfyre
+			has_character_flag = stark_gardener
+			has_character_flag = stark_greyjoy
+			has_character_flag = stark_hoare
+			has_character_flag = stark_hightower
+			has_character_flag = stark_lannister
+			has_character_flag = stark_martell
+			has_character_flag = stark_reyne
+			has_character_flag = stark_royce
+			has_character_flag = stark_tully
+			has_character_flag = stark_tyrell
+			has_character_flag = stark_yronwood
+			has_character_flag = stark_velaryon
+			has_character_flag = arryn_stark
+			has_character_flag = arryn_targaryen
+			has_character_flag = arryn_baratheon
+			has_character_flag = arryn_blackfyre
+			has_character_flag = arryn_gardener
+			has_character_flag = arryn_greyjoy
+			has_character_flag = arryn_hoare
+			has_character_flag = arryn_hightower
+			has_character_flag = arryn_lannister
+			has_character_flag = arryn_martell
+			has_character_flag = arryn_reyne
+			has_character_flag = arryn_royce
+			has_character_flag = arryn_tully
+			has_character_flag = arryn_tyrell
+			has_character_flag = arryn_yronwood
+			has_character_flag = arryn_velaryon
+			has_character_flag = targaryen_arryn
+			has_character_flag = targaryen_stark
+			has_character_flag = targaryen_baratheon
+			has_character_flag = targaryen_blackfyre
+			has_character_flag = targaryen_gardener
+			has_character_flag = targaryen_greyjoy
+			has_character_flag = targaryen_hoare
+			has_character_flag = targaryen_hightower
+			has_character_flag = targaryen_lannister
+			has_character_flag = targaryen_martell
+			has_character_flag = targaryen_reyne
+			has_character_flag = targaryen_royce
+			has_character_flag = targaryen_tully
+			has_character_flag = targaryen_tyrell
+			has_character_flag = targaryen_yronwood
+			has_character_flag = targaryen_velaryon
+			has_character_flag = targaryen_wildfire
+			has_character_flag = targaryen_coa
+			has_character_flag = blackfyre_coa
+			has_character_flag = velaryon_coa
+			has_character_flag = bywater_coa
+			has_character_flag = pyle_coa
+			has_character_flag = stark_coa
+			has_character_flag = bolton_coa
+			has_character_flag = karstark_coa
+			has_character_flag = hornwood_coa
+			has_character_flag = tully_coa
+			has_character_flag = frey_coa
+			has_character_flag = darry_coa
+			has_character_flag = waynwood_coa
+			has_character_flag = lannister_coa
+			has_character_flag = lorch_coa
+			has_character_flag = arryn_coa
+			has_character_flag = clegane_coa
+			has_character_flag = plumm_coa
+			has_character_flag = tyrell_coa
+			has_character_flag = hightower_coa
+			has_character_flag = redwyne_coa
+			has_character_flag = fossoway_coa
+			has_character_flag = baratheon_coa
+			has_character_flag = caron_coa
+			has_character_flag = martell_coa
+			has_character_flag = allyrion_coa
+			has_character_flag = greyjoy_coa
+			has_character_flag = brunedyreden_coa
+			has_character_flag = footenightsong_coa
+			has_character_flag = celtigar_coa
+			has_character_flag = aemon_rivers_coa
+			has_character_flag = lannister_stark
+			has_character_flag = lannister_targaryen
+			has_character_flag = lannister_baratheon
+			has_character_flag = lannister_blackfyre
+			has_character_flag = lannister_gardener
+			has_character_flag = lannister_greyjoy
+			has_character_flag = lannister_hoare
+			has_character_flag = lannister_hightower
+			has_character_flag = lannister_arryn
+			has_character_flag = lannister_martell
+			has_character_flag = lannister_reyne
+			has_character_flag = lannister_royce
+			has_character_flag = lannister_tully
+			has_character_flag = lannister_tyrell
+			has_character_flag = lannister_yronwood
+			has_character_flag = lannister_velaryon
+			has_character_flag = baratheon_stark
+			has_character_flag = baratheon_targaryen
+			has_character_flag = baratheon_lannister
+			has_character_flag = baratheon_blackfyre
+			has_character_flag = baratheon_gardener
+			has_character_flag = baratheon_greyjoy
+			has_character_flag = baratheon_hoare
+			has_character_flag = baratheon_hightower
+			has_character_flag = baratheon_arryn
+			has_character_flag = baratheon_martell
+			has_character_flag = baratheon_reyne
+			has_character_flag = baratheon_royce
+			has_character_flag = baratheon_tully
+			has_character_flag = baratheon_tyrell
+			has_character_flag = baratheon_yronwood
+			has_character_flag = baratheon_velaryon
+			has_character_flag = martell_stark
+			has_character_flag = martell_targaryen
+			has_character_flag = martell_baratheon
+			has_character_flag = martell_blackfyre
+			has_character_flag = martell_gardener
+			has_character_flag = martell_greyjoy
+			has_character_flag = martell_hoare
+			has_character_flag = martell_hightower
+			has_character_flag = martell_arryn
+			has_character_flag = martell_lannister
+			has_character_flag = martell_reyne
+			has_character_flag = martell_royce
+			has_character_flag = martell_tully
+			has_character_flag = martell_tyrell
+			has_character_flag = martell_yronwood
+			has_character_flag = martell_velaryon
+			has_character_flag = tyrell_stark
+			has_character_flag = tyrell_targaryen
+			has_character_flag = tyrell_baratheon
+			has_character_flag = tyrell_blackfyre
+			has_character_flag = tyrell_gardener
+			has_character_flag = tyrell_greyjoy
+			has_character_flag = tyrell_hoare
+			has_character_flag = tyrell_hightower
+			has_character_flag = tyrell_arryn
+			has_character_flag = tyrell_lannister
+			has_character_flag = tyrell_reyne
+			has_character_flag = tyrell_royce
+			has_character_flag = tyrell_tully
+			has_character_flag = tyrell_martell
+			has_character_flag = tyrell_yronwood
+			has_character_flag = tyrell_velaryon
+			has_character_flag = tully_stark
+			has_character_flag = tully_targaryen
+			has_character_flag = tully_baratheon
+			has_character_flag = tully_blackfyre
+			has_character_flag = tully_gardener
+			has_character_flag = tully_greyjoy
+			has_character_flag = tully_hoare
+			has_character_flag = tully_hightower
+			has_character_flag = tully_arryn
+			has_character_flag = tully_lannister
+			has_character_flag = tully_reyne
+			has_character_flag = tully_royce
+			has_character_flag = tully_tyrell
+			has_character_flag = tully_martell
+			has_character_flag = tully_yronwood
+			has_character_flag = tully_velaryon
+			has_character_flag = no_special_coa_mbs
+		}
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				150 = {
+					if = {
+						limit = {
+							dynasty = 59	# Stark
+						}
+						set_character_flag = stark_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 317	# Baratheon
+						}
+						set_character_flag = baratheon_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 1544	# Durrandon
+						}
+						set_character_flag = baratheon_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 178	# Arryn
+						}
+						set_character_flag = arryn_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 57	# Blackfyre
+						}
+						set_character_flag = blackfyre_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 1254	# Gardener
+						}
+						set_character_flag = gardener_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 107	# Greyjoy
+						}
+						set_character_flag = greyjoy_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 66	# Hoare
+						}
+						set_character_flag = hoare_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 190	# Lannister
+						}
+						set_character_flag = lannister_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 1		# Martell
+						}
+						set_character_flag = martell_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 197	# Reyne
+						}
+						set_character_flag = reyne_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 496	# Targaryen
+						}
+						set_character_flag = targaryen_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 159	# Tully
+						}
+						set_character_flag = tully_fourth
+					}
+					if = {
+						limit = {
+							dynasty = 253	# Tyrell
+						}
+						set_character_flag = tyrell_fourth
+					}
+				}
+				250 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Albino
+character_event = {
+	id = mbs_personal_sigil_events.43
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			dynasty = 93
+			dynasty = 107	# Greyjoy
+			dynasty = 87	# Bolton
+			dynasty = 83
+			dynasty = 102
+			dynasty = 126
+			dynasty = 59	# Stark
+			dynasty = 317	# Baratheon
+		}
+		NOR = {
+
+			has_character_flag = umber_albino
+			has_character_flag = greyjoy_albino
+			has_character_flag = bolton_albino
+			has_character_flag = hornwood_albino
+			has_character_flag = mormont_albino
+			has_character_flag = reed_albino
+			has_character_flag = stark_albino
+			has_character_flag = baratheon_albino
+			has_character_flag = no_special_coa_mbs
+		}
+		trait = albino
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				100 = {
+					if = {
+						limit = {
+							dynasty = 93
+						}
+						set_character_flag = umber_albino
+					}
+					if = {
+						limit = {
+							dynasty = 107	# Greyjoy
+						}
+						set_character_flag = greyjoy_albino
+					}
+					if = {
+						limit = {
+							dynasty = 87	# Bolton
+						}
+						set_character_flag = bolton_albino
+					}
+					if = {
+						limit = {
+							dynasty = 83
+						}
+						set_character_flag = hornwood_albino
+					}
+					if = {
+						limit = {
+							dynasty = 102
+						}
+						set_character_flag = mormont_albino
+					}
+					if = {
+						limit = {
+							dynasty = 126
+						}
+						set_character_flag = reed_albino
+					}
+					if = {
+						limit = {
+							dynasty = 59	# Stark
+						}
+						set_character_flag = stark_albino
+					}
+					if = {
+						limit = {
+							dynasty = 317	# Baratheon
+						}
+						set_character_flag = baratheon_albino
+					}
+				}
+				300 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+#Wildfire
+character_event = {
+	id = mbs_personal_sigil_events.44
+	hide_window = yes
+	ai = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			dynasty = 285	# Hightower
+			dynasty = 212
+			dynasty = 174409
+			dynasty = 496	# Targaryen
+			dynasty = 108
+			dynasty = 359
+			dynasty = 186
+		}
+		NOR = {
+
+			has_character_flag = hightower_wildfire
+			has_character_flag = marbrand_wildfire
+			has_character_flag = clifton_wildfire
+			has_character_flag = targaryen_wildfire
+			has_character_flag = stonehouse_wildfire
+			has_character_flag = qoherys_wildfire
+			has_character_flag = grafton_wildfire
+			has_character_flag = no_special_coa_mbs
+		}
+		OR = {
+			trait = fire_obsessed
+			trait = lunatic
+		}
+	}
+
+
+	immediate = {
+		ROOT = {
+			random_list = {
+				100 = {
+					if = {
+						limit = {
+							dynasty = 285	# Hightower
+						}
+						set_character_flag = hightower_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 212
+						}
+						set_character_flag = marbrand_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 174409
+						}
+						set_character_flag = clifton_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 496	# Targaryen
+						}
+						set_character_flag = targaryen_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 108
+						}
+						set_character_flag = stonehouse_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 359
+						}
+						set_character_flag = qoherys_wildfire
+					}
+					if = {
+						limit = {
+							dynasty = 186
+						}
+						set_character_flag = grafton_wildfire
+					}
+				}
+				300 = {
+					set_character_flag = no_special_coa_mbs
+				}
+			}
+		}
+		ROOT = {
+			character_event = { id = dynamic_coa.1 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

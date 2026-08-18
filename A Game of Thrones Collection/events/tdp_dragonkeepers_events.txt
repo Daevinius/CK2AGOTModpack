@@ -1,0 +1,717 @@
+namespace = tdp_dragonkeepers
+
+###Creating Dragonkeeper Sects###
+###Dragonkeeper Hatches Egg###
+###Reseting Dragonmont Keeper###
+###A Cannibal Attacks Hatchery###
+
+###Creating Dragonkeeper Sects###
+#Make canon one automatically
+character_event = {
+	id = tdp_dragonkeepers.1
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+
+	trigger = {
+		NOT = { has_global_flag = dragonkeepers_created }
+		start_date = 8055.1.1
+		start_date < 8154.1.1
+		has_landed_title = e_iron_throne
+	}
+
+	immediate = {
+		set_global_flag = dragonkeepers_created
+		create_character = {
+			random_traits = no
+			dynasty = none
+			religion = ROOT
+			culture = western_valyrian
+			female = no
+			age = 30
+
+			add_trait = mastermind_theologian
+			add_trait = scholar
+			add_trait = strong
+			add_trait = brave
+			add_trait = chaste
+			add_trait = honorable
+			add_trait = diligent
+			add_trait = content
+			add_trait = master_warrior
+			add_trait = dragonkeeper
+		}
+		new_character = {
+			set_special_character_title = title_dragonkeeper
+			opinion = {
+				who = ROOT
+				name = opinion_head_dragonkeeper
+			}
+			create_title = {
+				tier = COUNT
+				base_title = ROOT
+				name = b_dragon_pit
+				holder = THIS
+				landless = yes
+			}
+			new_title = {
+				set_defacto_liege = ROOT
+				set_title_flag = dragonkeeper_title
+			}
+			set_character_flag = no_court_invites
+			set_character_flag = ai_flag_never_transfer
+			set_character_flag = head_dragonkeeper
+			save_event_target_as = target_dragonkeeper
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Dragonstone
+character_event = {
+	id = tdp_dragonkeepers.10
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = age_of_dragons
+
+	trigger = {
+		NOT = { has_global_flag = dragonkeepers_created_dragonstone }
+		#start_date = 8055.1.1
+		start_date < 8154.1.1
+		has_landed_title = c_dragonstone
+	}
+
+	immediate = {
+		set_global_flag = dragonkeepers_created_dragonstone
+		create_character = {
+			random_traits = no
+			dynasty = none
+			religion = ROOT
+			culture = western_valyrian
+			female = no
+			age = 30
+
+			add_trait = mastermind_theologian
+			add_trait = scholar
+			add_trait = strong
+			add_trait = brave
+			add_trait = chaste
+			add_trait = honorable
+			add_trait = diligent
+			add_trait = content
+			add_trait = master_warrior
+			add_trait = dragonkeeper
+		}
+		new_character = {
+			set_special_character_title = title_dragonkeeper
+			save_event_target_as = dragonstone_keeper
+			opinion = {
+				who = ROOT
+				name = opinion_head_dragonkeeper
+			}
+			create_title = {
+				tier = COUNT
+				base_title = ROOT
+				name = b_dragonmont
+				holder = THIS
+				landless = yes
+			}
+			new_title = {
+				set_defacto_liege = ROOT
+				set_title_flag = dragonkeeper_title
+				set_title_flag = dragonkeeper_title_dragonstone
+			}
+			set_character_flag = no_court_invites
+			set_character_flag = ai_flag_never_transfer
+			set_character_flag = head_dragonkeeper
+			save_event_target_as = target_dragonkeeper
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+
+#Establish Decision
+character_event = {
+	id = tdp_dragonkeepers.100
+	title = EVTTITLEtdp_dragonkeepers.100
+	desc = EVTDESCtdp_dragonkeepers.100
+	picture = GFX_dragonkeepers_event
+
+	is_triggered_only = yes
+
+	immediate = {
+		create_character = {
+			random_traits = no
+			dynasty = none
+			religion = ROOT
+			culture = western_valyrian
+			female = no
+			age = 30
+
+			add_trait = mastermind_theologian
+			add_trait = scholar
+			add_trait = strong
+			add_trait = brave
+			add_trait = chaste
+			add_trait = honorable
+			add_trait = diligent
+			add_trait = content
+			add_trait = master_warrior
+			add_trait = dragonkeeper
+		}
+		new_character = {
+			set_special_character_title = title_dragonkeeper
+			opinion = {
+				who = ROOT
+				name = opinion_head_dragonkeeper
+			}
+			create_title = {
+				tier = COUNT
+				base_title = ROOT
+				name = b_dragon_pit
+				holder = THIS
+				landless = yes
+			}
+			new_title = {
+				set_defacto_liege = ROOT
+				set_title_flag = dragonkeeper_title
+			}
+			set_character_flag = no_court_invites
+			set_character_flag = ai_flag_never_transfer
+			set_character_flag = head_dragonkeeper
+			save_event_target_as = target_dragonkeeper
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#AI trigger because it cant use a decision properly
+character_event = {
+	id = tdp_dragonkeepers.1000
+
+	is_triggered_only = yes
+
+	hide_window = yes
+
+	only_rulers = yes
+	has_global_flag = age_of_dragons
+
+	trigger = {
+		trait = dragon_rider
+		NOT = {
+			any_vassal = {
+				trait = dragonkeeper
+			}
+		}
+		OR = {
+			capital_holding = { has_building = ca_dragon_pit }
+			family_palace = { has_building = fp_dragon_pit }
+		}
+		NOT = { is_capital = c_dragonstone }
+		NOT = {
+			any_character = {
+				has_opinion_modifier = {
+					who = ROOT
+					name = opinion_head_dragonkeeper
+				}
+			}
+		}
+	}
+
+	immediate = {
+		character_event = { id = tdp_dragonkeepers.100 }
+	}
+}
+
+#Summon
+character_event = {
+	id = tdp_dragonkeepers.101
+	desc = EVTDESCtdp_dragonkeepers.101
+	picture = GFX_dragonkeepers_event
+
+	is_triggered_only = yes
+
+	immediate = {
+		any_courtier = {
+			limit = {
+				has_character_modifier = locked_in_dragonpit
+				NOT = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = opinion_dragon_from_my_pit
+					}
+				}
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_dragon_from_my_pit
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTAtdp_dragonkeepers.101 #Info on Dragonkeepers
+		custom_tooltip = {
+			text = TOOLTIPAdragonkeepers
+		}
+		any_vassal = {
+			limit = {
+				trait = dragonkeeper
+				is_alive = yes
+			}
+			tooltip = { show_portrait = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_dragonkeepers.101 #Info on Dragonmont
+		trigger = {
+			any_realm_lord = {
+				trait = dragonkeeper
+				is_alive = yes
+				primary_title = { has_title_flag = dragonkeeper_title_dragonstone }
+			}
+		}
+		custom_tooltip = {
+			text = TOOLTIPBdragonkeepers
+		}
+		any_realm_lord = {
+			limit = {
+				trait = dragonkeeper
+				is_alive = yes
+				primary_title = { has_title_flag = dragonkeeper_title_dragonstone }
+			}
+			tooltip = { show_portrait = yes }
+		}
+	}
+
+	option = {
+		name = EVTOPTCtdp_dragonkeepers.101 #Dragons in Pit
+		any_realm_character = {
+			limit = {
+				trait = dragon
+				is_alive = yes
+				reverse_has_opinion_modifier = {
+					who = ROOT
+					modifier = opinion_dragon_from_my_pit
+				}
+			}
+			tooltip = { show_portrait = yes }
+		}
+	}
+}
+
+
+###Reseting Dragonmont Keeper###
+character_event = {
+	id = tdp_dragonkeepers.3
+
+	hide_window = yes
+
+	has_character_flag = head_dragonkeeper
+
+	trigger = {
+		has_any_opinion_modifier = opinion_head_dragonkeeper
+		primary_title = {
+			has_title_flag = dragonkeeper_title_dragonstone
+		}
+		liege = {
+			NOT = {
+				primary_title = {
+					title = d_dragonstone
+				}
+			}
+		}
+		d_dragonstone = {
+			has_holder = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	immediate = {
+		any_character = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = ROOT
+					name = opinion_head_dragonkeeper
+				}
+			}
+			reverse_remove_opinion = {
+				name = opinion_head_dragonkeeper
+				who = ROOT
+			}
+		}
+
+		if = {
+			limit = {
+				d_dragonstone = {
+					has_holder = yes
+				}
+				liege = { NOT = { has_landed_title = d_dragonstone } }
+			}
+			primary_title = {
+				set_defacto_liege = d_dragonstone
+			}
+			liege = {
+				reverse_opinion = {
+					name = opinion_head_dragonkeeper
+					who = ROOT
+				}
+			}
+		}
+		else = {
+			limit = {
+				OR = {
+					AND = {
+						d_dragonstone = {
+							has_holder = yes
+						}
+						liege = { has_landed_title = d_dragonstone }
+					}
+					NOT = {
+						d_dragonstone = {
+							has_holder = yes
+						}
+					}
+				}
+			}
+			liege = {
+				reverse_opinion = {
+					name = opinion_head_dragonkeeper
+					who = ROOT
+				}
+			}
+		}
+	}
+}
+
+###A Cannibal Attacks Hatchery###
+character_event = {
+	id = tdp_dragonkeepers.4
+
+	hide_window = yes
+
+	trigger = {
+		trait = dragon
+		trait = cannibal_dragon
+		top_liege = {
+			any_realm_lord = {
+				trait = dragonkeeper
+				primary_title = {
+					has_title_flag = dragonkeeper_title_dragonstone
+				}
+				has_artifact = dragon_egg
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 60
+	}
+
+	immediate = {
+		top_liege = {
+			random_realm_lord = {
+				limit = {
+					trait = dragonkeeper
+					primary_title = {
+						has_title_flag = dragonkeeper_title_dragonstone
+					}
+					has_artifact = dragon_egg
+				}
+				random_list = {
+					40 = {
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+					}
+					30 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								any_artifact = {
+									count = 2
+									artifact_type = dragon_egg
+								}
+							}
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+					}
+					20 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								any_artifact = {
+									count = 3
+									artifact_type = dragon_egg
+								}
+							}
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+					}
+					10 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								any_artifact = {
+									count = 4
+									artifact_type = dragon_egg
+								}
+							}
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+						random_artifact = {
+							limit = { artifact_type = dragon_egg }
+							unsafe_destroy_artifact = yes
+						}
+					}
+				}
+				any_liege = {
+					character_event = { id = tdp_dragonkeepers.40 }
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = tdp_dragonkeepers.40
+	desc = EVTDESCtdp_dragonkeepers.40
+	picture = GFX_cannibal_dragon
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_dragonkeepers.40
+	}
+}
+
+#Remove traits
+character_event = {
+	id = tdp_dragonkeepers.9996
+
+	hide_window = yes
+
+	only_independent = no
+
+	trigger = {
+		trait = dragonkeeper
+		OR = {
+			age = 60
+			trait = incapable
+			trait = lunatic
+			trait = has_bloody_flux
+			trait = cancer
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	immediate = {
+		remove_trait = incapable
+		remove_trait = lunatic
+		remove_trait = has_bloody_flux
+		remove_trait = cancer
+		if = {
+			limit = { age = 60 }
+			add_age = -30
+		}
+	}
+}
+
+#Kill Dragonkeepers that lose their liege
+character_event = {
+	id = tdp_dragonkeepers.9997
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		trait = dragonkeeper
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	immediate = {
+		remove_trait = dragonkeeper
+		death = {
+			death_reason = death_missing
+		}
+	}
+}
+
+#On Death of Active Dragonkeeper - Create a new one
+character_event = {
+	id = tdp_dragonkeepers.9998
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = head_dragonkeeper
+
+	trigger = {
+		trait = dragonkeeper
+		any_demesne_title = {
+			OR = {
+				has_title_flag = dragonkeeper_title
+				has_title_flag = dragonkeeper_title_dragonstone
+			}
+		}
+	}
+
+	immediate = {
+		any_character = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = ROOT
+					name = opinion_head_dragonkeeper
+				}
+			}
+			save_event_target_as = employer
+		}
+		create_character = {
+			random_traits = no
+			dynasty = none
+			religion = ROOT
+			culture = western_valyrian
+			female = no
+			age = 30
+
+			add_trait = mastermind_theologian
+			add_trait = scholar
+			add_trait = strong
+			add_trait = brave
+			add_trait = chaste
+			add_trait = honorable
+			add_trait = diligent
+			add_trait = content
+			add_trait = master_warrior
+			add_trait = dragonkeeper
+		}
+		new_character = {
+			set_special_character_title = title_dragonkeeper
+			event_target:employer = {
+				reverse_opinion = {
+					who = ROOT
+					name = opinion_head_dragonkeeper
+				}
+			}
+			ROOT = {
+				inherit = PREV
+			}
+			set_character_flag = no_court_invites
+			set_character_flag = ai_flag_never_transfer
+			set_character_flag = head_dragonkeeper
+			save_event_target_as = target_dragonkeeper
+		}
+	}
+
+}
+
+#Consolidating Eggs
+character_event = {
+	id = tdp_dragonkeepers.9999
+
+	hide_window = yes
+
+	trigger = {
+		any_vassal = {
+			count = 2
+			NOT = { primary_title = { has_title_flag = dragonkeeper_title_dragonstone } }
+			trait = dragonkeeper
+		}
+		any_vassal = {
+			has_opinion_modifier = {
+				who = ROOT
+				name = opinion_head_dragonkeeper
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				trait = dragonkeeper
+				has_opinion_modifier = {
+					who = ROOT
+					name = opinion_head_dragonkeeper
+				}
+			}
+			save_event_target_as = head_dragonkeeper
+		}
+		any_vassal = {
+			limit = {
+				trait = dragonkeeper
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT
+						name = opinion_head_dragonkeeper
+					}
+				}
+			}
+			any_demesne_title = {
+				unsafe_destroy_landed_title = THIS
+			}
+			move_character = event_target:head_dragonkeeper
+			death = {
+				death_reason = death_missing
+			}
+		}
+	}
+}

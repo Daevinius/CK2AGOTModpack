@@ -1,0 +1,251 @@
+decisions = {
+
+	form_three_daughters = {
+		is_high_prio = yes
+		only_playable = yes
+
+		potential = {
+			start_date < 8096.1.1
+			NOT = {
+				any_demesne_title = {
+					tier = EMPEROR
+				}
+			}
+			OR = {
+				has_landed_title = k_myr
+				any_realm_lord = {
+					has_landed_title = k_myr
+				}
+			}
+			OR = {
+				has_landed_title = k_tyrosh
+				any_realm_lord = {
+					has_landed_title = k_tyrosh
+				}
+			}
+			OR = {
+				has_landed_title = k_lys
+				any_realm_lord = {
+					has_landed_title = k_lys
+				}
+			}
+			OR = {
+				culture = myrman
+				culture = lysene
+				culture = tyroshi
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			long_character_event = { id = tdp_three_daughters.1 }
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	form_three_sons = {
+		is_high_prio = yes
+		only_playable = yes
+
+		potential = {
+			NOT = { start_date = 8096.1.1 }
+			OR = {
+				has_landed_title = k_qohor
+				any_realm_character = {
+					has_landed_title = k_qohor
+				}
+			}
+			OR = {
+				has_landed_title = k_norvos
+				any_realm_character = {
+					has_landed_title = k_norvos
+				}
+			}
+			OR = {
+				has_landed_title = k_lorath
+				any_realm_character = {
+					has_landed_title = k_lorath
+				}
+			}
+			OR = {
+				culture = qohorik
+				culture = norvosi
+				culture = lorathi
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			long_character_event = { id = mbs_three_sons.1 }
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	begin_partial_stepstones_toll = {
+		is_high_prio = yes
+		only_playable = yes
+
+		potential = {
+			has_character_modifier = foothold_in_stepstones_6
+			NOR = {
+				has_character_modifier = full_tolling_narrow_sea
+				has_character_modifier = partial_tolling_narrow_sea
+			}
+			calc_true_if = {
+				amount = 6
+				has_landed_title = c_bloodstone
+				has_landed_title = c_wreckstone
+				has_landed_title = c_sunstone
+				has_landed_title = c_shameisle
+				has_landed_title = c_dwarfstone
+				has_landed_title = c_darkden
+				has_landed_title = c_theskulls
+				has_landed_title = c_fishskins
+				has_landed_title = c_dim_cove
+				has_landed_title = c_torturersdeep
+				has_landed_title = c_lastrefuge
+				has_landed_title = c_greygallows
+				has_landed_title = c_last_lamp
+				has_landed_title = c_southstone
+				any_realm_lord = {
+					has_landed_title = c_bloodstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_wreckstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_sunstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_shameisle
+				}
+				any_realm_lord = {
+					has_landed_title = c_dwarfstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_darkden
+				}
+				any_realm_lord = {
+					has_landed_title = c_theskulls
+				}
+				any_realm_lord = {
+					has_landed_title = c_fishskins
+				}
+				any_realm_lord = {
+					has_landed_title = c_dim_cove
+				}
+				any_realm_lord = {
+					has_landed_title = c_torturersdeep
+				}
+				any_realm_lord = {
+					has_landed_title = c_lastrefuge
+				}
+				any_realm_lord = {
+					has_landed_title = c_greygallows
+				}
+				any_realm_lord = {
+					has_landed_title = c_last_lamp
+				}
+				any_realm_lord = {
+					has_landed_title = c_southstone
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_global_flag = triarchy_phase_3
+			character_event = { id = tdp_three_daughters.40 }
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+	begin_full_stepstones_toll = {
+		is_high_prio = yes
+		only_playable = yes
+
+		potential = {
+			NOT = { has_character_modifier = full_tolling_narrow_sea }
+			has_character_modifier = foothold_in_stepstones_6
+			calc_true_if = {
+				amount = 12
+				has_landed_title = c_bloodstone
+				has_landed_title = c_wreckstone
+				has_landed_title = c_sunstone
+				has_landed_title = c_shameisle
+				has_landed_title = c_dwarfstone
+				has_landed_title = c_darkden
+				has_landed_title = c_theskulls
+				has_landed_title = c_fishskins
+				has_landed_title = c_dim_cove
+				has_landed_title = c_torturersdeep
+				has_landed_title = c_lastrefuge
+				has_landed_title = c_greygallows
+				has_landed_title = c_last_lamp
+				has_landed_title = c_southstone
+				any_realm_lord = {
+					has_landed_title = c_bloodstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_wreckstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_sunstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_shameisle
+				}
+				any_realm_lord = {
+					has_landed_title = c_dwarfstone
+				}
+				any_realm_lord = {
+					has_landed_title = c_darkden
+				}
+				any_realm_lord = {
+					has_landed_title = c_theskulls
+				}
+				any_realm_lord = {
+					has_landed_title = c_fishskins
+				}
+				any_realm_lord = {
+					has_landed_title = c_dim_cove
+				}
+				any_realm_lord = {
+					has_landed_title = c_torturersdeep
+				}
+				any_realm_lord = {
+					has_landed_title = c_lastrefuge
+				}
+				any_realm_lord = {
+					has_landed_title = c_greygallows
+				}
+				any_realm_lord = {
+					has_landed_title = c_last_lamp
+				}
+				any_realm_lord = {
+					has_landed_title = c_southstone
+				}
+			}
+		}
+		allow = {
+			stewardship = 10
+			has_character_modifier = partial_tolling_narrow_sea
+		}
+		effect = {
+			character_event = { id = tdp_three_daughters.41 }
+		}
+		ai_will_do = {
+			factor = 1000
+		}
+	}
+
+}

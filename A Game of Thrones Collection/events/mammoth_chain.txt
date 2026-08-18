@@ -1,0 +1,1489 @@
+namespace = mammoth
+###################################
+
+#############Mammoth Quest
+#Am I going to do this?
+character_event = {
+	id = mammoth.1
+	desc = "EVTDESCmammoth.1"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.1" #lets do it
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 50
+				trait = greensight
+			}
+			modifier = {
+				factor = 25
+				trait = mystic
+			}
+		}
+		character_event = { id = mammoth.2 }
+		set_character_flag = taming_exotic_beast
+		save_event_target_as = mammoth_quest_leader
+	}
+	option = {
+		name = "EVTOPTBmammoth.1" #not rn
+		ai_chance = {
+			factor = 2
+
+
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+		}
+	}
+}
+#Am I already north of the Wall
+character_event = {
+	id = mammoth.2
+	desc = "EVTDESCmammoth.2"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2" #have to journey beyond wall
+		trigger = {
+			NOT = {
+				location = { region = world_beyond_the_wall }
+			}
+		}
+		character_event = { id = mammoth.3 days = 20 random = 10 }
+		add_trait = wikid
+	}
+	option = {
+		name = "EVTOPTBmammoth.2" #beyond wall already
+		trigger = {
+			location = { region = world_beyond_the_wall }
+		}
+		character_event = { id = mammoth.7 days = 20 random = 10 }
+
+	}
+}
+#Gets to Wall - speaks to LC, LC recommends taking a ranger
+character_event = {
+	id = mammoth.3
+	desc = "EVTDESCmammoth.3"
+	picture = "GFX_evt_the_wall"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.3" #take ranger
+		ai_chance = {
+			factor = 10
+
+		}
+		d_nightswatch = {
+			holder_scope = {
+				random_courtier = {
+					limit = {
+						is_female = no
+						has_character_modifier = nw_ranger
+						prisoner = no
+						is_incapable = no
+						NOT = { is_inaccessible_trigger = yes }
+					}
+					save_event_target_as = mammoth_quest_ranger
+					add_trait = wikid
+					character_event = { id = mammoth.4 }
+					set_character_flag = mammoth_quest_ranger
+				}
+			}
+		}
+		wealth = -20
+		character_event = { id = mammoth.6 days = 10 random = 10 }
+		set_character_flag = mammoth_quest_has_ranger
+	}
+	option = {
+		name = "EVTOPTBmammoth.3" #
+		ai_chance = {
+			factor = 0
+		}
+		character_event = { id = mammoth.6 days = 10 random = 10 }
+	}
+}
+#tells ranger he has a job to do
+character_event = {
+	id = mammoth.4
+	desc = "EVTDESCmammoth.4"
+	picture = "GFX_evt_the_wall"
+
+
+
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:mammoth_quest_leader = {
+			character_event = { id = mammoth.5 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmammoth.4" #have to journey beyond wall
+
+	}
+}
+#"Hi, I'm your ranger"
+character_event = {
+	id = mammoth.5
+	desc = "EVTDESCmammoth.5"
+	picture = "GFX_evt_the_wall"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.4" #have to journey beyond wall
+		FROM = { tooltip = { show_portrait = yes } }
+	}
+}
+#Journey through the wall and into the North
+character_event = {
+	id = mammoth.6
+	desc = "EVTDESCmammoth.6"
+	picture = "GFX_evt_the_wall"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.6" #
+		character_event = { id = mammoth.7 days = 10 random = 10 }
+	}
+}
+#Chance to decide if you have an issue
+character_event = {
+	id = mammoth.7
+	hide_window = yes
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.7" #avoids all wildling attacks
+		ai_chance = {
+			factor = 4
+
+			modifier = {
+				factor = 25
+				culture_group = free_folk
+			}
+			modifier = {
+				factor = 100
+				trait = dragon_rider #flies over danger
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = mammoth_quest_has_ranger	#ranger knows his way
+			}
+		}
+		character_event = { id = mammoth.8 }
+	}
+	option = {
+		name = "EVTOPTBmammoth.7" #wildling attack
+		ai_chance = {
+			factor = 10
+		}
+		character_event = { id = mammoth.9 }
+	}
+}
+#Pass through north without incident
+character_event = {
+	id = mammoth.8
+	desc = "EVTDESCmammoth.8"
+	picture = "GFX_winter_1"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.8" #
+		character_event = { id = mammoth.15 days = 10 random = 10 }
+	}
+}
+#Wildling attack
+character_event = {
+	id = mammoth.9
+	desc = "EVTDESCmammoth.9"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.9" #dracarys
+		ai_chance = {
+			factor = 10
+		}
+		trigger = {
+			trait = dragon_rider
+		}
+		character_event = { id = mammoth.10 }
+	}
+	option = {
+		name = "EVTOPTBmammoth.9" #I'm a greenseer, mate
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			trait = greensight
+		}
+		character_event = { id = mammoth.11 }
+	}
+	option = {
+		name = "EVTOPTCmammoth.9" #pay them off
+		ai_chance = {
+			factor = 5
+		}
+		wealth = -15
+		character_event = { id = mammoth.12 }
+	}
+	option = {
+		name = "EVTOPTDmammoth.9" #have to fight them off
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 25
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 5
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 5
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 5
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = mammoth_quest_has_ranger	#ranger knows his way
+			}
+		}
+
+		character_event = { id = mammoth.13 }
+	}
+}
+#Dracarys
+character_event = {
+	id = mammoth.10
+	desc = "EVTDESCmammoth.10"
+	picture = "GFX_evt_dragon_angry"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.10" #
+		character_event = { id = mammoth.15 days = 10 random = 10 }
+	}
+}
+#Greensight
+character_event = {
+	id = mammoth.11
+	desc = "EVTDESCmammoth.11"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.11" #
+
+		add_artifact = weirwood_spear
+		add_artifact = dragonglass_dagger
+		add_artifact = weirwood_brooch
+
+		character_event = { id = mammoth.15 days = 10 random = 10 }
+	}
+}
+#Paid off
+character_event = {
+	id = mammoth.12
+	desc = "EVTDESCmammoth.12"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.12" #
+
+		character_event = { id = mammoth.15 days = 10 random = 10 }
+	}
+}
+#Fight off
+character_event = {
+	id = mammoth.13
+	hide_window = yes
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.13" #wins
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 25
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 10
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				is_tall_trigger = yes
+			}
+			modifier = {
+				factor = 7
+				is_smart_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				is_genius_trigger = yes
+			}
+			modifier = {
+				factor = 15
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 5
+				trait = brave
+			}
+			modifier = {
+				factor = 25
+				has_character_flag = mammoth_quest_has_ranger	#ranger helps
+			}
+		}
+
+		character_event = { id = mammoth.14 }
+	}
+	option = {
+		name = "EVTOPTCmammoth.13" #loses
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 25
+				is_weak_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 30
+				trait = crippled
+			}
+		}
+		character_event = { id = mammoth.1301 }
+	}
+}
+#Fought off
+character_event = {
+	id = mammoth.14
+	desc = "EVTDESCmammoth.14"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.14" #
+		prestige = 20
+		character_event = { id = mammoth.15 days = 10 random = 10 }
+	}
+}
+#Failed
+character_event = {
+	id = mammoth.1301
+	desc = "EVTDESCmammoth.1301"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.1301" #
+		prestige = -20
+		random_list = {
+			30 = { add_trait = wounded }
+			10 = { add_maimed_trait_effect = yes }
+			10 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			60 = { }
+		}
+		wealth = -35
+		event_target:mammoth_quest_ranger = { character_event = { id = mammoth.1302 } }
+		character_event = { id = mammoth.15 days = 10 random = 10 }
+	}
+}
+#Does Ranger die?
+character_event = {
+	id = mammoth.1302
+	desc = "EVTDESCmammoth.1302"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.1302" #
+		prestige = -20
+		random_list = {
+			30 = { add_trait = wounded }
+			10 = { add_maimed_trait_effect = yes }
+			5 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			60 = { }
+		}
+		event_target:mammoth_quest_leader = { character_event = { id = mammoth.1303 } }
+	}
+}
+#Ranger dead
+character_event = {
+	id = mammoth.1303
+	desc = "EVTDESCmammoth.1303"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.1303" #
+		prestige = -20
+		clr_character_flag = mammoth_quest_has_ranger
+	}
+}
+#Sees Then Village
+character_event = {
+	id = mammoth.15
+	desc = "EVTDESCmammoth.15"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.15" #
+		prestige = 20
+		character_event = { id = mammoth.1501 days = 1 }
+	}
+}
+#Thenn Village
+character_event = {
+	id = mammoth.1501
+	desc = "EVTDESCmammoth.1501"
+	picture = "GFX_evt_wildlings"
+
+
+
+	is_triggered_only = yes
+
+
+
+
+	option = {
+		name = "EVTOPTAmammoth.1501" #dracarys
+		ai_chance = {
+			factor = 10
+		}
+		trigger = {
+			trait = dragon_rider
+		}
+		character_event = { id = mammoth.16 }
+		set_character_flag = mammoth_quest_has_hunter
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			female = no
+			culture = thenn
+			religion = thenn_rel
+			historical = yes
+		}
+		new_character = {
+			change_martial = 2
+			add_trait = hunter
+			add_trait = brave
+			add_trait = skilled_warrior
+			add_trait = wikid
+			random_list = {
+				32 = { add_trait = tall }
+				32 = { add_trait = strong }
+				32 = { add_trait = crow }
+				32 = { add_trait = quick }
+				32 = { add_trait = mystic }
+				4 = { add_trait = greensight }
+			}
+			save_event_target_as = mammoth_quest_hunter
+		}
+	}
+	option = {
+		name = "EVTOPTBmammoth.1501" #I'm a greenseer, mate
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			trait = greensight
+		}
+		character_event = { id = mammoth.16 }
+		set_character_flag = mammoth_quest_has_hunter
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			female = no
+			culture = thenn
+			religion = thenn_rel
+			historical = yes
+		}
+		new_character = {
+			change_martial = 2
+			add_trait = hunter
+			add_trait = brave
+			add_trait = skilled_warrior
+			add_trait = wikid
+			random_list = {
+				32 = { add_trait = tall }
+				32 = { add_trait = strong }
+				32 = { add_trait = crow }
+				32 = { add_trait = quick }
+				32 = { add_trait = mystic }
+				4 = { add_trait = greensight }
+			}
+			save_event_target_as = mammoth_quest_hunter
+		}
+	}
+	option = {
+		name = "EVTOPTCmammoth.1501" #pay them off
+		ai_chance = {
+			factor = 5
+		}
+		wealth = -15
+		character_event = { id = mammoth.16 }
+		set_character_flag = mammoth_quest_has_hunter
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = none
+			female = no
+			culture = thenn
+			religion = thenn_rel
+			historical = yes
+		}
+		new_character = {
+			change_martial = 2
+			add_trait = hunter
+			add_trait = brave
+			add_trait = skilled_warrior
+			add_trait = wikid
+			random_list = {
+				32 = { add_trait = tall }
+				32 = { add_trait = strong }
+				32 = { add_trait = crow }
+				32 = { add_trait = quick }
+				32 = { add_trait = mystic }
+				4 = { add_trait = greensight }
+			}
+			save_event_target_as = mammoth_quest_hunter
+		}
+	}
+	option = {
+		name = "EVTOPTDmammoth.1501" #don't need
+		ai_chance = {
+			factor = 0
+		}
+
+		character_event = { id = mammoth.16 }
+	}
+}
+#Sees Giant
+character_event = {
+	id = mammoth.16
+	picture = "GFX_evt_giants"
+
+
+	is_triggered_only = yes
+
+	desc = {
+		text = "EVTDESCmammoth.16A"
+		trigger = { has_character_flag = mammoth_quest_has_hunter }
+	}
+	desc = {
+		text = "EVTDESCmammoth.16B"
+		trigger = {
+			NOT = {
+				has_character_flag = mammoth_quest_has_hunter
+			}
+		}
+	}
+
+
+
+	option = {
+		name = "EVTOPTAmammoth.16" #
+		character_event = { id = mammoth.17 }
+	}
+}
+#How to deal with giant
+character_event = {
+	id = mammoth.17
+	desc = "EVTDESCmammoth.17"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.17" #you speak first man
+		ai_chance = {
+			factor = 10
+		}
+		trigger = {
+			OR = {
+				learning = 15
+				AND = {
+					is_old_gods_religion_trigger = yes
+					trait = zealous
+				}
+				culture = thenn
+			}
+		}
+		character_event = { id = mammoth.18 }
+		set_character_flag = mammoth_quest_has_giant
+	}
+	option = {
+		name = "EVTOPTBmammoth.17" #I'm a greenseer, mate
+		ai_chance = {
+			factor = 100
+		}
+		trigger = {
+			trait = greensight
+		}
+		character_event = { id = mammoth.19 }
+		set_character_flag = mammoth_quest_has_giant
+	}
+	option = {
+		name = "EVTOPTCmammoth.17" #get thenn to talk to giant
+		ai_chance = {
+			factor = 15
+		}
+
+		trigger = { has_character_flag = mammoth_quest_has_hunter }
+
+		character_event = { id = mammoth.20 }
+		set_character_flag = mammoth_quest_has_giant
+	}
+	option = {
+		name = "EVTOPTDmammoth.17" #have to fight them off
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 5
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 5
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 5
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 5
+				trait = brave
+			}
+		}
+		trigger = {
+			NOT = { has_character_flag = mammoth_quest_has_hunter }
+		}
+		character_event = { id = mammoth.21 }
+	}
+}
+#Speaks First Man
+character_event = {
+	id = mammoth.18
+	picture = "GFX_evt_giants"
+
+
+	is_triggered_only = yes
+
+	desc = {
+		text = "EVTDESCmammoth.18A"
+		trigger = { has_character_flag = mammoth_quest_has_hunter }
+	}
+	desc = {
+		text = "EVTDESCmammoth.18B"
+		trigger = {
+			NOT = {
+				has_character_flag = mammoth_quest_has_hunter
+			}
+		}
+	}
+
+
+
+	option = {
+		name = "EVTOPTAmammoth.18" #
+		character_event = { id = mammoth.25 }
+	}
+}
+#Greenseer
+character_event = {
+	id = mammoth.19
+	picture = "GFX_evt_giants"
+	desc = "EVTDESCmammoth.19"
+
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmammoth.19" #
+		random_list = {
+			30 = { character_event = { id = mammoth.24 } }
+
+			60 = { character_event = { id = mammoth.25 } }
+		}
+	}
+}
+#Thenn talks to him
+character_event = {
+	id = mammoth.20
+	picture = "GFX_evt_giants"
+	desc = "EVTDESCmammoth.20"
+
+
+	is_triggered_only = yes
+
+
+
+
+
+	option = {
+		name = "EVTOPTAmammoth.20" #
+			character_event = { id = mammoth.25 }
+	}
+}
+#Fight off
+character_event = {
+	id = mammoth.21
+	hide_window = yes
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.21" #wins
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 25
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 10
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				is_tall_trigger = yes
+			}
+			modifier = {
+				factor = 7
+				is_smart_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				is_genius_trigger = yes
+			}
+			modifier = {
+				factor = 5
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 5
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = mammoth_quest_has_ranger	#ranger helps
+			}
+		}
+
+		character_event = { id = mammoth.2101 }
+	}
+	option = {
+		name = "EVTOPTCmammoth.21" #loses
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 25
+				is_weak_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 30
+				trait = crippled
+			}
+		}
+		character_event = { id = mammoth.2102 }
+	}
+}
+#Fought off
+character_event = {
+	id = mammoth.2101
+	desc = "EVTDESCmammoth.2101"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2101" #
+		prestige = 20
+		if = {
+			limit = { has_nickname = no }
+			give_nickname = nick_the_giantsslayer
+		}
+		character_event = { id = mammoth.25 }
+	}
+}
+#Failed
+character_event = {
+	id = mammoth.2102
+	desc = "EVTDESCmammoth.2102"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2102" #
+		prestige = -20
+		death = {
+			death_reason = death_battle
+		}
+		event_target:mammoth_quest_ranger = { character_event = { id = mammoth.2103 } }
+	}
+}
+#Does Ranger die?
+character_event = {
+	id = mammoth.2103
+	desc = "EVTDESCmammoth.2103"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2103" #
+		prestige = -20
+		random_list = {
+			30 = { add_trait = wounded }
+			25 = { add_maimed_trait_effect = yes }
+			20 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			60 = { }
+		}
+	}
+}
+#Greensight
+character_event = {
+	id = mammoth.24
+	desc = "EVTDESCmammoth.24"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.24" #
+
+		add_artifact = weirwood_bow
+		add_artifact = gold_armband
+		add_artifact = weirwood_staff
+		set_character_flag = has_weirwood_staff
+
+		character_event = { id = mammoth.25 }
+	}
+}
+#Mammoth
+character_event = {
+	id = mammoth.25
+	desc = "EVTDESCmammoth.25"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.25" #
+
+		character_event = { id = mammoth.26 }
+	}
+}
+#Tries taming
+character_event = {
+	id = mammoth.26
+	hide_window = yes
+
+
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmammoth.26" #
+		ai_chance = {
+			factor = 6
+
+			modifier = {
+				factor = 0
+				trait = greensight
+			}
+			modifier = {
+				factor = 0.1
+				trait = mystic
+			}
+		}
+		trigger = {
+			NOT = { trait = greensight }
+
+		}
+		character_event = { id = mammoth.45 }
+	}
+
+
+	option = {
+		name = "EVTOPTBmammoth.26" #
+		ai_chance = {
+			factor = 5
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 5
+				trait = greensight
+			}
+			modifier = {
+				factor = 10
+				trait = mystic
+			}
+			modifier = {
+				factor = 3
+				is_smart_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = mammoth_quest_has_giant
+			}
+			modifier = {
+				factor = 8
+				has_character_flag = mammoth_quest_has_hunter
+			}
+		}
+		character_event = { id = mammoth.27 }
+	}
+
+}
+#Mammoth
+character_event = {
+	id = mammoth.27
+	desc = "EVTDESCmammoth.27"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.27" #
+
+		character_event = { id = mammoth.30 }
+		add_trait = mammoth
+		if = {
+			limit = { has_nickname = no }
+			give_nickname = nick_mammoth_tamer
+		}
+	}
+}
+character_event = {
+	id = mammoth.45
+	desc = "EVTDESCmammoth.45"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.45" #
+		character_event = { id = mammoth.28 }
+	}
+}
+#Fought off
+character_event = {
+	id = mammoth.2801
+	desc = "EVTDESCmammoth.2801"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2801" #
+		prestige = 20
+		character_event = { id = mammoth.35 }
+	}
+}
+#Failed
+character_event = {
+	id = mammoth.2802
+	desc = "EVTDESCmammoth.2802"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2802" #
+		prestige = -20
+		death = {
+			death_reason = death_battle
+		}
+		event_target:mammoth_quest_ranger = { character_event = { id = mammoth.2803 } }
+	}
+}
+#Does Ranger die?
+character_event = {
+	id = mammoth.2803
+	desc = "EVTDESCmammoth.2803"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.2803" #
+		prestige = -20
+		random_list = {
+			30 = { add_trait = wounded }
+			25 = { add_maimed_trait_effect = yes }
+			20 = {
+				death = {
+					death_reason = death_battle
+				}
+			}
+			60 = { }
+		}
+	}
+}
+#giant turns away mammoth
+character_event = {
+	id = mammoth.29
+	desc = "EVTDESCmammoth.29"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.29" #
+
+		character_event = { id = mammoth.35 }
+	}
+}
+#tamed mammoth
+character_event = {
+	id = mammoth.30
+	desc = "EVTDESCmammoth.30"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.30" #
+		if = {
+			limit = { has_character_flag = mammoth_quest_has_ranger }
+			character_event = { id = mammoth.31 }
+		}
+		else_if = {
+			limit = { NOT = { has_character_flag = mammoth_quest_has_ranger } }
+			character_event = { id = mammoth.32 }
+		}
+	}
+}
+#befriend ranger
+character_event = {
+	id = mammoth.31
+	desc = "EVTDESCmammoth.31"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.31" #
+		event_target:mammoth_quest_ranger = { character_event = { id = mammoth.3101 } }
+		if = {
+			limit = { has_character_flag = mammoth_quest_has_giant }
+			character_event = { id = mammoth.32 }
+		}
+		if = {
+			limit = { NOT = { has_character_flag = mammoth_quest_has_giant } }
+			character_event = { id = mammoth.40 }
+		}
+	}
+}
+#befriend ranger
+character_event = {
+	id = mammoth.3101
+	desc = "EVTDESCmammoth.3101"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.3101" #
+		add_friend  = FROM
+	}
+}
+#giant acknowledges you
+character_event = {
+	id = mammoth.32
+	desc = "EVTDESCmammoth.32"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.32" #
+		random_list = {
+			60 = { character_event = { id = mammoth.33 } }
+
+			30 = { character_event = { id = mammoth.34 } }
+		}
+	}
+}
+#giant leaves
+character_event = {
+	id = mammoth.33
+	desc = "EVTDESCmammoth.33"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.33" #
+		character_event = { id = mammoth.40 }
+	}
+}
+#giant joins you
+character_event = {
+	id = mammoth.34
+	desc = "EVTDESCmammoth.34"
+	picture = "GFX_evt_giants"
+
+
+
+	is_triggered_only = yes
+
+	immediate = {
+		create_random_soldier = {
+			random_traits = yes
+			dynasty = random
+			female = no
+			culture = giant
+			religion = beyond_wall_old_gods
+			historical = yes
+		}
+		new_character = {
+			change_martial = 2
+			add_trait = hunter
+			add_trait = brave
+			add_trait = skilled_warrior
+			add_trait = tall_2
+			add_trait = strong_2
+			add_trait = giant
+			add_friend  = ROOT
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmammoth.34" #
+		character_event = { id = mammoth.40 }
+	}
+}
+
+
+
+#fought off mammoth
+character_event = {
+	id = mammoth.35
+	desc = "EVTDESCmammoth.35"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmammoth.35" #
+
+		character_event = { id = mammoth.40 }
+	}
+}
+#ends quest
+character_event = {
+	id = mammoth.40
+	desc = "EVTDESCmammoth.40"
+	picture = "GFX_mammoth_event"
+
+
+
+	is_triggered_only = yes
+
+	immediate = {
+ 		d_nightswatch = {
+			holder_scope = {
+				random_courtier = {
+					limit = {
+						trait = wikid
+						has_character_flag = mammoth_quest_ranger
+					}
+					remove_trait = wikid
+					clr_character_flag = mammoth_quest_ranger
+				}
+			}
+		}
+  		any_courtier = {
+    		limit = {
+				is_landed = no
+				trait = wikid
+			}
+			remove_trait = wikid
+			clr_character_flag = mammoth_quest_has_ranger
+			clr_character_flag = mammoth_quest_has_hunter
+			clr_character_flag = mammoth_quest_has_giant
+			clear_event_target = mammoth_quest_hunter
+			clear_event_target = mammoth_quest_ranger
+    	}
+	}
+
+
+	option = {
+		name = "EVTOPTAmammoth.40" #
+		remove_trait = wikid
+		set_character_flag = tamed_exotic_beast
+		clr_character_flag = mammoth_quest_has_ranger
+		clr_character_flag = mammoth_quest_has_hunter
+		clr_character_flag = mammoth_quest_has_giant
+		clr_character_flag = taming_exotic_beast
+		clear_event_target = mammoth_quest_leader
+	}
+}
+
+
+
+#Fight off tombola
+character_event = {
+	id = mammoth.28
+	hide_window = yes
+
+
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = EVTOPTAmammoth.28 #wins
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 25
+				trait = master_warrior
+			}
+			modifier = {
+				factor = 10
+				is_strong_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				is_tall_trigger = yes
+			}
+			modifier = {
+				factor = 7
+				is_smart_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				is_genius_trigger = yes
+			}
+			modifier = {
+				factor = 5
+				trait = skilled_warrior
+			}
+			modifier = {
+				factor = 5
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = mammoth_quest_has_ranger	#ranger helps
+			}
+			modifier = {
+				factor = 15
+				has_character_flag = mammoth_quest_has_hunter	#hunter helps
+			}
+		}
+
+		character_event = { id = mammoth.2801 }
+	}
+	option = {
+		name = EVTOPTCmammoth.28 #loses
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 25
+				is_weak_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				trait = craven
+			}
+			modifier = {
+				factor = 30
+				trait = crippled
+			}
+		}
+		character_event = { id = mammoth.2802 }
+	}
+	option = {
+		name = EVTOPTCmammoth.28 #giant
+		ai_chance = {
+			factor = 500
+		}
+		trigger = {
+			has_character_flag = mammoth_quest_has_giant
+
+		}
+		character_event = { id = mammoth.29 }
+	}
+}

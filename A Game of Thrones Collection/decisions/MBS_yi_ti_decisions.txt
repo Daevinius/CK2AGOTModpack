@@ -1,0 +1,621 @@
+
+# filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] ('self' MUST be set for decisions targetting only the taker, the other filter types can be set to lessen CPU load)
+# ai_target_filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] (which characters for which the AI evaluates the decision.)
+#	court: all characters in the AI's host court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	home_court: all characters in the AI's home court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	vassals: direct vassal rulers of the AI's employer
+#	sub_realm: all characters below the AI's employer
+#	realm: all characters in the same top realm as the AI
+#	dynasty: all members of the same dynasty
+#	all: all living characters (Avoid if possible. VERY CPU-HEAVY!)
+#
+
+targeted_decisions = {
+
+	bloodline_living_god_ceremony_dec = {
+		ai_target_filter = realm
+		filter = realm
+		only_independent = yes
+
+		from_potential = {
+			has_landed_title = e_yi_ti
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_living_god
+			}
+
+			OR = {
+				NOT = { has_character_flag = flag_living_god_threat }
+				had_character_flag = { flag = flag_living_god_threat days = 365 }
+			}
+		}
+
+		potential = {
+			NOT = { character = FROM }
+			NOT = { trait = dragon }
+			NOT = { culture_group = unoccupied_group }
+			NOT = { culture_group = winter_group }
+			NOT = { has_character_flag = flag_living_god_receipt }
+			OR = {
+				religion = yiti_gods
+				religion = yiti_gods_reformed
+			}
+			is_playable = yes
+		}
+
+		allow = {
+			show_only_failed_conditions = yes
+			FROM = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				NOT = { is_inaccessible_trigger = yes }
+			}
+
+			age = 14
+			prisoner = no
+			is_incapable = no
+			NOT = { is_inaccessible_trigger = yes }
+		}
+
+		effect = {
+			hidden_tooltip = {
+				character_event = { id = more_bloodlines.630 }
+			}
+		}
+
+		ai_check_interval = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	bloodline_educate_vassal_dec = {
+		ai_target_filter = realm
+		filter = realm
+		only_independent = yes
+
+		from_potential = {
+			has_landed_title = e_yi_ti
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_bureaucrat
+			}
+
+			OR = {
+				NOT = { has_character_flag = flag_bureaucrat_trainer }
+				had_character_flag = { flag = flag_bureaucrat_trainer days = 365 }
+			}
+		}
+
+		potential = {
+			NOT = { character = FROM }
+			NOT = { trait = dragon }
+			NOT = { culture_group = unoccupied_group }
+			NOT = { culture_group = winter_group }
+			NOT = { has_character_flag = flag_bureaucrat_receipt }
+			OR = {
+				religion = yiti_gods
+				religion = yiti_gods_reformed
+			}
+			is_playable = yes
+		}
+
+		allow = {
+			show_only_failed_conditions = yes
+			FROM = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				NOT = { is_inaccessible_trigger = yes }
+			}
+
+			age = 14
+			prisoner = no
+			is_incapable = no
+			NOT = { is_inaccessible_trigger = yes }
+		}
+
+		effect = {
+			hidden_tooltip = {
+				character_event = { id = more_bloodlines.640 }
+			}
+		}
+
+		ai_check_interval = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	bloodline_educate_family_dec = {
+		ai_target_filter = dynasty
+		filter = dynasty
+		only_independent = yes
+
+		from_potential = {
+			has_landed_title = e_yi_ti
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_bureaucrat
+			}
+
+			OR = {
+				NOT = { has_character_flag = flag_bureaucrat_trainer }
+				had_character_flag = { flag = flag_bureaucrat_trainer days = 365 }
+			}
+		}
+
+		potential = {
+			NOT = { character = FROM }
+			NOT = { trait = dragon }
+			NOT = { culture_group = unoccupied_group }
+			NOT = { culture_group = winter_group }
+			NOT = { has_character_flag = flag_bureaucrat_receipt }
+			OR = {
+				religion = yiti_gods
+				religion = yiti_gods_reformed
+			}
+		}
+
+		allow = {
+			show_only_failed_conditions = yes
+			FROM = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				NOT = { is_inaccessible_trigger = yes }
+			}
+
+			age = 14
+			prisoner = no
+			is_incapable = no
+			NOT = { is_inaccessible_trigger = yes }
+		}
+
+		effect = {
+			hidden_tooltip = {
+				character_event = { id = more_bloodlines.640 }
+			}
+		}
+
+		ai_check_interval = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	bloodline_diplomat_delegation_dec = {
+		ai_target_filter = independent_rulers
+		filter = independent_rulers
+		only_independent = yes
+		is_high_prio = yes
+
+		from_potential = {
+			has_landed_title = e_yi_ti
+			wealth = 160
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_diplomat
+			}
+
+			OR = {
+				NOT = { has_character_flag = flag_bloodline_diplomat_sent }
+				had_character_flag = { flag = flag_bloodline_diplomat_sent days = 1460 }
+			}
+		}
+
+		potential = {
+			NOT = { character = FROM }
+			is_ruler = yes
+			independent = yes
+			NOT = { trait = dragon }
+			NOT = { culture_group = unoccupied_group }
+			NOT = { culture_group = winter_group }
+			NOT = { has_character_flag = flag_bloodline_diplomat_received }
+			is_nomadic = no
+			is_playable = yes
+		}
+
+		allow = {
+			show_only_failed_conditions = yes
+			FROM = {
+				prisoner = no
+				NOT = { is_incapable = yes }
+				NOT = { is_inaccessible_trigger = yes }
+			}
+
+			age = 14
+			prisoner = no
+			is_incapable = no
+			NOT = { is_inaccessible_trigger = yes }
+			war = no
+		}
+
+		effect = {
+			hidden_tooltip = {
+				character_event = { id = more_bloodlines.650 }
+			}
+			e_yi_ti = {
+				holder_scope = {
+					wealth = -180
+					set_character_flag = flag_bloodline_diplomat_sent
+				}
+			}
+		}
+
+		ai_check_interval = 6
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	eat_brain_dec = {
+		only_independent = yes
+		ai_target_filter = court
+		filter = court
+		diplomacy_icon = GFX_execute_decision
+
+		from_potential = {
+			has_landed_title = e_yi_ti
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_longspoon
+			}
+		}
+
+		potential = {
+			prisoner = yes
+			host = { character = FROM }
+			NOT = { trait = dragon }
+		}
+
+		allow = {
+			prisoner = yes
+			NOT = { diplomatic_immunity = yes }
+		}
+
+		effect = {
+			FROM = { ##Check for tyranny
+				set_character_flag = unjust_execution
+				if = {
+					limit = { ROOT = { is_ruler = no } }
+					custom_tooltip = {
+						text = TOOLTIPINCREASETYRANY1
+						hidden_tooltip = {
+							change_variable = { which = "tyrant" value = 5 }
+						}
+					}
+				}
+				if = {
+					limit = { ROOT = { is_ruler = yes } }
+					custom_tooltip = {
+						text = TOOLTIPINCREASETYRANY2
+						hidden_tooltip = {
+							change_variable = { which = "tyrant" value = 10 }
+						}
+					}
+				}
+				hidden_tooltip = { character_event = { id = maintenance.1 } }#tyrant trait
+				hidden_tooltip = { character_event = { id = more_bloodlines.660 } }#pick which benefit you want
+				add_trait = cannibal_trait
+				random_list = {
+					10 = { add_trait = paranoid }
+					10 = { add_trait = lunatic }
+					180 = { }
+				}
+			}
+			#Target's realm upset
+			if = {
+				limit = {
+					FROM = { ai = no }
+					NOR = {
+						war_with = FROM
+						any_liege = {
+							OR = {
+								war_with = FROM
+								primary_title = {
+									check_variable = { which = "de_facto_empire" value = 0.9 }
+									ROOT = {
+										primary_title = {
+											is_variable_equal = { which = "de_facto_empire" which = PREVPREV }
+										}
+									}
+								}
+							}
+						}
+						same_realm = FROM
+						trait = slave
+						is_lowborn = yes
+					}
+				}
+				custom_tooltip = {
+					text = TOOLTIP_EXECUTION_REALM_UPSET
+					hidden_tooltip = {
+						any_liege = { opinion = { who = FROM modifier = opinion_executed_realm_character } }
+						if = {
+							limit = { is_ruler = yes }
+							any_vassal = { opinion = { who = FROM modifier = opinion_executed_realm_character } }
+							if = {
+								limit = { independent = no }
+								liege = { any_vassal = { opinion = { who = FROM modifier = opinion_executed_realm_character } } }
+							}
+						}
+					}
+				}
+			}
+			add_fear_execution_effect = yes
+			death = {
+				death_reason = death_execution_eaten
+				killer = FROM
+			}
+		}
+
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0.25 # Fairly high - let them be tyrannical nutjobs
+			}
+			modifier = { #Less likely to do if it would incur tyranny
+				factor = 0.5	# ditto above
+				FROM = {
+					NOR = {
+						ROOT = { just_execution_reason_PREV_trigger = yes }
+						war_with = ROOT
+						ROOT = { any_liege = { war_with = ROOT_FROM } }
+						NOT = { same_realm = ROOT }
+						ROOT = { #excludes owned slaves
+							trait = slave
+							has_opinion_modifier = { who = ROOT_FROM modifier = opinion_my_owner }
+						}
+					}
+				}
+			}
+			modifier = { #would like to eat people for magic points
+				factor = 10
+				FROM = {
+					OR = {
+						trait = cannibal_trait
+						trait = mystic
+					}
+				}
+			}
+			modifier = { #Dont execute if like prisoner...
+				factor = 0
+				reverse_opinion = { who = FROM value = 40 }	#higher than average, let them be sociopaths, also take out anti kinslaying stuff
+				FROM = { #...except if have valid reason and are just, ruthless or wroth, and not a lunatic
+					OR = {
+						NOR = {
+							trait = just
+							trait = ruthless
+							trait = wroth
+						}
+						NOT = { ROOT = { just_execution_reason_PREV_trigger = yes } }
+					}
+					NOT = { trait = lunatic }
+				}
+			}
+			modifier = {
+				factor = 4
+				any_claim = { holder_scope = { character = FROM } }
+				NOT = { is_child_of = FROM }
+			}
+			modifier = {
+				factor = 2
+				is_pretender = yes
+				FROM = {
+					OR = {
+						is_pretender = yes
+						is_primary_heir = yes
+					}
+				}
+				any_pretender_title = {
+					OR = {
+						current_heir = { character = FROM }
+						FROM = { any_pretender_title = { title = PREVPREV } }
+					}
+				}
+			}
+			modifier = { #trying to inspire fear
+				factor = 20
+				FROM = {
+					OR = {
+						trait = ruthless
+						trait = cruel
+					}
+					OR = {
+						is_close_relative = ROOT
+						is_vassal_or_below = ROOT
+						ROOT = { liege = { liege_before_war = { character = ROOT_FROM } } }
+					}
+				}
+			}
+			modifier = {
+				factor = 0.1
+				OR = {
+					is_lover = FROM
+					any_consort = { character = FROM }
+					is_married = FROM
+				}
+			}
+			modifier = {
+				factor = 0.05 #Enemy has your relative
+				FROM = {
+					any_current_enemy = {
+						dynasty = ROOT
+						is_close_relative = ROOT
+						any_courtier = {
+							is_close_relative = FROM
+							dynasty = FROM
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0 #Is your enemy and can enforce a victory
+				any_current_enemy = {
+					character = FROM
+				}
+			}
+			modifier = {
+				factor = 0.01
+				FROM = {
+					trait = just
+					NOT = { ROOT = { just_execution_reason_PREV_trigger = yes } }
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					trait = just
+					ROOT = { just_execution_reason_PREV_trigger = yes }
+				}
+			}
+
+			modifier = {
+				factor = 2
+				FROM = { trait = ruthless }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = wroth }
+			}
+			modifier = {
+				factor = 1.5
+				FROM = { trait = zealous }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = cruel }
+			}
+			modifier = {
+				factor = 2
+				FROM = { trait = impaler }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { trait = honorable }
+			}
+			modifier = {
+				factor = 0.33
+				FROM = { trait = patient }
+			}
+			modifier = {
+				factor = 0.5
+				FROM = { trait = kind }
+			}
+			modifier = {
+				factor = 0.5
+				reverse_opinion = { who = FROM value = 20 }
+			}
+			modifier = {
+				factor = 0.5
+				reverse_opinion = { who = FROM value = 0 }
+			}
+			modifier = {
+				factor = 2
+				NOT = { reverse_opinion = { who = FROM value = -25 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { reverse_opinion = { who = FROM value = -50 } }
+			}
+		}
+	}
+}
+decisions = {
+	bloodlines_raise_peasant_army_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			# ai = no
+			NOT = {
+				has_earmarked_regiments = peasant_army_bloodlines
+			}
+			war = yes
+			has_landed_title = e_yi_ti
+			OR = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_living_god
+				}
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_peasant
+				}
+			}
+			has_tribal_or_nomadic_government_trigger = no
+		}
+		allow = {
+			war = yes
+			prestige = 100
+		}
+		effect = {
+			prestige = -100
+			capital_scope = {
+				PREV = {
+					spawn_unit = {
+						owner = ROOT
+						province = PREV
+						home = PREV
+						troops = {
+							archers = { 2000 2000 }
+							light_infantry = { 3000 3000 }
+							heavy_infantry = { 200 200 }
+							light_cavalry = { 200 200 }
+						}
+						attrition = 1.0
+						disband_on_peace = yes
+						earmark = peasant_army_bloodlines
+						maintenance_multiplier = 0.5
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	bloodlines_raise_jogos_riders_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			# ai = no
+			NOT = {
+				has_earmarked_regiments = zorse_army_bloodlines
+			}
+			war = yes
+			has_landed_title = e_yi_ti
+			OR = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_scion
+				}
+			}
+			has_tribal_or_nomadic_government_trigger = no
+		}
+		allow = {
+			war = yes
+			prestige = 100
+		}
+		effect = {
+			prestige = -100
+			capital_scope = {
+				PREV = {
+					spawn_unit = {
+						owner = ROOT
+						province = PREV
+						home = PREV
+						troops = {
+							archers = { 1700 1700 }
+							light_cavalry = { 1000 1000 }
+							knights = { 300 300 }
+							horse_archers = { 500 500 }
+						}
+						attrition = 1.0
+						disband_on_peace = yes
+						earmark = zorse_army_bloodlines
+						maintenance_multiplier = 0.5
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

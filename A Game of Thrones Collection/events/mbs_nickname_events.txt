@@ -1,0 +1,88 @@
+namespace = mbs_nickname_events
+
+character_event = {
+	id = mbs_nickname_events.1
+	desc = "EVTDESCmbs_nickname_events.1"
+	picture = "GFX_knighted"
+
+	min_age = 12
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = bastard
+		OR = {
+			has_nickname = no
+			has_nickname = nick_the_bastard
+			has_nickname = nick_waters
+			has_nickname = nick_snow
+			has_nickname = nick_rivers
+			has_nickname = nick_stone
+			has_nickname = nick_hill
+			has_nickname = nick_flowers
+			has_nickname = nick_storm
+			has_nickname = nick_sand
+			has_nickname = nick_pyke
+			has_nickname = nick_tanner
+		}
+		OR = {
+			trait = skilled_tactician
+			trait = brilliant_strategist
+			trait = skilled_warrior
+			trait = master_warrior
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 3
+			trait = duelist
+		}
+		modifier = {
+			factor = 3
+			is_tall_trigger = yes
+		}
+		modifier = {
+			factor = 3
+			is_strong_trigger = yes
+		}
+		modifier = {
+			factor = 3
+			trait = strategist
+		}
+		modifier = {
+			factor = 3
+			trait = hunter
+		}
+		modifier = {
+			factor = 10
+			trait = brave
+		}
+		modifier = {
+			factor = 3
+			trait = falconer
+		}
+		modifier = {
+			factor = 3
+			trait = proud
+		}
+		modifier = {
+			factor = 3
+			trait = honorable
+		}
+		modifier = {
+			factor = 3
+			trait = knight
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_nickname_events.1" #
+
+		ai_chance = {
+			factor = 2
+		}
+		give_nickname = nick_bastard_of_location
+		prestige = 15
+	}
+}

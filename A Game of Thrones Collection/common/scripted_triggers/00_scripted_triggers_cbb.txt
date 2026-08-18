@@ -1,0 +1,212 @@
+can_be_commander_gold_cloaks_trigger = {
+	is_adult = yes
+	has_landed_title = c_kl_city
+	OR = {
+		is_female = no
+		liege = {
+			OR = {
+				female_warrior_culture_trigger = yes
+				primary_title = {
+					OR = {
+						has_law = enatic_succession
+						has_law = enatic_cognatic_succession
+						has_law = true_cognatic_succession
+					}
+				}
+			}
+		}
+	}
+	NAND = {
+		is_female = no
+		liege = { has_religion_feature = religion_matriarchal }
+	}
+	NAND = {
+		is_female = yes
+		liege = { has_religion_feature = religion_patriarchal }
+	}
+	prisoner = no
+	is_incapable = no
+	NOT = { has_pilgrimage_trait_trigger = yes }
+	NOT = { trait = slave }
+	NOT = { trait = dragon }
+	NOT = { trait = working_at_bank }
+	NOR = {
+		trait = maester
+		trait = archmaester
+	}
+	NOT = { has_landed_title = d_nightswatch }
+	OR = { #NW councillor must be black brother
+		liege = { NOT = { trait = nightswatch } }
+		AND = {
+			is_ruler = no
+			has_character_modifier = nw_builder
+		}
+	}
+	NOT = { has_character_modifier = fired_from_council_by_regent }
+	NOT = { # Not yet had event to reappoint councillors
+		liege = {
+			tier = EMPEROR
+			has_character_flag = mega_war_reappointing_council
+		}
+	}
+	NOT = { liege = { has_opinion_modifier = { who = ROOT modifier = opinion_resigned_from_council } } }
+}
+can_be_lord_commander_trigger = {
+	is_adult = yes
+	has_landed_title = d_kingsguard
+	OR = {
+		is_female = no
+		liege = {
+			OR = {
+				female_warrior_culture_trigger = yes
+				primary_title = {
+					OR = {
+						has_law = enatic_succession
+						has_law = enatic_cognatic_succession
+						has_law = true_cognatic_succession
+					}
+				}
+			}
+		}
+	}
+	NAND = {
+		is_female = no
+		liege = { has_religion_feature = religion_matriarchal }
+	}
+	NAND = {
+		is_female = yes
+		liege = { has_religion_feature = religion_patriarchal }
+	}
+	prisoner = no
+	is_incapable = no
+	NOT = { has_pilgrimage_trait_trigger = yes }
+	NOT = { trait = slave }
+	NOT = { trait = dragon }
+	NOT = { trait = working_at_bank }
+	NOR = {
+		trait = maester
+		trait = archmaester
+	}
+	NOT = { has_landed_title = d_nightswatch }
+	OR = { #NW councillor must be black brother
+		liege = { NOT = { trait = nightswatch } }
+		AND = {
+			is_ruler = no
+			has_character_modifier = nw_builder
+		}
+	}
+	NOT = { has_character_modifier = fired_from_council_by_regent }
+	NOT = { # Not yet had event to reappoint councillors
+		liege = {
+			tier = EMPEROR
+			has_character_flag = mega_war_reappointing_council
+		}
+	}
+	NOT = { liege = { has_opinion_modifier = { who = ROOT modifier = opinion_resigned_from_council } } }
+}
+can_be_commander_wolfs_den_trigger = {
+	is_adult = yes
+	has_landed_title = c_wolfs_den
+	OR = {
+		is_female = no
+		liege = {
+			OR = {
+				female_warrior_culture_trigger = yes
+				primary_title = {
+					OR = {
+						has_law = enatic_succession
+						has_law = enatic_cognatic_succession
+						has_law = true_cognatic_succession
+					}
+				}
+			}
+		}
+	}
+	NAND = {
+		is_female = no
+		liege = { has_religion_feature = religion_matriarchal }
+	}
+	NAND = {
+		is_female = yes
+		liege = { has_religion_feature = religion_patriarchal }
+	}
+	prisoner = no
+	is_incapable = no
+	NOT = { has_pilgrimage_trait_trigger = yes }
+	NOT = { trait = slave }
+	NOT = { trait = dragon }
+	NOT = { trait = working_at_bank }
+	NOR = {
+		trait = maester
+		trait = archmaester
+	}
+	NOT = { has_landed_title = d_nightswatch }
+	OR = { #NW councillor must be black brother
+		liege = { NOT = { trait = nightswatch } }
+		AND = {
+			is_ruler = no
+			has_character_modifier = nw_builder
+		}
+	}
+	NOT = { has_character_modifier = fired_from_council_by_regent }
+	NOT = { # Not yet had event to reappoint councillors
+		liege = {
+			tier = EMPEROR
+			has_character_flag = mega_war_reappointing_council
+		}
+	}
+	NOT = { liege = { has_opinion_modifier = { who = ROOT modifier = opinion_resigned_from_council } } }
+}
+can_be_commander_oldtown_trigger = {
+	is_adult = yes
+	has_landed_title = c_oldtown_city
+	OR = {
+		is_female = no
+		liege = {
+			OR = {
+				female_warrior_culture_trigger = yes
+				primary_title = {
+					OR = {
+						has_law = enatic_succession
+						has_law = enatic_cognatic_succession
+						has_law = true_cognatic_succession
+					}
+				}
+			}
+		}
+	}
+	NAND = {
+		is_female = no
+		liege = { has_religion_feature = religion_matriarchal }
+	}
+	NAND = {
+		is_female = yes
+		liege = { has_religion_feature = religion_patriarchal }
+	}
+	prisoner = no
+	is_incapable = no
+	NOT = { has_pilgrimage_trait_trigger = yes }
+	NOT = { trait = slave }
+	NOT = { trait = dragon }
+	NOT = { trait = working_at_bank }
+	NOR = {
+		trait = maester
+		trait = archmaester
+	}
+	NOT = { has_landed_title = d_nightswatch }
+	OR = { #NW councillor must be black brother
+		liege = { NOT = { trait = nightswatch } }
+		AND = {
+			is_ruler = no
+			has_character_modifier = nw_builder
+		}
+	}
+	NOT = { has_character_modifier = fired_from_council_by_regent }
+	NOT = { # Not yet had event to reappoint councillors
+		liege = {
+			tier = EMPEROR
+			has_character_flag = mega_war_reappointing_council
+		}
+	}
+	NOT = { liege = { has_opinion_modifier = { who = ROOT modifier = opinion_resigned_from_council } } }
+}

@@ -1,0 +1,370 @@
+targeted_decisions = {
+
+    enforce_succession_laws = {
+		filter = vassals #Filter characters targetted by the player
+		ai_target_filter = vassals #Filter for characters targetted by the AI
+
+		from_potential = {
+			primary_title = {
+			    AND = {
+					title = e_valyrian_empire
+					has_law = dote_autonomy_0
+				}
+			}
+		}
+
+		potential = {
+		    same_realm = from
+			is_landed = yes
+			is_theocracy = no
+		}
+
+		allow = {
+		    FROM = {
+				primary_title = {
+					AND = {
+						title = e_valyrian_empire
+						has_law = dote_autonomy_0
+					}
+				}
+			}
+		    ROOT = {
+                same_realm = from
+			    is_landed = yes
+				OR = {
+					#Succesion Laws
+					AND = {
+						top_liege = {
+                            primary_title = {
+							    has_law = succ_primogeniture
+							}
+						}
+						NOT = {
+						    primary_title = {
+								has_law = succ_primogeniture
+							}
+						}
+					}
+
+					AND = {
+						top_liege = {
+						    primary_title = {
+							    has_law = succ_gavelkind
+							}
+						}
+						NOT = {
+                            primary_title = {
+						        has_law = succ_gavelkind
+                            }
+						}
+					}
+
+					AND = {
+						top_liege = {
+						    primary_title = {
+								has_law = succ_elective_gavelkind
+							}
+						}
+						NOT = {
+                            primary_title = {
+								has_law = succ_elective_gavelkind
+							}
+						}
+					}
+
+					AND = {
+						top_liege = {
+                            primary_title = {
+							    has_law = succ_seniority
+							}
+						}
+						NOT = {
+						    primary_title = {
+							    has_law = succ_seniority
+							}
+					    }
+					}
+
+					AND = {
+						top_liege = {
+						    primary_title = {
+								has_law = succ_tanistry
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = succ_tanistry
+							}
+						}
+					}
+
+					AND = {
+						top_liege = {
+                            primary_title = {
+								has_law = succ_ultimogeniture
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = succ_ultimogeniture
+							}
+					    }
+					}
+
+					AND = {
+						top_liege = {
+							primary_title = {
+								has_law = succ_feudal_elective
+							}
+						}
+						NOT = {
+							primary_title = {
+							has_law = succ_feudal_elective
+							}
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			FROM = {
+			    primary_title = {
+					trigger_switch = {
+						on_trigger = has_law
+						#Succesion Laws
+						succ_primogeniture  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_primogeniture
+								}
+							}
+						}
+						succ_gavelkind  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_gavelkind
+								}
+							}
+						}
+						succ_elective_gavelkind  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_elective_gavelkind
+								}
+							}
+						}
+						succ_seniority  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_seniority
+								}
+							}
+						}
+						succ_tanistry  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_tanistry
+								}
+							}
+						}
+						succ_ultimogeniture  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_ultimogeniture
+								}
+							}
+						}
+						succ_feudal_elective  = {
+							ROOT = {
+								primary_title = {
+									add_law = succ_feudal_elective
+								}
+							}
+						}
+					}
+			    }
+			}
+
+			FROM = {
+			    prestige = 100
+			}
+
+			ROOT = {
+			    prestige = -100
+			}
+		}
+
+		revoke_allowed = {
+			always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+			factor = 0
+	    }
+    }
+
+    enforce_gender_laws = {
+		filter = vassals #Filter characters targetted by the player
+		ai_target_filter = vassals #Filter for characters targetted by the AI
+
+		from_potential = {
+			primary_title = {
+			    AND = {
+					title = e_valyrian_empire
+					has_law = dote_autonomy_0
+				}
+			}
+		}
+
+		potential = {
+		    same_realm = from
+			is_landed = yes
+			is_theocracy = no
+		}
+
+		allow = {
+		    FROM = {
+				primary_title = {
+					AND = {
+						title = e_valyrian_empire
+						has_law = dote_autonomy_0
+					}
+				}
+			}
+		    ROOT = {
+                same_realm = from
+			    is_landed = yes
+				OR = {
+					#Gender Laws
+					AND = {
+						top_liege = {
+						    primary_title = {
+							has_law = cognatic_succession
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = cognatic_succession
+							}
+						}
+					}
+					AND = {
+						top_liege = {
+						    primary_title = {
+							has_law = agnatic_succession
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = agnatic_succession
+							}
+						}
+					}
+
+					AND = {
+						top_liege = {
+						    primary_title = {
+							has_law = true_cognatic_succession
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = true_cognatic_succession
+							}
+						}
+					}
+
+					AND = {
+						top_liege = {
+						    primary_title = {
+							has_law = enatic_succession
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = enatic_succession
+							}
+						}
+					}
+
+					AND = {
+						top_liege = {
+						    primary_title = {
+							has_law = enatic_cognatic_succession
+							}
+						}
+						NOT = {
+							primary_title = {
+								has_law = enatic_cognatic_succession
+							}
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			FROM = {
+			    primary_title = {
+					trigger_switch = {
+						on_trigger = has_law
+						#Gender Laws
+						cognatic_succession  = {
+							ROOT = {
+								primary_title = {
+									add_law = cognatic_succession
+								}
+							}
+						}
+						agnatic_succession  = {
+							ROOT = {
+								primary_title = {
+									add_law = agnatic_succession
+								}
+							}
+						}
+						true_cognatic_succession  = {
+							ROOT = {
+								primary_title = {
+									add_law = true_cognatic_succession
+								}
+							}
+						}
+						enatic_succession  = {
+							ROOT = {
+								primary_title = {
+									add_law = enatic_succession
+								}
+							}
+						}
+						enatic_cognatic_succession  = {
+							ROOT = {
+								primary_title = {
+									add_law = enatic_cognatic_succession
+								}
+							}
+						}
+					}
+			    }
+			}
+
+			FROM = {
+			    prestige = 100
+			}
+
+			ROOT = {
+			    prestige = -100
+			}
+		}
+
+		revoke_allowed = {
+			always = no #Not used in vanilla
+		}
+
+	    ai_will_do = {
+			factor = 0
+	    }
+    }
+
+}

@@ -1,0 +1,3266 @@
+namespace = mbs_lords_declarant
+
+narrative_event = {
+	id = mbs_lords_declarant.1
+	title = "EVTtitlembs_lords_declarant.1"
+	desc = "EVTDESCmbs_lords_declarant.1"
+	picture = GFX_STARK
+
+	only_playable = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_landed_title = d_runestone
+		e_north = {
+			has_holder = yes
+			holder_scope = { character = 2059 }
+		}
+		k_vale = {
+			has_holder = yes
+			holder_scope = { character = 94003 }
+		}
+		NOT = { de_jure_liege = e_north }
+	}
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_lords_declarant.2 days = 2 } #
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.1" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 0
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.2
+	title = "EVTtitlembs_lords_declarant.1"
+	desc = "EVTDESCmbs_lords_declarant.2"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.2" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.3 days = 3 } } }
+		e_north = { holder_scope = { character_event = { id = mbs_lords_declarant.301 days = 3 } } }
+		k_riverlands = { holder_scope = { character_event = { id = mbs_lords_declarant.302 days = 3 } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { character_event = { id = mbs_lords_declarant.303 days = 3 } } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.3
+	title = "EVTtitlembs_lords_declarant.3"
+	desc = "EVTDESCmbs_lords_declarant.3"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.3" # Accept the proposal
+		ai_chance = {
+			factor = 1
+		}
+		d_runestone = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.305 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+		any_player = {
+			limit = {
+				NOR = {
+					character = FROM
+					has_landed_title = e_iron_throne
+					has_landed_title = k_westerlands
+					has_landed_title = e_north
+					has_landed_title = k_riverlands
+				}
+			}
+			character_event = { id = mbs_lords_declarant.314 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.3" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 7
+		}
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.4 days = 3 } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.301
+	title = "EVTtitlembs_lords_declarant.301"
+	desc = "EVTDESCmbs_lords_declarant.301"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.301" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.302
+	title = "EVTtitlembs_lords_declarant.302"
+	desc = "EVTDESCmbs_lords_declarant.302"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.302" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.303
+	title = "EVTtitlembs_lords_declarant.303"
+	desc = "EVTDESCmbs_lords_declarant.303"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.303" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.305
+	title = "EVTtitlembs_lords_declarant.305"
+	desc = "EVTDESCmbs_lords_declarant.305"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.305" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.310
+	title = "EVTtitlembs_lords_declarant.310"
+	desc = "EVTDESCmbs_lords_declarant.310"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.301" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.311
+	title = "EVTtitlembs_lords_declarant.311"
+	desc = "EVTDESCmbs_lords_declarant.311"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.311" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.312
+	title = "EVTtitlembs_lords_declarant.312"
+	desc = "EVTDESCmbs_lords_declarant.312"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.312" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.313
+	title = "EVTtitlembs_lords_declarant.313"
+	desc = "EVTDESCmbs_lords_declarant.313"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.313" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.314
+	title = "EVTtitlembs_lords_declarant.314"
+	desc = "EVTDESCmbs_lords_declarant.314"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.314" # write to the Eyrie
+		ai_chance = {
+			factor = 5
+		}
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.4
+	title = "EVTtitlembs_lords_declarant.4"
+	desc = "EVTDESCmbs_lords_declarant.4"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.4" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_lords_declarant.5 } #
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.4" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 0
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.5
+	title = "EVTtitlembs_lords_declarant.5"
+	desc = "EVTDESCmbs_lords_declarant.5"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.5" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.7 days = 10 } } }
+		k_vale = {
+			holder_scope = {
+				any_vassal = {
+					if = {
+						limit = {
+							NOR = {
+								has_landed_title = d_runestone
+								has_landed_title = b_stone
+								has_landed_title = b_snow
+								has_landed_title = b_sky
+								has_landed_title = b_the_eyrie_sept
+							}
+						}
+						character_event = { id = mbs_lords_declarant.6 days = 1 random = 4 }
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.6
+	title = "EVTtitlembs_lords_declarant.6"
+	desc = "EVTDESCmbs_lords_declarant.6"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = { #join lords declarant
+		name = "EVTOPTAmbs_lords_declarant.6" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 0.2
+				e_north = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 6
+				k_vale = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				k_vale = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				e_iron_throne = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 1.3
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 2.5
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		set_character_flag = joined_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.601 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.603 } } }
+	}
+	option = { #don't join lords declarant
+		name = "EVTOPTBmbs_lords_declarant.6" #
+		ai_chance = {
+			factor = 1.5
+			modifier = {
+				factor = 3
+				trait = greedy
+			}
+			modifier = {
+				factor = 3
+				trait = slothful
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0.1
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 9
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_sunderland
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 6
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 0.4
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 1.6
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 2.5
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		set_character_flag = rejected_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.602 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.604 } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.601
+	title = "EVTtitlembs_lords_declarant.601"
+	desc = "EVTDESCmbs_lords_declarant.601"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.601" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.602
+	title = "EVTtitlembs_lords_declarant.602"
+	desc = "EVTDESCmbs_lords_declarant.602"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.602" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.603
+	title = "EVTtitlembs_lords_declarant.603"
+	desc = "EVTDESCmbs_lords_declarant.603"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.603" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.604
+	title = "EVTtitlembs_lords_declarant.604"
+	desc = "EVTDESCmbs_lords_declarant.604"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.604" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.7
+	title = "EVTtitlembs_lords_declarant.7"
+	desc = "EVTDESCmbs_lords_declarant.7"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.7" # Accept the proposal
+		ai_chance = {
+			factor = 1
+		}
+		d_runestone = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.305 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+		any_player = {
+			limit = {
+				NOR = {
+					character = FROM
+					has_landed_title = e_iron_throne
+					has_landed_title = k_westerlands
+					has_landed_title = e_north
+					has_landed_title = k_riverlands
+				}
+			}
+			character_event = { id = mbs_lords_declarant.314 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.7" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 3
+		}
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.8 days = 3 } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.8
+	title = "EVTtitlembs_lords_declarant.8"
+	desc = "EVTDESCmbs_lords_declarant.8"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.8" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_lords_declarant.9 } #
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.8" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 0
+		}
+		prestige = -100
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.9
+	title = "EVTtitlembs_lords_declarant.9"
+	desc = "EVTDESCmbs_lords_declarant.9"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.9" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_lords_declarant.11 days = 10 } #
+		k_vale = {
+			holder_scope = {
+				any_vassal = {
+					if = {
+						limit = {
+							NOR = {
+								has_landed_title = d_runestone
+								has_landed_title = b_stone
+								has_landed_title = b_snow
+								has_landed_title = b_sky
+								has_landed_title = b_the_eyrie_sept
+							}
+						}
+						character_event = { id = mbs_lords_declarant.10 days = 1 random = 4 }
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.10
+	title = "EVTtitlembs_lords_declarant.10"
+	desc = "EVTDESCmbs_lords_declarant.10"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = { #join lords declarant
+		name = "EVTOPTAmbs_lords_declarant.10" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				has_character_flag = joined_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 0
+				has_character_flag = rejected_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 0.2
+				e_north = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 6
+				k_vale = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				k_vale = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				e_iron_throne = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 1.3
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 2.5
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		set_character_flag = joined_lords_declarant_mbs
+		clr_character_flag = rejected_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.1001 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.1003 } } }
+	}
+	option = { #don't join lords declarant
+		name = "EVTOPTBmbs_lords_declarant.10" #
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_flag = joined_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = rejected_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 3
+				trait = greedy
+			}
+			modifier = {
+				factor = 3
+				trait = slothful
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0.1
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 9
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_sunderland
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 6
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 0.4
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 1.6
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 2.5
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		set_character_flag = rejected_lords_declarant_mbs
+		clr_character_flag = joined_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.1002 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.1004 } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1001
+	title = "EVTtitlembs_lords_declarant.1001"
+	desc = "EVTDESCmbs_lords_declarant.1001"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1001" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1002
+	title = "EVTtitlembs_lords_declarant.1002"
+	desc = "EVTDESCmbs_lords_declarant.1002"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1002" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1003
+	title = "EVTtitlembs_lords_declarant.1003"
+	desc = "EVTDESCmbs_lords_declarant.1003"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1003" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1004
+	title = "EVTtitlembs_lords_declarant.1004"
+	desc = "EVTDESCmbs_lords_declarant.1004"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1004" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.11
+	title = "EVTtitlembs_lords_declarant.11"
+	desc = "EVTDESCmbs_lords_declarant.11"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.11" #ultimatum: secede
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.12 days = 2 } } }
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.11" #ultimatum: declare war
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.20 days = 2 } } }
+	}
+	option = {
+		name = "EVTOPTCmbs_lords_declarant.11" #ultimatum: final plea
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.30 days = 2 } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.12
+	title = "EVTtitlembs_lords_declarant.12"
+	desc = "EVTDESCmbs_lords_declarant.12"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.12" # Accept the proposal
+		ai_chance = {
+			factor = 1
+		}
+		d_runestone = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.305 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		d_runestone = {
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+		any_player = {
+			limit = {
+				NOR = {
+					character = FROM
+					has_landed_title = e_iron_throne
+					has_landed_title = k_westerlands
+					has_landed_title = e_north
+					has_landed_title = k_riverlands
+				}
+			}
+			character_event = { id = mbs_lords_declarant.314 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.12" #Nope
+		ai_chance = {
+			factor = 2
+		}
+		d_runestone = {
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		d_runestone = {
+			holder_scope = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.15 days = 3 } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.15
+	title = "EVTtitlembs_lords_declarant.15"
+	desc = "EVTDESCmbs_lords_declarant.15"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.15" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_lords_declarant.16 } #
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.15" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 0
+		}
+		prestige = -100
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.16
+	title = "EVTtitlembs_lords_declarant.16"
+	desc = "EVTDESCmbs_lords_declarant.16"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.9" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = {
+			holder_scope = {
+				narrative_event = {
+					id = mbs_lords_declarant.18
+					days = 2
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		set_defacto_liege = e_north
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		clr_character_flag = joined_lords_declarant_mbs
+		k_vale = {
+			holder_scope = {
+				any_vassal = {
+					if = {
+						limit = {
+							NOR = {
+								has_landed_title = d_runestone
+								has_landed_title = b_stone
+								has_landed_title = b_snow
+								has_landed_title = b_sky
+								has_landed_title = b_the_eyrie_sept
+							}
+						}
+						character_event = { id = mbs_lords_declarant.17 days = 1 random = 4 }
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.17
+	title = "EVTtitlembs_lords_declarant.17"
+	desc = "EVTDESCmbs_lords_declarant.17"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = { #join lords declarant
+		name = "EVTOPTAmbs_lords_declarant.17" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				has_character_flag = joined_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 0
+				has_character_flag = rejected_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 0.2
+				e_north = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 6
+				k_vale = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				k_vale = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				e_iron_throne = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 1.3
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 2.5
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		set_defacto_liege = e_north
+		d_runestone = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						multiplier = 3
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						multiplier = 3
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						multiplier = 3
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		clr_character_flag = rejected_lords_declarant_mbs
+		clr_character_flag = joined_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.1701 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.1703 } } }
+	}
+	option = { #don't join lords declarant
+		name = "EVTOPTBmbs_lords_declarant.17" #
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_flag = joined_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = rejected_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 3
+				trait = greedy
+			}
+			modifier = {
+				factor = 3
+				trait = slothful
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0.1
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 9
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_sunderland
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 6
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 0.4
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 1.6
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 2.5
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		clr_character_flag = rejected_lords_declarant_mbs
+		clr_character_flag = joined_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.1702 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.1704 } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1701
+	title = "EVTtitlembs_lords_declarant.1701"
+	desc = "EVTDESCmbs_lords_declarant.1701"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1701" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1702
+	title = "EVTtitlembs_lords_declarant.1702"
+	desc = "EVTDESCmbs_lords_declarant.1702"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1702" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1703
+	title = "EVTtitlembs_lords_declarant.1703"
+	desc = "EVTDESCmbs_lords_declarant.1703"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1703" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.1704
+	title = "EVTtitlembs_lords_declarant.1704"
+	desc = "EVTDESCmbs_lords_declarant.1704"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.1704" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.18
+	title = "EVTtitlembs_lords_declarant.18"
+	desc = "EVTDESCmbs_lords_declarant.18"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.18" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+####################
+narrative_event = {
+	id = mbs_lords_declarant.20
+	title = "EVTtitlembs_lords_declarant.20"
+	desc = "EVTDESCmbs_lords_declarant.20"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.20" # Accept the proposal
+		ai_chance = {
+			factor = 1
+		}
+		d_runestone = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.305 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		d_runestone = {
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+		any_player = {
+			limit = {
+				NOR = {
+					character = FROM
+					has_landed_title = e_iron_throne
+					has_landed_title = k_westerlands
+					has_landed_title = e_north
+					has_landed_title = k_riverlands
+				}
+			}
+			character_event = { id = mbs_lords_declarant.314 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.20" #Nope
+		ai_chance = {
+			factor = 2
+		}
+		d_runestone = {
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		d_runestone = {
+			holder_scope = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.21 days = 3 } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.21
+	title = "EVTtitlembs_lords_declarant.21"
+	desc = "EVTDESCmbs_lords_declarant.21"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.21" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		character_event = { id = mbs_lords_declarant.22 } #
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.21" #Don't start the Lords Declarant
+		ai_chance = {
+			factor = 0
+		}
+		prestige = -100
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.22
+	title = "EVTtitlembs_lords_declarant.22"
+	desc = "EVTDESCmbs_lords_declarant.22"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.22" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = {
+			holder_scope = {
+				narrative_event = {
+					id = mbs_lords_declarant.24
+					days = 2
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = plot_replace_regent_cb_mbs
+			}
+		}
+		hidden_tooltip = {
+			clr_character_flag = neutral
+			set_character_flag = rebel_leader
+			add_trait = rebel_leader
+			any_vassal = {
+				clr_character_flag = neutral
+				set_character_flag = against_king
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.2210 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.2210 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.2210 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.2210 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		clr_character_flag = joined_lords_declarant_mbs
+		k_vale = {
+			holder_scope = {
+				any_vassal = {
+					if = {
+						limit = {
+							NOR = {
+								has_landed_title = d_runestone
+								has_landed_title = b_stone
+								has_landed_title = b_snow
+								has_landed_title = b_sky
+								has_landed_title = b_the_eyrie_sept
+							}
+						}
+						character_event = { id = mbs_lords_declarant.23 days = 1 random = 4 }
+					}
+				}
+			}
+		}
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.2210
+	title = "EVTtitlembs_lords_declarant.2210"
+	desc = "EVTDESCmbs_lords_declarant.2210"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.2210" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.23
+	title = "EVTtitlembs_lords_declarant.23"
+	desc = "EVTDESCmbs_lords_declarant.23"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = { #join lords declarant
+		name = "EVTOPTAmbs_lords_declarant.23" #start Lords Declarant struggle
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				has_character_flag = joined_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 0
+				has_character_flag = rejected_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 3
+				trait = just
+			}
+			modifier = {
+				factor = 3
+				trait = honorable
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 0.1
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 0.2
+				e_north = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 6
+				k_vale = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				k_vale = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 6
+				e_iron_throne = {
+					holder_scope = {
+						is_rival = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				e_iron_throne = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 1.2
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 1.3
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 2.5
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 0.8
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 0.4
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 0.2
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		hidden_tooltip = {
+			event_target:mega_war_liege = {
+				set_mega_war_empire_variable_ROOT_effect = yes
+			}
+			any_demesne_title = {
+				limit = {
+					OR = {
+						tier = COUNT
+						tier = DUKE
+					}
+				}
+				set_variable = { which = "de_facto_kingdom" value = 0 }
+			}
+			set_defacto_liege = THIS
+		}
+		join_attacker_wars = FROM
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		d_runestone = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						multiplier = 3
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						multiplier = 3
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						multiplier = 3
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		clr_character_flag = rejected_lords_declarant_mbs
+		clr_character_flag = joined_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.2301 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.2303 } } }
+	}
+	option = { #don't join lords declarant
+		name = "EVTOPTBmbs_lords_declarant.23" #
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_character_flag = joined_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 10
+				has_character_flag = rejected_lords_declarant_mbs
+			}
+			modifier = {
+				factor = 3
+				trait = greedy
+			}
+			modifier = {
+				factor = 3
+				trait = slothful
+			}
+			modifier = {
+				factor = 3
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0.1
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 9
+				has_landed_title = c_the_gates_of_the_moon
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_gulltown
+			}
+			modifier = {
+				factor = 3
+				has_landed_title = c_sunderland
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ironoaks
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_redfort
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_longbow_hall
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_strongsong
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_ninestars
+			}
+			modifier = {
+				factor = 0
+				has_landed_title = c_witch_isle
+			}
+			modifier = {
+				factor = 6
+				e_north = {
+					holder_scope = {
+						is_friend = ROOT
+					}
+				}
+			}
+			modifier = {
+				factor = 0.2
+				is_friend = FROM
+			}
+			modifier = {
+				factor = 6
+				is_rival = FROM
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  20 }
+			}
+			modifier = {
+				factor = 0.8
+				opinion = { who = FROM value =  40 }
+			}
+			modifier = {
+				factor = 0.4
+				opinion = { who = FROM value =  60 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  80 }
+			}
+			modifier = {
+				factor = 0.2
+				opinion = { who = FROM value =  100 }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  0 } }
+			}
+			modifier = {
+				factor = 1.2
+				NOT = { opinion = { who = FROM value =  -20 } }
+			}
+			modifier = {
+				factor = 1.4
+				NOT = { opinion = { who = FROM value =  -40 } }
+			}
+			modifier = {
+				factor = 1.6
+				NOT = { opinion = { who = FROM value =  -60 } }
+			}
+			modifier = {
+				factor = 2
+				NOT = { opinion = { who = FROM value =  -80 } }
+			}
+			modifier = {
+				factor = 2.5
+				NOT = { opinion = { who = FROM value =  -99 } }
+			}
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		clr_character_flag = rejected_lords_declarant_mbs
+		clr_character_flag = joined_lords_declarant_mbs
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.2302 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_lords_declarant.2304 } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.2301
+	title = "EVTtitlembs_lords_declarant.2301"
+	desc = "EVTDESCmbs_lords_declarant.2301"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.2301" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.2302
+	title = "EVTtitlembs_lords_declarant.2302"
+	desc = "EVTDESCmbs_lords_declarant.2302"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.2302" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.2303
+	title = "EVTtitlembs_lords_declarant.2303"
+	desc = "EVTDESCmbs_lords_declarant.2303"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.2303" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.2304
+	title = "EVTtitlembs_lords_declarant.2304"
+	desc = "EVTDESCmbs_lords_declarant.2304"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.2304" #don't join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.24
+	title = "EVTtitlembs_lords_declarant.24"
+	desc = "EVTDESCmbs_lords_declarant.24"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.24" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		d_runestone = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+	}
+}
+####################
+narrative_event = {
+	id = mbs_lords_declarant.30
+	title = "EVTtitlembs_lords_declarant.30"
+	desc = "EVTDESCmbs_lords_declarant.30"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.30" # Accept the proposal
+		ai_chance = {
+			factor = 1
+		}
+		d_runestone = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.305 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		d_runestone = {
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.310 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.311 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_cause
+						who = ROOT
+						years = 10
+					}
+					opinion = {
+						modifier = opinion_dithered
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.312 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				character_event = { id = mbs_lords_declarant.313 days = 3 }
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+		any_player = {
+			limit = {
+				NOR = {
+					character = FROM
+					has_landed_title = e_iron_throne
+					has_landed_title = k_westerlands
+					has_landed_title = e_north
+					has_landed_title = k_riverlands
+				}
+			}
+			character_event = { id = mbs_lords_declarant.314 }
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_lords_declarant.30" #Nope
+		ai_chance = {
+			factor = 9
+		}
+		d_runestone = {
+			holder_scope = {
+				reverse_opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		d_runestone = {
+			holder_scope = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_angry
+					multiplier = 2
+					years = 10
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		k_riverlands = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		d_runestone = { holder_scope = { character_event = { id = mbs_lords_declarant.31 days = 3 } } }
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		k_westerlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		e_iron_throne = { holder_scope = { tooltip = { show_portrait = yes } } }
+		prestige = -30
+	}
+}
+narrative_event = {
+	id = mbs_lords_declarant.31
+	title = "EVTtitlembs_lords_declarant.31"
+	desc = "EVTDESCmbs_lords_declarant.31"
+	picture = GFX_ARRYN
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.31" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		e_north = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_riverlands = { holder_scope = { tooltip = { show_portrait = yes } } }
+		k_vale = { holder_scope = { regent = { tooltip = { show_portrait = yes } } } }
+		prestige = -100
+		k_vale = {
+			holder_scope = {
+				any_vassal = {
+					character_event = { id = mbs_lords_declarant.32 days = 1 random = 4 }
+				}
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_lords_declarant.32
+	hide_window = yes
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_lords_declarant.32" #join struggle
+		ai_chance = {
+			factor = 5
+		}
+		set_character_flag = joined_lords_declarant_mbs
+		clr_character_flag = rejected_lords_declarant_mbs
+	}
+}
+character_event = {
+	id = mbs_lords_declarant.9989
+	desc = "EVTDESCclash_of_kings.2"
+	title = "EVTTITLEclash_of_kings.1"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAclash_of_kings.2" #Good
+		e_iron_throne = {
+			reverse_war = {
+				target = ROOT
+				casus_belli = plot_replace_regent_cb_mbs
+			}
+		}
+		hidden_tooltip = {
+			clr_character_flag = neutral
+			set_character_flag = rebel_leader
+			add_trait = rebel_leader
+			any_vassal = {
+				clr_character_flag = neutral
+				set_character_flag = against_king
+			}
+		}
+	}
+}

@@ -1,0 +1,239 @@
+namespace = living_bloodlines
+
+character_event = {
+    id = living_bloodlines.1
+
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        character = 999013241
+    }
+
+    immediate = {
+        c_150012 = {
+            any_owned_bloodline = {
+                ROOT = { remove_from_bloodline = PREV }
+            }
+        }
+        c_150014 = {
+            any_owned_bloodline = {
+                ROOT = { remove_from_bloodline = PREV }
+            }
+        }
+        c_60169 = {
+            any_owned_bloodline = {
+                ROOT = { remove_from_bloodline = PREV }
+            }
+        }
+        c_6030010 = {
+            any_owned_bloodline = {
+                ROOT = { remove_from_bloodline = PREV }
+            }
+        }
+    }
+    option = {
+        name = OK
+    }
+}
+
+character_event = {
+    id = living_bloodlines.2
+
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        character = 999013241
+    }
+
+	immediate = {
+		any_owned_bloodline = {
+			limit = {
+				has_bloodline_flag = bloodline_sandsnake_mbs
+			}
+			remove_bloodline_member = PREV
+		}
+		c_3001 = {
+			any_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_redviper_mbs
+				}
+				ROOT = {
+					add_to_bloodline = PREV
+				}
+			}
+		}
+	}
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+    id = living_bloodlines.3
+
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        dynasty = 190 # House Lannister
+        mother_even_if_dead = {
+            character = 4190 # Cersei
+        }
+    }
+
+    immediate = {
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_lanntclever }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_geroldtg }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_tywin }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_durrangg }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_arlana }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_argilaca }
+        add_bloodline_member = ROOT
+        }
+    }
+    option = {
+        name = OK
+    }
+}
+
+character_event = {
+    id = living_bloodlines.4
+
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        dynasty = 496 # House Targaryen
+        mother_even_if_dead = {
+            character = 77041 # Daenerys
+        }
+    }
+
+    immediate = {
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_aegontc }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_tconciliator }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_bldaemontg }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_viserysii }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_madking }
+        add_bloodline_member = ROOT
+        }
+    }
+    option = {
+        name = OK
+    }
+}
+
+character_event = {
+    id = living_bloodlines.5
+
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        dynasty = 52500008 # House Blackstone
+        mother_even_if_dead = {
+            character = 999013247 # Jeyne Greystone
+        }
+    }
+
+    immediate = {
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_durrangg }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_arlana }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_argilaca }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_aegontc }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_tconciliator }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_bldaemontg }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_madking }
+        add_bloodline_member = ROOT
+        }
+    }
+    option = {
+        name = OK
+    }
+}
+
+character_event = {
+    id = living_bloodlines.6
+
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        dynasty = 504 # House Farseed
+        father_even_if_dead = {
+            character = 999013254
+        }
+    }
+
+    immediate = {
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_nettles }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_hammerhills }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_artosarryn }
+        add_bloodline_member = ROOT
+        }
+    any_bloodline = {
+        limit = { has_bloodline_flag = lb_ttalon }
+        add_bloodline_member = ROOT
+        }
+    }
+    option = {
+        name = OK
+    }
+}

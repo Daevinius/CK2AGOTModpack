@@ -1,0 +1,1515 @@
+
+# filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] ('self' MUST be set for decisions targetting only the taker, the other filter types can be set to lessen CPU load)
+# ai_target_filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] (which characters for which the AI evaluates the decision.)
+#	court: all characters in the AI's host court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	home_court: all characters in the AI's home court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	vassals: direct vassal rulers of the AI's employer
+#	sub_realm: all characters below the AI's employer
+#	realm: all characters in the same top realm as the AI
+#	dynasty: all members of the same dynasty
+#	all: all living characters (Avoid if possible. VERY CPU-HEAVY!)
+#
+
+
+decisions = {
+	mbs_reclaim_riv_duskendale_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_duskendale = {
+					de_jure_liege = k_riverlands
+				}
+				d_duskendale = {
+					de_jure_liege = e_riverlands
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_duskendale = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_riverlands
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_riverlands = { has_holder = yes } }
+
+				completely_controls = e_riverlands
+			}
+			trigger_else = {
+				completely_controls = k_riverlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.1 }
+			d_duskendale = { de_jure_liege = k_riverlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_riv_hayford_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_hayford = {
+					de_jure_liege = k_riverlands
+				}
+				d_hayford = {
+					de_jure_liege = e_riverlands
+				}
+			}
+			NOT = {
+				d_hayford = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_riverlands
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_riverlands = { has_holder = yes } }
+
+				completely_controls = e_riverlands
+			}
+			trigger_else = {
+				completely_controls = k_riverlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.2 }
+			d_hayford = { de_jure_liege = k_riverlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_riv_rosby_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_rosby = {
+					de_jure_liege = k_riverlands
+				}
+				d_rosby = {
+					de_jure_liege = e_riverlands
+				}
+			}
+			NOT = {
+				d_rosby = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_riverlands
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_riverlands = { has_holder = yes } }
+
+				completely_controls = e_riverlands
+			}
+			trigger_else = {
+				completely_controls = k_riverlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.3 }
+			d_rosby = { de_jure_liege = k_riverlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_riv_stokeworth_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_stokeworth = {
+					de_jure_liege = k_riverlands
+				}
+				d_stokeworth = {
+					de_jure_liege = e_riverlands
+				}
+			}
+			NOT = {
+				d_stokeworth = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_riverlands
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_riverlands = { has_holder = yes } }
+
+				completely_controls = e_riverlands
+			}
+			trigger_else = {
+				completely_controls = k_riverlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.4 }
+			d_stokeworth = { de_jure_liege = k_riverlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_riv_blackwater_rush_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_blackwater_rush = {
+					de_jure_liege = k_riverlands
+				}
+				d_blackwater_rush = {
+					de_jure_liege = e_riverlands
+				}
+			}
+			NOT = {
+				d_blackwater_rush = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_riverlands
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			OR = {
+				completely_controls = k_riverlands
+				completely_controls = e_riverlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.5 }
+			d_blackwater_rush = { de_jure_liege = k_riverlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_riv_flatgreens_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_flatgreens = {
+					de_jure_liege = k_riverlands
+				}
+				d_flatgreens = {
+					de_jure_liege = e_riverlands
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_flatgreens = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_riverlands
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_riverlands = { has_holder = yes } }
+
+				completely_controls = e_riverlands
+			}
+			trigger_else = {
+				completely_controls = k_riverlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.6 }
+			d_flatgreens = { de_jure_liege = k_riverlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_storm_masseyshook_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			NOT = {
+				has_landed_title = e_iron_throne
+			}
+			NOR = {
+				d_masseys_hook = {
+					de_jure_liege = k_stormlands
+				}
+				d_masseys_hook = {
+					de_jure_liege = e_stormlands
+				}
+			}
+			NOT = {
+				d_masseys_hook = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				e_iron_throne = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_stormlands
+				k_stormlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_stormlands = { has_holder = yes } }
+
+				completely_controls = e_stormlands
+			}
+			trigger_else = {
+				completely_controls = k_stormlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.7 }
+			d_masseys_hook = { de_jure_liege = k_stormlands }
+			e_iron_throne = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_dragonstone = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_duskendale_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_riverlands
+			}
+			NOT = {
+				has_landed_title = e_riverlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOT = {
+				d_duskendale = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			NOT = {
+				d_duskendale = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.10 }
+			d_duskendale = { de_jure_liege = k_crownlands }
+			e_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_hayford_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_riverlands
+			}
+			NOT = {
+				has_landed_title = e_riverlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOT = {
+				d_hayford = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			NOT = {
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_hayford = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.11 }
+			d_hayford = { de_jure_liege = k_crownlands }
+			e_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_rosby_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_riverlands
+			}
+			NOT = {
+				has_landed_title = e_riverlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOT = {
+				d_rosby = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			NOT = {
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_rosby = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.12 }
+			d_rosby = { de_jure_liege = k_crownlands }
+			e_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_stokeworth_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_riverlands
+			}
+			NOT = {
+				has_landed_title = e_riverlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOT = {
+				d_stokeworth = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			NOT = {
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_stokeworth = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.13 }
+			d_stokeworth = { de_jure_liege = k_crownlands }
+			e_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_blackwater_rush_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_riverlands
+			}
+			NOT = {
+				has_landed_title = e_riverlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOT = {
+				d_blackwater_rush = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			NOT = {
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_blackwater_rush = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.14 }
+			d_blackwater_rush = { de_jure_liege = k_crownlands }
+			e_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_flatgreens_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_riverlands
+			}
+			NOT = {
+				has_landed_title = e_riverlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOT = {
+				d_flatgreens = {
+					de_jure_liege = k_crownlands
+				}
+			}
+			NOT = {
+				k_riverlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_flatgreens = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.15 }
+			d_flatgreens = { de_jure_liege = k_crownlands }
+			e_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_riverlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_crown_masseyshook_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_iron_throne
+				has_landed_title = k_crownlands
+			}
+			NOT = {
+				has_landed_title = k_stormlands
+			}
+			NOT = {
+				has_landed_title = e_stormlands
+			}
+			NOT = { has_global_flag = KL_not_capital }
+			NOR = {
+				d_masseys_hook = {
+					de_jure_liege = k_crownlands
+				}
+				d_masseys_hook = {
+					de_jure_liege = k_dragonstone
+				}
+			}
+			NOT = {
+				k_stormlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_masseys_hook = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_iron_throne
+				k_crownlands = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_iron_throne = { has_holder = yes } }
+
+				completely_controls = e_iron_throne
+			}
+			trigger_else = {
+				completely_controls = k_crownlands
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_crownlands.16 }
+			d_masseys_hook = { de_jure_liege = k_dragonstone }
+			e_stormlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_stormlands = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_north_sisters_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_north
+				has_landed_title = k_north
+			}
+			NOT = {
+				has_landed_title = k_vale
+			}
+			NOT = {
+				has_landed_title = e_vale
+			}
+			NOT = {
+				d_the_sisters = {
+					de_jure_liege = k_north
+				}
+			}
+			NOT = {
+				d_the_sisters = {
+					de_jure_liege = e_north
+				}
+			}
+			NOT = {
+				k_vale = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_the_sisters = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_north
+				k_north = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_north = { has_holder = yes } }
+
+				completely_controls = e_north
+			}
+			trigger_else = {
+				completely_controls = k_north
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_border_dispute.1 }
+			d_the_sisters = { de_jure_liege = k_north }
+			e_vale = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_vale = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+	mbs_reclaim_vale_sisters_dec = {
+		is_high_prio = yes
+		#ai = no
+		only_independent = yes
+		potential = {
+			tier = EMPEROR
+			OR = {
+				has_landed_title = e_vale
+				has_landed_title = k_vale
+			}
+			NOT = {
+				has_landed_title = k_north
+			}
+			NOT = {
+				has_landed_title = e_north
+			}
+			NOT = {
+				d_the_sisters = {
+					de_jure_liege = k_vale
+				}
+			}
+			NOT = {
+				d_the_sisters = {
+					de_jure_liege = e_vale
+				}
+			}
+			NOT = {
+				k_north = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			NOT = {
+				d_the_sisters = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+			OR = {
+				has_landed_title = e_vale
+				k_vale = {
+					holder_scope = {
+						same_realm = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 500
+			age = 14
+			war = no
+			prisoner = no
+			in_command = no
+			is_incapable = no
+			is_nomadic = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { culture_group = unoccupied_group }
+			trigger_if = {
+				limit = { e_vale = { has_holder = yes } }
+
+				completely_controls = e_vale
+			}
+			trigger_else = {
+				completely_controls = k_vale
+			}
+		}
+		effect = {
+			narrative_event = { id = mbs_border_dispute.2 }
+			d_the_sisters = { de_jure_liege = k_vale }
+			e_north = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+			k_north = {
+				holder_scope = {
+					if = {
+						limit = {
+							NOT = {
+								character = ROOT
+							}
+						}
+						opinion = { modifier = opinion_furious who = ROOT years = 20 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				trait = craven
+			}
+		}
+	}
+}

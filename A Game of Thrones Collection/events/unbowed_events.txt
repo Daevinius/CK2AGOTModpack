@@ -1,0 +1,2392 @@
+namespace = unbowed
+
+#1 - Dragon Conquest Event Chain
+#2 - Dornish War Buffs
+#3 - ASSASSINS
+#4 - Continued Peace
+
+
+character_event = { #Dragon War Ends
+	id = unbowed.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = age_of_dragons
+
+	trigger = {
+		OR = {
+			has_landed_title = k_dorne
+			has_landed_title = e_dorne
+		}
+		FROM = {
+			has_landed_title = e_iron_throne
+			trait = dragon_rider
+			NOT = { has_character_flag = it_dorne_war_final }
+		}
+	}
+
+	immediate = {
+		character_event = { id = unbowed.1 days = 6 }
+		FROM = { set_character_flag = dragon_invader }
+	}
+}
+
+character_event = { #Final Dragon War Ends
+	id = unbowed.9990
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = age_of_dragons
+
+	trigger = {
+		OR = {
+			has_landed_title = k_dorne
+			has_landed_title = e_dorne
+		}
+		FROM = {
+			has_landed_title = e_iron_throne
+			trait = dragon_rider
+			has_character_flag = it_dorne_war_final
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = unbowed.9991 }
+		}
+	}
+}
+
+character_event = { #Finally won the war
+	id = unbowed.9991
+	title = "EVTTITLEunbowed.3"
+	desc = EVTDESCunbowed.3
+	picture = GFX_aegon_the_badass
+
+	is_triggered_only = yes
+
+	has_character_flag = it_dorne_war_final
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS
+		prestige = 1000
+		if = {
+			limit = { NOT = { character = c_77000 } }
+			hidden_tooltip = {
+				change_variable = { which = the_warrior value = 1 }
+				character_event = { id = tdp_scenario_events.9999 }
+			}
+			create_bloodline = {
+				type = conqueror_of_dorne_bloodline
+			}
+		}
+	}
+}
+
+character_event = {
+	id = unbowed.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = k_dorne
+			has_landed_title = e_dorne
+		}
+	}
+
+	immediate = {
+		set_character_flag = defiant_dornish
+		character_event = { id = unbowed.10 }
+	}
+}
+character_event = { #Dorne will not be conquered so easily
+	id = unbowed.10
+	desc = EVTDESCunbowed.10
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	trigger = {
+		ROOT = {
+			has_landed_title = k_dorne
+			has_character_flag = defiant_dornish
+		}
+	}
+
+	immediate = {
+		e_dorne = { gain_title = ROOT }
+
+		custom_tooltip = {
+			text = TOOLTIPcreate_e_dorne
+			hidden_tooltip = {
+				k_dorne = {
+					destroy_landed_title = THIS
+					de_jure_liege = e_dorne
+				}
+			}
+		}
+		prisoner = no
+		any_dynasty_member = {
+			prisoner = no
+			move_character = ROOT
+		}
+		clr_character_flag = defiant_dornish
+		any_neighbor_independent_ruler = {
+			limit = {
+				has_landed_title = e_iron_throne
+				NOT = { has_character_flag = it_dorne_war_1 }
+			}
+			narrative_event = { id = unbowed.11 }
+		}
+		any_neighbor_independent_ruler = {
+			limit = {
+				has_landed_title = e_iron_throne
+				has_character_flag = it_dorne_war_1
+			}
+			character_event = { id = unbowed.110 }
+		}
+	}
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS
+	}
+}
+
+narrative_event = { #To Aegon
+	id = unbowed.11
+	title = "EVTTITLEunbowed.11"
+	desc = EVTDESCunbowed.11
+	picture = GFX_aegon_reading
+
+	is_triggered_only = yes
+
+	has_character_flag = dragon_invader
+
+	trigger = {
+		NOT = { has_character_flag = it_dorne_war_1 }
+	}
+
+	immediate = {
+		clr_character_flag = dragon_invader
+	}
+
+	option = { #Dorne WILL Submit!
+		name = EVTOPTGETHOUSEWORDS
+		ai_chance = {
+			factor = 1
+
+			modifier = {
+				factor = 0
+				OR = {
+					trait = depressed
+					trait = stressed
+					trait = drunkard
+					trait = content
+					trait = widowed
+				}
+			}
+		}
+		e_dorne = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+		if = {
+			limit = { NOT = { has_character_flag = it_dorne_war_1 } }
+			set_character_flag = it_dorne_war_1
+		}
+		FROM = {
+			add_trait = in_hiding
+			any_dynasty_member = {
+				add_trait = in_hiding
+			}
+		}
+	}
+
+	option = { #Peace
+		name = EVTOPTAunbowed.11
+		ai_chance = {
+			factor = 99
+		}
+		set_truce = { who = e_dorne years = 75 }
+		set_character_flag = made_dornish_peace
+		remove_trait = ambitious
+	}
+}
+
+character_event = { #Dragon War for Dorne continues
+	id = unbowed.110
+	title = "EVTTITLEunbowed.110"
+	desc = EVTDESCunbowed.110
+	picture = GFX_rhaenys_dorne
+
+	is_triggered_only = yes
+
+	has_character_flag = it_dorne_war_1
+
+	trigger = {
+		has_character_flag = dragon_invader
+		NOT = { has_character_flag = it_dorne_war_final }
+	}
+
+	option = { #Dorne WILL Submit!
+		name = EVTOPTGETHOUSEWORDS
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					trait = depressed
+					trait = stressed
+					trait = drunkard
+					trait = content
+					trait = widowed
+				}
+			}
+		}
+
+		e_dorne = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+		if = {
+			limit = {
+				has_character_flag = it_dorne_war_1
+				has_character_flag = it_dorne_war_2
+				NOT = { has_character_flag = it_dorne_war_final }
+			}
+			set_character_flag = it_dorne_war_final
+		}
+		if = {
+			limit = {
+				has_character_flag = it_dorne_war_1
+				NOT = { has_character_flag = it_dorne_war_2 }
+			}
+			set_character_flag = it_dorne_war_2
+		}
+	}
+
+	option = { #Peace
+		name = EVTOPTAunbowed.110
+		ai_chance = {
+			factor = 75
+		}
+		set_truce = { who = e_dorne years = 75 }
+		set_character_flag = made_dornish_peace
+		remove_trait = ambitious
+	}
+}
+
+character_event = { #Dragon War for Dorne continues
+	id = unbowed.111
+	title = EVTTITLEunbowed.110
+	desc = EVTDESCunbowed.111
+	picture = GFX_rhaenys_dorne
+
+	is_triggered_only = yes
+
+	option = { #Dorne WILL Submit!
+		name = EVTOPTGETHOUSEWORDS
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 0
+				OR = {
+					trait = depressed
+					trait = stressed
+					trait = drunkard
+					trait = content
+					trait = widowed
+				}
+			}
+		}
+
+		e_dorne = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dejure_kingdom_claim_EMP
+			}
+		}
+	}
+
+	option = { #Peace
+		name = EVTOPTAunbowed.110
+		ai_chance = {
+			factor = 35
+		}
+		set_truce = { who = e_dorne years = 75 }
+		set_character_flag = made_dornish_peace
+		remove_trait = ambitious
+	}
+
+	option = { #Hear their terms
+		name = EVTOPTunbowed.111
+		ai_chance = {
+			factor = 50
+		}
+		custom_tooltip = {
+			text = EVTTOOLTIPunbowed.111
+			character_event = { id = unbowed.112 days = 7 }
+		}
+	}
+}
+
+character_event = {
+	id = unbowed.112
+	desc = EVTDESCunbowed.112
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	immediate = {
+		any_realm_character = {
+			limit = { trait = kingsguard }
+			save_event_target_as = dead_kingsguard
+		}
+	}
+
+	option = {
+		name = EVTOPTunbowed.112
+		character_event = { id = unbowed.632 }
+		FROM = { character_event = { id = unbowed.6320 days = 1 } }
+		event_target:dead_kingsguard = {
+			death = {
+				death_reason = death_murder
+				killer = FROM
+			}
+		}
+	}
+}
+
+character_event = { #Non-Dragon War Ends in Defeat for Targaryens
+	id = unbowed.12
+	title = "EVTTITLEunbowed.12"
+	desc = EVTDESCunbowed.12
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	trigger = {
+		ROOT = { culture_group = dornish }
+		FROM = {
+			has_landed_title = e_iron_throne
+			has_character_flag = young_dragon_conquest
+		}
+	}
+
+	immediate = {
+		FROM = {
+			clr_character_flag = young_dragon_conquest
+			set_truce = { who = e_dorne years = 75 }
+			set_character_flag = made_dornish_peace
+		}
+	}
+
+	option = {
+		name = EVTOPTunbowed.12
+	}
+}
+
+character_event = { #Non-Dragon War Ends in Victory for Targaryens
+	id = unbowed.120
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ROOT = { culture_group = dornish }
+		FROM = {
+			has_landed_title = e_iron_throne
+			has_character_flag = young_dragon_conquest
+			NOT = { character = c_77016 }
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = conquest_of_dorne.14 }
+		}
+	}
+
+	option = {
+		name = Ok
+	}
+}
+
+##### Dornish War Buffs
+#Scorpions
+character_event = { #On Siege Pulse
+	id = unbowed.2999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		trait = dragon_rider
+		in_command = yes
+		location = {
+			any_province_holding = {
+				OR = {
+					has_building = ct_tdp_scorpion_1
+					has_building = ct_tdp_scorpion_2
+					has_building = ct_tdp_scorpion_3
+					has_building = ca_tdp_scorpion_1
+					has_building = ca_tdp_scorpion_2
+					has_building = ca_tdp_scorpion_3
+				}
+			}
+		}
+	}
+
+	immediate = {
+		character_event = { id = unbowed.2 }
+	}
+}
+
+character_event = { #On Siege Pulse
+	id = unbowed.2
+	desc = EVTDESCunbowed.2
+	picture = GFX_scorpion_bolt
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAunbowed.2
+		hidden_tooltip = {
+			any_friend = {
+				limit = { trait = dragon }
+				save_event_target_as = the_dragon
+			}
+		}
+		random_list = {
+			1 = {
+				modifier = {
+					factor = 2
+					any_friend = {
+						trait = dragon
+						martial < 20
+						combat_rating < 40
+					}
+				}
+				modifier = {
+					factor = 2
+					any_friend = {
+						trait = dragon
+						martial < 30
+						combat_rating < 50
+					}
+				}
+				modifier = {
+					factor = 2
+					any_friend = {
+						trait = dragon
+						martial < 40
+						combat_rating < 60
+					}
+				}
+				modifier = {
+					factor = 2
+					any_friend = {
+						trait = dragon
+						martial < 50
+						combat_rating < 70
+					}
+				}
+				modifier = {
+					factor = 2
+					any_friend = {
+						trait = dragon
+						martial < 60
+						combat_rating < 80
+					}
+				}
+				modifier = {
+					factor = 2
+					location = {
+						any_province_holding = {
+				OR = {
+								has_building = ct_tdp_scorpion_1
+								has_building = ca_tdp_scorpion_1
+							}
+						}
+				}
+			}
+			modifier = {
+				factor = 3
+					location = {
+						any_province_holding = {
+							OR = {
+								has_building = ct_tdp_scorpion_2
+								has_building = ca_tdp_scorpion_2
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 4
+					location = {
+						any_province_holding = {
+							OR = {
+								has_building = ct_tdp_scorpion_3
+								has_building = ca_tdp_scorpion_3
+							}
+						}
+					}
+				}
+				character_event = { id = unbowed.21 }
+			}
+			1 = {
+				character_event = { id = unbowed.210 }
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					character = c_77000
+					trait = brilliant_strategist
+					trait = skilled_tactician
+					martial = 12
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBunbowed.2
+		tooltip_info = martial
+		trigger = {
+			OR = {
+				character = c_77000
+				trait = brilliant_strategist
+				trait = skilled_tactician
+				martial = 12
+			}
+		}
+
+		character_event = { id = unbowed.211 }
+		ai_chance = {
+			factor = 100
+				}
+			}
+}
+
+character_event = { #Bolt hit
+	id = unbowed.21
+	desc = EVTDESCAunbowed.21
+	desc = EVTDESCBunbowed.21
+	desc = EVTDESCCunbowed.21
+	desc = EVTDESCDunbowed.21
+	picture = GFX_dragon_shot_down
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.21
+		any_friend = {
+			limit = { trait = dragon }
+			death = {
+				death_reason = death_scorpion_bolt
+			}
+		}
+		death = {
+			death_reason = death_scorpion_bolt
+		}
+	}
+}
+
+character_event = { #Bolts avoided
+	id = unbowed.210
+	desc = EVTDESCunbowed.210
+	picture = GFX_dragons_flying
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.210
+	}
+}
+
+character_event = { #Bolts avoided + go on offensive
+	id = unbowed.211
+	desc = EVTDESCunbowed.211
+	picture = GFX_dragon_riding_2
+	picture = GFX_dragon_riding_3
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.211
+		location = {
+			any_province_holding = {
+				limit = {
+					OR = {
+						has_building = ct_tdp_scorpion_1
+						has_building = ct_tdp_scorpion_2
+						has_building = ct_tdp_scorpion_3
+						has_building = ca_tdp_scorpion_1
+						has_building = ca_tdp_scorpion_2
+						has_building = ca_tdp_scorpion_3
+					}
+				}
+				if = {
+					limit = { has_building = ct_tdp_scorpion_1 }
+					remove_building	= ct_tdp_scorpion_1
+				}
+				else_if = {
+					limit = { has_building = ct_tdp_scorpion_2 }
+					remove_building	= ct_tdp_scorpion_2
+				}
+				else_if = {
+					limit = { has_building = ct_tdp_scorpion_3 }
+					remove_building	= ct_tdp_scorpion_3
+				}
+				else_if = {
+					limit = { has_building = ca_tdp_scorpion_1 }
+					remove_building	= ca_tdp_scorpion_1
+				}
+				else_if = {
+					limit = { has_building = ca_tdp_scorpion_2 }
+					remove_building	= ca_tdp_scorpion_2
+				}
+				else = {
+					limit = { has_building = ca_tdp_scorpion_3 }
+					remove_building	= ca_tdp_scorpion_3
+				}
+			}
+		}
+	}
+}
+
+#Dornish Attrition
+character_event = { #War Started
+	id = unbowed.22
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		ROOT = {
+			dynasty = 1 #Martells
+		}
+		FROM = {
+			NOT = { culture_group = dornish }
+		}
+	}
+
+	immediate = {
+		ROOT = {
+			add_character_modifier = { name = defending_dorne duration = -1 }
+			set_character_flag = is_defending_dorne
+			if = {
+				limit = {
+					ai = yes
+					FROM = { trait = dragon_rider }
+				}
+				add_trait = in_hiding
+				any_dynasty_member = {
+					add_trait = in_hiding
+				}
+			}
+			if = {
+				limit = { NOT = { has_global_flag = dorne_scorpions_set } }
+				set_global_flag = dorne_scorpions_set
+				capital_holding = {
+					add_building = ca_tdp_scorpion_1
+				}
+				any_realm_lord = {
+					limit = {
+						culture_group = dornish
+						is_feudal = yes
+					}
+					random_list = {
+						30 = {
+							capital_holding = {
+								add_building = ca_tdp_scorpion_1
+							}
+						}
+						15 = {
+							capital_holding = {
+								add_building = ca_tdp_scorpion_2
+							}
+						}
+						5 = {
+							capital_holding = {
+								add_building = ca_tdp_scorpion_3
+							}
+						}
+						50 = {
+
+						}
+					}
+				}
+			}
+		}
+		FROM = {
+			add_character_modifier = { name = attacking_dornish_sands duration = -1 }
+			set_character_flag = at_war_with_dorne
+		}
+	}
+}
+
+character_event = { #War Ended - Clear Flags & Modifiers
+	id = unbowed.23
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		ROOT = {
+			dynasty = 1 #Martells
+		}
+		FROM = {
+			NOT = { culture_group = dornish }
+		}
+	}
+
+	immediate = {
+		ROOT = {
+			remove_character_modifier = defending_dorne
+			clr_character_flag = is_defending_dorne
+		}
+		FROM = {
+			remove_character_modifier = attacking_dornish_sands
+			clr_character_flag = at_war_with_dorne
+		}
+	}
+}
+
+#After Ruler Death & Canon Wars
+character_event = {
+	id = unbowed.24
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		war = yes
+		OR = {
+			AND = {
+				dynasty = 1
+				is_primary_war_defender = yes
+			}
+			AND = {
+				NOT = { culture_group = dornish }
+				war_with = e_dorne
+			}
+		}
+	}
+
+	option = {
+		name = Ok
+		trigger = {
+			dynasty = 1
+			is_primary_war_defender = yes
+		}
+		set_character_flag = is_defending_dorne
+		add_character_modifier = { name = defending_dorne duration = -1 }
+	}
+
+	option = {
+		name = Ok
+		trigger = {
+			NOT = { culture_group = dornish }
+			war_with = e_dorne
+		}
+		set_character_flag = at_war_with_dorne
+		add_character_modifier = { name = attacking_dornish_sands duration = -1 }
+	}
+}
+
+character_event = {
+	id = unbowed.240
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	war = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				dynasty = 1
+				is_primary_war_defender = yes
+			}
+			AND = {
+				NOT = { culture_group = dornish }
+				war_with = e_dorne
+			}
+		}
+	}
+
+	immediate = {
+		character_event = { id = unbowed.24 days = 6 }
+	}
+}
+
+#ASSASSINS
+character_event = {
+	id = unbowed.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = k_dorne
+			has_landed_title = e_dorne
+		}
+		FROM = {
+			has_landed_title = e_iron_throne
+			trait = dragon_rider
+			has_character_flag = it_dorne_war_1
+		}
+	}
+
+	immediate = {
+		FROM = { save_event_target_as = dragon_conqueror }
+		ROOT = { character_event = { id = unbowed.30 } }
+	}
+
+	option = {
+		name = Ok
+	}
+}
+
+#The Dragon persists
+character_event = {
+	id = unbowed.30
+	title = EVTTITLEunbowed.30
+	desc = EVTDESCunbowed.30
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = k_dorne
+			has_landed_title = e_dorne
+		}
+	}
+
+	option = { #Send Assassins
+		name = EVTOPTunbowed.30
+		trigger = {
+			event_target:dragon_conqueror = {
+				NOT = { has_character_flag = it_dorne_war_2 }
+			}
+		}
+		event_target:dragon_conqueror = {
+			character_event = { id = unbowed.31 days = 30 }
+		}
+	}
+
+	option = { #Send Assassins for Rhaenys
+		name = EVTOPTunbowed.30
+		trigger = {
+			event_target:dragon_conqueror = {
+				has_character_flag = it_dorne_war_2
+				NOT = { has_character_flag = it_dorne_war_final }
+				any_sibling = {
+					character = 77003
+					is_alive = yes
+				}
+			}
+		}
+		event_target:dragon_conqueror = {
+			any_sibling = {
+				limit = { character = 77003 }
+				character_event = { id = unbowed.300 days = 45 }
+			}
+		}
+	}
+
+}
+
+character_event = {
+	id = unbowed.300
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		character = 77003
+	}
+
+	immediate = {
+		death = {
+			death_reason = death_murder
+			killer = FROM
+		}
+
+		event_target:dragon_conqueror = {
+			character_event = { id = unbowed.301 days = 1 }
+		}
+	}
+}
+
+character_event = {
+	id = unbowed.301
+	title = EVTTITLEunbowed.301
+	desc = EVTDESCunbowed.301
+	picture = GFX_red_scorpions
+
+	is_triggered_only = yes
+
+	trigger = {
+		character = 77000
+	}
+
+	option = {
+		name = EVTOPTunbowed.301
+		FROM = {
+			FROM = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_blood_feud
+				}
+				custom_tooltip = { text = TOOLTIPNEWBLOODFEUD }
+				set_dynasty_flag = in_blood_feud
+				hidden_tooltip = {
+					add_trait = blood_feud #blood feud tracker
+					any_dynasty_member = {
+						limit = {
+							NOT = { character = FROM }
+							is_alive = yes
+						}
+						opinion = {
+							who = ROOT
+							modifier = opinion_blood_feud
+						}
+						any_character = {
+							limit = {
+								dynasty = ROOT
+								NOT = { character = ROOT }
+							}
+							opinion = {
+								who = PREV
+								modifier = opinion_blood_feud
+							}
+						}
+					}
+				}
+			}
+			opinion = {
+				who = FROM
+				modifier = opinion_blood_feud
+			}
+			set_dynasty_flag = in_blood_feud
+			hidden_tooltip = {
+				add_trait = blood_feud #blood feud tracker
+				any_dynasty_member = {
+					limit = {
+						NOT = { character = ROOT }
+						is_alive = yes
+					}
+					opinion = {
+						who = FROM
+						modifier = opinion_blood_feud
+					}
+					any_character = {
+						limit = {
+							dynasty = FROM
+							NOT = { character = FROM }
+						}
+						opinion = {
+							who = PREV
+							modifier = opinion_blood_feud
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = unbowed.31
+	title = EVTTITLEunbowed.31
+	desc = EVTDESCunbowed.31
+	picture = GFX_dornish_assassins
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = it_dorne_war_1
+
+	trigger = {
+		has_landed_title = e_iron_throne
+	}
+
+	option = {
+		name = EVTOPTunbowed.31
+		trigger = {
+			NOT = { is_title_active = d_kingsguard }
+			any_sibling = {
+				character = 77002 #Visenya
+				is_alive = yes
+			}
+		}
+		character_event = { id = unbowed.310 days = 2 }
+	}
+
+	option = {
+		name = EVTOPTunbowed.31
+		trigger = {
+			any_realm_character = {
+				trait = kingsguard
+				combat_rating = 80
+			}
+		}
+		character_event = { id = unbowed.311 days = 2 }
+	}
+
+	option = {
+		name = EVTOPTunbowed.31
+		trigger = {
+			NOR = {
+				any_realm_character = {
+					trait = kingsguard
+					combat_rating = 80
+				}
+				any_sibling = {
+					character = 77002 #Visenya
+					is_alive = yes
+				}
+			}
+		}
+		death = {
+			death_reason = death_murder
+			killer = FROM
+		}
+	}
+}
+
+character_event = { #Visenya beats the assassins
+	id = unbowed.310
+	desc = EVTDESCunbowed.310
+	title = EVTTITLEunbowed.31
+	picture = GFX_visenya_fight
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAunbowed.310
+	}
+}
+
+character_event = { #Kingsguard beats the assassins
+	id = unbowed.311
+	desc = EVTDESCunbowed.311
+	title = EVTTITLEunbowed.31
+	picture = GFX_kingsguard
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAunbowed.311
+	}
+}
+
+#Continued Peace with Dorne
+character_event = {
+	id = unbowed.4
+
+	hide_window = yes
+
+	only_independent = yes
+	culture_group = valyrian
+
+	trigger = {
+		NOT = { has_character_flag = made_dornish_peace }
+		has_landed_title = e_iron_throne
+		NOT = { war_with = e_dorne }
+		NOT = { character = 77000 } #Aegon I
+		any_neighbor_independent_ruler = { has_landed_title = e_dorne }
+		NOT = { any_current_enemy = { has_landed_title = e_dorne } }
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		character_event = { id = unbowed.40 days = 2 }
+	}
+}
+
+character_event = { #Decide Peace or War
+	id = unbowed.40
+	title = "EVTTITLEunbowed.40"
+	desc = EVTDESCunbowed.40
+	picture = GFX_rhaenys_dorne
+
+	is_triggered_only = yes
+
+	option = { #CALL THE BANNERS with DRAGONS
+		name = EVTOPTGETHOUSEWORDS
+		trigger = {
+			war = no
+			trait = dragon_rider
+			trait = ambitious
+			NOR = {
+				trait = content
+				trait = craven
+				is_weak_trigger = yes
+				trait = slothful
+				trait = kind
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+		e_dorne = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dragon_conquest
+			}
+		}
+	}
+
+	option = { #CALL THE BANNERS without DRAGONS
+		name = EVTOPTGETHOUSEWORDS
+		trigger = {
+			war = no
+			NOT = { trait = dragon_rider }
+			trait = ambitious
+			OR = {
+				trait = brilliant_strategist
+				is_dumb_incl_imbecile_trigger = yes
+				character = 77016
+			}
+			calc_true_if = {
+				amount = 2
+				trait = proud
+				trait = brave
+				trait = authoritative
+				trait = lunatic
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				age < 20
+				NOT = { has_nickname = yes }
+			}
+			give_nickname = nick_the_young_dragon
+		}
+		e_dorne = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = dejure_kingdom_claim_EMP
+			}
+		}
+		set_character_flag = young_dragon_conquest
+	}
+
+	option = { #Continue Peace with Dorne
+		name = EVTOPTAunbowed.40
+		ai_chance = {
+			factor = 50
+		}
+		set_truce = { who = e_dorne years = 75 }
+		set_character_flag = made_dornish_peace
+	}
+
+	option = { #Add Marriage
+		name = EVTOPTBunbowed.40
+		trigger = {
+			OR = {
+				is_jaehaerys_type = yes
+				is_daeron_good_type = yes
+				is_baelor_type = yes
+			}
+			OR = {
+				AND = {
+					any_dynasty_member = {
+						age = 14
+						age < 30
+						is_female = no
+						can_marry_trigger = yes
+					}
+					e_dorne = {
+						holder_scope = {
+							any_dynasty_member = {
+								age = 14
+								age < 20
+								is_female = yes
+								can_marry_trigger = yes
+							}
+						}
+					}
+				}
+				AND = {
+					any_dynasty_member = {
+						age = 14
+						age < 20
+						is_female = yes
+						can_marry_trigger = yes
+					}
+					e_dorne = {
+						holder_scope = {
+							any_dynasty_member = {
+								age = 14
+								age < 30
+								is_female = no
+								can_marry_trigger = yes
+							}
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 50
+		}
+		if = {
+			limit = {
+				any_dynasty_member = {
+					age = 14
+					age < 30
+					is_female = no
+					can_marry_trigger = yes
+				}
+				e_dorne = {
+					holder_scope = {
+						any_dynasty_member = {
+							age = 14
+							age < 20
+							is_female = yes
+							can_marry_trigger = yes
+						}
+					}
+				}
+			}
+			random_dynasty_member = {
+				limit = {
+					age = 14
+					age < 30
+					is_female = no
+					can_marry_trigger = yes
+				}
+				save_event_target_as = the_irone_throne_match
+			}
+			e_dorne = {
+				holder_scope = {
+					random_dynasty_member = {
+						limit = {
+							age = 14
+							age < 20
+							is_female = yes
+							can_marry_trigger = yes
+						}
+						save_event_target_as = the_dornish_match
+					}
+				}
+			}
+		}
+		else = {
+			limit = {
+				any_dynasty_member = {
+					age = 14
+					age < 20
+					is_female = yes
+					can_marry_trigger = yes
+				}
+				e_dorne = {
+					holder_scope = {
+						any_dynasty_member = {
+							age = 14
+							age < 30
+							is_female = no
+							can_marry_trigger = yes
+						}
+					}
+				}
+			}
+			random_dynasty_member = {
+				limit = {
+					age = 14
+					age < 20
+					is_female = yes
+					can_marry_trigger = yes
+				}
+				save_event_target_as = the_irone_throne_match
+			}
+			e_dorne = {
+				holder_scope = {
+					random_dynasty_member = {
+						limit = {
+							age = 14
+							age < 30
+							is_female = no
+							can_marry_trigger = yes
+						}
+						save_event_target_as = the_dornish_match
+					}
+				}
+			}
+		}
+		e_dorne = {
+			holder_scope = {
+				character_event = { id = unbowed.41 }
+			}
+		}
+		set_truce = { who = e_dorne years = 75 }
+		set_character_flag = made_dornish_peace
+	}
+}
+
+character_event = {
+	id = unbowed.41
+	#need localisation #MARKED
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		event_target:the_irone_throne_match = {
+			add_spouse = event_target:the_dornish_match
+		}
+	}
+}
+
+
+#Dislike of the Dornish
+character_event = {
+	id = unbowed.5
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_iron_throne
+		OR = {
+			graphical_culture = martellgfx
+			graphical_culture = sanddornishgfx
+			graphical_culture = saltdornishgfx
+			graphical_culture = valyriansaltdornishgfx
+			any_spouse = {
+				culture_group = dornish
+			}
+			any_child = {
+				graphical_culture = martellgfx
+				graphical_culture = sanddornishgfx
+				graphical_culture = saltdornishgfx
+				graphical_culture = valyriansaltdornishgfx
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 3
+	}
+
+	immediate = {
+		any_realm_lord = {
+			limit = {
+				culture_group = andal
+				NOT = {
+					opinion = {
+						who = ROOT
+						value = 40
+					}
+				}
+				NOT = {
+					has_opinion_modifier = {
+						who = ROOT
+						name = opinion_tdp_hate_dornish
+					}
+				}
+				NOR = {
+					trait = humble
+					trait = kind
+					trait = charitable
+				}
+			}
+			opinion = {
+				who = ROOT
+				name = opinion_tdp_hate_dornish
+			}
+		}
+	}
+}
+
+#Non-Dragon Continues
+#from conquest_of_dorne.14
+
+character_event = {
+	id = unbowed.60
+	desc = EVTDESCconquest_of_dorne.14
+	picture = GFX_daeron_conquest
+
+	is_triggered_only = yes
+
+	option = { #Dynasty Member
+		name = EVTOPTDconquest_of_dorne.14
+		ai_chance = { factor = 20 }
+		trigger = {
+			event_target:dynasty_holder = { always = yes }
+		}
+		event_target:dynasty_holder = {
+			hidden_tooltip = {
+				character_event = { id = conquest_of_dorne.15 days = 2 } # The Dornish vassals will dislike him and may rebel
+			}
+			c_plankytown = {
+				hidden_tooltip = { holder_scope = { save_event_target_as = old_plankytown_holder } }
+				usurp_title = PREV
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+				hidden_tooltip = {
+					set_variable = { which = "lord_paramount_status" value = 1 }
+					if = {
+						limit = { has_law = privilege_vassal_king }
+						revoke_law = privilege_vassal_king
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				set_government_type = feudal_government_LP
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Reach
+		name = EVTOPTBconquest_of_dorne.14
+		trigger = {
+			event_target:reach_holder = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0.25
+				event_target:reach_holder = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:reach_holder = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:reach_holder = {
+			hidden_tooltip = {
+				character_event = { id = conquest_of_dorne.15 days = 2 } # The Dornish vassals will dislike him and may rebel
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Stormlands
+		name = EVTOPTCconquest_of_dorne.14
+		trigger = {
+			event_target:stormlands_holder = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.25
+				event_target:stormlands_holder = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:stormlands_holder = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:stormlands_holder = {
+			hidden_tooltip = {
+				character_event = { id = conquest_of_dorne.15 days = 2 } # The Dornish vassals will dislike him and may rebel
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Courtier
+		name = EVTOPTEconquest_of_dorne.14
+		ai_chance = { factor = 0 }
+		trigger = {
+			event_target:courtier_holder = { always = yes }
+		}
+		event_target:courtier_holder = {
+			hidden_tooltip = {
+				character_event = { id = conquest_of_dorne.15 days = 2 } # The Dornish vassals will dislike him and may rebel
+			}
+			c_plankytown = {
+				hidden_tooltip = { holder_scope = { save_event_target_as = old_plankytown_holder } }
+				usurp_title = PREV
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+				hidden_tooltip = {
+					set_variable = { which = "lord_paramount_status" value = 1 }
+					if = {
+						limit = { has_law = privilege_vassal_king }
+						revoke_law = privilege_vassal_king
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				set_government_type = feudal_government_LP
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	after = {
+		hidden_tooltip = {
+			k_dorne = {
+				remove_claim = ROOT
+				if = {
+					limit = { NOT = { has_law = succ_primogeniture } }
+					succession = primogeniture
+					if = {
+						limit = { e_iron_throne = { has_law = agnatic_succession } }
+						gender_succ = agnatic
+					}
+					if = {
+						limit = { e_iron_throne = { has_law = cognatic_succession } }
+						gender_succ = cognatic
+					}
+					if = {
+						limit = { e_iron_throne = { has_law = true_cognatic_succession } }
+						gender_succ = true_cognatic
+					}
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = unbowed.61
+	desc = EVTDESCconquest_of_dorne.14
+	picture = GFX_daeron_conquest
+
+	is_triggered_only = yes
+
+	immediate = {
+		d_redmountains = {
+			holder_scope = {
+				save_event_target_as = redmountain_holder
+			}
+		}
+		d_stoneway = {
+			holder_scope = {
+				save_event_target_as = stoneway_holder
+			}
+		}
+		d_brimstone = {
+			holder_scope = {
+				save_event_target_as = brimstone_holder
+			}
+		}
+		k_dorne = {
+			holder_scope = {
+				random_vassal = {
+					limit = { tier = COUNT }
+					save_event_target_as = count_holder_1
+				}
+			}
+		}
+		k_dorne = {
+			holder_scope = {
+				random_vassal = {
+					limit = { tier = COUNT }
+					save_event_target_as = count_holder_2
+				}
+			}
+		}
+
+	}
+
+	option = { #Current Lord
+		name = EVTOPTAconquest_of_dorne.14
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0.1
+				event_target:old_dorne_holder = {
+					OR = {
+						NOT = { reverse_opinion = { who = ROOT value = -20 } }
+						NOT = { opinion = { who = ROOT value = -20 } }
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				trait = just
+			}
+			modifier = {
+				factor = 2
+				trait = honorable
+			}
+			modifier = {
+				factor = 2
+				trait = trusting
+			}
+			modifier = {
+				factor = 0.5
+				trait = arbitrary
+			}
+			modifier = {
+				factor = 0.5
+				trait = paranoid
+			}
+			modifier = {
+				factor = 0.5
+				trait = ruthless
+			}
+		}
+		event_target:old_dorne_holder = {
+			opinion = {
+				modifier = opinion_grateful
+				who = ROOT
+				years = 20
+			}
+			hidden_tooltip = {
+				set_character_flag = allowed_to_keep_dorne
+				character_event = { id = conquest_of_dorne.15 }
+			}
+		}
+		piety = 150
+	}
+
+	option = { #Option 1
+		name = EVTOPTBunbowed.60
+		trigger = {
+			event_target:redmountain_holder = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.25
+				event_target:redmountain_holder = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:redmountain_holder = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:redmountain_holder = {
+			hidden_tooltip = {
+				set_character_flag = allowed_to_keep_dorne
+				character_event = { id = conquest_of_dorne.15 days = 2 }
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Option 2
+		name = EVTOPTCunbowed.60
+		trigger = {
+			event_target:stoneway_holder = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.25
+				event_target:stoneway_holder = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:stoneway_holder = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:stoneway_holder = {
+			hidden_tooltip = {
+				set_character_flag = allowed_to_keep_dorne
+				character_event = { id = conquest_of_dorne.15 days = 2 }
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Option 3
+		name = EVTOPTDunbowed.60
+		trigger = {
+			event_target:brimstone_holder = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.25
+				event_target:brimstone_holder = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:brimstone_holder = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:brimstone_holder = {
+			hidden_tooltip = {
+				set_character_flag = allowed_to_keep_dorne
+				character_event = { id = conquest_of_dorne.15 days = 2 }
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Option 4
+		name = EVTOPTEunbowed.60
+		trigger = {
+			event_target:count_holder_1 = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.25
+				event_target:count_holder_1 = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:count_holder_1 = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:count_holder_1 = {
+			hidden_tooltip = {
+				set_character_flag = allowed_to_keep_dorne
+				character_event = { id = conquest_of_dorne.15 days = 2 }
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	option = { #Option 5
+		name = EVTOPTFunbowed.60
+		trigger = {
+			event_target:count_holder_2 = {
+				NOT = { war_with = ROOT }
+				NOT = { just_execution_reason_PREV_trigger = yes }
+			}
+		}
+		ai_chance = {
+			factor = 20
+			modifier = {
+				factor = 0.25
+				event_target:count_holder_2 = { NOT = { has_character_flag = supporting_king } }
+			}
+			modifier = {
+				factor = 0
+				event_target:count_holder_2 = {
+					OR = {
+						is_adult = no
+						is_incapable = no
+						NOT = { reverse_opinion = { who = ROOT value = -70 } }
+						NOT = { opinion = { who = ROOT value = -70 } }
+					}
+				}
+			}
+		}
+		event_target:count_holder_2 = {
+			hidden_tooltip = {
+				set_character_flag = allowed_to_keep_dorne
+				character_event = { id = conquest_of_dorne.15 days = 2 }
+			}
+			k_dorne = {
+				grant_title = PREV
+				add_pressed_claim = event_target:old_dorne_holder
+			}
+			if = {
+				limit = {
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_granted_kingdom } }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_granted_kingdom
+				}
+			}
+			hidden_tooltip = {
+				letter_event = { id = 63078 tooltip = EVTTOOLTIP63078 days = 1 }
+			}
+			recalc_succession = yes
+		}
+	}
+
+	after = {
+		hidden_tooltip = {
+			k_dorne = {
+				remove_claim = ROOT
+				if = {
+					limit = { NOT = { has_law = succ_primogeniture } }
+					succession = primogeniture
+					if = {
+						limit = { e_iron_throne = { has_law = agnatic_succession } }
+						gender_succ = agnatic
+					}
+					if = {
+						limit = { e_iron_throne = { has_law = cognatic_succession } }
+						gender_succ = cognatic
+					}
+					if = {
+						limit = { e_iron_throne = { has_law = true_cognatic_succession } }
+						gender_succ = true_cognatic
+					}
+				}
+			}
+		}
+	}
+}
+
+#Invite to 'Feast'
+character_event = {
+	id = unbowed.63
+	desc = EVTDESCunbowed.63
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.63
+		hidden_tooltip = {
+			k_dorne = { holder_scope = { character_event = { id = unbowed.630 days = 2 } } }
+		}
+	}
+}
+
+#Dorne
+character_event = {
+	id = unbowed.630
+	desc = EVTDESCunbowed.630
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.63
+		hidden_tooltip = {
+			FROM = { character_event = { id = unbowed.631 days = 2 } }
+		}
+	}
+}
+
+#Iron Throne
+character_event = {
+	id = unbowed.631
+	desc = {
+		trigger = { FROM = { NOT = { has_character_flag = dornish_betrayal } } }
+		text = EVTDESCAunbowed.631
+	}
+	desc = {
+		trigger = { FROM = { has_character_flag = dornish_betrayal } }
+		text = EVTDESCBunbowed.631
+	}
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	immediate = {
+		any_realm_character = {
+			limit = { trait = kingsguard }
+			save_event_target_as = dead_kingsguard
+		}
+	}
+
+	option = {
+		name = EVTOPTAunbowed.631
+		trigger = {
+			FROM = { NOT = { has_character_flag = dornish_betrayal } }
+		}
+		hidden_tooltip = {
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							any_dynasty_member = {
+								age = 14
+								age < 30
+								is_female = no
+								can_marry_trigger = yes
+							}
+							k_dorne = {
+								holder_scope = {
+									any_dynasty_member = {
+										age = 14
+										age < 20
+										is_female = yes
+										can_marry_trigger = yes
+									}
+								}
+							}
+						}
+						AND = {
+							any_dynasty_member = {
+								age = 14
+								age < 20
+								is_female = yes
+								can_marry_trigger = yes
+							}
+							k_dorne = {
+								holder_scope = {
+									any_dynasty_member = {
+										age = 14
+										age < 30
+										is_female = no
+										can_marry_trigger = yes
+									}
+								}
+							}
+						}
+					}
+				}
+				character_event = { id = unbowed.6310 }
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBunbowed.631
+		trigger = {
+			FROM = { has_character_flag = dornish_betrayal }
+		}
+		character_event = { id = unbowed.632 }
+		FROM = { character_event = { id = unbowed.6320 days = 1 } }
+		event_target:dead_kingsguard = {
+			death = {
+				death_reason = death_murder
+				killer = FROM
+			}
+		}
+	}
+}
+
+#Marriage Proposal
+#Dorne
+character_event = {
+	id = unbowed.6310
+	desc = EVTDESCAunbowed.6310
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.6310
+		if = {
+			limit = {
+				e_iron_throne = {
+					holder_scope = {
+						any_dynasty_member = {
+							age = 14
+							age < 30
+							is_female = no
+							can_marry_trigger = yes
+						}
+					}
+				}
+				k_dorne = {
+					holder_scope = {
+						any_dynasty_member = {
+							age = 14
+							age < 20
+							is_female = yes
+							can_marry_trigger = yes
+						}
+					}
+				}
+			}
+			e_iron_throne = {
+				holder_scope = {
+					random_dynasty_member = {
+						limit = {
+							age = 14
+							age < 20
+							is_female = no
+							can_marry_trigger = yes
+						}
+						save_event_target_as = the_irone_throne_match
+					}
+				}
+			}
+			k_dorne = {
+				holder_scope = {
+					random_dynasty_member = {
+						limit = {
+							age = 14
+							age < 20
+							is_female = yes
+							can_marry_trigger = yes
+						}
+						save_event_target_as = the_dornish_match
+					}
+				}
+			}
+		}
+		else = {
+			limit = {
+				e_iron_throne = {
+					holder_scope = {
+						any_dynasty_member = {
+							age = 14
+							age < 30
+							is_female = yes
+							can_marry_trigger = yes
+						}
+					}
+				}
+				k_dorne = {
+					holder_scope = {
+						any_dynasty_member = {
+							age = 14
+							age < 30
+							is_female = no
+							can_marry_trigger = yes
+						}
+					}
+				}
+			}
+			e_iron_throne = {
+				holder_scope = {
+					random_dynasty_member = {
+						limit = {
+							age = 14
+							age < 20
+							is_female = yes
+							can_marry_trigger = yes
+						}
+						save_event_target_as = the_irone_throne_match
+					}
+				}
+			}
+			k_dorne = {
+				holder_scope = {
+					random_dynasty_member = {
+						limit = {
+							age = 14
+							age < 30
+							is_female = no
+							can_marry_trigger = yes
+						}
+						save_event_target_as = the_dornish_match
+					}
+				}
+			}
+		}
+		FROM = { character_event = { id = unbowed.6311 } }
+	}
+}
+
+character_event = {
+	id = unbowed.6311
+	desc = EVTDESCunbowed.6311
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = EVTOPTAunbowed.6311
+		event_target:the_dornish_match = {
+			add_spouse = event_target:the_irone_throne_match
+		}
+	}
+
+	option = { #Reject
+		name = EVTOPTBunbowed.6311
+	}
+}
+
+character_event = {
+	id = unbowed.6312
+	desc = EVTDESCunbowed.6312
+	picture = GFX_evt_feast_hf
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = OK
+	}
+}
+
+#Skirmish
+character_event = {
+	id = unbowed.632
+	desc = EVTDESCunbowed.632
+	picture = GFX_dornish_assassins
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTunbowed.632
+		random_character = {
+			limit = {
+				trait = kingsguard
+				is_alive = yes
+			}
+			death = {
+				death_reason = death_murder
+				killer = FROMFROM
+			}
+		}
+		random_character = {
+			limit = {
+				trait = kingsguard
+				is_alive = yes
+			}
+			death = {
+				death_reason = death_murder
+				killer = FROMFROM
+			}
+		}
+		random_character = {
+			limit = {
+				trait = kingsguard
+				is_alive = yes
+			}
+			death = {
+				death_reason = death_murder
+				killer = FROMFROM
+			}
+		}
+		death = {
+			death_reason = death_murder
+			killer = FROMFROM
+		}
+		hidden_tooltip = {
+			any_dynasty_member = {
+				opinion = {
+					who = FROMFROM
+					modifier = opinion_vengeance
+				}
+			}
+		}
+	}
+}
+
+character_event = {
+	id = unbowed.6320
+	desc = EVTDESCunbowed.6320
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTGETHOUSEWORDS
+		e_dorne = { gain_title = ROOT }
+
+		custom_tooltip = {
+			text = TOOLTIPcreate_e_dorne
+			hidden_tooltip = {
+				k_dorne = {
+					destroy_landed_title = THIS
+					de_jure_liege = e_dorne
+				}
+			}
+		}
+	}
+}
+
+
+character_event = {
+	id = unbowed.9999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			NOT = { war_with = e_dorne }
+			is_landed = no
+		}
+		OR = {
+			has_character_modifier = defending_dorne
+			has_character_modifier = attacking_dornish_sands
+			has_character_flag = at_war_with_dorne
+			has_character_flag = is_defending_dorne
+		}
+	}
+
+	immediate = {
+		remove_character_modifier = defending_dorne
+		clr_character_flag = is_defending_dorne
+		remove_character_modifier = attacking_dornish_sands
+		clr_character_flag = at_war_with_dorne
+	}
+}
+

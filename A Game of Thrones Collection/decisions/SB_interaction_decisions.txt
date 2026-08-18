@@ -1,0 +1,138 @@
+# Targetted decisions are possible vs _all_ other characters and shown are in the Diplomacy View, not the Intrigue View. The taker is in the FROM scope.
+#
+# ai_target_filter = [self/court/home_court/vassals/sub_realm/realm/dynasty/all] (which characters for which the AI evaluates the decision.)
+#	court: all characters in the AI's host court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	home_court: all characters in the AI's home court, including prisoners, and characters currently away (wards, prisoners, etc)
+#	vassals: direct vassal rulers of the AI's employer
+#	sub_realm: all characters below the AI's employer
+#	realm: all characters in the same top realm as the AI
+#	dynasty: all members of the same dynasty
+#	rivals: your rivals plus any character you have an opinion modifier with 'crime = yes' set (the same set of characters the 'is_foe' trigger evaluates)
+#	all: all living characters (Avoid if possible. VERY CPU-HEAVY!)
+#
+
+targeted_decisions = {
+	appoint_to_imperialguard = {
+		ai_target_filter = none
+		filter = all
+		ai = no
+		diplomacy_icon = GFX_appoint_to_imperialguard
+
+		from_potential = {
+			OR = {
+				has_global_flag = imperialguard_exists
+				is_title_active = d_imperialguard
+			}
+			OR = {
+				has_landed_title = e_ghiscar
+				liege = {
+					has_landed_title = e_ghiscar
+					OR = {
+						AND = { #Regent appointment
+							regent = { character = PREVPREV }
+							OR = {
+								age < 16
+								prisoner = yes
+								is_incapable = yes
+							}
+						}
+						PREV = { #Lord Commander recommendation
+							has_landed_title = d_imperialguard
+							trait = imperialguard
+						}
+						PREV = { #Hand of the King recommendation
+							has_job_title = job_castellan
+						}
+					}
+				}
+			}
+			e_ghiscar = {
+				holder_scope = {
+					OR = {
+						NOT = { has_character_flag = selecting_imperialguard }
+						had_character_flag = { flag = selecting_imperialguard days = 10 }
+					}
+				}
+			}
+		}
+		potential = {
+			ai = yes
+			is_ruler = no
+			OR = {
+				same_realm = FROM
+				AND = {
+					FROM = { has_landed_title = e_ghiscar }
+					top_liege = {
+						has_character_flag = supporting_king
+						has_opinion_modifier = { modifier = opinion_with_king who = FROM }
+						has_opinion_modifier = { modifier = opinion_de_facto_liege who = FROM }
+					}
+				}
+			}
+			NOT = { trait = imperialguard }
+			NOT = { has_character_flag = wikid_companion }
+			NOT_mythical_creature_trigger = yes
+		}
+		allow = {
+			FROM = {
+				age = 16
+				prisoner = no
+				NOT = { is_incapable = yes }
+				NOT = { has_opinion_modifier = { modifier = opinion_refused_imperialguard who = ROOT } }
+			}
+			custom_tooltip = {
+				text = TOOLTIPimperialguardNEEDED
+				hidden_tooltip = {
+					NOT = {
+						imperialguard = {
+							is_alive = yes
+							count = 6
+						}
+					}
+				}
+			}
+			age = 14
+			OR = {
+				age = 16
+				combat_rating = 60
+			}
+			is_married = no
+			prisoner = no
+			can_press_claims_trigger = yes
+			NOT = { d_imperialguard = { holder_scope = { e_ghiscar = { holder_scope = { war_with = PREVPREV } } } } }
+		}
+		effect = {
+			e_ghiscar = {
+				holder_scope = {
+					clr_character_flag = selecting_imperialguard
+					set_character_flag = selecting_imperialguard
+				}
+			}
+			if = { #Lord Commander/Hand recommendation
+				limit = {
+					FROM = {
+						NOT = { has_landed_title = e_ghiscar }
+						NOT = { #Regent appointment
+							liege = {
+								has_landed_title = e_ghiscar
+								regent = { character = PREVPREV }
+								OR = {
+									age < 16
+									prisoner = yes
+									is_incapable = yes
+								}
+							}
+						}
+					}
+				}
+				FROM = { liege = { character_event = { id = sb_imperialguard.201 tooltip = TOOLTIPinteraction.85 } } }
+			}
+			else = {
+				character_event = { id = sb_imperialguard.15 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

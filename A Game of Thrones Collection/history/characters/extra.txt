@@ -1,0 +1,1008 @@
+# Extra Characters (Personal Arms Submod)
+
+750011 = {
+	name = "Эззо"
+	dynasty = 9999999 #Rlugia
+	dna = "affef0e0ee0"
+	properties = "qf0i0i"
+	diplomacy = 4
+	martial = 9
+	stewardship = 6
+	intrigue = 7
+	learning = 7
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = quick
+	add_trait = wroth
+	add_trait = brave
+	add_trait = robust
+	add_trait = ambitious
+
+	8095.7.15 = {	#Ezzo, the Rlugia founder who served Prince-Consort Drazenko of Dorne
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+						ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8111.7.15 = {	#Comes of Age
+		add_trait = brilliant_strategist
+		add_trait = skilled_warrior
+	}
+	8115.1.1 = {	#Experience from the War in the Stepstones
+		remove_trait = skilled_warrior
+		add_trait = master_warrior
+		add_trait = strategist
+		add_trait = flanker
+		add_trait = heavy_infantry_leader
+	}
+	8134.1.1 = {	#Follows Drazenko to Dorne
+		effect = {
+			k_dorne = {
+				holder_scope = {
+						ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8135.1.1 = {	#Knighted, marries a Dornish Maid
+		add_trait = knight
+		add_spouse = 750012
+	}
+	8136.1.1 = {	#Returns to Lys following the murder of Drazenko Rogare
+		effect = {
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8150.1.1 = {	#Passes from Old Age
+		death = {
+			death_reason = death_natural
+		}
+	}
+}
+
+750012 = {
+	name = "Несторика"
+	female = yes
+	dna = "abhkc0da0a0"
+	properties = "va0b0c"
+	diplomacy = 4
+	martial = 3
+	stewardship = 4
+	intrigue = 5
+	learning = 6
+	religion = "the_seven"
+	culture = "sand_dornish"
+	add_trait = kind
+	#add_trait = envious
+	add_trait = proud
+	add_trait = socializer
+	add_trait = falconer
+
+	8113.1.1 = {	#Ezzo's wife, a Dornish maid from Sandstone
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			c_sandstone = {
+				holder_scope = {
+						ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8129.1.1 = {	#Comes of Age
+		add_trait = charismatic_negotiator
+	}
+	8135.1.1 = {	#Moves to Sunspear after Marriage
+		effect = {
+			k_dorne = {
+				holder_scope = {
+						ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8136.1.1 = {	#Follows Husband to Lys following Drazenko's death
+		effect = {
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8170.1.1 = {	#Passes from Old Age
+		death = {
+			death_reason = death_natural
+		}
+	}
+}
+
+750009 = {
+	name = "Трегонос"
+	dynasty = 9999999 #Rlugia
+	dna = "bfjge0ibcc0"
+	properties = "bj0g0f"
+	diplomacy = 6
+	martial = 5
+	stewardship = 9
+	intrigue = 5
+	learning = 5
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = shrewd
+	add_trait = diligent
+	add_trait = just
+	add_trait = greedy
+	add_trait = envious
+	add_trait = administrator
+
+	father = 750011
+	mother = 750012
+
+	8135.12.8 = {	#Father of Kasporio, Drake's great great grandfather
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_dorne = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8136.1.1 = {	#Returns to Lys following the murder of Drazenko Rogare
+		effect = {
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8144.12.8 = {	#Comes of Age
+		add_trait = midas_touched
+	}
+	8158.1.1 = {	#Gains first ship
+		effect = {
+			add_artifact = regular_flagship
+		}
+	}
+	8160.1.1 = {
+		add_spouse = 750010
+	}
+	8162.1.1 = {	#Makes his fortune
+		wealth = 150
+	}
+	8189.1.1 = {	#Grants Kasporio the funds needed for his first voyage
+		wealth = -25
+	}
+	8191.1.1 = {	#Weakened: retires from his voyages
+		add_trait = infirm
+		effect = {
+			destroy_artifact = regular_flagship
+		}
+	}
+	8198.1.1 = {	#Death
+		wealth = -125
+		death = {
+			death_reason = death_trait
+		}
+	}
+}
+
+750010 = {
+	name = "Йоницея"
+	female = yes
+	dna = "cfhef0hbbe0"
+	properties = "ba0c0h"
+	diplomacy = 6
+	martial = 2
+	stewardship = 5
+	intrigue = 4
+	learning = 7
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = fair
+	add_trait = groomed
+	add_trait = charitable
+	add_trait = gregarious
+	add_trait = envious
+
+	8139.1.1 = {	#Tregono's wife, mother of Kasporio: a comely and beautiful Lyseni woman
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8155.1.1 = {	#Comes of Age
+		add_trait = charismatic_negotiator
+	}
+	8198.1.1 = {	#Receives a small stipend upon Tregonos' death
+		wealth = 10
+	}
+	8207.1.1 = {	#Passes from Old Age
+		death = {
+			death_reason = death_natural
+		}
+	}
+}
+
+750007 = {
+	name = "Каспорио"
+	dynasty = 9999999 #Rlugia
+	dna = "0kkkd0h0ae0"
+	properties = "lf0elk"
+	diplomacy = 5
+	martial = 4
+	stewardship = 7
+	intrigue = 5
+	learning = 4
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = wroth
+	add_trait = envious
+	add_trait = brave
+	add_trait = stubborn
+
+	father = 750009
+	mother = 750010
+
+	8166.6.14 = {	#Born, father of Rysaro, Drake's great grandfather
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8182.6.14 = {
+		add_trait = thrifty_clerk
+	}
+	8189.1.1 = {	#Takes first voyage with father's aid
+		wealth = 25
+		effect = {
+			add_artifact = regular_flagship
+		}
+	}
+	8191.1.1 = {	#First Voyage Success
+		wealth = 50
+		add_spouse = 750008
+	}
+	8198.1.1 = {	#Inheritence from Tregonos
+		wealth = 125
+	}
+	8218.1.1 = {
+		wealth = -175
+		effect = {
+			destroy_artifact = regular_flagship
+		}
+		death = {
+			death_reason = death_natural
+			}
+	}
+}
+
+750008 = {
+	name = "Меллария"
+	female = yes
+	dna = "aceee0bcec0"
+	properties = "bf0c0"
+	diplomacy = 4
+	martial = 3
+	stewardship = 6
+	intrigue = 5
+	learning = 5
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = poet
+	add_trait = temperate
+	add_trait = proud
+	add_trait = stubborn
+
+	8170.1.1 = {
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8186.1.1 = {
+		add_trait = intricate_webweaver
+	}
+	8226.1.1 = {
+		death = {
+			death_reason = death_natural
+		}
+	}
+}
+
+750004 = {
+	name = "Рисаро"
+	dynasty = 9999999 #Rlugia
+	dna = "0jefc0fc0f0"
+	properties = "vd0c0c"
+	diplomacy = 6
+	martial = 4
+	stewardship = 9
+	intrigue = 6
+	learning = 5
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = ambitious
+	add_trait = patient
+	add_trait = greedy
+	add_trait = just
+
+	father = 750007
+	mother = 750008
+
+	8197.9.19 = {	#Born, grandfather of Drake
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8213.9.19 = {
+		add_trait = fortune_builder
+	}
+	8218.1.1 = {	#Inherits Rlugia wealth, outfits a massive ship
+		wealth = 125
+		effect = {
+			add_artifact = enormous_flagship
+		}
+	}
+	8221.1.1 = {	#Makes his fortune
+		wealth = 75
+		add_trait = administrator
+	}
+	8225.1.1 = {	#Weds the wealthy Firanya
+		add_spouse = 750005
+	}
+	8231.1.1 = {	#Brings home Nesianna, his concubine
+		effect = {
+			random_character = {
+				limit = { character = 750006 } #Nesianna
+				add_lover = ROOT
+				move_character = ROOT
+				ROOT = { add_consort = PREV }
+			}
+		}
+	}
+	8246.1.1 = {
+		wealth = 25
+	}
+	8259.1.1 = {	#Death, goes down with ship: impacts house wealth
+		wealth = -225
+		effect = {
+			destroy_artifact = enormous_flagship
+		}
+		death = {
+			death_reason = death_accident_drowning
+		}
+	}
+}
+
+750005 = {
+	name = "Фирания"
+	female = yes
+	dna = "abhbf0ebab0"
+	properties = "ic0h0f"
+	diplomacy = 4
+	martial = 3
+	stewardship = 6
+	intrigue = 3
+	learning = 4
+	religion = "rhllor"
+	culture = "lysene"
+	add_trait = weak
+	add_trait = proud
+	add_trait = kind
+	add_trait = content
+	add_trait = trusting
+
+	8194.1.1 = {	#Rysaro's legitimate wife, a sickly and infertile but rich woman
+		birth = yes
+		wealth = 25
+		effect = {
+			health = -1
+			fertility = -0.95
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8210.1.1 = {	#Decent with her inheritence
+		add_trait = thrifty_clerk
+	}
+	8246.1.1 = {	#Dies of poor health, no issue
+		wealth = -25
+		death = {
+			death_reason = death_poor_health
+		}
+	}
+}
+
+750006 = {
+	name = "Несианна"
+	female = yes
+	dna = "0iied0fbjl0"
+	properties = "ac0f0d"
+	diplomacy = 4
+	martial = 3
+	stewardship = 5
+	intrigue = 6
+	learning = 5
+	religion = "rhllor"
+	culture = "pentosi"
+	add_trait = shrewd
+	add_trait = fair
+	add_trait = diligent
+	add_trait = lustful
+	add_trait = envious
+	add_trait = arbitrary
+	add_trait = cynical
+	add_trait = groomed
+
+	8201.1.1 = {	#Born, Rysaro's Pentoshi Concubine
+		birth = yes
+		effect = {
+			set_immune_to_pruning = yes
+			k_pentos = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8217.1.1 = {	#Comes of age, intriguer
+		add_trait = intricate_webweaver
+	}
+	8228.1.1 = {	#A master seductress
+		add_trait = seductress
+	}
+	8259.1.1 = {	#Small stipend upon Rlugia's death: returns to Pentos
+		wealth = 5
+		effect = {
+			k_pentos = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8263.1.1 = {	#Nesianna improves upon her stipend smartly in her old age
+		wealth = 20
+		add_trait = administrator
+	}
+	8272.1.1 = {	#Death
+		wealth = -20
+		death = {
+			death_reason = death_natural
+		}
+	}
+}
+
+750001 = {
+	name = "Пазенхо"
+	dynasty = 9999999 #Rlugia
+	dna = "bkjje0ic0e0"
+	properties = "rc0nln"
+	diplomacy = 4
+	martial = 9
+	stewardship = 6
+	intrigue = 7
+	learning = 5
+	add_trait = strong
+	religion = "rhllor"
+	culture = "lysene"
+
+	father = 750004
+	mother = 750006
+
+	8234.5.15 = {	#Born, the son of a middling Lyseni Magister and his Concubine
+		birth = yes
+		add_trait = child_of_consort
+		wealth = 60
+		effect = {
+			set_immune_to_pruning = yes
+			k_lys = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8248.1.1 = {	#Comes of Age
+		add_trait = lustful
+		add_trait = greedy
+		add_trait = trained_warrior
+	}
+	8250.5.15 = {	#Comes into his own as a warrior
+		add_trait = brave
+		add_trait = skilled_tactician
+		remove_trait = trained_warrior
+		add_trait = skilled_warrior
+	}
+	8253.1.1 = {	#Leaves Lys and joins the Golden Company, outfitted with part of his paltry inheritence
+		wealth = -10
+		effect = {
+			add_artifact = sword_tier_2
+			add_artifact = fine_armour
+			k_golden_company = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8256.1.1 = {	#Becomes skilled in war
+		add_trait = duelist
+		add_trait = ambitious
+		add_trait = trickster
+		add_trait = light_foot_leader
+	}
+	8259.1.1 = {	#Serves Maelys the Monsterous during the War of the Ninepenny Kings
+		effect = {
+			k_stepstones = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8260.1.1 = {	#Wounded in the Stepstones, begins to turn to pleasure. Serves the Tyrant of Tyrosh after Maelys demise
+		add_trait = wounded
+		add_trait = hedonist
+		effect = {
+			d_tyrosh = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8260.5.1 = {	#Recovers from his wounds but scarred
+		remove_trait = wounded
+		add_trait = scarred_type_5
+	}
+	8265.6.1 = {	#Becomes a drunkard following the death of the Tyrant of Tyrosh: returns to Lys almost penniless, serving House Ormollen
+		wealth = -5
+		add_trait = drunkard
+		remove_trait = ambitious
+		add_trait = cynical
+		effect = {
+			b_ormollen = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8269.8.1 = {	#Briefly takes up a post at Starfall: seduces the Septa Sarra
+			effect = {
+				d_redmountains = {
+					holder_scope = {
+						ROOT = { move_character = PREV }
+					}
+				}
+				d_redmountains = {
+					holder_scope = {
+					random_dynasty_member = {
+					limit = { character = 75002 } #Septa Sarra
+					add_lover = ROOT
+					}
+				}
+			}
+		}
+	}
+	8270.4.3 = {	#Returns to serving House Ormollen, leaving Septa Sarra high and dry with a bastard son
+		wealth = -5
+		effect = {
+			b_ormollen = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+			random_lover = {
+				limit = { character = 750002 } #Septa Sarra
+				remove_lover = ROOT
+			}
+		}
+	}
+	8290.1.1 = {	#Becomes ill with cancer
+		wealth = -10
+		add_trait = cancer
+	}
+	8292.5.26 = {	#Passes away
+		effect = {
+			destroy_artifact = sword_tier_2
+			destroy_artifact = fine_armour
+		}
+		death = {
+			death_reason = death_trait
+		}
+	}
+}
+
+750002 = {
+	name = "Сарра"
+	female = yes
+	dna = "checf0fbde0"
+	properties = "rq0i0d"
+	diplomacy = 6
+	martial = 3
+	stewardship = 5
+	intrigue = 5
+	learning = 8
+	add_trait = fair
+	add_trait = quick
+	add_trait = bastard
+	add_trait = greensight
+	religion = "the_seven"
+	culture = "northman"
+
+	8245.12.5 = {	#Born a bastard of common stock, somewhere near White Harbor
+		birth = yes
+		effect = {
+			health = 2
+			fertility = 0.25
+			set_immune_to_pruning = yes
+			culture = half_southron
+			d_whiteharbor = {
+					holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8261.12.5 = {	#Educated by the Faith, comes into her own
+		add_trait = septa
+		add_trait = martial_cleric
+		add_trait = chaste
+		add_trait = gregarious
+		add_trait = groomed
+		add_trait = gardener
+		add_trait = celibate
+	}
+	8264.7.10 = {	#Is assigned south to the Daynes
+		effect = {
+			culture = stone_dornish
+			d_redmountains = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8269.8.3 = {	#Seduced by a Lyseni Sellsword
+		remove_trait = chaste
+		remove_trait = celibate
+		add_trait = lustful
+		add_trait = pregnant
+	}
+	8270.4.3 = {	#Drake is born, Sarra left with a paltry sum
+			add_trait = depressed
+			remove_trait = gardener
+			remove_trait = pregnant
+			wealth = 5
+	}
+	8276.1.1 = {	#Sarra finds herself, leaves Dorne for the court of the High Septon
+		remove_trait = depressed
+		add_trait = mystic
+		add_trait = celibate
+		add_trait = chaste
+		remove_trait = lustful
+		effect = {
+			k_the_most_devout = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+}
+750003 = {
+	name = "Дрейк"
+	dynasty = 9999999 #Rlugia
+	dna = "bhaj00ic0f0"
+	properties = "rm0c0c"
+	diplomacy = 7
+	martial = 6
+	stewardship = 6
+	intrigue = 6
+	learning = 7
+
+	father = 750001
+	mother = 750002
+
+	add_trait = quick
+	add_trait = greensight
+	add_trait = bastard
+	religion = "the_seven"
+	culture = "lysene"
+
+	8270.4.3 = {	#Born a sickly waif, illegitimate son of a Lyseni Sellword and Dornish Septa from White Harbor
+		birth = yes
+		add_trait = sickly
+		effect = {
+			health = 1
+			set_immune_to_pruning = yes
+			culture = stone_dornish
+			d_redmountains = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8272.4.3 = {	#Manages to thrive
+		remove_trait = sickly
+	}
+	8276.1.1 = {	#Fostered in Dorne, at the Water Gardens, learns to fight
+		effect = {
+			k_dorne = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+		add_trait = poor_warrior
+	}
+	8278.1.1 = {	#Becomes Squire to Doran
+		guardian = 1
+		add_trait = squire
+	}
+	8279.1.1 = {	#Keeps Training
+		remove_trait = poor_warrior
+		add_trait = trained_warrior
+	}
+	8284.4.3 = {	#Comes into his own, warging with a pet dog, 'seduced' by the Red Viper
+		add_trait = dog
+		remove_trait = trained_warrior
+		add_trait = skilled_warrior
+		add_trait = skilled_tactician
+		add_trait = brave
+		add_trait = homosexual
+		add_trait = envious
+		add_trait = lustful
+		add_trait = patient
+		effect = {
+			c_3001 = {
+				if = {
+					limit = { is_alive = yes }
+					add_lover = ROOT
+				}
+			}
+		}
+	}
+	8289.1.1 = {	#Befriends Arianne, is knighted
+		remove_trait = squire
+		add_trait = knight
+		add_trait = groomed
+		add_trait = organizer
+		add_trait = defensive_leader
+		effect = { add_friend = 4001 }
+	}
+	8292.8.1 = {	#Is recognized by his rascal father on his deathbed, receives a small bequest: money, sword, and armor
+			remove_trait = bastard
+			add_trait = legit_bastard
+			wealth = 10
+			effect = {
+				add_artifact = sword_tier_2
+				add_artifact = fine_armour
+			}
+		}
+	8293.1.1 = {	#Leaves Dorne, takes up service at High Garden
+		effect = {
+			remove_friend = 4001
+			random_lover = {
+				limit = { character = 3001 } #Oberyn Martell
+				remove_lover = ROOT
+			}
+			k_reach = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8295.1.1 = {	#Falls for Nicholas, befriends Margaery and Loras
+		effect = {
+			c_850000 = {
+				if = {
+					limit = { is_alive = yes }
+					add_lover = ROOT
+				}
+			}
+			add_friend = 850000
+			add_friend = 6253
+			add_friend = 7253
+		}
+	}
+	8298.1.1 = {	#Takes up service with Renly Baratheon in the WOT5K
+		effect = {
+			c_5317 = {
+				if = {
+					limit = { is_alive = yes }
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_friend = 101301
+		}
+	}
+	8299.3.3 = {	#Supports Stannis following Renly's death: breach with the Tyrells, embraces Rhllor
+		effect = {
+			c_4317 = {
+				if = {
+					limit = { is_alive = yes }
+					ROOT = { move_character = PREV }
+				}
+			}
+			religion = rhllor
+			piety = 50
+			remove_friend = 6253
+			remove_friend = 7253
+		}
+	}
+	8299.7.1 = {	#Wounded at the Blackwater
+		add_trait = wounded
+	}
+	8300.3.1 = {	#Scarred, but survives! Follows Stannis to the Wall
+		remove_trait = wounded
+		add_trait = scarred_type_3
+		add_trait = zealous #Believes Rhllor saved him
+	}
+	8300.6.1 = {	#Weakened on the march to Winterfell...
+		add_trait = is_malnourished
+		effect = { set_variable = { which = physique_variable value = -15 } }
+		}
+}
+
+850000 = {
+	name = "Николас"
+	dynasty = 9999998 #Vosco
+	dna = "baigd0gbdl0"
+	properties = "pa0c0k"
+	diplomacy = 6
+	martial = 9
+	stewardship = 6
+	intrigue = 8
+	learning = 6
+
+	add_trait = fair
+	add_trait = strong
+	religion = "the_seven"
+	culture = "braavosi"
+
+	8281.12.21 = {	#Born near Old Town: scion of the Voscos, Braavosi Merchant Princes
+		birth = yes
+		add_trait = robust
+		effect = {
+			health = 1
+			set_immune_to_pruning = yes
+			culture = reachman
+			d_oldtown = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+	}
+	8287.1.1 = {	#Fostered at Highgarden, learns to fight
+		effect = {
+			k_reach = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
+			}
+		}
+		add_trait = playful
+		add_trait = rowdy
+		add_trait = willful
+		add_trait = poor_warrior
+	}
+	8289.1.1 = {	#Becomes Squire to Mace Tyrell
+		guardian = 1253
+		add_trait = squire
+	}
+	8290.1.1 = {	#Keeps Training
+		remove_trait = poor_warrior
+		add_trait = trained_warrior
+	}
+	8294.1.1 = {	#Comes into his own
+		remove_trait = trained_warrior
+		remove_trait = playful
+		remove_trait = rowdy
+		remove_trait = willful
+		add_trait = intricate_webweaver
+		add_trait = skilled_warrior
+		add_trait = lustful
+		add_trait = cruel
+		add_trait = ambitious
+		add_trait = wroth
+		add_trait = brave
+		add_trait = poet
+	}
+	8295.1.1 = {	#Falls for Drake, befriends Margaery and Loras
+		add_trait = homosexual
+		effect = {
+			c_750003 = {
+				if = {
+					limit = { is_alive = yes }
+					add_lover = ROOT
+				}
+			}
+			add_friend = 750003
+			add_friend = 6253
+			add_friend = 7253
+		}
+	}
+	8298.1.1 = {	#Takes up service with Renly Baratheon in the WOT5K
+		remove_trait = squire
+		add_trait = knight
+		add_trait = aggressive_leader
+		add_trait = trickster
+		effect = {
+			c_5317 = {
+				if = {
+					limit = { is_alive = yes }
+					ROOT = { move_character = PREV }
+				}
+			}
+			add_friend = 101301
+		}
+	}
+	8299.3.3 = {	#Joins Drake in going over to Stannis, embraces Rhllor with him
+		effect = {
+			c_4317 = {
+				if = {
+					limit = { is_alive = yes }
+					ROOT = { move_character = PREV }
+				}
+			}
+			religion = rhllor
+			piety = 50
+			remove_friend = 6253
+			remove_friend = 7253
+		}
+	}
+	8299.7.1 = {	#Fights at Blackwater
+		add_trait = impaler
+	}
+	8300.3.1 = {	#Joins Drake in heading North
+		add_trait = cynical #No belief in the cause
+	}
+	8300.6.1 = {	#Weakened on the march to Winterfell...
+		add_trait = is_malnourished
+		effect = { set_variable = { which = physique_variable value = -15 } }
+		}
+}

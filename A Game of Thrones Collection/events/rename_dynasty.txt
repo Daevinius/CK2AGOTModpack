@@ -1,0 +1,18 @@
+namespace = rename_dynasty
+
+character_event = {
+	id = rename_dynasty.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		set_dynasty_name = [target_dynasty_name.GetFirstName]
+
+		event_target:target_dynasty_name = {
+			death = yes
+		}
+
+		clear_event_target = target_dynasty_name
+	}
+}

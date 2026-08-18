@@ -1,0 +1,1112 @@
+###Decision Menu###
+#DEBUG On
+#DEBUG Off
+#Emergency Hatch
+
+###Targetted Decisions###
+#Make Clutch
+#Heal Dragon
+#Bond to Dragon
+#Remove Rider from Dragon
+#Help Hatch
+#Take Eggs
+#Portrait Shuffle
+
+
+decisions = {
+
+	turn_on_tdp_debug = {
+		is_high_prio = no
+
+		ai = no
+
+		potential = {
+			NOT = { has_global_flag = tdp_debug_activated }
+		}
+		allow = {
+		}
+		effect = {
+			set_global_flag = tdp_debug_activated
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	turn_off_tdp_debug = {
+		is_high_prio = no
+
+		ai = no
+
+		potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		allow = {
+		}
+		effect = {
+			clr_global_flag = tdp_debug_activated
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+
+	tdp_emergency_hatch = {
+		is_high_prio = yes
+
+		ai = no
+
+		potential = {
+			has_artifact = dragon_egg
+			NOT = { has_global_flag = age_of_dragons }
+			has_global_flag = tdp_debug_activated
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = dragon.5 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}
+
+
+targeted_decisions = {
+
+	tdp_heal_dragon_debug = {
+		filter = realm
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			trait = dragon
+			OR = {
+				trait = wounded_dragon
+				trait = maimed_dragon
+				trait = sickly_dragon
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = wounded_dragon
+			remove_trait = maimed_dragon
+			remove_trait = sickly_dragon
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_bond_to_dragon_debug = {
+		filter = all
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+			NOT = { trait = dragon_rider }
+		}
+		potential = {
+			trait = dragon
+			num_of_friends < 1
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				add_friend = ROOT
+				add_trait = dragon_rider
+			}
+			if = {
+				limit = {
+					any_artifact = { artifact_type = dragons_whip }
+				}
+				random_artifact = {
+					limit = { artifact_type = dragons_whip }
+					transfer_artifact = { from = ROOT to = FROM }
+				}
+			}
+			move_character = FROM
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_remove_dragon_rider = {
+		filter = all
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			ai = yes
+			trait = dragon_rider
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = dragon_rider
+			if = {
+				limit = { has_character_modifier = cannot_tame_dragon }
+				remove_character_modifier = cannot_tame_dragon
+			}
+			any_friend = {
+				limit = { trait = dragon }
+				remove_friend = ROOT
+				save_event_target_as = give_dragon_whip
+			}
+			if = {
+				limit = {
+					any_artifact = { artifact_type = dragons_whip }
+				}
+				random_artifact = {
+					limit = { artifact_type = dragons_whip }
+					transfer_artifact = { from = ROOT to = event_target:give_dragon_whip }
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { persistent_event_target:whip = { owner = { always = yes } } }
+				}
+				event_target:rider_looking = {
+					add_artifact = dragons_whip
+					new_artifact = {
+						set_name = [dragon_being_tamed.GetDragonWhipName]
+						event_target:give_dragon_whip = { save_persistent_event_target = { name = whip scope = PREV } }
+					}
+				}
+			}
+			else_if = {
+				limit = { NOT = { persistent_event_target:whip = { owner = { character = event_target:give_dragon_whip } } } }
+				persistent_event_target:whip = {
+					transfer_artifact = { from = owner to = event_target:give_dragon_whip }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_debug_make_clutch = {
+		filter = realm
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			trait = dragon
+			NOT = { has_artifact = dragon_egg }
+			NOT = { trait = sickly_dragon }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = dragon_rework.11 days = 1 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_help_hatch = {
+		filter = realm
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			ai = yes
+			has_artifact = dragon_egg
+			NOT = { trait = dragonkeeper }
+			NOT = {
+				any_friend = {
+					trait = dragon
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = dragon.5 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_take_eggs = {
+		filter = all
+		diplomacy_icon = GFX_bestow_dragon_egg
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			ai = yes
+			has_artifact = dragon_egg
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_artifact = {
+				limit = { artifact_type = dragon_egg }
+				transfer_artifact = {
+					from = ROOT
+					to = FROM
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_dragon_portrait_next = {
+		filter = all
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			ai = yes
+			trait = dragon
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						trait = dragon_1
+					}
+					remove_trait = dragon_1
+					add_trait = dragon_2
+				}
+				else_if = {
+					limit = {
+						trait = dragon_2
+					}
+					remove_trait = dragon_2
+					add_trait = dragon_3
+				}
+				else_if = {
+					limit = {
+						trait = dragon_3
+					}
+					remove_trait = dragon_3
+					add_trait = dragon_4
+				}
+				else_if = {
+					limit = {
+						trait = dragon_4
+					}
+					remove_trait = dragon_4
+					add_trait = dragon_5
+				}
+				else_if = {
+					limit = {
+						trait = dragon_5
+					}
+					remove_trait = dragon_5
+					add_trait = dragon_6
+				}
+				else_if = {
+					limit = {
+						trait = dragon_6
+					}
+					remove_trait = dragon_6
+					add_trait = dragon_7
+				}
+				else_if = {
+					limit = {
+						trait = dragon_7
+					}
+					remove_trait = dragon_7
+					add_trait = dragon_8
+				}
+				else_if = {
+					limit = {
+						trait = dragon_8
+					}
+					remove_trait = dragon_8
+					add_trait = dragon_9
+				}
+				else_if = {
+					limit = {
+						trait = dragon_9
+					}
+					remove_trait = dragon_9
+					add_trait = dragon_10
+				}
+				else_if = {
+					limit = {
+						trait = dragon_10
+					}
+					remove_trait = dragon_10
+					add_trait = dragon_11
+				}
+				else_if = {
+					limit = {
+						trait = dragon_11
+					}
+					remove_trait = dragon_11
+					add_trait = dragon_12
+				}
+				else_if = {
+					limit = {
+						trait = dragon_12
+					}
+					remove_trait = dragon_12
+					add_trait = dragon_13
+				}
+				else_if = {
+					limit = {
+						trait = dragon_13
+					}
+					remove_trait = dragon_13
+					add_trait = dragon_14
+				}
+				else_if = {
+					limit = {
+						trait = dragon_14
+					}
+					remove_trait = dragon_14
+					add_trait = dragon_15
+				}
+				else_if = {
+					limit = {
+						trait = dragon_15
+					}
+					remove_trait = dragon_15
+					add_trait = dragon_16
+				}
+				else_if = {
+					limit = {
+						trait = dragon_16
+					}
+					remove_trait = dragon_16
+					add_trait = dragon_17
+				}
+				else_if = {
+					limit = {
+						trait = dragon_17
+					}
+					remove_trait = dragon_17
+					add_trait = dragon_18
+				}
+				else_if = {
+					limit = {
+						trait = dragon_18
+					}
+					remove_trait = dragon_18
+					add_trait = dragon_19
+				}
+				else_if = {
+					limit = {
+						trait = dragon_19
+					}
+					remove_trait = dragon_19
+					add_trait = dragon_20
+				}
+				else_if = {
+					limit = {
+						trait = dragon_20
+					}
+					remove_trait = dragon_20
+					add_trait = dragon_21
+				}
+				else_if = {
+					limit = {
+						trait = dragon_21
+					}
+					remove_trait = dragon_21
+					add_trait = dragon_22
+				}
+				else_if = {
+					limit = {
+						trait = dragon_22
+					}
+					remove_trait = dragon_22
+					add_trait = dragon_23
+				}
+				else_if = {
+					limit = {
+						trait = dragon_23
+					}
+					remove_trait = dragon_23
+					add_trait = dragon_24
+				}
+				else_if = {
+					limit = {
+						trait = dragon_24
+					}
+					remove_trait = dragon_24
+					add_trait = dragon_25
+				}
+				else_if = {
+					limit = {
+						trait = dragon_25
+					}
+					remove_trait = dragon_25
+					add_trait = dragon_26
+				}
+				else_if = {
+					limit = {
+						trait = dragon_26
+					}
+					remove_trait = dragon_26
+					add_trait = dragon_27
+				}
+				else_if = {
+					limit = {
+						trait = dragon_27
+						NOT = { has_global_flag = tdp_diverse_portraits }
+					}
+					remove_trait = dragon_27
+					add_trait = dragon_1
+				}
+				else_if = {
+					limit = {
+						trait = dragon_27
+						has_global_flag = tdp_diverse_portraits
+					}
+					remove_trait = dragon_27
+					add_trait = dragon_28
+				}
+				else_if = {
+					limit = {
+						trait = dragon_28
+					}
+					remove_trait = dragon_28
+					add_trait = dragon_29
+				}
+				else_if = {
+					limit = {
+						trait = dragon_29
+					}
+					remove_trait = dragon_29
+					add_trait = dragon_30
+				}
+				else_if = {
+					limit = {
+						trait = dragon_30
+					}
+					remove_trait = dragon_30
+					add_trait = dragon_31
+				}
+				else_if = {
+					limit = {
+						trait = dragon_31
+					}
+					remove_trait = dragon_31
+					add_trait = dragon_32
+				}
+				else_if = {
+					limit = {
+						trait = dragon_32
+					}
+					remove_trait = dragon_32
+					add_trait = dragon_33
+				}
+				else_if = {
+					limit = {
+						trait = dragon_33
+					}
+					remove_trait = dragon_33
+					add_trait = dragon_34
+				}
+				else_if = {
+					limit = {
+						trait = dragon_34
+					}
+					remove_trait = dragon_34
+					add_trait = dragon_35
+				}
+				else_if = {
+					limit = {
+						trait = dragon_35
+					}
+					remove_trait = dragon_35
+					add_trait = dragon_36
+				}
+				else_if = {
+					limit = {
+						trait = dragon_36
+					}
+					remove_trait = dragon_36
+					add_trait = dragon_37
+				}
+				else_if = {
+					limit = {
+						trait = dragon_37
+					}
+					remove_trait = dragon_37
+					add_trait = dragon_38
+				}
+				else_if = {
+					limit = {
+						trait = dragon_38
+					}
+					remove_trait = dragon_38
+					add_trait = dragon_39
+				}
+				else_if = {
+					limit = {
+						trait = dragon_39
+					}
+					remove_trait = dragon_39
+					add_trait = dragon_40
+				}
+				else_if = {
+					limit = {
+						trait = dragon_40
+					}
+					remove_trait = dragon_40
+					add_trait = dragon_41
+				}
+				else_if = {
+					limit = {
+						trait = dragon_41
+					}
+					remove_trait = dragon_41
+					add_trait = dragon_42
+				}
+				else_if = {
+					limit = {
+						trait = dragon_42
+					}
+					remove_trait = dragon_42
+					add_trait = dragon_43
+				}
+				else_if = {
+					limit = {
+						trait = dragon_43
+					}
+					remove_trait = dragon_43
+					add_trait = dragon_44
+				}
+				else_if = {
+					limit = {
+						trait = dragon_44
+					}
+					remove_trait = dragon_44
+					add_trait = dragon_45
+				}
+				else_if = {
+					limit = {
+						trait = dragon_45
+					}
+					remove_trait = dragon_45
+					add_trait = dragon_46
+				}
+				else_if = {
+					limit = {
+						trait = dragon_46
+					}
+					remove_trait = dragon_46
+					add_trait = dragon_47
+				}
+				else_if = {
+					limit = {
+						trait = dragon_47
+					}
+					remove_trait = dragon_47
+					add_trait = dragon_48
+				}
+				else_if = {
+					limit = {
+						trait = dragon_48
+					}
+					remove_trait = dragon_48
+					add_trait = dragon_49
+				}
+				else_if = {
+					limit = {
+						trait = dragon_49
+					}
+					remove_trait = dragon_49
+					add_trait = dragon_50
+				}
+				else_if = {
+					limit = {
+						trait = dragon_50
+					}
+					remove_trait = dragon_50
+					add_trait = dragon_51
+				}
+				else_if = {
+					limit = {
+						trait = dragon_51
+					}
+					remove_trait = dragon_51
+					add_trait = dragon_52
+				}
+				else_if = {
+					limit = {
+						trait = dragon_52
+					}
+					remove_trait = dragon_52
+					add_trait = dragon_53
+				}
+				else = {
+					limit = {
+						trait = dragon_53
+					}
+					remove_trait = dragon_53
+					add_trait = dragon_1
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	tdp_dragon_portrait_previous = {
+		filter = all
+		diplomacy_icon = GFX_face_the_dragon_pi
+
+		ai = no
+
+		from_potential = {
+			has_global_flag = tdp_debug_activated
+		}
+		potential = {
+			ai = yes
+			trait = dragon
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						trait = dragon_53
+					}
+					remove_trait = dragon_53
+					add_trait = dragon_52
+				}
+				else_if = {
+					limit = {
+						trait = dragon_52
+					}
+					remove_trait = dragon_52
+					add_trait = dragon_51
+				}
+				else_if = {
+					limit = {
+						trait = dragon_51
+					}
+					remove_trait = dragon_51
+					add_trait = dragon_50
+				}
+				else_if = {
+					limit = {
+						trait = dragon_50
+					}
+					remove_trait = dragon_50
+					add_trait = dragon_49
+				}
+				else_if = {
+					limit = {
+						trait = dragon_49
+					}
+					remove_trait = dragon_49
+					add_trait = dragon_48
+				}
+				else_if = {
+					limit = {
+						trait = dragon_48
+					}
+					remove_trait = dragon_48
+					add_trait = dragon_47
+				}
+				else_if = {
+					limit = {
+						trait = dragon_47
+					}
+					remove_trait = dragon_47
+					add_trait = dragon_46
+				}
+				else_if = {
+					limit = {
+						trait = dragon_46
+					}
+					remove_trait = dragon_46
+					add_trait = dragon_45
+				}
+				else_if = {
+					limit = {
+						trait = dragon_45
+					}
+					remove_trait = dragon_45
+					add_trait = dragon_44
+				}
+				else_if = {
+					limit = {
+						trait = dragon_44
+					}
+					remove_trait = dragon_44
+					add_trait = dragon_43
+				}
+				else_if = {
+					limit = {
+						trait = dragon_43
+					}
+					remove_trait = dragon_43
+					add_trait = dragon_42
+				}
+				else_if = {
+					limit = {
+						trait = dragon_42
+					}
+					remove_trait = dragon_42
+					add_trait = dragon_41
+				}
+				else_if = {
+					limit = {
+						trait = dragon_41
+					}
+					remove_trait = dragon_41
+					add_trait = dragon_40
+				}
+				else_if = {
+					limit = {
+						trait = dragon_40
+					}
+					remove_trait = dragon_40
+					add_trait = dragon_39
+				}
+				else_if = {
+					limit = {
+						trait = dragon_39
+					}
+					remove_trait = dragon_39
+					add_trait = dragon_38
+				}
+				else_if = {
+					limit = {
+						trait = dragon_38
+					}
+					remove_trait = dragon_38
+					add_trait = dragon_37
+				}
+				else_if = {
+					limit = {
+						trait = dragon_37
+					}
+					remove_trait = dragon_37
+					add_trait = dragon_36
+				}
+				else_if = {
+					limit = {
+						trait = dragon_36
+					}
+					remove_trait = dragon_36
+					add_trait = dragon_35
+				}
+				else_if = {
+					limit = {
+						trait = dragon_35
+					}
+					remove_trait = dragon_35
+					add_trait = dragon_34
+				}
+				else_if = {
+					limit = {
+						trait = dragon_34
+					}
+					remove_trait = dragon_34
+					add_trait = dragon_33
+				}
+				else_if = {
+					limit = {
+						trait = dragon_33
+					}
+					remove_trait = dragon_33
+					add_trait = dragon_32
+				}
+				else_if = {
+					limit = {
+						trait = dragon_32
+					}
+					remove_trait = dragon_32
+					add_trait = dragon_31
+				}
+				else_if = {
+					limit = {
+						trait = dragon_31
+					}
+					remove_trait = dragon_31
+					add_trait = dragon_30
+				}
+				else_if = {
+					limit = {
+						trait = dragon_30
+					}
+					remove_trait = dragon_30
+					add_trait = dragon_29
+				}
+				else_if = {
+					limit = {
+						trait = dragon_29
+					}
+					remove_trait = dragon_29
+					add_trait = dragon_28
+				}
+				else_if = {
+					limit = {
+						trait = dragon_28
+					}
+					remove_trait = dragon_28
+					add_trait = dragon_27
+				}
+				else_if = {
+					limit = {
+						trait = dragon_27
+					}
+					remove_trait = dragon_27
+					add_trait = dragon_26
+				}
+				else_if = {
+					limit = {
+						trait = dragon_27
+					}
+					remove_trait = dragon_27
+					add_trait = dragon_26
+				}
+				else_if = {
+					limit = {
+						trait = dragon_26
+					}
+					remove_trait = dragon_26
+					add_trait = dragon_25
+				}
+				else_if = {
+					limit = {
+						trait = dragon_25
+					}
+					remove_trait = dragon_25
+					add_trait = dragon_24
+				}
+				else_if = {
+					limit = {
+						trait = dragon_24
+					}
+					remove_trait = dragon_24
+					add_trait = dragon_23
+				}
+				else_if = {
+					limit = {
+						trait = dragon_23
+					}
+					remove_trait = dragon_23
+					add_trait = dragon_22
+				}
+				else_if = {
+					limit = {
+						trait = dragon_22
+					}
+					remove_trait = dragon_22
+					add_trait = dragon_21
+				}
+				else_if = {
+					limit = {
+						trait = dragon_21
+					}
+					remove_trait = dragon_21
+					add_trait = dragon_20
+				}
+				else_if = {
+					limit = {
+						trait = dragon_20
+					}
+					remove_trait = dragon_20
+					add_trait = dragon_19
+				}
+				else_if = {
+					limit = {
+						trait = dragon_19
+					}
+					remove_trait = dragon_19
+					add_trait = dragon_18
+				}
+				else_if = {
+					limit = {
+						trait = dragon_18
+					}
+					remove_trait = dragon_18
+					add_trait = dragon_17
+				}
+				else_if = {
+					limit = {
+						trait = dragon_17
+					}
+					remove_trait = dragon_17
+					add_trait = dragon_16
+				}
+				else_if = {
+					limit = {
+						trait = dragon_16
+					}
+					remove_trait = dragon_16
+					add_trait = dragon_15
+				}
+				else_if = {
+					limit = {
+						trait = dragon_15
+					}
+					remove_trait = dragon_15
+					add_trait = dragon_14
+				}
+				else_if = {
+					limit = {
+						trait = dragon_14
+					}
+					remove_trait = dragon_14
+					add_trait = dragon_13
+				}
+				else_if = {
+					limit = {
+						trait = dragon_13
+					}
+					remove_trait = dragon_13
+					add_trait = dragon_12
+				}
+				else_if = {
+					limit = {
+						trait = dragon_12
+					}
+					remove_trait = dragon_12
+					add_trait = dragon_11
+				}
+				else_if = {
+					limit = {
+						trait = dragon_11
+					}
+					remove_trait = dragon_11
+					add_trait = dragon_10
+				}
+				else_if = {
+					limit = {
+						trait = dragon_10
+					}
+					remove_trait = dragon_10
+					add_trait = dragon_9
+				}
+				else_if = {
+					limit = {
+						trait = dragon_9
+					}
+					remove_trait = dragon_9
+					add_trait = dragon_8
+				}
+				else_if = {
+					limit = {
+						trait = dragon_8
+					}
+					remove_trait = dragon_8
+					add_trait = dragon_7
+				}
+				else_if = {
+					limit = {
+						trait = dragon_7
+					}
+					remove_trait = dragon_7
+					add_trait = dragon_6
+				}
+				else_if = {
+					limit = {
+						trait = dragon_6
+					}
+					remove_trait = dragon_6
+					add_trait = dragon_5
+				}
+				else_if = {
+					limit = {
+						trait = dragon_5
+					}
+					remove_trait = dragon_5
+					add_trait = dragon_4
+				}
+				else_if = {
+					limit = {
+						trait = dragon_4
+					}
+					remove_trait = dragon_4
+					add_trait = dragon_3
+				}
+				else_if = {
+					limit = {
+						trait = dragon_3
+					}
+					remove_trait = dragon_3
+					add_trait = dragon_2
+				}
+				else_if = {
+					limit = {
+						trait = dragon_2
+					}
+					remove_trait = dragon_2
+					add_trait = dragon_1
+				}
+				else_if = {
+					limit = {
+						trait = dragon_1
+						has_global_flag = tdp_diverse_portraits
+					}
+					remove_trait = dragon_1
+					add_trait = dragon_53
+				}
+				else = {
+					limit = {
+						trait = dragon_1
+						NOT = { has_global_flag = tdp_diverse_portraits }
+					}
+					remove_trait = dragon_1
+					add_trait = dragon_27
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+
+}

@@ -1,0 +1,522 @@
+namespace = mbs_queen_daughter
+
+###The Rose and the Wolf###
+###The Rose and the Trout###
+###The Rose and the Kraken###
+###The Rose and the Dragon###
+
+###The Rose and the Wolf###
+long_character_event = {
+	id = mbs_queen_daughter.1
+	title = EVTTITLEmbs_queen_daughter.1
+	desc = EVTDESCmbs_queen_daughter.1
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+	hide_from = yes
+
+	option = { #Offer the Wolf
+		name = EVTOPTAmbs_queen_daughter.1
+		c_2059 = {
+			character_event = {	id = mbs_queen_daughter.10 days = 1 }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = { #Remain Neutral in War
+		name = EVTOPTBmbs_queen_daughter.1
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+}
+
+#Robb gets offer
+character_event = {
+	id = mbs_queen_daughter.10
+	title = EVTTITLEmbs_queen_daughter.1
+	desc = EVTDESCmbs_queen_daughter.10
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = EVTOPTAmbs_queen_daughter.10
+		set_character_flag = event_marriage
+		c_7253 = {
+			remove_trait = refusing_marriage
+			move_character = ROOT
+			add_spouse = ROOT
+		}
+		FROM = { character_event = { id = mbs_queen_daughter.11 days = 1 } }
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 0
+				is_married = yes
+			}
+		}
+	}
+
+	option = { #Deny
+		name = EVTOPTBmbs_queen_daughter.10
+		FROM = { character_event = { id = mbs_queen_daughter.12 days = 1 } }
+		ai_chance = {
+			factor = 20
+		}
+	}
+
+	option = { #Offer Edmure
+		name = EVTOPTBmbs_queen_daughter.10
+		trigger = {
+			c_4159 = {
+				is_married = no
+			}
+		}
+		FROM = { character_event = { id = mbs_queen_daughter.13 days = 1 } }
+		ai_chance = {
+			factor = 20
+		}
+	}
+}
+
+##offer accepted
+character_event = {
+	id = mbs_queen_daughter.11
+	title = EVTTITLEmbs_queen_daughter.1
+	desc = EVTDESCmbs_queen_daughter.11
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = { #The Reach joins the Young Wolf
+		name = EVTOPTmbs_queen_daughter_accepted
+
+		set_character_flag = against_king
+		clr_character_flag = neutral
+		clr_character_flag = supporting_king
+		clr_character_flag = inherit_war
+		any_vassal = {
+			limit = { has_character_flag = neutral }
+			set_character_flag = against_king
+			clr_character_flag = neutral
+		}
+		e_north = {
+			holder_scope = {
+				add_alliance = { who = ROOT years = 10 }
+				if = {
+					limit = { is_primary_war_attacker = yes	}
+					ROOT = { join_attacker_wars = PREV }
+				}
+				if = {
+					limit = { is_primary_war_defender = yes }
+					ROOT = { join_defender_wars = PREV }
+				}
+				opinion = {
+					modifier = opinion_loyal_to_crown
+					who = ROOT
+					years = 10
+				}
+				hidden_tooltip = {
+					reverse_opinion = {
+						modifier = opinion_with_king
+						who = ROOT
+						years = 100
+					}
+				}
+			}
+		}
+	}
+}
+##offer rejected
+character_event  = {
+	id = mbs_queen_daughter.12
+	title = EVTTITLEmbs_queen_daughter.1
+	desc = EVTDESCmbs_queen_daughter.12
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTmbs_queen_daughter_rejection
+		hidden_tooltip = {
+			#Balon gets the option to send a marriage offer for Theon
+			if = {
+				limit = {
+					c_1107 = { #Balon
+						c_8107 = {
+							at_location = PREV
+							is_married = no
+						}
+					}
+				}
+				c_1107 = { character_event = { id = mbs_queen_daughter.2 days = 2 } }
+			}
+		}
+	}
+}
+
+###The Rose and the Trout###
+##offered Edmure
+character_event  = {
+	id = mbs_queen_daughter.13
+	title = EVTTITLEmbs_queen_daughter.13
+	desc = EVTDESCmbs_queen_daughter.13
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = { #Good enough
+		name = EVTOPTAmbs_queen_daughter.13
+
+		c_4159 = {
+			k_riverlands = {
+				holder_scope = {
+					c_7253 = {
+						remove_trait = refusing_marriage
+						move_character = ROOT
+						add_spouse = c_4159
+					}
+				}
+			}
+		}
+
+		set_character_flag = against_king
+		clr_character_flag = neutral
+		clr_character_flag = supporting_king
+		clr_character_flag = inherit_war
+		any_vassal = {
+			limit = { has_character_flag = neutral }
+			set_character_flag = against_king
+			clr_character_flag = neutral
+		}
+		e_north = {
+			holder_scope = {
+				add_alliance = { who = ROOT years = 10 }
+				if = {
+					limit = { is_primary_war_attacker = yes	}
+					ROOT = { join_attacker_wars = PREV }
+				}
+				if = {
+					limit = { is_primary_war_defender = yes }
+					ROOT = { join_defender_wars = PREV }
+				}
+				opinion = {
+					modifier = opinion_loyal_to_crown
+					who = ROOT
+					years = 10
+				}
+				hidden_tooltip = {
+					reverse_opinion = {
+						modifier = opinion_with_king
+						who = ROOT
+						years = 100
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	option = { #No
+		name = EVTOPTBmbs_queen_daughter.13
+		hidden_tooltip = {
+			#Balon gets the option to send a marriage offer for Theon
+			if = {
+				limit = {
+					c_1107 = { #Balon
+						c_8107 = {
+							at_location = PREV
+							is_married = no
+						}
+					}
+				}
+				c_1107 = { character_event = { id = mbs_queen_daughter.2 days = 2 } }
+			}
+		}
+		ai_chance = {
+			factor = 90
+		}
+	}
+}
+
+#Robb's Edmure offer is accepted
+character_event  = {
+	id = mbs_queen_daughter.130
+	title = EVTTITLEmbs_queen_daughter.13
+	desc = EVTDESCmbs_queen_daughter.130
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+#Robb's Edmure offer is rejected
+character_event  = {
+	id = mbs_queen_daughter.131
+	title = EVTTITLEmbs_queen_daughter.13
+	desc = EVTDESCmbs_queen_daughter.131
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+###The Rose and the Kraken###
+character_event  = {
+	id = mbs_queen_daughter.2
+	title = EVTTITLEmbs_queen_daughter.2
+	desc = EVTDESCmbs_queen_daughter.2
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = { #Send Offer to Mace
+		name = EVTOPTAmbs_queen_daughter.2
+		FROM = { character_event = { id = mbs_queen_daughter.20 days = 2 } }
+		ai_chance = {
+			factor = 10
+		}
+	}
+
+	option = { #We dont need the greenlanders
+		name = EVTOPTBmbs_queen_daughter.2
+		ai_chance = {
+			factor = 90
+		}
+	}
+}
+
+#Mace gets offer
+character_event  = {
+	id = mbs_queen_daughter.20
+	title = EVTTITLEmbs_queen_daughter.2
+	desc = EVTDESCmbs_queen_daughter.20
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = EVTOPTAmbs_queen_daughter.20
+		FROM = { character_event = { id = mbs_queen_daughter.200 days = 1 } }
+
+		c_8107 = {
+			c_7253 = {
+				remove_trait = refusing_marriage
+				move_character = FROM
+				add_spouse = PREV
+			}
+		}
+
+		#The Reach joins Balon
+		set_character_flag = against_king
+		clr_character_flag = neutral
+		clr_character_flag = supporting_king
+		clr_character_flag = inherit_war
+		any_vassal = {
+			limit = { has_character_flag = neutral }
+			set_character_flag = against_king
+			clr_character_flag = neutral
+		}
+		e_iron_isles = {
+			holder_scope = {
+				add_alliance = { who = ROOT years = 10 }
+				if = {
+					limit = { is_primary_war_attacker = yes	}
+					ROOT = { join_attacker_wars = PREV }
+				}
+				if = {
+					limit = { is_primary_war_defender = yes }
+					ROOT = { join_defender_wars = PREV }
+				}
+			}
+		}
+		ai_chance = {
+			factor = 5
+		}
+	}
+
+	option = { #Refuse
+		name = EVTOPTBmbs_queen_daughter.20
+		FROM = { character_event = { id = mbs_queen_daughter.201 days = 1 } }
+		ai_chance = {
+			factor = 95
+		}
+	}
+}
+
+##offer accepted
+character_event = {
+	id = mbs_queen_daughter.200
+	title = EVTTITLEmbs_queen_daughter.2
+	desc = EVTDESCmbs_queen_daughter.200
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTmbs_queen_daughter_accepted
+	}
+}
+
+##offer rejected
+character_event  = {
+	id = mbs_queen_daughter.201
+	title = EVTTITLEmbs_queen_daughter.2
+	desc = EVTDESCmbs_queen_daughter.201
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTmbs_queen_daughter_rejection
+	}
+}
+
+
+###The Rose and the Dragon###
+character_event  = {
+	id = mbs_queen_daughter.3
+	title = EVTTITLEmbs_queen_daughter.3
+	desc = EVTDESCmbs_queen_daughter.3
+	picture = GFX_evt_margaery
+
+	hide_from = yes
+	is_triggered_only = yes
+
+	option = { #Offer Young Griff
+		name = EVTOPTAmbs_queen_daughter.3
+		c_125009 = {
+			character_event  = { id = mbs_queen_daughter.30 days = 1 }
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = { #Remain Neutral
+		name = EVTOPTBmbs_queen_daughter.3
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+character_event  = {
+	id = mbs_queen_daughter.30
+	title = EVTTITLEmbs_queen_daughter.3
+	desc = EVTDESCmbs_queen_daughter.30
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = { #Accept
+		name = EVTOPTmbs_queen_daughter.30
+		FROM = { character_event = { id = mbs_queen_daughter.31 days = 1 } }
+		c_7253 = {
+			remove_trait = refusing_marriage
+			move_character = ROOT
+			add_spouse = ROOT
+		}
+		ai_chance = {
+			factor = 30
+		}
+	}
+
+	option = { #Refuse
+		name = EVTOPTBmbs_queen_daughter.30
+		FROM = { character_event = { id = mbs_queen_daughter.32 days = 1 } }
+		ai_chance = {
+			factor = 70
+		}
+	}
+}
+
+##offer accepted
+character_event = {
+	id = mbs_queen_daughter.31
+	title = EVTTITLEmbs_queen_daughter.3
+	desc = EVTDESCmbs_queen_daughter.31
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTmbs_queen_daughter_accepted
+
+		set_character_flag = against_king
+		clr_character_flag = neutral
+		clr_character_flag = supporting_king
+		clr_character_flag = inherit_war
+		any_vassal = {
+			limit = { has_character_flag = neutral }
+			set_character_flag = against_king
+			clr_character_flag = neutral
+		}
+		k_young_griffs_host = {
+			holder_scope = {
+				add_alliance = { who = ROOT years = 10 }
+				if = {
+					limit = { is_primary_war_attacker = yes	}
+					ROOT = { join_attacker_wars = PREV }
+				}
+				opinion = {
+					modifier = opinion_loyal_to_crown
+					who = ROOT
+					years = 10
+				}
+				hidden_tooltip = {
+					reverse_opinion = {
+						modifier = opinion_with_king
+						who = ROOT
+						years = 100
+					}
+				}
+			}
+		}
+	}
+}
+
+##offer rejected
+character_event  = {
+	id = mbs_queen_daughter.32
+	title = EVTTITLEmbs_queen_daughter.3
+	desc = EVTDESCmbs_queen_daughter.32
+	picture = GFX_evt_margaery
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTmbs_queen_daughter_rejection
+	}
+}
+
+
+
+###Remove Trait if Margarey still has it###
+character_event = {
+	id = mbs_queen_daughter.9999
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		trait = refusing_marriage
+	}
+
+	immediate = {
+		remove_trait = refusing_marriage
+	}
+}

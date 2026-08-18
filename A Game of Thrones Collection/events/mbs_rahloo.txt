@@ -1,0 +1,311 @@
+namespace = mbs_rahloo
+
+
+province_event = {
+	id = mbs_rahloo.1
+	desc = "EVTDESCmbs_rahloo.1"
+	picture = GFX_evt_red_priest_approaches
+
+	trigger = {
+		year = 8298
+		region = world_westeros
+		NOT = {
+			region = world_beyond_the_wall
+		}
+		NOT = {
+			religion = rahlooism
+		}
+#		NOT = {
+#			any_playable_ruler = {
+#				religion = rahlooism
+#			}
+#		}
+	}
+
+	mean_time_to_happen = {
+		years = 500
+
+		modifier = {
+			factor = 0.1
+			religion = rhllor
+		}
+		modifier = {
+			factor = 0.1
+			owner = {
+				top_liege = {
+					religion = rhllor
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_rahloo.1"
+		ai_chance = {
+			factor = 1
+
+			# modifier = {
+			# 	factor = 0.1
+			# 	trait = zealous
+			# }
+			modifier = {
+				factor = 3
+				region = rhllor
+			}
+			modifier = {
+				factor = 0.3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.3
+				is_drowned_god_religion_trigger = yes
+			}
+			# modifier = {
+			# 	factor = 1.2
+			# 	trait = ambitious
+			# }
+			# modifier = {
+			# 	factor = 3
+			# 	trait = fire_obsessed
+			# }
+		}
+		ROOT = {
+			religion = rahlooism
+		}
+		ROOT = {
+			owner = {
+				religion = rahlooism
+			}
+		}
+		create_random_priest = {
+			attributes = {
+				martial = 6
+				diplomacy = 9
+				learning = 7
+			}
+			female = no
+			culture = Myrman
+			religion = rahlooism
+			dynasty = none
+			random_traits = yes
+			trait = ambitious
+			trait = kind
+			trait = red_priest
+			trait = mystic
+		}
+		new_character = {
+
+			prestige = 600
+			random_list = {
+				25 = { add_trait = trained_warrior }
+				75 = { add_trait = skilled_warrior }
+				25 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			remove_all_job_titles = yes
+			give_job_title = job_spiritual
+		}
+
+	}
+	option = {
+		name = "EVTOPTBmbs_rahloo.1"
+
+		ai_chance = {
+			factor = 5
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				is_drowned_god_religion_trigger = yes
+			}
+			# modifier = {
+			# 	factor = 3
+			# 	trait = zealous
+			# }
+			# modifier = {
+			# 	factor = 3
+			# 	trait = content
+			# }
+		}
+
+		ROOT = {
+			religion = rahlooism
+		}
+		create_random_priest = {
+			attributes = {
+				martial = 6
+				diplomacy = 9
+				learning = 7
+			}
+			female = no
+			culture = Myrman
+			religion = rahlooism
+			dynasty = none
+			random_traits = yes
+			trait = ambitious
+			trait = kind
+			trait = red_priest
+			trait = mystic
+		}
+		new_character = {
+
+			prestige = 600
+			random_list = {
+				25 = { add_trait = trained_warrior }
+				75 = { add_trait = skilled_warrior }
+				25 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+
+	}
+}
+character_event = {
+	id = mbs_rahloo.2
+	desc = "EVTDESCmbs_rahloo.2"
+	picture = GFX_evt_red_priest_approaches
+
+	min_age = 12
+
+	is_triggered_only = yes
+
+	trigger = {
+		religion = rahlooism
+		OR = {
+			NOT = { has_character_flag = mbs_rahloo_blessed }
+			had_character_flag = { flag = mbs_rahloo_blessed days = 100 }
+		}
+	}
+
+	weight_multiplier = {
+
+		modifier = {
+			factor = 0.3
+			trait = craven
+		}
+		modifier = {
+			factor = 0.1
+			trait = cruel
+		}
+		modifier = {
+			factor = 1.2
+			trait = fire_obsessed
+		}
+		modifier = {
+			factor = 1.6
+			trait = just
+		}
+		modifier = {
+			factor = 1.6
+			trait = kind
+		}
+		modifier = {
+			factor = 1.6
+			trait = honorable
+		}
+		modifier = {
+			factor = 1.8
+			trait = resurrected_by_rhllor
+		}
+		modifier = {
+			factor = 4
+			trait = favored_by_rhllor
+		}
+		modifier = {
+			factor = 8
+			trait = chosen_by_rhllor
+		}
+		modifier = {
+			factor = 1.6
+			trait = brave
+		}
+		modifier = {
+			factor = 1.4
+			trait = honest
+		}
+		modifier = {
+			factor = 1.2
+			trait = charitable
+		}
+		modifier = {
+			factor = 0.1
+			trait = possessed
+		}
+		modifier = {
+			factor = 0.1
+			trait = impaler
+		}
+		modifier = {
+			factor = 0.2
+			trait = envious
+		}
+		modifier = {
+			factor = 0.1
+			trait = arbitrary
+		}
+		modifier = {
+			factor = 0.3
+			trait = deceitful
+		}
+	}
+
+	option = {
+		name = "EVTOPTArahloo.2" #get magic point
+
+		ai_chance = {
+			factor = 2
+
+		}
+
+
+		piety = 5
+		increase_red_god_magic = yes
+		set_character_flag = mbs_rahloo_blessed
+
+	}
+}
+character_event = {
+	id = mbs_rahloo.20
+
+	is_triggered_only = yes
+	hide_window = yes
+
+
+	immediate = {
+		any_courtier = {
+			limit = {
+				character = 200300507
+			}
+			add_trait = red_priest
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

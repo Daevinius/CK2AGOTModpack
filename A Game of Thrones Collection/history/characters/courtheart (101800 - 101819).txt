@@ -1,0 +1,301 @@
+101800 = {
+	name = "Квентон"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 88000269
+	add_trait = bastard
+	give_nickname = nick_rivers
+
+	8010.1.1 = {
+		birth = yes
+		add_trait = assign_mission_target #cadet dynasty tracker
+		effect = {
+			if = {
+				limit = { NOT = { dynasty = 359 } }
+				set_dynasty_flag = is_cadet_house
+				c_88000269 = { #tarbeck father
+					set_dynasty_flag = has_cadet_house
+					set_dynasty_flag = owned_cadet_house_@PREV
+					ROOT = { set_dynasty_flag = cadet_house_@PREV }
+				}
+			}
+		}
+	}
+	8026.1.1 = { add_trait = knight add_trait = trained_warrior }
+	8078.1.1 = { death = { death_reason = death_accident } }
+}
+101801 = {
+	name = "Алан"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101800
+
+	8040.1.1 = { birth = yes }
+	8056.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8106.1.1 = { death = yes }
+}
+101802 = {
+	name = "Леймонд"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101801
+
+	8062.1.1 = { birth = yes }
+	8098.1.1 = { add_trait = knight add_trait = skilled_warrior }
+	8124.1.1 = { death = yes }
+}
+101803 = {
+	name = "Флориан"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101802
+
+	8084.1.1 = { birth = yes }
+	8100.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8101.1.1 = { add_spouse = 901803 }
+	8126.1.1 = { death = yes }
+}
+# Wife
+901803 = {
+	name = "Алисса"
+	female = yes
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	8088.1.1 = { birth = yes }
+	8142.1.1 = { death = yes }
+}
+#
+101804 = {
+	name = "Джейхейрис"	#  a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101803
+	mother = 901803
+
+	add_trait = misguided_warrior
+	add_trait = proud
+	add_trait = wroth
+	add_trait = cruel
+	add_trait = lustful
+
+	8102.1.1 = { birth = yes }
+	8118.1.1 = { add_trait = knight add_trait = master_warrior }
+	8130.5.8 = {
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+101805 = {
+	name = "Квентон"	#  a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101803
+	mother = 901803
+
+	8104.1.1 = { birth = yes }
+	8120.1.1 = { add_trait = knight add_trait = trained_warrior }
+	8143.1.1 = { death = yes }
+}
+101806 = {
+	name = "Пейт"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101805
+
+	8128.1.1 = { birth = yes }
+	8144.1.1 = { add_trait = knight add_trait = trained_warrior }
+	8201.1.1 = { death = yes }
+}
+101807 = {
+	name = "Квентон"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101806
+
+	8149.1.1 = { birth = yes }
+	8165.1.1 = { add_trait = trained_warrior add_trait = knight }
+	8204.1.1 = { death = yes }
+}
+101808 = {
+	name = "Дункан"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101807
+
+	8173.1.1 = { birth = yes }
+	8189.1.1 = { add_trait = knight add_trait = trained_warrior }
+	8218.1.1 = { death = yes }
+}
+101809 = {
+	name = "Джастин"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101808
+
+	8195.1.1 = { birth = yes }
+	8211.1.1 = { add_trait = knight }
+	8240.1.1 = { death = yes }
+}
+101810 = {
+	name = "Тристон"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101809
+
+	8218.1.1 = { birth = yes }
+	8234.1.1 = { add_trait = trained_warrior }
+	8276.1.1 = { death = yes }
+}
+101811 = {
+	name = "Тристон"	# a lord
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101810
+
+	8237.1.1 = { birth = yes }
+	8253.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8263.1.1 = { add_spouse = 901811 }
+	8289.1.1 = { death = yes }
+}
+# Wife
+901811 = {
+	name = "Коренна"
+	female = yes
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	8246.1.1 = { birth = yes }
+}
+#
+101812 = {
+	name = "Марик" # a lord
+	dynasty = 19018
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101811
+	mother = 901811
+
+	8264.1.1 = {
+		birth = yes
+	}
+	8280.1.1 = {
+		add_trait = "knight"
+	}
+	8283.1.1 = { add_spouse = "901812" }
+}
+# Wife
+901812 = {
+	name = "Делена" #
+	female = yes
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	8266.1.1 = {
+		birth = yes
+	}
+}
+#
+101813 = {
+	name = "Эймонд"
+	dynasty = 19018
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101812
+	mother = 901812
+
+	8285.1.1 = {
+		birth = yes
+	}
+	8297.1.1 = {
+		add_trait = "squire"
+		add_trait = "poor_warrior"
+	}
+}
+101814 = {
+	name = "Хейгон"
+	dynasty = 19018
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101812
+	mother = 901812
+
+	8288.1.1 = {
+		birth = yes
+	}
+}
+# Brother
+101815 = {
+	name = "Корлис"
+	dynasty = 19018
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101811
+	mother = 901811
+
+	8267.1.1 = {
+		birth = yes
+	}
+	8283.1.1 = {
+		add_trait = "knight"
+	}
+}
+101816 = {
+	name = "Рейль"
+	dynasty = 19018
+	female = yes
+
+	religion = "the_seven"
+	culture = "western_valyrian"
+
+	father = 101815
+
+	8289.1.1 = {
+		birth = yes
+	}
+}

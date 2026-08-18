@@ -1,0 +1,302 @@
+################################################################################################################
+##########Events for the Kingdom of Hazdahn in Daenerys AFFC scenario for Stormborn Submod by PabloLara##########
+#################################################################################################################
+
+namespace = sb_hazdahn
+
+#The last descendant of House Hazdahn asks for your help
+narrative_event = {
+	id = sb_hazdahn.0
+	desc = "EVTDESC_sb_hazdahn.0"
+	title = "EVTTITLE_sb_hazdahn.0"
+	picture = GFX_evt_dany_meereen_1
+	portrait = 10269192
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_meereen
+		c_10269192 = {
+			is_alive = yes
+			prisoner = no
+		}
+		NOT = { has_global_flag = hazdahn_quest }
+	}
+
+	immediate = { set_global_flag = hazdahn_quest }
+
+	option = {
+		name = "EVTOPTA_sb_hazdahn.0"
+		ai_chance = { factor = 80 }
+		custom_tooltip = { text = EVTTOOLTIP_hazdahnquest }
+		wealth = 50
+		c_10269192 = {
+			move_character = ROOT
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = PREV
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_hazdahn.0"
+		ai_chance = { factor = 20 }
+		prestige = 50
+		piety = -50
+		c_10269192 = { add_trait = depressed }
+		c_10269192 = { tooltip = { show_portrait = yes } }
+	}
+}
+#After colonizing Ghonazdhan, Hizdahr gather his men around you and they tell you about the capital city
+narrative_event = {
+	id = sb_hazdahn.1
+	desc = "EVTDESC_sb_hazdahn.1"
+	title = "EVTTITLE_sb_hazdahn.1"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		OR = {
+			has_landed_title = c_ghonazdhan
+			has_landed_title = c_khydhan
+		}
+		has_global_flag = hazdahn_quest
+		c_10269192 = {
+			is_alive = yes
+			prisoner = no
+			is_incapable = no
+		}
+		NOT = { has_global_flag = sb_ghonazdhan }
+	}
+
+	immediate = { set_global_flag = sb_ghonazdhan }
+
+	option = {
+		name = "EVTOPTA_sb_hazdahn.1"
+		ai_chance = { factor = 100 }
+		custom_tooltip = { text = EVTTOOLTIP_hazdahnmo }
+		prestige = 100
+		spawn_unit = {
+			province = 699
+			home = 699
+			owner = ROOT
+			cannot_inherit = no
+				troops = {
+					archers = { 200 200 }
+					light_infantry = { 200 200 }
+					light_cavalry = { 100 100 }
+				}
+			attrition = 0.5
+			earmark = dummy #needs or else it will CTD for some reason
+		}
+	}
+
+}
+#Reward Hizdahr, the wealth of the capital city
+narrative_event = {
+	id = sb_hazdahn.2
+	desc = "EVTDESC_sb_hazdahn.2"
+	title = "EVTTITLE_sb_hazdahn.2"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_landed_title = c_hazdahn_no
+		has_global_flag = hazdahn_quest
+		c_10269192 = {
+			is_alive = yes
+			prisoner = no
+			is_incapable = no
+		}
+		NOT = { has_global_flag = sb_hazdahn_capital }
+	}
+
+	immediate = { set_global_flag = sb_hazdahn_capital }
+
+	option = {
+		name = "EVTOPTA_sb_hazdahn.2"
+		prestige = 100
+		wealth = 400
+		c_10269192 = {
+			wealth = 100
+			remove_trait = bastard
+			add_trait = legit_bastard
+			dynasty = 69190
+		}
+		if = {
+			limit = { has_landed_title = c_ghonazdhan }
+			c_10269192 = {
+				c_ghonazdhan = {
+				grant_title = PREV
+				}
+			}
+		}
+		if = {
+			limit = { has_landed_title = c_khydhan }
+			c_10269192 = {
+				c_khydhan = {
+				grant_title = PREV
+				}
+			}
+		}
+	}
+}
+#Choose the new ruler of the Hazdahn Kingdom
+narrative_event = {
+	id = sb_hazdahn.3
+	desc = "EVTDESC_sb_hazdahn.3"
+	title = "EVTTITLE_sb_hazdahn.3"
+	picture = GFX_evt_dany_meereen_2
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 77041
+		has_landed_title = k_hazdahn
+		has_landed_title = e_ghiscar
+		c_10269192 = {
+			is_alive = yes
+			prisoner = no
+			is_incapable = no
+		}
+		NOT = { has_global_flag = sb_hazdahn_kingdom }
+	}
+
+	immediate = { set_global_flag = sb_hazdahn_kingdom }
+
+	option = {
+		name = "EVTOPTA_sb_hazdahn.3"
+		ai_chance = { factor = 90 }
+		c_10269192 = {
+			give_nickname = nick_the_liberator
+			set_character_flag = daenerys_friend
+			set_global_flag = king_hizdahr_hazdahn
+			save_event_target_as = potential_loyalty_target
+			wealth = 300
+			prestige = 500
+			add_friend = 77041
+			spawn_unit = {
+				province = 699
+				home = 699
+				owner = THIS
+				cannot_inherit = no
+				troops = {
+					unsullied = { 5500 5500 }
+				}
+				attrition = 0.5
+				earmark = dummy #needs or else it will CTD for some reason
+			}
+			k_hazdahn = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			create_bloodline = {
+				type = liberator_grazdahn_blood
+			}
+			character_event = { id = sb_hazdahn.4 days = 3 }
+		}
+		ROOT = { save_event_target_as = potential_loyalty_target }
+	}
+	option = {
+		name = "EVTOPTB_sb_hazdahn.3"
+		ai_chance = { factor = 10 }
+		prestige = 200
+		clr_character_flag = hazdahn_quest
+		c_10269192 = {
+			opinion = {
+					modifier = opinion_betrayed
+					who = PREV
+			}
+		}
+	}
+}
+#Hizdahr may decide to become a loyalist of House Targaryen
+character_event = {
+	id = sb_hazdahn.4
+	desc = "EVTDESC_sb_hazdahn.4"
+
+	is_triggered_only = yes
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		character = 10269192
+		has_landed_title = k_hazdahn
+		has_global_flag = king_hizdahr_hazdahn
+		NOT = { has_global_flag = hazdahn_loyalist_event }
+		top_liege = {
+			dynasty = 496
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_canon_stormborn
+			}
+		}
+	}
+
+	immediate = { set_global_flag = hazdahn_loyalist_event }
+
+	option = {
+		name = "EVTOPTA_sb_hazdahn.4"
+		ai_chance = { factor = 90 }
+		culture = ghiscari_freedmen
+		custom_tooltip = {
+			text = TOOLTIPdynastic_loyalty.1
+			opinion = {
+				who = top_liege
+				modifier = opinion_dynasty_loyalist
+			}
+		}
+		top_liege = {
+			set_character_flag = has_dynasty_loyalist
+			character_event = { id = sb_hazdahn.401 days = 1 }
+			opinion = {
+				who = ROOT
+				modifier = opinion_my_loyalist
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTB_sb_hazdahn.4"
+		ai_chance = { factor = 10 }
+		prestige = 100
+	}
+}
+#Hizdahr may decide to become a loyalist of House Targaryen
+character_event = {
+	id = sb_hazdahn.401
+	desc = "EVTDESC_sb_hazdahn.401"
+
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_character_flag = daenerys_targaryen
+	has_global_flag = dany_stormborn_events
+
+	trigger = {
+		has_global_flag = king_hizdahr_hazdahn
+		has_landed_title = e_ghiscar
+		NOT = { has_global_flag = hazdahn_loyalist_notification }
+	}
+
+	immediate = { set_global_flag = hazdahn_loyalist_notification }
+
+	option = {
+		name = "EVTOPTA_sb_hazdahn.401"
+		custom_tooltip = { text = EVTTOOLTIP_hazdahnloyalty }
+		prestige = 10
+	}
+}

@@ -1,0 +1,1303 @@
+namespace = tdp_three_daughters
+
+###Phase 1: Formation###
+###Phase 2: Stepstones###
+###Phase 3: Lysene Raiders###
+###Stepstones Controller###
+###Alliance with Dorne###
+
+
+character_event = {
+	id = tdp_three_daughters.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		NOT = { has_global_flag = triarchy_initiated }
+		has_landed_title = e_three_daughters
+	}
+
+	immediate = {
+		set_global_flag = triarchy_initiated
+	}
+}
+
+
+###Phase 1: Formation###
+long_character_event = {
+	id = tdp_three_daughters.1
+	title = EVTTITLEtdp_three_daughters.1
+	desc = EVTDESCtdp_three_daughters.1
+	picture = GFX_free_cities_planning
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date < 8096.1.1
+		OR = {
+			has_landed_title = k_myr
+			any_realm_character = {
+				has_landed_title = k_myr
+			}
+		}
+		OR = {
+			has_landed_title = k_tyrosh
+			any_realm_character = {
+				has_landed_title = k_tyrosh
+			}
+		}
+		OR = {
+			has_landed_title = k_lys
+			any_realm_character = {
+				has_landed_title = k_lys
+			}
+		}
+		OR = {
+			culture = myrman
+			culture = lysene
+			culture = tyroshi
+		}
+	}
+
+	option = {
+		name = OK
+		set_global_flag = triarchy_initiated
+		grant_title = e_three_daughters
+		if = {
+			limit = { government = feudal }
+			set_government_type = alliance_government
+			recalc_succession = yes
+		}
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = first_men
+					culture_group = andal
+					culture_group = free_cities
+					culture_group = valyrian
+				}
+			}
+			long_character_event = { id = tdp_three_daughters.11 }
+		}
+		if = {
+			limit = { NOT = { has_nickname = yes } }
+			random_list = {
+				1 = { give_nickname = nick_the_shark_kisser }
+				1 = { give_nickname = nick_the_tear_dancer }
+				1 = { give_nickname = nick_the_sea_reaper }
+				1 = { give_nickname = nick_the_dreadmaw }
+				1 = { give_nickname = nick_the_hash_slinging_slasher }
+				1 = { give_nickname = nick_the_son_of_mermen }
+			}
+		}
+		create_bloodline = {
+			type = high_magister_bloodline
+		}
+	}
+}
+
+#AI only
+character_event = {
+	id = tdp_three_daughters.10
+
+	hide_window = yes
+
+	ai = yes
+	min_age = 30
+	only_rulers = yes
+
+	culture_group = free_cities
+
+	trigger = {
+		start_date < 8096.1.1
+		NOT = { has_global_flag = triarchy_initiated }
+		government = feudal_government
+		OR = {
+			culture = myrman
+			culture = lysene
+			culture = tyroshi
+		}
+		NOR = {
+			trait = incapable
+			trait = crippled
+			trait = sick_incapable
+			trait = craven
+			is_dumb_trigger = yes
+			is_weak_trigger = yes
+		}
+		trait = ambitious
+		diplomacy = 10
+		martial = 10
+		any_independent_ruler = {
+			has_landed_title = k_tyrosh
+			ai = yes
+		}
+		any_independent_ruler = {
+			has_landed_title = k_myr
+			ai = yes
+		}
+		any_independent_ruler = {
+			has_landed_title = k_lys
+			ai = yes
+		}
+
+	}
+
+	mean_time_to_happen = {
+		years = 100
+	}
+
+	immediate = {
+		grant_title = e_three_daughters
+		grant_title = c_forestofmyr
+		grant_title = b_forestofmyr_castle
+		capital = b_forestofmyr_castle
+		k_tyrosh = {
+			set_defacto_liege = ROOT
+		}
+		k_lys = {
+			set_defacto_liege = ROOT
+		}
+		k_myr = {
+			set_defacto_liege = ROOT
+		}
+		set_government_type = alliance_government
+		recalc_succession = yes
+		set_global_flag = triarchy_initiated
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = first_men
+					culture_group = andal
+					culture_group = free_cities
+					culture_group = valyrian
+				}
+				NOR = {
+					culture = tyroshi
+					culture = lysene
+					culture = myrman
+				}
+			}
+			long_character_event = { id = tdp_three_daughters.11 }
+		}
+		random_list = {
+			1 = { give_nickname = nick_the_shark_kisser }
+			1 = { give_nickname = nick_the_tear_dancer }
+			1 = { give_nickname = nick_the_sea_reaper }
+			1 = { give_nickname = nick_the_ocean_master }
+			1 = { give_nickname = nick_the_dreadmaw }
+			1 = { give_nickname = nick_the_hash_slinging_slasher }
+			1 = { give_nickname = nick_the_son_of_mermen }
+		}
+		create_bloodline = {
+			type = high_magister_bloodline
+		}
+	}
+}
+
+long_character_event = {
+	id = tdp_three_daughters.11
+	title = EVTTITLEtdp_three_daughters.1
+	desc = EVTDESCtdp_three_daughters.11
+	picture = GFX_free_cities_planning
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_three_daughters.11
+	}
+}
+
+#Phase 2: Stepstones
+long_character_event = {
+	id = tdp_three_daughters.2
+	title = EVTTITLEtdp_three_daughters.2
+	desc = EVTDESCtdp_three_daughters.2
+	picture = GFX_free_cities_planning
+
+	has_global_flag = triarchy_initiated
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_three_daughters
+		NOT = { has_character_flag = begin_invading_steps }
+		war = no
+	}
+
+	mean_time_to_happen = {
+		months = 8
+	}
+
+	option = {
+		name = "Узкое море принадлежит нам!"
+		set_character_flag = begin_invading_steps
+		k_tyrosh = { holder_scope = { save_event_target_as = archon_tyrosh } }
+		k_lys = { holder_scope = { save_event_target_as = archon_lys } }
+		k_myr = { holder_scope = { save_event_target_as = archon_myr } }
+		hidden_tooltip = {
+			if = {
+				limit = { ai = yes }
+				any_independent_ruler = {
+					limit = {
+						tier = COUNT
+						capital_scope = { region = world_stepstones }
+					}
+					primary_title = {
+						reverse_unsafe_war = {
+							target = ROOT
+							casus_belli = tdp_stepstone_war
+						}
+					}
+					if = {
+						limit = {
+							event_target:archon_tyrosh = { NOT = { independent = yes } }
+						}
+						primary_title = {
+							reverse_unsafe_war = {
+								target = event_target:archon_tyrosh
+								casus_belli = tdp_stepstone_war
+							}
+						}
+					}
+					if = {
+						limit = {
+							event_target:archon_lys = { NOT = { independent = yes } }
+						}
+						primary_title = {
+							reverse_unsafe_war = {
+								target = event_target:archon_lys
+								casus_belli = tdp_stepstone_war
+							}
+						}
+					}
+					if = {
+						limit = {
+							event_target:archon_myr = { NOT = { independent = yes } }
+						}
+						primary_title = {
+							reverse_unsafe_war = {
+								target = event_target:archon_myr
+								casus_belli = tdp_stepstone_war
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+###Phase 3: Lysene Raiders###
+character_event = {
+	id = tdp_three_daughters.3
+	title = EVTTITLEtdp_three_daughters.3
+	desc = EVTDESCtdp_three_daughters.3
+	picture = GFX_free_cities_planning
+
+	is_triggered_only = yes
+
+	has_global_flag = triarchy_phase_3
+
+	only_independent = yes
+
+	trigger = {
+		has_landed_title = e_three_daughters
+		calc_true_if = {
+			amount = 12
+			has_landed_title = c_bloodstone
+			has_landed_title = c_wreckstone
+			has_landed_title = c_sunstone
+			has_landed_title = c_shameisle
+			has_landed_title = c_dwarfstone
+			has_landed_title = c_darkden
+			has_landed_title = c_theskulls
+			has_landed_title = c_fishskins
+			has_landed_title = c_dim_cove
+			has_landed_title = c_torturersdeep
+			has_landed_title = c_lastrefuge
+			has_landed_title = c_greygallows
+			has_landed_title = c_last_lamp
+			has_landed_title = c_southstone
+			any_realm_lord = {
+				has_landed_title = c_bloodstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_wreckstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_sunstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_shameisle
+			}
+			any_realm_lord = {
+				has_landed_title = c_dwarfstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_darkden
+			}
+			any_realm_lord = {
+				has_landed_title = c_theskulls
+			}
+			any_realm_lord = {
+				has_landed_title = c_fishskins
+			}
+			any_realm_lord = {
+				has_landed_title = c_dim_cove
+			}
+			any_realm_lord = {
+				has_landed_title = c_torturersdeep
+			}
+			any_realm_lord = {
+				has_landed_title = c_lastrefuge
+			}
+			any_realm_lord = {
+				has_landed_title = c_greygallows
+			}
+			any_realm_lord = {
+				has_landed_title = c_last_lamp
+			}
+			any_realm_lord = {
+				has_landed_title = c_southstone
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTAtdp_three_daughters.3
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_three_daughters.3
+		ai_chance = {
+			factor = 1
+		}
+		set_global_flag = lyseni_raiders_active
+	}
+}
+
+character_event = {
+	id = tdp_three_daughters.30
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = lyseni_raiders_active
+
+	trigger = {
+		NOT = { has_character_flag = lyseni_raider }
+		higher_real_tier_than = BARON
+		culture = lysene
+	}
+
+	immediate = {
+		set_character_flag = lyseni_raider
+	}
+}
+
+#Lyseni Kidnapping
+character_event = {
+	id = tdp_three_daughters.300
+
+	hide_window = yes
+
+	has_global_flag = lyseni_raiders_active
+	only_women = yes
+	max_age = 24
+	min_age = 16
+
+	trigger = {
+		NOT = { has_unattractive_trait_trigger =  yes }
+		is_landed = no
+		NOT = { trait = dragon_rider }
+		any_liege = {
+			NOT = { higher_real_tier_than = DUKE }
+			OR = {
+				#Westeros
+				has_landed_title = c_stonehelm
+				has_landed_title = c_lonmouth
+				has_landed_title = c_lockport
+				has_landed_title = c_estermont
+				has_landed_title = c_tudbury_hall
+				has_landed_title = c_mistwood
+				has_landed_title = c_weeping_tower
+				has_landed_title = c_wrathrock
+				has_landed_title = c_rain_house
+				has_landed_title = c_rainwood
+				has_landed_title = c_blue_grove
+				has_landed_title = c_amberly
+				has_landed_title = c_griffins_roost
+				has_landed_title = c_adderdell
+				has_landed_title = c_crows_nest
+				has_landed_title = c_tarth
+				has_landed_title = c_stonedance
+				has_landed_title = c_woodmere
+				#Essos & Summer Islands
+				has_landed_title = c_nontelos
+				has_landed_title = c_samal
+				has_landed_title = c_mylonos
+				has_landed_title = c_last_lament
+				has_landed_title = c_lotus_valley
+				has_landed_title = c_stonehead
+				has_landed_title = c_mantisleaf
+				has_landed_title = c_tall_trees_town
+				has_landed_title = c_the_citrus_coves
+				has_landed_title = c_kone_forest
+				has_landed_title = c_lotus_port
+				has_landed_title = c_ambershore
+				has_landed_title = c_jalabuxon
+				has_landed_title = c_isle_of_women
+				has_landed_title = c_orangeshore
+				has_landed_title = c_orangeplains
+				has_landed_title = c_orangeislands
+			}
+		}
+		OR = {
+			culture = stormlander
+			culture = crownlander
+			culture = pentosi
+			culture = summer_islander
+			culture = eastern_valyrian
+			culture = western_valyrian
+			culture_group = dornish
+		}
+
+	}
+
+	mean_time_to_happen = {
+		years = 5
+		modifier = {
+			factor = 0.5
+			is_lowborn = yes
+		}
+		modifier = {
+			factor = 2
+			any_dynasty_member = {
+				tier = COUNT
+			}
+		}
+		modifier = {
+			factor = 3
+			any_dynasty_member = {
+				tier = DUKE
+			}
+		}
+		modifier = {
+			factor = 10
+			any_dynasty_member = {
+				tier = KING
+			}
+		}
+	}
+
+	immediate = {
+		save_event_target_as = kidnapped_person
+		random_playable_ruler = {
+			limit = { has_character_flag = lyseni_raider }
+			save_event_target_as = lyseni_raider
+		}
+		ROOT = {
+			move_character = event_target:lyseni_raider
+			set_character_flag = no_court_invites
+			set_character_flag = kidnapped_by_lyseni
+		}
+		if = {
+			limit = { is_married = yes }
+			spouse = {
+				set_character_flag = no_wedding_event
+				remove_spouse = ROOT
+				clr_character_flag = no_wedding_event
+			}
+		}
+		if = {
+			limit = { is_betrothed = yes }
+			betrothed = {
+				break_betrothal = ROOT
+			}
+		}
+		if = {
+			limit = {
+				any_dynasty_member = {
+					higher_tier_than = BARON
+				}
+				any_spouse = {
+					higher_tier_than = BARON
+				}
+				any_liege = {
+					has_landed_title = e_iron_throne
+				}
+			}
+			liege = {
+				if = {
+					limit = { higher_tier_than = BARON }
+					character_event = { id = tdp_three_daughters.301 }
+				}
+			}
+		}
+	}
+}
+
+#Lord is informed of Kidnapping
+character_event = {
+	id = tdp_three_daughters.301
+	desc = EVTDESCtdp_three_daughters.301
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_three_daughters.301
+		any_liege = {
+			limit = {
+				has_landed_title = e_iron_throne
+				OR = {
+					NOT = { has_character_flag = refused_triarchy_war }
+					ROOT = { tier = KING }
+				}
+			}
+			character_event = { id = tdp_three_daughters.302 }
+		}
+		ai_chance = {
+			factor = 50
+		}
+	}
+
+	option = {
+		name = EVTOPTtdp_three_daughters.301
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+#King is informed
+character_event = {
+	id = tdp_three_daughters.302
+	desc = EVTDESCtdp_three_daughters.302
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_three_daughters.302
+		set_character_flag = can_war_against_triarchy
+		e_three_daughters = {
+			reverse_unsafe_war = {
+				target = ROOT
+				casus_belli = tdp_triarchy_war
+			}
+		}
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				FROM = {
+					OR = {
+						tier = COUNT
+						tier = DUKE
+					}
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_three_daughters.302
+		set_character_flag = refused_triarchy_war
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+###Stepstones Controller###
+character_event = {
+	id = tdp_three_daughters.4
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		higher_real_tier_than = DUKE
+		OR = {
+			has_landed_title = c_bloodstone
+			has_landed_title = c_wreckstone
+			has_landed_title = c_sunstone
+			has_landed_title = c_shameisle
+			has_landed_title = c_dwarfstone
+			has_landed_title = c_darkden
+			has_landed_title = c_theskulls
+			has_landed_title = c_fishskins
+			has_landed_title = c_dim_cove
+			has_landed_title = c_torturersdeep
+			has_landed_title = c_lastrefuge
+			has_landed_title = c_greygallows
+			has_landed_title = c_last_lamp
+			has_landed_title = c_southstone
+			any_realm_lord = {
+				has_landed_title = c_bloodstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_wreckstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_sunstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_shameisle
+			}
+			any_realm_lord = {
+				has_landed_title = c_dwarfstone
+			}
+			any_realm_lord = {
+				has_landed_title = c_darkden
+			}
+			any_realm_lord = {
+				has_landed_title = c_theskulls
+			}
+			any_realm_lord = {
+				has_landed_title = c_fishskins
+			}
+			any_realm_lord = {
+				has_landed_title = c_dim_cove
+			}
+			any_realm_lord = {
+				has_landed_title = c_torturersdeep
+			}
+			any_realm_lord = {
+				has_landed_title = c_lastrefuge
+			}
+			any_realm_lord = {
+				has_landed_title = c_greygallows
+			}
+			any_realm_lord = {
+				has_landed_title = c_last_lamp
+			}
+			any_realm_lord = {
+				has_landed_title = c_southstone
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		stepstones_controller_effect = yes
+	}
+
+}
+
+#Partial Toll of the Narrow Sea
+character_event = {
+	id = tdp_three_daughters.40
+	desc = EVTDESCtdp_three_daughters.40
+	picture = GFX_the_stepstones
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_character_modifier = foothold_in_stepstones_6
+		NOR = {
+			has_character_modifier = full_tolling_narrow_sea
+			has_character_modifier = partial_tolling_narrow_sea
+		}
+	}
+
+	immediate = {
+		add_character_modifier = {
+			name = partial_tolling_narrow_sea
+			duration = -1
+		}
+		any_playable_ruler = {
+			limit = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					has_character_modifier = partial_tolled_in_narrow_sea
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+				OR = {
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					capital_scope = {
+						OR = {
+							region = world_dorne
+							region = world_stormlands
+							region = world_pentos
+							region = world_myr
+							region = world_tyrosh
+							region = world_lys
+						}
+					}
+				}
+			}
+			add_character_modifier = {
+				name = partial_tolled_in_narrow_sea
+				duration = -1
+			}
+			character_event = { id = tdp_three_daughters.400 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_three_daughters.400
+	desc = EVTDESCtdp_three_daughters.400
+	picture = GFX_the_stepstones
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_three_daughters.4099
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_character_modifier = partial_tolling_narrow_sea
+		any_playable_ruler = {
+			NOR = {
+				character = ROOT
+				vassal_of = ROOT
+				government = pirate_government
+				government = sellsword_company_government
+				is_allied_with = ROOT
+				has_character_modifier = partial_tolled_in_narrow_sea
+				has_character_modifier = full_tolled_in_narrow_sea
+			}
+			OR = {
+				AND = {
+					has_landed_title = c_driftmark
+					tier = DUKE
+				}
+				capital_scope = {
+					OR = {
+						region = world_dorne
+						region = world_stormlands
+						region = world_pentos
+						region = world_myr
+						region = world_tyrosh
+						region = world_lys
+					}
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+
+	immediate = {
+		any_playable_ruler = {
+			limit = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					has_character_modifier = partial_tolled_in_narrow_sea
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+				OR = {
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					capital_scope = {
+						OR = {
+							region = world_dorne
+							region = world_stormlands
+							region = world_pentos
+							region = world_myr
+							region = world_tyrosh
+							region = world_lys
+						}
+					}
+				}
+			}
+			add_character_modifier = {
+				name = partial_tolled_in_narrow_sea
+				duration = -1
+			}
+			character_event = { id = tdp_three_daughters.400 }
+		}
+	}
+	option = {
+		name = OK
+	}
+}
+
+#Full Toll of the Narrow Sea
+character_event = {
+	id = tdp_three_daughters.41
+	desc = EVTDESCtdp_three_daughters.41
+	picture = GFX_the_stepstones
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_character_modifier = full_tolling_narrow_sea }
+		has_character_modifier = partial_tolling_narrow_sea
+	}
+
+	immediate = {
+		remove_character_modifier = partial_tolling_narrow_sea
+		add_character_modifier = {
+			name = full_tolling_narrow_sea
+			duration = -1
+		}
+		any_playable_ruler = {
+			limit = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+				OR = {
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					capital_scope = {
+						OR = {
+							region = world_dorne
+							region = world_stormlands
+							region = world_pentos
+							region = world_myr
+							region = world_tyrosh
+							region = world_lys
+						}
+					}
+				}
+			}
+			if = {
+				limit = { has_character_modifier = partial_tolled_in_narrow_sea }
+				remove_character_modifier = partial_tolled_in_narrow_sea
+			}
+			add_character_modifier = {
+				name = full_tolled_in_narrow_sea
+				duration = -1
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					has_character_modifier = partial_tolled_in_narrow_sea
+				}
+				capital_scope = {
+					OR = {
+						region = world_braavos
+						region = world_volantis
+						region = world_reach
+						region = world_crownlands
+						region = world_vale
+						region = world_summer_islands
+					}
+				}
+			}
+			character_event = { id = tdp_three_daughters.410 }
+			add_character_modifier = {
+				name = partial_tolled_in_narrow_sea
+				duration = -1
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+
+}
+
+character_event = {
+	id = tdp_three_daughters.410
+	desc = EVTDESCtdp_three_daughters.410
+	picture = GFX_the_stepstones
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_three_daughters.4199
+
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		has_character_modifier = full_tolling_narrow_sea
+		OR = {
+			any_playable_ruler = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+				OR = {
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					capital_scope = {
+						OR = {
+							region = world_dorne
+							region = world_stormlands
+							region = world_pentos
+							region = world_myr
+							region = world_tyrosh
+							region = world_lys
+						}
+					}
+				}
+			}
+			any_playable_ruler = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					has_character_modifier = partial_tolled_in_narrow_sea
+				}
+				capital_scope = {
+					OR = {
+						region = world_braavos
+						region = world_volantis
+						region = world_reach
+						region = world_crownlands
+						region = world_vale
+						region = world_summer_islands
+					}
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+
+	immediate = {
+		any_playable_ruler = {
+			limit = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+				OR = {
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					capital_scope = {
+						OR = {
+							region = world_dorne
+							region = world_stormlands
+							region = world_pentos
+							region = world_myr
+							region = world_tyrosh
+							region = world_lys
+						}
+					}
+				}
+			}
+			if = {
+				limit = { has_character_modifier = partial_tolled_in_narrow_sea }
+				remove_character_modifier = partial_tolled_in_narrow_sea
+			}
+			add_character_modifier = {
+				name = full_tolled_in_narrow_sea
+				duration = -1
+			}
+		}
+		any_playable_ruler = {
+			limit = {
+				NOR = {
+					character = ROOT
+					vassal_of = ROOT
+					government = pirate_government
+					government = sellsword_company_government
+					is_allied_with = ROOT
+					AND = {
+						has_landed_title = c_driftmark
+						tier = DUKE
+					}
+					has_character_modifier = partial_tolled_in_narrow_sea
+				}
+				capital_scope = {
+					OR = {
+						region = world_braavos
+						region = world_volantis
+						region = world_reach
+						region = world_crownlands
+						region = world_vale
+						region = world_summer_islands
+					}
+				}
+			}
+			character_event = { id = tdp_three_daughters.410 }
+			add_character_modifier = {
+				name = partial_tolled_in_narrow_sea
+				duration = -1
+			}
+		}
+	}
+}
+
+
+
+#Remove Modifier from Vassals if they get it
+character_event = {
+	id = tdp_three_daughters.4998
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_independent = yes
+
+	trigger = {
+		OR = {
+			has_character_modifier = partial_tolling_narrow_sea
+			has_character_modifier = full_tolling_narrow_sea
+		}
+		any_realm_lord = {
+			OR = {
+				has_character_modifier = partial_tolled_in_narrow_sea
+				has_character_modifier = full_tolled_in_narrow_sea
+			}
+		}
+	}
+
+	immediate = {
+		any_realm_lord = {
+			limit = {
+				OR = {
+					has_character_modifier = partial_tolled_in_narrow_sea
+					has_character_modifier = full_tolled_in_narrow_sea
+				}
+			}
+			remove_character_modifier = partial_tolled_in_narrow_sea
+			remove_character_modifier = full_tolled_in_narrow_sea
+		}
+	}
+
+}
+
+#Remove Modifier from foreigners if there is no Stepstones holder
+character_event = {
+	id = tdp_three_daughters.4999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	only_rulers = yes
+
+	trigger = {
+		OR = {
+			has_character_modifier = partial_tolled_in_narrow_sea
+			has_character_modifier = full_tolled_in_narrow_sea
+		}
+		NOT = {
+			any_independent_ruler = {
+				has_character_modifier = foothold_in_stepstones_6
+			}
+		}
+	}
+
+	immediate = {
+		remove_character_modifier = partial_tolled_in_narrow_sea
+		remove_character_modifier = full_tolled_in_narrow_sea
+	}
+
+}
+
+###Alliance with Dorne###
+character_event = {
+	id = tdp_three_daughters.5
+	desc = EVTDESCtdp_three_daughters.5
+	picture = GFX_free_cities_planning
+
+	only_independent = yes
+	culture_group = dornish
+
+	trigger = {
+		has_landed_title = e_dorne
+		OR = {
+			diplomacy = 10
+			trait = grey_eminence
+			trait = charismatic_negotiator
+		}
+		OR = {
+			has_character_modifier = full_tolled_in_narrow_sea
+			has_character_modifier = partial_tolled_in_narrow_sea
+		}
+		any_independent_ruler = {
+			has_character_modifier = full_tolling_narrow_sea
+			has_landed_title = e_three_daughters
+			OR = {
+				diplomacy = 10
+				trait = grey_eminence
+				trait = charismatic_negotiator
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = EVTOPTAtdp_three_daughters.5
+		e_three_daughters = {
+			holder_scope = {
+				character_event = { id = tdp_three_daughters.50 }
+			}
+		}
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = EVTOPTBtdp_three_daughters.5
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+character_event = {
+	id = tdp_three_daughters.50
+	desc = EVTDESCtdp_three_daughters.50
+	picture = GFX_MARTELL
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_three_daughters.50
+		FROM = {
+			remove_character_modifier = full_tolled_in_narrow_sea
+			remove_character_modifier = partial_tolled_in_narrow_sea
+			add_alliance = {
+				who = ROOT
+				years = 10
+			}
+		}
+		if = {
+			limit = {
+				any_independent_ruler = {
+					has_landed_title = e_iron_throne
+				}
+			}
+			e_iron_throne = {
+				holder_scope = {
+					character_event = { id = tdp_three_daughters.500 }
+				}
+			}
+		}
+	}
+}
+
+
+character_event = {
+	id = tdp_three_daughters.500
+	desc = EVTDESCtdp_three_daughters.500
+	picture = GFX_aegon_reading
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTtdp_three_daughters.500
+	}
+
+}
+
+character_event = {
+	id = tdp_three_daughters.9999
+
+	hide_window = yes
+
+	ai = yes
+	war = no
+	only_independent = yes
+	culture_group = free_cities
+
+	trigger = {
+		has_landed_title = e_three_daughters
+
+		OR = {
+			any_independent_ruler = {
+				has_landed_title = k_lys
+			}
+			any_independent_ruler = {
+				has_landed_title = k_tyrosh
+			}
+			any_independent_ruler = {
+				has_landed_title = k_myr
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		e_three_daughters = {
+			destroy_landed_title = THIS
+		}
+	}
+}

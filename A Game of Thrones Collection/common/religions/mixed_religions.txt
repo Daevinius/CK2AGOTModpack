@@ -1,0 +1,194 @@
+# Religion-specific opinion can be added to modifiers (E.G., norse_pagan_opinion = 5), but the modifier *has* to be defined in 00_modifier_definitions.txt as well. It also needs localisation. Works for groups as well
+
+# join_crusade_if_bordering_hostile = yes # The AI won't refrain from joining a crusade simply because it borders a heathen/heretic realm
+
+# This trigger defines who can see a character's secret religion. The character with the secret religion is FROM, while the viewer is ROOT
+# Characters can always see their own secret religion. The observer can see all secret religions
+# secret_religion_visibility_trigger = {
+	# secret_religion = FROM
+# }
+
+# women_can_take_consorts = yes # If set, women can take consorts as well, not just men. Defaults to "no". Has no effect if max_consorts is 0
+# men_can_take_consorts = no # If set, men cannot take consorts any more. Defaults to "yes". Has no effect if max_consorts is 0
+
+bastard_valyrian = { #red, yellow, orange
+	has_coa_on_barony_only = yes
+	graphical_culture = westerngfx
+	playable = yes
+
+	color = { 0.25 0.25 0.25 } #Black
+
+	valyrian_bas = {
+		graphical_culture = muslimgfx
+
+		alternate_start = { always = no }
+
+		icon = 45
+		heresy_icon = 8
+		color = { 0.45 0.45 0.45 } #Black
+
+		high_god_name = GOD_DRAG_GOD
+
+		god_names = {
+			GOD_BALERION GOD_LION_NIGHT GOD_HARPY GOD_THE_HOLY_FIRE GOD_MAIDEN_LIGHT GOD_MOTHER GOD_SILENT_GOD
+		}
+		evil_god_names = {
+			GOD_THE_OTHERS GOD_THE_DEMONS GOD_DARK_SPIRITS GOD_THE_STRANGER GOD_THE_BLACK_GOAT LADY_OF_SPEARS
+		}
+
+		crusade_name = "HOLY_WAR"
+		scripture_name = THE_DRAGON_GODS
+		priest_title = job_spiritual_valyrian
+
+		character_modifier = {
+			valyrian_rel_opinion = -10
+			winged_stallion_opinion = -50
+			dragon_taming = 1
+		}
+
+		max_consorts = 2
+		female_temple_holders = yes
+		feminist = yes
+		women_can_take_consorts = yes
+		#uses_jizya_tax = yes
+		peace_piety_gain = 1.0
+
+		parent = valyrian_rel
+		religious_clothing_head = 10
+		religious_clothing_priest = 10
+
+		intermarry = harpy
+		intermarry = winged_stallion
+		intermarry = qarth_rel
+		intermarry = valyrian_rel
+		intermarry = rhllor
+		intermarry = stone_cow
+		intermarry = gods_sarnor
+		intermarry = gods_lorath
+		intermarry = moonsingers
+		intermarry = yiti_gods
+		intermarry = lion_night
+		intermarry = gods_bone_mountains
+		intermarry = stone_cow
+
+	}
+	winged_stallion = {
+		graphical_culture = mongolgfx
+
+		alternate_start = { always = no }
+
+		icon = 8
+		heresy_icon = 45
+		color = { 0.6 0.4 0 } #bronze
+
+		high_god_name = GOD_GREAT_WINGED_STALLION
+
+		crusade_name = "HOLY_WAR"
+		scripture_name = LEGEND_SILVER_PRIEST
+		priest_title = job_spiritual_dothraki_pagan
+
+		god_names = {
+			GOD_GREAT_WINGED_STALLION GOD_DRAG_GOD
+		}
+		evil_god_names = {
+			GOD_THE_DEMONS GOD_DARK_SPIRITS
+		}
+
+		character_modifier = {
+			valyrian_rel_opinion = 25
+			valyrian_bas_opinion = -50
+			global_revolt_risk = 0.03
+			dragon_taming = 1
+		}
+
+		priests_can_marry = yes
+		priests_can_inherit = yes
+		aggression = 12
+
+		female_temple_holders = yes
+		male_temple_holders = no
+		can_demand_religious_conversion = yes
+		raised_vassal_opinion_loss = no
+
+
+		max_wives = 2
+		bs_marriage = yes
+		pc_marriage = no
+		psc_marriage = no
+		divine_blood = yes
+
+		religious_clothing_head = 16
+		religious_clothing_priest = 1
+
+		intermarry = gods_sarnor
+		intermarry = summer_rel
+		intermarry = summer_rel_reformed
+		intermarry = dothraki_pagan
+		intermarry = rhllor
+		intermarry = valyrian_rel
+		intermarry = valyrian_bas
+	}
+
+}
+
+dothraki_bas = {
+	has_coa_on_barony_only = yes
+	graphical_culture = muslimgfx
+	hostile_within_group = yes
+
+	interface_skin = { indian_interface muslim_interface }
+
+	playable = yes
+
+	color = { 0.6 0.4 1 }
+
+	dothraki_rhllor = {
+		graphical_culture = mongolgfx
+
+		alternate_start = { always = no }
+
+		icon = 3
+		heresy_icon = 3
+		color = { 0.6 0.4 0 } #bronze
+
+		high_god_name = GOD_RHLLOR
+
+		crusade_name = "HOLY_WAR"
+		scripture_name = THE_LEGENDS
+		priest_title = job_spiritual_dothraki_pagan
+
+		god_names = {
+			GOD_GOD_OF_LIGHT GOD_GREAT_STALLION
+		}
+		evil_god_names = {
+			GOD_THE_DEMONS GOD_DARK_SPIRITS GOD_THE_GREAT_OTHER
+		}
+
+		character_modifier = {
+			global_revolt_risk = -0.02
+		}
+
+		priests_can_marry = yes
+		priests_can_inherit = no
+		aggression = 4
+
+		female_temple_holders = yes
+		male_temple_holders = no
+		allow_looting = yes
+		allow_rivermovement = yes
+		can_demand_religious_conversion = yes
+		has_heir_designation = yes
+		raised_vassal_opinion_loss = no
+
+		max_consorts = 5
+
+		parent = dothraki_pagan
+
+		religious_clothing_head = 16
+		religious_clothing_priest = 16
+
+		intermarry = dothraki_pagan
+		intermarry = harpy
+		intermarry = rhllor
+	}
+}

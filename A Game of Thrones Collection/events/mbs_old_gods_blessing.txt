@@ -1,0 +1,2411 @@
+namespace = mbs_old_gods_blessing
+
+#mbs_old_gods_blessing.1 - Mormont Snowbear
+narrative_event = {
+	id = mbs_old_gods_blessing.1
+	title = "EVTtitlembs_old_gods_blessing.1"
+	desc = "EVTDESCmbs_old_gods_blessing.1"
+	picture = "GFX_snowbear"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_mormont
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_mormont_siblings
+			}
+			NOT = {
+				trait = snowbear
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 102
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 102
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.1" #get snowbear
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.1 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.1 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.1 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = snowbear
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.1 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.1" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = snowbear
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.1 }
+		}
+	}
+}
+#mbs_old_gods_blessing.2 - Mormont Brownbear
+narrative_event = {
+	id = mbs_old_gods_blessing.2
+	title = "EVTtitlembs_old_gods_blessing.2"
+	desc = "EVTDESCmbs_old_gods_blessing.2"
+	picture = "GFX_brownbear"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_mormont
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_mormont_siblings
+			}
+			NOT = {
+				trait = brownbear
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 102
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 102
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.2" #get snowbear
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.2 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.1 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.1 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = brownbear
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.2 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.2" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = brownbear
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.2 }
+		}
+	}
+}
+#mbs_old_gods_blessing.3 - Blackwood Crow
+narrative_event = {
+	id = mbs_old_gods_blessing.3
+	title = "EVTtitlembs_old_gods_blessing.3"
+	desc = "EVTDESCmbs_old_gods_blessing.3"
+	picture = "GFX_crow"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_blackwood
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_blackwood_siblings
+			}
+			NOT = {
+				trait = crow
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 150
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 150
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.3" #get crow
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.3 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.3 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.3 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = crow
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.3 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.3" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = crow
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.3 }
+		}
+	}
+}
+#mbs_old_gods_blessing.4 - Stark Direwolf
+narrative_event = {
+	id = mbs_old_gods_blessing.4
+	title = "EVTtitlembs_old_gods_blessing.4"
+	desc = "EVTDESCmbs_old_gods_blessing.4"
+	picture = "GFX_wolf"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_direwolf
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_stark_siblings
+			}
+			NOT = {
+				trait = direwolf
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 59
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 59
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.4" #get direwolf
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.4 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.4 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.4 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = direwolf
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.4 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.4" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = direwolf
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.4 }
+		}
+	}
+}
+#mbs_old_gods_blessing.5 - Marsh King Lizard-Lion
+narrative_event = {
+	id = mbs_old_gods_blessing.5
+	title = "EVTtitlembs_old_gods_blessing.5"
+	desc = "EVTDESCmbs_old_gods_blessing.5"
+	picture = "GFX_evt_hunting_scene"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_reed
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_reed_siblings
+			}
+			NOT = {
+				trait = lizardlion
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 126
+		}
+		modifier = {
+			factor = 0.4
+			NOT = {
+				dynasty = 126
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.5" #get lizardlion
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.5 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.5 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.5 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = lizardlion
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.5 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.5" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = lizardlion
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.5 }
+		}
+	}
+}
+#mbs_old_gods_blessing.6 - Banefort Lion
+narrative_event = {
+	id = mbs_old_gods_blessing.6
+	title = "EVTtitlembs_old_gods_blessing.6"
+	desc = "EVTDESCmbs_old_gods_blessing.6"
+	picture = "GFX_evt_hunting_scene"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_lion
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_lion_siblings
+			}
+			NOT = {
+				trait = lion
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 200
+		}
+		modifier = {
+			factor = 0.4
+			NOT = {
+				dynasty = 200
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 0.9
+			trait = hunter
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.6" #get lizardlion
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.6 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.6 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.6 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = lizardlion
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.6 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.6" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = lion
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.6 }
+		}
+	}
+}
+#mbs_old_gods_blessing.7 - Crane
+narrative_event = {
+	id = mbs_old_gods_blessing.7
+	title = "EVTtitlembs_old_gods_blessing.7"
+	desc = "EVTDESCmbs_old_gods_blessing.7"
+	picture = "GFX_evt_hunting_scene"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_crane
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_crane_siblings
+			}
+			NOT = {
+				trait = crane
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 234
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 234
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.7" #get crane
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.7 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.7 }
+			}
+			60 = { }
+		}
+
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = crane
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.7 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.7" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = crane
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.7 }
+		}
+	}
+}
+#mbs_old_gods_blessing.8 - Westford Dog
+narrative_event = {
+	id = mbs_old_gods_blessing.8
+	title = "EVTtitlembs_old_gods_blessing.8"
+	desc = "EVTDESCmbs_old_gods_blessing.8"
+	picture = "GFX_evt_hunting_scene"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_dog
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_westford_siblings
+			}
+			NOT = {
+				trait = dog
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 2158
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 2158
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.8" #get dog
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.8 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.8 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.8 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = dog
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.8 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.8" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = dog
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.7 }
+		}
+	}
+}
+#mbs_old_gods_blessing.9 - Blackmont Vulture
+narrative_event = {
+	id = mbs_old_gods_blessing.9
+	title = "EVTtitlembs_old_gods_blessing.9"
+	desc = "EVTDESCmbs_old_gods_blessing.9"
+	picture = "GFX_crow"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_vulture
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_blackmont_siblings
+			}
+			NOT = {
+				trait = vulture
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 18
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 18
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.9" #get crow
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.9 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.9 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.9 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = vulture
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.9 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.9" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = vulture
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.9 }
+		}
+	}
+}
+#mbs_old_gods_blessing.10 - Lothston Bat
+narrative_event = {
+	id = mbs_old_gods_blessing.10
+	title = "EVTtitlembs_old_gods_blessing.10"
+	desc = "EVTDESCmbs_old_gods_blessing.10"
+	picture = "GFX_evt_hunting_scene"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_batl
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_lothston_siblings
+			}
+			NOT = {
+				trait = bat
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 355
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 355
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_old_gods_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.10" #get bat
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.33
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.10 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.10 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.10 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = bat
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.10 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.10" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = bat
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.10 }
+		}
+	}
+}
+#mbs_old_gods_blessing.11 - Farwynd Seal
+narrative_event = {
+	id = mbs_old_gods_blessing.11
+	title = "EVTtitlembs_old_gods_blessing.11"
+	desc = "EVTDESCmbs_old_gods_blessing.11"
+	picture = "GFX_evt_hunting_scene"
+
+	min_age = 14
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_whale
+		}
+		num_of_children = 3
+		any_child  = {
+			count = 3
+			age < 22
+			is_alive = yes
+			NOT = {
+				has_character_flag = blessed_farwynd_siblings
+			}
+			NOT = {
+				trait = sea_lion
+			}
+		}
+	}
+
+	weight_multiplier = {
+		modifier = {
+			factor = 1.75
+			NOT = {
+				any_dynasty_member = {
+					count = 7
+					is_alive = yes
+					NOT = {
+						trait = nightswatch
+					}
+					NOT = {
+						trait = kingsguard
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			dynasty = 114
+		}
+		modifier = {
+			factor = 0.2
+			NOT = {
+				dynasty = 114
+			}
+		}
+		modifier = {
+			factor = 0.7
+			any_child_even_if_dead = {
+				dynasty = ROOT
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_child_even_if_dead = {
+				NOT = {
+					dynasty = ROOT
+				}
+				NOR = {
+					trait = bastard
+					trait = legit_bastard
+					has_character_flag = bastardised
+				}
+			}
+		}
+		modifier = {
+			factor = 1.5
+			magic_returned_trigger = yes
+		}
+		modifier = {
+			factor = 4
+			trait = greensight
+		}
+		modifier = {
+			factor = 2.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.25
+			skinchanger_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_drowned_god_religion_trigger = yes
+		}
+		modifier = {
+			factor = 1.2
+			is_drowned_god_religion_trigger = yes
+			trait = zealous
+		}
+		modifier = {
+			factor = 3
+			is_old_gods_religion_trigger = yes
+			trait = zealous
+		}
+		modifier = {
+			factor = 2
+			is_old_gods_religion_trigger = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_old_gods_blessing.11" #get seal
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				is_drowned_god_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 2
+				is_drowned_god_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.1
+				trait = craven
+			}
+			modifier = {
+				factor = 3
+				trait = brave
+			}
+			modifier = {
+				factor = 10
+				skinchanger_trigger = yes
+			}
+		}
+
+		prestige = 15
+
+		any_player = {
+			limit = {
+				NOT = { character = FROM }
+			}
+			character_event = { id = mbs_old_gods_blessing_notification.11 }
+		}
+
+		random_list = {
+			30 = {
+				character_event = { id = mbs_old_gods_blessing_parent.11 }
+			}
+			60 = { }
+		}
+
+		any_child  = {
+			limit = {
+				NOT = {
+					age = 10
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rage.11 days = 45 }
+		}
+
+		any_child = {
+			limit = {
+				NOT = {
+					trait = sea_lion
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_effect.11 }
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_old_gods_blessing.11" #Nope
+
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 0
+				is_old_gods_religion_trigger = yes
+				trait = zealous
+			}
+			modifier = {
+				factor = 0.33
+				is_old_gods_religion_trigger = yes
+				NOT = { trait = cynical }
+			}
+			modifier = {
+				factor = 3
+				NOT = { is_old_gods_religion_trigger = yes }
+				trait = zealous
+			}
+			modifier = {
+				factor = 3
+				trait = cynical
+			}
+			modifier = {
+				factor = 3
+				trait = craven
+			}
+			modifier = {
+				factor = 0
+				skinchanger_trigger = yes
+			}
+		}
+		any_child = {
+			limit = {
+				NOT = {
+					trait = sea_lion
+				}
+			}
+			character_event = { id = mbs_old_gods_blessing_rejected.11 }
+		}
+	}
+}

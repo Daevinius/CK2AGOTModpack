@@ -1,0 +1,816 @@
+namespace = tdp_dragon_maintenance
+
+#
+#
+#
+#
+
+
+#######Dragon######
+character_event = {
+	id = tdp_dragon_maintenance.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	religion = dragon_rel
+
+	trigger = {
+		OR = {
+			#Start-up Eggs
+			AND = {
+				NOT = { has_global_flag = layed_startup_eggs }
+				age = 20
+				age < 150
+				trait = dragon
+				is_alive = yes
+				OR = {
+					character = 77990011 #Syrax
+					character = 77990006 #Dreamfyre
+					character = 77990007 #Silverwing
+					character = 77990003 #Vhagar
+					character = 77990002 #Meraxes
+					character = 77990105 #Morghon
+					character = 77990103 #Nessarion
+					character = 77990106 #Vassarion
+					character = 77990110 #Tyrosh dragon
+					character = 77990112 #Lys dragon
+				}
+			}
+			#Move Dragon
+			any_friend = { NOT = { at_location = ROOT } }
+
+			#Remove Extra Friends
+			num_of_friends = 2
+
+			AND = {
+				NOT = { start_date = 7801.1.1 }
+				NOT = { has_global_flag = freehold_start_maintenance }
+			}
+
+			#Fix for Belaerys dragon lineage
+			AND = {
+				has_landed_title = c_dragonstone
+				NOT = { has_global_flag = belaerys_fix }
+			}
+		}
+	}
+
+	immediate = {
+		####Start-up####
+		#Eggs
+		if = {
+			limit = {
+				NOT = { has_global_flag = layed_startup_eggs }
+				age = 20
+				age < 150
+				trait = dragon
+				is_alive = yes
+				OR = {
+					character = 77990011 #Syrax
+					character = 77990006 #Dreamfyre
+					character = 77990007 #Silverwing
+					character = 77990003 #Vhagar
+					character = 77990002 #Meraxes
+					character = 77990105 #Morghon
+					character = 77990103 #Nessarion
+					character = 77990106 #Vassarion
+					character = 77990110 #Tyrosh dragon
+					character = 77990112 #Lys dragon
+				}
+			}
+			character_event = { id = dragon_rework.1 days = 2 }
+
+			c_77990500 = {
+				set_mother = 77992007
+			}
+		}
+		#Move Dragon
+		if = {
+			limit = {
+				any_friend = { NOT = { at_location = ROOT } }
+			}
+			if = {
+				limit = { any_friend = { is_ruler = no } }
+				any_friend = {
+					liege = {
+						ROOT = {
+							move_character = PREV
+						}
+					}
+				}
+			}
+			else = {
+				limit = { any_friend = { is_ruler = yes } }
+				any_friend = {
+					ROOT = {
+						move_character = PREV
+					}
+				}
+			}
+		}
+		#Fix for Belaerys dragon lineage
+		if = {
+			limit = {
+				NOT = { has_global_flag = belaerys_fix }
+				has_landed_title = c_dragonstone
+			}
+			set_global_flag = belaerys_fix
+			c_77990500 = {
+				set_mother = 77992007
+			}
+		}
+		####Yearly####
+		if = {
+			limit = {
+				num_of_friends = 2
+			}
+			any_friend = {
+				limit = { NOT = { has_artifact = dragons_whip } }
+				remove_friend = ROOT
+				remove_trait = dragon_rider
+			}
+		}
+		###Old Valyria###
+		if = {
+			limit = {
+				NOT = { start_date = 7801.1.1 }
+				NOT = { has_global_flag = freehold_start_maintenance }
+			}
+			set_global_flag = freehold_start_maintenance
+			any_character = {
+				limit = {
+					trait = dragon
+					NOR = {
+						dynasty = 497000
+						dynasty = 497001
+						dynasty = 497002
+						dynasty = 497003
+						dynasty = 497004
+						dynasty = 497005
+						dynasty = 497006
+						dynasty = 497007
+						dynasty = 497008
+						dynasty = 497009
+					}
+				}
+				random_character = {
+					limit = {
+						trait = dragon
+						is_older_than = PREV
+						dynasty = 497002
+						#is_female = yes
+					}
+					save_event_target_as = mother_dragon
+				}
+				dynasty = 497002
+
+				random = {
+					chance = 2
+					add_trait = bulky_dragon
+				}
+				random = {
+					chance = 25
+					modifier = {
+						factor = 0
+						is_female = no
+					}
+					add_trait = fertile_dragon
+				}
+				if = {
+					limit = {
+						NOR = {
+							trait = sickly_dragon
+							trait = bulky_dragon
+							trait = strong_dragon
+						}
+					}
+					random = {
+						chance = 2
+						add_trait = wyrm_dragon
+					}
+				}
+				random = {
+					chance = 33
+					add_trait = nimble_dragon
+				}
+				random_list = {
+					25 = { add_trait = large_horns }
+					25 = { add_trait = small_horns }
+					25 = { remove_trait = large_horns }
+					25 = { remove_trait = small_horns }
+				}
+				random_list = {
+					25 = { add_trait = large_claws }
+					25 = { add_trait = small_claws }
+					25 = { remove_trait = large_claws }
+					25 = { remove_trait = small_claws }
+				}
+				random_list = {
+					25 = { add_trait = large_wingspan }
+					25 = { add_trait = small_wingspan }
+					25 = { remove_trait = large_wingspan }
+					25 = { remove_trait = small_wingspan }
+				}
+				random_list = {
+					25 = { add_trait = thick_scales }
+					25 = { add_trait = thin_scales }
+					25 = { remove_trait = thick_scales }
+					25 = { remove_trait = thin_scales }
+				}
+				random_list = {
+					25 = { add_trait = melodious_dragon }
+					25 = { add_trait = loud_dragon }
+					25 = { remove_trait = melodious_dragon }
+					25 = { remove_trait = loud_dragon }
+				}
+				random_list = {
+					1 = { add_trait = smart_dragon }
+					3 = { add_trait = silly_dragon }
+					100 = { }
+				}
+				random = {
+					chance = 25
+					add_trait = gleaming_scales
+				}
+				random = {
+					chance = 25
+					add_trait = shining_teeth
+				}
+				random_list = {
+					1 = { add_trait = aggressive_dragon }
+					1 = { add_trait = harmless_dragon }
+					1 = { add_trait = curious_dragon }
+					1 = { add_trait = restless_dragon }
+					1 = { add_trait = talkative_dragon }
+					1 = { add_trait = unruly_dragon }
+
+					1 = { add_trait = wroth_dragon }
+					1 = { add_trait = obedient_dragon }
+					1 = { add_trait = lazy_dragon }
+					1 = { add_trait = playful_dragon }
+					1 = { add_trait = ravenous_dragon }
+					1 = { add_trait = lunatic_dragon }
+					1 = { add_trait = affectionate_dragon }
+					1 = { add_trait = shy_dragon }
+
+					1 = { add_trait = sheep_dragon }
+					1 = { add_trait = pig_dragon }
+					1 = { add_trait = cow_dragon }
+				}
+				random_list = {
+					1 = { add_trait = aggressive_dragon }
+					1 = { add_trait = harmless_dragon }
+					1 = { add_trait = curious_dragon }
+					1 = { add_trait = restless_dragon }
+					1 = { add_trait = talkative_dragon }
+					1 = { add_trait = unruly_dragon }
+
+					1 = { add_trait = wroth_dragon }
+					1 = { add_trait = obedient_dragon }
+					1 = { add_trait = lazy_dragon }
+					1 = { add_trait = playful_dragon }
+					1 = { add_trait = ravenous_dragon }
+					1 = { add_trait = lunatic_dragon }
+					1 = { add_trait = affectionate_dragon }
+					1 = { add_trait = shy_dragon }
+				}
+
+				random_list = {
+					20 = {
+						modifier = {
+							factor = 0
+							NOT = {
+								any_character = {
+									is_older_than = PREV
+									trait = dragon
+								}
+							}
+						}
+						set_mother = event_target:mother_dragon
+					}
+					1 = {
+						set_mother = 77991001
+					}
+					1 = {
+						set_mother = 77991002
+					}
+					1 = {
+						set_mother = 77991003
+					}
+					1 = {
+						set_mother = 77991004
+					}
+					1 = {
+						set_mother = 77991005
+					}
+					1 = {
+						set_mother = 77991006
+					}
+					1 = {
+						set_mother = 77991007
+					}
+					1 = {
+						set_mother = 77991008
+					}
+				}
+
+				save_event_target_as = the_dragon
+				any_friend = {
+					limit = { trait = dragon_rider }
+					if = {
+						limit = { is_landed = yes }
+						event_target:the_dragon = { move_character = PREV }
+					}
+					else = {
+						limit = { NOT = { is_landed = yes } }
+						liege = { event_target:the_dragon = { move_character = PREV } }
+					}
+				}
+				if = {
+					limit = {
+						NOR = {
+							father_even_if_dead = { always = yes }
+							mother_even_if_dead = { always = yes }
+						}
+					}
+					character_event = { id = tdp_dragon_maintenance.6 days = 5 }
+				}
+				character_event = { id = tdp_dragon_maintenance.60 days = 2 }
+			}
+		}
+	}
+}
+
+
+character_event = {
+	id = tdp_dragon_maintenance.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { trait = dragon }
+		OR = {
+			#Dragon Rider Limiter
+			AND = {
+				has_global_flag = dragon_rider_limiter_on
+				NOT = { character = 77041 }
+				OR = {
+					trait = dragon_rider
+					AND = {
+						OR = {
+							character = 77009 #Vizzy I
+							character = 77015 #Aegon III
+						}
+						age = 17
+					}
+				}
+			}
+			#All-Time Tags
+			AND = {
+				NOR = {
+					has_character_flag = can_receive_egg
+					has_character_modifier = granted_dragon_access
+				}
+				OR = {
+					character = 77041 #Daenerys
+					AND = {
+						any_friend = {
+							trait = dragon
+						}
+						NOT = { trait = dragon_rider }
+					}
+					AND = {
+						top_liege = {
+							dynasty = ROOT
+							primary_title = {
+								has_law = tdp_dragon_tamer_1
+							}
+						}
+						NOT = { disallowed_from_dragon_trigger = yes }
+					}
+					capable_of_taming_dragon_trigger = yes
+				}
+			}
+			#Set Dragon Rider Dynasties + Dragon Rider Tracker
+			AND = {
+				NOT = { has_global_flag = dragon_rider_dynasties_set }
+				trait = dragon_rider
+			}
+			AND = {
+				NOT = { has_global_flag = dragon_egg_colors }
+				has_landed_title = c_dragonstone
+			}
+			#if no dragon riders in a realm with a dragon, tag Rider dynasties
+			AND = {
+				OR = {
+					has_dynasty_flag = tdp_dragon_riding_dynasty
+					has_dynasty_flag = dragon_riding_dynasty
+				}
+				top_liege = {
+					NOR = {
+						has_dynasty_flag = tdp_dragon_riding_dynasty
+						has_dynasty_flag = dragon_riding_dynasty
+						trait = dragon_rider
+					}
+					NOT = {
+						any_realm_character = {
+							count = 1
+							trait = dragon_rider
+						}
+					}
+					any_realm_character = {
+						count = 1
+						trait = dragon
+					}
+				}
+			}
+			#Why does Baelon the BRAVE not have the Brave trait?
+			AND = {
+				character = c_77008 #Baelon the Brave
+				age = 3
+				is_alive = yes
+				NOT = { trait = brave }
+			}
+		}
+	}
+
+	immediate = {
+		#######Non-Dragon######
+		####Start-up####
+		#Dragon Tamer Limiter
+		if = {
+			limit = {
+				has_global_flag = dragon_rider_limiter_on
+				NOT = { character = 77041 }
+				OR = {
+					trait = dragon_rider
+					AND = {
+						OR = {
+							character = 77009 #Viserys I
+							character = 77015 #Aegon III
+						}
+						age = 17
+					}
+				}
+			}
+			add_character_modifier = {
+				name = cannot_tame_dragon
+				duration = -1
+			}
+			remove_character_modifier = granted_dragon_access
+		}
+		#Set Dragon Rider Dynasties + Dragon Rider Tracker
+		if = {
+			limit = {
+				NOT = { has_global_flag = dragon_rider_dynasties_set }
+				trait = dragon_rider
+			}
+			set_global_flag = dragon_rider_dynasties_set
+			any_character = {
+				limit = {
+					trait = dragon_rider
+					NOT = { has_dynasty_flag = tdp_dragon_riding_dynasty }
+				}
+				set_dynasty_flag = tdp_dragon_riding_dynasty
+				set_dynasty_flag = dragon_riding_dynasty
+			}
+			any_character = {
+				limit = {
+					trait = dragon_rider
+					NOT = { has_character_flag = dragon_rider_tracker_set }
+				}
+				character_event = { id = dragon_rework.3999 days = 2 }
+			}
+		}
+		#Dragon Egg Colors
+		if = {
+			limit = {
+				NOT = { has_global_flag = dragon_egg_colors }
+				has_landed_title = c_dragonstone
+			}
+			set_global_flag = dragon_egg_colors
+			any_character = {
+				limit = {
+					has_artifact = dragon_egg
+					NOR = {
+						has_artifact_flag = blue_egg
+						has_artifact_flag = black_egg
+						has_artifact_flag = silver_egg
+						has_artifact_flag = gold_egg
+						has_artifact_flag = red_egg
+						has_artifact_flag = green_egg
+						has_artifact_flag = orange_egg
+					}
+				}
+				any_artifact = {
+					limit = {
+						artifact_type = dragon_egg
+						NOT = { has_artifact_flag = dany_dragon_eggs }
+					}
+					clr_artifact_flag = blue_egg
+					clr_artifact_flag = black_egg
+					clr_artifact_flag = silver_egg
+					clr_artifact_flag = gold_egg
+					clr_artifact_flag = red_egg
+					clr_artifact_flag = green_egg
+					clr_artifact_flag = orange_egg
+					random_list = {
+						1 = {
+							set_picture = GFX_dragon_egg_blue
+							set_artifact_flag = blue_egg
+						}
+						1 = {
+							set_picture = GFX_dragon_egg_black
+							set_artifact_flag = black_egg
+						}
+						1 = {
+							set_picture = GFX_dragon_egg_silver
+							set_artifact_flag = silver_egg
+						}
+						1 = {
+							set_picture = GFX_dragon_egg_gold
+							set_artifact_flag = gold_egg
+						}
+						1 = {
+							set_picture = GFX_dragon_egg_red
+							set_artifact_flag = red_egg
+						}
+						1 = {
+							set_picture = GFX_dragon_egg_green
+							set_artifact_flag = green_egg
+						}
+						1 = { set_artifact_flag = orange_egg } #Default
+					}
+				}
+				any_artifact = {
+					limit = {
+						artifact_type = dragon_egg
+						has_artifact_flag = dany_dragon_eggs
+					}
+					set_picture = GFX_dany_eggs
+					set_artifact_flag = black_egg
+				}
+			}
+		}
+		if = {
+			limit = {
+				character = c_77008 #Baelon the Brave
+				age = 3
+				is_alive = yes
+				NOT = { trait = brave }
+			}
+			c_77008 = {
+				add_trait = brave
+			}
+		}
+		####Yearly####
+		#All-Time Tags
+		if = {
+			limit = {
+				capable_of_taming_dragon_trigger = yes
+				NOR = {
+					has_character_flag = can_receive_egg
+					has_character_modifier = granted_dragon_access
+					has_character_modifier = cannot_tame_dragon
+					trait = dragon_rider
+				}
+				OR = {
+					character = 77041 #Daenerys
+					AND = {
+						any_friend = {
+							trait = dragon
+						}
+						NOT = { trait = dragon_rider }
+					}
+					AND = {
+						top_liege = {
+							dynasty = ROOT
+							primary_title = {
+								has_law = tdp_dragon_tamer_1
+							}
+						}
+						NOT = { trait = bastard }
+					}
+					any_spouse = {
+						dynasty = ROOT
+						OR = {
+							trait = dragon_rider
+							has_character_modifier = granted_dragon_access
+						}
+					}
+				}
+			}
+			set_character_flag = can_receive_egg
+			add_character_modifier = {
+				name = granted_dragon_access
+				duration = -1
+			}
+		}
+		#if no dragon riders in a realm with a dragon, tag Rider dynasties
+		if = {
+			limit = {
+				OR = {
+					has_dynasty_flag = tdp_dragon_riding_dynasty
+					has_dynasty_flag = dragon_riding_dynasty
+				}
+				top_liege = {
+					NOR = {
+						has_dynasty_flag = tdp_dragon_riding_dynasty
+						has_dynasty_flag = dragon_riding_dynasty
+						trait = dragon_rider
+					}
+					NOT = {
+						any_realm_character = {
+							count = 1
+							trait = dragon_rider
+						}
+					}
+					any_realm_character = {
+						count = 1
+						trait = dragon
+					}
+				}
+			}
+			add_character_modifier = {
+				name = granted_dragon_access
+				duration = -1
+			}
+			set_character_flag = can_receive_egg
+		}
+	}
+}
+
+
+#fired from "on_death"
+character_event = {
+	id = tdp_dragon_maintenance.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				has_dragonpit_trigger = yes
+				has_any_opinion_modifier = opinion_dragon_from_my_pit
+			}
+		}
+	}
+
+	immediate = {
+		#Set Heir to have dragonpit opinion
+		if = {
+			limit = {
+				has_dragonpit_trigger = yes
+				has_any_opinion_modifier = opinion_dragon_from_my_pit
+			}
+			any_character = {
+				limit = {
+					reverse_has_opinion_modifier = {
+						who = ROOT
+						modifier = opinion_dragon_from_my_pit
+					}
+				}
+				current_heir = {
+					opinion = {
+						who = PREV
+						modifier = opinion_dragon_from_my_pit
+					}
+				}
+			}
+		}
+	}
+}
+
+#fired from "on_marriage"
+character_event = {
+	id = tdp_dragon_maintenance.4
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				FROM = {
+					OR = {
+						trait = dragon_rider
+						has_character_modifier = granted_dragon_access
+						has_character_modifier = cannot_tame_dragon
+					}
+				}
+				new_character  = {
+					is_female = yes
+					NOT = { has_character_modifier = granted_dragon_access }
+					dynasty = FROM
+				}
+			}
+		}
+	}
+
+	immediate = {
+		add_character_modifier = {
+			name = granted_dragon_access
+			duration = -1
+		}
+		set_character_flag = can_receive_egg
+	}
+}
+
+#fired from "on_birth"
+character_event = {
+	id = tdp_dragon_maintenance.5
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			trait = lunatic
+		}
+	}
+
+	immediate = {
+		remove_trait = lunatic
+	}
+}
+
+character_event = {
+	id = tdp_dragon_maintenance.6
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOR = {
+			father_even_if_dead = { always = yes }
+			mother_even_if_dead = { always = yes }
+		}
+	}
+
+	immediate = {
+		random_list = {
+			20 = {
+				modifier = {
+					factor = 0
+					NOT = {
+						any_character = {
+							is_older_than = PREV
+							trait = dragon
+						}
+					}
+				}
+				set_mother = event_target:mother_dragon
+			}
+			1 = {
+				set_mother = 77991001
+			}
+			1 = {
+				set_mother = 77991002
+			}
+			1 = {
+				set_mother = 77991003
+			}
+			1 = {
+				set_mother = 77991004
+			}
+			1 = {
+				set_mother = 77991005
+			}
+			1 = {
+				set_mother = 77991006
+			}
+			1 = {
+				set_mother = 77991007
+			}
+			1 = {
+				set_mother = 77991008
+			}
+		}
+		character_event = { id = tdp_dragon_maintenance.6 days = 3 }
+	}
+}
+
+character_event = {
+	id = tdp_dragon_maintenance.60
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		NOT = { is_female = yes }
+	}
+
+	immediate = {
+		random_list = {
+			50 = {
+
+			}
+			50 = {
+				set_gender = opposite
+			}
+		}
+	}
+}

@@ -1,0 +1,635 @@
+namespace = mbs_vale_conquest
+#Robb works out what to do about the Vale
+narrative_event = {
+	id = mbs_vale_conquest.1
+	desc = "EVTDESCmbs_vale_conquest.1"
+	title = "EVTTITLEmbs_vale_conquest.1"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+	war = no
+	only_independent = yes
+	has_character_flag = robb_stark
+
+	trigger = {
+		character = 2059
+		has_landed_title = e_north
+		c_runestone = {
+			holder_scope = {
+				 same_realm = ROOT
+			}
+		}
+		k_vale = { has_holder = yes }
+		NOT = {
+			has_character_flag = vale_resolved_mb
+		}
+		NOT = {
+			k_vale = {
+				holder_scope = {
+					 same_realm = ROOT
+				}
+			}
+		}
+		NOT = {
+			c_the_eyrie = {
+				holder_scope = {
+					 same_realm = ROOT
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.1" #negotiate
+		character_event = { id = mbs_vale_conquest.2 days = 1 }
+		ai_chance = { factor = 4 }
+		set_character_flag = vale_resolved_mb
+	}
+
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.1"#give to Royces
+		trigger = {
+			c_runestone = {
+				holder_scope = {
+					same_realm = ROOT
+					dynasty = 187
+				}
+			}
+		}
+		ai_chance = { factor = 3 }
+		character_event = { id = mbs_vale_conquest.3 days = 1 }
+		set_character_flag = vale_resolved_mb
+	}
+#	option = {
+#		name = "EVTOPTCmbs_vale_conquest.1"#war for Harry
+#		trigger = {
+#			c_94027 = {
+#				is_alive =	yes
+#				NOR = {
+#					has_landed_title = e_vale
+#					has_landed_title = k_vale
+#				}
+#			}
+#		}
+#		ai_chance = { factor = 6 }
+#		set_character_flag = vale_resolved_mb
+#
+#	}
+
+	option = {
+		name = "EVTOPTDmbs_vale_conquest.1"#give to Riverlands
+		trigger = {
+			k_riverlands = {
+				holder_scope = {
+					 same_realm = ROOT
+				}
+			}
+		}
+		ai_chance = { factor = 4 }
+		character_event = { id = mbs_vale_conquest.5 days = 1 }
+		set_character_flag = vale_resolved_mb
+	}
+
+}
+narrative_event = {
+	id = mbs_vale_conquest.2
+	desc = "EVTDESCmbs_vale_conquest.2"
+	title = "EVTTITLEmbs_vale_conquest.2"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.2" #negotiate
+		ai_chance = { factor = 1 }
+		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.201 days = 3 } } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.2"#send Arya
+		trigger = {
+			k_vale = {
+				holder_scope = {
+					is_married = no
+				}
+			}
+			OR = {
+				c_7059 = {
+					is_alive =	yes
+					is_married = no
+					same_realm = ROOT
+					dynasty = 59
+				}
+				c_9267059 = {
+					is_alive =	yes
+					is_married = no
+					same_realm = ROOT
+					dynasty = 59
+				}
+				any_sibling = {
+					is_alive =	yes
+					is_married = no
+					is_female = yes
+					same_realm = ROOT
+					dynasty = 59
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_tomboy_mbs
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 6 }
+		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.202 days = 3 } } }
+	}
+	option = {
+		name = "EVTOPTCmbs_vale_conquest.1"#send Sansa
+		trigger = {
+			k_vale = {
+				holder_scope = {
+					is_married = no
+				}
+			}
+			OR = {
+				c_6059 = {
+					is_alive =	yes
+					is_married = no
+					same_realm = ROOT
+					dynasty = 59
+				}
+				c_9266059 = {
+					is_alive =	yes
+					is_married = no
+					same_realm = ROOT
+					dynasty = 59
+				}
+				any_sibling = {
+					is_alive =	yes
+					is_married = no
+					is_female = yes
+					same_realm = ROOT
+					dynasty = 59
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_sansa
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 4 }
+		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.203 days = 3 } } }
+	}
+
+}
+narrative_event = {
+	id = mbs_vale_conquest.201
+	title = "EVTtitlembs_vale_conquest.201"
+	desc = "EVTDESCmbs_vale_conquest.201"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.201" # Accept the proposal
+		ai_chance = {
+			factor = 1
+		}
+		k_westerlands = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.201" #Nope
+		ai_chance = {
+			factor = 2
+		}
+
+		e_north = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		e_north = { holder_scope = { character_event = { id = mbs_vale_conquest.7 days = 3 } } }
+	}
+}
+narrative_event = {
+	id = mbs_vale_conquest.202
+	title = "EVTtitlembs_vale_conquest.202"
+	desc = "EVTDESCmbs_vale_conquest.202"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.202" # Accept the proposal
+		ai_chance = {
+			factor = 3
+		}
+		e_north = {
+			holder_scope = {
+				random_sibling = {
+					limit = {
+						is_alive =	yes
+						is_married = no
+						is_female = yes
+						dynasty = 59
+						any_owned_bloodline = {
+							has_bloodline_flag = bloodline_tomboy_mbs
+						}
+					}
+					ROOT = {
+						add_spouse = PREV
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.202" #Nope
+		ai_chance = {
+			factor = 2
+		}
+
+		e_north = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		e_north = { holder_scope = { character_event = { id = mbs_vale_conquest.7 days = 3 } } }
+	}
+}
+narrative_event = {
+	id = mbs_vale_conquest.203
+	title = "EVTtitlembs_vale_conquest.203"
+	desc = "EVTDESCmbs_vale_conquest.203"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.203" # Accept the proposal
+		ai_chance = {
+			factor = 3
+		}
+		e_north = {
+			holder_scope = {
+				random_sibling = {
+					limit = {
+						is_alive =	yes
+						is_married = no
+						is_female = yes
+						dynasty = 59
+						any_owned_bloodline = {
+							has_bloodline_flag = bloodline_sansa
+						}
+					}
+					ROOT = {
+						add_spouse = PREV
+					}
+				}
+			}
+		}
+		k_westerlands = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		e_iron_throne = {
+			holder_scope = {
+				hidden_tooltip = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 10
+					}
+				}
+			}
+		}
+		k_vale = {
+			holder_scope = {
+				hidden_tooltip = {
+					set_defacto_liege = e_north
+				}
+			}
+		}
+		hidden_tooltip = {
+			k_vale = {
+				de_jure_liege = e_north
+			}
+		}
+	}
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.203" #Nope
+		ai_chance = {
+			factor = 2
+		}
+
+		e_north = {
+			holder_scope = {
+				opinion = {
+					modifier = opinion_dithered
+					who = ROOT
+					years = 10
+				}
+			}
+		}
+		e_north = { holder_scope = { character_event = { id = mbs_vale_conquest.7 days = 3 } } }
+	}
+}
+narrative_event = {
+	id = mbs_vale_conquest.3
+	desc = "EVTDESCmbs_vale_conquest.3"
+	title = "EVTTITLEmbs_vale_conquest.3"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.3" #do it
+		ai_chance = { factor = 10 }
+		c_runestone = { holder_scope = { character_event = { id = mbs_vale_conquest.301 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.302 } } }
+		c_runestone = {
+			holder_scope = {
+				k_runestoneTK = { gain_title = ROOT }
+				k_runestoneTK = {
+					d_runestone = { set_defacto_liege = PREV }
+				}
+			}
+		}
+		e_north = {
+			holder_scope = {
+				any_vassal = {
+					limit = {
+						primary_title = { de_jure_liege = k_vale }
+					}
+					set_defacto_liege = k_runestoneTK
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.3"#go back
+		ai_chance = { factor = 0 }
+		character_event = { id = mbs_vale_conquest.1 }
+	}
+
+}
+narrative_event = {
+	id = mbs_vale_conquest.301
+	desc = "EVTDESCmbs_vale_conquest.301"
+	title = "EVTTITLEmbs_vale_conquest.301"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.301" #do it
+		ai_chance = { factor = 10 }
+		opinion = {
+			who = FROM
+			modifier = opinion_very_grateful
+			years = 5
+		}
+	}
+}
+narrative_event = {
+	id = mbs_vale_conquest.302
+	desc = "EVTDESCmbs_vale_conquest.302"
+	title = "EVTTITLEmbs_vale_conquest.302"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.302" #do it
+		ai_chance = { factor = 10 }
+		opinion = {
+			who = FROM
+			modifier = opinion_angry
+			years = 5
+		}
+	}
+}
+narrative_event = {
+	id = mbs_vale_conquest.5
+	desc = "EVTDESCmbs_vale_conquest.5"
+	title = "EVTTITLEmbs_vale_conquest.5"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.5" #do it
+		ai_chance = { factor = 10 }
+		k_riverlands = { holder_scope = { character_event = { id = mbs_vale_conquest.501 } } }
+		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.502 } } }
+		e_north = {
+			holder_scope = {
+				any_vassal = {
+					limit = {
+						primary_title = { de_jure_liege = k_vale }
+						NOR = {
+							has_landed_title = d_the_sisters
+							has_landed_title = c_sunderland
+							has_landed_title = c_longsister
+							has_landed_title = c_littlesister
+							has_landed_title = c_sweetsister
+						}
+					}
+					set_defacto_liege = k_riverlands
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.5"#go back
+		ai_chance = { factor = 0 }
+		character_event = { id = mbs_vale_conquest.1 }
+	}
+
+}
+narrative_event = {
+	id = mbs_vale_conquest.501
+	desc = "EVTDESCmbs_vale_conquest.501"
+	title = "EVTTITLEmbs_vale_conquest.501"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.501" #do it
+		ai_chance = { factor = 10 }
+		opinion = {
+			who = FROM
+			modifier = opinion_very_grateful
+			years = 5
+		}
+	}
+}
+narrative_event = {
+	id = mbs_vale_conquest.502
+	desc = "EVTDESCmbs_vale_conquest.502"
+	title = "EVTTITLEmbs_vale_conquest.502"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+
+
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.502" #do it
+		ai_chance = { factor = 10 }
+		opinion = {
+			who = FROM
+			modifier = opinion_angry
+			years = 5
+		}
+	}
+}
+#Robb works out what to do about the Vale
+narrative_event = {
+	id = mbs_vale_conquest.7
+	desc = "EVTDESCmbs_vale_conquest.7"
+	title = "EVTTITLEmbs_vale_conquest.7"
+	picture = GFX_STARK
+
+	is_triggered_only = yes
+	war = no
+	only_capable = yes
+
+
+
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.1"#give to Royces
+		trigger = {
+			c_runestone = {
+				holder_scope = {
+					same_realm = ROOT
+					dynasty = 187
+				}
+			}
+		}
+		ai_chance = { factor = 3 }
+		character_event = { id = mbs_vale_conquest.3 days = 1 }
+	}
+#	option = {
+#		name = "EVTOPTCmbs_vale_conquest.1"#war for Harry
+#		trigger = {
+#			c_94027 = {
+#				is_alive =	yes
+#				NOR = {
+#					has_landed_title = e_vale
+#					has_landed_title = k_vale
+#				}
+#			}
+#		}
+#		ai_chance = { factor = 6 }
+#
+#	}
+
+	option = {
+		name = "EVTOPTDmbs_vale_conquest.1"#give to Riverlands
+		trigger = {
+			k_riverlands = {
+				holder_scope = {
+					 same_realm = ROOT
+				}
+			}
+		}
+		ai_chance = { factor = 4 }
+		character_event = { id = mbs_vale_conquest.5 days = 1 }
+	}
+
+}

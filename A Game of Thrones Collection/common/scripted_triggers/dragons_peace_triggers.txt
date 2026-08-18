@@ -1,0 +1,514 @@
+allowed_to_tame_dragon_trigger = {
+	#Realm Laws
+	OR = {
+		AND = {
+			top_liege = {
+				NOT = {
+					primary_title = {
+						has_law = tdp_dragon_tamer_2
+					}
+				}
+			}
+			OR = {
+				has_character_modifier = granted_dragon_access
+				AND = {
+					tier = EMPEROR
+					capable_of_taming_dragon_trigger = yes
+				}
+			}
+		}
+		top_liege = {
+			primary_title = {
+				has_law = tdp_dragon_tamer_2
+			}
+		}
+	}
+}
+
+capable_of_taming_dragon_trigger = {
+	OR = {
+		#Anyone Can Tame + Bloodline
+		AND = {
+			#Game Rules
+			NOT = {
+				has_game_rule = {
+					name = dragon_hatching_taming
+					value = valyrian_only
+				}
+			}
+			has_game_rule = {
+				name = tdp_valyrian_blood
+				value = bloodlines
+			}
+
+			#Character Qualifications
+			OR = {
+				any_owned_bloodline = {
+					has_bloodline_flag = blood_of_the_dragon
+				}
+				mother_even_if_dead = { trait = dragon_rider }
+				father_even_if_dead = { trait = dragon_rider }
+				has_character_modifier = dragonseed
+			}
+		}
+
+		#Only Valyrian Culture Can Tame + Bloodline
+		AND = {
+			#Game Rules
+			has_game_rule = {
+				name = dragon_hatching_taming
+				value = valyrian_only
+			}
+			has_game_rule = {
+				name = tdp_valyrian_blood
+				value = bloodlines
+			}
+
+			#Character Qualifications
+			culture_group = valyrian
+			OR = {
+			any_owned_bloodline = {
+				has_bloodline_flag = blood_of_the_dragon
+				}
+				AND = {
+					is_bloodline_member_of = drop_of_the_dragon
+					OR = {
+						mother_even_if_dead = { trait = dragon_rider }
+						father_even_if_dead = { trait = dragon_rider }
+					}
+				}
+				has_character_modifier = dragonseed
+			}
+		}
+
+		#Anyone Can Tame + Valyrian Blood submod
+		AND = {
+			#Game Rules
+			NOT = {
+				has_game_rule = {
+					name = dragon_hatching_taming
+					value = valyrian_only
+				}
+			}
+			has_game_rule = {
+				name = tdp_valyrian_blood
+				value = traits
+			}
+
+			#Character Qualifications
+			OR = {
+				trait = full_blood
+				trait = slightly_diluted_blood
+				trait = half_blood
+				trait = mostly_diluted_blood
+			}
+		}
+
+		#Only Valyrian Culture Can Tame + Valyrian Blood submod
+		AND = {
+			#Game Rules
+			has_game_rule = {
+				name = dragon_hatching_taming
+				value = valyrian_only
+			}
+			has_game_rule = {
+				name = tdp_valyrian_blood
+				value = traits
+			}
+
+			#Character Qualifications
+			culture_group = valyrian
+			OR = {
+				trait = full_blood
+				trait = slightly_diluted_blood
+				trait = half_blood
+				trait = mostly_diluted_blood
+			}
+		}
+
+		#Anyone Can Tame
+		AND = {
+			#Game Rules
+			NOT = {
+				has_game_rule = {
+					name = dragon_hatching_taming
+					value = valyrian_only
+				}
+			}
+			has_game_rule = {
+				name = tdp_valyrian_blood
+				value = default
+			}
+
+			#Character Qualifications
+			#Literally anyone if laws permit
+		}
+
+		#Only Valyrian Culture Can Tame
+		AND = {
+			#Game Rules
+			has_game_rule = {
+				name = dragon_hatching_taming
+				value = valyrian_only
+			}
+			has_game_rule = {
+				name = tdp_valyrian_blood
+				value = default
+			}
+
+			#Character Qualifications
+			culture_group = valyrian
+		}
+	}
+}
+
+dragon_counter_trigger = {
+	top_liege = {
+		any_realm_character = {
+			trait = dragon
+			is_alive = yes
+			NOT = { has_character_flag = shadow_lands_dragon }
+			NOT = { any_friend = { trait = dragon_rider } }
+			NOT = { has_character_flag = cannibal_dragon }
+			count <= 6
+		}
+	}
+}
+
+has_dragonkeepers_trigger = {
+	has_dragonpit_trigger = yes
+	any_vassal = {
+		trait = dragonkeeper
+	}
+}
+
+is_dragonseed_trigger = {
+	OR = {
+		any_owned_bloodline = {
+			has_bloodline_flag = blood_of_the_dragon
+		}
+		has_character_flag = has_valyrian_blood_trait
+		culture_group = valyrian
+		real_father_even_if_dead = {
+			OR = {
+				trait = dragon_rider
+				any_owned_bloodline = {
+					has_bloodline_flag = blood_of_the_dragon
+				}
+				trait = full_blood
+				trait = half_blood
+				trait = mostly_diluted_blood
+				trait = slightly_diluted_blood
+			}
+			real_father_even_if_dead = {
+				OR = {
+					trait = dragon_rider
+					any_owned_bloodline = {
+						has_bloodline_flag = blood_of_the_dragon
+					}
+					trait = full_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+					trait = slightly_diluted_blood
+				}
+			}
+			mother_even_if_dead = {
+				OR = {
+					trait = dragon_rider
+					any_owned_bloodline = {
+						has_bloodline_flag = blood_of_the_dragon
+					}
+					trait = full_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+					trait = slightly_diluted_blood
+				}
+			}
+		}
+		mother_even_if_dead = {
+			OR = {
+				trait = dragon_rider
+				any_owned_bloodline = {
+					has_bloodline_flag = blood_of_the_dragon
+				}
+				trait = full_blood
+				trait = half_blood
+				trait = mostly_diluted_blood
+				trait = slightly_diluted_blood
+			}
+			real_father_even_if_dead = {
+				OR = {
+					trait = dragon_rider
+					any_owned_bloodline = {
+						has_bloodline_flag = blood_of_the_dragon
+					}
+					trait = full_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+					trait = slightly_diluted_blood
+				}
+			}
+			mother_even_if_dead = {
+				OR = {
+					trait = dragon_rider
+					any_owned_bloodline = {
+						has_bloodline_flag = blood_of_the_dragon
+					}
+					trait = full_blood
+					trait = half_blood
+					trait = mostly_diluted_blood
+					trait = slightly_diluted_blood
+				}
+			}
+		}
+	}
+}
+
+allowed_and_capable_tame_dragon = {
+	allowed_to_tame_dragon_trigger = yes
+	capable_of_taming_dragon_trigger = yes
+	NOT = { disallowed_from_dragon_trigger = yes }
+}
+
+#Nightswatch, Septons, etc
+disallowed_from_dragon_trigger = {
+	OR = {
+		has_game_rule = { name = dragon_hatching_taming value = off }
+		has_character_modifier = cannot_tame_dragon
+		has_character_flag = maester_education
+		has_character_flag = head_dragonkeeper
+		trait = dragon_rider
+		trait = dragonkeeper
+		any_friend = { trait = dragon }
+		trait = incapable
+		trait = infirm
+		trait = wounded
+		trait = maimed
+		trait = crippled
+		trait = pregnant
+		trait = cancer
+		trait = scurvy
+		trait = slothful
+		trait = blind
+		trait = blinded
+		trait = dragon
+		trait = craven
+		trait = septa
+		trait = septon
+		trait = silent_sister
+		trait = maester
+		trait = archmaester
+		trait = prostitute
+		trait = kingsguard
+		trait = nightswatch
+		trait = has_missing
+		prisoner = yes
+		has_nickname = nick_the_dragonless #fuck you Vaegon
+	}
+}
+
+
+has_supporter_with_big_dragon = {
+	OR = {
+		any_friend = {
+			trait = dragon_rider
+			age = 15
+			any_friend = {
+				trait = dragon
+				martial = 70
+				NOR = {
+					trait = wounded_dragon
+					trait = maimed_dragon
+					trait = infirm_dragon
+					trait = harmless_dragon
+				}
+			}
+			opinion = {
+				who = PREV
+				value = 20
+			}
+		}
+		any_spouse = {
+			trait = dragon_rider
+			age = 15
+			any_friend = {
+				trait = dragon
+				martial = 70
+				NOR = {
+					trait = wounded_dragon
+					trait = maimed_dragon
+					trait = infirm_dragon
+					trait = harmless_dragon
+				}
+			}
+			opinion = {
+				who = PREV
+				value = 20
+			}
+		}
+		any_sibling = {
+			trait = dragon_rider
+			age = 15
+			NOT = { sibling_is_half_sibling = yes }
+			any_friend = {
+				trait = dragon
+				martial = 70
+				NOR = {
+					trait = wounded_dragon
+					trait = maimed_dragon
+					trait = infirm_dragon
+					trait = harmless_dragon
+				}
+			}
+			opinion = {
+				who = PREV
+				value = 20
+			}
+		}
+	}
+}
+
+sibling_is_half_sibling = {
+	OR = {
+		mother_even_if_dead = { NOT = { is_mother = PREV } }
+		father_even_if_dead = { NOT = { is_father = PREV } }
+	}
+}
+
+has_dragon_combat_modifier = {
+	OR = {
+		has_character_modifier = dragon_combat_1
+		has_character_modifier = dragon_combat_2
+		has_character_modifier = dragon_combat_3
+		has_character_modifier = dragon_combat_4
+		has_character_modifier = dragon_combat_5
+		has_character_modifier = dragon_combat_6
+		has_character_modifier = dragon_combat_7
+		has_character_modifier = dragon_combat_8
+		has_character_modifier = dragon_combat_9
+		has_character_modifier = dragon_combat_10
+	}
+}
+
+dance_of_dragons_war_type_trigger = {
+	tier = EMPEROR
+	trait = dragon_rider
+	any_realm_character = {
+		count = 2
+		trait = dragon_rider
+		is_alive = yes
+	}
+	any_current_enemy = {
+		NOT = { tier = EMPEROR }
+		trait = dragon_rider
+		any_realm_character = {
+			count = 2
+			trait = dragon_rider
+			is_alive = yes
+		}
+	}
+}
+
+#Primary Heir
+main_heir_trigger = {
+	NOR = {
+		any_sibling = {
+			is_female = no
+			NOT = { trait = bastard }
+			is_older_than = PREV
+		}
+
+	}
+}
+
+#Second Son
+spare_heir_trigger = {
+	is_female = no
+	any_sibling = {
+		count == 1
+		is_female = no
+		is_older_than = PREV
+		NOT = { trait = bastard }
+	}
+	NOR = {
+		any_sibling = {
+			count == 2
+			is_female = no
+			is_older_than = PREV
+			NOT = { trait = bastard	}
+		}
+		any_sibling = {
+			count == 3
+			is_female = no
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+		any_sibling = {
+			count == 4
+			is_female = no
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+		any_sibling = {
+			count == 5
+			is_female = no
+			is_older_than = PREV
+			NOT = { trait = bastard	}
+		}
+		any_sibling = {
+			count == 6
+			is_female = no
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+		any_sibling = {
+			count == 7
+			is_female = no
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+	}
+}
+
+#Third + sons
+extra_child_trigger = {
+	OR = {
+		any_sibling = {
+			count = 2
+			is_older_than = PREV
+			NOT = { trait = bastard	}
+		}
+		any_sibling = {
+			count = 3
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+		any_sibling = {
+			count = 4
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+		any_sibling = {
+			count = 5
+			is_older_than = PREV
+			NOT = { trait = bastard	}
+		}
+		any_sibling = {
+			count = 6
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+		any_sibling = {
+			count = 7
+			is_older_than = PREV
+			NOT = { trait = bastard }
+		}
+	}
+}
+
+#Daughter Heir
+daughter_heir_trigger = {
+	is_female = yes
+	is_primary_heir = yes
+}
+

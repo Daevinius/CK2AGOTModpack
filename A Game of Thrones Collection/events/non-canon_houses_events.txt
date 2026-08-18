@@ -1,0 +1,1303 @@
+
+namespace = noncanon_houses
+
+##THE Dragonseeds##
+character_event = {
+	id = noncanon_houses.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = the_dragonseeds value = off }
+		NOT = { has_global_flag = the_dragonseeds_removed }
+	}
+
+	immediate = {
+		set_global_flag = the_dragonseeds_removed
+
+		##Hammer
+		any_character = {
+			limit = {
+				dynasty = 502
+				NOT = { character = 30509002 }
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = { NOT = { character = 30509002 } }
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##White
+		any_character = {
+			limit = {
+				dynasty = 503
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = { NOT = { character = 30509003 } }
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Nettles
+		any_character = {
+			limit = {
+				dynasty = 504
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = { NOT = { character = 30509001 } }
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Truefyre
+		any_character = {
+			limit = {
+				dynasty = 501
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = { NOT = { character = 30509009 } }
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+	}
+}
+##Any other Dragonseeds##
+character_event = {
+	id = noncanon_houses.2
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8160.1.1
+		has_game_rule = { name = noncanon_dragonseeds value = off }
+		NOT = { has_global_flag = dragonseeds_removed }
+	}
+
+	immediate = {
+		set_global_flag = dragonseeds_removed
+
+		##Celtigar-Darry
+		any_character = {
+			limit = {
+				dynasty = 999123
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = { character = 3024050 }
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_3024050 = {
+			dynasty = 50
+		}
+		##Velaryon-BarEmmon
+		any_character = {
+			limit = {
+				dynasty = 999339
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOR = {
+						character = 88000309
+						character = 5560052
+						character = 5520052
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_88000309 = {
+			dynasty = 52
+		}
+		c_5560052 = {
+			dynasty = 52
+		}
+		c_5520052 = {
+			dynasty = 52
+		}
+		##Velaryon-Celtigar
+		any_character = {
+			limit = {
+				dynasty = 999129
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOR = {
+						character = 5620052
+						character = 5630052
+						character = 5640052
+						character = 5540052
+						character = 5550052
+						character = 5580052
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_5620052 = {
+			dynasty = 52
+		}
+		c_5630052 = {
+			dynasty = 52
+		}
+		c_5640052 = {
+			dynasty = 52
+		}
+		c_5540052 = {
+			dynasty = 52
+		}
+		c_5550052 = {
+			dynasty = 52
+		}
+		c_5580052 = {
+			dynasty = 52
+		}
+		##Kostoba
+		any_character = {
+			limit = {
+				dynasty = 999323
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 60550496
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_60550496 = {
+			dynasty = 496
+		}
+		##Byka
+		any_character = {
+			limit = {
+				dynasty = 999340
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Denfyre
+		any_character = {
+			limit = {
+				dynasty = 999126
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 86217
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_86217 = {
+			dynasty = 217
+			set_father = 0
+		}
+		##Brightflame
+		any_character = {
+			limit = {
+				dynasty = 999002
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Aerionys
+		any_character = {
+			limit = {
+				dynasty = 52500005
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+	}
+}
+###Tyrell###
+character_event = {
+	id = noncanon_houses.3
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8041.1.1
+		has_game_rule = { name = tyrell_cadets value = off }
+		NOT = { has_global_flag = tyrell_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = tyrell_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999336
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 88000339
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_88000339 = {
+			dynasty = 253
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999337
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 88000340
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_88000340 = {
+			dynasty = 253
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999086
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999136
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999135
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999085
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999087
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+		any_character = {
+			limit = {
+				dynasty = 999334
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+		any_character = {
+			limit = {
+				dynasty = 999335
+			}
+			any_dynasty_member_even_if_dead = {
+							dynasty = 253
+			}
+		}
+
+	}
+}
+###Blackwood Cadets###
+character_event = {
+	id = noncanon_houses.13
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8190.1.1
+		has_game_rule = { name = blackwood_cadets value = off }
+		NOT = { has_global_flag = blackwood_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = blackwood_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999080
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 23150
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_23150 = {
+			dynasty = 150
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999081
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 60150150
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_60150150 = {
+			dynasty = 150
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999082
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					AND = {
+
+						NOT = {
+							character = 24150
+						}
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_24150 = {
+			dynasty = 150
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 52500146
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+	}
+}
+###Bracken Cadets###
+character_event = {
+	id = noncanon_houses.5
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = bracken_cadets value = off }
+		NOT = { has_global_flag = bracken_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = bracken_cadets_removed
+
+		any_character = {
+			limit = {
+				OR = {
+					dynasty = 999099
+					dynasty = 999101
+					dynasty = 999098
+					dynasty = 999100
+				}
+			}
+			any_dynasty_member_even_if_dead = {
+				dynasty = 149
+			}
+		}
+	}
+}
+
+###Stark Cadets###
+
+character_event = {
+	id = noncanon_houses.6
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8194.1.1
+		has_game_rule = { name = stark_cadets value = off }
+		NOT = { has_global_flag = stark_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = stark_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999327
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 120059
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_120059 = {
+			dynasty = 59
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999328
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 1103059
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_1103059 = {
+			dynasty = 59
+		}
+	}
+}
+
+###Tully Cadets###
+
+character_event = {
+	id = noncanon_houses.7
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8124.1.1
+		has_game_rule = { name = tully_cadets value = off }
+		NOT = { has_global_flag = tully_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = tully_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999325
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 552159
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_552159 = {
+			dynasty = 159
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999324
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 2320159
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_2320159 = {
+			dynasty = 159
+			set_mother = 0
+		}
+	}
+}
+
+###Baratheon Cadets###
+character_event = {
+	id = noncanon_houses.8
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8170.1.1
+		has_game_rule = { name = baratheon_cadets value = off }
+		NOT = { has_global_flag = baratheon_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = baratheon_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999333
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOR = {
+						character = 358316
+						character = 368316
+						character = 378316
+						character = 388316
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_358316 = {
+			dynasty = 317
+		}
+		c_368316 = {
+			dynasty = 317
+		}
+		c_378316 = {
+			dynasty = 317
+		}
+		c_388316 = {
+			dynasty = 317
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999347
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOR = {
+						character = 30317
+						character = 82317
+						character = 999335
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_30317 = {
+			dynasty = 317
+		}
+		c_82317 = {
+			dynasty = 317
+		}
+		c_999335 = {
+			dynasty = 317
+		}
+	}
+}
+###Lannister Cadets###
+character_event = {
+	id = noncanon_houses.9
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8023.1.1
+		has_game_rule = { name = lannister_cadets value = off }
+		NOT = { has_global_flag = lannister_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = lannister_cadets_removed
+		c_8021190 = {
+			dynasty = 190
+		}
+		c_100000593 = {
+			set_father = 0
+			dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+		}
+		c_100000594 = {
+			dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+		}
+		c_100000595 = {
+			dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+		}
+		c_100000596 = {
+			dynasty = none
+			death = { death_reason = death_murder_unknown }
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+		}
+	}
+}
+###Martell Cadets###
+character_event = {
+	id = noncanon_houses.10
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		start_date = 8258.1.1
+		has_game_rule = { name = martell_cadets value = off }
+		NOT = { has_global_flag = martell_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = martell_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999329
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+						NOT = {
+							character = 53001
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_53001 = {
+			dynasty = 1
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999331
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 54001
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_54001 = {
+			dynasty = 1
+		}
+
+		any_character = {
+			limit = {
+				dynasty = 999330
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = {
+						character = 6001
+					}
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		c_6001 = {
+			dynasty = 1
+		}
+	}
+}
+###Greyjoy Cadets###
+character_event = {
+	id = noncanon_houses.11
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = greyjoy_cadets value = off }
+		NOT = { has_global_flag = greyjoy_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = greyjoy_cadets_removed
+
+		any_character = {
+			limit = {
+				dynasty = 999338
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		any_character = {
+			limit = {
+				dynasty = 52500145
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+	}
+}
+###Blackfyre Cadet###
+
+character_event = {
+	id = noncanon_houses.4
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = blackfyre_cadets value = off }
+		NOT = { has_global_flag = blackfyre_cadets_removed }
+	}
+
+	immediate = {
+		set_global_flag = blackfyre_cadets_removed
+		##Yronwood##
+		c_100000554 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000555 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000556 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000557 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Oakheart##
+		c_100000558 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000559 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Osgrey##
+		c_100000560 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000561 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000562 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Swyft##
+		c_100000563 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Caron##
+		c_100000564 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000565 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000566 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000567 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000568 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Costayne##
+		c_100000569 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000570 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000571 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Peake##
+		c_100000572 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000573 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Swann##
+		c_100000574 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Frey##
+		c_100000575 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000576 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000577 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		##Tarly##
+		c_100000769 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000635 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000636 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000637 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+		c_100000638 = {
+			set_father = 0
+			set_mother = 0
+			dynasty = none
+			any_owned_bloodline = {
+				remove_bloodline_member = PREV
+			}
+		}
+	}
+}
+###Bastard Cadets###
+
+character_event = {
+	id = noncanon_houses.12
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = the_bastards value = off }
+		NOT = { has_global_flag = the_bastard_removed }
+	}
+
+	immediate = {
+		set_global_flag = the_bastard_removed
+		##Bloodraven
+		any_character = {
+			limit = {
+				dynasty = 18878
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = { character = 77026 }
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Bittersteel
+		any_character = {
+			limit = {
+				dynasty = 7000
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = { character = 77025 }
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Aenarien
+		any_character = {
+			limit = {
+				dynasty = 52500004
+			}
+			any_dynasty_member_even_if_dead = {
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Seastar
+		any_character = {
+			limit = {
+				dynasty =  18879
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					NOT = { character = 77027 }
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+	}
+}
+#Nastards - Oberyn and Renly
+character_event = {
+	id = noncanon_houses.77
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_game_rule = { name = bastard_lb value = off }
+		NOT = { has_global_flag = bastard_lb_removed }
+	}
+
+	immediate = {
+		set_global_flag = bastard_lb_removed
+		##Oberyn
+		any_character = {
+			limit = {
+				dynasty = 1
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					character = 999013241
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+		##Renly
+		any_character = {
+			limit = {
+				dynasty = 317
+			}
+			any_dynasty_member_even_if_dead = {
+				limit = {
+					character = 999013249
+				}
+				set_father = 0
+				set_mother = 0
+				dynasty = none
+				any_owned_bloodline = {
+					remove_bloodline_member = PREV
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,515 @@
+namespace = tdp_border_gore
+
+#Essos Border Gore
+#Westeros Border Gore
+#Crownlands Reset
+#
+
+#Essos Border Gore
+character_event = {
+	id = tdp_border_gore.100
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_lys }
+		has_landed_title = c_lys
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_lys = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.101
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_tyrosh }
+		has_landed_title = c_tyrosh
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_tyrosh = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.102
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_pentos }
+		has_landed_title = c_pentos
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_pentos = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.103
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_myr }
+		has_landed_title = c_myr
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_myr = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.104
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_qohor }
+		has_landed_title = c_qohor
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_qohor = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.105
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_norvos }
+		has_landed_title = c_norvos
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_norvos = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.106
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_lorath }
+		has_landed_title = c_lorath
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_lorath = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.107
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOT = { has_landed_title = k_volantis }
+		has_landed_title = c_oldvolantis
+		OR = {
+			culture_group = free_cities
+			culture = eastern_valyrian
+		}
+	}
+
+	immediate = {
+		k_volantis = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.108
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_independent = yes
+	has_global_flag = border_gore_limiter_on
+	ai = yes
+
+	trigger = {
+		NOT = { higher_real_tier_than = DUKE }
+		NOR = {
+			has_landed_title = e_braavos
+			has_landed_title = k_braavos
+		}
+		has_landed_title = c_braavos
+		culture_group = free_cities
+	}
+
+	immediate = {
+		k_braavos = {
+			gain_title = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Westeros Border Gore
+character_event = {
+	id = tdp_border_gore.2
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = border_gore_limiter_on
+	culture = riverlander
+
+	trigger = {
+		top_liege = {
+			NOR = {
+				has_landed_title = e_riverlands
+				has_landed_title = k_riverlands
+			}
+			OR = {
+				has_landed_title = e_stormlands
+				has_landed_title = e_vale
+				has_landed_title = e_westerlands
+				has_landed_title = e_reach
+				has_landed_title = e_north
+				has_landed_title = e_iron_isles
+			}
+		}
+	}
+
+	immediate = {
+		top_liege = {
+			set_character_flag = has_riverland_foothold
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.20
+
+	hide_window = yes
+	is_triggered_only = yes
+
+
+	only_independent = yes
+	has_character_flag = has_riverland_foothold
+	has_global_flag = border_gore_limiter_on
+
+	trigger = {
+		start_date < 7998.1.1
+		OR = {
+			has_landed_title = e_stormlands
+			has_landed_title = e_vale
+			has_landed_title = e_westerlands
+			has_landed_title = e_reach
+			has_landed_title = e_north
+			has_landed_title = e_iron_isles
+		}
+	}
+
+	immediate = {
+		add_claim = e_riverlands
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = {
+	id = tdp_border_gore.21
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_playable = yes
+	has_global_flag = border_gore_limiter_on
+
+	trigger = {
+		NOT = { trait = nightswatch }
+		NOT = { trait = kingsguard }
+		NOT = { culture_group = winter_group }
+		tier = DUKE
+		num_of_duke_titles = 2
+		any_dynasty_member = {
+			is_landed = no
+			age = 15
+			NOT = { is_primary_heir = ROOT }
+		}
+	}
+
+	immediate = {
+		any_demesne_title = {
+			limit = {
+				tier = DUKE
+				is_primary_holder_title = no
+			}
+			save_event_target_as = target_title
+		}
+	}
+
+	option = {
+		name = OK
+		random_dynasty_member = {
+			limit = {
+				is_landed = no
+				is_female = no
+				age = 15
+				NOT = { is_primary_heir = ROOT }
+			}
+			gain_title_plus_barony_if_unlanded = event_target:target_title
+		}
+	}
+}
+
+#Crownlands Reset
+character_event = {
+	id = tdp_border_gore.3
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	has_global_flag = border_gore_limiter_on
+
+	immediate = {
+		any_realm_lord = {
+			limit = {
+				primary_title = { de_jure_liege_or_above = k_crownlands }
+				liege = { tier = KING }
+				higher_real_tier_than = BARON
+			}
+			set_defacto_liege = ROOT
+		}
+	}
+}
+
+
+character_event = {
+	id = tdp_border_gore.9
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	only_playable = yes
+
+	trigger = {
+		OR = {
+			has_landed_title = c_storms_end
+			has_landed_title = c_highgarden
+			has_landed_title = c_casterly_rock
+			has_landed_title = c_the_eyrie
+			has_landed_title = c_sunspear
+			has_landed_title = c_tyrosh
+			has_landed_title = c_lys
+			has_landed_title = c_myr
+			has_landed_title = c_pentos
+			has_landed_title = c_braavos
+			has_landed_title = c_lorath
+			has_landed_title = c_norvos
+			has_landed_title = c_qohor
+			has_landed_title = c_oldvolantis
+			has_landed_title = c_kings_landing
+			has_landed_title = c_harrenhal
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_landed_title = c_storms_end }
+			c_storms_end = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_highgarden }
+			c_highgarden = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_casterly_rock }
+			c_casterly_rock = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_the_eyrie }
+			c_the_eyrie = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_sunspear }
+			c_sunspear = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_tyrosh }
+			c_tyrosh = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_lys }
+			c_lys = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_myr }
+			c_myr = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_pentos }
+			c_pentos = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_braavos }
+			c_braavos = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_lorath }
+			c_lorath = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_norvos }
+			c_norvos = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_lorath }
+			c_lorath = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_qohor }
+			c_qohor = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = { has_landed_title = c_oldvolantis }
+			c_oldvolantis = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = {
+				has_landed_title = c_kings_landing
+				start_date = 8000.1.1
+			}
+			c_kings_landing = { set_title_flag = major_capital }
+		}
+		else_if = {
+			limit = {
+				has_landed_title = c_harrenhal
+				c_harrenhal = { has_province_modifier = completeharren3 }
+			}
+			c_harrenhal = { set_title_flag = major_capital }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+

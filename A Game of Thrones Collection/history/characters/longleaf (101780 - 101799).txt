@@ -1,0 +1,387 @@
+#####################################################
+###############Расширено до Века Крови###############
+#####################################################
+700078 = {
+	name = "Оскар"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	7861.1.1 = { birth = yes }
+	7877.1.1 = { add_trait = "knight" }
+	7904.1.1 = { death = yes }
+}
+700079 = {
+	name = "Хендри"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 700078
+
+	7889.1.1 = { birth = yes }
+	7905.1.1 = { add_trait = "knight" }
+	7941.1.1 = { death = yes }
+}
+700080 = {
+	name = "Стэнтон"	# a not lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 700078
+
+	7891.1.1 = { birth = yes }
+	7907.1.1 = { add_trait = "knight" }
+	7917.1.1 = { death = { death_reason = death_battle } }
+}
+#####################################################
+101780 = {
+	name = "Клемент"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 700079
+
+	7921.1.1 = { birth = yes }
+	7937.1.1 = { add_trait = "knight" }
+	7970.1.1 = { death = yes }
+}
+101781 = {
+	name = "Пейт"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101780
+
+	7945.1.1 = { birth = yes }
+	7961.1.1 = { add_trait = "knight" }
+	8000.1.1 = { death = yes }
+}
+101782 = {
+	name = "Эдвин"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101781
+
+	7970.1.1 = { birth = yes }
+	7986.1.1 = { add_trait = "knight" }
+	8010.1.1 = { death = { death_reason = death_battle } }
+}
+101783 = {
+	name = "Дикон"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101782
+
+	7991.1.1 = { birth = yes }
+	8007.1.1 = { add_trait = "knight" }
+	8033.1.1 = { death = yes }
+}
+101784 = {
+	name = "Оуэн"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101783
+
+	8016.1.1 = { birth = yes }
+	8032.1.1 = { add_trait = "knight" }
+	8067.1.1 = { death = yes }
+}
+101785 = {
+	name = "Арвуд"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101784
+
+	8051.1.1 = { birth = yes }
+	8067.1.1 = { add_trait = "knight" }
+	8095.1.1 = { death = yes }
+}
+
+350159 = {
+	name = "Пейт" #Killed Jason Lannister in the Dance
+	dynasty = 178527 #of Longleaf
+	father = 101785
+
+	martial = 8
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	add_trait = tough_soldier
+	add_trait = brave
+	add_trait = ruthless
+
+	8082.1.1 = {
+		birth = yes
+		effect = {
+			d_acornsridge = {
+				holder_scope = { ROOT = { move_character = PREV } }
+			}
+		}
+	}
+	8095.1.1 = {
+		add_trait = "trained_warrior"
+		add_trait = "squire"
+	}
+	8098.1.1 = {
+		remove_trait = "trained_warrior"
+		add_trait = "skilled_warrior"
+	}
+	8129.1.1 = {
+		effect = {
+			set_defacto_liege = ROOT
+			set_character_flag = against_king
+			e_iron_throne = {
+				holder_scope = {
+					opinion = {
+						modifier = opinion_joined_rebellion
+						who = ROOT
+						years = 20
+					}
+				}
+			}
+			c_dragonstone = {
+				holder_scope = {
+					opinion = {
+						who = ROOT
+						modifier = opinion_joined_cause
+					}
+					reverse_opinion = {
+						modifier = opinion_with_rebel_leader
+						who = ROOT
+						years = 100
+					}
+					ROOT = {
+						join_attacker_wars = PREV
+					}
+				}
+			}
+		}
+	}
+	8129.6.8 = {
+		give_nickname = nick_the_lionslayer #killed Jason Lannister
+		add_trait = "knight"
+		remove_trait = "squire"
+	}
+	8130.5.1 = { death = { death_reason = death_battle } } # Died at the first battle of Tumbleton
+}
+# Wife
+950159 = {
+	name = "Элленея"
+	female = yes
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	8082.1.1 = { birth = yes }
+	8139.1.1 = { death = yes }
+}
+#
+101786 = {
+	name = "Арвуд"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 350159
+	mother = 950159
+
+	8098.1.1 = { birth = yes }
+	8114.1.1 = { add_trait = "knight" }
+	8159.1.1 = { death = yes }
+}
+# Brother
+101796 = {
+	name = "Роланд"	# not a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 350159
+	mother = 950159
+
+	8101.1.1 = { birth = yes }
+	8116.1.1 = { add_trait = "knight" }
+	8130.1.1 = { death = yes }
+}
+#
+101787 = {
+	name = "Эндри"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101786
+
+	8132.1.1 = { birth = yes }
+	8148.1.1 = { add_trait = "knight" }
+	8167.1.1 = { death = yes }
+}
+101788 = {
+	name = "Кенрик"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101787
+
+	8151.1.1 = { birth = yes }
+	8167.1.1 = { add_trait = "knight" }
+	8184.1.1 = { death = yes }
+}
+101789 = {
+	name = "Кенрик"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101788
+
+	8173.1.1 = { birth = yes }
+	8189.1.1 = { add_trait = "knight" }
+	8206.1.1 = { death = { death_reason = death_battle } }
+}
+101790 = {
+	name = "Гровер"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101789
+
+	8197.1.1 = { birth = yes }
+	8213.1.1 = { add_trait = "knight" }
+	8243.1.1 = { death = yes }
+}
+101791 = {
+	name = "Элвуд"	# a lord
+
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101790
+
+	8224.1.1 = { birth = yes }
+	8240.1.1 = { add_trait = "knight" }
+	8290.1.1 = { death = yes }
+}
+101792 = {
+	name = "Данвелл"	# not a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101791
+
+	8243.1.1 = { birth = yes }
+	8259.1.1 = { add_trait = "knight" }
+	8273.1.1 = { add_spouse = 901792 }
+	8283.1.1 = { death = { death_reason = death_battle } }
+}
+# Wife
+901792 = {
+	name = "Алинн"
+	female = yes
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	8245.1.1 = { birth = yes }
+	8295.1.1 = { death = yes }
+}
+#
+101793 = {
+	name = "Морган"	# a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101792
+	mother = 901792
+
+	8274.1.1 = { birth = yes }
+	8290.1.1 = { add_trait = "knight" }
+	8292.1.1 = { add_spouse = 901793 }
+}
+# Brother
+101797 = {
+	name = "Тристифер"	# not a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101792
+	mother = 901792
+
+	8276.1.1 = { birth = yes }
+	8292.1.1 = { add_trait = "knight" }
+	8300.1.1 = { death = yes }
+}
+#
+# Wife
+901793 = {
+	name = "Келарра"
+	female = yes
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	8276.1.1 = { birth = yes }
+}
+#
+101794 = {
+	name = "Лиман"	# not a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101793
+	mother = 901793
+
+	8294.1.1 = { birth = yes }
+}
+101795 = {
+	name = "Бринден"	# not a lord
+	dynasty = 178527
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	father = 101793
+	mother = 901793
+
+	8296.1.1 = { birth = yes }
+}

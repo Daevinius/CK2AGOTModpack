@@ -1,0 +1,769 @@
+nightswatch_elective = {
+	elector_stances = { #Electoral stances visible on the Electors' tab. Do not directly affect voting pattern unless used as triggers in the modifiers of candidate_voter_score.
+	}
+	elector_selection = {
+		days = -100 		# If below 0, ROOT is not valid to be an Elector. Any character above 0 will be an elector.
+		#max_amount = 7 # Determines max amount of electors, with the lower scoring ones being excluded (limit is optional)
+
+		additive_modifier = { #On primary title only
+			value = -999
+			FROMFROM = {
+				NOT = { holder_scope = { primary_title = { title = PREVPREV } } }
+			}
+		}
+
+		additive_modifier = { #All black brothers vote
+			value = 110
+			trait = nightswatch
+			prisoner = no
+			is_incapable = no
+			NOT = { has_pilgrimage_trait_trigger = yes }
+		}
+
+		# #Priority
+		# additive_modifier = {
+			# value = 30
+			# has_landed_title = d_nightswatch
+		# }
+		additive_modifier = {
+			value = 25
+			higher_tier_than = COUNT
+		}
+		additive_modifier = {
+			value = 20
+			tier = COUNT
+		}
+		additive_modifier = {
+			value = 10
+			liege = { has_landed_title = d_nightswatch }
+			OR = {
+				has_job_title = job_marshal
+				has_job_title = job_castellan
+			}
+		}
+		additive_modifier = {
+			value = 5
+			liege = { has_landed_title = d_nightswatch }
+			is_councillor = yes
+		}
+		additive_modifier = {
+			value = 10
+			tier = BARON
+		}
+	}
+	elector_vote_strength = { #Affects the voting strength of each elector.
+		days = 1 # 1 elector = 1 vote.
+
+		additive_modifier = { #Lord Commander would be dead
+			value = -1
+			FROMFROM = { holder_scope = { character = ROOT } }
+		}
+		additive_modifier = {
+			value = 19
+			NOT = { FROMFROM = { holder_scope = { character = ROOT } } }
+			higher_tier_than = BARON
+			is_feudal = yes
+		}
+		additive_modifier = {
+			value = 14
+			NOT = { FROMFROM = { holder_scope = { character = ROOT } } }
+			tier = BARON
+			is_feudal = yes
+		}
+		additive_modifier = {
+			value = 9
+			NOT = { FROMFROM = { holder_scope = { character = ROOT } } }
+			liege = { has_landed_title = d_nightswatch }
+			OR = {
+				has_job_title = job_marshal
+				has_job_title = job_castellan
+			}
+		}
+	}
+	candidate_vote_score = { #Chance of an Elector voting for a candidate over the other. The candidate with the highest value will be picked.
+		days = 1
+
+		##########################   Elector voting himself   ##########################
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_feudal_elector_vote_myself
+			character = FROM
+			NOR = {
+				trait = humble
+				trait = content
+				trait = craven
+				trait = slothful
+				trait = stressed
+				trait = depressed
+				trait = ambitious
+			}
+			NOR = {
+				has_landed_title = c_castle_black
+				has_landed_title = c_shadow_tower
+				has_landed_title = c_eastwatch
+				prestige = 350
+				martial = 14
+				stewardship = 14
+				diplomacy = 14
+				intrigue = 14
+				trait = dragon_rider
+				father_even_if_dead = { higher_tier_than = DUKE }
+				dynasty = 59
+			}
+		}
+		additive_modifier = {
+			value = -25
+			localisation_key = tooltip_feudal_elector_vote_not_myself
+			character = FROM
+			NOT = { trait = ambitious }
+			OR = {
+				trait = humble
+				trait = content
+				trait = craven
+				trait = slothful
+				trait = stressed
+				trait = depressed
+			}
+		}
+		additive_modifier = {
+			value = 40
+			localisation_key = tooltip_feudal_elector_vote_myself_heir
+			character = FROM
+			OR = {
+				trait = ambitious
+				NOR = {
+					trait = humble
+					trait = content
+					trait = craven
+					trait = slothful
+					trait = stressed
+					trait = depressed
+				}
+			}
+			OR = {
+				has_landed_title = c_castle_black
+				has_landed_title = c_shadow_tower
+				has_landed_title = c_eastwatch
+				prestige = 350
+				martial = 14
+				stewardship = 14
+				diplomacy = 14
+				intrigue = 14
+				trait = dragon_rider
+				father_even_if_dead = { higher_tier_than = DUKE }
+				dynasty = 59
+			}
+		}
+
+		#Misc Positive
+		#LC's preffered candidate
+		additive_modifier = {
+			value = -30
+			localisation_key = tooltip_feudal_elector_anti_vote_ruler_opinion_negative
+			FROM = { character = ROOT_FROMFROMFROM }
+			FROMFROM = {
+				holder_scope = {
+					NOT = { reverse_opinion = { who = ROOT value = -60 } }
+				}
+			}
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_feudal_elector_anti_vote_ruler_opinion_negative
+			FROM = { character = ROOT_FROMFROMFROM }
+			FROMFROM = {
+				holder_scope = {
+					reverse_opinion = { who = ROOT value = -60 }
+					NOT = { reverse_opinion = { who = ROOT value = -30 } }
+				}
+			}
+		}
+		additive_modifier = { #LC's preffered candidate
+			value = 15
+			localisation_key = tooltip_feudal_elector_pro_vote_ruler_opinion_positive
+			FROM = { character = ROOT_FROMFROMFROM }
+			FROMFROM = {
+				holder_scope = {
+					reverse_opinion = { who = ROOT value = 0 }
+					NOT = { reverse_opinion = { who = ROOT value = 30 } }
+				}
+			}
+		}
+		additive_modifier = { #LC's preffered candidate
+			value = 30
+			localisation_key = tooltip_feudal_elector_pro_vote_ruler_opinion_positive
+			FROM = { character = ROOT_FROMFROMFROM }
+			FROMFROM = {
+				holder_scope = {
+					reverse_opinion = { who = ROOT value = 60 }
+				}
+			}
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_NW_elector_BARON
+			FROM = { tier = BARON }
+		}
+		additive_modifier = {
+			value = 30
+			localisation_key = tooltip_NW_elector_COUNT
+			FROM = {
+				tier = COUNT
+				is_feudal = yes
+			}
+		}
+		additive_modifier = {
+			value = 25
+			localisation_key = tooltip_NW_elector_FIRST_RANGER
+			FROM = { has_minor_title = title_first_ranger }
+		}
+		additive_modifier = {
+			value = 25
+			localisation_key = tooltip_NW_elector_FIRST_STEWARD
+			FROM = { has_minor_title = title_first_steward }
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_NW_elector_RANGER
+			FROM = { has_character_modifier = nw_ranger }
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_DRAGON_RIDER
+			FROM = { trait = dragon_rider }
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_NW_elector_PERSONAL_STEWARD
+			FROM = { has_character_flag = NW_personal_steward }
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_HIGHBORN
+			FROM = {
+				father_even_if_dead = { tier = COUNT }
+				NOT = { trait = bastard }
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_HIGHBORN
+			FROM = {
+				father_even_if_dead = { tier = DUKE }
+				NOT = { trait = bastard }
+			}
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_HIGHBORN
+			FROM = {
+				father_even_if_dead = { tier = DUKE }
+				trait = bastard
+			}
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_HIGHBORN
+			FROM = {
+				father_even_if_dead = { higher_tier_than = DUKE }
+				NOT = { trait = bastard }
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_HIGHBORN
+			FROM = {
+				father_even_if_dead = { higher_tier_than = DUKE }
+				trait = bastard
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_STARK
+			FROM = { dynasty = 59 }
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_elector_JON_SNOW
+			NOT = { character = FROM }
+			FROM = { character = 1002059 }
+		}
+
+		#Misc Negative
+		additive_modifier = {
+			value = -50
+			localisation_key = tooltip_elector_BROKEN_VOWS
+			NOT = { character = FROM }
+			FROM = { has_character_modifier = NW_broken_vows }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_LOWBORN
+			FROM = {
+				OR = {
+					is_lowborn = yes
+					NOT = { father_even_if_dead = { always = yes } }
+				}
+			}
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_NW_BUILDER
+			NOT = { has_character_modifier = nw_builder }
+			FROM = { has_character_modifier = nw_builder }
+		}
+		additive_modifier = {
+			value = -50
+			localisation_key = tooltip_elector_WILDLING
+			NOT = { wildling_culture_trigger = yes }
+			FROM = { wildling_culture_trigger = yes }
+		}
+		additive_modifier = {
+			value = -30
+			localisation_key = tooltip_elector_CROWKILLER
+			NOT = { character = FROM }
+			FROM = { has_nickname = nick_crowkiller  }
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_WILDLING_SYMPATHISER
+			NOT = { trait = sympathy_wildling_religion }
+			FROM = { trait = sympathy_wildling_religion }
+		}
+		additive_modifier = {
+			value = -25
+			localisation_key = tooltip_elector_YOUNG
+			FROM = { age < 21 }
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_YOUNG
+			FROM = {
+				age = 21
+				age < 30
+			}
+		}
+
+		#Culturism
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_feudal_elector_vote_fellow_culture
+			NOT = { character = FROM }
+			culture = FROM
+		}
+		additive_modifier = {
+			value = -20
+			localisation_key = tooltip_feudal_elector_vote_foreigner
+			NOR = {
+				culture_group = andal
+				culture_group = dornish
+				culture_group = first_men
+				culture_group = iron_isles_culture
+			}
+			NOT = { culture_group = FROM }
+		}
+		additive_modifier = {
+			value = -30
+			localisation_key = tooltip_feudal_elector_vote_foreigner
+			OR = {
+				culture_group = andal
+				culture_group = dornish
+				culture_group = first_men
+				culture_group = iron_isles_culture
+			}
+			FROM = {
+				NOT = { culture_group = andal }
+				NOT = { culture_group = dornish }
+				NOT = { culture_group = first_men }
+				NOT = { culture_group = iron_isles_culture }
+			}
+		}
+
+		#Faithism
+		additive_modifier = { #Infidel
+			value = -15
+			localisation_key = tooltip_feudal_elector_vote_infidel
+			NOT = { has_religion_feature = religion_cosmopolitan }
+			NOT = { has_religion_feature = religion_dogmatic }
+			FROM = {
+				religion_group = ROOT
+				NOT = { religion = ROOT }
+				NOT = { is_heresy_of = ROOT }
+			}
+		}
+		additive_modifier = { #Heathen
+			value = -20
+			localisation_key = tooltip_feudal_elector_vote_heathen
+			NOT = { has_religion_feature = religion_cosmopolitan }
+			NOT = { has_religion_feature = religion_dogmatic }
+			FROM = {
+				NOT = { religion_group = ROOT }
+				NOT = { is_heresy_of = ROOT }
+				ROOT = {
+					NOT = { has_sympathy_for_true_religion_of_prev_trigger = yes }
+				}
+			}
+		}
+		additive_modifier = { #Dogmatics will hardly ever pick an infidel.
+			value = -100
+			localisation_key = tooltip_feudal_elector_vote_heathen_dogmatic
+			OR = {
+				trait = zealous
+				has_religion_feature = religion_dogmatic
+			}
+			FROM = { NOT = { religion = ROOT } }
+		}
+
+		#traits
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_DEPRESSED
+			FROM = { trait = depressed }
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_INJURED
+			FROM = { is_maimed_trigger = yes }
+		}
+		additive_modifier = {
+			value = -20
+			localisation_key = tooltip_elector_INFIRM
+			FROM = { trait = infirm }
+		}
+		additive_modifier = {
+			value = -20
+			localisation_key = tooltip_elector_CRIPPLED
+			FROM = { is_crippled_trigger = yes }
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_BLIND
+			FROM = {
+				OR = {
+					trait = blinded
+					trait = blinded_age
+				}
+			}
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_KINSLAYER
+			FROM = { is_any_kinslayer_trigger = yes }
+		}
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_DISEASE
+			FROM = { has_epidemic = yes }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_ILL
+			FROM = { is_ill = yes }
+		}
+
+		#Personality
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_CONTENT
+			FROM = { trait = content }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_SLOTHFUL
+			FROM = { trait = slothful }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_CRAVEN
+			FROM = { trait = craven }
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_BRAVE
+			FROM = { trait = brave }
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_AMBITIOUS
+			FROM = { trait = ambitious }
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_DILIGENT
+			FROM = { trait = diligent }
+		}
+		#Prestige
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_PRESTIGE
+			FROM = { prestige < 0 }
+		}
+		additive_modifier = {
+			value = -5
+			localisation_key = tooltip_elector_PRESTIGE
+			FROM = {
+				prestige = 0
+				prestige < 40
+			}
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_PRESTIGE
+			FROM = {
+				prestige = 200
+				prestige < 300
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_PRESTIGE
+			FROM = {
+				prestige = 300
+				prestige < 400
+			}
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_PRESTIGE
+			FROM = {
+				prestige = 400
+				prestige < 500
+			}
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_elector_PRESTIGE
+			FROM = { prestige = 500 }
+		}
+
+		#Martial
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = { martial < 1 }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = {
+				martial = 1
+				martial < 4
+			}
+		}
+		additive_modifier = {
+			value = -5
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = {
+				martial = 4
+				martial < 7
+			}
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = {
+				martial = 12
+				martial < 14
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = {
+				martial = 14
+				martial < 16
+			}
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = {
+				martial = 16
+				martial < 18
+			}
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_elector_MARTIAL
+			FROM = { martial = 18 }
+		}
+
+		#Stewardship
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = { stewardship < 1 }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = {
+				stewardship = 1
+				stewardship < 4
+			}
+		}
+		additive_modifier = {
+			value = -5
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = {
+				stewardship = 4
+				stewardship < 7
+			}
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = {
+				stewardship = 12
+				stewardship < 14
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = {
+				stewardship = 14
+				stewardship < 16
+			}
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = {
+				stewardship = 16
+				stewardship < 18
+			}
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_elector_STEWARDSHIP
+			FROM = { stewardship = 18 }
+		}
+
+		#Diplomacy
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = { diplomacy < 1 }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = {
+				diplomacy = 1
+				diplomacy < 4
+			}
+		}
+		additive_modifier = {
+			value = -5
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = {
+				diplomacy = 4
+				diplomacy < 7
+			}
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = {
+				diplomacy = 12
+				diplomacy < 14
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = {
+				diplomacy = 14
+				diplomacy < 16
+			}
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = {
+				diplomacy = 16
+				diplomacy < 18
+			}
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_elector_DIPLOMACY
+			FROM = { diplomacy = 18 }
+		}
+
+		#intrigue
+		additive_modifier = {
+			value = -15
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = { intrigue < 1 }
+		}
+		additive_modifier = {
+			value = -10
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = {
+				intrigue = 1
+				intrigue < 4
+			}
+		}
+		additive_modifier = {
+			value = -5
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = {
+				intrigue = 4
+				intrigue < 7
+			}
+		}
+		additive_modifier = {
+			value = 5
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = {
+				intrigue = 12
+				intrigue < 14
+			}
+		}
+		additive_modifier = {
+			value = 10
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = {
+				intrigue = 14
+				intrigue < 16
+			}
+		}
+		additive_modifier = {
+			value = 15
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = {
+				intrigue = 16
+				intrigue < 18
+			}
+		}
+		additive_modifier = {
+			value = 20
+			localisation_key = tooltip_elector_INTRIGUE
+			FROM = { intrigue = 18 }
+		}
+
+
+		##########################   Raw Opinion bonus towards Candidate   ##########################
+		elector_candidate_opinion_1_vote = yes
+
+		# Opinion
+		elector_candidate_opinion_vote = yes
+	}
+
+	#ROOT = Current Title holder, FROM = Candidate, FROMFROM = Title, FROMFROMFROM = Null
+	candidate_trigger = { #Trigger to determine what characters are valid candidates that can be voted by electors.
+		NOT = { character = FROM }
+		FROM = {
+			trait = nightswatch
+			prisoner = no
+			is_incapable = no
+			NOR = {
+				trait = maester
+				trait = archmaester
+				has_priest_trait_trigger = yes
+			}
+		}
+	}
+}

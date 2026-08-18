@@ -1,0 +1,143 @@
+namespace = tdp_valyrian_empire
+
+###Dothraki### - 2
+###Religious Extremism### - 3
+
+
+###Reclaim from Dothraki###
+narrative_event = {
+	id = tdp_valyrian_empire.2
+	title = EVTTITLEtdp_valyrian_empire.2
+	desc = EVTDESCtdp_valyrian_empire.2
+	picture = GFX_evt_dothraki_charge
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAtdp_valyrian_empire.2
+		set_character_flag = dothraki_reclamation
+	}
+
+	option = {
+		name = EVTOPTBtdp_valyrian_empire.2
+		set_character_flag = chose_spare_dothraki
+	}
+}
+
+#Essaria Reconquered
+narrative_event = {
+	id = tdp_valyrian_empire.20
+	title = EVTTITLEtdp_valyrian_empire.2
+	desc = EVTDESCtdp_valyrian_empire.20
+	picture = GFX_evt_dothraki_charge
+
+	is_triggered_only = yes
+
+	trigger = {
+		k_essaria = {
+			any_de_jure_vassal_title = {
+				holder_scope = {
+					top_liege = { character = ROOT }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = EVTOPTAtdp_valyrian_empire.20
+	}
+
+	option = {
+		name = EVTOPTBtdp_valyrian_empire.20
+	}
+}
+
+###Religious Extremism###
+character_event = {
+	id = tdp_valyrian_empire.3
+
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		OR = {
+			religion = black_goat
+			religion = black_goat_reformed
+			religion = bearded_priests
+			religion = rhllor
+		}
+		trait = zealous
+		trait = ambitious
+		trait = dragon_rider
+		any_friend = {
+			trait = dragon
+			martial = 70
+		}
+		top_liege = {
+			tier = EMPEROR
+			NOT = { religion = ROOT }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 2
+	}
+
+	immediate = {
+		set_character_flag = candidate_for_war
+	}
+
+}
+
+#Force Convert Empire
+character_event = {
+	id = tdp_valyrian_empire.30
+	title = EVTTITLEtdp_valyrian_empire.30
+	desc = {
+		trigger = {
+			religion = the_seven
+		}
+		text = EVTDESCtdp_valyrian_empire.30
+		picture = GFX_faith_seven
+	}
+	desc = {
+		trigger = {
+			OR = {
+				religion = rhllor
+				religion = rahlooism
+			}
+		}
+		text = EVTDESCtdp_valyrian_empire.30
+		picture = GFX_faith_rhllor
+	}
+	desc = {
+		trigger = {
+			religion = bearded_priests
+		}
+		text = EVTDESCtdp_valyrian_empire.30
+		picture = GFX_evt_norvos
+	}
+	desc = {
+		trigger = {
+			OR = {
+				religion = black_goat_reformed
+				religion = black_goat
+			}
+		}
+		text = EVTDESCtdp_valyrian_empire.30
+		picture = GFX_faith_black_goat
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = OK
+		any_vassal = {
+			limit = { NOT = { religion = ROOT } }
+			character_event = { id = tdp_valyria_empire.31 }
+		}
+	}
+}
+
+
+

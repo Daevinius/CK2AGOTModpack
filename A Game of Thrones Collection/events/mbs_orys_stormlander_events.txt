@@ -1,0 +1,69 @@
+namespace = mbs_orys_stormlander
+
+#Orys Baratheon gets his Bloodline and converts to Stormlander culture
+narrative_event = {
+	id = mbs_orys_stormlander.1
+	desc = "EVTDESC_mbs_orys_stormlander.1"
+	title = "EVTTITLEmbs_orys_stormlander.1"
+	picture = GFX_BARATHEON
+	hide_from = yes
+
+	has_character_flag = orys_baratheon
+
+	trigger = {
+		character = 1317
+		has_landed_title = k_stormlands
+		has_landed_title = c_storms_end
+		NOT = { has_global_flag = orys_stormlander }
+		NOT = { culture = stormlander }
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	immediate = {
+		set_global_flag = orys_stormlander
+	}
+
+	option = {
+		name = "EVTOPTA_mbs_orys_stormlander.1A"
+		ai_chance = { factor = 100 }
+		culture = stormlander
+		create_bloodline = {
+			type = orys_baratheon
+		}
+		c_1317 = { tooltip = { show_portrait = yes } }
+	}
+}
+#Argella Durrandon cannot marry during the Conquest
+character_event = {
+	id = mbs_orys_stormlander.2
+	desc = "EVTDESC_mbs_orys_stormlander.2"
+	picture = GFX_BARATHEON
+	hide_window = yes
+
+	has_character_flag = argella_durrandon
+
+	trigger = {
+		character = 11544
+		trait = refusing_marriage
+	}
+
+	mean_time_to_happen = {
+		years = 3
+		modifier = {
+			factor = 0.5
+			is_married = yes
+		}
+		modifier = {
+			factor = 0.5
+			e_iron_throne = { holder_scope = { war = no } }
+		}
+	}
+
+	option = {
+		name = OK
+		remove_trait = refusing_marriage
+	}
+}

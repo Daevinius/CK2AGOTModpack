@@ -1,0 +1,48 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_dragonkeeper_armor"
+		textureFile = "gfx/characters/shared/dragonkeeper_armor.dds"
+		noOfFrames = 1
+	}
+	spriteType = {
+		name = "GFX_dragonkeeper_armor_behind"
+		textureFile = "gfx/characters/shared/dragonkeeper_armor_behind.dds"
+		noOfFrames = 1
+	}
+	spriteType = {
+		name = "GFX_dragonkeeper_helmet"
+		textureFile = "gfx/characters/shared/dragonkeeper_helmet.dds"
+		noOfFrames = 1
+	}
+	spriteType = {
+		name = "GFX_dragonkeeper_helmet_behind"
+		textureFile = "gfx/characters/shared/dragonkeeper_helmet_behind.dds"
+		noOfFrames = 1
+	}
+
+	portraitType = { #
+		effectFile = "gfx/FX/portrait.lua"
+		name = "PORTRAIT_dragonkeepers_clothing"
+
+		weight = {
+			additive_modifier = {
+				value = 2000
+				portrait_clothing = yes
+				portrait_has_trait = dragonkeeper
+			}
+		}
+
+		layer = {
+			"GFX_dragonkeeper_armor_behind:c0"
+			"GFX_dragonkeeper_helmet_behind:c1"
+			"GFX_dragonkeeper_armor:c2"
+			"GFX_empty:c3"
+			"GFX_empty:c4"
+			"GFX_dragonkeeper_helmet:c5"
+			"GFX_empty:c7"
+		}
+
+		headgear_that_hides_hair = { 1 }
+	}
+}

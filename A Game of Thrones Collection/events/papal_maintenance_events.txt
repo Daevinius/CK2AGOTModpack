@@ -1,0 +1,30 @@
+character_event = {
+	id = 670000
+	desc = EVTDESC_670000
+	hide_window = yes
+	picture = GFX_evt_viking_throneroom_oldgods
+
+	trigger = {
+		AND = {
+			has_religion_feature = religion_papal_head
+			controls_religion = yes
+		}
+	}
+
+	mean_time_to_happen  = {
+		days = 1
+	}
+
+	option = {
+		name = {
+			text = EVTOPTA_670000
+		}
+		any_demesne_title = {
+			add_law = {
+				law = succ_pagan_papal_succession
+				cooldown = no
+				opinion_effect = no
+			}
+		}
+	}
+}

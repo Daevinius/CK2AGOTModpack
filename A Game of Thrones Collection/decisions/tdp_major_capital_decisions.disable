@@ -1,0 +1,282 @@
+decisions = {
+	#Volantis 419
+	#Tyrosh 367
+	#Lys 368
+	#Myr 378
+	#Pentos 406
+	#Norvos 433
+	#Braavos 470
+	#Lorath 471
+	#Qohor 476
+
+	move_capital_to_old_volantis = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			OR = {
+				primary_title = { title = k_volantis }
+				AND = {
+					primary_title = { title = e_new_valyria }
+					culture = eastern_valyrian
+				}
+			}
+			c_oldvolantis = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 419 } } }
+			OR = {
+				has_landed_title = b_oldvolantis
+				any_vassal = {
+					has_landed_title = b_oldvolantis
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_oldvolantis
+			b_oldvolantis = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_tyrosh = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_tyrosh }
+			c_tyrosh = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 367 } } }
+			OR = {
+				has_landed_title = b_tyrosh
+				any_vassal = {
+					has_landed_title = b_tyrosh
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_tyrosh
+			b_tyrosh = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_lys = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_lys }
+			c_lys = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 368 } } }
+			OR = {
+				has_landed_title = b_lys
+				any_vassal = {
+					has_landed_title = b_lys
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_lys
+			b_lys = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_myr = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_myr }
+			c_myr = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 378 } } }
+			OR = {
+				has_landed_title = b_myr
+				any_vassal = {
+					has_landed_title = b_myr
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_myr
+			b_myr = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_pentos = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_pentos }
+			c_pentos = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 406 } } }
+			OR = {
+				has_landed_title = b_pentos
+				any_vassal = {
+					has_landed_title = b_pentos
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_pentos
+			b_pentos = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_norvos = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_norvos }
+			religion = bearded_priests
+			c_norvos = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 433 } } }
+			OR = {
+				has_landed_title = b_beardedtemple
+				any_vassal = {
+					has_landed_title = b_beardedtemple
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_norvos
+			b_beardedtemple = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_braavos = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			OR = {
+				primary_title = { title = k_braavos }
+				primary_title = { title = e_braavos }
+			}
+			c_braavos = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 470 } } }
+			OR = {
+				has_landed_title = b_braavos
+				any_vassal = {
+					has_landed_title = b_braavos
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_braavos
+			b_braavos = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_lorath = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_lorath }
+			c_lorath = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 471 } } }
+			OR = {
+				has_landed_title = b_lorath
+				any_vassal = {
+					has_landed_title = b_lorath
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_lorath
+			b_lorath = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	move_capital_to_qohor = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			primary_title = { title = k_qohor }
+			c_qohor = { holder_scope = { NOT = { ai = no } } }
+			ai = yes
+			capital_holding = { location = { NOT = { province_id = 476 } } }
+			OR = {
+				has_landed_title = b_qohor
+				any_vassal = {
+					has_landed_title = b_qohor
+				}
+			}
+
+		}
+		allow = {
+		}
+		effect = {
+			gain_title = c_qohor
+			b_qohor = {
+				ROOT = { capital = PREV }
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+}

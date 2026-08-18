@@ -1,0 +1,285 @@
+# The entry should be named in the same way that the elective succession law is named to define its voter's logic
+# ROOT			Voter, the character voting in the election
+# FROM			Candidate, character considered for the title
+# FROMFROM		The title the nomination is for
+# FROMFROMFROM	The title owner's candidate
+# The voter will vote for the top score candidate calculated from this script
+
+feudal_elective = {
+
+	elector_vote_strength = {
+		days = 1
+	}
+
+	elector_selection = {
+		days = -100
+
+		additive_modifier = { #Either title is higher than Duke-tier, or must be primary.
+			value = -999
+			FROMFROM = {
+				NOR = {
+					higher_tier_than = DUKE
+					holder_scope = { primary_title = { title = PREVPREV } }
+				}
+			}
+		}
+		additive_modifier = { #Current ruler is always an elector.
+			value = 150
+			FROMFROM = {
+				holder_scope = {
+					character = PREVPREV
+				}
+			}
+		}
+		additive_modifier = {
+			value = 110
+			NOT_mythical_creature_trigger = yes
+			OR = {
+				AND = { #Independent ruler who is dejure vassal.
+					independent = yes
+					any_dejure_liege = { title = FROMFROM }
+				}
+				AND = { #Vassal in dejure realm (or is titular)
+					is_ruler = yes
+					FROMFROM = { holder_scope = { is_vassal_or_below = PREVPREV } }
+					OR = {
+						FROMFROM = { is_titular = yes }
+						any_dejure_liege = { title = FROMFROM }
+					}
+				}
+				AND = { #Unlanded subjects
+					FROMFROM = { holder_scope = { is_vassal_or_below = PREVPREV } }
+					OR = {
+						FROMFROM = { is_titular = yes }
+						FROMFROM = { holder_scope = { primary_title = { title = PREVPREV } } }
+						any_claim = { title = FROMFROM }
+					}
+					is_ruler = no
+					is_adult = yes
+					is_incapable = no
+					prisoner = no
+				}
+			}
+			OR = {
+				higher_real_tier_than = BARON #All count tier and above
+				AND = { #Barons in duke tier realms
+					tier = BARON
+					FROMFROM = { lower_real_tier_than = KING }
+				}
+				AND = { #Holder's council
+					FROMFROM = { holder_scope = { is_liege_of = PREVPREV } }
+					OR = {
+						is_councillor = yes
+						is_voter = yes
+					}
+				}
+				FROMFROM = { holder_scope = { is_close_relative = PREVPREV } } #Holder's relatives
+				any_claim = { title = FROMFROM } #Claimants
+			}
+		}
+		additive_modifier = {
+			value = 40
+			tier = KING
+		}
+		additive_modifier = {
+			value = 30
+			tier = DUKE
+		}
+		additive_modifier = {
+			value = 20
+			tier = COUNT
+		}
+		additive_modifier = {
+			value = 10
+			OR = {
+				tier = BARON
+				is_councillor = yes
+				is_voter = yes
+			}
+		}
+		additive_modifier = {
+			value = 5
+			OR = {
+				FROMFROM = { holder_scope = { is_close_relative = PREVPREV } } #Holder's relatives
+				any_claim = { title = FROMFROM } #Claimants
+			}
+		}
+	}
+
+	# ROOT is current title holder
+	# FROM is candidate
+	# FROMFROM is title
+	# FROMFROMFROM is null
+	candidate_trigger = {
+		FROM = {
+			NOT = { character = ROOT } # Not the current ruler.
+
+			can_inherit_titles_trigger = yes
+			NOT_mythical_creature_trigger = yes
+
+			trigger_if = {
+				limit = { ROOT = { is_in_interregnum_trigger = yes } }
+
+				is_incapable = no
+				is_adult = yes
+				prisoner = no
+				higher_real_tier_than = BARON
+			}
+
+			OR = {
+				any_claim = { title = ROOT_FROMFROM }
+
+				trigger_if = {
+					limit = { ROOT = { is_in_interregnum_trigger = no } }
+
+					is_close_relative = ROOT
+
+					OR = {
+						dynasty = ROOT
+
+						trigger_if = {
+							limit = { is_landed = yes }
+							higher_real_tier_than = BARON
+						}
+					}
+				}
+				trigger_else = {
+
+					trigger_if = {
+						limit = { liege = { character = ROOT } }
+
+						OR = {
+							is_councillor = yes
+							is_voter = yes
+							has_character_flag = interregnum_regent
+							has_character_flag = interregnum_castellan
+							has_character_flag = interregnum_councillor
+						}
+					}
+				}
+
+				trigger_if = {
+					limit = {
+						# Either defacto direct vassal, or independent ruler who is dejure vassal
+						OR = {
+							vassal_of = ROOT
+
+							AND = {
+								independent = yes
+								ROOT_FROMFROM = { de_jure_vassal_or_below = PREV }
+							}
+						}
+					}
+
+					# Tier requirements
+					trigger_if = {
+						limit = { ROOT_FROMFROM = { real_tier = COUNT } }
+						real_tier = BARON
+					}
+					trigger_else_if = {
+						limit = { ROOT_FROMFROM = { real_tier = DUKE } }
+						higher_real_tier_than = BARON
+					}
+					trigger_else = {
+						higher_real_tier_than = COUNT
+					}
+				}
+			}
+
+			# Candidate should not be a landless Courtier that is about to inherit a Theocracy or Republic
+			trigger_if = {
+				limit = { is_ruler = no }
+				any_heir_title = {
+					holder_scope = { is_feudal = no }
+				}
+			}
+			trigger_else = {
+				is_theocracy = no
+				is_republic = no
+				is_merchant_republic = no
+			}
+
+			# If the title controls the religion, candidates must be of the same religion.
+			OR = {
+				ROOT = {
+					controls_religion = no
+				}
+				religion = ROOT
+			}
+
+			# NOR = {
+				# mother = {
+					# is_alive = yes
+					# NOT = { is_married = ROOT }
+					# parent_for_elective_succession_trigger = yes
+				# }
+				# father = {
+					# is_alive = yes
+					# NOT = { is_married = ROOT }
+					# parent_for_elective_succession_trigger = yes
+				# }
+			# }
+		}
+	}
+
+	candidate_vote_score = {
+		days = 0
+
+		### Elector voting himself ###
+		elector_self_feudal_vote = yes
+
+		## All candidates
+
+		# Sexism
+		elector_candidate_gender_vote = yes
+
+		# Ageism
+		elector_candidate_age_vote = yes
+		elector_candidate_age_children_vote = yes
+
+		# Culturism
+		elector_candidate_culture_vote = yes
+
+		# Faithism
+		elector_candidate_religion_vote = yes
+
+		# Barbarism
+		elector_candidate_barbarism_vote = yes
+
+		# Nepotism
+		elector_candidate_nepotism_vote = yes
+
+		# Prestige
+		elector_candidate_prestige_vote = yes
+
+		# Piety
+		elector_candidate_piety_vote = yes
+
+		# Education and lifestyle
+		elector_candidate_education_lifestyle_vote = yes
+		elector_candidate_education_attribute_vote = yes
+
+		# Claims
+		elector_candidate_claims_vote = yes
+
+		# Traits
+		elector_candidate_traits_vote = yes
+		elector_candidate_traits_disfigured_vote = yes
+		elector_candidate_traits_excommunication_vote = yes
+		elector_candidate_traits_feudal_vote = yes
+		elector_candidate_combat_ratings_vote = yes
+
+		# Ruler traits
+		elector_ruler_traits_vote = yes
+
+		# Candidate opinion
+		elector_candidate_opinion_1_vote = yes
+		elector_candidate_opinion_vote = yes
+
+		# Ruler opinion
+		elector_ruler_opinion_vote = yes
+
+		# Ambition-Specific Modifiers
+		elector_candidate_ambition_vote = yes
+	}
+}

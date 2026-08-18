@@ -1,0 +1,602 @@
+namespace = mbs_singer
+
+################################
+character_event = {
+	id = mbs_singer.1
+	desc = "EVTDESCmbs_singer.1"
+
+	is_triggered_only = yes
+
+
+
+
+	option = {
+		name = "EVTOPTAmbs_singer.1" #Cheap
+		ai_chance = {
+			factor = 0.2
+
+			modifier = {
+				factor = 10
+				trait = greedy
+			}
+		}
+		character_event = { id = mbs_singer.2 }
+	}
+	option = {
+		name = "EVTOPTBmbs_singer.1" #Decent
+		trigger = {
+			wealth = 5
+		}
+		ai_chance = {
+			factor = 1
+
+			modifier = {
+				factor = 5
+				trait = content
+			}
+		}
+		ROOT = { wealth = -5 }
+		character_event = { id = mbs_singer.3 }
+	}
+	option = {
+		name = "EVTOPTCmbs_singer.1" #Skilled
+		trigger = {
+			wealth = 30
+		}
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 3
+				trait = ambitious
+			}
+			modifier = {
+				factor = 3
+				trait = proud
+			}
+			modifier = {
+				factor = 3
+				higher_tier_than = DUKE
+			}
+		}
+		ROOT = { wealth = -30 }
+		character_event = { id = mbs_singer.4 }
+	}
+	option = {
+		name = "EVTOPTDmbs_singer.1" #Master
+		trigger = {
+			wealth = 60
+		}
+		ai_chance = {
+			factor = 2
+
+			modifier = {
+				factor = 10
+				trait = ambitious
+			}
+			modifier = {
+				factor = 10
+				trait = proud
+			}
+			modifier = {
+				factor = 5
+				higher_tier_than = DUKE
+			}
+		}
+		ROOT = { wealth = -60 }
+		character_event = { id = mbs_singer.5 }
+	}
+}
+character_event = {
+	id = mbs_singer.2
+	desc = "EVTDESCmbs_singer.2"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_singer.2" #Cheap
+		ai_chance = {
+			factor = 1
+		}
+		create_character = {
+			trait = naive_appeaser
+			trait = drunkard
+			trait = poet
+			random_traits = yes
+			dynasty = none
+			religion = THIS
+			culture = THIS
+			female = no
+			age = 30
+		}
+		new_character = {
+			give_minor_title = title_court_singer_mbs
+			add_artifact = lute
+		}
+	}
+}
+character_event = {
+	id = mbs_singer.3
+	desc = "EVTDESCmbs_singer.3"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_singer.3" #Decent
+		ai_chance = {
+			factor = 1
+		}
+		create_random_diplomat = {
+			female = 20 #20%
+			trait = poet
+			random_traits = yes
+			dynasty = none
+			religion = THIS
+			culture = THIS
+			age = 25
+		}
+		new_character = {
+			give_minor_title = title_court_singer_mbs
+			add_artifact = lute
+			random_list = {
+				60 = { add_trait = fair }
+				40 = {  }
+			}
+			random_list = {
+				70 = { add_trait = lustful }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = hedonist }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = gregarious }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = ambitious }
+				30 = {  }
+			}
+			random_list = {
+				10 = { add_trait = quick }
+				90 = {  }
+			}
+			random_list = {
+				30 = { upgrade_education_effect = yes }
+				80 = { change_diplomacy = 1 }
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_singer.4
+	desc = "EVTDESCmbs_singer.4"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_singer.4" #Skilled
+		ai_chance = {
+			factor = 1
+		}
+		create_random_diplomat = {
+			female = 40 #40%
+			trait = poet
+			random_traits = yes
+			dynasty = none
+			religion = THIS
+			culture = THIS
+			age = 25
+		}
+		new_character = {
+			give_minor_title = title_court_singer_mbs
+			add_artifact = lute
+			random_list = {
+				70 = { add_trait = fair }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = lustful }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = hedonist }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = gregarious }
+				30 = {  }
+			}
+			random_list = {
+				70 = { add_trait = ambitious }
+				30 = {  }
+			}
+			random_list = {
+				30 = { add_trait = diligent }
+				70 = {  }
+			}
+			random_list = {
+				60 = { upgrade_education_effect = yes }
+				40 = { change_diplomacy = 2 }
+			}
+			random_list = {
+				20 = { add_trait = quick }
+				80 = {  }
+			}
+			random_list = {
+				50 = {
+					culture = reachman
+					set_graphical_culture = reachman
+					religion = the_seven
+				}
+				30 = {
+					culture = riverlander
+					set_graphical_culture = riverlander
+					religion = the_seven
+				}
+				30 = {
+					culture = westerman
+					set_graphical_culture = westerman
+					religion = the_seven
+				}
+				26 = {
+					culture = valeman
+					set_graphical_culture = valeman
+					religion = the_seven
+				}
+				30 = {
+					culture = stormlander
+					set_graphical_culture = stormlander
+					religion = the_seven
+				}
+				4 = {
+					culture = sisterman
+					set_graphical_culture = sisterman
+					religion = the_seven
+				}
+				10 = {
+					culture = stone_dornish
+					set_graphical_culture = stone_dornish
+					religion = the_seven
+				}
+				10 = {
+					culture = sand_dornish
+					set_graphical_culture = sand_dornish
+					religion = the_seven
+				}
+				10 = {
+					culture = salt_dornish
+					set_graphical_culture = salt_dornish
+					religion = the_seven
+				}
+				10 = {
+					culture = ironborn
+					set_graphical_culture = ironborn
+					religion = drowned_god
+				}
+				12 = {
+					culture = northman
+					set_graphical_culture = northman
+					religion = old_gods
+				}
+				4 = {
+					culture = hill_clansman
+					set_graphical_culture = hill_clansman
+					religion = old_gods
+				}
+				4 = {
+					culture = crannogman
+					set_graphical_culture = crannogman
+					religion = old_gods
+				}
+				10 = {
+					culture = half_southron
+					set_graphical_culture = half_southron
+					religion = the_seven
+				}
+				3 = {
+					culture = crackclawmen
+					set_graphical_culture = crackclawmen
+					religion = the_seven
+				}
+				1 = {
+					culture = skagosi
+					set_graphical_culture = skagosi
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = wildling
+					set_graphical_culture = wildling
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = thenn
+					set_graphical_culture = thenn
+					religion = thenn_rel
+				}
+				1 = {
+					culture = frozen_shore
+					set_graphical_culture = frozen_shore
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = hornfoot
+					set_graphical_culture = hornfoot
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = nightrunner
+					set_graphical_culture = nightrunner
+					religion = beyond_wall_old_gods
+				}
+			}
+			random_list = {
+				1 = { give_nickname = nick_mbs_the_harper }
+				1 = { give_nickname = nick_mbs_the_lutist }
+				1 = { give_nickname = nick_mbs_the_singer }
+				1 = { give_nickname = nick_mbs_the_silvertongue }
+				1 = { give_nickname = nick_mbs_the_goldentongue }
+				1 = { give_nickname = nick_mbs_the_sweettongue }
+				1 = { give_nickname = nick_mbs_the_sweetvoice }
+				1 = { give_nickname = nick_mbs_the_purevoice }
+				1 = { give_nickname = nick_mbs_the_goldenvoice }
+				1 = { give_nickname = nick_mbs_the_silvervoice }
+				1 = { give_nickname = nick_mbs_the_wanderingbard }
+				1 = { give_nickname = nick_mbs_the_bluebard }
+				1 = { give_nickname = nick_mbs_the_redbard }
+				1 = { give_nickname = nick_mbs_the_goldbard }
+				1 = { give_nickname = nick_mbs_the_greenbard }
+				1 = { give_nickname = nick_mbs_the_silverbard }
+				1 = { give_nickname = nick_mbs_the_blackbard }
+				1 = { give_nickname = nick_mbs_the_orangebard }
+				1 = { give_nickname = nick_mbs_the_rhymer }
+				1 = { give_nickname = nick_mbs_the_strummer }
+				1 = { give_nickname = nick_mbs_the_melodious }
+				1 = { give_nickname = nick_mbs_the_nightingale }
+				1 = { give_nickname = nick_mbs_the_lark }
+				1 = { give_nickname = nick_mbs_the_fairfinger }
+				1 = { give_nickname = nick_mbs_the_swiftfinger }
+				75 = {  }
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_singer.5
+	desc = "EVTDESCmbs_singer.5"
+
+	is_triggered_only = yes
+
+
+	option = {
+		name = "EVTOPTAmbs_singer.5" #Master
+		ai_chance = {
+			factor = 1
+		}
+		create_random_diplomat = {
+			female = 40 #40%
+			trait = poet
+			trait = diligent
+			trait = gregarious
+			trait = grey_eminence
+			random_traits = yes
+			dynasty = none
+			religion = THIS
+			culture = THIS
+			age = 30
+		}
+		new_character = {
+			give_minor_title = title_court_singer_mbs
+			add_artifact = lute
+			random_list = {
+				80 = { add_trait = fair }
+				20 = {  }
+			}
+			random_list = {
+				80 = { add_trait = lustful }
+				20 = {  }
+			}
+			random_list = {
+				90 = { add_trait = hedonist }
+				10 = {  }
+			}
+			random_list = {
+				80 = { add_trait = ambitious }
+				20 = {  }
+			}
+			random_list = {
+				10 = { add_trait = genius }
+				20 = { add_trait = quick }
+				70 = {  }
+			}
+			random_list = {
+				1 = { give_nickname = nick_mbs_the_harper }
+				1 = { give_nickname = nick_mbs_the_lutist }
+				1 = { give_nickname = nick_mbs_the_singer }
+				1 = { give_nickname = nick_mbs_the_silvertongue }
+				1 = { give_nickname = nick_mbs_the_goldentongue }
+				1 = { give_nickname = nick_mbs_the_sweettongue }
+				1 = { give_nickname = nick_mbs_the_sweetvoice }
+				1 = { give_nickname = nick_mbs_the_purevoice }
+				1 = { give_nickname = nick_mbs_the_goldenvoice }
+				1 = { give_nickname = nick_mbs_the_silvervoice }
+				1 = { give_nickname = nick_mbs_the_wanderingbard }
+				1 = { give_nickname = nick_mbs_the_bluebard }
+				1 = { give_nickname = nick_mbs_the_redbard }
+				1 = { give_nickname = nick_mbs_the_goldbard }
+				1 = { give_nickname = nick_mbs_the_greenbard }
+				1 = { give_nickname = nick_mbs_the_silverbard }
+				1 = { give_nickname = nick_mbs_the_blackbard }
+				1 = { give_nickname = nick_mbs_the_orangebard }
+				1 = { give_nickname = nick_mbs_the_rhymer }
+				1 = { give_nickname = nick_mbs_the_strummer }
+				1 = { give_nickname = nick_mbs_the_melodious }
+				1 = { give_nickname = nick_mbs_the_nightingale }
+				1 = { give_nickname = nick_mbs_the_lark }
+				1 = { give_nickname = nick_mbs_the_fairfinger }
+				1 = { give_nickname = nick_mbs_the_swiftfinger }
+			}
+			random_list = {
+				50 = {
+					culture = reachman
+					set_graphical_culture = reachman
+					religion = the_seven
+				}
+				30 = {
+					culture = riverlander
+					set_graphical_culture = riverlander
+					religion = the_seven
+				}
+				30 = {
+					culture = westerman
+					set_graphical_culture = westerman
+					religion = the_seven
+				}
+				26 = {
+					culture = valeman
+					set_graphical_culture = valeman
+					religion = the_seven
+				}
+				30 = {
+					culture = stormlander
+					set_graphical_culture = stormlander
+					religion = the_seven
+				}
+				4 = {
+					culture = sisterman
+					set_graphical_culture = sisterman
+					religion = the_seven
+				}
+				10 = {
+					culture = stone_dornish
+					set_graphical_culture = stone_dornish
+					religion = the_seven
+				}
+				10 = {
+					culture = sand_dornish
+					set_graphical_culture = sand_dornish
+					religion = the_seven
+				}
+				10 = {
+					culture = salt_dornish
+					set_graphical_culture = salt_dornish
+					religion = the_seven
+				}
+				10 = {
+					culture = ironborn
+					set_graphical_culture = ironborn
+					religion = drowned_god
+				}
+				12 = {
+					culture = northman
+					set_graphical_culture = northman
+					religion = old_gods
+				}
+				4 = {
+					culture = hill_clansman
+					set_graphical_culture = hill_clansman
+					religion = old_gods
+				}
+				4 = {
+					culture = crannogman
+					set_graphical_culture = crannogman
+					religion = old_gods
+				}
+				10 = {
+					culture = half_southron
+					set_graphical_culture = half_southron
+					religion = the_seven
+				}
+				3 = {
+					culture = crackclawmen
+					set_graphical_culture = crackclawmen
+					religion = the_seven
+				}
+				1 = {
+					culture = skagosi
+					set_graphical_culture = skagosi
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = wildling
+					set_graphical_culture = wildling
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = thenn
+					set_graphical_culture = thenn
+					religion = thenn_rel
+				}
+				1 = {
+					culture = frozen_shore
+					set_graphical_culture = frozen_shore
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = hornfoot
+					set_graphical_culture = hornfoot
+					religion = beyond_wall_old_gods
+				}
+				1 = {
+					culture = nightrunner
+					set_graphical_culture = nightrunner
+					religion = beyond_wall_old_gods
+				}
+				30 = {
+					culture = summer_islander
+					set_graphical_culture = summer_islander
+					religion = summer_rel
+				}
+				30 = {
+					culture = pentosi
+					set_graphical_culture = pentosi
+					religion = pentoshi_religion
+				}
+				30 = {
+					culture = myrman
+					set_graphical_culture = myrman
+					religion = myrish_religion
+				}
+				30 = {
+					culture = volantene
+					set_graphical_culture = volantene
+					religion = rhllor
+				}
+				30 = {
+					culture = lorathi
+					set_graphical_culture = lorathi
+					religion = gods_lorath
+				}
+				30 = {
+					culture = tyroshi
+					set_graphical_culture = tyroshi
+					religion = trios
+				}
+				30 = {
+					culture = norvosi
+					set_graphical_culture = norvosi
+					religion = bearded_priests
+				}
+				30 = {
+					culture = qohorik
+					set_graphical_culture = qohorik
+					religion = black_goat
+				}
+				30 = {
+					culture = lysene
+					set_graphical_culture = lysene
+					religion = weeping_lady
+				}
+				30 = {
+					culture = braavosi
+					set_graphical_culture = braavosi
+					religion = moonsingers
+				}
+			}
+		}
+	}
+}

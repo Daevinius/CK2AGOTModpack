@@ -1,0 +1,497 @@
+namespace = tdp_strong_seed
+
+#
+#
+#
+#
+
+#Targaryen
+character_event = {
+	id = tdp_strong_seed.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_strong_seed
+	culture = high_valyrian
+
+	trigger = {
+		OR = {
+			dynasty = 496
+			dynasty = 57
+		}
+		NOT = { trait = bastard }
+		true_father_even_if_dead = { graphical_culture = valyriangfx }
+		NOR = {
+			graphical_culture = valyriangfx
+			is_valyrian_mix_gfx = yes
+			is_strong_seed_gfx = yes
+		}
+	}
+
+	immediate = {
+		set_graphical_culture = high_valyrian
+	}
+}
+
+#Velaryon
+character_event = {
+	id = tdp_strong_seed.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_strong_seed
+	culture = high_valyrian
+
+	trigger = {
+		dynasty = 52
+		true_father_even_if_dead = { graphical_culture = valyriangfx }
+		NOR = {
+			graphical_culture = valyriangfx
+			is_valyrian_mix_gfx = yes
+		}
+	}
+
+	immediate = {
+		set_graphical_culture = high_valyrian
+	}
+}
+
+
+#Martells
+character_event = {
+	id = tdp_strong_seed.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_strong_seed
+
+	trigger = {
+		dynasty = 1
+		NOR = {
+			graphical_culture = martellgfx
+			graphical_culture = valyriansaltdornishgfx
+		}
+		OR = {
+			true_father_even_if_dead = { dynasty = 1 }
+			mother_even_if_dead = { dynasty = 1 }
+		}
+	}
+
+	immediate = {
+		set_graphical_culture = Martell_dyn
+	}
+}
+
+#Baratheon
+character_event = {
+	id = tdp_strong_seed.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_strong_seed
+
+	trigger = {
+		OR = {
+			dynasty = 317
+			dynasty = 1544
+		}
+		NOT = { graphical_culture = baratheongfx }
+		OR = {
+			true_father_even_if_dead = {
+				graphical_culture = baratheongfx
+				OR = {
+					dynasty = 317
+					dynasty = 1544
+				}
+			}
+			mother_even_if_dead = {
+				graphical_culture = baratheongfx
+				OR = {
+					dynasty = 317
+					dynasty = 1544
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_graphical_culture = Baratheon_dyn
+	}
+}
+
+#All other
+character_event = {
+	id = tdp_strong_seed.4
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_global_flag = tdp_strong_seed
+
+	trigger = {
+		is_strong_seed_gfx = no
+		is_valyrian_mix_gfx = no
+		is_dynasty_with_special_gfx = yes
+	}
+
+	immediate = {
+		#LPs
+		if = { #Lannister
+			limit = {
+				dynasty = 190
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = lannistergfx
+						dynasty = 190
+					}
+					mother_even_if_dead = {
+						graphical_culture = lannistergfx
+						dynasty = 190
+					}
+				}
+			}
+			set_graphical_culture = Lannister_dyn
+		}
+		if = { #Tully
+			limit = {
+				dynasty = 159
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = tullygfx
+						dynasty = 159
+					}
+					mother_even_if_dead = {
+						graphical_culture = tullygfx
+						dynasty = 159
+					}
+				}
+			}
+			set_graphical_culture = Tully_dyn
+		}
+		if = { #Tyrell
+			limit = {
+				dynasty = 253
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = tyrellgfx
+						dynasty = 253
+					}
+					mother_even_if_dead = {
+						graphical_culture = tyrellgfx
+						dynasty = 253
+					}
+				}
+			}
+			set_graphical_culture = Tyrell_dyn
+		}
+		if = { #Arryn
+			limit = {
+				dynasty = 178
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = arryngfx
+						dynasty = 178
+					}
+					mother_even_if_dead = {
+						graphical_culture = arryngfx
+						dynasty = 178
+					}
+				}
+			}
+			set_graphical_culture = Arryn_dyn
+		}
+		if = { #Greyjoy
+			limit = {
+				dynasty = 107
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = greyjoygfx
+						dynasty = 107
+					}
+					mother_even_if_dead = {
+						graphical_culture = greyjoygfx
+						dynasty = 107
+					}
+				}
+			}
+			set_graphical_culture = Greyjoy_dyn
+		}
+		if = { #Stark
+			limit = {
+				dynasty = 59
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = starkgfx
+						dynasty = 59
+					}
+					mother_even_if_dead = {
+						graphical_culture = starkgfx
+						dynasty = 59
+					}
+				}
+			}
+			set_graphical_culture = Stark_dyn
+		}
+		#Bannermen
+		if = { #Blackwood
+			limit = {
+				dynasty = 150
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = blackwoodgfx
+						dynasty = 150
+					}
+					mother_even_if_dead = {
+						graphical_culture = blackwoodgfx
+						dynasty = 150
+					}
+				}
+			}
+			set_graphical_culture = Blackwood_dyn
+		}
+		if = { #Reyne
+			limit = {
+				dynasty = 197
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = reynegfx
+						dynasty = 197
+					}
+					mother_even_if_dead = {
+						graphical_culture = reynegfx
+						dynasty = 197
+					}
+				}
+			}
+			set_graphical_culture = Reyne_dyn
+		}
+		if = { #Hoare
+			limit = {
+				dynasty = 66
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = hoaregfx
+						dynasty = 66
+					}
+					mother_even_if_dead = {
+						graphical_culture = hoaregfx
+						dynasty = 66
+					}
+				}
+			}
+			set_graphical_culture = Hoare_dyn
+		}
+		if = { #Bracken
+			limit = {
+				dynasty = 149
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = brackengfx
+						dynasty = 149
+					}
+					mother_even_if_dead = {
+						graphical_culture = brackengfx
+						dynasty = 149
+					}
+				}
+			}
+			set_graphical_culture = Bracken_dyn
+		}
+		if = { #Yronwood
+			limit = {
+				dynasty = 12
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = yronwoodgfx
+						dynasty = 12
+					}
+					mother_even_if_dead = {
+						graphical_culture = yronwoodgfx
+						dynasty = 12
+					}
+				}
+			}
+			set_graphical_culture = Yronwood_dyn
+		}
+		if = { #Bolton
+			limit = {
+				dynasty = 87
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = boltongfx
+						dynasty = 87
+					}
+					mother_even_if_dead = {
+						graphical_culture = boltongfx
+						dynasty = 87
+					}
+				}
+			}
+			set_graphical_culture = Bolton_dyn
+		}
+		if = { #Connington
+			limit = {
+				dynasty = 316
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = conningtongfx
+						dynasty = 316
+					}
+					mother_even_if_dead = {
+						graphical_culture = conningtongfx
+						dynasty = 316
+					}
+				}
+			}
+			set_graphical_culture = Connington_dyn
+		}
+		if = { #Piper
+			limit = {
+				dynasty = 157
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = pipergfx
+						dynasty = 157
+					}
+					mother_even_if_dead = {
+						graphical_culture = pipergfx
+						dynasty = 157
+					}
+				}
+			}
+			set_graphical_culture = Piper_dyn
+		}
+		if = { #Lothston
+			limit = {
+				dynasty = 355
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = lothstongfx
+						dynasty = 355
+					}
+					mother_even_if_dead = {
+						graphical_culture = lothstongfx
+						dynasty = 355
+					}
+				}
+			}
+			set_graphical_culture = Lothston_dyn
+		}
+		if = { #Marbrand
+			limit = {
+				dynasty = 212
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = marbrandgfx
+						dynasty = 212
+					}
+					mother_even_if_dead = {
+						graphical_culture = marbrandgfx
+						dynasty = 212
+					}
+				}
+			}
+			set_graphical_culture = Marbrand_dyn
+		}
+		if = { #Dondarrion
+			limit = {
+				dynasty = 303
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = dondarriongfx
+						dynasty = 303
+					}
+					mother_even_if_dead = {
+						graphical_culture = dondarriongfx
+						dynasty = 303
+					}
+				}
+			}
+			set_graphical_culture = Dondarrion_dyn
+		}
+		if = { #Mallister
+			limit = {
+				dynasty = 128
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = mallistergfx
+						dynasty = 128
+					}
+					mother_even_if_dead = {
+						graphical_culture = mallistergfx
+						dynasty = 128
+					}
+				}
+			}
+			set_graphical_culture = Mallister_dyn
+		}
+		if = { #Hightower
+			limit = {
+				dynasty = 285
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = hightowergfx
+						dynasty = 285
+					}
+					mother_even_if_dead = {
+						graphical_culture = hightowergfx
+						dynasty = 285
+					}
+				}
+			}
+			set_graphical_culture = Hightower_dyn
+		}
+		if = { #Belmore
+			limit = {
+				dynasty = 161
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = belmoregfx
+						dynasty = 161
+					}
+					mother_even_if_dead = {
+						graphical_culture = belmoregfx
+						dynasty = 161
+					}
+				}
+			}
+			set_graphical_culture = Belmore_dyn
+		}
+		if = { #Ball
+			limit = {
+				dynasty = 260
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = ballgfx
+						dynasty = 260
+					}
+					mother_even_if_dead = {
+						graphical_culture = ballgfx
+						dynasty = 260
+					}
+				}
+			}
+			set_graphical_culture = Ball_dyn
+		}
+		if = { #Rowan
+			limit = {
+				dynasty = 250
+				OR = {
+					true_father_even_if_dead = {
+						graphical_culture = rowangfx
+						dynasty = 250
+					}
+					mother_even_if_dead = {
+						graphical_culture = rowangfx
+						dynasty = 250
+					}
+				}
+			}
+			set_graphical_culture = Rowan_dyn
+		}
+	}
+}
