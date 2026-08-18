@@ -11,29 +11,27 @@ temple = {
 			}
 			custom_tooltip = {
 				text = qualifies_as_shoreline
-				hidden_tooltip = {
-					OR = {
-						location = {
-							OR = {
-								qualifies_as_shoreline = yes
-								port = yes
-							}
+				OR = {
+					location = {
+						OR = {
+							qualifies_as_shoreline = yes
+							port = yes
 						}
-						ROOT = {
-							OR = {
-								qualifies_as_shoreline = yes
-								port = yes
-							}
+					}
+					ROOT = {
+						OR = {
+							qualifies_as_shoreline = yes
+							port = yes
 						}
-						AND = {
-							FROM = { religion = old_ones }
-							NOT = {
-								terrain = steppe
-								terrain = desert
-								terrain = pti
-								terrain = wasteland
-								terrain = arctic
-							}
+					}
+					AND = {
+						FROM = { religion = old_ones }
+						NOT = {
+							terrain = steppe
+							terrain = desert
+							terrain = pti
+							terrain = wasteland
+							terrain = arctic
 						}
 					}
 				}
@@ -42,34 +40,30 @@ temple = {
 
 		is_active_trigger = {
 			custom_tooltip = {
-				name = is_fish_gods_worshipper
-				hidden_tooltip = {
-					OR = {
-						FROM = { religion = fish_gods }
-						FROM = { religion = old_ones }
-						FROM = { religion = sothoryos_rel }
+				text = is_fish_gods_worshipper
+				OR = {
+					FROM = { religion = fish_gods }
+					FROM = { religion = old_ones }
+					FROM = { religion = sothoryos_rel }
 #						FROM = { has_religion_feature = religion_feature_TSP_innsmouth }
-					}
 				}
 			}
 			custom_tooltip = {
 				text = qualifies_as_shoreline
-				hidden_tooltip = {
-					OR = {
-						location = {
-							OR = {
-								qualifies_as_shoreline = yes
-								port = yes
-							}
+				OR = {
+					location = {
+						OR = {
+							qualifies_as_shoreline = yes
+							port = yes
 						}
-						ROOT = {
-							OR = {
-								qualifies_as_shoreline = yes
-								port = yes
-							}
-						}
-						FROM = { religion = old_ones }
 					}
+					ROOT = {
+						OR = {
+							qualifies_as_shoreline = yes
+							port = yes
+						}
+					}
+					FROM = { religion = old_ones }
 				}
 			}
 		}
