@@ -10,6 +10,8 @@ narrative_event = {
 	war = no
 	only_independent = yes
 	has_character_flag = robb_stark
+	only_capable = yes
+	war = no
 
 	trigger = {
 		character = 2059
@@ -43,7 +45,6 @@ narrative_event = {
 		name = "EVTOPTAmbs_vale_conquest.1" #negotiate
 		character_event = { id = mbs_vale_conquest.2 days = 1 }
 		ai_chance = { factor = 4 }
-		set_character_flag = vale_resolved_mb
 	}
 
 	option = {
@@ -58,7 +59,6 @@ narrative_event = {
 		}
 		ai_chance = { factor = 3 }
 		character_event = { id = mbs_vale_conquest.3 days = 1 }
-		set_character_flag = vale_resolved_mb
 	}
 #	option = {
 #		name = "EVTOPTCmbs_vale_conquest.1"#war for Harry
@@ -77,6 +77,36 @@ narrative_event = {
 #	}
 
 	option = {
+		name = "EVTOPTCmbs_vale_conquest.1"#war for Harry
+		trigger = {
+			c_94027 = {
+				is_alive = yes
+				NOR = {
+					has_landed_title = e_vale
+					has_landed_title = k_vale
+				}
+			}
+		}
+		ai_chance = { factor = 6 }
+		character_event = { id = mbs_vale_conquest.4 days = 1 }
+	}
+
+	option = {
+		name = "EVTOPTCmbs_vale_conquest.1"#war for Harry
+		trigger = {
+			c_94027 = {
+				is_alive = yes
+				NOR = {
+					has_landed_title = e_vale
+					has_landed_title = k_vale
+				}
+			}
+		}
+		ai_chance = { factor = 6 }
+		character_event = { id = mbs_vale_conquest.4 days = 1 }
+	}
+
+	option = {
 		name = "EVTOPTDmbs_vale_conquest.1"#give to Riverlands
 		trigger = {
 			k_riverlands = {
@@ -87,7 +117,6 @@ narrative_event = {
 		}
 		ai_chance = { factor = 4 }
 		character_event = { id = mbs_vale_conquest.5 days = 1 }
-		set_character_flag = vale_resolved_mb
 	}
 
 }
@@ -228,6 +257,7 @@ narrative_event = {
 				de_jure_liege = e_north
 			}
 		}
+		set_character_flag = vale_resolved_mb
 	}
 	option = {
 		name = "EVTOPTBmbs_vale_conquest.201" #Nope
@@ -312,6 +342,7 @@ narrative_event = {
 				de_jure_liege = e_north
 			}
 		}
+		set_character_flag = vale_resolved_mb
 	}
 	option = {
 		name = "EVTOPTBmbs_vale_conquest.202" #Nope
@@ -396,6 +427,7 @@ narrative_event = {
 				de_jure_liege = e_north
 			}
 		}
+		set_character_flag = vale_resolved_mb
 	}
 	option = {
 		name = "EVTOPTBmbs_vale_conquest.203" #Nope
@@ -428,6 +460,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTAmbs_vale_conquest.3" #do it
 		ai_chance = { factor = 10 }
+		set_character_flag = vale_resolved_mb
 		c_runestone = { holder_scope = { character_event = { id = mbs_vale_conquest.301 } } }
 		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.302 } } }
 		c_runestone = {
@@ -510,6 +543,7 @@ narrative_event = {
 	option = {
 		name = "EVTOPTAmbs_vale_conquest.5" #do it
 		ai_chance = { factor = 10 }
+		set_character_flag = vale_resolved_mb
 		k_riverlands = { holder_scope = { character_event = { id = mbs_vale_conquest.501 } } }
 		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.502 } } }
 		e_north = {
@@ -632,4 +666,55 @@ narrative_event = {
 		character_event = { id = mbs_vale_conquest.5 days = 1 }
 	}
 
+}
+
+narrative_event = {
+	id = mbs_vale_conquest.4
+	desc = "EVTDESCmbs_vale_conquest.4"
+	title = "EVTTITLEmbs_vale_conquest.4"
+	picture = GFX_STARK
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.4"
+		c_94027 = {
+			reverse_war = {
+				target = k_vale
+				casus_belli = claim
+			}
+			set_defacto_liege = e_north
+		}
+		k_vale = { holder_scope = { character_event = { id = mbs_vale_conquest.402 days = 2 } } }
+		c_94027 = { character_event = { id = mbs_vale_conquest.401 days = 2 } }
+		set_character_flag = vale_resolved_mb
+	}
+
+	option = {
+		name = "EVTOPTBmbs_vale_conquest.4"
+		character_event = { id = mbs_vale_conquest.1 }
+	}
+}
+
+narrative_event = {
+	id = mbs_vale_conquest.401
+	desc = "EVTDESCmbs_vale_conquest.401"
+	title = "EVTTITLEmbs_vale_conquest.401"
+	picture = GFX_ARRYN
+	is_triggered_only = yes
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.401"
+		opinion = { who = FROM modifier = opinion_very_grateful years = 10 }
+	}
+}
+
+narrative_event = {
+	id = mbs_vale_conquest.402
+	desc = "EVTDESCmbs_vale_conquest.402"
+	title = "EVTTITLEmbs_vale_conquest.402"
+	picture = GFX_ARRYN
+	is_triggered_only = yes
+	option = {
+		name = "EVTOPTAmbs_vale_conquest.402"
+		opinion = { who = FROM modifier = opinion_angry years = 10 }
+	}
 }

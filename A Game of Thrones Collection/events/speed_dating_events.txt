@@ -1,0 +1,1223 @@
+namespace = speed_dating
+
+#Currently only finds matches for rulers and heirs
+#There's probably a way to condense but will figure it out later
+#0 Clearing the flag
+#9999 Westeros Bachelors
+#1 Northman
+#2 Reachman
+#3 Westerman
+#4 Stormlander
+#5 Kingslander
+#6 Riverlander
+#7 Dornish
+#8 Valeman
+#9 Prioritize Andal/First Men Lord Paramounts
+
+character_event = { #Clear flag
+	id = speed_dating.0
+
+	# is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	only_women = yes
+	is_married = no
+	min_age = 29
+
+	trigger = {
+		OR = {
+			has_character_flag = northman_match
+			has_character_flag = reachman_match
+			has_character_flag = westerman_match
+			has_character_flag = stormlander_match
+			has_character_flag = kingslander_match
+			has_character_flag = riverlander_match
+			has_character_flag = dorne_match
+			has_character_flag = valeman_match
+		}
+		can_marry_trigger = no
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		if = {
+			limit = { has_character_flag = northman_match }
+			clr_character_flag = northman_match
+		}
+		else_if = {
+			limit = { has_character_flag = reachman_match }
+			clr_character_flag = reachman_match
+		}
+		else_if = {
+			limit = { has_character_flag = westerman_match }
+			clr_character_flag = westerman_match
+		}
+		else_if = {
+			limit = { has_character_flag = stormlander_match }
+			clr_character_flag = stormlander_match
+		}
+		else_if = {
+			limit = { has_character_flag = kingslander_match }
+			clr_character_flag = kingslander_match
+		}
+		else_if = {
+			limit = { has_character_flag = riverlander_match }
+			clr_character_flag = riverlander_match
+		}
+		else_if = {
+			limit = { has_character_flag = dorne_match }
+			clr_character_flag = dorne_match
+		}
+		else = {
+			limit = { has_character_flag = valeman_match }
+			clr_character_flag = valeman_match
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #Noble Landless or Duke+ tier Bachelors of Westeros
+	id = speed_dating.9999
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	min_age = 16
+	max_age = 38
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = westeros_bachelor }
+		NOT = { at_location = c_the_citadel }
+		can_marry_trigger = yes
+		is_female = no
+		NOT = { has_character_flag = speed_date_block }
+		NOT = {
+			any_dynasty_member = { ai = no }
+		}
+		has_dynasty_flag = has_dynamic_coa
+		NOR = {
+			host = { ai = no }
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+			culture = high_valyrian
+			has_character_flag = maester_education
+		}
+		OR = {
+			culture_group = valyrian
+			culture_group = andal
+			culture_group = first_men
+			culture_group = dornish
+		}
+	}
+
+	immediate = {
+		set_character_flag = westeros_bachelor
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Northman
+character_event = { #Identify the possible bride
+	id = speed_dating.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture_group = first_men
+	religion = old_gods
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = northman_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = northman_match
+		top_liege = {
+			character_event = { id = speed_dating.10 days = 5 } #slight delay so king matchmaker has priority
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.10
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				culture_group = first_men
+				age = 16
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.11 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.11
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = northman_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.10 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Reachman
+character_event = { #Identify the possible bride
+	id = speed_dating.2
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture = reachman
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = reachman_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = reachman_match
+		top_liege = {
+			character_event = { id = speed_dating.20 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.20
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				culture = reachman
+				age = 16
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.21 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.21
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = reachman_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.20 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Westerman
+character_event = { #Identify the possible bride
+	id = speed_dating.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture = westerman
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = westerman_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = westerman_match
+		top_liege = {
+			character_event = { id = speed_dating.30 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.30
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				culture = westerman
+				age = 16
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.31 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.31
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = westerman_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.30 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Stormlander
+character_event = { #Identify the possible bride
+	id = speed_dating.4
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture = stormlander
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = stormlander_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = stormlander_match
+		top_liege = {
+			character_event = { id = speed_dating.40 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.40
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				culture = stormlander
+				age = 16
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.41 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.41
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = stormlander_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.40 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Kingslander
+character_event = { #Identify the possible bride
+	id = speed_dating.5
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = kingslander_match }
+		OR = {
+			culture = crownlander
+			culture = stormlander
+			culture = riverlander
+			culture = crackclawmen
+			culture = western_valyrian
+			culture = high_valyrian
+		}
+		NOR = {
+			dynasty = 496
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = kingslander_match
+		top_liege = {
+			character_event = { id = speed_dating.50 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.50
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				OR = {
+					culture = crownlander
+					culture = stormlander
+					culture = riverlander
+					culture = crackclawmen
+					culture = western_valyrian
+					culture = high_valyrian
+				}
+				age = 16
+				NOR = {
+					dynasty = 496
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.51 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.51
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = kingslander_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.50 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Riverlander
+character_event = { #Identify the possible bride
+	id = speed_dating.6
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture = riverlander
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = riverlander_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = riverlander_match
+		top_liege = {
+			character_event = { id = speed_dating.60 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.60
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				OR = {
+					culture = crackclawmen
+					culture = riverlander
+				}
+				age = 16
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.61 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.61
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = riverlander_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.60 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Dornish
+character_event = { #Identify the possible bride
+	id = speed_dating.7
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture_group = dornish
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = dorne_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = dorne_match
+		top_liege = {
+			character_event = { id = speed_dating.70 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.70
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				culture_group = dornish
+				age = 16
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.71 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match then repeat in 6 months
+	id = speed_dating.71
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = dorne_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.70 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Valeman
+character_event = { #Identify the possible bride
+	id = speed_dating.8
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture = valeman
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = valeman_match }
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = valeman_match
+		top_liege = {
+			character_event = { id = speed_dating.80 days = 5 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.80
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		random_realm_character = {
+			limit = {
+				can_marry_trigger = yes
+				OR = {
+					tier = count
+					tier = duke
+					has_character_flag = westeros_bachelor
+				}
+				culture = valeman
+				age = 16
+				NOT = { has_character_flag = speed_date_block }
+				NOT = {
+					any_dynasty_member = { ai = no }
+				}
+				NOR = {
+					age = 40
+					dynasty = FROM
+					any_dynasty_member = { ai = no }
+				}
+				is_betrothed = no
+				is_married = no
+				is_female = no
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		FROM = {
+			character_event = { id = speed_dating.81 days = 180 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.81
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = valeman_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		top_liege = {
+			character_event = { id = speed_dating.80 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+#Lord Paramounts Priority
+character_event = { #Identify the possible bride
+	id = speed_dating.9
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	min_age = 16
+	max_age = 28
+	only_women = yes
+	is_married = no
+
+	ai = yes
+
+	trigger = {
+		NOT = { has_character_flag = lp_match }
+		OR = {
+			culture_group = andal
+			culture_group = first_men
+		}
+		NOR = {
+			any_dynasty_member = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+		}
+		any_dynasty_member = { higher_real_tier_than = count }
+		host = { ai = yes }
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+		has_dynasty_flag = has_dynamic_coa
+	}
+
+	immediate = {
+		set_character_flag = lp_match
+		any_liege = {
+			limit = { tier = KING }
+			character_event = { id = speed_dating.90 days = 3 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = speed_dating.90
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		FROM = {
+			can_marry_trigger = yes
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				ai = yes
+				is_married = no
+				is_betrothed = no
+				can_marry_trigger = yes
+				NOT = { is_close_relative = FROM }
+				is_female = no
+				NOT = { age = 50 }
+				age = 16
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		else = {
+			random_dynasty_member = {
+				limit = {
+					ai = yes
+					NOT = { at_location = c_the_citadel }
+					NOT = { has_character_flag = speed_date_block }
+					NOT = {
+						any_dynasty_member = { ai = no }
+					}
+					can_marry_trigger = yes
+					is_betrothed = no
+					is_married = no
+					can_marry_trigger = yes
+					is_female = no
+					NOT = { is_close_relative = FROM }
+					NOR = {
+						age = 30
+						any_dynasty_member = { ai = no }
+					}
+					age = 16
+				}
+				add_spouse = FROM
+				set_character_flag = speed_dater
+			}
+		}
+		FROM = {
+			character_event = { id = speed_dating.91 days = 140 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #bride still has no match
+	id = speed_dating.91
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = lp_match
+	only_women = yes
+	is_married = no
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		any_liege = {
+			limit = { tier = KING }
+			character_event = { id = speed_dating.90 days = 3 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

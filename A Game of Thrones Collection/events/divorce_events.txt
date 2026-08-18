@@ -1,0 +1,655 @@
+namespace = divorce_events
+
+#0 - Divorce Event
+#1 - No Lowborns
+#2 - Incest
+#3 - Dorne
+#4 - Targaryens
+#5 - North
+#6 - Reachman
+#7 - Westerman
+#8 - Stormlander
+#9 - Riverlander
+#10 - Valeman
+#11 - crownlander
+#12 - Valyrian - Excluding Targs
+#13 - Southron Ambitions
+
+character_event = {
+	id = divorce_events.0
+	is_triggered_only = yes
+	hide_window = yes
+
+	immediate = {
+		ROOT = {
+			if = {
+				limit = {
+					is_married = yes
+				}
+				set_character_flag = no_wedding_event
+				any_spouse = {
+					set_character_flag = no_wedding_event
+					remove_spouse = ROOT
+					clr_character_flag = no_wedding_event
+				}
+				clr_character_flag = no_wedding_event
+			}
+			else_if = {
+				limit = {
+					is_betrothed = yes
+				}
+				betrothed = {
+					break_betrothal = ROOT
+				}
+			}
+			if = {
+				limit = { is_female = no }
+				prestige = 150
+			}
+		}
+	}
+}
+
+character_event = { #No Lowborns or weird cultures
+	id = divorce_events.1
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		ROOT = {
+			higher_tier_than = BARON
+			OR = {
+				culture = western_valyrian
+				culture = high_valyrian
+				culture_group = first_men
+				culture_group = andal
+				culture_group = dornish
+			}
+			has_dynasty_flag = has_dynamic_coa
+		}
+		FROM = {
+			is_lowborn = no
+			OR = {
+				culture = western_valyrian
+				culture = high_valyrian
+				culture_group = first_men
+				culture_group = andal
+				culture_group = dornish
+			}
+		}
+		new_character = {
+			OR = {
+				is_lowborn = yes
+				culture_group = jogos_nhai_group
+				culture = brindlemen
+				culture = gogossosi
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Dornish were isolationists besides Targaryens & Essos
+	id = divorce_events.3
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture_group = dornish
+
+	trigger = {
+		FROM = {
+			culture_group = dornish
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			OR = {
+				culture_group = andal
+				culture_group = first_men
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Targaryens
+	id = divorce_events.4
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		FROM = {
+			dynasty = 496
+		}
+		new_character = {
+			OR = {
+				is_unattractive_trigger = yes
+				NOR = {
+					culture_group = free_cities
+					culture = high_valyrian
+					culture = western_valyrian
+					culture = eastern_valyrian
+					culture_group = dornish
+					culture_group = andal
+					culture_group = first_men
+				}
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #North
+	id = divorce_events.5
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture_group = first_men
+
+	trigger = {
+		FROM = {
+			culture_group = first_men
+			has_dynasty_flag = has_dynamic_coa
+			NOT = { has_character_flag = event_marriage }
+		}
+		new_character = {
+			NOR = {
+				culture = riverlander
+				culture = valeman
+				culture = westerman
+				culture = western_valyrian
+				culture = high_valyrian
+				culture_group = first_men
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Reachman
+	id = divorce_events.6
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture = reachman
+
+	trigger = {
+		FROM = {
+			culture = reachman
+			has_dynasty_flag = has_dynamic_coa
+			NOT = { has_character_flag = event_marriage }
+		}
+		new_character = {
+			NOR = {
+				culture = reachman
+				culture = westerman
+				culture = stormlander
+				culture = crownlander
+				culture = riverlander
+				culture = western_valyrian
+				culture = high_valyrian
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Westerman
+	id = divorce_events.7
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture = westerman
+
+	trigger = {
+		FROM = {
+			culture = westerman
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			NOR = {
+				culture = westerman
+				culture = riverlander
+				culture = reachman
+				culture = crownlander
+				culture = western_valyrian
+				culture = high_valyrian
+				culture_group = first_men
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Stormlander
+	id = divorce_events.8
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture = stormlander
+
+	trigger = {
+		FROM = {
+			culture = stormlander
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			NOR = {
+				culture = stormlander
+				culture = riverlander
+				culture = reachman
+				culture = crownlander
+				culture = western_valyrian
+				culture = high_valyrian
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Riverlander
+	id = divorce_events.9
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture = riverlander
+
+	trigger = {
+		FROM = {
+			culture = riverlander
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			NOR = {
+				culture = riverlander
+				culture = stormlander
+				culture = westerman
+				culture = crownlander
+				culture = valeman
+				culture = crackclawmen
+				culture = western_valyrian
+				culture = high_valyrian
+				culture_group = first_men
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Valeman
+	id = divorce_events.10
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture = valeman
+
+	trigger = {
+		FROM = {
+			culture = valeman
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			NOR = {
+				culture = valeman
+				culture = riverlander
+				culture = western_valyrian
+				culture = high_valyrian
+				culture_group = first_men
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #crownlander
+	id = divorce_events.11
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	culture = crownlander
+
+	trigger = {
+		FROM = {
+			culture = crownlander
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			NOR = {
+				culture_group = andal
+				culture = western_valyrian
+				culture = high_valyrian
+				culture = eastern_valyrian
+				culture_group = free_cities
+				culture = crackclawmen
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Valyrian - excluding Targs
+	id = divorce_events.12
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		FROM = {
+			NOT = { dynasty = 496 }
+			OR = {
+				culture = western_valyrian
+				culture = high_valyrian
+				culture = eastern_valyrian
+			}
+			has_dynasty_flag = has_dynamic_coa
+		}
+		new_character = {
+			NOR = {
+				culture = western_valyrian
+				culture = high_valyrian
+				culture = eastern_valyrian
+				culture_group = free_cities
+				culture_group = first_men
+				culture_group = andal
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Southron Ambitions
+	id = divorce_events.13
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		NOT = { has_global_flag = southron_ambitions }
+		NOT = { start_date = 8230.1.1 }
+		FROM = {
+			OR = {
+				culture_group = first_men
+				culture_group = andal
+			}
+			any_dynasty_member = {
+				higher_real_tier_than = duke
+			}
+		}
+		new_character = {
+			OR = {
+				culture_group = first_men
+				culture_group = andal
+			}
+			NOT = { dynasty = ROOT }
+			any_dynasty_member = {
+				higher_real_tier_than = duke
+			}
+			OR = {
+				#Landless and not in player's court
+				AND = {
+					NOT = { is_ruler = yes }
+					liege = { ai = no }
+				}
+				#Landed and is not player
+				AND = {
+					is_ruler = yes
+					ai = yes
+				}
+			}
+		}
+	}
+
+	immediate = {
+		FROM = {
+			character_event = { id = divorce_events.0 days = 1 }
+		}
+	}
+}
+
+character_event = { #Southron Ambitions
+	id = divorce_events.130
+
+	is_triggered_only = yes
+	hide_window = yes
+	ai = yes
+
+	trigger = {
+		NOT = { has_global_flag = southron_ambitions }
+		NOT = { start_date = 8230.1.1 }
+		OR = {
+			culture_group = first_men
+			culture_group = andal
+		}
+		any_dynasty_member = {
+			tier = KING
+		}
+
+		any_spouse = {
+			OR = {
+				culture_group = first_men
+				culture_group = andal
+			}
+			NOT = { dynasty = ROOT }
+			any_dynasty_member = {
+				tier = KING
+			}
+			NOT = {
+				any_dynasty_member = {
+					ai = no
+				}
+			}
+		}
+	}
+
+	immediate = {
+		character_event = { id = divorce_events.0 days = 1 }
+	}
+}

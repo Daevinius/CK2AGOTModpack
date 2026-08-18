@@ -527,5 +527,312 @@ character_event = {
 		name = OK
 	}
 }
+#mbs_titles.25 - gets old gods and new - bloodline version
+character_event = {
+	id = mbs_titles.25
+	desc = "EVTDESCmore_bloodlines.850"
+
+	is_triggered_only = yes
+
+
+	trigger = {
+		OR = {
+			religion = the_seven
+			religion = the_seven_originalist
+		}
+		any_owned_bloodline = {
+			has_bloodline_flag = bloodline_oldgods
+		}
+		NOT = {
+			trait = symp_old_gods
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmore_bloodlines.850" #get symp_old_gods
+		piety = 15
+		add_trait = symp_old_gods
+	}
+
+}
+#mbs_titles.26 - gets old gods and new - dynamic version
+character_event = {
+	id = mbs_titles.26
+	desc = "EVTDESCmore_bloodlines.850"
+
+	is_triggered_only = yes
+
+
+	trigger = {
+		OR = {
+			religion = the_seven
+			religion = the_seven_originalist
+		}
+		FROM = {
+			OR = {
+				religion = old_gods
+				religion = old_gods_reformed
+				religion_group = wildling_religion
+			}
+		}
+		NOT = {
+			trait = symp_old_gods
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmore_bloodlines.850" #get symp_old_gods
+		piety = 15
+		add_trait = symp_old_gods
+	}
+
+}
+#mbs_titles.27 - gets old gods trait - dynamic version
+#character_event = {
+#	id = mbs_titles.27
+#	hide_window = yes
+#
+#
+#	is_triggered_only = yes
+#
+#	trigger = {
+#		OR = {
+#			religion = old_gods
+#			religion = old_gods_reformed
+#		}
+#		NOT = {
+#			trait = mbs_oldgodstrait
+#		}
+#	}
+#
+#	option = {
+#		name = "EVTOPTAmore_bloodlines.850" #get mbs_oldgodstrait
+#		add_trait = mbs_oldgodstrait
+#	}
+#
+#}
+#mbs_titles.28 - convert
+character_event = {
+	id = mbs_titles.28
+	desc = "EVTDESCmbs_titles.28"
+
+	is_triggered_only = yes
+	ai = yes
+	only_capable = yes
+
+	trigger = {
+		OR = {
+			religion = the_seven
+			religion = the_seven_originalist
+		}
+		trait = symp_old_gods
+		age = 16
+		NOT = { trait = zealous }
+	}
+
+	option = {
+		name = "EVTOPTAmbs_titles.28" #get symp_old_gods
+
+		religion_authority = {
+			modifier = ruler_converted_from
+		}
+		any_vassal = {
+			limit = {
+				NOT = { trait = symp_old_gods }
+				religion = ROOT
+				age = 16
+			}
+			opinion = {
+				who = ROOT
+				modifier = opinion_adopted_foreign_ways
+				years = 10
+			}
+		}
+		hidden_tooltip = {
+			any_courtier = {
+				limit = {
+					NOT = { trait = symp_old_gods }
+					is_ruler = no
+					religion = ROOT
+					age = 16
+					NOT = { trait = slave }
+					NOT = { trait = dragon }
+				}
+				opinion = {
+					who = ROOT
+					modifier = opinion_adopted_foreign_ways
+					years = 10
+				}
+			}
+		}
+		hidden_tooltip = {
+			any_courtier = {
+				limit = {
+					trait = symp_old_gods
+					is_close_relative = ROOT
+					is_ruler = no
+					religion = ROOT
+					is_adult = no
+					NOT = { trait = dragon }
+				}
+				religion = old_gods
+			}
+		}
+		religion = old_gods
+		hidden_tooltip = {
+			religion_authority = {
+				modifier = ruler_converted_to
+			}
+		}
+	}
+}
+character_event = {
+	id = mbs_titles.30
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = septa
+		trait = septon
+		has_landed_title = c_mbs_maris_motherhouse
+	}
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = valeman
+		}
+		random_courtier = {
+			limit = {
+				age = 16
+				is_female = yes
+				trait = septa
+			}
+			inherit = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.31
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = septa
+		trait = septon
+		has_landed_title = b_mbs_oldtown_motherhouse
+	}
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = reachman
+		}
+		random_courtier = {
+			limit = {
+				age = 16
+				is_female = yes
+				trait = septa
+			}
+			inherit = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.32
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = septa
+		trait = septon
+		has_landed_title = c_mbs_maidenpool_motherhouse
+	}
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = riverlander
+		}
+		random_courtier = {
+			limit = {
+				age = 16
+				is_female = yes
+				trait = septa
+			}
+			inherit = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = mbs_titles.33
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = septa
+		trait = septon
+		has_landed_title = c_mbs_lannisport_motherhouse
+	}
+
+	immediate = {
+		create_character = {
+			female = yes
+			dynasty = none
+			random_traits = yes
+			trait = zealous
+			trait = septa
+			trait = kind
+			religion = the_seven
+			culture = westerman
+		}
+		random_courtier = {
+			limit = {
+				age = 16
+				is_female = yes
+				trait = septa
+			}
+			inherit = ROOT
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
 
 

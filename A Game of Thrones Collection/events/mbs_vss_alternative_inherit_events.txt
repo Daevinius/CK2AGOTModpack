@@ -1,0 +1,184 @@
+namespace = mbs_vss_alternative_inherit
+
+#
+#
+#
+#
+
+#Set Alt Inherit
+character_event = {
+	id = mbs_vss_alternative_inherit.1
+	desc = EVTDESCmbs_vss_alternative_inherit.1
+	picture = GFX_evt_valyrian_steel
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_artifact = {
+			limit = {
+				has_artifact_flag = valyrian_steel
+				NOR = {
+					has_artifact_flag = alternative_inheritance
+					artifact_type = darksister
+					artifact_type = dawn
+					artifact_type = ladyforlorn
+				}
+				NOT = { has_artifact_flag = selected_steel }
+			}
+			set_artifact_flag = selected_steel
+			save_event_target_as = valyrian_steel_1
+		}
+		random_artifact = {
+			limit = {
+				has_artifact_flag = valyrian_steel
+				NOR = {
+					has_artifact_flag = alternative_inheritance
+					artifact_type = darksister
+					artifact_type = dawn
+					artifact_type = ladyforlorn
+				}
+				NOT = { has_artifact_flag = selected_steel }
+			}
+			set_artifact_flag = selected_steel
+			save_event_target_as = valyrian_steel_2
+		}
+		random_artifact = {
+			limit = {
+				has_artifact_flag = valyrian_steel
+				NOR = {
+					has_artifact_flag = alternative_inheritance
+					artifact_type = darksister
+					artifact_type = dawn
+					artifact_type = ladyforlorn
+				}
+				NOT = { has_artifact_flag = selected_steel }
+			}
+			set_artifact_flag = selected_steel
+			save_event_target_as = valyrian_steel_3
+		}
+	}
+
+	option = {
+		name = [valyrian_steel_1.GetName]
+		trigger = {
+			event_target:valyrian_steel_1 = {
+				is_artifact_active = yes
+			}
+		}
+		event_target:valyrian_steel_1 = { set_artifact_flag = alternative_inheritance }
+	}
+
+	option = {
+		name = [valyrian_steel_2.GetName]
+		trigger = {
+			event_target:valyrian_steel_2 = {
+				is_artifact_active = yes
+			}
+		}
+		event_target:valyrian_steel_2 = { set_artifact_flag = alternative_inheritance }
+	}
+
+	option = {
+		name = [valyrian_steel_3.GetName]
+		trigger = {
+			event_target:valyrian_steel_3 = {
+				is_artifact_active = yes
+			}
+		}
+		event_target:valyrian_steel_3 = { set_artifact_flag = alternative_inheritance }
+	}
+
+	option = {
+		name = Nevermind.
+		any_artifact = {
+			limit = { has_artifact_flag = selected_steel }
+			clr_artifact_flag = selected_steel
+		}
+	}
+}
+
+#Unset Alt Inherit
+character_event = {
+	id = mbs_vss_alternative_inherit.2
+	desc = EVTDESCmbs_vss_alternative_inherit.2
+	picture = GFX_evt_valyrian_steel
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_artifact = {
+			limit = {
+				has_artifact_flag = valyrian_steel
+				has_artifact_flag = alternative_inheritance
+				NOT = { has_artifact_flag = selected_steel }
+			}
+			set_artifact_flag = selected_steel
+			save_event_target_as = valyrian_steel_1
+		}
+		random_artifact = {
+			limit = {
+				has_artifact_flag = valyrian_steel
+				has_artifact_flag = alternative_inheritance
+				NOT = { has_artifact_flag = selected_steel }
+			}
+			set_artifact_flag = selected_steel
+			save_event_target_as = valyrian_steel_2
+		}
+		random_artifact = {
+			limit = {
+				has_artifact_flag = valyrian_steel
+				has_artifact_flag = alternative_inheritance
+				NOT = { has_artifact_flag = selected_steel }
+			}
+			set_artifact_flag = selected_steel
+			save_event_target_as = valyrian_steel_3
+		}
+	}
+
+	option = {
+		name = [valyrian_steel_1.GetName]
+		trigger = {
+			event_target:valyrian_steel_1 = {
+				is_artifact_active = yes
+			}
+		}
+		event_target:valyrian_steel_1 = {
+			clr_artifact_flag = alternative_inheritance
+			clr_artifact_flag = selected_steel
+		}
+	}
+
+	option = {
+		name = [valyrian_steel_2.GetName]
+		trigger = {
+			event_target:valyrian_steel_2 = {
+				is_artifact_active = yes
+			}
+		}
+		event_target:valyrian_steel_2 = {
+			clr_artifact_flag = alternative_inheritance
+			clr_artifact_flag = selected_steel
+		}
+	}
+
+	option = {
+		name = [valyrian_steel_3.GetName]
+		trigger = {
+			event_target:valyrian_steel_3 = {
+				is_artifact_active = yes
+			}
+		}
+		event_target:valyrian_steel_3 = {
+			clr_artifact_flag = alternative_inheritance
+			clr_artifact_flag = selected_steel
+		}
+	}
+
+	option = {
+		name = Nevermind.
+		any_artifact = {
+			limit = { has_artifact_flag = selected_steel }
+			clr_artifact_flag = selected_steel
+		}
+	}
+}

@@ -1,0 +1,119 @@
+namespace = stop_lovers
+
+#
+#
+#
+#
+
+
+character_event = {
+	id = stop_lovers.0
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture_group = valyrian
+
+	trigger = {
+		OR = {
+			any_lover = {
+				OR = {
+					is_mother = ROOT
+					is_father = ROOT
+					is_child_of = ROOT
+					is_grandchild_of = ROOT
+					is_grandparent_of = ROOT
+				}
+			}
+			any_spouse = {
+				OR = {
+					is_mother = ROOT
+					is_father = ROOT
+					is_child_of = ROOT
+					is_grandchild_of = ROOT
+					is_grandparent_of = ROOT
+				}
+			}
+			betrothed = {
+				OR = {
+					is_mother = ROOT
+					is_father = ROOT
+					is_child_of = ROOT
+					is_grandchild_of = ROOT
+					is_grandparent_of = ROOT
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				any_lover = {
+					OR = {
+						is_mother = ROOT
+						is_father = ROOT
+						is_child_of = ROOT
+						is_grandchild_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			random_lover = {
+				limit = {
+					OR = {
+						is_mother = ROOT
+						is_father = ROOT
+						is_child_of = ROOT
+						is_grandchild_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+				remove_lover = ROOT
+			}
+		}
+
+		if = {
+			limit = {
+				any_spouse = {
+					OR = {
+						is_mother = ROOT
+						is_father = ROOT
+						is_grandchild_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			any_spouse = {
+				limit = {
+					OR = {
+						is_mother = ROOT
+						is_father = ROOT
+						is_child_of = ROOT
+						is_grandchild_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+				remove_spouse = ROOT
+			}
+		}
+
+		if = {
+			limit = {
+				betrothed = {
+					OR = {
+						is_mother = ROOT
+						is_father = ROOT
+						is_child_of = ROOT
+						is_grandchild_of = ROOT
+						is_grandparent_of = ROOT
+					}
+				}
+			}
+			betrothed = {
+				break_betrothal = ROOT
+			}
+		}
+
+	}
+}

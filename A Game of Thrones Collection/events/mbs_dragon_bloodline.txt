@@ -165,3 +165,162 @@ character_event = {
 		set_character_flag = cunning_dragon_bl_flag
 	}
 }
+
+# #The White Book
+character_event = {
+	id = mbs_dragon_bloodline.50
+	picture = "GFX_valyria_dragon"
+	desc = "EVTDESCmbs_dragon_bloodline.50"
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_tooltip = {
+			dragon = {
+				limit = { is_alive = no }
+				save_event_target_as = mbs_dead_dragon_1
+			}
+			dragon = {
+				limit = {
+					is_alive = no
+					NOT = { character = event_target:mbs_dead_dragon_1 }
+				}
+				save_event_target_as = mbs_dead_dragon_2
+			}
+			dragon_rider = {
+				limit = { is_alive = no }
+				save_event_target_as = mbs_dead_dragonrider_1
+				if = { #add ser title
+					limit = {
+						trait = knight
+						is_ruler = no
+						NOT = { has_minor_title = title_prince }
+						NOT = { has_minor_title = title_prince_AGOT }
+						NOT = { has_minor_title = title_queen_mother }
+						NOT = { has_minor_title = title_ruler_consort }
+					}
+					if = {
+						limit = { is_female = no }
+						set_special_character_title = title_ser
+					}
+					else = {
+						set_special_character_title = title_lady
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { event_target:mbs_dead_dragonrider_1 = { always = yes } } }
+				former_dragon_rider = {
+					limit = { is_alive = no }
+					save_event_target_as = mbs_dead_dragonrider_1
+					if = { #add ser title
+						limit = {
+							trait = knight
+							is_ruler = no
+							NOT = { has_minor_title = title_prince }
+							NOT = { has_minor_title = title_prince_AGOT }
+							NOT = { has_minor_title = title_queen_mother }
+							NOT = { has_minor_title = title_ruler_consort }
+						}
+						if = {
+							limit = { is_female = no }
+							set_special_character_title = title_ser
+						}
+						else = {
+							set_special_character_title = title_lady
+						}
+					}
+				}
+			}
+			dragon_rider = {
+				limit = {
+					is_alive = no
+					NOT = { character = event_target:mbs_dead_dragonrider_1 }
+				}
+				save_event_target_as = mbs_dead_dragonrider_2
+				if = { #add ser title
+					limit = {
+						trait = knight
+						is_ruler = no
+						NOT = { has_minor_title = title_prince }
+						NOT = { has_minor_title = title_prince_AGOT }
+						NOT = { has_minor_title = title_queen_mother }
+						NOT = { has_minor_title = title_ruler_consort }
+					}
+					if = {
+						limit = { is_female = no }
+						set_special_character_title = title_ser
+					}
+					else = {
+						set_special_character_title = title_lady
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { event_target:mbs_dead_dragonrider_2 = { always = yes } } }
+				former_dragon_rider = {
+					limit = {
+						is_alive = no
+						NOT = { character = event_target:mbs_dead_dragonrider_1 }
+					}
+					save_event_target_as = mbs_dead_dragonrider_2
+					if = { #add ser title
+						limit = {
+							trait = knight
+							is_ruler = no
+							NOT = { has_minor_title = title_prince }
+							NOT = { has_minor_title = title_prince_AGOT }
+							NOT = { has_minor_title = title_queen_mother }
+							NOT = { has_minor_title = title_ruler_consort }
+						}
+						if = {
+							limit = { is_female = no }
+							set_special_character_title = title_ser
+						}
+						else = {
+							set_special_character_title = title_lady
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	option = {
+		name = "OPTAmbs_dragon_bloodline.50" #Notable dragon
+		trigger = {
+			event_target:mbs_dead_dragon_1 = { always = yes }
+		}
+		event_target:mbs_dead_dragon_1 = {
+			custom_tooltip = { text = TOOLTIPMBSLocPASTDRAGON }
+		}
+	}
+	option = {
+		name = "OPTBmbs_dragon_bloodline.50" #Notable dragon
+		trigger = {
+			event_target:mbs_dead_dragon_2 = { always = yes }
+		}
+		event_target:mbs_dead_dragon_2 = {
+			custom_tooltip = { text = TOOLTIPMBSLocPASTDRAGON }
+		}
+	}
+	option = {
+		name = "OPTCmbs_dragon_bloodline.50" #Notable dragonrider
+		trigger = {
+			event_target:mbs_dead_dragonrider_1 = { always = yes }
+		}
+		event_target:mbs_dead_dragonrider_1 = {
+			custom_tooltip = { text = TOOLTIPMBSLocPASTDRAGONRIDER }
+		}
+	}
+	option = {
+		name = "OPTDmbs_dragon_bloodline.50" #Notable dragonrider
+		trigger = {
+			event_target:mbs_dead_dragonrider_2 = { always = yes }
+		}
+		event_target:mbs_dead_dragonrider_2 = {
+			custom_tooltip = { text = TOOLTIPMBSLocPASTDRAGONRIDER }
+		}
+	}
+}

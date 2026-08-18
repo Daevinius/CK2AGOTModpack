@@ -1,0 +1,48 @@
+decisions = {
+	set_vss_alternative_inheritance = {
+		is_high_prio = yes
+		ai = no
+		potential = {
+			any_artifact = {
+				has_artifact_flag = valyrian_steel
+				NOR = {
+					has_artifact_flag = alternative_inheritance
+					artifact_type = darksister
+					artifact_type = dawn
+					artifact_type = ladyforlorn
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = mbs_vss_alternative_inherit.1 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	unset_vss_alternative_inheritance = {
+		is_high_prio = yes
+		ai = no
+		potential = {
+			any_artifact = {
+				has_artifact_flag = valyrian_steel
+				has_artifact_flag = alternative_inheritance
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			character_event = { id = mbs_vss_alternative_inherit.2 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}
+

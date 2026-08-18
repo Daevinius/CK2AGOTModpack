@@ -1,0 +1,135 @@
+namespace = king_tier_matching
+
+#Valyrian Dynasty
+#Worked non-Valyrian dynasties into main speed dating events
+#
+#
+
+character_event = { #Identify the possible bride
+	id = king_tier_matching.1
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	min_age = 16
+	max_age = 20
+	only_women = yes
+	is_married = no
+	ai = yes
+
+	trigger = {
+		NOR = {
+			any_dynasty_member = { ai = no }
+			liege = { ai = no }
+			is_lowborn = yes
+			can_marry_trigger = no
+			culture = ironborn
+		}
+		is_targaryen_match_trigger = yes
+	}
+
+	immediate = {
+		set_character_flag = targaryen_match
+		top_liege = {
+			character_event = { id = king_tier_matching.10 days = 2 }
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #goes to top liege, then picks bachelor
+	id = king_tier_matching.10
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	culture_group = valyrian
+
+	immediate = {
+		if = {
+			limit = {
+				ai = yes
+				is_married = no
+				is_betrothed = no
+				is_female = no
+				can_marry_trigger = yes
+				OR = {
+					is_divine_blood_dynasty_trigger = yes
+					NOT = { dynasty = FROM }
+				}
+				NOT = { age = 50 }
+				age = 16
+			}
+			add_spouse = FROM
+			set_character_flag = speed_dater
+		}
+		else = {
+			random_dynasty_member = {
+				limit = {
+					NOT = { at_location = c_the_citadel }
+					can_marry_trigger = yes
+					is_betrothed = no
+					is_married = no
+					can_marry_trigger = yes
+					culture_group = valyrian
+					is_female = no
+					OR = {
+						is_divine_blood_dynasty_trigger = yes
+						NOT = { dynasty = FROM }
+					}
+					NOR = {
+						age = 30
+						any_dynasty_member = { ai = no }
+						has_character_flag = maester_education
+					}
+					age = 16
+				}
+				add_spouse = FROM
+				set_character_flag = speed_dater
+			}
+		}
+		FROM = {
+			character_event = { id = king_tier_matching.12 days = 120 } #slightly faster than normal matchmaker
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+character_event = { #check if bride still has no match
+	id = king_tier_matching.12
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	has_character_flag = targaryen_match
+	only_women = yes
+
+	trigger = {
+		is_primary_heir = no
+		is_ruler = no
+		is_betrothed = no
+	}
+
+	immediate = {
+		if = {
+			limit = { is_married = yes }
+			clr_character_flag = targaryen_match
+		}
+		else = {
+			limit = { can_marry_trigger = no }
+			top_liege = {
+				character_event = { id = king_tier_matching.10 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

@@ -43,6 +43,20 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAmbs_seductress.1" #
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 5
+				OR = {
+					trait = seducer
+					trait = seductress
+				}
+			}
+			modifier = {
+				factor = 1.2
+				trait = ambitious
+			}
+		}
 		any_playable_ruler = {
 			limit = {
 				is_parent_of = ROOT
@@ -78,20 +92,6 @@ character_event = {
 				add_trait = fair
 				add_trait = proud
 				set_character_flag = seduced_lowborn
-			}
-		}
-		ai_chance = {
-			factor = 2
-			modifier = {
-				factor = 5
-				OR = {
-					trait = seducer
-					trait = seductress
-				}
-			}
-			modifier = {
-				factor = 1.2
-				trait = ambitious
 			}
 		}
 		add_trait = seductress

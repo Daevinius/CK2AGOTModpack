@@ -1,0 +1,43 @@
+namespace = mbs_targaryen_rebellions
+
+#
+#
+#
+#
+
+character_event = {
+	id = mbs_targaryen_rebellions.1
+	desc = EVTDESCmbs_targaryen_rebellions.1
+	picture = "GFX_evt_blackfyre"
+
+	is_triggered_only = yes
+
+	option = {
+		name = ""
+		any_playable_ruler = {
+			limit = {
+				ai = no
+				NOT = { character = ROOT }
+			}
+			character_event = { id = mbs_targaryen_rebellions.10 days = 7 } #Inform realm
+		}
+	}
+}
+
+character_event = {
+	id = mbs_targaryen_rebellions.10
+	desc = EVTDESCmbs_targaryen_rebellions.10
+	picture = GFX_evt_blackfyre
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+		FROM = {
+			FROM = {
+				hidden_tooltip = { prestige = 0 }
+				tooltip = { show_portrait = yes }
+			}
+		}
+	}
+}

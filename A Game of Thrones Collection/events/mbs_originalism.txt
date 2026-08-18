@@ -1,0 +1,254 @@
+namespace = mbs_originalism
+
+
+province_event = {
+	id = mbs_originalism.1
+	desc = "EVTDESCmbs_originalism.1"
+	picture = GFX_evt_bishop
+
+	trigger = {
+		year = 7998
+		region = world_westeros
+		religion = the_seven
+		NOT = {
+			region = world_beyond_the_wall
+		}
+		NOT = {
+			culture_group = valyrian
+		}
+		NOT = {
+			religion = the_seven_originalist
+		}
+		NOT = {
+			owner = {
+				religion = the_seven_originalist
+			}
+		}
+		NOT = {
+			owner = {
+				has_character_modifier = abomination_of_incest
+			}
+		}
+		NOT = {
+			owner = {
+				has_character_modifier = grandchild_of_incest
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 500
+
+		modifier = {
+			factor = 5
+			owner = {
+				has_character_modifier = abomination_of_incest
+			}
+		}
+		modifier = {
+			factor = 5
+			owner = {
+				has_character_modifier = grandchild_of_incest
+			}
+		}
+		modifier = {
+			factor = 0.2
+			owner = {
+				top_liege = {
+				has_character_modifier = abomination_of_incest
+				}
+			}
+		}
+		modifier = {
+			factor = 0.3
+			owner = {
+				top_liege = {
+				has_character_modifier = grandchild_of_incest
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTAmbs_originalism.1"
+		trigger = {
+			NOR = {
+				has_character_modifier = grandchild_of_incest
+				has_character_modifier = abomination_of_incest
+				culture_group = valyrian
+			}
+		}
+		ai_chance = {
+			factor = 1
+
+			modifier = {
+				factor = 5
+				trait = zealous
+				region = the_seven
+			}
+			modifier = {
+				factor = 0.1
+				culture_group = valyrian
+			}
+			modifier = {
+				factor = 0.1
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.1
+				is_drowned_god_religion_trigger = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_character_modifier = abomination_of_incest
+			}
+			modifier = {
+				factor = 0.1
+				has_character_modifier = grandchild_of_incest
+			}
+		}
+		ROOT = {
+			religion = the_seven_originalist
+		}
+		ROOT = {
+			owner = {
+				religion = the_seven_originalist
+			}
+		}
+		create_random_priest = {
+			attributes = {
+				martial = 9
+				diplomacy = 5
+				learning = 3
+			}
+			female = no
+			culture = ROOT
+			religion = the_seven_originalist
+			dynasty = none
+			random_traits = yes
+			trait = ambitious
+			trait = zealous
+			trait = septon
+			trait = authoritative
+		}
+		new_character = {
+
+			prestige = 200
+			random_list = {
+				25 = { add_trait = trained_warrior }
+				75 = { add_trait = skilled_warrior }
+				25 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+			remove_all_job_titles = yes
+			give_job_title = job_spiritual
+		}
+
+	}
+	option = {
+		name = "EVTOPTBmbs_originalism.1"
+
+		ai_chance = {
+			factor = 5
+
+			modifier = {
+				factor = 3
+				is_old_gods_religion_trigger = yes
+			}
+			modifier = {
+				factor = 3
+				is_drowned_god_religion_trigger = yes
+			}
+			modifier = {
+				factor = 10
+				culture_group = valyrian
+			}
+			modifier = {
+				factor = 10
+				has_character_modifier = abomination_of_incest
+			}
+			modifier = {
+				factor = 10
+				has_character_modifier = grandchild_of_incest
+			}
+			modifier = {
+				factor = 3
+				trait = content
+			}
+		}
+
+		ROOT = {
+			religion = the_seven_originalist
+		}
+		create_random_priest = {
+			attributes = {
+				martial = 9
+				diplomacy = 5
+				learning = 3
+			}
+			female = no
+			culture = ROOT
+			religion = the_seven_originalist
+			dynasty = none
+			random_traits = yes
+			trait = ambitious
+			trait = zealous
+			trait = septon
+			trait = authoritative
+		}
+		new_character = {
+
+			prestige = 600
+			random_list = {
+				25 = { add_trait = trained_warrior }
+				75 = { add_trait = skilled_warrior }
+				25 = { add_trait = master_warrior }
+			}
+			remove_trait = imbecile
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+		}
+
+	}
+}
+character_event = {
+   id = mbs_originalism.2
+   desc = "EVTDESCmbs_originalism.2"
+   picture = GFX_evt_bishop
+
+   is_triggered_only = yes
+
+
+
+	immediate = {
+		primary_title = {
+			add_law = succ_papal_succession
+			add_law = investiture_law_3
+			add_law = slavery_0
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}

@@ -1,0 +1,875 @@
+namespace = mbs_ghiscar_titles
+
+narrative_event = {
+	id = mbs_ghiscar_titles.1
+	title = "EVTTITLEmbs_ghiscar_titles.1"
+	desc = "EVTDESCmbs_ghiscar_titles.1"
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.1" #redistribute titles
+		trigger = { 
+			OR = {
+				has_landed_title = c_yunkai
+				has_landed_title = c_astapor
+				has_landed_title = c_ghonazdhan
+				has_landed_title = c_ghardaq				
+				has_landed_title = c_bhorash
+				has_landed_title = c_khydhan
+				has_landed_title = c_geledhan				
+				has_landed_title = c_vezenkria
+			}
+			OR = {
+				c_6300100 = { #Jhogo
+					is_alive = yes
+				}
+				c_7300100 = { #Aggo
+					is_alive = yes
+				}
+				c_8300100 = { #Rakharo
+					is_alive = yes
+				}
+				c_14300100 = { #Rommo
+					is_alive = yes
+				}
+				c_12400101 = { #Groleo
+					is_alive = yes
+				}
+				c_1241000 = { #Tal Toraq
+					is_alive = yes
+				}
+				c_1241001 = { #Mollono Yos Dob
+					is_alive = yes
+				}
+				c_1241002 = { #Symon Stripeback
+					is_alive = yes
+				}
+				c_16571011 = { #Shavepate
+					is_alive = yes
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 2
+
+		}
+
+		if = {
+			limit = {
+				has_landed_title = c_yunkai
+				c_6300100 = { #Jhogo
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.2 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_ghonazdhan
+				c_7300100 = { #Aggo
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.3 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_astapor
+				c_8300100 = { #Rakharo
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.4 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_ghardaq
+				c_14300100 = { #Rommo
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.5 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_bhorash
+				c_12400101 = { #Groleo
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.6 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_khydhan
+				c_1241000 = { #Tal Toraq
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.7 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_geledhan
+				c_1241001 = { #Mollono Yos Dob
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.8 }
+		}
+		if = {
+			limit = {
+				has_landed_title = c_vezenkria
+				c_1241002 = { #Symon Stripeback
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.9 }
+		}
+		if = {
+			limit = {
+				c_meereenesehills = {
+					holder_scope = {
+						 same_realm = ROOT
+					}
+				}
+				c_16571011 = { #Shavepate
+					is_alive = yes
+				}
+			}
+			narrative_event = { id = mbs_ghiscar_titles.10 }
+		}
+	}
+	option = { #None alive
+		name = "EVTOPTBmbs_ghiscar_titles.1"
+		trigger = { 
+			NOT = {
+				OR = {
+					has_landed_title = c_bhorash
+					has_landed_title = c_yunkai
+					has_landed_title = c_astapor
+					has_landed_title = c_ghonazdhan
+					has_landed_title = c_khydhan
+					has_landed_title = c_vezenkria
+					has_landed_title = c_ghardaq				
+					has_landed_title = c_geledhan				
+				}
+				OR = {
+					c_6300100 = { #Jhogo
+						is_alive = yes
+					}
+					c_7300100 = { #Aggo
+						is_alive = yes
+					}
+					c_8300100 = { #Rakharo
+						is_alive = yes
+					}
+					c_14300100 = { #Rommo
+						is_alive = yes
+					}
+					c_12400101 = { #Groleo
+						is_alive = yes
+					}
+					c_1241000 = { #Tal Toraq
+						is_alive = yes
+					}
+					c_1241001 = { #Mollono Yos Dob
+						is_alive = yes
+					}
+					c_1241002 = { #Symon Stripeback
+						is_alive = yes
+					}
+					c_16571011 = { #Shavepate
+						is_alive = yes
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+		random = {
+			chance = 50
+			add_trait = depressed
+			hidden_tooltip = {
+				character_event = {
+					id = 38288 #Notify Depressed
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTCmbs_ghiscar_titles.1" #Nope
+		trigger = { 
+			OR = {
+				has_landed_title = c_yunkai
+				has_landed_title = c_astapor
+				has_landed_title = c_ghonazdhan
+				has_landed_title = c_ghardaq				
+				has_landed_title = c_bhorash
+				has_landed_title = c_khydhan
+				has_landed_title = c_geledhan				
+				has_landed_title = c_vezenkria
+			}
+			OR = {
+				c_6300100 = { #Jhogo
+					is_alive = yes
+				}
+				c_7300100 = { #Aggo
+					is_alive = yes
+				}
+				c_8300100 = { #Rakharo
+					is_alive = yes
+				}
+				c_14300100 = { #Rommo
+					is_alive = yes
+				}
+				c_12400101 = { #Groleo
+					is_alive = yes
+				}
+				c_1241000 = { #Tal Toraq
+					is_alive = yes
+				}
+				c_1241001 = { #Mollono Yos Dob
+					is_alive = yes
+				}
+				c_1241002 = { #Symon Stripeback
+					is_alive = yes
+				}
+				c_16571011 = { #Shavepate
+					is_alive = yes
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.2
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.2" #grant Jhogo Yunkai
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		c_6300100 = {
+			wealth = 500
+			b_greatpyramidyunkai = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			c_yunkai = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_yunkai = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			k_yunkai = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		if = {
+			limit = {
+				c_10300100 = { #Jhiqui
+					is_alive = yes
+					is_married = no
+				}
+				c_6300100 = { #Jhogo
+					is_alive = yes
+					is_married = no
+				}
+			}
+			c_10300100 = { #Jhiqui
+				add_spouse = 6300100
+			}
+		}		
+		c_6300100 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.2" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.3
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.3" #grant Aggo Hazdahn
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		hidden_tooltip = {
+			699 = {
+				province_event = { id = unoccupied.4 }
+			}
+		}
+		c_7300100 = {
+			wealth = 500
+			c_ghonazdhan = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_hazdahn = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			k_hazdahn = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_7300100 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.3" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.4
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.4" #grant Rakharo Astapor
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		c_8300100 = {
+			wealth = 500
+			b_greatpyramidastapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			c_astapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_astapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			k_astapor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_8300100 = { tooltip = { show_portrait = yes } }
+		if = {
+			limit = {
+				c_9300100 = { #Irri
+					is_alive = yes
+					is_married = no
+				}
+				c_8300100 = { #Rakharo
+					is_alive = yes
+					is_married = no
+				}
+			}
+			c_9300100 = { #Irri
+				add_spouse = 8300100
+			}
+		}		
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.4" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.5
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.5" #grant Rommo Skahazadhan
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		hidden_tooltip = {
+			643 = {
+				province_event = { id = unoccupied.4 }
+			}
+		}
+		c_14300100 = {
+			wealth = 500
+			b_ghardaq = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			c_ghardaq = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_ghardaq = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			k_skahazadhan = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_14300100 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.5" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.6
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.6" #grant Groleo Bhorash
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		c_12400101 = {
+			wealth = 500
+			c_bhorash = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_bhorash = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+			dynasty = 32637
+			any_close_relative = {
+				limit = { dynasty = 0 }
+				dynasty = 32637
+			}
+		}
+		c_12400101 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.6" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.7
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.7" #grant Tal Toraq Khydhan
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		hidden_tooltip = {
+			701 = {
+				province_event = { id = unoccupied.4 }
+			}
+		}
+		c_1241000 = {
+			wealth = 500
+			c_khydhan = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_1241000 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.7" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.8
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.8" #grant Mollono Yos Dob Geledhan
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		hidden_tooltip = {
+			647 = {
+				province_event = { id = unoccupied.4 }
+			}
+		}
+		c_1241001 = {
+			wealth = 500
+			c_geledhan = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_1241001 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.8" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.9
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.9" #grant Symon Stripeback Vezenkria
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		hidden_tooltip = {
+			692 = {
+				province_event = { id = unoccupied.4 }
+			}
+		}
+		c_1241002 = {
+			wealth = 500
+			c_vezenkria = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = e_ghiscar
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_1241002 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.9" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+narrative_event = {
+	id = mbs_ghiscar_titles.10
+	picture = GFX_evt_drogon
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_ghiscar_titles.10" #grant Shavepate Malkai
+
+
+		ai_chance = {
+			factor = 2
+		}
+
+		c_16571011 = {
+			wealth = 50
+			c_meereenesehills = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			b_meereen = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			b_wallsmeereen = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			b_meereenharbor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			b_meereenharbor = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			d_khyzaipass = {
+				grant_title = PREV
+				succession = primogeniture
+				gender_succ = cognatic
+			}
+			set_defacto_liege = d_meereen
+			character_event = { id = dynamic_coa.1 }
+			opinion = {
+				modifier = opinion_loyal_servant
+				who = ROOT
+			}
+			reverse_opinion = {
+				who = ROOT
+				modifier = opinion_loyal_servant
+				multiplier = 3
+				years = 10
+			}
+			liege = {
+				reverse_opinion = {
+					who = PREV
+					modifier = pressed_my_claim
+					years = 30
+				}
+			}
+		}
+		c_16571011 = { tooltip = { show_portrait = yes } }
+	}
+
+	option = {
+		name = "EVTOPTBmbs_ghiscar_titles.10" #Nope
+
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+}

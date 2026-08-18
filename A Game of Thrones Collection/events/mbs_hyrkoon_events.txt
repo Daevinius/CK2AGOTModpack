@@ -1,0 +1,144 @@
+namespace = mbs_hyrkoon
+
+long_character_event = {
+	id = mbs_hyrkoon.1
+	title = EVTTITLEmbs_hyrkoon.1
+	desc = EVTDESCmbs_hyrkoon.1
+	picture = GFX_kayakayanaya
+
+	only_rulers = yes
+
+	culture_group = hyrkoon_group
+
+	trigger = {
+		government = feudal_government
+		NOT = {
+			any_independent_ruler = {
+				has_landed_title = k_hyrkoon
+			}
+		}
+		NOR = {
+			trait = incapable
+			trait = crippled
+			trait = sick_incapable
+			trait = craven
+			trait = eunuch
+			is_dumb_trigger = yes
+			is_weak_trigger = yes
+		}
+		OR = {
+			has_landed_title = d_kayakayanaya
+			has_landed_title = d_samyriana
+			has_landed_title = d_bayasabhad
+		}
+		trait = ambitious
+		diplomacy = 10
+		martial = 12
+		age = 30
+		independent = yes
+	}
+
+	mean_time_to_happen = {
+		years = 50
+	}
+
+
+	option = {
+		name = EVTOPTmbs_hyrkoon.1
+		grant_title = k_hyrkoon
+		if = {
+			limit = {
+				any_independent_ruler = {
+					has_landed_title = d_kayakayanaya
+					tier = DUKE
+					culture_group = hyrkoon_group
+					NOT = { character = ROOT }
+				}
+			}
+			long_character_event = { id = mbs_hyrkoon.3 }
+		}
+		if = {
+			limit = {
+				any_independent_ruler = {
+					has_landed_title = d_samyriana
+					tier = DUKE
+					culture_group = hyrkoon_group
+					NOT = { character = ROOT }
+				}
+			}
+			long_character_event = { id = mbs_hyrkoon.3 }
+		}
+		if = {
+			limit = {
+				any_independent_ruler = {
+					has_landed_title = d_bayasabhad
+					tier = DUKE
+					culture_group = hyrkoon_group
+					NOT = { character = ROOT }
+				}
+			}
+			long_character_event = { id = mbs_hyrkoon.3 }
+		}
+		recalc_succession = yes
+		any_independent_ruler = {
+			limit = {
+				OR = {
+					culture_group = first_men
+					culture_group = andal
+					culture_group = free_cities
+					culture_group = valyrian
+					culture_group = hyrkoon_group
+					culture_group = yi_ti_group
+				}
+			}
+			long_character_event = { id = mbs_hyrkoon.2 }
+		}
+	}
+}
+
+long_character_event = {
+	id = mbs_hyrkoon.2
+	title = EVTTITLEmbs_hyrkoon.2
+	desc = EVTDESCmbs_hyrkoon.2
+	picture = GFX_kayakayanaya
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTAmbs_hyrkoon.2
+	}
+}
+long_character_event = {
+	id = mbs_hyrkoon.3
+	title = EVTTITLEmbs_hyrkoon.3
+	desc = EVTDESCmbs_hyrkoon.3
+	picture = GFX_kayakayanaya
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAmbs_hyrkoon.3" #
+		ai_chance = {
+			factor = 5
+		}
+		set_defacto_liege = FROM
+		k_hyrkoon = {
+			holder_scope = {
+				opinion = {
+					who = ROOT
+					modifier = opinion_joined_cause
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "EVTOPTBmbs_hyrkoon.3" #
+		ai_chance = {
+			factor = 1
+		}
+
+	}
+}
+
+
