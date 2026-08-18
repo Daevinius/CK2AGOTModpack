@@ -1,0 +1,331 @@
+title_decisions = {
+    scmr_add_claim = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			#NOT = { owns = ROOT }
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            higher_tier_than = BARON
+			NOT = {
+				holder_scope = {
+					character = from
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_claim = FROM
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	mc_add_claim = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+			#any_character = {
+			#	has_character_flag = mind_controlled
+			#	NOT = { owns = ROOT }
+			#}
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            higher_tier_than = BARON
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = {
+						ROOT = {
+							holder_scope = {
+								character = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				ROOT = {
+					add_claim = PREV
+				}
+				#add_claim = ROOT
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+    scmr_take_title = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			#NOT = { owns = ROOT }
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			NOT = {
+				holder_scope = {
+					character = from
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			gain_title = from
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	mc_take_title = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = {
+						ROOT = {
+							holder_scope = {
+								character = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				ROOT = {
+					gain_title = PREV
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+    scmr_take_title_de_jure = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			#NOT = { owns = ROOT }
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			any_de_jure_vassal_title = {
+				NOT = { holder_scope = { character = from } }
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				any_de_jure_vassal_title = {
+					gain_title = from
+				}
+				gain_title = from
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	mc_take_title_de_jure = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					ROOT = {
+						any_de_jure_vassal_title = { NOT = { holder_scope = { character = prevprev } } }
+					}
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					ROOT = {
+						any_de_jure_vassal_title = {
+							gain_title = PREVPREV
+						}
+						gain_title = PREV
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	scmr_take_title_de_jure_part = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			#NOT = { owns = ROOT }
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			any_de_jure_vassal_title = {
+				NOR = {
+					holder_scope = { character = from }
+					holder_scope = { is_liege_or_above = from }
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				any_de_jure_vassal_title = {
+					limit = {
+						has_holder = yes
+						NOR = {
+							holder_scope = { character = from }
+							holder_scope = { is_liege_or_above = from }
+						}
+					}
+					gain_title = from
+				}
+				if = {
+					limit = {
+						has_holder = yes
+						NOR = {
+							holder_scope = { character = from }
+							holder_scope = { is_liege_or_above = from }
+						}
+					}
+					gain_title = from
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	mc_take_title_de_jure_part = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					ROOT = {
+						any_de_jure_vassal_title = {
+							NOR = {
+								holder_scope = { character = prevprev }
+								holder_scope = { is_liege_or_above = prevprev }
+							}
+						}
+					}
+				}
+			}
+
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					ROOT = {
+						any_de_jure_vassal_title = {
+							limit = {
+								NOR = {
+									holder_scope = { character = prevprev }
+									holder_scope = { is_liege_or_above = prevprev }
+								}
+							}
+							gain_title = PREVPREV
+						}
+						if = {
+							limit = {
+								NOR = {
+									holder_scope = { character = prev }
+									holder_scope = { is_liege_or_above = prev }
+								}
+							}
+							gain_title = PREV
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+}

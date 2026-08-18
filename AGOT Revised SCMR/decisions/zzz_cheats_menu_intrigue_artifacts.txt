@@ -1,0 +1,3583 @@
+decisions = {
+
+	show_mnm_artifact = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            NOT = { has_character_flag = show_mnm_artifact }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_mnm_artifact
+		}
+
+
+	}
+
+    hide_mnm_artifact = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_mnm_artifact
+		}
+
+
+	}
+
+	#######Valyrian Steel Artifacts#######
+
+	show_top_artifact_val = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_top_artifact_val }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_top_artifact_val
+		}
+
+
+	}
+
+    hide_top_artifact_val = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_top_artifact_val
+		}
+
+
+	}
+
+	scmr_valyrian_armour = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = valyrian_armour }
+		}
+
+		effect = {
+			add_artifact = valyrian_armour
+			new_artifact = { set_artifact_flag = heirloom_@PREV }
+		}
+
+	}
+
+	scmr_valyrian_steel = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = valyrian_steel }
+		}
+
+		effect = {
+			add_artifact = valyrian_steel
+			new_artifact = {
+				set_artifact_flag = heirloom_@PREV
+				get_random_sword_name_effect = yes
+			}
+		}
+	}
+
+	scmr_dawn = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = dawn }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = dawn
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = dawn
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = dawn
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = dawn
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+			set_character_flag = nick_the_sword_of_the_morning
+			give_nickname = nick_the_sword_of_the_morning
+		}
+	}
+
+	scmr_ice = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = ice }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = ice_stolen_and_reforged
+				}
+				hidden_tooltip = {
+					any_character = {
+						limit = {
+							has_artifact = widowswail
+						}
+						any_artifact = {
+							limit = {
+								artifact_type = widowswail
+							}
+							transfer_artifact = { from = PREV to = ROOT }
+						}
+					}
+					any_character = {
+						limit = {
+							has_artifact = ice
+						}
+						any_artifact = {
+							limit = {
+								artifact_type = ice
+								has_artifact_flag = forged_from_ice
+							}
+							transfer_artifact = { from = PREV to = ROOT }
+						}
+					}
+					any_character = {
+						limit = {
+							has_artifact = oathkeeper
+						}
+						any_artifact = {
+							limit = {
+								artifact_type = oathkeeper
+							}
+							transfer_artifact = { from = PREV to = ROOT }
+						}
+					}
+				}
+				random_artifact = {
+					limit = {
+						OR = {
+							artifact_type = widowswail
+							artifact_type = oathkeeper
+							artifact_type = ice
+						}
+						has_artifact_flag = forged_from_ice
+					}
+					preferred_limit = {
+						artifact_type = ice
+					}
+					preferred_limit = {
+						artifact_type = widowswail
+					}
+					custom_tooltip = {
+						text = TOOLTIPreforge_iceB
+						set_picture = GFX_vs_ice
+						set_name = ice
+						set_description = ice_desc_REFORGED
+						clr_artifact_flag = forged_from_ice
+					}
+					set_artifact_flag = heirloom_@ROOT
+				}
+				hidden_tooltip = {
+					any_artifact = {
+						limit = {
+							OR = {
+								artifact_type = widowswail
+								artifact_type = oathkeeper
+								artifact_type = ice
+							}
+							has_artifact_flag = forged_from_ice
+						}
+						unsafe_destroy_artifact = yes
+					}
+				}
+				clr_global_flag = ice_stolen_and_reforged
+			}
+			else = {
+				if = {
+					limit = {
+						any_character = {
+							has_artifact = ice
+						}
+					}
+					any_character = {
+						limit = {
+							has_artifact = ice
+						}
+						any_artifact = {
+							limit = {
+								artifact_type = ice
+							}
+							clr_artifact_flag = heirloom_@PREV
+							set_artifact_flag = heirloom_@ROOT
+							transfer_artifact = { from = PREV to = ROOT }
+						}
+					}
+				}
+				else = {
+					add_artifact = ice
+					new_artifact = { set_artifact_flag = heirloom_@PREV }
+				}
+			}
+		}
+
+	}
+
+
+	scmr_longclaw = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOR = {
+				has_artifact = longclaw
+				has_artifact = longclaw_snow
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = longclaw
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = longclaw
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = longclaw
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_character = {
+						has_artifact = longclaw_snow
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = longclaw_snow
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = longclaw_snow
+						}
+						set_picture = GFX_vs_longclaw
+						set_name = longclaw
+						set_description = longclaw_desc
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = longclaw
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+
+	scmr_blackfyre = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = blackfyre }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = blackfyre
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = blackfyre
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = blackfyre
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = blackfyre
+				new_artifact = {
+					set_artifact_flag = heirloom_@PREV
+					set_creation_date = 1000.1.1
+				}
+			}
+		}
+
+	}
+
+	scmr_darksister = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = darksister }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = darksister
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = darksister
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = darksister
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = darksister
+				new_artifact = {
+					set_creation_date = 1000.1.1
+					set_artifact_flag = heirloom_@PREV
+				}
+			}
+			hidden_tooltip = {
+				random_province = {
+					limit = { has_province_flag = dark_sister_location }
+					clr_province_flag = dark_sister_location
+				}
+			}
+		}
+
+	}
+
+	scmr_lightbringer = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = lightbringer }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = lightbringer
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = lightbringer
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = lightbringer
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = lightbringer
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_brightroar = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = brightroar }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = brightroar
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = brightroar
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = brightroar
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = brightroar
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_heartsbane = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = heartsbane }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = heartsbane
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = heartsbane
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = heartsbane
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = heartsbane
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_nightfall = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = nightfall }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = nightfall
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = nightfall
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = nightfall
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = nightfall
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_ladyforlorn = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = ladyforlorn }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = ladyforlorn
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = ladyforlorn
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = ladyforlorn
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = ladyforlorn
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_redrain = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = redrain }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = redrain
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = redrain
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = redrain
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = redrain
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_vigilance = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = vigilance }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = vigilance
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = vigilance
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = vigilance
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = vigilance
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_orphan_maker = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = orphan_maker }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = orphan_maker
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = orphan_maker
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = orphan_maker
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = orphan_maker
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_crabspincer = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = crabspincer }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = crabspincer
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = crabspincer
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = crabspincer
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = crabspincer
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_strangers_mercy = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = strangers_mercy }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = strangers_mercy
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = strangers_mercy
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = strangers_mercy
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = strangers_mercy
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_truth = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = truth }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = truth
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = truth
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = truth
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = truth
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_lamentation = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = lamentation }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = lamentation
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = lamentation
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = lamentation
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = lamentation
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_poison = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = poison }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = poison
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = poison
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = poison
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = poison
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_valyrian_steel_arakh = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = valyrian_steel_arakh }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = valyrian_steel_arakh
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = valyrian_steel_arakh
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = valyrian_steel_arakh
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = valyrian_steel_arakh
+				new_artifact = {
+					set_artifact_flag = heirloom_@PREV
+					get_random_sword_name_effect = yes
+				}
+			}
+		}
+
+	}
+
+	scmr_valyrian_dagger = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = valyrian_dagger }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = valyrian_dagger
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = valyrian_dagger
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = valyrian_dagger
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = valyrian_dagger
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_seafoam = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = seafoam }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = seafoam
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = seafoam
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = seafoam
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = seafoam
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+			}
+		}
+
+	}
+
+	scmr_oathkeeper = {
+
+		ai = no
+		potential = {
+			has_global_flag = ice_stolen_and_reforged
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = oathkeeper }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = oathkeeper
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = oathkeeper
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = oathkeeper
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+		}
+
+	}
+
+	scmr_widowswail = {
+
+		ai = no
+		potential = {
+            has_global_flag = ice_stolen_and_reforged
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_val
+		}
+
+		allow = {
+			NOT = { has_artifact = widowswail }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = widowswail
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = widowswail
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = widowswail
+						}
+						clr_artifact_flag = heirloom_@PREV
+						set_artifact_flag = heirloom_@ROOT
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+		}
+
+	}
+
+
+	#######Jade Dragon Artifacts#######
+
+	show_top_artifact_jd = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_top_artifact_jd }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_top_artifact_jd
+		}
+
+
+	}
+
+    hide_top_artifact_jd = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_top_artifact_jd
+		}
+
+
+	}
+
+	scmr_jade_dragon = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = jade_dragon }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = jade_dragon
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = jade_dragon
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = jade_dragon
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = jade_dragon
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
+			}
+		}
+
+
+
+	}
+
+	scmr_art_of_war = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = art_of_war }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = art_of_war
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = art_of_war
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = art_of_war
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = art_of_war
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
+			}
+		}
+
+
+
+	}
+
+	scmr_classic_of_poetry = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = classic_of_poetry }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = classic_of_poetry
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = classic_of_poetry
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = classic_of_poetry
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = classic_of_poetry
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
+			}
+		}
+
+
+
+	}
+
+	scmr_chinese_dragon_amulet = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = chinese_dragon_amulet }
+		}
+
+		effect = {
+			add_artifact = chinese_dragon_amulet
+			new_artifact = {
+				set_creation_date = 1.1.1
+			}
+		}
+
+
+
+	}
+
+	scmr_water_clock = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = water_clock }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = water_clock
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = water_clock
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = water_clock
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = water_clock
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
+			}
+		}
+
+
+
+	}
+
+	scmr_jian_sword = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = jian_sword }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = jian_sword
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = jian_sword
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = jian_sword
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = jian_sword
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
+			}
+		}
+
+
+
+	}
+
+	scmr_chinese_ceremonial_robes = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = chinese_ceremonial_robes }
+		}
+
+		effect = {
+			add_artifact = chinese_ceremonial_robes
+		}
+
+
+
+	}
+
+	scmr_silk_shroud = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = silk_shroud }
+		}
+
+		effect = {
+			add_artifact = silk_shroud
+			new_artifact = { set_creation_date = 1.1.1 }
+		}
+
+
+
+	}
+
+
+
+	scmr_chinese_book_health = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = chinese_book_health }
+		}
+
+		effect = {
+			add_artifact = chinese_book_health
+		}
+
+
+
+	}
+
+	scmr_chinese_book_law = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = chinese_book_law }
+		}
+
+		effect = {
+			add_artifact = chinese_book_law
+		}
+
+
+
+	}
+
+	scmr_chinese_book_economy = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_jd
+		}
+
+		allow = {
+			NOT = { has_artifact = chinese_book_economy }
+		}
+
+		effect = {
+			add_artifact = chinese_book_economy
+		}
+
+
+
+	}
+
+
+
+	#######Special Artifacts#######
+
+
+	show_top_artifact_spc = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_top_artifact_spc }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_top_artifact_spc
+		}
+
+
+	}
+
+    hide_top_artifact_spc = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_top_artifact_spc
+		}
+
+
+	}
+
+	scmr_cursed_diamond_crown = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = cursed_diamond_crown }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = cursed_diamond_crown
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = cursed_diamond_crown
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = cursed_diamond_crown
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+					ROOT = {
+						set_character_flag = cursed_diamond_crown
+						hidden_tooltip = { character_event = { id = RoI.216 days = 60 } }  # Make a grand crown
+					}
+				}
+			}
+			else = {
+				add_artifact = cursed_diamond_crown
+				set_character_flag = cursed_diamond_crown
+				hidden_tooltip = { character_event = { id = RoI.216 days = 60 } }  # Make a grand crown
+			}
+		}
+
+
+
+	}
+
+	scmr_necronomicon = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = necronomicon }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = necronomicon
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = necronomicon
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = necronomicon
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = necronomicon
+				new_artifact = {
+					set_creation_date = 1.1.1
+				}
+			}
+		}
+
+
+
+	}
+
+
+	scmr_dragon_egg = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = dragon_egg }
+		}
+
+		effect = {
+			add_artifact = dragon_egg
+			new_artifact = { set_artifact_flag = heirloom_@PREV }
+		}
+
+	}
+
+	scmr_dragon_horn = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOR = {
+				has_artifact = dragon_horn_a
+				has_artifact = dragon_horn_b
+			}
+		}
+
+		effect = {
+			random_list = { #two designs
+				1 = { add_artifact = dragon_horn_a }
+				1 = { add_artifact = dragon_horn_b }
+			}
+			new_artifact = { set_artifact_flag = heirloom_@PREV }
+		}
+
+	}
+
+	scmr_dragonbone_weapon = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NAND = {
+				has_artifact = dragonbone_bow
+				has_artifact = dragonbone_axe
+				has_artifact = dragonbone_sword
+			}
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_bow } }
+				add_artifact = dragonbone_bow
+				primary_title = {
+					set_title_flag = has_artifact_claims
+					new_artifact = {
+						set_artifact_flag = heirloom_@ROOT
+						set_artifact_flag = title_heirloom_@ROOT
+						set_artifact_flag = heirloom_@PREV
+					}
+				}
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_axe } }
+				add_artifact = dragonbone_axe
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_sword } }
+				add_artifact = dragonbone_sword
+			}
+
+		}
+
+	}
+
+	scmr_dragonbone_artifact = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NAND = {
+				has_artifact = dragonbone_whip
+				has_artifact = dragonbone_bracelet
+				has_artifact = dragonbone_statue
+				has_artifact = dragonbone_amulet
+				has_artifact = dragonbone_scepter
+				has_artifact = dragonbone_seal
+				has_artifact = dragonbone_necklace
+			}
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_whip } }
+				add_artifact = dragonbone_whip
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_bracelet } }
+				add_artifact = dragonbone_bracelet
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_statue } }
+				add_artifact = dragonbone_statue
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_amulet } }
+				add_artifact = dragonbone_amulet
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_scepter } }
+				add_artifact = dragonbone_scepter
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_seal } }
+				add_artifact = dragonbone_seal
+			}
+			if = {
+				limit = { NOT = { has_artifact = dragonbone_necklace } }
+				add_artifact = dragonbone_necklace
+			}
+			#
+			#primary_title = {
+			#	set_title_flag = has_artifact_claims
+			#	new_artifact = {
+			#		set_artifact_flag = heirloom_@ROOT
+			#		set_artifact_flag = title_heirloom_@ROOT
+			#		set_artifact_flag = heirloom_@PREV
+			#	}
+			#}
+			#
+		}
+
+	}
+
+	scmr_glass_candle = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = glass_candle }
+		}
+
+		effect = {
+			add_artifact = glass_candle
+			new_artifact = {
+				set_creation_date = 7000.1.1
+			}
+		}
+
+	}
+
+	scmr_winterhorn = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = winterhorn }
+		}
+
+		effect = {
+			add_artifact = winterhorn
+			new_artifact = { set_artifact_flag = heirloom_@PREV }
+			set_global_flag = winterhorn_found
+			narrative_event = { id = wildling.25 }
+		}
+
+	}
+
+	scmr_dragon_binder = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = dragon_binder }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = dragon_binder
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = dragon_binder
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = dragon_binder
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = dragon_binder
+			}
+		}
+
+
+
+	}
+
+	scmr_mel_ruby = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = mel_ruby }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = mel_ruby
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = mel_ruby
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = mel_ruby
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = mel_ruby
+			}
+		}
+	}
+
+	scmr_axe_whispering = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = axe_whispering }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = axe_whispering
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = axe_whispering
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = axe_whispering
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = axe_whispering
+			}
+			hidden_effect = {
+				clr_character_flag = crucible_steel_axe
+				clr_character_flag = crucible_steel_sword
+				clr_character_flag = crucible_steel_mace
+			}
+		}
+
+
+
+	}
+
+	scmr_sword_whispering = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = sword_whispering }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = sword_whispering
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = sword_whispering
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = sword_whispering
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = sword_whispering
+			}
+			hidden_effect = {
+				clr_character_flag = crucible_steel_axe
+				clr_character_flag = crucible_steel_sword
+				clr_character_flag = crucible_steel_mace
+			}
+		}
+
+
+
+	}
+
+	scmr_mace_whispering = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_spc
+		}
+
+		allow = {
+			NOT = { has_artifact = mace_whispering }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = mace_whispering
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = mace_whispering
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = mace_whispering
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = mace_whispering
+			}
+			hidden_effect = {
+				clr_character_flag = crucible_steel_axe
+				clr_character_flag = crucible_steel_sword
+				clr_character_flag = crucible_steel_mace
+			}
+		}
+
+
+
+	}
+
+
+	#######Book Artifacts#######
+
+
+	show_top_artifact_bok = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_top_artifact_bok }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_top_artifact_bok
+		}
+
+
+	}
+
+    hide_top_artifact_bok = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_top_artifact_bok
+		}
+
+
+	}
+
+	scmr_the_bestiary = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = the_bestiary }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = the_bestiary
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = the_bestiary
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = the_bestiary
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = the_bestiary
+			}
+		}
+
+
+
+	}
+
+	scmr_the_odyssey = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = the_odyssey }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = the_odyssey
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = the_odyssey
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = the_odyssey
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = the_odyssey
+			}
+		}
+
+
+
+	}
+
+	scmr_speculum_regale = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = speculum_regale }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = speculum_regale
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = speculum_regale
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = speculum_regale
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = speculum_regale
+			}
+		}
+
+
+
+	}
+
+	scmr_religious_head_culture_courtesy = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = religious_head_culture_courtesy }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = religious_head_culture_courtesy
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = religious_head_culture_courtesy
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = religious_head_culture_courtesy
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = religious_head_culture_courtesy
+			}
+		}
+
+
+
+	}
+
+	scmr_keeping_government_court = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = keeping_government_court }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = keeping_government_court
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = keeping_government_court
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = keeping_government_court
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = keeping_government_court
+			}
+		}
+
+
+
+	}
+
+	scmr_treatise_on_fishing = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = treatise_on_fishing }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = treatise_on_fishing
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = treatise_on_fishing
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = treatise_on_fishing
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = treatise_on_fishing
+			}
+		}
+
+
+
+	}
+
+	scmr_learning_languages_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = learning_languages_4 }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = learning_languages_4
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = learning_languages_4
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = learning_languages_4
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = learning_languages_4
+			}
+		}
+
+
+
+	}
+
+	scmr_the_book_of_healing = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = the_book_of_healing }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = the_book_of_healing
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = the_book_of_healing
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = the_book_of_healing
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = the_book_of_healing
+			}
+		}
+
+
+
+	}
+
+	scmr_the_annals_of_roots_dynasty = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = the_annals_of_roots_dynasty }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = the_annals_of_roots_dynasty
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = the_annals_of_roots_dynasty
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = the_annals_of_roots_dynasty
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = the_annals_of_roots_dynasty
+			}
+		}
+
+
+
+	}
+
+	scmr_the_secret_history_of_culture = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_top_artifact_bok
+		}
+
+		allow = {
+			NOT = { has_artifact = the_secret_history_of_culture }
+		}
+
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_artifact = the_secret_history_of_culture
+					}
+				}
+				random_character = {
+					limit = {
+						has_artifact = the_secret_history_of_culture
+					}
+					random_artifact = {
+						limit = {
+							artifact_type = the_secret_history_of_culture
+						}
+						transfer_artifact = { from = PREV to = ROOT }
+					}
+				}
+			}
+			else = {
+				add_artifact = the_secret_history_of_culture
+			}
+		}
+
+
+
+	}
+
+	#######Military Books#######
+
+
+	show_high_book_mil = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_high_book_mil }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_high_book_mil
+		}
+
+
+	}
+
+    hide_high_book_mil = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_high_book_mil
+		}
+
+
+	}
+
+	scmr_military_strategy_guide = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = military_strategy_guide }
+		}
+
+		effect = {
+			add_artifact = military_strategy_guide
+		}
+
+
+
+	}
+
+	scmr_my_fechtbuch = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = my_fechtbuch }
+		}
+
+		effect = {
+			add_artifact = my_fechtbuch
+		}
+
+
+
+	}
+
+	scmr_codex_dynasty_name = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = codex_dynasty_name }
+		}
+
+		effect = {
+			add_artifact = codex_dynasty_name
+		}
+
+
+
+	}
+
+	scmr_the_sword_and_buckler = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = the_sword_and_buckler }
+		}
+
+		effect = {
+			add_artifact = the_sword_and_buckler
+		}
+
+
+
+	}
+
+	scmr_lessons_taught_to_me_by_rival_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = lessons_taught_to_me_by_rival_3 }
+		}
+
+		effect = {
+			add_artifact = lessons_taught_to_me_by_rival_3
+		}
+
+
+
+	}
+
+	scmr_ordinary_beasts = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = ordinary_beasts }
+		}
+
+		effect = {
+			add_artifact = ordinary_beasts
+		}
+
+
+
+	}
+
+	scmr_the_white_animal = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = the_white_animal }
+		}
+
+		effect = {
+			add_artifact = the_white_animal
+		}
+
+
+
+	}
+
+	scmr_the_book_of_shadows = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = the_book_of_shadows }
+		}
+
+		effect = {
+			add_artifact = the_book_of_shadows
+		}
+
+
+
+	}
+
+	scmr_on_government_type_warfare = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_mil
+		}
+
+		allow = {
+			NOT = { has_artifact = on_government_type_warfare }
+		}
+
+		effect = {
+			add_artifact = on_government_type_warfare
+		}
+
+
+
+	}
+
+
+	#######Administration Books#######
+
+
+	show_high_book_adm = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_high_book_adm }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_high_book_adm
+		}
+
+
+	}
+
+    hide_high_book_adm = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_high_book_adm
+		}
+
+
+	}
+
+	scmr_the_dynasty_cookbook = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = the_dynasty_cookbook }
+		}
+
+		effect = {
+			add_artifact = the_dynasty_cookbook
+		}
+
+
+
+	}
+
+	scmr_modest_measures = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = modest_measures }
+		}
+
+		effect = {
+			add_artifact = modest_measures
+		}
+
+
+
+	}
+
+	scmr_good_cookbook = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = good_cookbook }
+		}
+
+		effect = {
+			add_artifact = good_cookbook
+		}
+
+
+
+	}
+
+	scmr_cookbook_3_roman = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = cookbook_3_roman }
+		}
+
+		effect = {
+			add_artifact = cookbook_3_roman
+		}
+
+
+
+	}
+
+	scmr_cookbook_3_arabic = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = cookbook_3_arabic }
+		}
+
+		effect = {
+			add_artifact = cookbook_3_arabic
+		}
+
+
+
+	}
+
+	scmr_cookbook_3_chinese_group = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = cookbook_3_chinese_group }
+		}
+
+		effect = {
+			add_artifact = cookbook_3_chinese_group
+		}
+
+
+
+	}
+
+	scmr_cookbook_3_central_german = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = cookbook_3_central_german }
+		}
+
+		effect = {
+			add_artifact = cookbook_3_central_german
+		}
+
+
+
+	}
+
+	scmr_on_culture_architecture = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = on_culture_architecture }
+		}
+
+		effect = {
+			add_artifact = on_culture_architecture
+		}
+
+
+
+	}
+
+	scmr_how_to_build_a_well = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = how_to_build_a_well }
+		}
+
+		effect = {
+			add_artifact = how_to_build_a_well
+		}
+
+
+
+	}
+
+	scmr_gardens_of_planet = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_adm
+		}
+
+		allow = {
+			NOT = { has_artifact = gardens_of_planet }
+		}
+
+		effect = {
+			add_artifact = gardens_of_planet
+		}
+
+
+
+	}
+
+
+
+	#######Religion Books#######
+
+
+	show_high_book_rel = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_high_book_rel }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_high_book_rel
+		}
+
+
+	}
+
+    hide_high_book_rel = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_high_book_rel
+		}
+
+
+	}
+
+	scmr_a_history_of_churches = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = a_history_of_churches }
+		}
+
+		effect = {
+			add_artifact = a_history_of_churches
+		}
+
+
+
+	}
+
+	scmr_how_to_worship = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = how_to_worship }
+		}
+
+		effect = {
+			add_artifact = how_to_worship
+		}
+
+
+
+	}
+
+	scmr_the_not_actual_holy_book = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = the_not_actual_holy_book }
+		}
+
+		effect = {
+			add_artifact = the_not_actual_holy_book
+		}
+
+
+
+	}
+
+	scmr_the_spirits = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = the_spirits }
+		}
+
+		effect = {
+			add_artifact = the_spirits
+		}
+
+
+
+	}
+
+	scmr_learning_languages_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = learning_languages_3 }
+		}
+
+		effect = {
+			add_artifact = learning_languages_3
+		}
+
+
+
+	}
+
+	scmr_the_republic = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = the_republic }
+		}
+
+		effect = {
+			add_artifact = the_republic
+		}
+
+
+
+	}
+
+	scmr_the_confessions_of_root = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = the_confessions_of_root }
+		}
+
+		effect = {
+			add_artifact = the_confessions_of_root
+		}
+
+
+
+	}
+
+	scmr_comforting_poetry = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = comforting_poetry }
+		}
+
+		effect = {
+			add_artifact = comforting_poetry
+		}
+
+
+
+	}
+
+	scmr_equine_sequins = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rel
+		}
+
+		allow = {
+			NOT = { has_artifact = equine_sequins }
+		}
+
+		effect = {
+			add_artifact = equine_sequins
+		}
+
+
+
+	}
+
+
+	#######Relationship Books#######
+
+
+	show_high_book_rls = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            NOT = { has_character_flag = show_high_book_rls }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_high_book_rls
+		}
+
+
+	}
+
+    hide_high_book_rls = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_mnm_artifact
+			has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_high_book_rls
+		}
+
+
+	}
+
+
+	scmr_court_etiquette_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = court_etiquette_3 }
+		}
+
+		effect = {
+			add_artifact = court_etiquette_3
+		}
+
+
+
+	}
+
+	scmr_kama_sutra = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = kama_sutra }
+		}
+
+		effect = {
+			add_artifact = kama_sutra
+		}
+
+
+
+	}
+
+	scmr_in_honor_of_roots_beloved_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = in_honor_of_roots_beloved_3 }
+		}
+
+		effect = {
+			add_artifact = in_honor_of_roots_beloved_3
+		}
+
+
+
+	}
+
+	scmr_the_art_of_love = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = the_art_of_love }
+		}
+
+		effect = {
+			add_artifact = the_art_of_love
+		}
+
+
+
+	}
+
+	scmr_the_hunchback_of_capital = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = the_hunchback_of_capital }
+		}
+
+		effect = {
+			add_artifact = the_hunchback_of_capital
+		}
+
+
+
+	}
+
+	scmr_the_illiad = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = the_illiad }
+		}
+
+		effect = {
+			add_artifact = the_illiad
+		}
+
+
+
+	}
+
+	scmr_contracts_of_the_romans = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = contracts_of_the_romans }
+		}
+
+		effect = {
+			add_artifact = contracts_of_the_romans
+		}
+
+
+
+	}
+
+	scmr_the_legend_of_roots_ancestors_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = the_legend_of_roots_ancestors_3 }
+		}
+
+		effect = {
+			add_artifact = the_legend_of_roots_ancestors_3
+		}
+
+
+
+	}
+
+	scmr_a_story_about_my_aunt = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_artifact
+            has_character_flag = show_high_book_rls
+		}
+
+		allow = {
+			NOT = { has_artifact = a_story_about_my_aunt }
+		}
+
+		effect = {
+			add_artifact = a_story_about_my_aunt
+		}
+
+
+
+	}
+
+
+
+
+}

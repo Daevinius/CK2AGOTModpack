@@ -1,0 +1,203 @@
+#scmr_notfull_building	Здание не достроено
+#scmr_hp_building		Больница не заполнена
+#scmr_trade_building	Торговый пост не заполнен
+#scmr_family_palace		Дворец семьи не заполнен
+
+scmr_notfull_building = {
+	OR = {
+		AND = {
+			holding_type = castle
+			NOT = {
+				AND = {
+                    has_building = ca_wall_5
+                    has_building = ca_wall_q_5
+                    has_building = ca_training_grounds_2
+                    has_building = ca_barracks_6
+                    has_building = ca_militia_barracks_3
+                    has_building = ca_town_5
+                    has_building = ca_keep_5
+                    has_building = ca_stable_5
+                    #has_building = ca_shipyard_4
+					OR = {
+						has_building = ca_asoiaf_dorne_basevalue_6
+						has_building = ca_asoiaf_eastern_basevalue_6
+						has_building = ca_asoiaf_essos_basevalue_6
+					}
+                }
+			}
+		}
+		AND = {
+			holding_type = temple
+			NAND = {
+				has_building = tp_wall_5
+                has_building = tp_wall_q_5
+                has_building = tp_barracks_6
+                has_building = tp_elite_barracks_6
+                has_building = tp_town_6
+                #has_building = tp_shipyard_4
+                has_building = tp_monastery_6
+			}
+		}
+		AND = {
+			holding_type = city
+			NAND = {
+				has_building = ct_wall_5
+				has_building = ct_wall_q_5
+				has_building = ct_training_grounds_6
+				has_building = ct_barracks_6
+				has_building = ct_marketplace_6
+				#has_building = ct_port_5
+			}
+		}
+		AND = {
+			holding_type = tribal
+			NOT = {
+				has_building = tb_market_town_4
+			}
+		}
+		AND = {
+			holding_type = nomad
+			NAND = {
+				has_building = no_horse_breeder_8
+                has_building = no_riding_contests_8
+				has_building = no_airag_producer_8
+                has_building = no_cattle_pens_8
+                has_building = no_ox_wagon_8
+                has_building = no_meat_preserver_8
+                has_building = no_sheep_8
+                has_building = no_felt_crafter_8
+                has_building = no_ger_crafter_8
+                has_building = no_shrine_8
+                has_building = no_hunting_parties_8
+                has_building = no_baghatur_council_8
+                has_building = no_dothraki_palace_8
+                has_building = no_composite_bow_crafter_8
+                has_building = no_lamellar_armor_crafter_8
+                has_building = no_gathering_hall_8
+                has_building = no_minter_8
+                has_building = no_camp_fortifications_8
+                has_building = no_camel_breeder_8
+                has_building = no_elephant_camp_8
+			}
+		}
+	}
+}
+
+
+scmr_hp_building = {
+	NAND = {
+		hospital_has_building = hospital_building_5
+		hospital_has_building = leper_colony_1
+		hospital_has_building = pilgrims_inn_1
+		hospital_has_building = chapel_1
+		hospital_has_building = soup_kitchen_1
+	}
+}
+
+scmr_trade_building = {
+	NAND = {
+		trade_post_has_building = tr_port_3
+		trade_post_has_building = tr_enclave_3
+		trade_post_has_building = tr_garrison_3
+	}
+}
+
+scmr_family_palace = {
+	family_palace = {
+		OR = {
+			NOT = {
+				has_building = fp_mansion_1
+			}
+			NOT = {
+				has_building = fp_mansion_2
+			}
+			NOT = {
+				has_building = fp_mansion_3
+			}
+			NOT = {
+				has_building = fp_mansion_4
+			}
+			NOT = {
+				has_building = fp_barracks_1
+			}
+			NOT = {
+				has_building = fp_barracks_2
+			}
+			NOT = {
+				has_building = fp_barracks_3
+			}
+			NOT = {
+				has_building = fp_stable_1
+			}
+			NOT = {
+				has_building = fp_stable_2
+			}
+			NOT = {
+				has_building = fp_stable_3
+			}
+			NOT = {
+				has_building = fp_bowyer_1
+			}
+			NOT = {
+				has_building = fp_bowyer_2
+			}
+			NOT = {
+				has_building = fp_bowyer_3
+			}
+			NOT = {
+				has_building = fp_shipyard_1
+			}
+			NOT = {
+				has_building = fp_shipyard_2
+			}
+			NOT = {
+				has_building = fp_shipyard_3
+			}
+			NOT = {
+				has_building = fp_warehouse_1
+			}
+			NOT = {
+				has_building = fp_warehouse_2
+			}
+			NOT = {
+				has_building = fp_warehouse_3
+			}
+			NOT = {
+				has_building = fp_garden_1
+			}
+			NOT = {
+				has_building = fp_garden_2
+			}
+			NOT = {
+				has_building = fp_garden_3
+			}
+			NOT = {
+				has_building = fp_cellar_1
+			}
+			NOT = {
+				has_building = fp_cellar_2
+			}
+			NOT = {
+				has_building = fp_cellar_3
+			}
+			NOT = {
+				has_building = fp_shrine_1
+			}
+			NOT = {
+				has_building = fp_shrine_2
+			}
+			NOT = {
+				has_building = fp_shrine_3
+			}
+			NOT = {
+				has_building = fp_vault_1
+			}
+			NOT = {
+				has_building = fp_vault_2
+			}
+			NOT = {
+				has_building = fp_vault_3
+			}
+		}
+	}
+}

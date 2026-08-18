@@ -1,0 +1,367 @@
+###By Specialist
+namespace = mixed_culture_mix
+
+character_event = {
+	id = mixed_culture_mix.9
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###ulthosi/shadowshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###ulthosi Father
+							graphical_culture  = ulthosgfx
+						}
+						mother_even_if_dead = {
+							###shadowshai Mother
+							graphical_culture  = shadowshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###ulthosi Mother
+							graphical_culture  = ulthosgfx
+						}
+						father_even_if_dead = {
+							###shadowshai Father
+							graphical_culture  = shadowshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = ulthosi
+				}
+				50 = {
+					set_graphical_culture = shadowlander
+				}
+				20 = {
+					set_graphical_culture = shadowshai
+				}
+				10 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				5 = {
+					set_graphical_culture = Summerosi
+				}
+			}
+		}
+		###ulthosi/Asshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###ulthosi Father
+							graphical_culture  = ulthosgfx
+						}
+						mother_even_if_dead = {
+							###asshai Mother
+							graphical_culture  = asshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###ulthosi Mother
+							graphical_culture  = ulthosgfx
+						}
+						father_even_if_dead = {
+							###asshai Father
+							graphical_culture  = asshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = ulthosi
+				}
+				25 = {
+					set_graphical_culture = shadowlander
+				}
+				50 = {
+					set_graphical_culture = shadowshai
+				}
+				5 = {
+					set_graphical_culture = asshai
+				}
+			}
+		}
+		###shadowlander/asshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###shadowlander Father
+							graphical_culture  = shadowlandergfx
+						}
+						mother_even_if_dead = {
+							###asshai Mother
+							graphical_culture  = asshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowlander Mother
+							graphical_culture  = shadowlandergfx
+						}
+						father_even_if_dead = {
+							###asshai Father
+							graphical_culture  = asshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = shadowlander
+				}
+				60 = {
+					set_graphical_culture = shadowshai
+				}
+				15 = {
+					set_graphical_culture = asshai
+				}
+			}
+		}
+		###shadowlander/shadowlander Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###shadowlander Father
+							graphical_culture  = shadowlandergfx
+						}
+						mother_even_if_dead = {
+							###shadowlander Mother
+							graphical_culture  = shadowlandergfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowlander Mother
+							graphical_culture  = shadowlandergfx
+						}
+						father_even_if_dead = {
+							###shadowlander Father
+							graphical_culture  = shadowlandergfx
+						}
+					}
+				}
+			}
+			random_list = {
+				85 = {
+					set_graphical_culture = shadowlander
+				}
+				10 = {
+					set_graphical_culture = shadowshai
+				}
+				5 = {
+					set_graphical_culture = ulthosi
+				}
+			}
+		}
+		###shadowshai/shadowshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###shadowshai Father
+							graphical_culture  = shadowshaigfx
+						}
+						mother_even_if_dead = {
+							###shadowshai Mother
+							graphical_culture  = shadowshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowshai Mother
+							graphical_culture  = shadowshaigfx
+						}
+						father_even_if_dead = {
+							###shadowshai Father
+							graphical_culture  = shadowshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = shadowshai
+				}
+				10 = {
+					set_graphical_culture = shadowlander
+				}
+				10 = {
+					set_graphical_culture = asshai
+				}
+			}
+		}
+		###asshai/asshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###asshai Father
+							graphical_culture  = asshaigfx
+						}
+						mother_even_if_dead = {
+							###asshai Mother
+							graphical_culture  = asshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###asshai Mother
+							graphical_culture  = asshaigfx
+						}
+						father_even_if_dead = {
+							###asshai Father
+							graphical_culture  = asshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				85 = {
+					set_graphical_culture = asshai
+				}
+				10 = {
+					set_graphical_culture = shadowshai
+				}
+				5 = {
+					set_graphical_culture = shadow_valyrian
+				}
+			}
+		}
+		###asshai/yiti Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###asshai Father
+							graphical_culture  = asshaigfx
+						}
+						mother_even_if_dead = {
+							###yiti Mother
+							graphical_culture  = yitigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###asshai Mother
+							graphical_culture  = asshaigfx
+						}
+						father_even_if_dead = {
+							###yiti Father
+							graphical_culture  = yitigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###shadowshai Father
+							graphical_culture  = shadowshaigfx
+						}
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = yitigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowshai Mother
+							graphical_culture  = shadowshaigfx
+						}
+						father_even_if_dead = {
+							###shadowshai Father
+							graphical_culture  = yitigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = yishai
+				}
+				30 = {
+					set_graphical_culture = jar-yitish
+				}
+				10 = {
+					set_graphical_culture = yi_ti
+				}
+				10 = {
+					set_graphical_culture = asabhadi
+				}
+				5 = {
+					set_graphical_culture = shadowshai
+				}
+				5 = {
+					set_graphical_culture = asshai
+				}
+			}
+		}
+		###shadowlander/yiti Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###shadowlander Father
+							graphical_culture  = shadowlandergfx
+						}
+						mother_even_if_dead = {
+							###yiti Mother
+							graphical_culture  = yitigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowlander Mother
+							graphical_culture  = shadowlandergfx
+						}
+						father_even_if_dead = {
+							###yiti Father
+							graphical_culture  = yitigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					set_graphical_culture = shadowlander
+				}
+				50 = {
+					set_graphical_culture = lengish
+				}
+				20 = {
+					set_graphical_culture = yishai
+				}
+				20 = {
+					set_graphical_culture = shadowshai
+				}
+				5 = {
+					set_graphical_culture = asabhadi
+				}
+				5 = {
+					set_graphical_culture = yi_ti
+				}
+			}
+		}
+	}
+}
+

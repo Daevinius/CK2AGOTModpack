@@ -1,0 +1,52 @@
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_fool_clothes"
+		textureFile = "gfx/characters/shared/fool_clothes.dds"
+		noOfFrames = 12
+	}
+	spriteType = {
+		name = "GFX_fool_clothes_behind"
+		textureFile = "gfx/characters/shared/fool_clothes_behind.dds"
+		noOfFrames = 12
+	}
+	spriteType = {
+		name = "GFX_fool_headgear"
+		textureFile = "gfx/characters/shared/fool_headgear.dds"
+		noOfFrames = 8
+	}
+	spriteType = {
+		name = "GFX_fool_headgear_behind"
+		textureFile = "gfx/characters/shared/fool_headgear_behind.dds"
+		noOfFrames = 8
+	}
+	spriteType = {
+		name = "GFX_fools_puppets"
+		textureFile = "gfx/characters/shared/fools_puppets.dds"
+		noOfFrames = 8
+	}
+	portraitType = { #
+		effectFile = "gfx/FX/portrait.lua"
+		name = "PORTRAIT_fool_clothing"
+
+		weight = {
+			additive_modifier = {
+				value = 2000
+				portrait_clothing = yes
+				portrait_has_trait = fool
+			}
+		}
+
+		layer = {
+			"GFX_fool_clothes_behind:c0"
+			"GFX_fool_headgear_behind:c1"
+			"GFX_fool_clothes:c2"
+			"GFX_empty:c3"
+			"GFX_empty:c4"
+			"GFX_fool_headgear:c5"
+			"GFX_fools_puppets:c7"
+		}
+
+	}
+
+}

@@ -1,0 +1,250 @@
+###By Specialist
+namespace = valyrian_culture_mix
+
+character_event = {
+	id = valyrian_culture_mix.2
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###Braavosi/Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = urban_braavosi
+				}
+				10 = {
+					set_graphical_culture = myrman
+				}
+				10 = {
+					set_graphical_culture = valyrian_salt_dornish
+				}
+				50 = {
+					set_graphical_culture = braavosi
+				}
+				10 = {
+					set_graphical_culture = andal_braavosi
+				}
+				10 = {
+					set_graphical_culture = ghiscari
+				}
+				5 = {
+					set_graphical_culture = lorathi
+				}
+			}
+		}
+		###Braavosi/Urban Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = urbanbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = urbanbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = myrman
+				}
+				10 = {
+					set_graphical_culture = valyrian_sand_dornish
+				}
+				35 = {
+					set_graphical_culture = urbanbraavosi
+				}
+				35 = {
+					set_graphical_culture = braavosi
+				}
+				10 = {
+					set_graphical_culture = andal_braavosi
+				}
+				5 = {
+					set_graphical_culture = samyrianan
+				}
+			}
+		}
+		###Braavosi/Andal Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+						mother_even_if_dead = {
+							###Myrman Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = myrman
+				}
+				10 = {
+					set_graphical_culture = urban_braavosi
+				}
+				35 = {
+					set_graphical_culture = braavosi
+				}
+				35 = {
+					set_graphical_culture = andal_braavosi
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				5 = {
+					set_graphical_culture = pentosi
+				}
+			}
+		}
+		###Braavosi/Andal Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = urbanbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Myrman Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = myrman
+				}
+				30 = {
+					set_graphical_culture = urban_braavosi
+				}
+				30 = {
+					set_graphical_culture = braavosi
+				}
+				30 = {
+					set_graphical_culture = andal_braavosi
+				}
+				5 = {
+					set_graphical_culture = pentosi
+				}
+			}
+		}
+		###Andal Braavosi/Andal Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Myrman Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = urban_braavosi
+				}
+				10 = {
+					set_graphical_culture = braavosi
+				}
+				60 = {
+					set_graphical_culture = andal_braavosi
+				}
+				10 = {
+					set_graphical_culture = old_andal
+				}
+				10 = {
+					set_graphical_culture = lysene
+				}
+				5 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+	}
+}

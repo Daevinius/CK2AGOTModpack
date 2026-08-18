@@ -1,0 +1,360 @@
+#scmr_clr_all_flag			Очистить все флаги этого мода
+#scmr_clean_mod_effect		Очистить эффекты мода
+#scmr_set_immune_disease	Получить иммунитет к конкретной болезни
+#scmr_set_immune_all		Получить иммунитет ко всем болезням
+
+scmr_clr_all_flag = {
+	clr_character_flag = cheats_enabled
+	clr_character_flag = show_cheats
+	clr_character_flag = traits_enabled
+	clr_character_flag = hide_self_status
+	clr_character_flag = hide_politic_relation
+	clr_character_flag = show_self_relation
+	clr_character_flag = mind_control_enabled
+	clr_character_flag = show_top_artifact_val
+	clr_character_flag = show_mnm_artifact
+	clr_character_flag = show_top_artifact_cmj
+	clr_character_flag = show_top_artifact_otr
+	clr_character_flag = show_high_artifact_cmj
+	clr_character_flag = show_high_artifact_clr
+	clr_character_flag = show_top_artifact_jd
+	clr_character_flag = show_top_artifact_spc
+	clr_character_flag = show_top_artifact_bok
+	clr_character_flag = show_high_book_mil
+	clr_character_flag = show_high_book_adm
+	clr_character_flag = show_high_book_rel
+	clr_character_flag = show_high_book_rls
+	clr_character_flag = show_forge_blood
+	clr_character_flag = show_event_blood
+	clr_character_flag = show_special_blood
+	clr_character_flag = laws_cheat_enabled
+	clr_character_flag = show_demesne_laws
+	clr_character_flag = show_crown_laws
+	clr_character_flag = show_succession_laws
+	clr_character_flag = show_obligation_feudal
+	clr_character_flag = show_obligation_religion
+	clr_character_flag = show_obligation_city
+	clr_character_flag = show_obligation_tribal
+	clr_character_flag = show_council_power_laws
+	clr_character_flag = mind_cheat_enable
+	clr_character_flag = show_common_mind
+	clr_character_flag = show_religion_culture_mind
+	clr_character_flag = show_building_modifier_mind
+	clr_character_flag = show_technology_cheat_mind
+	clr_character_flag = mind_traits_enable
+	clr_character_flag = show_cheat_traits_mind
+	clr_character_flag = show_virtues_mind
+	clr_character_flag = show_sins_mind
+	clr_character_flag = show_personality_mind
+	clr_character_flag = show_education_mind
+	clr_character_flag = show_health_mind
+	clr_character_flag = show_leadership_mind
+	clr_character_flag = show_lifestyle_mind
+	clr_character_flag = show_religion_mind
+	clr_character_flag = show_misc_mind
+	clr_character_flag = show_vassal_mind
+	clr_character_flag = show_dynasty_mind
+	clr_character_flag = show_mnm_jade
+	clr_character_flag = show_interaction
+	clr_character_flag = show_jd_status
+	clr_character_flag = show_emp_status
+	clr_character_flag = realm_cheat_enable
+	clr_character_flag = show_religion_culture
+	clr_character_flag = show_building_modifier
+	clr_character_flag = show_technology_cheat
+	clr_character_flag = cspawn_enabled
+	clr_character_flag = show_cspawn_child
+	clr_character_flag = show_cspawn_sibling
+	clr_character_flag = show_cspawn_courtier
+	clr_character_flag = show_cheat_traits
+	clr_character_flag = show_virtues
+	clr_character_flag = show_sins
+	clr_character_flag = show_personality
+	clr_character_flag = show_education
+	clr_character_flag = show_health
+	clr_character_flag = show_leadership
+	clr_character_flag = show_lifestyle
+	clr_character_flag = show_religion
+	clr_character_flag = show_misc
+	clr_character_flag = show_vassal
+	clr_character_flag = show_dynasty
+
+	clr_character_flag = AGOT_enabled
+	clr_character_flag = show_AGOT_trait
+	clr_character_flag = show_AGOT_mf
+	clr_character_flag = show_AGOT_af
+}
+
+scmr_clean_mod_effect = {
+	scmr_clr_all_flag = yes
+	remove_trait = landlord
+	remove_trait = beloved
+	remove_trait = mastermind
+	remove_trait = builder
+	remove_trait = conspirator
+	any_character = {
+		limit = {
+			has_earmarked_regiments = scmr_army
+		}
+		disband_event_forces = scmr_army
+	}
+	any_character = {
+		limit = {
+			has_character_flag = mind_controlled
+		}
+		capital_holding = {
+			if = {
+				limit = {
+					holding_type = castle
+				}
+				remove_building = ca_quick_move
+			}
+			else_if = {
+				limit = {
+					holding_type = temple
+				}
+				remove_building = tp_quick_move
+			}
+			else_if = {
+				limit = {
+					holding_type = nomad
+				}
+				remove_building = no_quick_move
+			}
+			else_if = {
+				limit = {
+					holding_type = city
+				}
+				remove_building = ct_quick_move
+			}
+			else_if = {
+				limit = {
+					holding_type = tribal
+				}
+				remove_building = tr_quick_move
+			}
+		}
+		clr_character_flag = mind_controlled
+	}
+	any_character = {
+		limit = {
+			has_character_flag = mc_cheat_trait_add
+		}
+		remove_trait = landlord
+		remove_trait = beloved
+		remove_trait = mastermind
+		remove_trait = builder
+		remove_trait = conspirator
+		clr_character_flag = mc_cheat_trait_add
+	}
+	capital_holding = {
+		if = {
+			limit = {
+				holding_type = castle
+			}
+			remove_building = ca_quick_move
+		}
+		else_if = {
+			limit = {
+				holding_type = temple
+			}
+			remove_building = tp_quick_move
+		}
+		else_if = {
+			limit = {
+				holding_type = nomad
+			}
+			remove_building = no_quick_move
+		}
+		else_if = {
+			limit = {
+				holding_type = city
+			}
+			remove_building = ct_quick_move
+		}
+		else_if = {
+			limit = {
+				holding_type = tribal
+			}
+			remove_building = tr_quick_move
+		}
+	}
+}
+
+scmr_set_immune_disease = {
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_tuberculosis }
+			OR = {
+				trait = has_bloody_flux
+				location = { disease = bloody_flux }
+			}
+		}
+		set_character_flag = immune_tuberculosis
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_typhoid_fever }
+			OR = {
+				trait = has_typhoid_fever
+				location = { disease = typhoid_fever }
+			}
+		}
+		set_character_flag = immune_typhoid_fever
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_typhus }
+			OR = {
+				trait = has_grey_plague
+				location = { disease = grey_plague }
+			}
+		}
+		set_character_flag = immune_typhus
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_bubonic_plague }
+			OR = {
+				trait = has_bubonic_plague
+				location = { disease = bubonic_plague }
+			}
+		}
+		set_character_flag = immune_bubonic_plague
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_measles }
+			trait = has_measles
+		}
+		set_character_flag = immune_measles
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_smallpox }
+			OR = {
+				trait = has_small_pox
+				location = { disease = small_pox }
+			}
+		}
+		set_character_flag = immune_smallpox
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_syphilis }
+			OR = {
+				location = { disease = syphilis }
+				trait = syphilitic
+			}
+		}
+		set_character_flag = immune_syphilis
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_aztec_disease }
+			trait = has_aztec_disease
+		}
+		set_character_flag = immune_aztec_disease
+	}
+
+	#AGoT
+
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_butterfly_fever }
+			trait = has_butterfly_fever
+		}
+		set_character_flag = immune_butterfly_fever
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_red_death }
+			OR = {
+				location = { disease = red_death }
+				trait = has_red_death
+			}
+		}
+		set_character_flag = immune_red_death
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_old_ones_scourge }
+			OR = {
+				location = { disease = old_ones_scourge }
+				trait = syphilitic
+			}
+		}
+		set_character_flag = immune_old_ones_scourge
+	}
+	heal_basic_effect = yes
+}
+
+scmr_set_immune_all = {
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_tuberculosis }
+		}
+		set_character_flag = immune_tuberculosis
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_typhoid_fever }
+		}
+		set_character_flag = immune_typhoid_fever
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_typhus }
+		}
+		set_character_flag = immune_typhus
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_bubonic_plague }
+		}
+		set_character_flag = immune_bubonic_plague
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_measles }
+		}
+		set_character_flag = immune_measles
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_smallpox }
+		}
+		set_character_flag = immune_smallpox
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_syphilis }
+		}
+		set_character_flag = immune_syphilis
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_aztec_disease }
+		}
+		set_character_flag = immune_aztec_disease
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_butterfly_fever }
+		}
+		set_character_flag = immune_butterfly_fever
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_red_death }
+		}
+		set_character_flag = immune_red_death
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = immune_old_ones_scourge }
+		}
+		set_character_flag = immune_old_ones_scourge
+	}
+	heal_advanced_effect = yes
+}

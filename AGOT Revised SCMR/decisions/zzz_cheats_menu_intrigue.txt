@@ -1,0 +1,518 @@
+decisions = {
+
+    show_cheats = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            NOT = { has_character_flag = show_cheats }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_cheats
+		}
+
+
+	}
+
+    hide_cheats = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_cheats
+		}
+
+
+	}
+
+	scm_add_gold = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    wealth = 10000
+		}
+	}
+
+
+
+	scm_add_prestige = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    prestige = 10000
+		}
+
+
+	}
+
+    scm_add_piety = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    piety = 10000
+		}
+
+
+	}
+
+	scmr_add_gold_vassal = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_vassal = {
+					wealth = 10000
+				}
+			}
+		}
+	}
+
+	scm_spawn_army_10k = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			capital_scope = {
+				holder_scope = {
+					scmr_spawn_10k = yes
+				}
+			}
+		}
+
+
+	}
+
+
+
+	scm_spawn_army_100k = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			capital_scope = {
+				holder_scope = {
+					scmr_spawn_100k = yes
+				}
+			}
+		}
+	}
+
+	scm_spawn_fleet = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				scmr_spawn_fleet = yes
+		    }
+		}
+	}
+
+	scmr_spawn_army_10k_vassal = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_vassal = {
+					capital_scope = {
+						holder_scope = {
+							scmr_spawn_10k = yes
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+
+
+	scmr_win_offensive_war = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			is_primary_war_attacker = yes
+		}
+
+		effect = {
+	        any_war = {
+				if = {
+					limit = {
+						attacker = {
+							character = PREVPREV
+						}
+					}
+					end_war = success
+				}
+			}
+        }
+	}
+
+	scmr_win_defensive_war = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			is_primary_war_defender = yes
+		}
+
+		effect = {
+	        any_war = {
+				if = {
+					limit = {
+						defender = {
+							character = PREVPREV
+						}
+					}
+					end_war = reverse_demand
+				}
+			}
+        }
+	}
+
+	scmr_end_offensive_war = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			is_primary_war_attacker = yes
+		}
+
+		effect = {
+	        any_war = {
+				if = {
+					limit = {
+						attacker = {
+							character = PREVPREV
+						}
+					}
+					end_war = whitepeace
+				}
+			}
+        }
+	}
+
+	scmr_end_defensive_war = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			is_primary_war_defender = yes
+		}
+
+		effect = {
+	        any_war = {
+				if = {
+					limit = {
+						defender = {
+							character = PREVPREV
+						}
+					}
+					end_war = whitepeace
+				}
+			}
+        }
+	}
+
+	scm_become_independent = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+            independent = no
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+	        set_defacto_liege = THIS
+        }
+	}
+
+
+
+	scm_set_feudal = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+            NOT = { government = feudal_government }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+	        set_government_type = feudal_government
+        }
+	}
+
+	scm_revoke_all_titles = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_lord = {
+					any_demesne_title = {
+						limit = {
+							mercenary = no
+							holy_order = no
+							is_landless_type_title = no
+							holder_scope = {
+								is_patrician = no
+								is_nomadic = no
+							}
+						}
+						gain_title = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	scm_lower_threat_level = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			change_infamy = {
+				value = -100
+				localisation = low_threat
+			}
+        }
+	}
+
+	scm_kill_all_courtiers = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+	        any_courtier = {
+		        limit = {
+			        NOR = {
+						dynasty = ROOT
+						is_married = ROOT
+						is_consort = ROOT
+						is_friend = ROOT
+						is_lover = ROOT
+						is_ruler = yes
+						is_mother = ROOT
+						is_father = ROOT
+			        }
+		        }
+		        death = { death_reason = death_murder_unknown }
+	        }
+        }
+	}
+
+	scm_reveal_realm_plots = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			liege = {
+				any_realm_character = {
+		            reveal_plot = ROOT
+		        }
+			}
+        }
+	}
+
+
+
+
+
+	scm_raise_rel_authority = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+            NOT = { religion_authority = 1 }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+	        religion_authority = { modifier = god_amongst_men }
+        }
+	}
+
+
+
+    scm_cheat_trait_cleaner = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = show_cheats
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+	        hidden_tooltip = {
+		        any_character = {
+		            limit = {
+						has_character_flag = mc_cheat_trait_add
+		            }
+					#remove_trait = immortal
+					remove_trait = landlord
+					remove_trait = beloved
+					remove_trait = mastermind
+					remove_trait = builder
+					remove_trait = conspirator
+				}
+	        }
+		}
+
+
+	}
+
+
+}
+
+
+
+

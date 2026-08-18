@@ -1,0 +1,193 @@
+###By Specialist
+namespace = valyrian_culture_mix
+
+character_event = {
+	id = valyrian_culture_mix.4
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###Valyrian/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = valyriangfx
+						}
+					}
+				}
+			}
+			random_list = {
+				99 = {
+					set_graphical_culture = high_valyrian
+				}
+				1 = {
+					set_graphical_culture = albino
+				}
+			}
+		}
+		###Valyrian/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+					}
+				}
+			}
+			random_list = {
+				49.25 = {
+					set_graphical_culture = high_valyrian
+				}
+				50 = {
+					set_graphical_culture = western_valyrian
+				}
+				0.75 = {
+					set_graphical_culture = albino
+				}
+			}
+		}
+		######Valyrian/Valyrian Hybrid Event Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###west valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+							###west valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###west valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###west valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+					}
+				}
+			}
+			random_list = {
+				99.5 = {
+					set_graphical_culture = high_valyrian
+				}
+				0.5 = {
+					set_graphical_culture = albino
+				}
+			}
+		}
+		###Valyrian/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = albinovalyriangfx
+						}
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = albinovalyriangfx
+						}
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = valyriangfx
+						}
+					}
+				}
+			}
+			random_list = {
+				85 = {
+					set_graphical_culture = high_valyrian
+				}
+				15 = {
+					set_graphical_culture = albino
+				}
+			}
+		}
+			######Valyrian/Valyrian Hybrid Event Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###west valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+							###valyrian Mother
+							graphical_culture  = albinovalyriangfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###west valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###valyrian Father
+							graphical_culture  = albinovalyriangfx
+						}
+					}
+				}
+			}
+			random_list = {
+				90 = {
+					set_graphical_culture = western_valyrian
+				}
+				10 = {
+					set_graphical_culture = albino
+				}
+			}
+		}
+	}
+}

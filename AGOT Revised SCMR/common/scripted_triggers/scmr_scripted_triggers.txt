@@ -1,0 +1,136 @@
+#scmr_has_negative		Имеет негативные черты
+#scmr_can_help			Может вступить в войну
+#scmr_obligation_law	Закон о повинностях
+#scmr_obligation_ptl	Условия повинностного права
+#scmr_no_tn				Нет племенного строя
+
+scmr_has_negative = {
+	OR = {
+		has_disease_trigger = yes
+		has_minor_disease_trigger = yes
+		has_symptom_trigger = yes
+		has_injury_trigger = yes
+		is_maimed_trigger = yes
+		has_medium_disability_trigger = yes
+		has_minor_disability_trigger = yes
+		#has_disability_trigger = yes
+		#is_infertile_trigger = yes
+		physician_bad_trigger = yes
+		has_negative_congenital_trigger = yes
+		trait = sickly
+		trait = infirm
+		trait = mangled
+		trait = blinded
+		trait = blinded_age
+		trait = incapable
+		trait = maimed
+		trait = feeble
+		trait = dull
+		trait = uncouth
+		trait = is_fat
+		trait = is_malnourished
+		trait = crippled
+		trait = burned
+		trait = widowed
+		trait = gluttonous
+	}
+}
+
+scmr_has_malice = {
+	OR = {
+		trait = dishonorable1
+		trait = dishonorable2
+		trait = dishonorable3
+		trait = dishonorable4
+		trait = dishonorable5
+		trait = dishonorable6
+		trait = dishonorable7
+		trait = dishonorable8
+		trait = dishonorable9
+		trait = dishonorable10
+		trait = dyn_dishonorable1
+		trait = dyn_dishonorable2
+		trait = dyn_dishonorable3
+		trait = dyn_dishonorable4
+		trait = dyn_dishonorable5
+		trait = dyn_dishonorable6
+		trait = dyn_dishonorable7
+		trait = dyn_dishonorable8
+		trait = dyn_dishonorable9
+		trait = dyn_dishonorable10
+		trait = tyrant1
+		trait = tyrant2
+		trait = tyrant3
+		trait = tyrant4
+		trait = tyrant5
+		trait = tyrant6
+		trait = tyrant7
+		trait = tyrant8
+		trait = tyrant9
+		trait = tyrant10
+		trait = tyrant11
+		trait = tyrant12
+		trait = tyrant13
+		trait = tyrant14
+		trait = tyrant15
+		trait = tyrant16
+		trait = tyrant17
+		trait = tyrant18
+		trait = tyrant19
+		trait = tyrant20
+		trait = tyrannical_stain
+		trait = kinslayer
+		trait = familial_kinslayer
+		trait = tribal_kinslayer
+		trait = suspected_kinslayer
+		trait = excommunicated
+	}
+}
+
+scmr_is_priest = {
+	OR = {
+		trait = septon
+		trait = septa
+		trait = silent_sister
+		trait = red_priest
+		trait = drowned
+		trait = grace
+		trait = shadowbinder
+		trait = bearded_priest
+		trait = love_priest
+	}
+}
+
+scmr_can_help = {
+	is_ruler = yes
+	#OR = {
+	#	independent = yes
+	#	same_liege = PREV
+	#}
+	NOT = {
+		war_with = PREV
+		is_liege_or_above = PREV
+	}
+}
+
+scmr_obligation_law = {
+	OR = {
+		has_character_flag = show_obligation_feudal
+		has_character_flag = show_obligation_religion
+		has_character_flag = show_obligation_tribal
+		has_character_flag = show_obligation_city
+	}
+}
+scmr_obligation_ptl = {
+	has_dlc = "Zeus"
+	OR = {
+		NOT = { tier = BARON }
+		holder_scope = { is_patrician = yes }
+	}
+}
+scmr_no_tn = {
+	holder_scope = {
+		is_tribal = no
+		is_nomadic = no
+	}
+}

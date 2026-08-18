@@ -1,0 +1,103 @@
+targeted_decisions = {
+
+    scmr_opinion_clear = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				FROM = {
+					ROOT = {
+						scmr_opinion_clean = yes
+					}
+				}
+			}
+		}
+
+	}
+
+	scmr_modifier_clear = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+
+		potential = {
+            always = yes
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            hidden_effect = {
+				if = {
+					limit = {
+						ROOT = {
+							has_character_modifier = dismissed_proposal
+						}
+						FROM = {
+							has_character_flag = mind_control_enabled
+						}
+					}
+					ROOT = { remove_character_modifier = dismissed_proposal }
+				}
+				scmr_modifier_clean = yes
+			}
+		}
+
+
+	}
+
+	mc_opinion_clear = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            #ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+			}
+		}
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					ROOT = {
+						scmr_modifier_clean = yes
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

@@ -1,0 +1,758 @@
+###By Specialist
+namespace = valyrian_culture_mix
+
+character_event = {
+	id = valyrian_culture_mix.5
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###Wildling/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+							###Wildling Mother
+							graphical_culture  = freefolkgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###Wildling Father
+							graphical_culture  = freefolkgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = valyrian_northman
+				}
+				15 = {
+					set_graphical_culture = high_valyrian
+				}
+				20 = {
+					set_graphical_culture = wildling
+				}
+				5 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+		###Wildling/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+							###Wildling Mother
+							graphical_culture  = freefolkgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###Wildling Father
+							graphical_culture  = freefolkgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = valyrian_northman
+				}
+				15 = {
+					set_graphical_culture = western_valyrian
+				}
+				35 = {
+					set_graphical_culture = wildling
+				}
+			}
+		}
+		###Martell/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+						###Martell Mother --- Also includes Rhoynar
+						graphical_culture = martellgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###Martell Father --- Also includes Rhoynar
+							graphical_culture = martellgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					set_graphical_culture = valyrian_salt_dornish
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				30 = {
+					set_graphical_culture = western_valyrian
+				}
+				50 = {
+					set_graphical_culture = Martell_dyn
+				}
+			}
+		}
+		###Martell/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+						###Martell Mother --- Also includes Rhoynar
+						graphical_culture = martellgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###Martell Father --- Also includes Rhoynar
+							graphical_culture = martellgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					set_graphical_culture = valyrian_salt_dornish
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				30 = {
+					set_graphical_culture = high_valyrian
+				}
+				45 = {
+					set_graphical_culture = Martell_dyn
+				}
+				5 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+		###Greyjoy/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+						###Greyjoy Mother
+						graphical_culture = greyjoygfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###Greyjoy Father
+							graphical_culture = greyjoygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = iron_valyrian
+				}
+				25 = {
+					set_graphical_culture = high_valyrian
+				}
+				45 = {
+					set_graphical_culture = Greyjoy_dyn
+				}
+				5 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+		###Greyjoy/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+						###Greyjoy Mother
+						graphical_culture = greyjoygfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###Greyjoy Father
+							graphical_culture = greyjoygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = iron_valyrian
+				}
+				25 = {
+					set_graphical_culture = west_valyrian
+				}
+				50 = {
+					set_graphical_culture = Greyjoy_dyn
+				}
+			}
+		}
+		###Hoare/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+						###Hoare Mother
+						graphical_culture = hoaregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###Hoare Father
+							graphical_culture = hoaregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = iron_valyrian
+				}
+				25 = {
+					set_graphical_culture = high_valyrian
+				}
+				45 = {
+					set_graphical_culture = Hoare_dyn
+				}
+				5 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+		###Hoare/Valyrian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+						###Hoare Mother
+						graphical_culture = hoaregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###Hoare Father
+							graphical_culture = hoaregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = iron_valyrian
+				}
+				25 = {
+					set_graphical_culture = west_valyrian
+				}
+				50 = {
+					set_graphical_culture = Hoare_dyn
+				}
+			}
+		}
+		###Martell/Summer Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+						mother_even_if_dead = {
+						###Martell Mother --- Also includes Rhoynar
+						graphical_culture = martellgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+						father_even_if_dead = {
+							###Martell Father
+							graphical_culture = martellgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = Martell_dyn
+				}
+				30 = {
+					set_graphical_culture = summer_westerosi
+				}
+				30 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = sand_dornish
+				}
+				5 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Greyjoy/Summer Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+						mother_even_if_dead = {
+						###Greyjoy Mother
+						graphical_culture = greyjoygfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+						father_even_if_dead = {
+							###Greyjoy Father
+							graphical_culture = greyjoygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = Greyjoy_dyn
+				}
+				40 = {
+					set_graphical_culture = summer_westerosi
+				}
+				20 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = sand_dornish
+				}
+				5 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Hoare/Summer Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+						mother_even_if_dead = {
+						###Hoare Mother
+						graphical_culture = hoaregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+						father_even_if_dead = {
+							###Hoare Father
+							graphical_culture = hoaregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = Hoare_dyn
+				}
+				40 = {
+					set_graphical_culture = summer_westerosi
+				}
+				20 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = sand_dornish
+				}
+				5 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Tyrell Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Tyrell Father
+							graphical_culture  = tyrellgfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Tyrell Mother
+							graphical_culture  = tyrellgfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = Tyrell_dyn
+				}
+				50 = {
+					set_graphical_culture = summer_westerosi
+				}
+				20 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Baratheon Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Baratheon Father
+							graphical_culture  = baratheongfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Baratheon Mother
+							graphical_culture  = baratheongfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = Baratheon_dyn
+				}
+				45 = {
+					set_graphical_culture = summer_westerosi
+				}
+				20 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Lannister Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Lannister Father
+							graphical_culture  = lannistergfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Lannister Mother
+							graphical_culture  = lannistergfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = Lannister_dyn
+				}
+				60 = {
+					set_graphical_culture = summer_westerosi
+				}
+				10 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Reyne Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Reyne Father
+							graphical_culture  = reynegfx
+						}
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Reyne Mother
+							graphical_culture  = reynegfx
+						}
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = Reyne_dyn
+				}
+				60 = {
+					set_graphical_culture = summer_westerosi
+				}
+				15 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Tully Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Tully Father
+							graphical_culture  = tullygfx
+						}
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Tully Mother
+							graphical_culture  = tullygfx
+						}
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = Tully_dyn
+				}
+				60 = {
+					set_graphical_culture = summer_westerosi
+				}
+				15 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Arryn Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Arryn Father
+							graphical_culture  = arryngfx
+						}
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Arryn Mother
+							graphical_culture  = arryngfx
+						}
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = Arryn_dyn
+				}
+				60 = {
+					set_graphical_culture = summer_westerosi
+				}
+				15 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+		###Summer/Stark Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Stark Father
+							graphical_culture  = starkgfx
+						}
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Stark Mother
+							graphical_culture  = starkgfx
+						}
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = Stark_dyn
+				}
+				60 = {
+					set_graphical_culture = summer_westerosi
+				}
+				10 = {
+					set_graphical_culture = si_westerosi
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+			}
+		}
+
+	}
+
+}

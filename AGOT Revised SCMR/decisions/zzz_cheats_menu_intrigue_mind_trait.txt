@@ -1,0 +1,9069 @@
+decisions = {
+
+	mind_traits_enable = {
+
+		ai = no
+		potential = {
+			has_character_flag = mind_control_enabled
+			NOT = { has_character_flag = mind_traits_enable }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 set_character_flag = mind_traits_enable
+		}
+
+	}
+
+	mind_traits_disable = {
+
+		ai = no
+		potential = {
+			has_character_flag = mind_control_enabled
+			has_character_flag = mind_traits_enable
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 clr_character_flag = mind_traits_enable
+		}
+
+	}
+
+    ################
+    ##CHEAT TRAITS##
+	################
+	show_cheat_traits_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_cheat_traits_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_cheat_traits_mind
+		}
+
+
+	}
+
+	hide_cheat_traits_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_cheat_traits_mind
+		}
+
+
+	}
+
+	add_beloved_mind = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = { trait = beloved }
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = beloved
+			}
+			set_character_flag = mc_cheat_trait_add
+		}
+
+
+	}
+
+	remove_beloved_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = beloved
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = beloved
+			}
+		}
+
+
+	}
+
+	add_landlord_mind = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = landlord }
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = landlord
+			}
+		}
+
+
+	}
+
+	remove_landlord_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = landlord
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = landlord
+			}
+		}
+
+
+	}
+
+	add_mastermind_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = mastermind }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = mastermind
+			}
+		}
+
+
+	}
+
+	remove_mastermind_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = mastermind
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = mastermind
+			}
+		}
+
+
+	}
+
+	add_builder_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = builder }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = builder
+			}
+		}
+
+
+	}
+
+	remove_builder_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = builder
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = builder
+			}
+		}
+
+
+	}
+
+	add_conspirator_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = conspirator }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = conspirator
+			}
+		}
+
+
+	}
+
+	remove_conspirator_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_cheat_traits_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = conspirator
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = conspirator
+			}
+		}
+
+
+	}
+
+
+    ###########
+    ##VIRTUES##
+	###########
+	show_virtues_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_virtues_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_virtues_mind
+		}
+
+
+	}
+
+	hide_virtues_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_virtues_mind
+		}
+
+
+	}
+
+	remove_chaste_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = chaste
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = chaste
+			}
+		}
+
+
+	}
+
+	add_chaste_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = chaste }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = chaste
+			}
+		}
+
+
+	}
+
+	remove_temperate_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = temperate
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = temperate
+			}
+		}
+
+
+	}
+
+	add_temperate_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = temperate }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = temperate
+			}
+		}
+
+
+	}
+
+	remove_kind_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = kind
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = kind
+			}
+		}
+
+
+	}
+
+	add_kind_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = kind }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = kind
+			}
+		}
+
+
+	}
+
+	remove_charitable_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = charitable
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = charitable
+			}
+		}
+
+
+	}
+
+	add_charitable_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = charitable }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = charitable
+			}
+		}
+
+
+	}
+
+	remove_patient_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = patient
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = patient
+			}
+		}
+
+
+	}
+
+	add_patient_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = patient }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = patient
+				}
+		}
+
+
+	}
+
+	remove_diligent_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = diligent
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = diligent
+				}
+		}
+
+
+	}
+
+	add_diligent_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = diligent }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = diligent
+				}
+		}
+
+
+	}
+
+	remove_humble_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = humble
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = humble
+				}
+		}
+
+
+	}
+
+	add_humble_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_virtues_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = humble }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = humble
+			}
+		}
+
+
+	}
+
+
+    ########
+    ##SINS##
+	########
+	show_sins_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_sins_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_sins_mind
+		}
+
+
+	}
+
+	hide_sins_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_sins_mind
+		}
+
+
+	}
+
+	remove_lustful_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = lustful
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = lustful
+			}
+		}
+
+
+	}
+
+	add_lustful_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = lustful }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = lustful
+			}
+		}
+
+
+	}
+
+	remove_greedy_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = greedy
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = greedy
+			}
+		}
+
+
+	}
+
+	add_greedy_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = greedy }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = greedy
+			}
+		}
+
+
+	}
+
+	remove_slothful_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = slothful
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = slothful
+			}
+		}
+
+
+	}
+
+	add_slothful_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = slothful }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = slothful
+			}
+		}
+
+
+	}
+
+	remove_gluttonous_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = gluttonous
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = gluttonous
+			}
+		}
+
+
+	}
+
+	add_gluttonous_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = gluttonous }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = gluttonous
+			}
+		}
+
+
+	}
+
+	remove_wroth_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = wroth
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = wroth
+			}
+		}
+
+
+	}
+
+	add_wroth_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = wroth }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = wroth
+			}
+		}
+
+
+	}
+
+	remove_proud_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = proud
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = proud
+			}
+		}
+
+
+	}
+
+	add_proud_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = proud }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = proud
+			}
+		}
+
+
+	}
+
+	remove_envious_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = envious
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = envious
+			}
+		}
+
+
+	}
+
+	add_envious_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_sins_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = envious }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = envious
+			}
+		}
+
+
+	}
+
+    ###############
+    ##PERSONALITY##
+	###############
+	show_personality_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_personality_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_personality_mind
+		}
+
+
+	}
+
+	hide_personality_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_personality_mind
+		}
+
+
+	}
+
+	remove_craven_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = craven
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = craven
+			}
+		}
+
+
+	}
+
+	add_craven_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = craven }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = craven
+			}
+		}
+
+
+	}
+
+	remove_brave_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = brave
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = brave
+			}
+		}
+
+
+	}
+
+	add_brave_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = brave }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = brave
+			}
+		}
+
+
+	}
+
+	remove_gregarious_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = gregarious
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = gregarious
+			}
+		}
+
+
+	}
+
+	add_gregarious_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = gregarious }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = gregarious
+			}
+		}
+
+
+	}
+
+	remove_shy_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = shy
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = shy
+			}
+		}
+
+
+	}
+
+	add_shy_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = shy }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = shy
+			}
+		}
+
+
+	}
+
+	remove_honest_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = honest
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = honest
+			}
+		}
+
+
+	}
+
+	add_honest_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = honest }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = honest
+			}
+		}
+
+
+	}
+
+	remove_deceitful_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = deceitful
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = deceitful
+			}
+		}
+
+
+	}
+
+	add_deceitful_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = deceitful }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = deceitful
+			}
+		}
+
+
+	}
+
+	remove_arbitrary_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = arbitrary
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = arbitrary
+			}
+		}
+
+
+	}
+
+	add_arbitrary_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = arbitrary }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = arbitrary
+			}
+		}
+
+
+	}
+
+	remove_just_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = just
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = just
+			}
+		}
+
+
+	}
+
+	add_just_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = just }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = just
+			}
+		}
+
+
+	}
+
+	remove_ambitious_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = ambitious
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = ambitious
+			}
+		}
+
+
+	}
+
+	add_ambitious_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = ambitious }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = ambitious
+			}
+		}
+
+
+	}
+
+	remove_content_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = content
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = content
+			}
+		}
+
+
+	}
+
+	add_content_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = content }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = content
+			}
+		}
+
+
+	}
+
+	remove_zealous_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = zealous
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = zealous
+			}
+		}
+
+
+	}
+
+	add_zealous_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = zealous }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = zealous
+			}
+		}
+
+
+	}
+
+	remove_cynical_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = cynical
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = cynical
+			}
+		}
+
+
+	}
+
+	add_cynical_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = cynical }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = cynical
+			}
+		}
+
+
+	}
+
+
+
+
+	add_erudite_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = erudite }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = erudite
+			}
+		}
+
+
+	}
+
+	remove_erudite_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = erudite
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = erudite
+			}
+		}
+
+
+	}
+
+	remove_paranoid_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = paranoid
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = paranoid
+			}
+		}
+
+
+	}
+
+	add_paranoid_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = paranoid }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = paranoid
+			}
+		}
+
+
+	}
+
+	remove_trusting_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = trusting
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = trusting
+			}
+		}
+
+
+	}
+
+	add_trusting_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = trusting }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = trusting
+			}
+		}
+
+
+	}
+
+	remove_cruel_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = cruel
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = cruel
+			}
+		}
+
+
+	}
+
+	add_cruel_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = cruel }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = cruel
+			}
+		}
+
+
+	}
+
+	add_stubborn_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = stubborn }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = stubborn
+			}
+		}
+
+
+	}
+
+	remove_stubborn_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_personality_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = stubborn
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = stubborn
+			}
+		}
+
+
+	}
+
+
+    #############
+    ##EDUCATION##
+	#############
+	show_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_education_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_education_mind
+		}
+
+
+
+	}
+
+	hide_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_education_mind
+		}
+
+
+	}
+
+	set_martial_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = brilliant_strategist
+				}
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					remove_trait = amateurish_plotter
+					remove_trait = flamboyant_schemer
+					remove_trait = intricate_webweaver
+					remove_trait = elusive_shadow
+
+					remove_trait = naive_appeaser
+					remove_trait = underhanded_rogue
+					remove_trait = charismatic_negotiator
+					remove_trait = grey_eminence
+
+					remove_trait = indulgent_wastrel
+					remove_trait = thrifty_clerk
+					remove_trait = fortune_builder
+					remove_trait = midas_touched
+
+					remove_trait = misguided_warrior
+					remove_trait = tough_soldier
+					remove_trait = skilled_tactician
+					#remove_trait = brilliant_strategist
+
+					remove_trait = detached_priest
+					remove_trait = martial_cleric
+					remove_trait = scholarly_theologian
+					remove_trait = mastermind_theologian
+				}
+            }
+		}
+
+
+	}
+
+	set_learning_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = mastermind_theologian
+			}
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					remove_trait = amateurish_plotter
+					remove_trait = flamboyant_schemer
+					remove_trait = intricate_webweaver
+					remove_trait = elusive_shadow
+
+					remove_trait = naive_appeaser
+					remove_trait = underhanded_rogue
+					remove_trait = charismatic_negotiator
+					remove_trait = grey_eminence
+
+					remove_trait = indulgent_wastrel
+					remove_trait = thrifty_clerk
+					remove_trait = fortune_builder
+					remove_trait = midas_touched
+
+					remove_trait = misguided_warrior
+					remove_trait = tough_soldier
+					remove_trait = skilled_tactician
+					remove_trait = brilliant_strategist
+
+					remove_trait = detached_priest
+					remove_trait = martial_cleric
+					remove_trait = scholarly_theologian
+					#remove_trait = mastermind_theologian
+				}
+            }
+		}
+
+
+	}
+
+	set_stewardship_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = midas_touched
+			}
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					remove_trait = amateurish_plotter
+					remove_trait = flamboyant_schemer
+					remove_trait = intricate_webweaver
+					remove_trait = elusive_shadow
+
+					remove_trait = naive_appeaser
+					remove_trait = underhanded_rogue
+					remove_trait = charismatic_negotiator
+					remove_trait = grey_eminence
+
+					remove_trait = indulgent_wastrel
+					remove_trait = thrifty_clerk
+					remove_trait = fortune_builder
+					#remove_trait = midas_touched
+
+					remove_trait = misguided_warrior
+					remove_trait = tough_soldier
+					remove_trait = skilled_tactician
+					remove_trait = brilliant_strategist
+
+					remove_trait = detached_priest
+					remove_trait = martial_cleric
+					remove_trait = scholarly_theologian
+					remove_trait = mastermind_theologian
+				}
+            }
+		}
+
+
+	}
+
+	set_intrigue_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = elusive_shadow
+			}
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					remove_trait = amateurish_plotter
+					remove_trait = flamboyant_schemer
+					remove_trait = intricate_webweaver
+					#remove_trait = elusive_shadow
+
+					remove_trait = naive_appeaser
+					remove_trait = underhanded_rogue
+					remove_trait = charismatic_negotiator
+					remove_trait = grey_eminence
+
+					remove_trait = indulgent_wastrel
+					remove_trait = thrifty_clerk
+					remove_trait = fortune_builder
+					remove_trait = midas_touched
+
+					remove_trait = misguided_warrior
+					remove_trait = tough_soldier
+					remove_trait = skilled_tactician
+					remove_trait = brilliant_strategist
+
+					remove_trait = detached_priest
+					remove_trait = martial_cleric
+					remove_trait = scholarly_theologian
+					remove_trait = mastermind_theologian
+				}
+            }
+		}
+
+
+	}
+
+	set_diplomacy_education_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = grey_eminence
+			}
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					remove_trait = amateurish_plotter
+					remove_trait = flamboyant_schemer
+					remove_trait = intricate_webweaver
+					remove_trait = elusive_shadow
+
+					remove_trait = naive_appeaser
+					remove_trait = underhanded_rogue
+					remove_trait = charismatic_negotiator
+					#remove_trait = grey_eminence
+
+					remove_trait = indulgent_wastrel
+					remove_trait = thrifty_clerk
+					remove_trait = fortune_builder
+					remove_trait = midas_touched
+
+					remove_trait = misguided_warrior
+					remove_trait = tough_soldier
+					remove_trait = skilled_tactician
+					remove_trait = brilliant_strategist
+
+					remove_trait = detached_priest
+					remove_trait = martial_cleric
+					remove_trait = scholarly_theologian
+					remove_trait = mastermind_theologian
+				}
+            }
+		}
+
+
+	}
+
+	scmr_up_education_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+						trait = intricate_webweaver
+					}
+					remove_trait = intricate_webweaver
+					add_trait = elusive_shadow
+				}
+				random_character = {
+					limit = {
+						trait = flamboyant_schemer
+						has_character_flag = mind_controlled
+					}
+					remove_trait = flamboyant_schemer
+					add_trait = intricate_webweaver
+				}
+				random_character = {
+					limit = {
+						trait = amateurish_plotter
+						has_character_flag = mind_controlled
+					}
+					remove_trait = amateurish_plotter
+					add_trait = flamboyant_schemer
+				}
+				random_character = {
+					limit = {
+						trait = charismatic_negotiator
+						has_character_flag = mind_controlled
+					}
+					remove_trait = charismatic_negotiator
+					add_trait = grey_eminence
+				}
+				random_character = {
+					limit = {
+						trait = underhanded_rogue
+						has_character_flag = mind_controlled
+					}
+					remove_trait = underhanded_rogue
+					add_trait = charismatic_negotiator
+				}
+				random_character = {
+					limit = {
+						trait = naive_appeaser
+						has_character_flag = mind_controlled
+					}
+					remove_trait = naive_appeaser
+					add_trait = underhanded_rogue
+				}
+	            random_character = {
+					limit = {
+						trait = fortune_builder
+						has_character_flag = mind_controlled
+					}
+					remove_trait = fortune_builder
+					add_trait = midas_touched
+				}
+				random_character = {
+					limit = {
+						trait = thrifty_clerk
+						has_character_flag = mind_controlled
+					}
+					remove_trait = thrifty_clerk
+					add_trait = fortune_builder
+				}
+				random_character = {
+					limit = {
+						trait = indulgent_wastrel
+						has_character_flag = mind_controlled
+					}
+					remove_trait = indulgent_wastrel
+					add_trait = thrifty_clerk
+				}
+				random_character = {
+					limit = {
+						trait = skilled_tactician
+						has_character_flag = mind_controlled
+					}
+					remove_trait = skilled_tactician
+					add_trait = brilliant_strategist
+				}
+				random_character = {
+					limit = {
+						trait = tough_soldier
+						has_character_flag = mind_controlled
+					}
+					remove_trait = tough_soldier
+					add_trait = skilled_tactician
+				}
+				random_character = {
+					limit = {
+						trait = misguided_warrior
+						has_character_flag = mind_controlled
+					}
+					remove_trait = misguided_warrior
+					add_trait = tough_soldier
+				}
+	            random_character = {
+					limit = {
+						trait = scholarly_theologian
+						has_character_flag = mind_controlled
+					}
+					remove_trait = scholarly_theologian
+					add_trait = mastermind_theologian
+				}
+				random_character = {
+					limit = {
+						trait = martial_cleric
+						has_character_flag = mind_controlled
+					}
+					remove_trait = martial_cleric
+					add_trait = scholarly_theologian
+				}
+				random_character = {
+					limit = {
+						trait = detached_priest
+						has_character_flag = mind_controlled
+					}
+					remove_trait = detached_priest
+					add_trait = martial_cleric
+				}
+            }
+		}
+
+
+	}
+
+	scmr_down_education_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_education_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						trait = flamboyant_schemer
+						has_character_flag = mind_controlled
+					}
+					remove_trait = flamboyant_schemer
+					add_trait = amateurish_plotter
+				}
+				random_character = {
+					limit = {
+						trait = intricate_webweaver
+						has_character_flag = mind_controlled
+					}
+					remove_trait = intricate_webweaver
+					add_trait = flamboyant_schemer
+				}
+				random_character = {
+					limit = {
+						trait = elusive_shadow
+						has_character_flag = mind_controlled
+					}
+					remove_trait = elusive_shadow
+					add_trait = intricate_webweaver
+				}
+
+				random_character = {
+					limit = {
+						trait = underhanded_rogue
+						has_character_flag = mind_controlled
+					}
+					remove_trait = underhanded_rogue
+					add_trait = naive_appeaser
+				}
+				random_character = {
+					limit = {
+						trait = charismatic_negotiator
+						has_character_flag = mind_controlled
+					}
+					remove_trait = charismatic_negotiator
+					add_trait = underhanded_rogue
+				}
+				random_character = {
+					limit = {
+						trait = grey_eminence
+						has_character_flag = mind_controlled
+					}
+					remove_trait = grey_eminence
+					add_trait = charismatic_negotiator
+				}
+
+	            random_character = {
+					limit = {
+						trait = thrifty_clerk
+						has_character_flag = mind_controlled
+					}
+					remove_trait = thrifty_clerk
+					add_trait = indulgent_wastrel
+				}
+				random_character = {
+					limit = {
+						trait = fortune_builder
+						has_character_flag = mind_controlled
+					}
+					remove_trait = fortune_builder
+					add_trait = thrifty_clerk
+				}
+				random_character = {
+					limit = {
+						trait = midas_touched
+						has_character_flag = mind_controlled
+					}
+					remove_trait = midas_touched
+					add_trait = fortune_builder
+				}
+
+	            random_character = {
+					limit = {
+						trait = tough_soldier
+						has_character_flag = mind_controlled
+					}
+					remove_trait = tough_soldier
+					add_trait = misguided_warrior
+				}
+				random_character = {
+					limit = {
+						trait = skilled_tactician
+						has_character_flag = mind_controlled
+					}
+					remove_trait = skilled_tactician
+					add_trait = tough_soldier
+				}
+				random_character = {
+					limit = {
+						trait = brilliant_strategist
+						has_character_flag = mind_controlled
+					}
+					remove_trait = brilliant_strategist
+					add_trait = skilled_tactician
+				}
+
+	            random_character = {
+					limit = {
+						trait = martial_cleric
+						has_character_flag = mind_controlled
+					}
+					remove_trait = martial_cleric
+					add_trait = detached_priest
+				}
+				random_character = {
+					limit = {
+						trait = scholarly_theologian
+						has_character_flag = mind_controlled
+					}
+					remove_trait = scholarly_theologian
+					add_trait = martial_cleric
+				}
+				random_character = {
+					limit = {
+						trait = mastermind_theologian
+						has_character_flag = mind_controlled
+					}
+					remove_trait = mastermind_theologian
+					add_trait = scholarly_theologian
+				}
+            }
+		}
+
+
+	}
+
+    #######################
+    ##HEALTH CONGENITAL##
+	#######################
+	show_health_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_health_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_health_mind
+		}
+
+
+
+	}
+
+	hide_health_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_health_mind
+		}
+
+
+	}
+
+	remove_diseases_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+	    }
+
+		allow = {
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				OR = {
+					has_disease_trigger = yes
+					has_minor_disease_trigger = yes
+				}
+			}
+		}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				cure_illness = yes
+				remove_disease_flags_effect = yes
+				remove_disease_trait_effect = yes
+			}
+		}
+
+
+	}
+
+	remove_symptoms_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+	    }
+
+		allow = {
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				has_symptom_trigger = yes
+			}
+		}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_symptoms_effect = yes
+			}
+		}
+
+
+	}
+
+	remove_others_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+	    }
+
+		allow = {
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				OR = {
+					has_injury_trigger = yes
+					is_maimed_trigger = yes
+					has_disability_trigger = yes
+					is_infertile_trigger = yes
+					physician_bad_trigger = yes
+				}
+			}
+		}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				scmr_severely_injured = yes
+				scmr_remove_negative = yes
+			}
+		}
+
+
+	}
+
+
+	remove_genius_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = genius
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = genius
+			}
+		}
+
+
+	}
+
+	add_genius_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = genius }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = genius
+			}
+            hidden_tooltip = {
+				random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = quick
+				}
+			}
+		}
+
+
+	}
+
+	remove_quick_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = quick
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = quick
+			}
+		}
+
+
+	}
+
+	add_quick_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = quick }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = quick
+			}
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+				remove_trait = genius
+				}
+			}
+		}
+
+
+	}
+
+	remove_strong_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = strong
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = strong
+			}
+		}
+
+
+	}
+
+	add_strong_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = strong }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = strong
+			}
+		}
+
+
+	}
+
+	remove_fair_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = fair
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = fair
+			}
+		}
+
+
+	}
+
+	add_fair_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = fair }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = fair
+			}
+            hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					remove_trait = quick
+				}
+			}
+		}
+
+
+	}
+
+
+
+
+
+	add_robust_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = robust }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = robust
+			}
+		}
+
+
+	}
+
+	remove_robust_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = robust
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = robust
+			}
+		}
+
+
+	}
+
+	add_sturdy_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = sturdy }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = sturdy
+			}
+		}
+
+
+	}
+
+	remove_sturdy_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = sturdy
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = sturdy
+			}
+		}
+
+
+	}
+
+	add_feeble_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = feeble }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = feeble
+			}
+		}
+
+
+	}
+
+	remove_feeble_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = feeble
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = feeble
+			}
+		}
+
+
+	}
+
+
+	add_shrewd_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = shrewd }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = shrewd
+			}
+		}
+
+
+	}
+
+	remove_shrewd_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = shrewd
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = shrewd
+			}
+		}
+
+
+	}
+
+
+	add_dull_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = dull }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = dull
+			}
+		}
+
+
+	}
+
+	remove_dull_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = dull
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = dull
+			}
+		}
+
+
+	}
+
+	add_groomed_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = groomed }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = groomed
+			}
+		}
+
+
+	}
+
+	remove_groomed_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = groomed
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = groomed
+			}
+		}
+
+
+	}
+
+
+
+
+	add_uncouth_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = uncouth }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = uncouth
+			}
+		}
+
+
+	}
+
+	remove_uncouth_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = uncouth
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = uncouth
+			}
+		}
+
+
+	}
+
+	add_is_fat_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = is_fat }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = is_fat
+			}
+		}
+
+
+	}
+
+	remove_is_fat_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = is_fat
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = is_fat
+			}
+		}
+
+
+	}
+
+	add_is_malnourished_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = is_malnourished }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = is_malnourished
+			}
+		}
+
+
+	}
+
+	remove_is_malnourished_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_health_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = is_malnourished
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = is_malnourished
+			}
+		}
+
+
+	}
+
+
+	##############
+    ##LEADERSHIP##
+	##############
+	show_leadership_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_leadership_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_leadership_mind
+		}
+
+
+
+	}
+
+	hide_leadership_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_leadership_mind
+		}
+
+
+	}
+
+	remove_light_foot_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = light_foot_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = light_foot_leader
+			}
+		}
+
+
+	}
+
+	add_light_foot_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = light_foot_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = light_foot_leader
+			}
+		}
+
+
+	}
+
+	remove_heavy_infantry_leader_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = heavy_infantry_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = heavy_infantry_leader
+			}
+		}
+
+
+	}
+
+	add_heavy_infantry_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = heavy_infantry_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = heavy_infantry_leader
+			}
+		}
+
+
+	}
+
+	remove_cavalry_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = cavalry_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = cavalry_leader
+			}
+		}
+
+
+	}
+
+	add_cavalry_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = cavalry_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = cavalry_leader
+			}
+		}
+
+
+	}
+
+	remove_inspiring_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = inspiring_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = inspiring_leader
+			}
+		}
+
+
+	}
+
+	add_inspiring_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = inspiring_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = inspiring_leader
+			}
+		}
+
+
+	}
+
+	remove_trickster_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = trickster
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = trickster
+			}
+		}
+
+
+	}
+
+	add_trickster_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = trickster }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = trickster
+			}
+		}
+
+
+	}
+
+	remove_organizer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = organizer
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = organizer
+			}
+		}
+
+
+	}
+
+	add_organizer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = organizer }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = organizer
+			}
+		}
+
+
+	}
+
+	remove_defensive_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = defensive_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = defensive_leader
+			}
+		}
+
+
+	}
+
+	add_defensive_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = defensive_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = defensive_leader
+			}
+		}
+
+
+	}
+
+	remove_aggressive_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = aggressive_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = aggressive_leader
+			}
+		}
+
+
+	}
+
+	add_aggressive_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = aggressive_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = aggressive_leader
+			}
+		}
+
+
+	}
+
+	remove_flanker_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = flanker
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = flanker
+			}
+		}
+
+
+	}
+
+	add_flanker_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = flanker }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = flanker
+			}
+		}
+
+
+	}
+
+	remove_experimenter_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = experimenter
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = experimenter
+			}
+		}
+
+
+	}
+
+	add_experimenter_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = experimenter }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = experimenter
+			}
+		}
+
+
+	}
+
+		remove_siege_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = siege_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = siege_leader
+			}
+		}
+
+
+	}
+
+	add_siege_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = siege_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = siege_leader
+			}
+		}
+
+
+	}
+
+	remove_flat_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = flat_terrain_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = flat_terrain_leader
+			}
+		}
+
+
+	}
+
+	add_flat_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = flat_terrain_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = flat_terrain_leader
+			}
+		}
+
+
+	}
+
+	remove_rough_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = rough_terrain_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = rough_terrain_leader
+			}
+		}
+
+
+	}
+
+	add_rough_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = rough_terrain_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = rough_terrain_leader
+			}
+		}
+
+
+	}
+
+	remove_desert_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = desert_terrain_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = desert_terrain_leader
+			}
+		}
+
+
+	}
+
+	add_desert_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = desert_terrain_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = desert_terrain_leader
+			}
+		}
+
+
+	}
+
+	remove_unyielding_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = unyielding_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = unyielding_leader
+			}
+		}
+
+
+	}
+
+	add_unyielding_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = unyielding_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = unyielding_leader
+			}
+		}
+
+
+	}
+
+
+
+	add_master_of_flame_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = master_of_flame }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_character_flag = taught_chinese_strategy
+				add_trait = master_of_flame
+			}
+		}
+
+
+	}
+
+	remove_master_of_flame_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = master_of_flame
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				clr_character_flag = taught_chinese_strategy
+				remove_trait = master_of_flame
+			}
+		}
+
+
+	}
+
+	add_logistics_expert_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = logistics_expert }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_character_flag = taught_chinese_strategy
+				add_trait = logistics_expert
+			}
+		}
+
+
+	}
+
+	remove_logistics_expert_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = logistics_expert
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				clr_character_flag = taught_chinese_strategy
+				remove_trait = logistics_expert
+			}
+		}
+
+
+	}
+
+	add_levy_coordinator_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = levy_coordinator }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_character_flag = taught_chinese_strategy
+				add_trait = levy_coordinator
+			}
+		}
+
+
+	}
+
+	remove_levy_coordinator_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = levy_coordinator
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				clr_character_flag = taught_chinese_strategy
+				remove_trait = levy_coordinator
+			}
+		}
+
+
+	}
+
+	add_sapper_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = sapper }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_character_flag = taught_chinese_strategy
+				add_trait = sapper
+			}
+		}
+
+
+	}
+
+	remove_sapper_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = sapper
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				clr_character_flag = taught_chinese_strategy
+				remove_trait = sapper
+			}
+		}
+
+
+	}
+
+
+	remove_holy_warrior_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = holy_warrior
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = holy_warrior
+			}
+		}
+
+
+	}
+
+	add_holy_warrior_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = holy_warrior }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = holy_warrior
+			}
+		}
+
+
+	}
+
+	remove_narrow_flank_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = narrow_flank_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = narrow_flank_leader
+			}
+		}
+
+
+	}
+
+	add_narrow_flank_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = narrow_flank_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = narrow_flank_leader
+			}
+		}
+
+
+	}
+
+	remove_war_elephant_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = war_elephant_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = war_elephant_leader
+			}
+		}
+
+
+	}
+
+	add_war_elephant_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = war_elephant_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = war_elephant_leader
+			}
+		}
+
+
+	}
+
+	remove_jungle_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = jungle_terrain_leader
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = jungle_terrain_leader
+			}
+		}
+
+
+	}
+
+	add_jungle_terrain_leader_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_leadership_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = jungle_terrain_leader }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = jungle_terrain_leader
+			}
+		}
+
+
+	}
+
+
+
+	##############
+    ##LIFESTYLES##
+	##############
+	show_lifestyle_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_lifestyle_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_lifestyle_mind
+		}
+
+
+
+	}
+
+	hide_lifestyle_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_lifestyle_mind
+		}
+
+
+	}
+
+    remove_mystic_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = mystic
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = mystic
+			}
+		}
+
+
+	}
+
+	add_mystic_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = mystic }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = mystic
+			}
+		}
+
+
+	}
+
+    remove_scholar_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = scholar
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = scholar
+			}
+		}
+
+
+	}
+
+	add_scholar_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = scholar }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = scholar
+			}
+		}
+
+
+	}
+
+    remove_theologian_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = theologian
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = theologian
+			}
+		}
+
+
+	}
+
+	add_theologian_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = theologian }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = theologian
+			}
+		}
+
+
+	}
+
+	add_poet_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = poet }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = poet
+			}
+		}
+
+
+	}
+
+	remove_poet_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = poet
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = poet
+			}
+		}
+
+
+	}
+
+	add_falconer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = falconer }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = falconer
+			}
+		}
+
+
+	}
+
+	remove_falconer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = falconer
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = falconer
+			}
+		}
+
+
+	}
+
+	add_celibate_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = celibate }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = celibate
+			}
+		}
+
+
+	}
+
+	remove_celibate_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = celibate
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = celibate
+			}
+		}
+
+
+	}
+
+    remove_schemer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = schemer
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = schemer
+			}
+		}
+
+
+	}
+
+	add_schemer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = schemer }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = schemer
+			}
+		}
+
+
+	}
+
+    remove_impaler_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = impaler
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = impaler
+			}
+		}
+
+
+	}
+
+	add_impaler_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = impaler }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = impaler
+			}
+		}
+
+
+	}
+
+
+
+
+    remove_seducer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = seducer
+				is_female = no
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = seducer
+			}
+		}
+
+
+	}
+
+	add_seducer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = seducer }
+				is_female = no
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = seducer
+			}
+		}
+
+
+	}
+
+	remove_seductress_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_female = yes
+				trait = seductress
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = seductress
+			}
+		}
+
+
+	}
+
+	add_seductress_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_female = yes
+				NOT = { trait = seductress }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = seductress
+			}
+		}
+
+
+	}
+
+	remove_gardener_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = gardener
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = gardener
+			}
+		}
+
+
+	}
+
+	add_gardener_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = gardener }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = gardener
+			}
+		}
+
+
+	}
+
+	remove_architect_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = architect
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = architect
+			}
+		}
+
+
+	}
+
+	add_architect_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = architect }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = architect
+			}
+		}
+
+
+	}
+
+    remove_administrator_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = administrator
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = administrator
+			}
+		}
+
+
+	}
+
+	add_administrator_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = administrator }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = administrator
+			}
+		}
+
+
+	}
+
+    remove_hunter_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = hunter
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = hunter
+			}
+		}
+
+
+	}
+
+	add_hunter_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = hunter }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = hunter
+			}
+		}
+
+
+	}
+
+    remove_duelist_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = duelist
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = duelist
+			}
+		}
+
+
+	}
+
+	add_duelist_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = duelist }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = duelist
+			}
+		}
+
+
+	}
+
+    remove_strategist_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = strategist
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = strategist
+			}
+		}
+
+
+	}
+
+	add_strategist_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = strategist }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = strategist
+			}
+		}
+
+
+	}
+
+    remove_gamer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = gamer
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = gamer
+			}
+		}
+
+
+	}
+
+	add_gamer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = gamer }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = gamer
+			}
+		}
+
+
+	}
+
+    remove_hedonist_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = hedonist
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = hedonist
+			}
+		}
+
+
+	}
+
+	add_hedonist_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = hedonist }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = hedonist
+			}
+		}
+
+
+	}
+
+    remove_socializer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = socializer
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = socializer
+			}
+		}
+
+
+	}
+
+	add_socializer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_lifestyle_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = socializer }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = socializer
+			}
+		}
+
+
+	}
+
+	####################
+	##religious Traits##
+	####################
+
+	show_religion_mind = {
+
+
+		ai = no
+			potential = {
+				has_character_flag = mind_control_enabled
+				has_character_flag = mind_traits_enable
+				NOT = { has_character_flag = show_religion_mind }
+			}
+
+			allow = {
+				always = yes
+			}
+
+			effect = {
+				set_character_flag = show_religion_mind
+			}
+		}
+
+	hide_religion_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_religion_mind
+		}
+	}
+
+
+	add_viking_mind = {
+
+
+		ai = no
+		potential = {
+			has_character_flag = mind_control_enabled
+			has_character_flag = mind_traits_enable
+			has_character_flag = show_religion_mind
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = { trait = viking }
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = viking
+			}
+		}
+	}
+
+	remove_viking_mind = {
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = viking
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = viking
+			}
+		}
+	}
+
+
+	add_ravager_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = { trait = ravager }
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = ravager
+			}
+		}
+	}
+
+	remove_ravager_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = ravager
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = ravager
+			}
+		}
+	}
+
+
+	add_seaking_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = { trait = seaking }
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = seaking
+			}
+		}
+	}
+
+	remove_seaking_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = seaking
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = seaking
+			}
+		}
+	}
+
+	add_sea_queen_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = { trait = sea_queen }
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = sea_queen
+			}
+		}
+	}
+
+	remove_sea_queen_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_religion_mind
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					trait = sea_queen
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = sea_queen
+			}
+		}
+	}
+
+    ###############
+    ##MISC TRAITS##
+	###############
+	show_misc_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_misc_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_misc_mind
+		}
+
+
+
+	}
+
+	hide_misc_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_misc_mind
+		}
+
+
+	}
+
+	remove_scarred_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = scarred
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = scarred
+			}
+		}
+
+
+	}
+
+	add_scarred_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = scarred }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = scarred
+			}
+		}
+
+
+	}
+
+
+	add_one_eyed_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = one_eyed }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = one_eyed
+			}
+		}
+
+
+	}
+
+
+	add_one_handed_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = one_handed }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = one_handed
+			}
+		}
+
+
+	}
+
+	add_one_legged_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = one_legged }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = one_legged
+			}
+		}
+
+
+	}
+
+
+	remove_lunatic_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = lunatic
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = lunatic
+			}
+		}
+
+
+	}
+
+	add_lunatic_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = lunatic }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = lunatic
+			}
+		}
+
+
+	}
+
+	remove_possessed_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = possessed
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = possessed
+			}
+		}
+
+
+	}
+
+	add_possessed_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = possessed }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = possessed
+			}
+		}
+
+
+	}
+
+	add_physician_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = physician }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = physician
+			}
+		}
+
+
+	}
+
+	remove_physician_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = physician
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = physician
+			}
+		}
+
+
+	}
+
+	add_blinded_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = blinded }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = blinded
+			}
+		}
+
+
+	}
+
+	remove_blinded_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = blinded
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = blinded
+			}
+		}
+
+
+	}
+
+	remove_homosexual_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = homosexual
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = homosexual
+			}
+		}
+
+
+	}
+
+	add_homosexual_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = homosexual }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = homosexual
+			}
+		}
+
+
+	}
+
+
+	remove_child_of_concubine_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = child_of_consort
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = child_of_consort
+			}
+		}
+
+
+	}
+
+
+	remove_bastard_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = bastard
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = bastard
+			}
+		}
+
+
+	}
+
+	remove_legit_bastard_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = legit_bastard
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = legit_bastard
+			}
+		}
+
+
+	}
+
+	remove_kinslayer_mind = {
+
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					OR = {
+						trait = kinslayer
+						trait = familial_kinslayer
+						trait = dynastic_kinslayer
+					}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = kinslayer
+				remove_trait = familial_kinslayer
+				remove_trait = dynastic_kinslayer
+			}
+		}
+
+
+	}
+
+
+	add_born_in_the_purple_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = born_in_the_purple }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = born_in_the_purple
+			}
+		}
+
+
+	}
+
+	remove_born_in_the_purple_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = born_in_the_purple
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = born_in_the_purple
+			}
+		}
+
+
+	}
+
+
+
+	add_adventurer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = adventurer }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = adventurer
+			}
+		}
+
+
+	}
+
+	remove_adventurer_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = adventurer
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = adventurer
+			}
+		}
+
+
+	}
+
+	add_berserker_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = berserker }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = berserker
+			}
+		}
+
+
+	}
+
+	remove_berserker_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = berserker
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = berserker
+			}
+		}
+
+
+	}
+
+	add_lovers_pox_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = lovers_pox }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = lovers_pox
+			}
+		}
+
+
+	}
+
+	remove_lovers_pox_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = lovers_pox
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = lovers_pox
+			}
+		}
+
+
+	}
+
+
+
+	add_cannibal_trait_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+            hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { trait = cannibal_trait }
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_trait = cannibal_trait
+			}
+		}
+
+
+	}
+
+	remove_cannibal_trait_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = traits_enabled
+            has_character_flag = show_misc_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				trait = cannibal_trait
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_trait = cannibal_trait
+			}
+		}
+
+
+	}
+
+    #################
+    ##VASSAL TRAITS##
+	#################
+	show_vassal_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_vassal_mind }
+		}
+
+		allow = {
+			always = yes
+	    }
+
+		effect = {
+            set_character_flag = show_vassal_mind
+		}
+
+
+
+	}
+
+	hide_vassal_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_vassal_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_vassal_mind
+		}
+
+
+	}
+
+	add_vassal_content_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_vassal_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_realm_character = {
+					NOT = { trait = content }
+				}
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_character = {
+						limit = {
+							NOT = { is_married = PREVPREV }
+							NOT = { is_child_of = PREVPREV }
+						}
+						add_trait = content
+					}
+				}
+			}
+		}
+
+
+	}
+
+	add_vassal_trusting_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_vassal_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_realm_character = {
+					NOT = { trait = trusting }
+				}
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_character = {
+						limit = {
+							NOT = { is_married = PREVPREV }
+							NOT = { is_child_of = PREVPREV }
+						}
+						add_trait = trusting
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	add_vassal_honest_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_vassal_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_realm_character = {
+					NOT = { trait = honest }
+				}
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_character = {
+						limit = {
+							NOT = { is_married = PREVPREV }
+							NOT = { is_child_of = PREVPREV }
+						}
+						add_trait = honest
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	remove_vassal_sins_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_vassal_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_realm_character = {
+					OR = {
+						trait = greedy
+						trait = lustful
+						trait = proud
+						trait = envious
+						trait = gluttonous
+						trait = slothful
+						trait = wroth
+					}
+				}
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_character = {
+						limit = {
+							NOT = { is_married = PREVPREV }
+							NOT = { is_child_of = PREVPREV }
+						}
+						remove_trait = greedy
+						remove_trait = lustful
+						remove_trait = proud
+						remove_trait = envious
+						remove_trait = gluttonous
+						remove_trait = slothful
+						remove_trait = wroth
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	add_vassal_virtues_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_vassal_mind
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_realm_character = {
+					OR = {
+						trait = charitable
+						trait = chaste
+						trait = humble
+						trait = kind
+						trait = temperate
+						trait = diligent
+						trait = patient
+					}
+				}
+			}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_character = {
+						limit = {
+							NOT = { is_married = PREVPREV }
+							NOT = { is_child_of = PREVPREV }
+						}
+						add_trait = charitable
+						add_trait = chaste
+						add_trait = humble
+						add_trait = kind
+						add_trait = temperate
+						add_trait = diligent
+						add_trait = patient
+					}
+				}
+		    }
+		}
+
+
+	}
+
+    ###########################
+    ##DYNASTY SPOUSE TRAITS##
+	###########################
+
+	show_dynasty_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            NOT = { has_character_flag = show_dynasty_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_dynasty_mind
+		}
+
+
+
+	}
+
+	hide_dynasty_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_dynasty_mind
+		}
+
+
+	}
+
+	add_dynasty_content_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_dynasty_member = {
+						add_trait = content
+					}
+					any_spouse = {
+						add_trait = content
+					}
+					any_consort = {
+						add_trait = content
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	add_dynasty_trusting_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_dynasty_member = {
+						add_trait = trusting
+					}
+					any_spouse = {
+						add_trait = trusting
+					}
+					any_consort = {
+						add_trait = trusting
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	add_dynasty_honest_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_dynasty_member = {
+						add_trait = honest
+					}
+					any_spouse = {
+						add_trait = honest
+					}
+					any_consort = {
+						add_trait = honest
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	remove_dynasty_sins_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_dynasty_member = {
+						remove_trait = greedy
+						remove_trait = lustful
+						remove_trait = proud
+						remove_trait = envious
+						remove_trait = gluttonous
+						remove_trait = slothful
+						remove_trait = wroth
+					}
+					any_spouse = {
+						remove_trait = greedy
+						remove_trait = lustful
+						remove_trait = proud
+						remove_trait = envious
+						remove_trait = gluttonous
+						remove_trait = slothful
+						remove_trait = wroth
+					}
+					any_consort = {
+						remove_trait = greedy
+						remove_trait = lustful
+						remove_trait = proud
+						remove_trait = envious
+						remove_trait = gluttonous
+						remove_trait = slothful
+						remove_trait = wroth
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	add_dynasty_virtues_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_dynasty_member = {
+						add_trait = charitable
+						add_trait = humble
+						add_trait = kind
+						add_trait = temperate
+						add_trait = diligent
+						add_trait = patient
+					}
+					any_spouse = {
+						add_trait = charitable
+						add_trait = humble
+						add_trait = kind
+						add_trait = temperate
+						add_trait = diligent
+						add_trait = patient
+					}
+					any_consort = {
+						add_trait = charitable
+						add_trait = humble
+						add_trait = kind
+						add_trait = temperate
+						add_trait = diligent
+						add_trait = patient
+					}
+				}
+		    }
+		}
+
+
+	}
+
+	add_dynasty_genetics_mind = {
+
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_traits_enable
+            has_character_flag = show_dynasty_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_dynasty_member = {
+						add_trait = genius
+						add_trait = strong
+						add_trait = fair
+					}
+					any_spouse = {
+						add_trait = genius
+						add_trait = strong
+						add_trait = fair
+					}
+					any_consort = {
+						add_trait = genius
+						add_trait = strong
+						add_trait = fair
+					}
+				}
+		    }
+		}
+
+        ai_will_do = {
+            factor = 0
+        }
+	}
+
+}

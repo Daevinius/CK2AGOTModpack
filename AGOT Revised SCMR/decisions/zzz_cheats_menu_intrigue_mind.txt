@@ -1,0 +1,1925 @@
+decisions = {
+
+	################
+	##Mind Control##
+	################
+
+	mind_cheat_enable = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            NOT = { has_character_flag = mind_cheat_enable }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = mind_cheat_enable
+		}
+
+
+	}
+
+	mind_cheat_disable = {
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = mind_cheat_enable
+		}
+
+
+	}
+
+	################
+	##Common Cheat##
+	################
+
+	show_common_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            NOT = { has_character_flag = show_common_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_common_mind
+		}
+
+
+
+	}
+
+	hide_common_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_common_mind
+		}
+
+
+
+	}
+
+
+	add_gold_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				wealth = 10000
+			}
+		}
+
+
+	}
+
+
+
+	add_prestige_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				prestige = 10000
+			}
+		}
+
+
+	}
+
+    add_piety_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				piety = 10000
+			}
+		}
+	}
+
+	add_gold_vassal_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_vassal = {
+						wealth = 10000
+					}
+				}
+			}
+		}
+	}
+
+	spawn_army_10k_mind = {
+		ai = no
+
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					capital_scope = {
+						holder_scope = {
+							scmr_spawn_10k = yes
+						}
+					}
+				}
+			}
+		}
+	}
+
+	spawn_army_100k_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					capital_scope = {
+						holder_scope = {
+							scmr_spawn_100k = yes
+						}
+					}
+				}
+			}
+		}
+
+
+	}
+
+	spawn_fleet_mind = {
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+						is_ruler = yes
+					}
+					scmr_spawn_fleet = yes
+				}
+			}
+		}
+
+
+	}
+
+	spawn_army_10k_vassal_mind = {
+		ai = no
+
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+						is_ruler = yes
+					}
+					any_vassal = {
+						capital_scope = {
+							holder_scope = {
+								scmr_spawn_10k = yes
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	win_offensive_war_mind = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_primary_war_attacker = yes
+			}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_war = {
+					if = {
+						limit = {
+							attacker = {
+								character = PREVPREV
+							}
+						}
+						end_war = success
+					}
+				}
+			}
+
+        }
+	}
+
+	win_defensive_war_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_primary_war_defender = yes
+			}
+		}
+
+		effect = {
+	        random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_war = {
+					if = {
+						limit = {
+							defender = {
+								character = PREVPREV
+							}
+						}
+						end_war = reverse_demand
+					}
+				}
+			}
+        }
+	}
+
+	end_offensive_war_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_primary_war_attacker = yes
+			}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_war = {
+					if = {
+						limit = {
+							attacker = {
+								character = PREVPREV
+							}
+						}
+						end_war = whitepeace
+					}
+				}
+			}
+
+        }
+	}
+
+	end_defensive_war_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_primary_war_defender = yes
+			}
+		}
+
+		effect = {
+	        random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_war = {
+					if = {
+						limit = {
+							defender = {
+								character = PREVPREV
+							}
+						}
+						end_war = whitepeace
+					}
+				}
+			}
+        }
+	}
+
+
+
+	become_independent_mind = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+					independent = no
+				}
+				set_defacto_liege = THIS
+			}
+		}
+	}
+
+	set_feudal_mind = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { government = feudal_government }
+			}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_government_type = feudal_government
+			}
+		}
+	}
+
+	revoke_all_titles_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_vassal = {
+						limit = {
+							NOT = { tier = baron }
+							is_nomadic = no
+						}
+						any_demesne_title = {
+							limit = {
+								is_patrician = no
+								mercenary = no
+								holy_order = no
+								is_landless_type_title = no
+							}
+							gain_title = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	kill_all_courtiers_mind = {
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_courtier = {
+					limit = {
+						NOR = {
+							dynasty = PREV
+							is_married = PREV
+							is_consort = PREV
+							is_friend = PREV
+							is_lover = PREV
+							is_ruler = yes
+							is_mother = PREV
+							is_father = PREV
+						}
+					}
+					death = { death_reason = death_murder_unknown killer = PREV }
+				}
+			}
+		}
+	}
+
+	reveal_realm_plots_mind = {
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				liege = {
+					any_realm_character = {
+						reveal_plot = PREV
+					}
+				}
+			}
+		}
+	}
+
+	raise_rel_authority_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = show_common_mind
+            NOT = { religion_authority = 1 }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				religion_authority = { modifier = god_amongst_men }
+			}
+		}
+	}
+
+
+
+	####################
+	##Culture Religion##
+	####################
+
+	show_religion_culture_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            NOT = { has_character_flag = show_religion_culture_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_religion_culture_mind
+		}
+
+
+
+	}
+
+	hide_religion_culture_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_religion_culture_mind
+		}
+
+
+
+	}
+
+
+
+	convert_demesne_culture_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_demesne_title = {
+					if = {
+						limit = {
+							tier = count
+						}
+						location = {
+						if = {
+							limit = {
+								NOT = {
+									culture = PREVPREV
+								}
+							}
+							culture = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+	}
+
+	convert_demesne_religion_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_title = {
+						if = {
+							limit = {
+								tier = count
+							}
+							location = {
+								if = {
+									limit = {
+										NOT = {
+											religion = PREVPREV
+										}
+									}
+									religion = PREVPREV
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	convert_realm_culture_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_realm_character = {
+					    culture = PREV
+				    }
+				    any_realm_province = {
+					    culture = PREV
+				    }
+				}
+			}
+		}
+
+
+	}
+
+	convert_realm_religion_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			   random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_realm_character = {
+					    religion = PREV
+				    }
+				    any_realm_province = {
+					    religion = PREV
+				    }
+				}
+			}
+		}
+
+	}
+
+	convert_realm_ethnicity_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_realm_character = {
+					    set_graphical_culture = PREV
+				    }
+				}
+			}
+		}
+
+
+	}
+
+	convert_vassal_culture_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			    random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_vassal = {
+						limit = {
+							NOT = {
+						culture = PREV
+					}
+				}
+				culture = PREV
+						}
+				}
+			}
+		}
+
+
+	}
+
+	convert_vassal_religion_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			    random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_vassal = {
+						limit = {
+							NOT = {
+						religion = PREV
+					}
+				}
+				religion = PREV
+						}
+				}
+			}
+		}
+
+
+	}
+
+	convert_courtier_culture_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			   random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_courtier = {
+				limit = {
+					NOT = {
+						culture = PREV
+					}
+				}
+				culture = PREV
+			}
+				}
+			}
+		}
+
+
+	}
+
+	convert_courtier_religion_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_religion_culture_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				    any_courtier = {
+				limit = {
+					NOT = {
+						religion = PREV
+					}
+				}
+				religion = PREV
+			}
+				}
+			}
+		}
+
+
+	}
+
+
+
+	#####################
+	##Building Modifier##
+	#####################
+	show_building_modifier_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            NOT = { has_character_flag = show_building_modifier_mind }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_building_modifier_mind
+		}
+
+
+
+	}
+
+	hide_building_modifier_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_building_modifier_mind
+		}
+
+
+
+	}
+
+	enable_quick_move_mind = {
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					capital_holding = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							add_building = ca_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							add_building = tp_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							add_building = no_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							add_building = ct_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							add_building = tr_quick_move
+						}
+
+					}
+				}
+			}
+        }
+	}
+
+	disable_quick_move_mind = {
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					capital_holding = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							remove_building = ca_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							remove_building = tp_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							remove_building = no_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							remove_building = ct_quick_move
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							remove_building = tr_quick_move
+						}
+					}
+				}
+			}
+		}
+	}
+
+	build_demesne_hold_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_title = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							scmr_build_castle = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							scmr_build_temple = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							scmr_build_city = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							scmr_build_tb = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							scmr_build_nd = yes
+						}
+
+					}
+				}
+			}
+		}
+
+
+	}
+
+	dismantle_demesne_hold_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_title = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							scmr_dismantle_castle = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							scmr_dismantle_temple = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							scmr_dismantle_city = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							scmr_dismantle_tb = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							scmr_dismantle_nd = yes
+						}
+					}
+				}
+			}
+		}
+
+
+	}
+
+	build_realm_hold_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_lord = {
+						any_demesne_title = {
+							if = {
+								limit = {
+									holding_type = castle
+								}
+								scmr_build_castle = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = temple
+								}
+								scmr_build_temple = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = city
+								}
+								scmr_build_city = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = tribal
+								}
+								scmr_build_tb = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = nomad
+								}
+								scmr_build_nd = yes
+							}
+						}
+					}
+					any_demesne_title = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							scmr_build_castle = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							scmr_build_temple = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							scmr_build_city = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							scmr_build_tb = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							scmr_build_nd = yes
+						}
+
+					}
+				}
+			}
+		}
+
+
+	}
+
+	dismantle_realm_hold_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+            has_character_flag = mind_cheat_enable
+			has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_lord = {
+						any_demesne_title = {
+							if = {
+								limit = {
+									holding_type = castle
+								}
+								scmr_dismantle_castle = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = temple
+								}
+								scmr_dismantle_temple = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = city
+								}
+								scmr_dismantle_city = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = tribal
+								}
+								scmr_dismantle_tb = yes
+							}
+							else_if = {
+								limit = {
+									holding_type = nomad
+								}
+								scmr_dismantle_nd = yes
+							}
+						}
+					}
+					any_demesne_title = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							scmr_dismantle_castle = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							scmr_dismantle_temple = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							scmr_dismantle_city = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							scmr_dismantle_tb = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							scmr_dismantle_nd = yes
+						}
+					}
+				}
+			}
+		}
+
+
+	}
+
+	build_demesne_hospital_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_province = {
+						if = {
+							limit = {
+									has_hospital = no
+								}
+							build_holding = {
+								type = hospital
+								holder = PREV
+							}
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	destroy_demesne_hospital_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_province = {
+						if = {
+							limit = {
+									has_hospital = yes
+							}
+							destroy_hospital = THIS
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	build_demesne_hospital_up_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				 random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_province = {
+						if = {
+							limit = {
+									has_hospital = no
+								}
+							build_holding = {
+								type = hospital
+								holder = PREV
+							}
+						}
+						scmr_build_hp = yes
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+
+
+	build_realm_hospital_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_province = {
+						if = {
+							limit = {
+									has_hospital = no
+								}
+							build_holding = {
+								type = hospital
+								holder = PREV
+							}
+						}
+					}
+				}
+			}
+		}
+
+
+	}
+
+	destroy_realm_hospital_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_province = {
+						if = {
+							limit = {
+									has_hospital = yes
+								}
+							destroy_hospital = THIS
+						}
+					}
+				}
+			}
+		}
+
+
+	}
+
+	build_realm_hospital_up_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_province = {
+						if = {
+							limit = {
+									has_hospital = no
+								}
+							build_holding = {
+								type = hospital
+								holder = PREV
+							}
+						}
+						scmr_build_hp = yes
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+
+	build_family_palace_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					scmr_build_fp = yes
+				}
+			}
+		}
+
+
+
+
+	}
+
+	dismantle_family_palace_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					scmr_dismantle_fp = yes
+				}
+			}
+		}
+
+
+
+
+	}
+
+	charge_demesne_soldier_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_title = {
+						limit = {
+							tier = baron
+						}
+						refill_holding_levy = yes
+					}
+				}
+			}
+		}
+
+
+	}
+
+	charge_realm_soldier_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_title = {
+						limit = {
+							tier = baron
+						}
+						refill_holding_levy = yes
+					}
+					any_realm_lord = {
+						any_demesne_title = {
+							limit = {
+								tier = baron
+							}
+							refill_holding_levy = yes
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	remove_demesne_modifier_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_demesne_title = {
+						limit = {
+							tier = baron
+						}
+						scmr_holding_modifier = yes
+					}
+					any_demesne_province = {
+						scmr_province_modifier = yes
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+
+	remove_realm_modifier_mind = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = mind_control_enabled
+			has_character_flag = mind_cheat_enable
+            has_character_flag = show_building_modifier_mind
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				random_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					any_realm_lord = {
+						any_demesne_title = {
+							limit = {
+								tier = baron
+							}
+							scmr_holding_modifier = yes
+						}
+					}
+					any_demesne_title = {
+						limit = {
+							tier = baron
+						}
+						scmr_holding_modifier = yes
+					}
+					any_realm_province = {
+						scmr_province_modifier = yes
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+
+}

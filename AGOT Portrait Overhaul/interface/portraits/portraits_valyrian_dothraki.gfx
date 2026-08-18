@@ -1,0 +1,587 @@
+# hair, mouth, chin, nose, eyes, cheek, ear, neck
+spriteTypes = {
+
+	spriteType = {
+		name = "PORTRAIT_valyriandothrakigfx_child_male"
+		texturefile = "gfx\\characters\\default_son_dothraki_valyrian.tga"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+	spriteType = {
+		name = "PORTRAIT_valyriandothrakigfx_child_female"
+		texturefile = "gfx\\characters\\default_daughter_dothraki_valyrian.tga"
+		noOfFrames = 1
+		norefcount = yes
+		can_be_lowres = yes
+	}
+
+############## DOTHRAKI ##########################
+
+	# Dothraki Female
+	portraitType = {
+		name = "PORTRAIT_valyriandothrakigfx_female"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_dothrakicharacter_background:p0"
+			"GFX_dothraki_female_clothes_behind:p3:c0"
+			"GFX_dothraki_female_headgear_behind:p5:c1"
+			"GFX_valyriandothraki_female_hair_behind:p1:h:y"
+			":p5:c6"
+			"GFX_valyriandothraki_female_base:p2"
+			"GFX_valyriandothraki_female_neck:d0"
+			"GFX_valyriandothraki_female_cheeks:d4"
+			"GFX_valyriandothraki_female_chin:d1"
+			"GFX_character_valyriandothraki_female_physique:p21"
+			"GFX_valyriandothraki_female_mouth:d2"
+			"GFX_valyriandothraki_female_nose:d3"
+			"GFX_valyriandothraki_female_eyes:d6"
+			"GFX_valyriandothraki_female_eyes2:d6:e"
+			"GFX_character_western_female_pale:p22"
+			"GFX_character_scars:p7:y"
+			"GFX_character_scars_mid:p25"
+			"GFX_character_scars_high:p26"
+			"GFX_character_black_eye:p23"
+			"GFX_character_reddots:p8"
+			"GFX_character_boils:p9"
+			"GFX_character_tattoos:p28"
+			"GFX_character_warpaint:p29"
+			"GFX_character_harelip_western:p24"
+			"GFX_character_possessed:p30"
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_eyepatch:p13:y:o32x63"
+			"GFX_dothraki_female_clothes:p3:c2"
+			"GFX_valyriandothraki_female_ear:d7"
+			"GFX_dothraki_female_headgear_mid:p5:c3"
+			"GFX_valyriandothraki_female_hair:p1:h:y"
+			"GFX_character_mask:p12:y:o40x45"
+			"GFX_empty:p3:c4"
+			"GFX_dothraki_female_headgear:p5:c5"
+			"GFX_character_special_crowns:p19"
+			"GFX_character_special_helmets:p34"
+			"GFX_character_special_masks:p35"
+			"GFX_character_special_scepters:p36"
+			"GFX_character_blood_splatter:p27"
+			"GFX_dothrakichild_background:p17"
+			"GFX_dothraki_female_child:p18"
+			"GFX_dothraki_female_childeyes:p18:e"
+			"GFX_dothraki_female_childhair:p18:h"
+			"GFX_character_imprisoned:p6"
+			"GFX_player_overlay:p11"
+			"GFX_lover_overlay:p37"
+			":p5:c7"
+			"GFX_character_special_artifact:p16"
+			"GFX_character_shoulder:p38"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight, Golden
+			{ 20 12 8 } { 28 19 12 } { 255 255 255 } #Black 01
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 4 6 8 } { 64 64 60 } { 255 255 255 } #Dark Brown 02
+			{ 20 12 8 } { 78 54 37 } { 255 255 255 } #Dark Brown 02
+			{ 10 10 10 } { 104 68 15 } { 255 255 255 } #Medium Brown 02
+			{ 37 21 17 } { 245 240 195 } { 255 255 255 } #Med Blonde
+			{ 115 110 100 } { 255 250 170 } { 255 255 255 } #White 00
+			{ 115 110 100 } { 255 250 180 } { 255 255 255 } #White 01
+            		{ 115 110 100 } { 255 250 195 } { 255 255 255 } #White 02
+           		{ 115 110 100 } { 255 250 205 } { 255 255 255 } #White 03
+           		{ 115 110 100 } { 255 250 225 } { 255 255 255 } #White 04
+
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black
+			{ 10 10 10 } { 70 70 70 } { 255 255 255 } #Black
+			{ 11 10 9 } { 90 75 60 } { 255 255 255 } #Dark Brown 00
+			{ 10 10 10 } { 114 75 46 } { 255 255 255 } #Medium Brown 01
+			{ 10 10 10 } { 144 84 47 } { 255 255 255 } #Medium Brown 03
+			{ 15 8 0 } { 176 155 108 } { 255 255 255 } #Dark Blonde
+            		{ 45 25 22 } { 300 295 240 } { 255 255 255 } #Straw 01
+            		{ 60 40 37 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 80 60 57 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 112 107 97 } { 240 244 215 } { 255 255 255 } #Silver 00
+			{ 115 110 100 } { 255 250 220 } { 255 255 255 } #OG White
+            		{ 115 110 100 } { 255 250 245 } { 255 255 255 } #White 04
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 160 130 111 } #Med Brown 02
+			{ 166 115 80 } #Light Brown
+			{ 179 104 0 } #Amber
+			{ 166 115 80 } #Light Brown
+			{ 34 103 36 } #Dark Green
+			{ 58 109 193 } #Dark Blue
+			{ 220 208 255 } #Dark Purple
+			{ 118 0 200 } #Medium Purple
+			{ 182 85 154 } #Lilac Dark
+			{ 137 137 255 } #Blue Purple
+			{ 150 30 150 } #Dark Albino
+			{ 220 208 255 } #Light Purple Blue
+		}
+	}
+
+	# Dothraki Female midage
+	portraitType = {
+		name = "PORTRAIT_valyriandothrakigfx_female1"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_dothrakicharacter_background:p0"
+			"GFX_dothraki_female_clothes_behind:p3:c0"
+			"GFX_dothraki_female_headgear_behind:p5:c1"
+			"GFX_valyriandothraki_female_hair_behind_midage:p1:h:y"
+			":p5:c6"
+			"GFX_valyriandothraki_female_base_midage:p2"
+			"GFX_valyriandothraki_female_neck_midage:d0"
+			"GFX_valyriandothraki_female_cheeks_midage:d4"
+			"GFX_valyriandothraki_female_chin_midage:d1"
+			"GFX_character_valyriandothraki_female_physique:p21"
+			"GFX_valyriandothraki_female_mouth_midage:d2"
+			"GFX_valyriandothraki_female_nose_midage:d3"
+			"GFX_valyriandothraki_female_eyes_midage:d6"
+			"GFX_valyriandothraki_female_eyes2:d6:e"
+			"GFX_character_western_female_pale:p22"
+			"GFX_character_scars:p7:y"
+			"GFX_character_scars_mid:p25"
+			"GFX_character_scars_high:p26"
+			"GFX_character_black_eye:p23"
+			"GFX_character_reddots:p8"
+			"GFX_character_boils:p9"
+			"GFX_character_tattoos:p28"
+			"GFX_character_warpaint:p29"
+			"GFX_character_harelip_western:p24"
+			"GFX_character_possessed:p30"
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_eyepatch:p13:y:o32x63"
+			"GFX_dothraki_female_clothes:p3:c2"
+			"GFX_valyriandothraki_female_ear_midage:d7"
+			"GFX_dothraki_female_headgear_mid:p5:c3"
+			"GFX_valyriandothraki_female_hair_midage:p1:h:y"
+			"GFX_character_mask:p12:y:o40x45"
+			"GFX_empty:p3:c4"
+			"GFX_dothraki_female_headgear:p5:c5"
+			"GFX_character_special_crowns:p19"
+			"GFX_character_special_helmets:p34"
+			"GFX_character_special_masks:p35"
+			"GFX_character_special_scepters:p36"
+			"GFX_character_blood_splatter:p27"
+			"GFX_character_imprisoned:p6"
+			"GFX_player_overlay:p11"
+			"GFX_lover_overlay:p37"
+			":p5:c7"
+			"GFX_character_special_artifact:p16"
+			"GFX_character_shoulder:p38"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight, Golden
+			{ 20 12 8 } { 28 19 12 } { 255 255 255 } #Black 01
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 4 6 8 } { 64 64 60 } { 255 255 255 } #Dark Brown 02
+			{ 20 12 8 } { 78 54 37 } { 255 255 255 } #Dark Brown 02
+			{ 10 10 10 } { 104 68 15 } { 255 255 255 } #Medium Brown 02
+			{ 37 21 17 } { 245 240 195 } { 255 255 255 } #Med Blonde
+			{ 115 110 100 } { 255 250 170 } { 255 255 255 } #White 00
+			{ 115 110 100 } { 255 250 180 } { 255 255 255 } #White 01
+            		{ 115 110 100 } { 255 250 195 } { 255 255 255 } #White 02
+           		{ 115 110 100 } { 255 250 205 } { 255 255 255 } #White 03
+           		{ 115 110 100 } { 255 250 225 } { 255 255 255 } #White 04
+
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black
+			{ 10 10 10 } { 70 70 70 } { 255 255 255 } #Black
+			{ 11 10 9 } { 90 75 60 } { 255 255 255 } #Dark Brown 00
+			{ 10 10 10 } { 114 75 46 } { 255 255 255 } #Medium Brown 01
+			{ 10 10 10 } { 144 84 47 } { 255 255 255 } #Medium Brown 03
+			{ 15 8 0 } { 176 155 108 } { 255 255 255 } #Dark Blonde
+            		{ 45 25 22 } { 300 295 240 } { 255 255 255 } #Straw 01
+            		{ 60 40 37 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 80 60 57 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 112 107 97 } { 240 244 215 } { 255 255 255 } #Silver 00
+			{ 115 110 100 } { 255 250 220 } { 255 255 255 } #OG White
+            		{ 115 110 100 } { 255 250 245 } { 255 255 255 } #White 04
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 160 130 111 } #Med Brown 02
+			{ 166 115 80 } #Light Brown
+			{ 179 104 0 } #Amber
+			{ 166 115 80 } #Light Brown
+			{ 34 103 36 } #Dark Green
+			{ 58 109 193 } #Dark Blue
+			{ 220 208 255 } #Dark Purple
+			{ 118 0 200 } #Medium Purple
+			{ 182 85 154 } #Lilac Dark
+			{ 137 137 255 } #Blue Purple
+			{ 150 30 150 } #Dark Albino
+			{ 220 208 255 } #Light Purple Blue
+		}
+	}
+
+	# Dothraki Female oldage
+	portraitType = {
+		name = "PORTRAIT_valyriandothrakigfx_female2"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_dothrakicharacter_background:p0"
+			"GFX_dothraki_female_clothes_behind:p3:c0"
+			"GFX_dothraki_female_headgear_behind:p5:c1"
+			"GFX_valyriandothraki_female_hair_behind_oldage:p1:h:y"
+			":p5:c6"
+			"GFX_valyriandothraki_female_base_oldage:p2"
+			"GFX_valyriandothraki_female_neck_oldage:d0"
+			"GFX_valyriandothraki_female_cheeks_oldage:d4"
+			"GFX_valyriandothraki_female_chin_oldage:d1"
+			"GFX_character_valyriandothraki_female_physique:p21"
+			"GFX_valyriandothraki_female_mouth_oldage:d2"
+			"GFX_valyriandothraki_female_nose_oldage:d3"
+			"GFX_valyriandothraki_female_eyes_oldage:d6"
+			"GFX_valyriandothraki_female_eyes2:d6:e"
+			"GFX_character_western_female_pale:p22"
+			"GFX_character_scars:p7:y"
+			"GFX_character_scars_mid:p25"
+			"GFX_character_scars_high:p26"
+			"GFX_character_black_eye:p23"
+			"GFX_character_reddots:p8"
+			"GFX_character_boils:p9"
+			"GFX_character_tattoos:p28"
+			"GFX_character_warpaint:p29"
+			"GFX_character_harelip_western:p24"
+			"GFX_character_possessed:p30"
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_eyepatch:p13:y:o32x63"
+			"GFX_dothraki_female_clothes:p3:c2"
+			"GFX_valyriandothraki_female_ear_oldage:d7"
+			"GFX_dothraki_female_headgear_mid:p5:c3"
+			"GFX_valyriandothraki_female_hair_oldage:p1:h:y"
+			"GFX_character_mask:p12:y:o40x45"
+			"GFX_empty:p3:c4"
+			"GFX_dothraki_female_headgear:p5:c5"
+			"GFX_character_special_crowns:p19"
+			"GFX_character_special_helmets:p34"
+			"GFX_character_special_masks:p35"
+			"GFX_character_special_scepters:p36"
+			"GFX_character_blood_splatter:p27"
+			"GFX_character_imprisoned:p6"
+			"GFX_player_overlay:p11"
+			"GFX_lover_overlay:p37"
+			":p5:c7"
+			"GFX_character_special_artifact:p16"
+			"GFX_character_shoulder:p38"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight, Golden
+			{ 115 110 100 } { 255 250 180 } { 255 255 255 }
+            { 115 110 100 } { 255 250 190 } { 255 255 255 }
+            { 115 110 100 } { 255 250 195 } { 255 255 255 }
+            { 115 110 100 } { 255 250 205 } { 255 255 255 }
+			{ 115 110 100 } { 255 250 215 } { 255 255 255 }
+            { 115 110 100 } { 255 250 225 } { 255 255 255 }
+            { 115 110 100 } { 255 250 235 } { 255 255 255 }
+            { 115 110 100 } { 255 250 245 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 160 130 111 } #Med Brown 02
+			{ 166 115 80 } #Light Brown
+			{ 179 104 0 } #Amber
+			{ 166 115 80 } #Light Brown
+			{ 34 103 36 } #Dark Green
+			{ 58 109 193 } #Dark Blue
+			{ 220 208 255 } #Dark Purple
+			{ 118 0 200 } #Medium Purple
+			{ 182 85 154 } #Lilac Dark
+			{ 137 137 255 } #Blue Purple
+			{ 150 30 150 } #Dark Albino
+			{ 220 208 255 } #Light Purple Blue
+		}
+	}
+
+	# Dothraki Male
+	portraitType = {
+		name = "PORTRAIT_valyriandothrakigfx_male"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_dothrakicharacter_background:p0"
+			"GFX_dothraki_male_clothes_behind:p3:c0"
+			"GFX_dothraki_female_headgear_behind:p5:c1"
+			"GFX_valyriandothraki_male_hair_behind:p1:h:y"
+			"GFX_valyriandothraki_male_beard_behind:p4:h:y"
+			":p5:c6"
+			"GFX_valyriandothraki_male_base:p2"
+			"GFX_valyriandothraki_male_neck:d0"
+			"GFX_valyriandothraki_male_cheeks:d4"
+			"GFX_valyriandothraki_male_chin:d1"
+			"GFX_character_valyriandothraki_male_physique:p21"
+			"GFX_valyriandothraki_male_mouth:d2"
+			"GFX_valyriandothraki_male_nose:d3"
+			"GFX_valyriandothraki_male_eyes:d6"
+			"GFX_valyriandothraki_male_eyes2:d6:e"
+			"GFX_character_western_male_pale:p22"
+			"GFX_character_scars:p7:y"
+			"GFX_character_scars_mid:p25"
+			"GFX_character_scars_high:p26"
+			"GFX_character_black_eye:p23"
+			"GFX_character_reddots:p8"
+			"GFX_character_boils:p9"
+			"GFX_character_tattoos:p28"
+			"GFX_character_warpaint:p29"
+			"GFX_character_harelip_western:p24"
+			"GFX_character_possessed:p30"
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_eyepatch:p13:y:o32x63"
+			"GFX_dothraki_male_clothes:p3:c2"
+			"GFX_dothraki_female_headgear_mid:p5:c3"
+			"GFX_valyriandothraki_male_ear:d7"
+			"GFX_valyriandothraki_male_beard:p4:h:y"
+		   	"GFX_valyriandothraki_male_hair:p1:h:y"
+			"GFX_character_mask:p12:y:o40x45"
+			"GFX_dothraki_male_clothes_infront:p3:c4"
+			"GFX_dothraki_female_headgear:p5:c5"
+			"GFX_character_special_crowns:p19"
+			"GFX_character_special_helmets:p34"
+			"GFX_character_special_masks:p35"
+			"GFX_character_special_scepters:p36"
+			"GFX_character_blood_splatter:p27"
+			"GFX_dothrakichild_background:p17"
+			"GFX_dothraki_male_child:p18"
+			"GFX_dothraki_male_childeyes:p18:e"
+			"GFX_dothraki_male_childhair:p18:h"
+			"GFX_character_imprisoned:p6"
+			"GFX_player_overlay:p11"
+			"GFX_lover_overlay:p37"
+			":p5:c7"
+			"GFX_character_special_artifact:p16"
+			"GFX_character_shoulder:p38"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight, Golden
+			{ 20 12 8 } { 28 19 12 } { 255 255 255 } #Black 01
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 4 6 8 } { 64 64 60 } { 255 255 255 } #Dark Brown 02
+			{ 20 12 8 } { 78 54 37 } { 255 255 255 } #Dark Brown 02
+			{ 10 10 10 } { 104 68 15 } { 255 255 255 } #Medium Brown 02
+			{ 37 21 17 } { 245 240 195 } { 255 255 255 } #Med Blonde
+			{ 115 110 100 } { 255 250 170 } { 255 255 255 } #White 00
+			{ 115 110 100 } { 255 250 180 } { 255 255 255 } #White 01
+            		{ 115 110 100 } { 255 250 195 } { 255 255 255 } #White 02
+           		{ 115 110 100 } { 255 250 205 } { 255 255 255 } #White 03
+           		{ 115 110 100 } { 255 250 225 } { 255 255 255 } #White 04
+
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black
+			{ 10 10 10 } { 70 70 70 } { 255 255 255 } #Black
+			{ 11 10 9 } { 90 75 60 } { 255 255 255 } #Dark Brown 00
+			{ 10 10 10 } { 114 75 46 } { 255 255 255 } #Medium Brown 01
+			{ 10 10 10 } { 144 84 47 } { 255 255 255 } #Medium Brown 03
+			{ 15 8 0 } { 176 155 108 } { 255 255 255 } #Dark Blonde
+            		{ 45 25 22 } { 300 295 240 } { 255 255 255 } #Straw 01
+            		{ 60 40 37 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 80 60 57 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 112 107 97 } { 240 244 215 } { 255 255 255 } #Silver 00
+			{ 115 110 100 } { 255 250 220 } { 255 255 255 } #OG White
+            		{ 115 110 100 } { 255 250 245 } { 255 255 255 } #White 04
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 160 130 111 } #Med Brown 02
+			{ 166 115 80 } #Light Brown
+			{ 179 104 0 } #Amber
+			{ 166 115 80 } #Light Brown
+			{ 34 103 36 } #Dark Green
+			{ 58 109 193 } #Dark Blue
+			{ 220 208 255 } #Dark Purple
+			{ 118 0 200 } #Medium Purple
+			{ 182 85 154 } #Lilac Dark
+			{ 137 137 255 } #Blue Purple
+			{ 150 30 150 } #Dark Albino
+			{ 220 208 255 } #Light Purple Blue
+		}
+	}
+
+	# Dothraki Male midage
+	portraitType = {
+		name = "PORTRAIT_valyriandothrakigfx_male1"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_dothrakicharacter_background:p0"
+			"GFX_dothraki_male_clothes_behind:p3:c0"
+			"GFX_dothraki_female_headgear_behind:p5:c1"
+			"GFX_valyriandothraki_male_hair_behind_midage:p1:h:y"
+			"GFX_valyriandothraki_male_beard_behind_midage:p4:h:y"
+			":p5:c6"
+			"GFX_valyriandothraki_male_base_midage:p2"
+			"GFX_valyriandothraki_male_neck_midage:d0"
+			"GFX_valyriandothraki_male_cheeks_midage:d4"
+			"GFX_valyriandothraki_male_chin_midage:d1"
+			"GFX_character_valyriandothraki_male_physique:p21"
+			"GFX_valyriandothraki_male_mouth_midage:d2"	#Adjusted
+			"GFX_valyriandothraki_male_nose_midage:d3"	#Adjusted
+			"GFX_valyriandothraki_male_eyes_midage:d6"
+			"GFX_valyriandothraki_male_eyes2:d6:e:c2"
+			"GFX_character_scars:p7:y"
+			"GFX_character_scars_mid:p25"
+			"GFX_character_scars_high:p26"
+			"GFX_character_black_eye:p23"
+			"GFX_character_reddots:p8"
+			"GFX_character_boils:p9"
+			"GFX_character_tattoos:p28"
+			"GFX_character_warpaint:p29"
+			"GFX_character_harelip_western:p24"
+			"GFX_character_possessed:p30"
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_eyepatch:p13:y:o32x63"
+			"GFX_dothraki_male_clothes:p3:c2"
+			"GFX_dothraki_female_headgear_mid:p5:c3"
+			"GFX_valyriandothraki_male_ear_midage:d7"
+			"GFX_valyriandothraki_male_beard_midage:p4:h:y"
+			"GFX_valyriandothraki_male_hair_midage:p1:h:y"
+			"GFX_character_mask:p12:y:o40x45"
+			"GFX_dothraki_male_clothes_infront:p3:c4"
+			"GFX_dothraki_female_headgear:p5:c5"
+			"GFX_character_special_crowns:p19"
+			"GFX_character_special_helmets:p34"
+			"GFX_character_special_masks:p35"
+			"GFX_character_special_scepters:p36"
+			"GFX_character_blood_splatter:p27"
+			"GFX_character_imprisoned:p6"
+			"GFX_player_overlay:p11"
+			"GFX_lover_overlay:p37"
+			":p5:c7"
+			"GFX_character_special_artifact:p16"
+			"GFX_character_shoulder:p38"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight, Golden
+			{ 20 12 8 } { 28 19 12 } { 255 255 255 } #Black 01
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black 02
+			{ 4 6 8 } { 64 64 60 } { 255 255 255 } #Dark Brown 02
+			{ 20 12 8 } { 78 54 37 } { 255 255 255 } #Dark Brown 02
+			{ 10 10 10 } { 104 68 15 } { 255 255 255 } #Medium Brown 02
+			{ 37 21 17 } { 245 240 195 } { 255 255 255 } #Med Blonde
+			{ 115 110 100 } { 255 250 170 } { 255 255 255 } #White 00
+			{ 115 110 100 } { 255 250 180 } { 255 255 255 } #White 01
+            		{ 115 110 100 } { 255 250 195 } { 255 255 255 } #White 02
+           		{ 115 110 100 } { 255 250 205 } { 255 255 255 } #White 03
+           		{ 115 110 100 } { 255 250 225 } { 255 255 255 } #White 04
+
+			{ 10 10 10 } { 50 50 50 } { 255 255 255 } #Black
+			{ 10 10 10 } { 70 70 70 } { 255 255 255 } #Black
+			{ 11 10 9 } { 90 75 60 } { 255 255 255 } #Dark Brown 00
+			{ 10 10 10 } { 114 75 46 } { 255 255 255 } #Medium Brown 01
+			{ 10 10 10 } { 144 84 47 } { 255 255 255 } #Medium Brown 03
+			{ 15 8 0 } { 176 155 108 } { 255 255 255 } #Dark Blonde
+            		{ 45 25 22 } { 300 295 240 } { 255 255 255 } #Straw 01
+            		{ 60 40 37 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 80 60 57 } { 350 345 295 } { 255 255 255 } #Golden Silver
+			{ 112 107 97 } { 240 244 215 } { 255 255 255 } #Silver 00
+			{ 115 110 100 } { 255 250 220 } { 255 255 255 } #OG White
+            		{ 115 110 100 } { 255 250 245 } { 255 255 255 } #White 04
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 160 130 111 } #Med Brown 02
+			{ 166 115 80 } #Light Brown
+			{ 179 104 0 } #Amber
+			{ 166 115 80 } #Light Brown
+			{ 34 103 36 } #Dark Green
+			{ 58 109 193 } #Dark Blue
+			{ 220 208 255 } #Dark Purple
+			{ 118 0 200 } #Medium Purple
+			{ 182 85 154 } #Lilac Dark
+			{ 137 137 255 } #Blue Purple
+			{ 150 30 150 } #Dark Albino
+			{ 220 208 255 } #Light Purple Blue
+		}
+	}
+
+	# Dothraki Male oldage
+	portraitType = {
+		name = "PORTRAIT_valyriandothrakigfx_male2"
+		effectFile = "gfx/FX/portrait.lua"
+		layer = { # GFX_TYPE:[d|p]INDEX:COLOR_LINK:DONT_REFRESH_IF_VALID:CULTURE_INDEX
+			"GFX_dothrakicharacter_background:p0"
+			"GFX_dothraki_male_clothes_behind:p3:c0"
+			"GFX_dothraki_female_headgear_behind:p5:c1"
+			"GFX_valyriandothraki_male_hair_behind_oldage:p1:h:y"
+			"GFX_valyriandothraki_male_beard_behind_oldage:p4:h:y"
+			":p5:c6"
+			"GFX_valyriandothraki_male_base_oldage:p2"
+			"GFX_valyriandothraki_male_neck_oldage:d0"
+			"GFX_valyriandothraki_male_cheeks_oldage:d4"
+			"GFX_valyriandothraki_male_chin_oldage:d1"
+			"GFX_character_valyriandothraki_male_physique:p21"
+			"GFX_valyriandothraki_male_mouth_oldage:d2"
+			"GFX_valyriandothraki_male_nose_oldage:d3"
+			"GFX_valyriandothraki_male_eyes_oldage:d6"
+			"GFX_valyriandothraki_male_eyes2:d6:e"
+			"GFX_character_western_male_pale:p22"
+			"GFX_character_scars:p7:y"
+			"GFX_character_scars_mid:p25"
+			"GFX_character_scars_high:p26"
+			"GFX_character_black_eye:p23"
+			"GFX_character_reddots:p8"
+			"GFX_character_boils:p9"
+			"GFX_character_tattoos:p28"
+			"GFX_character_warpaint:p29"
+			"GFX_character_harelip_western:p24"
+			"GFX_character_possessed:p30"
+			"GFX_character_blinded_eyes:p10"
+			"GFX_character_eyepatch:p13:y:o32x63"
+			"GFX_dothraki_male_clothes:p3:c2"
+			"GFX_dothraki_female_headgear_mid:p5:c3"
+			"GFX_valyriandothraki_male_ear_oldage:d7"
+			"GFX_valyriandothraki_male_beard_oldage:p4:h:y"
+			"GFX_valyriandothraki_male_hair_oldage:p1:h:y"
+			"GFX_character_mask:p12:y:o40x45"
+			"GFX_dothraki_male_clothes_infront:p3:c4"
+			"GFX_dothraki_female_headgear:p5:c5"
+			"GFX_character_special_crowns:p19"
+			"GFX_character_special_helmets:p34"
+			"GFX_character_special_masks:p35"
+			"GFX_character_special_scepters:p36"
+			"GFX_character_blood_splatter:p27"
+			"GFX_character_imprisoned:p6"
+			"GFX_player_overlay:p11"
+			"GFX_lover_overlay:p37"
+			":p5:c7"
+			"GFX_character_special_artifact:p16"
+			"GFX_character_shoulder:p38"
+		}
+
+		hair_color_index = 8
+		hair_color = { # dark, base, highlight, Golden
+			{ 115 110 100 } { 255 250 180 } { 255 255 255 }
+            { 115 110 100 } { 255 250 190 } { 255 255 255 }
+            { 115 110 100 } { 255 250 195 } { 255 255 255 }
+            { 115 110 100 } { 255 250 205 } { 255 255 255 }
+			{ 115 110 100 } { 255 250 215 } { 255 255 255 }
+            { 115 110 100 } { 255 250 225 } { 255 255 255 }
+            { 115 110 100 } { 255 250 235 } { 255 255 255 }
+            { 115 110 100 } { 255 250 245 } { 255 255 255 }
+		}
+
+		eye_color_index = 9
+		eye_color = {
+			{ 160 130 111 } #Med Brown 02
+			{ 166 115 80 } #Light Brown
+			{ 179 104 0 } #Amber
+			{ 166 115 80 } #Light Brown
+			{ 34 103 36 } #Dark Green
+			{ 58 109 193 } #Dark Blue
+			{ 220 208 255 } #Dark Purple
+			{ 118 0 200 } #Medium Purple
+			{ 182 85 154 } #Lilac Dark
+			{ 137 137 255 } #Blue Purple
+			{ 150 30 150 } #Dark Albino
+			{ 220 208 255 } #Light Purple Blue
+		}
+	}

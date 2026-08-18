@@ -1,0 +1,8597 @@
+#scmr_build_fp			Строить все дворцовые здания
+#scmr_build_castle		Строить все замковые здания
+#scmr_build_temple		Строить все храмовые здания
+#scmr_build_city 		Строить все городские здания
+#scmr_build_tb 			Строить все племенные здания
+#scmr_build_nd 			Строить все кочевые здания
+#scmr_build_hp			Строить все госпитальные здания
+#scmr_build_trade		Строить все торговые посты
+#scmr_dismantle_fp		Сносить все дворцовые здания
+#scmr_dismantle_castle	Сносить все замковые здания
+#scmr_dismantle_temple	Сносить все храмовые здания
+#scmr_dismantle_city 	Сносить все городские здания
+#scmr_dismantle_tb 		Сносить все племенные здания
+#scmr_dismantle_nd 		Сносить все кочевые здания
+#scmr_opinion_clean		Очистить все негативные мнения
+#scmr_modifier_clean	Удалить все негативные модификаторы
+#scmr_holding_modifier	Удалить все негативные модификаторы владений
+#scmr_province_modifier	Удалить все негативные модификаторы провинций
+
+scmr_build_fp = {
+	family_palace = {
+		if = {
+			limit = {
+				holder_scope = {
+					NOT = { religion = nath_pagan }
+					NOT = { government = wildling_feudal_government }
+					NOT = { trait = nightswatch }
+					NOT = { trait = kingsguard }
+				}
+			}
+			add_building = fp_household_guard
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_mansion_1
+				}
+			}
+			add_building = fp_mansion_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_mansion_2
+				}
+			}
+			add_building = fp_mansion_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_mansion_3
+				}
+			}
+			add_building = fp_mansion_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_mansion_4
+				}
+			}
+			add_building = fp_mansion_4
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_barracks_1
+				}
+			}
+			add_building = fp_barracks_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_barracks_2
+				}
+			}
+			add_building = fp_barracks_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_barracks_3
+				}
+			}
+			add_building = fp_barracks_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_stable_1
+				}
+			}
+			add_building = fp_stable_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_stable_2
+				}
+			}
+			add_building = fp_stable_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_stable_3
+				}
+			}
+			add_building = fp_stable_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_bowyer_1
+				}
+			}
+			add_building = fp_bowyer_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_bowyer_2
+				}
+			}
+			add_building = fp_bowyer_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_bowyer_3
+				}
+			}
+			add_building = fp_bowyer_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_shipyard_1
+				}
+			}
+			add_building = fp_shipyard_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_shipyard_2
+				}
+			}
+			add_building = fp_shipyard_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_shipyard_3
+				}
+			}
+			add_building = fp_shipyard_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_warehouse_1
+				}
+			}
+			add_building = fp_warehouse_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_warehouse_2
+				}
+			}
+			add_building = fp_warehouse_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_warehouse_3
+				}
+			}
+			add_building = fp_warehouse_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_garden_1
+				}
+			}
+			add_building = fp_garden_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_garden_2
+				}
+			}
+			add_building = fp_garden_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_garden_3
+				}
+			}
+			add_building = fp_garden_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_cellar_1
+				}
+			}
+			add_building = fp_cellar_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_cellar_2
+				}
+			}
+			add_building = fp_cellar_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_cellar_3
+				}
+			}
+			add_building = fp_cellar_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_shrine_1
+				}
+			}
+			add_building = fp_shrine_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_shrine_2
+				}
+			}
+			add_building = fp_shrine_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_shrine_3
+				}
+			}
+			add_building = fp_shrine_3
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_vault_1
+				}
+			}
+			add_building = fp_vault_1
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_vault_2
+				}
+			}
+			add_building = fp_vault_2
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_building = fp_vault_3
+				}
+			}
+			add_building = fp_vault_3
+		}
+	}
+}
+
+scmr_build_castle = {
+	add_building = ca_wall_1
+    add_building = ca_wall_2
+	add_building = ca_wall_3
+	add_building = ca_wall_4
+	add_building = ca_wall_5
+	add_building = ca_wall_q_1
+	add_building = ca_wall_q_2
+	add_building = ca_wall_q_3
+	add_building = ca_wall_q_4
+	add_building = ca_wall_q_5
+	add_building = ca_training_grounds_1
+	add_building = ca_training_grounds_2
+	add_building = ca_barracks_1
+	add_building = ca_barracks_2
+	add_building = ca_barracks_3
+	add_building = ca_barracks_4
+	add_building = ca_barracks_5
+	add_building = ca_barracks_6
+	add_building = ca_militia_barracks_1
+	add_building = ca_militia_barracks_2
+	add_building = ca_militia_barracks_3
+	add_building = ca_keep_1
+	add_building = ca_keep_2
+	add_building = ca_keep_3
+	add_building = ca_keep_4
+	add_building = ca_keep_5
+	add_building = ca_stable_1
+	add_building = ca_stable_2
+	add_building = ca_stable_3
+	add_building = ca_stable_4
+	add_building = ca_stable_5
+	add_building = ca_town_1
+	add_building = ca_town_2
+	add_building = ca_town_3
+	add_building = ca_town_4
+	add_building = ca_town_5
+
+	#Holy Fury
+	if = {
+		limit = {
+			location = {
+				OR = {
+					culture_group = horse_group
+					culture_group = cat_group
+					culture_group = bear_group
+					culture_group = hedgehog_group
+					culture_group = duck_group
+					culture_group = dog_group
+					culture_group = elephant_group
+					culture_group = dragon_group
+				}
+			}
+			holder_scope = {
+				OR = {
+					culture_group = horse_group
+					culture_group = cat_group
+					culture_group = bear_group
+					culture_group = hedgehog_group
+					culture_group = duck_group
+					culture_group = dog_group
+					culture_group = elephant_group
+					culture_group = dragon_group
+				}
+			}
+		}
+		add_building = ca_culture_animal_1
+		add_building = ca_culture_animal_2
+		add_building = ca_culture_animal_3
+		add_building = ca_culture_animal_4
+	}
+
+
+	if = {
+		limit = {
+			holder_scope = {
+				OR = {
+					culture_group = moraqi_group
+					culture_group = yi_ti_group
+					culture = volantene
+					culture = eastern_valyrian
+					culture_group = ghiscari_group
+					culture_group = qarth_group
+					culture_group = jade_islands_group
+				}
+			}
+		}
+		add_building = ca_culture_indian_1
+		add_building = ca_culture_indian_2
+		add_building = ca_culture_indian_3
+		add_building = ca_culture_indian_4
+	}
+	if = {
+		limit = {
+			holder_scope = {
+				OR = {
+					culture_group = ghiscari_group
+					culture_group = qarth_group
+				}
+			}
+		}
+		add_building = ca_culture_group_arabic_1
+		add_building = ca_culture_group_arabic_2
+		add_building = ca_culture_group_arabic_3
+		add_building = ca_culture_group_arabic_4
+	}
+	if = {
+		limit = {
+			holder_scope = {
+				government = theocratic_feudal_government
+			}
+		}
+		add_building = ca_government_monastery_1
+		add_building = ca_government_monastery_2
+		add_building = ca_government_monastery_3
+		add_building = ca_government_monastery_4
+	}
+
+	if = {
+		limit = {
+			region = world_crownlands
+		}
+            add_building = ca_asoiaf_crown_basevalue_1
+            add_building = ca_asoiaf_crown_basevalue_2
+            add_building = ca_asoiaf_crown_basevalue_3
+            add_building = ca_asoiaf_crown_basevalue_4
+            add_building = ca_asoiaf_crown_basevalue_5
+            add_building = ca_asoiaf_crown_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_stormlands
+		}
+            add_building = ca_asoiaf_storm_basevalue_1
+            add_building = ca_asoiaf_storm_basevalue_2
+            add_building = ca_asoiaf_storm_basevalue_3
+            add_building = ca_asoiaf_storm_basevalue_4
+            add_building = ca_asoiaf_storm_basevalue_5
+            add_building = ca_asoiaf_storm_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_reach
+		}
+            add_building = ca_asoiaf_reach_basevalue_1
+            add_building = ca_asoiaf_reach_basevalue_2
+            add_building = ca_asoiaf_reach_basevalue_3
+            add_building = ca_asoiaf_reach_basevalue_4
+            add_building = ca_asoiaf_reach_basevalue_5
+            add_building = ca_asoiaf_reach_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_riverlands
+		}
+            add_building = ca_asoiaf_river_basevalue_1
+            add_building = ca_asoiaf_river_basevalue_2
+            add_building = ca_asoiaf_river_basevalue_3
+            add_building = ca_asoiaf_river_basevalue_4
+            add_building = ca_asoiaf_river_basevalue_5
+            add_building = ca_asoiaf_river_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_vale
+		}
+            add_building = ca_asoiaf_vale_basevalue_1
+            add_building = ca_asoiaf_vale_basevalue_2
+            add_building = ca_asoiaf_vale_basevalue_3
+            add_building = ca_asoiaf_vale_basevalue_4
+            add_building = ca_asoiaf_vale_basevalue_5
+            add_building = ca_asoiaf_vale_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_westerlands
+		}
+            add_building = ca_asoiaf_westerland_basevalue_1
+            add_building = ca_asoiaf_westerland_basevalue_2
+            add_building = ca_asoiaf_westerland_basevalue_3
+            add_building = ca_asoiaf_westerland_basevalue_4
+            add_building = ca_asoiaf_westerland_basevalue_5
+            add_building = ca_asoiaf_westerland_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_north
+		}
+            add_building = ca_asoiaf_north_basevalue_1
+            add_building = ca_asoiaf_north_basevalue_2
+            add_building = ca_asoiaf_north_basevalue_3
+            add_building = ca_asoiaf_north_basevalue_4
+            add_building = ca_asoiaf_north_basevalue_5
+            add_building = ca_asoiaf_north_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_dorne
+		}
+            add_building = ca_asoiaf_dorne_basevalue_1
+            add_building = ca_asoiaf_dorne_basevalue_2
+            add_building = ca_asoiaf_dorne_basevalue_3
+            add_building = ca_asoiaf_dorne_basevalue_4
+            add_building = ca_asoiaf_dorne_basevalue_5
+            add_building = ca_asoiaf_dorne_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_iron_isles
+		}
+            add_building = ca_asoiaf_ironislands_basevalue_1
+            add_building = ca_asoiaf_ironislands_basevalue_2
+            add_building = ca_asoiaf_ironislands_basevalue_3
+            add_building = ca_asoiaf_ironislands_basevalue_4
+            add_building = ca_asoiaf_ironislands_basevalue_5
+            add_building = ca_asoiaf_ironislands_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_summer_sea
+		}
+            add_building = ca_asoiaf_summerisland_basevalue_1
+            add_building = ca_asoiaf_summerisland_basevalue_2
+            add_building = ca_asoiaf_summerisland_basevalue_3
+            add_building = ca_asoiaf_summerisland_basevalue_4
+            add_building = ca_asoiaf_summerisland_basevalue_5
+            add_building = ca_asoiaf_summerisland_basevalue_6
+	}
+
+	if = {
+		limit = {
+			OR = {
+				region = world_bone_mountains
+				region = world_nghai
+			}
+		}
+            add_building = ca_asoiaf_eastern_basevalue_1
+            add_building = ca_asoiaf_eastern_basevalue_2
+            add_building = ca_asoiaf_eastern_basevalue_3
+            add_building = ca_asoiaf_eastern_basevalue_4
+            add_building = ca_asoiaf_eastern_basevalue_5
+            add_building = ca_asoiaf_eastern_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_free_cities
+		}
+            add_building = ca_asoiaf_essos_basevalue_1
+            add_building = ca_asoiaf_essos_basevalue_2
+            add_building = ca_asoiaf_essos_basevalue_3
+            add_building = ca_asoiaf_essos_basevalue_4
+            add_building = ca_asoiaf_essos_basevalue_5
+            add_building = ca_asoiaf_essos_basevalue_6
+	}
+
+	if = {
+		limit = {
+			OR = {
+				region = world_qarth
+				region = world_moraq
+			}
+		}
+            add_building = ca_asoiaf_qarth_basevalue_1
+            add_building = ca_asoiaf_qarth_basevalue_2
+            add_building = ca_asoiaf_qarth_basevalue_3
+            add_building = ca_asoiaf_qarth_basevalue_4
+            add_building = ca_asoiaf_qarth_basevalue_5
+            add_building = ca_asoiaf_qarth_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_lhazar
+		}
+            add_building = ca_asoiaf_lhazareen_basevalue_1
+            add_building = ca_asoiaf_lhazareen_basevalue_2
+            add_building = ca_asoiaf_lhazareen_basevalue_3
+            add_building = ca_asoiaf_lhazareen_basevalue_4
+            add_building = ca_asoiaf_lhazareen_basevalue_5
+            add_building = ca_asoiaf_lhazareen_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_ghiscar
+		}
+            add_building = ca_asoiaf_ghiscari_basevalue_1
+            add_building = ca_asoiaf_ghiscari_basevalue_2
+            add_building = ca_asoiaf_ghiscari_basevalue_3
+            add_building = ca_asoiaf_ghiscari_basevalue_4
+            add_building = ca_asoiaf_ghiscari_basevalue_5
+            add_building = ca_asoiaf_ghiscari_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_ibben
+		}
+            add_building = ca_asoiaf_ibben_basevalue_1
+            add_building = ca_asoiaf_ibben_basevalue_2
+            add_building = ca_asoiaf_ibben_basevalue_3
+            add_building = ca_asoiaf_ibben_basevalue_4
+            add_building = ca_asoiaf_ibben_basevalue_5
+            add_building = ca_asoiaf_ibben_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_sarnor
+		}
+            add_building = ca_asoiaf_sarnor_basevalue_1
+            add_building = ca_asoiaf_sarnor_basevalue_2
+            add_building = ca_asoiaf_sarnor_basevalue_3
+            add_building = ca_asoiaf_sarnor_basevalue_4
+            add_building = ca_asoiaf_sarnor_basevalue_5
+            add_building = ca_asoiaf_sarnor_basevalue_6
+	}
+
+	if = {
+		limit = {
+			region = world_yi_ti
+		}
+            add_building = ca_asoiaf_yiti_basevalue_1
+            add_building = ca_asoiaf_yiti_basevalue_2
+            add_building = ca_asoiaf_yiti_basevalue_3
+            add_building = ca_asoiaf_yiti_basevalue_4
+            add_building = ca_asoiaf_yiti_basevalue_5
+            add_building = ca_asoiaf_yiti_basevalue_6
+	}
+
+###### SHIPYARDS ######
+
+	if = {
+		limit = {
+			location = { port = yes }
+		}
+		if =	{
+			limit = { NOT = { has_building = ca_shipyard_1 } }
+			add_building = ca_shipyard_1
+		}
+		if = {
+			limit = { has_building = ca_shipyard_1 }
+			add_building = ca_shipyard_2
+		}
+		if = {
+			limit = { has_building = ca_shipyard_2 }
+			add_building = ca_shipyard_3
+		}
+		if = {
+			limit = { has_building = ca_shipyard_3 }
+			add_building = ca_shipyard_4
+		}
+	}
+
+	if = {
+		limit = {
+			OR = {
+				title = b_spicertowers
+				title = b_elyriacastle
+				title = b_pyramidnewghis
+				title = b_port_moraq
+				title = b_zabhad
+				title = b_vahar
+				title = b_nefer
+			}
+			location = {
+				OR = {
+					province_id = 406	#Pentos
+					province_id = 602	#Elyria
+					province_id = 625	#New Ghis
+					province_id = 727	#Port Moraq
+					province_id = 728	#Zabhad
+					province_id = 729	#Vahar
+					province_id = 835	#Nefer
+					# province_id = 585	#Port of Ibben
+					# province_id = 594	#Ib Sar
+					# province_id = 582	#Ib Nor
+					# province_id = 580	#Ib Oss
+					# duchy = { title = d_bayofwhales }
+				}
+			}
+		}
+            add_building = ca_asoiaf_essosshipyard
+	}
+
+	if = {
+		limit = {
+			location = { port = yes }
+			OR = {
+				holder_scope = {
+					culture_group = iron_isles_culture
+					NOT = { trait = nightswatch }
+					NOT = { trait = kingsguard }
+				}
+				region = world_iron_isles
+			}
+		}
+		add_building = ca_asoiaf_ironshipyard
+		add_building = ca_asoiaf_large_ironshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 220 } #driftmark
+		}
+			add_building = ca_asoiaf_driftmarkshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 292 }
+		}
+            add_building = ca_asoiaf_redwyneshipyard
+	}
+
+	if = {
+		limit = {
+			has_title_flag = targshipyard_complete
+				OR = {
+					title = b_red_keep
+					title = b_dragon_gate
+				}
+			location = {
+				province_id = 226 #kingslanding
+				has_province_flag = kings_landing_established
+			}
+		}
+            add_building = ca_asoiaf_targshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 261
+					province_id = 262
+					province_id = 263
+					province_id = 264
+				}
+			}
+
+		}
+            add_building = ca_asoiaf_shieldshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_pearl_palace
+		}
+            add_building = ca_asoiaf_koj_shipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 30
+					province_id = 31
+					province_id = 32
+				}
+				has_province_flag = skagosi_rebuild_ships
+			}
+		}
+        add_building = ca_asoiaf_skagosishipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				port = yes
+				NOT = { region = world_iron_isles	}
+				NAND = {
+					culture_group = free_folk
+					holder_scope = { government = wildling_feudal_government }
+				}
+			}
+			holder_scope = {
+				is_patrician = no
+				NOT = { culture_group = iron_isles_culture }
+			}
+			OR = {
+				base_value_4_trigger = yes
+				title = b_eastwatch
+				title = b_driftwoodhall
+				title = b_abaj
+				title = b_pongar
+				title = b_draccar
+				title = b_cinnamon_isles
+			}
+		}
+        add_building = ca_asoiaf_smallshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_lannisport
+		}
+            add_building = ca_asoiaf_lannshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_the_hightower
+		}
+            add_building = ca_asoiaf_oldtownshipyard
+	}
+
+#### MISC SPECIFIC STUFF ####
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 174 #Golden Tooth (2)
+					province_id = 175 #Nunn's Deep
+					province_id = 177 #Pendrick Hills
+
+					province_id = 173 #Ashemark
+					province_id = 178 #Sarsfield
+					province_id = 179 #Goldshire
+					province_id = 180 #Hornvale
+					province_id = 181 #Brent Brook
+					province_id = 182 #Casterly Rock
+					province_id = 187 #Castamere
+
+					region = world_asshai
+					region = world_leng
+					duchy = { title = d_the_axe }
+				}
+			}
+		}
+        add_building = ca_goldmine
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_casterly_rock
+					title = b_castamere
+					title = b_axemountainscastle
+					title = b_axecastle
+				}
+		}
+            add_building = ca_large_goldmine
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 164 #The Crag
+					province_id = 170 #Maunhill
+					province_id = 189 #Myatt
+					province_id = 190 #Lonmont
+					province_id = 195 #Silverhall
+					province_id = 334 #Yronwood
+				}
+			}
+
+		}
+        add_building = ca_silvermine
+	}
+
+	if = {
+		limit = {
+			title = b_thetwins
+			NOT = { has_title_flag = twins_unbuilt }
+		}
+        add_building = ca_thetwins
+	}
+
+	if = {
+		limit = {
+			title = b_storms_end
+		}
+        add_building = ca_storms_end
+	}
+
+	if = {
+		limit = {
+			title = b_the_eyrie
+		}
+        add_building = ca_the_eyrie
+	}
+
+	if = {
+		limit = {
+				title = b_casterly_rock
+		}
+            add_building = ca_casterly_rock
+	}
+
+	if = {
+		limit = {
+				title = b_blackgrove
+		}
+            add_building = ca_ironwood
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_bayasabhad
+					title = b_kayakayanaya
+					title = b_samyriana
+				}
+		}
+            add_building = ca_hyrkooni_fortress
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_lorassyon
+					title = b_lorathi_shorecastle
+					title = b_archons_keep
+					title = b_great_tower
+				}
+		}
+            add_building = ca_lorathi_maze
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 835 }
+			title = b_nefer
+		}
+        add_building = ca_nefer
+	}
+
+	if = {
+		limit = {
+			title = b_summerhall
+		}
+        add_building = ca_summerhall
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 820 }
+		}
+            add_building = ca_five_forts
+	}
+
+	if = {
+		limit = {
+			title = b_winterfell
+		}
+            add_building = ca_cellar_2
+	}
+
+	if = {
+		limit = { culture_group = free_folk }
+            add_building = ca_culture_group_frozen_shore_1
+            add_building = ca_culture_group_frozen_shore_2
+            add_building = ca_culture_group_frozen_shore_3
+            add_building = ca_culture_group_frozen_shore_4
+	}
+
+	if = {
+		limit = {
+			holder_scope = { government = wildling_feudal_government }
+			location = { culture_group = free_folk }
+		}
+		add_building = tb_hillfort_1
+		add_building = tb_hillfort_2
+		add_building = tb_hillfort_3
+		add_building = tb_hillfort_4
+		add_building = tb_training_grounds_1
+		add_building = tb_training_grounds_2
+		add_building = tb_training_grounds_3
+		add_building = tb_training_grounds_4
+		add_building = tb_war_camp_1
+		add_building = tb_war_camp_2
+		add_building = tb_war_camp_3
+		add_building = tb_war_camp_4
+		add_building = tb_practice_range_1
+		add_building = tb_practice_range_2
+		add_building = tb_practice_range_3
+		add_building = tb_practice_range_4
+		add_building = tb_arsenal_1
+		add_building = tb_arsenal_2
+		add_building = tb_arsenal_3
+		add_building = tb_arsenal_4
+		if = {
+			limit = {
+				location = { port = yes }
+			}
+			add_building = tb_shipyard_1
+			add_building = tb_shipyard_2
+			add_building = tb_shipyard_3
+			add_building = tb_shipyard_4
+		}
+	}
+
+	if = {
+		limit = {
+			is_capital = yes
+			holder_scope = {
+				OR = {
+					trait = dragon_rider
+					trait = dragon_egg
+				}
+				location = { is_capital = yes }
+			}
+		}
+            add_building = ca_dragon_pit
+	}
+
+	if = {
+		limit = {
+			title = b_stone_drum
+		}
+            add_building = ca_dragonmont
+			add_building = ca_dragonstone
+	}
+	if = {
+		limit = {
+			location = { year = 7996 }
+			title = b_stone_drum
+			has_title_flag = ca_painted_table
+		}
+        add_building = ca_painted_table
+	}
+	if = {
+		limit = {
+			location = {
+				is_volcano_location_trigger = yes
+				NOT = { province_id = 221 } #dragonstone uses dragonmont above
+			}
+		}
+        add_building = ca_volcanoes
+	}
+    if = {
+		limit = {
+			title = b_harrenhal
+			location = { NOT = { has_province_flag = pre_harren_harrenhal } }
+		}
+            add_building = ca_harrenhal_castle
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 66 }
+		}
+            add_building = ca_moat_cailin
+	}
+
+	if = {
+		limit = {
+			OR = {
+				title = b_castle_black
+				title = b_shadow_tower
+				title = b_eastwatch
+			}
+		}
+        add_building = ca_wallportion
+	}
+
+	if = {
+		limit = {
+			region = world_forest_of_qohor
+		}
+            add_building = ca_qohor_forest_1 #Fur Station
+            add_building = ca_qohor_forest_2 #Logging Camp
+	}
+
+	if = {
+		limit = {
+			region = world_sothoryos
+			holder_scope = { NOT = { culture_group = unoccupied_group }	}
+		}
+            add_building = ca_sothoryos_1 #small mine
+            add_building = ca_sothoryos_2 #spice plantatin
+            add_building = ca_sothoryos_3 #large mines
+	}
+
+	if = {
+		limit = {
+			holder_scope = {
+				OR = {
+					culture_group = free_folk
+					trait = wildling
+				}
+			}
+		}
+            add_building = ca_wildling_barracks
+            add_building = ca_wildling_barracks2
+            add_building = ca_wildling_barracks3
+            add_building = ca_wildling_barracks4
+	}
+
+	refill_holding_levy = yes
+}
+scmr_build_temple = {
+	add_building = tp_elite_barracks_1
+    add_building = tp_elite_barracks_2
+    add_building = tp_elite_barracks_3
+    add_building = tp_elite_barracks_4
+    add_building = tp_elite_barracks_5
+    add_building = tp_elite_barracks_6
+    add_building = tp_monastery_1
+    add_building = tp_monastery_2
+    add_building = tp_monastery_3
+    add_building = tp_monastery_4
+    add_building = tp_monastery_5
+    add_building = tp_monastery_6
+    add_building = tp_town_1
+    add_building = tp_town_2
+    add_building = tp_town_3
+    add_building = tp_town_4
+    add_building = tp_town_5
+    add_building = tp_town_6
+    add_building = tp_wall_1
+    add_building = tp_wall_2
+    add_building = tp_wall_3
+    add_building = tp_wall_4
+    add_building = tp_wall_5
+    add_building = tp_wall_q_1
+    add_building = tp_wall_q_2
+    add_building = tp_wall_q_3
+    add_building = tp_wall_q_4
+    add_building = tp_wall_q_5
+    add_building = tp_barracks_1
+    add_building = tp_barracks_2
+    add_building = tp_barracks_3
+    add_building = tp_barracks_4
+    add_building = tp_barracks_5
+    add_building = tp_barracks_6
+    add_building = tp_shipyard_1
+    add_building = tp_shipyard_2
+    add_building = tp_shipyard_3
+    add_building = tp_shipyard_4
+	if = {
+		limit = {
+				OR = {
+					title = b_lorassyon_temple
+					title = b_lorathi_shoretemple
+					title = b_moon
+				}
+		}
+        add_building = tp_lorathi_maze
+	}
+	refill_holding_levy = yes
+}
+scmr_build_city = {
+	if = {
+            limit = {
+                location = {
+                    region = world_north
+                }
+            }
+            add_building = ct_asoiaf_north_basevalue_1
+			add_building = ct_asoiaf_north_basevalue_2
+			add_building = ct_asoiaf_north_basevalue_3
+			add_building = ct_asoiaf_north_basevalue_4
+			add_building = ct_asoiaf_north_basevalue_5
+			add_building = ct_asoiaf_north_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_riverlands
+                }
+            }
+            add_building = ct_asoiaf_river_basevalue_1
+			add_building = ct_asoiaf_river_basevalue_2
+			add_building = ct_asoiaf_river_basevalue_3
+			add_building = ct_asoiaf_river_basevalue_4
+			add_building = ct_asoiaf_river_basevalue_5
+			add_building = ct_asoiaf_river_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_dorne
+                }
+            }
+            add_building = ct_asoiaf_dorne_basevalue_1
+			add_building = ct_asoiaf_dorne_basevalue_2
+			add_building = ct_asoiaf_dorne_basevalue_3
+			add_building = ct_asoiaf_dorne_basevalue_4
+			add_building = ct_asoiaf_dorne_basevalue_5
+			add_building = ct_asoiaf_dorne_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_iron_isles
+                }
+            }
+            add_building = ct_asoiaf_ironislands_basevalue_1
+			add_building = ct_asoiaf_ironislands_basevalue_2
+			add_building = ct_asoiaf_ironislands_basevalue_3
+			add_building = ct_asoiaf_ironislands_basevalue_4
+			add_building = ct_asoiaf_ironislands_basevalue_5
+			add_building = ct_asoiaf_ironislands_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_crownlands
+                }
+            }
+            add_building = ct_asoiaf_crown_basevalue_1
+			add_building = ct_asoiaf_crown_basevalue_2
+			add_building = ct_asoiaf_crown_basevalue_3
+			add_building = ct_asoiaf_crown_basevalue_4
+			add_building = ct_asoiaf_crown_basevalue_5
+			add_building = ct_asoiaf_crown_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_stormlands
+                }
+            }
+            add_building = ct_asoiaf_storm_basevalue_1
+			add_building = ct_asoiaf_storm_basevalue_2
+			add_building = ct_asoiaf_storm_basevalue_3
+			add_building = ct_asoiaf_storm_basevalue_4
+			add_building = ct_asoiaf_storm_basevalue_5
+			add_building = ct_asoiaf_storm_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_vale
+                }
+            }
+            add_building = ct_asoiaf_vale_basevalue_1
+			add_building = ct_asoiaf_vale_basevalue_2
+			add_building = ct_asoiaf_vale_basevalue_3
+			add_building = ct_asoiaf_vale_basevalue_4
+			add_building = ct_asoiaf_vale_basevalue_5
+			add_building = ct_asoiaf_vale_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_westerlands
+                }
+            }
+            add_building = ct_asoiaf_westerland_basevalue_1
+			add_building = ct_asoiaf_westerland_basevalue_2
+			add_building = ct_asoiaf_westerland_basevalue_3
+			add_building = ct_asoiaf_westerland_basevalue_4
+			add_building = ct_asoiaf_westerland_basevalue_5
+			add_building = ct_asoiaf_westerland_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_reach
+                }
+            }
+            add_building = ct_asoiaf_reach_basevalue_1
+			add_building = ct_asoiaf_reach_basevalue_2
+			add_building = ct_asoiaf_reach_basevalue_3
+			add_building = ct_asoiaf_reach_basevalue_4
+			add_building = ct_asoiaf_reach_basevalue_5
+			add_building = ct_asoiaf_reach_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_free_cities
+                }
+            }
+            add_building = ct_asoiaf_essos_basevalue_1
+			add_building = ct_asoiaf_essos_basevalue_2
+			add_building = ct_asoiaf_essos_basevalue_3
+			add_building = ct_asoiaf_essos_basevalue_4
+			add_building = ct_asoiaf_essos_basevalue_5
+			add_building = ct_asoiaf_essos_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_summer_sea
+                }
+            }
+            add_building = ct_asoiaf_summerisland_basevalue_1
+			add_building = ct_asoiaf_summerisland_basevalue_2
+			add_building = ct_asoiaf_summerisland_basevalue_3
+			add_building = ct_asoiaf_summerisland_basevalue_4
+			add_building = ct_asoiaf_summerisland_basevalue_5
+			add_building = ct_asoiaf_summerisland_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    OR = {
+                        region = world_qarth
+                        region = world_moraq
+                    }
+                }
+            }
+            add_building = ct_asoiaf_qarth_basevalue_1
+			add_building = ct_asoiaf_qarth_basevalue_2
+			add_building = ct_asoiaf_qarth_basevalue_3
+			add_building = ct_asoiaf_qarth_basevalue_4
+			add_building = ct_asoiaf_qarth_basevalue_5
+			add_building = ct_asoiaf_qarth_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_ghiscar
+                }
+            }
+            add_building = ct_asoiaf_ghiscari_basevalue_1
+			add_building = ct_asoiaf_ghiscari_basevalue_2
+			add_building = ct_asoiaf_ghiscari_basevalue_3
+			add_building = ct_asoiaf_ghiscari_basevalue_4
+			add_building = ct_asoiaf_ghiscari_basevalue_5
+			add_building = ct_asoiaf_ghiscari_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_lhazar
+                }
+            }
+            add_building = ct_asoiaf_lhazareen_basevalue_1
+			add_building = ct_asoiaf_lhazareen_basevalue_2
+			add_building = ct_asoiaf_lhazareen_basevalue_3
+			add_building = ct_asoiaf_lhazareen_basevalue_4
+			add_building = ct_asoiaf_lhazareen_basevalue_5
+			add_building = ct_asoiaf_lhazareen_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    OR = {
+                        region = world_bone_mountains
+                        region = world_nghai
+                    }
+                }
+            }
+            add_building = ct_asoiaf_eastern_basevalue_1
+			add_building = ct_asoiaf_eastern_basevalue_2
+			add_building = ct_asoiaf_eastern_basevalue_3
+			add_building = ct_asoiaf_eastern_basevalue_4
+			add_building = ct_asoiaf_eastern_basevalue_5
+			add_building = ct_asoiaf_eastern_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_ibben
+                }
+            }
+            add_building = ct_asoiaf_ibben_basevalue_1
+			add_building = ct_asoiaf_ibben_basevalue_2
+			add_building = ct_asoiaf_ibben_basevalue_3
+			add_building = ct_asoiaf_ibben_basevalue_4
+			add_building = ct_asoiaf_ibben_basevalue_5
+			add_building = ct_asoiaf_ibben_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_yi_ti
+                }
+            }
+            add_building = ct_asoiaf_yiti_basevalue_1
+			add_building = ct_asoiaf_yiti_basevalue_2
+			add_building = ct_asoiaf_yiti_basevalue_3
+			add_building = ct_asoiaf_yiti_basevalue_4
+			add_building = ct_asoiaf_yiti_basevalue_5
+			add_building = ct_asoiaf_yiti_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_sarnor
+                }
+            }
+            add_building = ct_asoiaf_sarnor_basevalue_1
+			add_building = ct_asoiaf_sarnor_basevalue_2
+			add_building = ct_asoiaf_sarnor_basevalue_3
+			add_building = ct_asoiaf_sarnor_basevalue_4
+			add_building = ct_asoiaf_sarnor_basevalue_5
+			add_building = ct_asoiaf_sarnor_basevalue_6
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_asshai
+                }
+            }
+            add_building = ct_asoiaf_asshai_basevalue_1
+			add_building = ct_asoiaf_asshai_basevalue_2
+			add_building = ct_asoiaf_asshai_basevalue_3
+			add_building = ct_asoiaf_asshai_basevalue_4
+			add_building = ct_asoiaf_asshai_basevalue_5
+			add_building = ct_asoiaf_asshai_basevalue_6
+        }
+
+###### CITY SHIPYARDS ######
+
+	if = {
+		limit = {
+			location = { port = yes }
+		}
+		if =	{
+			limit = { NOT = { has_building = ct_port_1 } }
+			add_building = ct_port_1
+		}
+		if = {
+			limit = { has_building = ct_port_1 }
+			add_building = ct_port_2
+		}
+		if = {
+			limit = { has_building = ct_port_2 }
+			add_building = ct_port_3
+		}
+		if = {
+			limit = { has_building = ct_port_3 }
+			add_building = ct_port_4
+		}
+		if = {
+			limit = { has_building = ct_port_4 }
+			add_building = ct_port_5
+		}
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 367	#Tyrosh
+					province_id = 368	#Lys
+					province_id = 378	#Myr
+					province_id = 406	#Pentos
+					province_id = 417	#Volantis
+					province_id = 419	#Old Volantis
+					province_id = 470	#Braavos
+					province_id = 471	#Lorath
+					province_id = 599	#Mantarys
+					province_id = 601	#Tolos
+					province_id = 602	#Elyria
+					province_id = 606	#Meereen
+					province_id = 610	#Yunkai
+					province_id = 613	#Astapor
+					province_id = 642 #Port Yhos
+					province_id = 654	#Qarkash
+					province_id = 663	#Qarth
+					province_id = 669	#Asabhad
+					province_id = 719	#Faros
+					# province_id = 765	#Yin
+					# province_id = 770	#Jinqi
+					province_id = 792	#Leng Yi
+					province_id = 795	#Asshai
+				}
+			}
+		}
+            add_building = ct_asoiaf_essosshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 220 } #driftmark
+		}
+			add_building = ct_asoiaf_driftmarkshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 292 }
+		}
+            add_building = ct_asoiaf_redwyneshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				province_id = 226 #kingslanding
+				has_province_flag = kings_landing_established
+			}
+			OR = {
+				title = b_kings_landing
+				title = b_warriors_sons
+			}
+			has_title_flag = targshipyard_complete
+		}
+            add_building = ct_asoiaf_targshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_koj_harbour
+		}
+            add_building = ct_asoiaf_koj_shipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				port = yes
+				NOT = { region = world_iron_isles	}
+				NAND = {
+					culture_group = free_folk
+					holder_scope = { government = wildling_feudal_government }
+				}
+			}
+			base_value_4_trigger = yes
+			holder_scope = {
+				is_patrician = no
+				NOT = { culture_group = iron_isles_culture }
+			}
+		}
+		add_building = ct_asoiaf_smallshipyard
+	}
+
+#	if = {
+#		limit = {
+#			location = { title = b_lannisport }
+#		}
+#            add_building = ca_asoiaf_lannshipyard
+#	}
+
+	if = {
+		limit = {
+			title = b_oldtown
+		}
+            add_building = ct_asoiaf_oldtownshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 30
+					province_id = 31
+					province_id = 32
+				}
+				has_province_flag = skagosi_rebuild_ships
+			}
+
+		}
+			add_building = ct_asoiaf_skagosishipyard
+	}
+
+#### CITY OTHER SHIT ####
+
+
+	if = {
+		limit = {
+			OR = {
+				culture_group = ghiscari_group
+				culture_group = qarth_group
+			}
+		}
+            add_building = ct_culture_group_arabic_1
+            add_building = ct_culture_group_arabic_2
+            add_building = ct_culture_group_arabic_3
+            add_building = ct_culture_group_arabic_4
+	}
+
+	if = {
+		limit = {
+			holder_scope = { culture = ghiscari }
+		}
+		add_building = ct_legionary_barracks
+	}
+
+	if = {
+		limit = {
+			OR = {
+				culture_group = moraqi_group
+				culture_group = yi_ti_group
+				culture = volantene
+				culture = eastern_valyrian
+				culture_group = ghiscari_group
+				culture_group = qarth_group
+				culture_group = jade_islands_group
+			}
+		}
+            add_building = ct_culture_indian_1
+            add_building = ct_culture_indian_2
+            add_building = ct_culture_indian_3
+            add_building = ct_culture_indian_4
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					#Westeros
+					province_id = 292	#Arbor
+					province_id = 344	#Scourge
+					province_id = 349	#Godsgrace
+					province_id = 350	#Plankytown
+					province_id = 351	#Lemonwood
+					province_id = 352	#Sunspear
+					province_id = 354	#Riverspring
+					province_id = 116	#Butterwell
+					#Essos
+					province_id = 368	#Lys
+					province_id = 406	#Pentos
+					province_id = 378	#Myr
+					province_id = 417	#Volantis
+					province_id = 419	#Old Volantis
+					province_id = 420	#Volon Therys
+					province_id = 422	#Valysar
+					province_id = 423	#Selhorys
+					region = world_andalos
+					#Far East
+					province_id = 663	#Qarth
+					region = world_yin
+					region = world_jinqi
+					#South
+					province_id = 626	#Naath
+					province_id = 500	#Tall Trees Town
+				}
+			}
+
+		}
+            add_building = ct_winery
+	}
+
+	if = {
+		limit = {
+			location = { has_province_flag = restored_amphitheatre }
+		}
+			add_building = ct_amphitheatre
+	}
+
+	if = {
+		limit = {
+			title = b_kings_landing
+			location = {
+				province_id = 226 #kingslanding
+				has_province_flag = kings_landing_established
+			}
+		}
+			add_building = ct_gold_cloaks
+	}
+
+	if = {
+		limit = {
+			location = {
+				title = b_lannisportone
+			}
+		}
+            add_building = ct_lannisport
+	}
+
+	if = {
+		limit = {
+				title = b_braavos
+		}
+			add_building = ct_titan_castle
+	}
+
+	if = {
+		limit = {
+			OR = {
+				title = b_lorassyon_city
+				title = b_lorathi_shore
+				title = b_lorath
+			}
+		}
+            add_building = ct_lorathi_maze
+	}
+
+	if = {
+		limit = {
+			location = {
+				title = b_oldvolantis
+			}
+		}
+			add_building = ct_black_wall
+	}
+
+	if = {
+		limit = {
+			location = {
+				title = b_port_qarth
+			}
+		}
+			add_building = ct_triple_walls
+	}
+
+	if = {
+		limit = {
+			is_capital = yes
+			location = {
+				has_province_flag = location_has_bank
+			}
+		}
+		add_building = ct_bank_fortifications
+	}
+
+	if = {
+		limit = {
+			region = world_forest_of_qohor
+		}
+            add_building = ct_qohor_forest_1
+            add_building = ct_qohor_forest_2
+	}
+	if = {
+		limit = {
+			location = {
+				region = world_sothoryos
+				province_id = 747
+			}
+			holder_scope = { NOT = { culture_group = unoccupied_group }	}
+		}
+		add_building = ct_sothoryos_1
+		add_building = ct_sothoryos_2
+		add_building = ct_sothoryos_3
+	}
+
+    add_building = ct_barracks_1
+    add_building = ct_barracks_2
+    add_building = ct_barracks_3
+    add_building = ct_barracks_4
+    add_building = ct_barracks_5
+    add_building = ct_barracks_6
+    add_building = ct_marketplace_1
+    add_building = ct_marketplace_2
+    add_building = ct_marketplace_3
+    add_building = ct_marketplace_4
+    add_building = ct_marketplace_5
+    add_building = ct_marketplace_6
+    add_building = ct_training_grounds_1
+    add_building = ct_training_grounds_2
+    add_building = ct_training_grounds_3
+    add_building = ct_training_grounds_4
+    add_building = ct_training_grounds_5
+    add_building = ct_training_grounds_6
+    add_building = ct_wall_1
+    add_building = ct_wall_2
+    add_building = ct_wall_3
+    add_building = ct_wall_4
+    add_building = ct_wall_5
+    add_building = ct_wall_q_1
+    add_building = ct_wall_q_2
+    add_building = ct_wall_q_3
+    add_building = ct_wall_q_4
+    add_building = ct_wall_q_5
+	refill_holding_levy = yes
+}
+scmr_build_tb = {
+	add_building = tb_market_town_1
+	add_building = tb_market_town_2
+	add_building = tb_market_town_3
+	add_building = tb_market_town_4
+	if = {
+		limit = {
+			holder_scope = {
+				culture_group = free_folk
+			}
+		}
+		add_building = tb_wildling_barracks
+		add_building = tb_wildling_barracks2
+		add_building = tb_wildling_barracks3
+		add_building = tb_wildling_barracks4
+	}
+	refill_holding_levy = yes
+}
+scmr_build_nd = {
+	add_building = no_horse_breeder_1
+    add_building = no_horse_breeder_2
+    add_building = no_horse_breeder_3
+    add_building = no_horse_breeder_4
+    add_building = no_horse_breeder_5
+    add_building = no_horse_breeder_6
+    add_building = no_horse_breeder_7
+    add_building = no_horse_breeder_8
+    add_building = no_riding_contests_1
+    add_building = no_riding_contests_2
+    add_building = no_riding_contests_3
+    add_building = no_riding_contests_4
+    add_building = no_riding_contests_5
+    add_building = no_riding_contests_6
+    add_building = no_riding_contests_7
+    add_building = no_riding_contests_8
+    add_building = no_airag_producer_1
+    add_building = no_airag_producer_2
+    add_building = no_airag_producer_3
+    add_building = no_airag_producer_4
+    add_building = no_airag_producer_5
+    add_building = no_airag_producer_6
+    add_building = no_airag_producer_7
+    add_building = no_airag_producer_8
+    add_building = no_cattle_pens_1
+    add_building = no_cattle_pens_2
+    add_building = no_cattle_pens_3
+    add_building = no_cattle_pens_4
+    add_building = no_cattle_pens_5
+    add_building = no_cattle_pens_6
+    add_building = no_cattle_pens_7
+    add_building = no_cattle_pens_8
+    add_building = no_ox_wagon_1
+    add_building = no_ox_wagon_2
+    add_building = no_ox_wagon_3
+    add_building = no_ox_wagon_4
+    add_building = no_ox_wagon_5
+    add_building = no_ox_wagon_6
+    add_building = no_ox_wagon_7
+    add_building = no_ox_wagon_8
+    add_building = no_meat_preserver_1
+    add_building = no_meat_preserver_2
+    add_building = no_meat_preserver_3
+    add_building = no_meat_preserver_4
+    add_building = no_meat_preserver_5
+    add_building = no_meat_preserver_6
+    add_building = no_meat_preserver_7
+    add_building = no_meat_preserver_8
+    add_building = no_sheep_1
+    add_building = no_sheep_2
+    add_building = no_sheep_3
+    add_building = no_sheep_4
+    add_building = no_sheep_5
+    add_building = no_sheep_6
+    add_building = no_sheep_7
+    add_building = no_sheep_8
+    add_building = no_felt_crafter_1
+    add_building = no_felt_crafter_2
+    add_building = no_felt_crafter_3
+    add_building = no_felt_crafter_4
+    add_building = no_felt_crafter_5
+    add_building = no_felt_crafter_6
+    add_building = no_felt_crafter_7
+    add_building = no_felt_crafter_8
+    add_building = no_ger_crafter_1
+    add_building = no_ger_crafter_2
+    add_building = no_ger_crafter_3
+    add_building = no_ger_crafter_4
+    add_building = no_ger_crafter_5
+    add_building = no_ger_crafter_6
+    add_building = no_ger_crafter_7
+    add_building = no_ger_crafter_8
+    add_building = no_shrine_1
+    add_building = no_shrine_2
+    add_building = no_shrine_3
+    add_building = no_shrine_4
+    add_building = no_shrine_5
+    add_building = no_shrine_6
+    add_building = no_shrine_7
+    add_building = no_shrine_8
+    add_building = no_hunting_parties_1
+    add_building = no_hunting_parties_2
+    add_building = no_hunting_parties_3
+    add_building = no_hunting_parties_4
+    add_building = no_hunting_parties_5
+    add_building = no_hunting_parties_6
+    add_building = no_hunting_parties_7
+    add_building = no_hunting_parties_8
+    add_building = no_baghatur_council_1
+    add_building = no_baghatur_council_2
+    add_building = no_baghatur_council_3
+    add_building = no_baghatur_council_4
+    add_building = no_baghatur_council_5
+    add_building = no_baghatur_council_6
+    add_building = no_baghatur_council_7
+    add_building = no_baghatur_council_8
+    add_building = no_dothraki_palace_1
+    add_building = no_dothraki_palace_2
+    add_building = no_dothraki_palace_3
+    add_building = no_dothraki_palace_4
+    add_building = no_dothraki_palace_5
+    add_building = no_dothraki_palace_6
+    add_building = no_dothraki_palace_7
+    add_building = no_dothraki_palace_8
+    add_building = no_composite_bow_crafter_1
+    add_building = no_composite_bow_crafter_2
+    add_building = no_composite_bow_crafter_3
+    add_building = no_composite_bow_crafter_4
+    add_building = no_composite_bow_crafter_5
+    add_building = no_composite_bow_crafter_6
+    add_building = no_composite_bow_crafter_7
+    add_building = no_composite_bow_crafter_8
+    add_building = no_lamellar_armor_crafter_1
+    add_building = no_lamellar_armor_crafter_2
+    add_building = no_lamellar_armor_crafter_3
+    add_building = no_lamellar_armor_crafter_4
+    add_building = no_lamellar_armor_crafter_5
+    add_building = no_lamellar_armor_crafter_6
+    add_building = no_lamellar_armor_crafter_7
+    add_building = no_lamellar_armor_crafter_8
+    add_building = no_gathering_hall_1
+    add_building = no_gathering_hall_2
+    add_building = no_gathering_hall_3
+    add_building = no_gathering_hall_4
+    add_building = no_gathering_hall_5
+    add_building = no_gathering_hall_6
+    add_building = no_gathering_hall_7
+    add_building = no_gathering_hall_8
+    add_building = no_minter_1
+    add_building = no_minter_2
+    add_building = no_minter_3
+    add_building = no_minter_4
+    add_building = no_minter_5
+    add_building = no_minter_6
+    add_building = no_minter_7
+    add_building = no_minter_8
+    add_building = no_camp_fortifications_1
+    add_building = no_camp_fortifications_2
+    add_building = no_camp_fortifications_3
+    add_building = no_camp_fortifications_4
+    add_building = no_camp_fortifications_5
+    add_building = no_camp_fortifications_6
+    add_building = no_camp_fortifications_7
+    add_building = no_camp_fortifications_8
+    add_building = no_camel_breeder_1
+    add_building = no_camel_breeder_2
+    add_building = no_camel_breeder_3
+    add_building = no_camel_breeder_4
+    add_building = no_camel_breeder_5
+    add_building = no_camel_breeder_6
+    add_building = no_camel_breeder_7
+    add_building = no_camel_breeder_8
+    add_building = no_elephant_camp_1
+    add_building = no_elephant_camp_2
+    add_building = no_elephant_camp_3
+    add_building = no_elephant_camp_4
+    add_building = no_elephant_camp_5
+    add_building = no_elephant_camp_6
+    add_building = no_elephant_camp_7
+    add_building = no_elephant_camp_8
+	refill_holding_levy = yes
+}
+scmr_build_hp = {
+	if = {
+		limit = {  NOT = { hospital_has_building = hospital_building_1 } }
+		add_to_extra_holding = { type = hospital building = hospital_building_1 }
+	}
+	if = {
+		limit = {  hospital_has_building = hospital_building_1 }
+		add_to_extra_holding = { type = hospital building = hospital_building_2 }
+	}
+	if = {
+		limit = {  hospital_has_building = hospital_building_2 }
+		add_to_extra_holding = { type = hospital building = hospital_building_3 }
+	}
+	if = {
+		limit = {  hospital_has_building = hospital_building_3 }
+		add_to_extra_holding = { type = hospital building = hospital_building_4 }
+	}
+	if = {
+		limit = {  hospital_has_building = hospital_building_4 }
+		add_to_extra_holding = { type = hospital building = hospital_building_5 }
+	}
+	if = {
+		limit = {  NOT = { hospital_has_building = leper_colony_1 } }
+		add_to_extra_holding = { type = hospital building = leper_colony_1 }
+	}
+	if = {
+		limit = {  NOT = { hospital_has_building = pilgrims_inn_1 } }
+		add_to_extra_holding = { type = hospital building = pilgrims_inn_1 }
+	}
+	if = {
+		limit = {  NOT = { hospital_has_building = chapel_1 } }
+		add_to_extra_holding = { type = hospital building = chapel_1 }
+	}
+	if = {
+		limit = {  NOT = { hospital_has_building = soup_kitchen_1 } }
+		add_to_extra_holding = { type = hospital building = soup_kitchen_1 }
+	}
+}
+scmr_build_trade = {
+	if = {
+		limit = {  NOT = { trade_post_has_building = tr_port_1 } }
+		add_to_extra_holding = { type = trade_post building = tr_port_1 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_port_1  }
+		add_to_extra_holding = { type = trade_post building = tr_port_2 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_port_2  }
+		add_to_extra_holding = { type = trade_post building = tr_port_3 }
+	}
+	if = {
+		limit = {  NOT = { trade_post_has_building = tr_enclave_1 } }
+		add_to_extra_holding = { type = trade_post building = tr_enclave_1 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_enclave_1  }
+		add_to_extra_holding = { type = trade_post building = tr_enclave_2 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_enclave_2  }
+		add_to_extra_holding = { type = trade_post building = tr_enclave_3 }
+	}
+	if = {
+		limit = {  NOT = { trade_post_has_building = tr_garrison_1 } }
+		add_to_extra_holding = { type = trade_post building = tr_garrison_1 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_garrison_1  }
+		add_to_extra_holding = { type = trade_post building = tr_garrison_2 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_garrison_2  }
+		add_to_extra_holding = { type = trade_post building = tr_garrison_3 }
+	}
+	if = {
+		limit = {  NOT = { trade_post_has_building = tr_silk_road_1 } }
+		add_to_extra_holding = { type = trade_post building = tr_silk_road_1 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_silk_road_1  }
+		add_to_extra_holding = { type = trade_post building = tr_silk_road_2 }
+	}
+	if = {
+		limit = {  trade_post_has_building = tr_silk_road_2  }
+		add_to_extra_holding = { type = trade_post building = tr_silk_road_3 }
+	}
+	if = {
+		limit = {  NOT = { trade_post_has_building = mercenary_garrison_1 } }
+		add_to_extra_holding = { type = trade_post building = mercenary_garrison_1 }
+	}
+	if = {
+		limit = {  trade_post_has_building = mercenary_garrison_1  }
+		add_to_extra_holding = { type = trade_post building = mercenary_garrison_2 }
+	}
+	if = {
+		limit = {  trade_post_has_building = mercenary_garrison_2  }
+		add_to_extra_holding = { type = trade_post building = mercenary_garrison_3 }
+	}
+}
+
+
+scmr_dismantle_fp = {
+	family_palace = {
+		remove_building = fp_household_guard
+		remove_building = fp_vault_3
+		remove_building = fp_vault_2
+		remove_building = fp_vault_1
+		remove_building = fp_shrine_2
+		remove_building = fp_shrine_1
+		remove_building = fp_cellar_3
+		remove_building = fp_cellar_2
+		remove_building = fp_cellar_1
+		remove_building = fp_garden_3
+		remove_building = fp_garden_2
+		remove_building = fp_garden_1
+		remove_building = fp_warehouse_3
+		remove_building = fp_warehouse_2
+		remove_building = fp_warehouse_1
+		remove_building = fp_shipyard_3
+		remove_building = fp_shipyard_2
+		remove_building = fp_shipyard_1
+		remove_building = fp_bowyer_3
+		remove_building = fp_bowyer_2
+		remove_building = fp_bowyer_1
+		remove_building = fp_stable_3
+		remove_building = fp_stable_2
+		remove_building = fp_stable_1
+		remove_building = fp_barracks_3
+		remove_building = fp_barracks_2
+		remove_building = fp_barracks_1
+		remove_building = fp_mansion_4
+		remove_building = fp_mansion_3
+		remove_building = fp_mansion_2
+		remove_building = fp_mansion_1
+	}
+}
+scmr_dismantle_castle = {
+    remove_building = ca_wall_2
+    remove_building = ca_wall_1
+	remove_building = ca_wall_q_5
+	remove_building = ca_wall_q_4
+	remove_building = ca_wall_q_3
+	remove_building = ca_wall_q_2
+	remove_building = ca_wall_q_1
+	remove_building = ca_wall_5
+	remove_building = ca_wall_4
+	remove_building = ca_wall_3
+	remove_building = ca_training_grounds_2
+	remove_building = ca_training_grounds_1
+	remove_building = ca_town_5
+	remove_building = ca_town_4
+	remove_building = ca_town_3
+	remove_building = ca_town_2
+	remove_building = ca_town_1
+	remove_building = ca_stable_5
+	remove_building = ca_stable_4
+	remove_building = ca_stable_3
+	remove_building = ca_stable_2
+	remove_building = ca_stable_1
+	remove_building = ca_militia_barracks_3
+	remove_building = ca_militia_barracks_2
+	remove_building = ca_militia_barracks_1
+	remove_building = ca_keep_5
+	remove_building = ca_keep_4
+	remove_building = ca_keep_3
+	remove_building = ca_keep_2
+	remove_building = ca_keep_1
+	remove_building = ca_barracks_6
+	remove_building = ca_barracks_5
+	remove_building = ca_barracks_4
+	remove_building = ca_barracks_3
+	remove_building = ca_barracks_2
+	remove_building = ca_barracks_1
+	remove_building = ca_culture_indian_4
+	remove_building = ca_culture_indian_3
+	remove_building = ca_culture_indian_2
+	remove_building = ca_culture_indian_1
+
+	#Holy Fury
+	remove_building = ca_culture_animal_4
+	remove_building = ca_culture_animal_3
+	remove_building = ca_culture_animal_2
+	remove_building = ca_culture_animal_1
+
+	if = {
+		limit = {
+			holder_scope = {
+				OR = {
+					culture_group = ghiscari_group
+					culture_group = qarth_group
+				}
+			}
+		}
+		remove_building = ca_culture_group_arabic_4
+		remove_building = ca_culture_group_arabic_3
+		remove_building = ca_culture_group_arabic_2
+		remove_building = ca_culture_group_arabic_1
+	}
+	if = {
+		limit = {
+			holder_scope = {
+				government = theocratic_feudal_government
+			}
+		}
+		remove_building = ca_government_monastery_4
+		remove_building = ca_government_monastery_3
+		remove_building = ca_government_monastery_2
+		remove_building = ca_government_monastery_1
+	}
+	if = {
+		limit = {
+			region = world_crownlands
+		}
+            remove_building = ca_asoiaf_crown_basevalue_6
+            remove_building = ca_asoiaf_crown_basevalue_5
+            remove_building = ca_asoiaf_crown_basevalue_4
+            remove_building = ca_asoiaf_crown_basevalue_3
+            remove_building = ca_asoiaf_crown_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_stormlands
+		}
+            remove_building = ca_asoiaf_storm_basevalue_6
+            remove_building = ca_asoiaf_storm_basevalue_5
+            remove_building = ca_asoiaf_storm_basevalue_4
+            remove_building = ca_asoiaf_storm_basevalue_3
+            remove_building = ca_asoiaf_storm_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_reach
+		}
+            remove_building = ca_asoiaf_reach_basevalue_6
+            remove_building = ca_asoiaf_reach_basevalue_5
+            remove_building = ca_asoiaf_reach_basevalue_4
+            remove_building = ca_asoiaf_reach_basevalue_3
+            remove_building = ca_asoiaf_reach_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_riverlands
+		}
+            remove_building = ca_asoiaf_river_basevalue_6
+            remove_building = ca_asoiaf_river_basevalue_5
+            remove_building = ca_asoiaf_river_basevalue_4
+            remove_building = ca_asoiaf_river_basevalue_3
+            remove_building = ca_asoiaf_river_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_vale
+		}
+            remove_building = ca_asoiaf_vale_basevalue_6
+            remove_building = ca_asoiaf_vale_basevalue_5
+            remove_building = ca_asoiaf_vale_basevalue_4
+            remove_building = ca_asoiaf_vale_basevalue_3
+            remove_building = ca_asoiaf_vale_basevalue_2
+            remove_building = ca_asoiaf_vale_basevalue_1
+	}
+
+	if = {
+		limit = {
+			region = world_westerlands
+		}
+            remove_building = ca_asoiaf_westerland_basevalue_6
+            remove_building = ca_asoiaf_westerland_basevalue_5
+            remove_building = ca_asoiaf_westerland_basevalue_4
+            remove_building = ca_asoiaf_westerland_basevalue_3
+            remove_building = ca_asoiaf_westerland_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_north
+		}
+            remove_building = ca_asoiaf_north_basevalue_6
+            remove_building = ca_asoiaf_north_basevalue_5
+            remove_building = ca_asoiaf_north_basevalue_4
+            remove_building = ca_asoiaf_north_basevalue_3
+            remove_building = ca_asoiaf_north_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_dorne
+		}
+            remove_building = ca_asoiaf_dorne_basevalue_6
+            remove_building = ca_asoiaf_dorne_basevalue_5
+            remove_building = ca_asoiaf_dorne_basevalue_4
+            remove_building = ca_asoiaf_dorne_basevalue_3
+            remove_building = ca_asoiaf_dorne_basevalue_2
+
+	}
+
+	if = {
+		limit = {
+			region = world_iron_isles
+		}
+            remove_building = ca_asoiaf_ironislands_basevalue_6
+            remove_building = ca_asoiaf_ironislands_basevalue_5
+            remove_building = ca_asoiaf_ironislands_basevalue_4
+            remove_building = ca_asoiaf_ironislands_basevalue_3
+            remove_building = ca_asoiaf_ironislands_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_summer_sea
+		}
+            remove_building = ca_asoiaf_summerisland_basevalue_6
+            remove_building = ca_asoiaf_summerisland_basevalue_5
+            remove_building = ca_asoiaf_summerisland_basevalue_4
+            remove_building = ca_asoiaf_summerisland_basevalue_3
+            remove_building = ca_asoiaf_summerisland_basevalue_2
+	}
+
+	if = {
+		limit = {
+			OR = {
+				region = world_bone_mountains
+				region = world_nghai
+			}
+		}
+            remove_building = ca_asoiaf_eastern_basevalue_6
+            remove_building = ca_asoiaf_eastern_basevalue_5
+            remove_building = ca_asoiaf_eastern_basevalue_4
+            remove_building = ca_asoiaf_eastern_basevalue_3
+            remove_building = ca_asoiaf_eastern_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_free_cities
+		}
+            remove_building = ca_asoiaf_essos_basevalue_6
+            remove_building = ca_asoiaf_essos_basevalue_5
+            remove_building = ca_asoiaf_essos_basevalue_4
+            remove_building = ca_asoiaf_essos_basevalue_3
+            remove_building = ca_asoiaf_essos_basevalue_2
+	}
+
+	if = {
+		limit = {
+			OR = {
+				region = world_qarth
+				region = world_moraq
+			}
+		}
+            remove_building = ca_asoiaf_qarth_basevalue_6
+            remove_building = ca_asoiaf_qarth_basevalue_5
+            remove_building = ca_asoiaf_qarth_basevalue_4
+            remove_building = ca_asoiaf_qarth_basevalue_3
+            remove_building = ca_asoiaf_qarth_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_lhazar
+		}
+            remove_building = ca_asoiaf_lhazareen_basevalue_6
+            remove_building = ca_asoiaf_lhazareen_basevalue_5
+            remove_building = ca_asoiaf_lhazareen_basevalue_4
+            remove_building = ca_asoiaf_lhazareen_basevalue_3
+            remove_building = ca_asoiaf_lhazareen_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_ghiscar
+		}
+            remove_building = ca_asoiaf_ghiscari_basevalue_6
+            remove_building = ca_asoiaf_ghiscari_basevalue_5
+            remove_building = ca_asoiaf_ghiscari_basevalue_4
+            remove_building = ca_asoiaf_ghiscari_basevalue_3
+            remove_building = ca_asoiaf_ghiscari_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_ibben
+		}
+            remove_building = ca_asoiaf_ibben_basevalue_6
+            remove_building = ca_asoiaf_ibben_basevalue_5
+            remove_building = ca_asoiaf_ibben_basevalue_4
+            remove_building = ca_asoiaf_ibben_basevalue_3
+            remove_building = ca_asoiaf_ibben_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_sarnor
+		}
+            remove_building = ca_asoiaf_sarnor_basevalue_6
+            remove_building = ca_asoiaf_sarnor_basevalue_5
+            remove_building = ca_asoiaf_sarnor_basevalue_4
+            remove_building = ca_asoiaf_sarnor_basevalue_3
+            remove_building = ca_asoiaf_sarnor_basevalue_2
+	}
+
+	if = {
+		limit = {
+			region = world_yi_ti
+		}
+            remove_building = ca_asoiaf_yiti_basevalue_6
+            remove_building = ca_asoiaf_yiti_basevalue_5
+            remove_building = ca_asoiaf_yiti_basevalue_4
+            remove_building = ca_asoiaf_yiti_basevalue_3
+            remove_building = ca_asoiaf_yiti_basevalue_2
+	}
+
+###### SHIPYARDS ######
+
+	if = {
+		limit = {
+			location = { port = yes }
+		}
+		remove_building = ca_shipyard_4
+		remove_building = ca_shipyard_3
+		remove_building = ca_shipyard_2
+		remove_building = ca_shipyard_1
+	}
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 406	#Pentos
+					province_id = 602	#Elyria
+					province_id = 625	#New Ghis
+					province_id = 727	#Port Moraq
+					province_id = 728	#Zabhad
+					province_id = 729	#Vahar
+					province_id = 835	#Nefer
+					# province_id = 585	#Port of Ibben
+					# province_id = 594	#Ib Sar
+					# province_id = 582	#Ib Nor
+					# province_id = 580	#Ib Oss
+					# duchy = { title = d_bayofwhales }
+				}
+			}
+			OR = {
+				title = b_spicertowers
+				title = b_elyriacastle
+				title = b_pyramidnewghis
+				title = b_port_moraq
+				title = b_zabhad
+				title = b_vahar
+				title = b_nefer
+			}
+		}
+            remove_building = ca_asoiaf_essosshipyard
+	}
+
+	if = {
+		limit = {
+			location = { port = yes }
+			OR = {
+				holder_scope = {
+					culture = ironborn
+					NOT = { trait = nightswatch }
+					NOT = { trait = kingsguard }
+				}
+				region = world_iron_isles
+			}
+		}
+		remove_building = ca_asoiaf_ironshipyard
+		remove_building = ca_asoiaf_large_ironshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 220 } #driftmark
+		}
+			remove_building = ca_asoiaf_driftmarkshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 292 }
+		}
+            remove_building = ca_asoiaf_redwyneshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				province_id = 226 #kingslanding
+				has_province_flag = kings_landing_established
+			}
+			has_title_flag = targshipyard_complete
+			OR = {
+				title = b_red_keep
+				title = b_dragon_gate
+			}
+		}
+            remove_building = ca_asoiaf_targshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 261
+					province_id = 262
+					province_id = 263
+					province_id = 264
+				}
+			}
+
+		}
+            remove_building = ca_asoiaf_shieldshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_pearl_palace
+		}
+            remove_building = ca_asoiaf_koj_shipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 30
+					province_id = 31
+					province_id = 32
+				}
+				has_province_flag = skagosi_rebuild_ships
+			}
+		}
+        remove_building = ca_asoiaf_skagosishipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				port = yes
+				NOT = { region = world_iron_isles	}
+				NAND = {
+					culture_group = free_folk
+					holder_scope = { government = wildling_feudal_government }
+				}
+			}
+			holder_scope = {
+				is_patrician = no
+				NOT = { culture_group = iron_isles_culture }
+			}
+			OR = {
+				base_value_4_trigger = yes
+				title = b_eastwatch
+				title = b_driftwoodhall
+				title = b_abaj
+				title = b_pongar
+				title = b_draccar
+				title = b_cinnamon_isles
+			}
+		}
+        remove_building = ca_asoiaf_smallshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_lannisport
+		}
+            remove_building = ca_asoiaf_lannshipyard
+	}
+
+	if = {
+		limit = {
+			title = b_the_hightower
+		}
+            remove_building = ca_asoiaf_oldtownshipyard
+	}
+
+#### MISC SPECIFIC STUFF ####
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 174 #Golden Tooth (2)
+					province_id = 175 #Nunn's Deep
+					province_id = 177 #Pendrick Hills
+
+					province_id = 173 #Ashemark
+					province_id = 178 #Sarsfield
+					province_id = 179 #Goldshire
+					province_id = 180 #Hornvale
+					province_id = 181 #Brent Brook
+					province_id = 182 #Casterly Rock
+					province_id = 187 #Castamere
+
+					region = world_asshai
+					region = world_leng
+					duchy = { title = d_the_axe }
+				}
+			}
+		}
+        remove_building = ca_goldmine
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_casterly_rock
+					title = b_castamere
+					title = b_axemountainscastle
+					title = b_axecastle
+				}
+		}
+            remove_building = ca_large_goldmine
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 164 #The Crag
+					province_id = 170 #Maunhill
+					province_id = 189 #Myatt
+					province_id = 190 #Lonmont
+					province_id = 195 #Silverhall
+					province_id = 334 #Yronwood
+				}
+			}
+		}
+            remove_building = ca_silvermine
+	}
+
+	if = {
+		limit = {
+			title = b_thetwins
+			NOT = { has_title_flag = twins_unbuilt }
+		}
+        remove_building = ca_thetwins
+	}
+
+	if = {
+		limit = {
+			title = b_storms_end
+		}
+        remove_building = ca_storms_end
+	}
+
+	if = {
+		limit = {
+			title = b_the_eyrie
+		}
+        remove_building = ca_the_eyrie
+	}
+
+	if = {
+		limit = {
+				title = b_casterly_rock
+		}
+            remove_building = ca_casterly_rock
+	}
+
+	if = {
+		limit = {
+				title = b_blackgrove
+		}
+            remove_building = ca_ironwood
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_bayasabhad
+					title = b_kayakayanaya
+					title = b_samyriana
+				}
+		}
+            remove_building = ca_hyrkooni_fortress
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_lorassyon
+					title = b_lorathi_shorecastle
+					title = b_archons_keep
+					title = b_great_tower
+				}
+		}
+            remove_building = ca_lorathi_maze
+	}
+	if = {
+		limit = {
+			location = { province_id = 835 }
+			title = b_nefer
+		}
+        remove_building = ca_nefer
+	}
+
+	if = {
+		limit = {
+			title = b_summerhall
+		}
+        remove_building = ca_summerhall
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 820 }
+		}
+            remove_building = ca_five_forts
+	}
+
+	if = {
+		limit = {
+			title = b_winterfell
+		}
+            remove_building = ca_cellar_2
+	}
+
+	if = {
+		limit = { culture_group = free_folk }
+            remove_building = ca_culture_group_frozen_shore_4
+            remove_building = ca_culture_group_frozen_shore_3
+            remove_building = ca_culture_group_frozen_shore_2
+            remove_building = ca_culture_group_frozen_shore_1
+	}
+
+	if = {
+		limit = {
+			holder_scope = { government = wildling_feudal_government }
+			location = { culture_group = free_folk }
+		}
+		remove_building = tb_war_camp_4
+		remove_building = tb_war_camp_3
+		remove_building = tb_war_camp_2
+		remove_building = tb_war_camp_1
+		remove_building = tb_training_grounds_4
+		remove_building = tb_training_grounds_3
+		remove_building = tb_training_grounds_2
+		remove_building = tb_training_grounds_1
+		remove_building = tb_practice_range_4
+		remove_building = tb_practice_range_3
+		remove_building = tb_practice_range_2
+		remove_building = tb_practice_range_1
+		remove_building = tb_hillfort_4
+		remove_building = tb_hillfort_3
+		remove_building = tb_hillfort_2
+		remove_building = tb_hillfort_1
+		remove_building = tb_arsenal_4
+		remove_building = tb_arsenal_3
+		remove_building = tb_arsenal_2
+		remove_building = tb_arsenal_1
+		if = {
+			limit = {
+				location = { port = yes }
+			}
+			remove_building = tb_shipyard_4
+			remove_building = tb_shipyard_3
+			remove_building = tb_shipyard_2
+			remove_building = tb_shipyard_1
+		}
+	}
+
+	if = {
+		limit = {
+			is_capital = yes
+			holder_scope = {
+				OR = {
+					trait = dragon_rider
+					trait = dragon_egg
+				}
+				location = { is_capital = yes }
+			}
+		}
+            remove_building = ca_dragon_pit
+	}
+
+	if = {
+		limit = {
+			title = b_stone_drum
+		}
+            remove_building = ca_dragonmont
+			remove_building = ca_dragonstone
+	}
+
+	if = {
+		limit = {
+			location = { year = 7996 }
+			title = b_stone_drum
+			has_title_flag = ca_painted_table
+		}
+        remove_building = ca_painted_table
+	}
+	if = {
+		limit = {
+			location = {
+				is_volcano_location_trigger = yes
+				NOT = { province_id = 221 } #dragonstone uses dragonmont above
+			}
+		}
+        remove_building = ca_volcanoes
+	}
+
+    if = {
+		limit = {
+			title = b_harrenhal
+			location = { NOT = { has_province_flag = pre_harren_harrenhal } }
+		}
+            remove_building = ca_harrenhal_castle
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 66 }
+		}
+            remove_building = ca_moat_cailin
+	}
+
+	if = {
+		limit = {
+			OR = {
+				title = b_castle_black
+				title = b_shadow_tower
+				title = b_eastwatch
+			}
+		}
+        remove_building = ca_wallportion
+	}
+	if = {
+		limit = {
+			region = world_forest_of_qohor
+		}
+            remove_building = ca_qohor_forest_2 #Logging Camp
+            remove_building = ca_qohor_forest_1 #Fur Station
+	}
+
+	if = {
+		limit = {
+			region = world_sothoryos
+			holder_scope = { NOT = { culture_group = unoccupied_group }	}
+		}
+            remove_building = ca_sothoryos_3 #large mines
+            remove_building = ca_sothoryos_2 #spice plantatin
+            remove_building = ca_sothoryos_1 #small mine
+	}
+
+	if = {
+		limit = {
+			holder_scope = {
+				OR = {
+					culture_group = free_folk
+					trait = wildling
+				}
+			}
+		}
+            remove_building = ca_wildling_barracks4
+            remove_building = ca_wildling_barracks3
+            remove_building = ca_wildling_barracks2
+            remove_building = ca_wildling_barracks
+	}
+	refill_holding_levy = yes
+}
+
+scmr_dismantle_temple = {
+    remove_building = tp_wall_q_5
+    remove_building = tp_wall_q_4
+    remove_building = tp_wall_q_3
+    remove_building = tp_wall_q_2
+    remove_building = tp_wall_q_1
+    remove_building = tp_wall_5
+    remove_building = tp_wall_4
+    remove_building = tp_wall_3
+    remove_building = tp_wall_2
+    remove_building = tp_wall_1
+    remove_building = tp_town_6
+    remove_building = tp_town_5
+    remove_building = tp_town_4
+    remove_building = tp_town_3
+    remove_building = tp_town_2
+    remove_building = tp_town_1
+    remove_building = tp_shipyard_4
+    remove_building = tp_shipyard_3
+    remove_building = tp_shipyard_2
+    remove_building = tp_shipyard_1
+    remove_building = tp_monastery_6
+    remove_building = tp_monastery_5
+    remove_building = tp_monastery_4
+    remove_building = tp_monastery_3
+    remove_building = tp_monastery_2
+    remove_building = tp_monastery_1
+    remove_building = tp_elite_barracks_6
+    remove_building = tp_elite_barracks_5
+    remove_building = tp_elite_barracks_4
+    remove_building = tp_elite_barracks_3
+    remove_building = tp_elite_barracks_2
+    remove_building = tp_elite_barracks_1
+    remove_building = tp_barracks_6
+    remove_building = tp_barracks_5
+    remove_building = tp_barracks_4
+    remove_building = tp_barracks_3
+    remove_building = tp_barracks_2
+    remove_building = tp_barracks_1
+	if = {
+		limit = {
+				OR = {
+					title = b_lorassyon_temple
+					title = b_lorathi_shoretemple
+					title = b_moon
+				}
+		}
+        remove_building = tp_lorathi_maze
+	}
+	refill_holding_levy = yes
+}
+
+scmr_dismantle_city = {
+	if = {
+            limit = {
+                location = {
+                    region = world_north
+                }
+            }
+			remove_building = ct_asoiaf_north_basevalue_6
+			remove_building = ct_asoiaf_north_basevalue_5
+			remove_building = ct_asoiaf_north_basevalue_4
+			remove_building = ct_asoiaf_north_basevalue_3
+			remove_building = ct_asoiaf_north_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_riverlands
+                }
+            }
+			remove_building = ct_asoiaf_river_basevalue_6
+			remove_building = ct_asoiaf_river_basevalue_5
+			remove_building = ct_asoiaf_river_basevalue_4
+			remove_building = ct_asoiaf_river_basevalue_3
+			remove_building = ct_asoiaf_river_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_dorne
+                }
+            }
+			remove_building = ct_asoiaf_dorne_basevalue_6
+			remove_building = ct_asoiaf_dorne_basevalue_5
+			remove_building = ct_asoiaf_dorne_basevalue_4
+			remove_building = ct_asoiaf_dorne_basevalue_3
+			remove_building = ct_asoiaf_dorne_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_iron_isles
+                }
+            }
+			remove_building = ct_asoiaf_ironislands_basevalue_6
+			remove_building = ct_asoiaf_ironislands_basevalue_5
+			remove_building = ct_asoiaf_ironislands_basevalue_4
+			remove_building = ct_asoiaf_ironislands_basevalue_3
+			remove_building = ct_asoiaf_ironislands_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_crownlands
+                }
+            }
+			remove_building = ct_asoiaf_crown_basevalue_6
+			remove_building = ct_asoiaf_crown_basevalue_5
+			remove_building = ct_asoiaf_crown_basevalue_4
+			remove_building = ct_asoiaf_crown_basevalue_3
+			remove_building = ct_asoiaf_crown_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_stormlands
+                }
+            }
+			remove_building = ct_asoiaf_storm_basevalue_6
+			remove_building = ct_asoiaf_storm_basevalue_5
+			remove_building = ct_asoiaf_storm_basevalue_4
+			remove_building = ct_asoiaf_storm_basevalue_3
+			remove_building = ct_asoiaf_storm_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_vale
+                }
+            }
+			remove_building = ct_asoiaf_vale_basevalue_6
+			remove_building = ct_asoiaf_vale_basevalue_5
+			remove_building = ct_asoiaf_vale_basevalue_4
+			remove_building = ct_asoiaf_vale_basevalue_3
+			remove_building = ct_asoiaf_vale_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_westerlands
+                }
+            }
+			remove_building = ct_asoiaf_westerland_basevalue_6
+			remove_building = ct_asoiaf_westerland_basevalue_5
+			remove_building = ct_asoiaf_westerland_basevalue_4
+			remove_building = ct_asoiaf_westerland_basevalue_3
+			remove_building = ct_asoiaf_westerland_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_reach
+                }
+            }
+			remove_building = ct_asoiaf_reach_basevalue_6
+			remove_building = ct_asoiaf_reach_basevalue_5
+			remove_building = ct_asoiaf_reach_basevalue_4
+			remove_building = ct_asoiaf_reach_basevalue_3
+			remove_building = ct_asoiaf_reach_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_free_cities
+                }
+            }
+			remove_building = ct_asoiaf_essos_basevalue_6
+			remove_building = ct_asoiaf_essos_basevalue_5
+			remove_building = ct_asoiaf_essos_basevalue_4
+			remove_building = ct_asoiaf_essos_basevalue_3
+			remove_building = ct_asoiaf_essos_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_summer_sea
+                }
+            }
+			remove_building = ct_asoiaf_summerisland_basevalue_6
+			remove_building = ct_asoiaf_summerisland_basevalue_5
+			remove_building = ct_asoiaf_summerisland_basevalue_4
+			remove_building = ct_asoiaf_summerisland_basevalue_3
+			remove_building = ct_asoiaf_summerisland_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    OR = {
+                        region = world_qarth
+                        region = world_moraq
+                    }
+                }
+            }
+			remove_building = ct_asoiaf_qarth_basevalue_6
+			remove_building = ct_asoiaf_qarth_basevalue_5
+			remove_building = ct_asoiaf_qarth_basevalue_4
+			remove_building = ct_asoiaf_qarth_basevalue_3
+			remove_building = ct_asoiaf_qarth_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_ghiscar
+                }
+            }
+			remove_building = ct_asoiaf_ghiscari_basevalue_6
+			remove_building = ct_asoiaf_ghiscari_basevalue_5
+			remove_building = ct_asoiaf_ghiscari_basevalue_4
+			remove_building = ct_asoiaf_ghiscari_basevalue_3
+			remove_building = ct_asoiaf_ghiscari_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_lhazar
+                }
+            }
+			remove_building = ct_asoiaf_lhazareen_basevalue_6
+			remove_building = ct_asoiaf_lhazareen_basevalue_5
+			remove_building = ct_asoiaf_lhazareen_basevalue_4
+			remove_building = ct_asoiaf_lhazareen_basevalue_3
+			remove_building = ct_asoiaf_lhazareen_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    OR = {
+                        region = world_bone_mountains
+                        region = world_nghai
+                    }
+                }
+            }
+			remove_building = ct_asoiaf_eastern_basevalue_6
+			remove_building = ct_asoiaf_eastern_basevalue_5
+			remove_building = ct_asoiaf_eastern_basevalue_4
+			remove_building = ct_asoiaf_eastern_basevalue_3
+			remove_building = ct_asoiaf_eastern_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_ibben
+                }
+            }
+			remove_building = ct_asoiaf_ibben_basevalue_6
+			remove_building = ct_asoiaf_ibben_basevalue_5
+			remove_building = ct_asoiaf_ibben_basevalue_4
+			remove_building = ct_asoiaf_ibben_basevalue_3
+			remove_building = ct_asoiaf_ibben_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_yi_ti
+                }
+            }
+			remove_building = ct_asoiaf_yiti_basevalue_6
+			remove_building = ct_asoiaf_yiti_basevalue_5
+			remove_building = ct_asoiaf_yiti_basevalue_4
+			remove_building = ct_asoiaf_yiti_basevalue_3
+			remove_building = ct_asoiaf_yiti_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_sarnor
+                }
+            }
+			remove_building = ct_asoiaf_sarnor_basevalue_6
+			remove_building = ct_asoiaf_sarnor_basevalue_5
+			remove_building = ct_asoiaf_sarnor_basevalue_4
+			remove_building = ct_asoiaf_sarnor_basevalue_3
+			remove_building = ct_asoiaf_sarnor_basevalue_2
+        }
+        if = {
+            limit = {
+                location = {
+                    region = world_asshai
+                }
+            }
+			remove_building = ct_asoiaf_asshai_basevalue_6
+			remove_building = ct_asoiaf_asshai_basevalue_5
+			remove_building = ct_asoiaf_asshai_basevalue_4
+			remove_building = ct_asoiaf_asshai_basevalue_3
+			remove_building = ct_asoiaf_asshai_basevalue_2
+        }
+
+###### CITY SHIPYARDS ######
+
+	if = {
+		limit = {
+			location = { port = yes }
+		}
+		remove_building = ct_port_5
+		remove_building = ct_port_4
+		remove_building = ct_port_3
+		remove_building = ct_port_2
+		remove_building = ct_port_1
+	}
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 367	#Tyrosh
+					province_id = 368	#Lys
+					province_id = 378	#Myr
+					province_id = 406	#Pentos
+					province_id = 417	#Volantis
+					province_id = 419	#Old Volantis
+					province_id = 470	#Braavos
+					province_id = 471	#Lorath
+					province_id = 599	#Mantarys
+					province_id = 601	#Tolos
+					province_id = 602	#Elyria
+					province_id = 606	#Meereen
+					province_id = 610	#Yunkai
+					province_id = 613	#Astapor
+					province_id = 642 #Port Yhos
+					province_id = 654	#Qarkash
+					province_id = 663	#Qarth
+					province_id = 669	#Asabhad
+					province_id = 719	#Faros
+					# province_id = 765	#Yin
+					# province_id = 770	#Jinqi
+					province_id = 792	#Leng Yi
+					province_id = 795	#Asshai
+				}
+			}
+		}
+            remove_building = ct_asoiaf_essosshipyard
+	}
+
+
+	if = {
+		limit = {
+			location = { province_id = 220 } #driftmark
+		}
+			remove_building = ct_asoiaf_driftmarkshipyard
+	}
+
+	if = {
+		limit = {
+			location = { province_id = 292 }
+		}
+            remove_building = ct_asoiaf_redwyneshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				province_id = 226 #kingslanding
+				has_province_flag = kings_landing_established
+			}
+			OR = {
+				title = b_kings_landing
+				title = b_warriors_sons
+			}
+			has_title_flag = targshipyard_complete
+		}
+            remove_building = ct_asoiaf_targshipyard
+	}
+	if = {
+		limit = {
+			title = b_koj_harbour
+		}
+            remove_building = ct_asoiaf_koj_shipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				port = yes
+				NOT = { region = world_iron_isles	}
+				NAND = {
+					culture_group = free_folk
+					holder_scope = { government = wildling_feudal_government }
+				}
+			}
+			base_value_4_trigger = yes
+			holder_scope = {
+				is_patrician = no
+				NOT = { culture_group = iron_isles_culture }
+			}
+		}
+		remove_building = ct_asoiaf_smallshipyard
+	}
+
+#	if = {
+#		limit = {
+#			location = { title = b_lannisport }
+#		}
+#            remove_building = ca_asoiaf_lannshipyard
+#	}
+
+	if = {
+		limit = {
+			title = b_oldtown
+		}
+            remove_building = ct_asoiaf_oldtownshipyard
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					province_id = 30
+					province_id = 31
+					province_id = 32
+				}
+				has_province_flag = skagosi_rebuild_ships
+			}
+		}
+			remove_building = ct_asoiaf_skagosishipyard
+	}
+
+#### CITY OTHER SHIT ####
+
+
+	if = {
+		limit = {
+			OR = {
+				culture_group = ghiscari_group
+				culture_group = qarth_group
+			}
+		}
+            remove_building = ct_culture_group_arabic_1
+            remove_building = ct_culture_group_arabic_2
+            remove_building = ct_culture_group_arabic_3
+            remove_building = ct_culture_group_arabic_4
+	}
+
+	if = {
+		limit = {
+			holder_scope = { culture = ghiscari }
+		}
+		remove_building = ct_legionary_barracks
+	}
+
+	if = {
+		limit = {
+			OR = {
+				culture_group = moraqi_group
+				culture_group = yi_ti_group
+				culture = volantene
+				culture = eastern_valyrian
+				culture_group = ghiscari_group
+				culture_group = qarth_group
+				culture_group = jade_islands_group
+			}
+		}
+            remove_building = ct_culture_indian_1
+            remove_building = ct_culture_indian_2
+            remove_building = ct_culture_indian_3
+            remove_building = ct_culture_indian_4
+	}
+
+	if = {
+		limit = {
+			location = {
+				OR = {
+					#Westeros
+					province_id = 292	#Arbor
+					province_id = 344	#Scourge
+					province_id = 349	#Godsgrace
+					province_id = 350	#Plankytown
+					province_id = 351	#Lemonwood
+					province_id = 352	#Sunspear
+					province_id = 354	#Riverspring
+					province_id = 116	#Butterwell
+					#Essos
+					province_id = 368	#Lys
+					province_id = 406	#Pentos
+					province_id = 378	#Myr
+					province_id = 417	#Volantis
+					province_id = 419	#Old Volantis
+					province_id = 420	#Volon Therys
+					province_id = 422	#Valysar
+					province_id = 423	#Selhorys
+					region = world_andalos
+					#Far East
+					province_id = 663	#Qarth
+					region = world_yin
+					region = world_jinqi
+					#South
+					province_id = 626	#Naath
+					province_id = 500	#Tall Trees Town
+				}
+			}
+		}
+            remove_building = ct_winery
+	}
+
+	if = {
+		limit = {
+			location = { has_province_flag = restored_amphitheatre }
+		}
+			remove_building = ct_amphitheatre
+	}
+
+	if = {
+		limit = {
+			title = b_kings_landing
+			location = {
+				province_id = 226 #kingslanding
+				has_province_flag = kings_landing_established
+			}
+		}
+			remove_building = ct_gold_cloaks
+	}
+
+	if = {
+		limit = {
+				title = b_lannisportone
+		}
+            remove_building = ct_lannisport
+	}
+
+	if = {
+		limit = {
+				title = b_braavos
+
+		}
+			remove_building = ct_titan_castle
+	}
+
+	if = {
+		limit = {
+				OR = {
+					title = b_lorassyon_city
+					title = b_lorathi_shore
+					title = b_lorath
+				}
+		}
+            remove_building = ct_lorathi_maze
+	}
+
+	if = {
+		limit = {
+				title = b_oldvolantis
+		}
+			remove_building = ct_black_wall
+	}
+
+	if = {
+		limit = {
+				title = b_port_qarth
+		}
+			remove_building = ct_triple_walls
+	}
+
+	if = {
+		limit = {
+			is_capital = yes
+			location = {
+				has_province_flag = location_has_bank
+			}
+		}
+		remove_building = ct_bank_fortifications
+	}
+
+	if = {
+		limit = {
+			region = world_forest_of_qohor
+		}
+            remove_building = ct_qohor_forest_2
+            remove_building = ct_qohor_forest_1
+	}
+	if = {
+		limit = {
+			location = {
+				region = world_sothoryos
+				province_id = 747
+			}
+			holder_scope = { NOT = { culture_group = unoccupied_group }	}
+		}
+		remove_building = ct_sothoryos_3
+		remove_building = ct_sothoryos_2
+		remove_building = ct_sothoryos_1
+	}
+
+    remove_building = ct_wall_q_5
+    remove_building = ct_wall_q_4
+    remove_building = ct_wall_q_3
+    remove_building = ct_wall_q_2
+    remove_building = ct_wall_q_1
+    remove_building = ct_wall_5
+    remove_building = ct_wall_4
+    remove_building = ct_wall_3
+    remove_building = ct_wall_2
+    remove_building = ct_wall_1
+    remove_building = ct_training_grounds_6
+    remove_building = ct_training_grounds_5
+    remove_building = ct_training_grounds_4
+    remove_building = ct_training_grounds_3
+    remove_building = ct_training_grounds_2
+    remove_building = ct_training_grounds_1
+    remove_building = ct_marketplace_6
+    remove_building = ct_marketplace_5
+    remove_building = ct_marketplace_4
+    remove_building = ct_marketplace_3
+    remove_building = ct_marketplace_2
+    remove_building = ct_marketplace_1
+    remove_building = ct_barracks_6
+    remove_building = ct_barracks_5
+    remove_building = ct_barracks_4
+    remove_building = ct_barracks_3
+    remove_building = ct_barracks_2
+    remove_building = ct_barracks_1
+	refill_holding_levy = yes
+}
+scmr_dismantle_tb = {
+    add_building = tb_market_town_1
+	add_building = tb_market_town_4
+	add_building = tb_market_town_3
+	add_building = tb_market_town_2
+	if = {
+		limit = {
+			holder_scope = {
+				culture_group = free_folk
+			}
+		}
+		add_building = tb_wildling_barracks4
+		add_building = tb_wildling_barracks3
+		add_building = tb_wildling_barracks2
+		add_building = tb_wildling_barracks
+	}
+	refill_holding_levy = yes
+}
+scmr_dismantle_nd = {
+    add_building = no_shrine_8
+    add_building = no_shrine_7
+    add_building = no_shrine_6
+    add_building = no_shrine_5
+    add_building = no_shrine_4
+    add_building = no_shrine_3
+    add_building = no_shrine_2
+    add_building = no_shrine_1
+    add_building = no_sheep_8
+    add_building = no_sheep_7
+    add_building = no_sheep_6
+    add_building = no_sheep_5
+    add_building = no_sheep_4
+    add_building = no_sheep_3
+    add_building = no_sheep_2
+    add_building = no_sheep_1
+    add_building = no_riding_contests_8
+    add_building = no_riding_contests_7
+    add_building = no_riding_contests_6
+    add_building = no_riding_contests_5
+    add_building = no_riding_contests_4
+    add_building = no_riding_contests_3
+    add_building = no_riding_contests_2
+    add_building = no_riding_contests_1
+    add_building = no_ox_wagon_8
+    add_building = no_ox_wagon_7
+    add_building = no_ox_wagon_6
+    add_building = no_ox_wagon_5
+    add_building = no_ox_wagon_4
+    add_building = no_ox_wagon_3
+    add_building = no_ox_wagon_2
+    add_building = no_ox_wagon_1
+    add_building = no_minter_8
+    add_building = no_minter_7
+    add_building = no_minter_6
+    add_building = no_minter_5
+    add_building = no_minter_4
+    add_building = no_minter_3
+    add_building = no_minter_2
+    add_building = no_minter_1
+    add_building = no_meat_preserver_8
+    add_building = no_meat_preserver_7
+    add_building = no_meat_preserver_6
+    add_building = no_meat_preserver_5
+    add_building = no_meat_preserver_4
+    add_building = no_meat_preserver_3
+    add_building = no_meat_preserver_2
+    add_building = no_meat_preserver_1
+    add_building = no_lamellar_armor_crafter_8
+    add_building = no_lamellar_armor_crafter_7
+    add_building = no_lamellar_armor_crafter_6
+    add_building = no_lamellar_armor_crafter_5
+    add_building = no_lamellar_armor_crafter_4
+    add_building = no_lamellar_armor_crafter_3
+    add_building = no_lamellar_armor_crafter_2
+    add_building = no_lamellar_armor_crafter_1
+    add_building = no_hunting_parties_8
+    add_building = no_hunting_parties_7
+    add_building = no_hunting_parties_6
+    add_building = no_hunting_parties_5
+    add_building = no_hunting_parties_4
+    add_building = no_hunting_parties_3
+    add_building = no_hunting_parties_2
+    add_building = no_hunting_parties_1
+    add_building = no_horse_breeder_8
+    add_building = no_horse_breeder_7
+    add_building = no_horse_breeder_6
+    add_building = no_horse_breeder_5
+    add_building = no_horse_breeder_4
+    add_building = no_horse_breeder_3
+    add_building = no_horse_breeder_2
+    add_building = no_ger_crafter_8
+    add_building = no_ger_crafter_7
+    add_building = no_ger_crafter_6
+    add_building = no_ger_crafter_5
+    add_building = no_ger_crafter_4
+    add_building = no_ger_crafter_3
+    add_building = no_ger_crafter_2
+    add_building = no_ger_crafter_1
+    add_building = no_gathering_hall_8
+    add_building = no_gathering_hall_7
+    add_building = no_gathering_hall_6
+    add_building = no_gathering_hall_5
+    add_building = no_gathering_hall_4
+    add_building = no_gathering_hall_3
+    add_building = no_gathering_hall_2
+    add_building = no_gathering_hall_1
+    add_building = no_felt_crafter_8
+    add_building = no_felt_crafter_7
+    add_building = no_felt_crafter_6
+    add_building = no_felt_crafter_5
+    add_building = no_felt_crafter_4
+    add_building = no_felt_crafter_3
+    add_building = no_felt_crafter_2
+    add_building = no_felt_crafter_1
+    add_building = no_elephant_camp_8
+    add_building = no_elephant_camp_7
+    add_building = no_elephant_camp_6
+    add_building = no_elephant_camp_5
+    add_building = no_elephant_camp_4
+    add_building = no_elephant_camp_3
+    add_building = no_elephant_camp_2
+    add_building = no_elephant_camp_1
+    add_building = no_dothraki_palace_8
+    add_building = no_dothraki_palace_7
+    add_building = no_dothraki_palace_6
+    add_building = no_dothraki_palace_5
+    add_building = no_dothraki_palace_4
+    add_building = no_dothraki_palace_3
+    add_building = no_dothraki_palace_2
+    add_building = no_dothraki_palace_1
+    add_building = no_composite_bow_crafter_8
+    add_building = no_composite_bow_crafter_7
+    add_building = no_composite_bow_crafter_6
+    add_building = no_composite_bow_crafter_5
+    add_building = no_composite_bow_crafter_4
+    add_building = no_composite_bow_crafter_3
+    add_building = no_composite_bow_crafter_2
+    add_building = no_composite_bow_crafter_1
+    add_building = no_cattle_pens_8
+    add_building = no_cattle_pens_7
+    add_building = no_cattle_pens_6
+    add_building = no_cattle_pens_5
+    add_building = no_cattle_pens_4
+    add_building = no_cattle_pens_3
+    add_building = no_cattle_pens_2
+    add_building = no_cattle_pens_1
+    add_building = no_camp_fortifications_8
+    add_building = no_camp_fortifications_7
+    add_building = no_camp_fortifications_6
+    add_building = no_camp_fortifications_5
+    add_building = no_camp_fortifications_4
+    add_building = no_camp_fortifications_3
+    add_building = no_camp_fortifications_2
+    add_building = no_camp_fortifications_1
+    add_building = no_camel_breeder_8
+    add_building = no_camel_breeder_7
+    add_building = no_camel_breeder_6
+    add_building = no_camel_breeder_5
+    add_building = no_camel_breeder_4
+    add_building = no_camel_breeder_3
+    add_building = no_camel_breeder_2
+    add_building = no_camel_breeder_1
+    add_building = no_baghatur_council_8
+    add_building = no_baghatur_council_7
+    add_building = no_baghatur_council_6
+    add_building = no_baghatur_council_5
+    add_building = no_baghatur_council_4
+    add_building = no_baghatur_council_3
+    add_building = no_baghatur_council_2
+    add_building = no_baghatur_council_1
+    add_building = no_airag_producer_8
+    add_building = no_airag_producer_7
+    add_building = no_airag_producer_6
+    add_building = no_airag_producer_5
+    add_building = no_airag_producer_4
+    add_building = no_airag_producer_3
+    add_building = no_airag_producer_2
+    add_building = no_airag_producer_1
+    add_building = no_horse_breeder_1
+	refill_holding_levy = yes
+}
+
+
+
+scmr_opinion_clean = {
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_former_lover
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_former_lover
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_fired_from_council
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_fired_from_council
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_guardianship
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_guardianship
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_failed_plot
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_failed_plot
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_honorary_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_honorary_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_rightful_vassal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_rightful_vassal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_granted_other_emperor_vice_royalty
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_granted_other_emperor_vice_royalty
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_granted_other_king_vice_royalty
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_granted_other_king_vice_royalty
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_granted_other_duke_vice_royalty
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_granted_other_duke_vice_royalty
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_granted_other_count_vice_royalty
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_granted_other_count_vice_royalty
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_granted_other_baron_vice_royalty
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_granted_other_baron_vice_royalty
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_looted
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_looted
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_destroyed_dj_liege_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_destroyed_dj_liege_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = declared_war
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = declared_war
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_dishonorable
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_dishonorable
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_tyrant
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_tyrant
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = dow_on_son_in_law
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = dow_on_son_in_law
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = broke_alliance
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = broke_alliance
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = tribal_vassal_refused_call
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = tribal_vassal_refused_call
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = broke_truce
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = broke_truce
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = called_into_war
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = called_into_war
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = insulted
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = insulted
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_demanded_conversion
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_demanded_conversion
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_spurned
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_spurned
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_embarrassed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_embarrassed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = bad_succ_law_change
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = bad_succ_law_change
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = succ_law_change
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = succ_law_change
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_claimed_my_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_claimed_my_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_my_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_my_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_a_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_a_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_retracted_my_vassal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_retracted_my_vassal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_retracted_my_de_jure_vassal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_retracted_my_de_jure_vassal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_retracted_a_vassal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_retracted_a_vassal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_retracted_a_de_jure_vassal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_retracted_a_de_jure_vassal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_yearly_raised_levies
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_yearly_raised_levies
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_usurped_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_usurped_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_granted_title_to_woman
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_granted_title_to_woman
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_divorced_relative
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_divorced_relative
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_divorced
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_divorced
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_set_aside
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_set_aside
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_lost_ward
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_lost_ward
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_betrothal_broken
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_betrothal_broken
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_traitor
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_traitor
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_rebel_traitor
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_rebel_traitor
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_imprisoned_child
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_imprisoned_child
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_executed_child
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_executed_child
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = preparing_to_invade
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = preparing_to_invade
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = preparing_to_invade_me
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = preparing_to_invade_me
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_failed_invasion
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_failed_invasion
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_targeted_by_adventurer
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_targeted_by_adventurer
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_used
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_used
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = DEMAND_RELIGIOUS_CONVERSION_INTERACTION_ON_DECLINE
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = DEMAND_RELIGIOUS_CONVERSION_INTERACTION_ON_DECLINE
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = STOP_BACKING_AMBITION_INTERACTION_ON_DECLINE
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = STOP_BACKING_AMBITION_INTERACTION_ON_DECLINE
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_fired_from_council
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_fired_from_council
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_for_money
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_for_money
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_for_crusade
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_for_crusade
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_for_excommunication
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_for_excommunication
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_to_lift_excommunication
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_to_lift_excommunication
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_for_invasion
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_for_invasion
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_for_divorce
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_for_divorce
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = asked_for_claim
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = asked_for_claim
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_council
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_council
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_fool_courtier
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_fool_courtier
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = gluttonous_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = gluttonous_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = greedy_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = greedy_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = charitable_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = charitable_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = slothful_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = slothful_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = kind_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = kind_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = patient_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = patient_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = proud_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = proud_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = humble_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = humble_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = deceitful_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = deceitful_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = honest_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = honest_neg
+		}
+	}
+	#	if = {
+#		limit = {
+#			has_opinion_modifier = {
+#				who = PREV
+#				modifier = honest_neg_small
+#			}
+#		}
+#		remove_opinion = {
+#			who = PREV
+#			modifier = honest_neg_small
+#		}
+#	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = craven_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = craven_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = brave_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = brave_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = shy_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = shy_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = ambitious_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = ambitious_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = content_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = content_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = arbitrary_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = arbitrary_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = just_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = just_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = cynical_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = cynical_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = zealous_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = zealous_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = paranoid_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = paranoid_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = trusting_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = trusting_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = diligent_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = diligent_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = envious_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = envious_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = wroth_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = wroth_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = gregarious_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = gregarious_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = cruel_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = cruel_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denounced_child
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denounced_child
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = legitimized_bastard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = legitimized_bastard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = acknowledged_bastard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = acknowledged_bastard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = slut_seductress
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = slut_seductress
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_cuckolded_private
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_cuckolded_private
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_unfaithful_private
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_unfaithful_private
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_potential_cuckold
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_potential_cuckold
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_denied_guardianship
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_denied_guardianship
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_evil_tyrant
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_evil_tyrant
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_regent_lowered_CA
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_regent_lowered_CA
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = tight_ruler
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = tight_ruler
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = ruler_not_respect_rank
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = ruler_not_respect_rank
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = marshal_overruled
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = marshal_overruled
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_denied_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_denied_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_broken_title_promise
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_broken_title_promise
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_denied_marriage
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_denied_marriage
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_sent_to_church
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_sent_to_church
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_secret_marriage
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_secret_marriage
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_mocked
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_mocked
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_bad_punishment
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_bad_punishment
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_failed_conversion
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_failed_conversion
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_cruel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_cruel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_arrest_attempt
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_arrest_attempt
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_spouse_slayer
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_spouse_slayer
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_dishonorable_scum
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_dishonorable_scum
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = overstepped_jurisdiction
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = overstepped_jurisdiction
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ruthless
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ruthless
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_dishonorable_duel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_dishonorable_duel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_abdicate_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_abdicate_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_declined_hajj
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_declined_hajj
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_attepmt_hajj
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_attepmt_hajj
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_hajj
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_hajj
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_hajj_attempt_murder
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_hajj_attempt_murder
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_hajj_not_helpin
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_hajj_not_helpin
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_adopted_foreign_ways
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_adopted_foreign_ways
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_has_fatwa
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_has_fatwa
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_issued_fatwa
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_issued_fatwa
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_castrated_me
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_castrated_me
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_blinded_me
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_blinded_me
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_castrated_family
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_castrated_family
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_castrated_close_kin
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_castrated_close_kin
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_blinded_family
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_blinded_family
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_blinded_close_kin
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_blinded_close_kin
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_insane_law
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_insane_law
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_coerced_into_leaving_faction
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_coerced_into_leaving_faction
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_coerced_into_joining_faction
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_coerced_into_joining_faction
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_tzykanion_neg
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_tzykanion_neg
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_feuding_family
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_feuding_family
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_feuding_family_light
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_feuding_family_light
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_seized_tp
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_seized_tp
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_thwarted_tp_destruction
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_thwarted_tp_destruction
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_burned_tp
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_burned_tp
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_burned_tp_despite_bribe
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_burned_tp_despite_bribe
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_forced_consort
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_forced_consort
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_forced_wife_consort
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_forced_wife_consort
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_forced_relative_consort
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_forced_relative_consort
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_nerge_rival
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_nerge_rival
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_punished_nerge
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_punished_nerge
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_feast_scandal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_feast_scandal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_vomit
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_vomit
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_blot
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_blot
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_ukon_juhla
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_ukon_juhla
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_uzgavenes
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_uzgavenes
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_went_berserk
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_went_berserk
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_jarilo
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_jarilo
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_imprisoned_missionary
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_imprisoned_missionary
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_banished_missionary
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_banished_missionary
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_sent_preacher
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_sent_preacher
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_did_not_support_preacher
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_did_not_support_preacher
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_request_holy_order
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_request_holy_order
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_expelled_from_realm
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_expelled_from_realm
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_passover
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_passover
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_rejected_school
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_rejected_school
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_witch
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_witch
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_seduced_repelled
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_seduced_repelled
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_unfaithful_wife
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_unfaithful_wife
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_unfaithful_husband
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_unfaithful_husband
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_cuckolded
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_cuckolded
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_suspected_adultery
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_suspected_adultery
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_chasing_friend
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_chasing_friend
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_chasing_spouse
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_chasing_spouse
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_chasing_child
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_chasing_child
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_advance_rejected
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_advance_rejected
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_killed_lover
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_killed_lover
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_declined_romance
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_declined_romance
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_whorespawn
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_whorespawn
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_declined_duel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_declined_duel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_lost_duel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_lost_duel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_charge_heresiarch
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_charge_heresiarch
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_charge_infidel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_charge_infidel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_charge_deviant
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_charge_deviant
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_charge_illegitimate
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_charge_illegitimate
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_charge_traitor
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_charge_traitor
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_charge_slanderer
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_charge_slanderer
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_slandered
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_slandered
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = grievously_offended
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = grievously_offended
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = campaign_rival
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = campaign_rival
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = black_honor
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = black_honor
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_lying_about_confession
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_lying_about_confession
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_despise_chaste
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_despise_chaste
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_chaste_advice_refused
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_chaste_advice_refused
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_money_stolen
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_money_stolen
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_betrayed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_betrayed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = temperate_bad_judgement
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = temperate_bad_judgement
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = temperate_annoyer
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = temperate_annoyer
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = despise_drunkard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = despise_drunkard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = forced_drunkard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = forced_drunkard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = disrespects_dynasty
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = disrespects_dynasty
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = spouse_ignores_me
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = spouse_ignores_me
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = ignores_local_saints
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = ignores_local_saints
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = resentful_of_my_behaviour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = resentful_of_my_behaviour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = not_feeling_apreciated
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = not_feeling_apreciated
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = attempted_murder
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = attempted_murder
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = revealed_plot
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = revealed_plot
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = scheming_bastard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = scheming_bastard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = dynastic_refused_claim
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = dynastic_refused_claim
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = dynastic_refused_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = dynastic_refused_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = dynastic_refused_war
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = dynastic_refused_war
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = refused_money_request
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = refused_money_request
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = got_money_request
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = got_money_request
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = grudge_from_sin
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = grudge_from_sin
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = pope_invest_dislike
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = pope_invest_dislike
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = my_vassal_bribed_by_pope
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = my_vassal_bribed_by_pope
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_insulted
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_insulted
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_furious
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_furious
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_bitter
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_bitter
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_unhappy
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_unhappy
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_idiot
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_idiot
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_branded_heretic
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_branded_heretic
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_chastised_by_liege
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_chastised_by_liege
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_whipped
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_whipped
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = no_annulment
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = no_annulment
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_poisonous_woman
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_poisonous_woman
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_denied_advice
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_denied_advice
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_chancellor_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_chancellor_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_marshal_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_marshal_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_steward_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_steward_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_spymaster_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_spymaster_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revoked_lord_spiritual_title
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revoked_lord_spiritual_title
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_mad_at_guardian
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_mad_at_guardian
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_envy
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_envy
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_irritated
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_irritated
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_dislike
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_dislike
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ignore_papal_demands
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ignore_papal_demands
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ignore_patriarch_request
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ignore_patriarch_request
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = pope_heretic_removal_disapprove
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = pope_heretic_removal_disapprove
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = refused_indulgences
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = refused_indulgences
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = refused_making_repentance
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = refused_making_repentance
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = evil_murderer
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = evil_murderer
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = not_supportive_liege
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = not_supportive_liege
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disappointed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disappointed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_pitiful
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_pitiful
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_shocked
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_shocked
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_tiresome
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_tiresome
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disgruntled
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disgruntled
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_worried
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_worried
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_woeful
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_woeful
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_afraid
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_afraid
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_cautious
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_cautious
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_angry
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_angry
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_coward
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_coward
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_corrupt
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_corrupt
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_oblivious
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_oblivious
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_horrified
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_horrified
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = suspect_of_murder
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = suspect_of_murder
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = accused_of_murder
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = accused_of_murder
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_release_prisoner
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_release_prisoner
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_love_rival
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_love_rival
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_bragger
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_bragger
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_participating_in_crusade_emperor
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_participating_in_crusade_emperor
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_participating_in_crusade_king
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_participating_in_crusade_king
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_participating_in_crusade_duke
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_participating_in_crusade_duke
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_participating_in_crusade_count
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_participating_in_crusade_count
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_participating_in_crusade_bishop
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_participating_in_crusade_bishop
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_not_participating_in_crusade_vassal
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_not_participating_in_crusade_vassal
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_falsely_convicted
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_falsely_convicted
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = suspected_sodomite_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = suspected_sodomite_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denied_sodomite_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denied_sodomite_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = suspected_of_incest_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = suspected_of_incest_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denied_incest_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denied_incest_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = not_a_real_man
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = not_a_real_man
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denied_impotence_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denied_impotence_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = committed_adultery_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = committed_adultery_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denied_adultery_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denied_adultery_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_head_of_religion_negative
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_head_of_religion_negative
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_denied_love
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_denied_love
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = suspected_occultist_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = suspected_occultist_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denied_occultist_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denied_occultist_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_mad_as_hell
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_mad_as_hell
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_forgive
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_forgive
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_unappreciated
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_unappreciated
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ruler_do_not_trust_him
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ruler_do_not_trust_him
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_religious_agenda
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_religious_agenda
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_annoyed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_annoyed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disrespecting_culture
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disrespecting_culture
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_religious_quarrel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_religious_quarrel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_unchristian
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_unchristian
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = suspected_coward_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = suspected_coward_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = denied_coward_rumour
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = denied_coward_rumour
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_blackmailed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_blackmailed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_hate
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_hate
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_homosexual
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_homosexual
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_upset
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_upset
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_complaining
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_complaining
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_burned_same_faith
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_burned_same_faith
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ignored_infidel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ignored_infidel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_banished_same_faith
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_banished_same_faith
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disgusted
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disgusted
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_associating_with_thieves
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_associating_with_thieves
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_refused_city_tax_law
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_refused_city_tax_law
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disapprove
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disapprove
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = love_scorned
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = love_scorned
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_hatred
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_hatred
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_crestfallen
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_crestfallen
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_despised_fighting_bastard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_despised_fighting_bastard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_despised_hiding_bastard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_despised_hiding_bastard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = despised_bastard
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = despised_bastard
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = pope_disappointed_over_heretic_province
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = pope_disappointed_over_heretic_province
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_increased_authority
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_increased_authority
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_increased_tribal_organization
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_increased_tribal_organization
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_mildly_disappointed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_mildly_disappointed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_liar
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_liar
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_sad
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_sad
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_stubborn
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_stubborn
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_lost_respect
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_lost_respect
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_fled_duel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_fled_duel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_fought_duel
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_fought_duel
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = i_attempted_murder
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = i_attempted_murder
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ignored_merrymen
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ignored_merrymen
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_laughing_at_you
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_laughing_at_you
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_tossed_me
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_tossed_me
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_very_disappointed
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_very_disappointed
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_wrong_religion
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_wrong_religion
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_confused
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_confused
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_revenge_seeker
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_revenge_seeker
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disgraceful
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disgraceful
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_continued_rivalry
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_continued_rivalry
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_poisoner
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_poisoner
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_rejected_friend
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_rejected_friend
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_nomuslim
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_nomuslim
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_arbitrary_qadi
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_arbitrary_qadi
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_committed_zina
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_committed_zina
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_disappointed_calligrapher
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_disappointed_calligrapher
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_grateful_calligrapher
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_grateful_calligrapher
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_dissatisfied_calligrapher
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_dissatisfied_calligrapher
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_seduce_spouse
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_seduce_spouse
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_married_wrong_caste
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_married_wrong_caste
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_changed_caste
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_changed_caste
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ruler_wrong_caste_hindu
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ruler_wrong_caste_hindu
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_ruler_wrong_caste_non_hindu
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_ruler_wrong_caste_non_hindu
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_low_caste
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_low_caste
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_sacrilege
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_sacrilege
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_idolater
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_idolater
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_declined_party
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_declined_party
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_condemned_decadence
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_condemned_decadence
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = opinion_seduced_refused
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = opinion_seduced_refused
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = tough_love_opinion
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = tough_love_opinion
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = immortal_suspicions
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = immortal_suspicions
+		}
+	}
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				who = PREV
+				modifier = immortal_hate
+			}
+		}
+		remove_opinion = {
+			who = PREV
+			modifier = immortal_hate
+		}
+	}
+}
+scmr_modifier_clean = {
+	if = {
+		limit = {
+			has_character_modifier = chattermouth
+		}
+		remove_character_modifier = chattermouth
+	}
+	if = {
+		limit = {
+			has_character_modifier = out_of_patience
+		}
+		remove_character_modifier = out_of_patience
+	}
+
+	if = {
+		limit = {
+			has_character_modifier = the_dungeon
+		}
+		remove_character_modifier = the_dungeon
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_oubliette
+		}
+		remove_character_modifier = the_oubliette
+	}
+	if = {
+		limit = {
+			has_character_modifier = house_arrest
+		}
+		remove_character_modifier = house_arrest
+	}
+	if = {
+		limit = {
+			has_character_modifier = truce_breaker
+		}
+		remove_character_modifier = truce_breaker
+	}
+	if = {
+		limit = {
+			has_character_modifier = dead_green_man
+		}
+		remove_character_modifier = dead_green_man
+	}
+	if = {
+		limit = {
+			has_character_modifier = green_mans_ghost
+		}
+		remove_character_modifier = green_mans_ghost
+	}
+	if = {
+		limit = {
+			has_character_modifier = fear_of_the_stag
+		}
+		remove_character_modifier = fear_of_the_stag
+	}
+	if = {
+		limit = {
+			has_character_modifier = unrighteous_spouse
+		}
+		remove_character_modifier = unrighteous_spouse
+	}
+	if = {
+		limit = {
+			has_character_modifier = offended_moneylenders
+		}
+		remove_character_modifier = offended_moneylenders
+	}
+	if = {
+		limit = {
+			has_character_modifier = for_the_sake_of_love
+		}
+		remove_character_modifier = for_the_sake_of_love
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_fainthearted
+		}
+		remove_character_modifier = the_fainthearted
+	}
+	if = {
+		limit = {
+			has_character_modifier = mod_ashamed
+		}
+		remove_character_modifier = mod_ashamed
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_greedy
+		}
+		remove_character_modifier = the_greedy
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_sullen
+		}
+		remove_character_modifier = the_sullen
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_reveller
+		}
+		remove_character_modifier = the_reveller
+	}
+	if = {
+		limit = {
+			has_character_modifier = church_unfunny
+		}
+		remove_character_modifier = church_unfunny
+	}
+	if = {
+		limit = {
+			has_character_modifier = mod_confused
+		}
+		remove_character_modifier = mod_confused
+	}
+	if = {
+		limit = {
+			has_character_modifier = modifier_negative
+		}
+		remove_character_modifier = modifier_negative
+	}
+	if = {
+		limit = {
+			has_character_modifier = mod_interrogated
+		}
+		remove_character_modifier = mod_interrogated
+	}
+	if = {
+		limit = {
+			has_character_modifier = evil_rumours
+		}
+		remove_character_modifier = evil_rumours
+	}
+	if = {
+		limit = {
+			has_character_modifier = iron_shackles
+		}
+		remove_character_modifier = iron_shackles
+	}
+	if = {
+		limit = {
+			has_character_modifier = lighter_shackles
+		}
+		remove_character_modifier = lighter_shackles
+	}
+	if = {
+		limit = {
+			has_character_modifier = sabotaged_building
+		}
+		remove_character_modifier = sabotaged_building
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_idle
+		}
+		remove_character_modifier = the_idle
+	}
+	if = {
+		limit = {
+			has_character_modifier = unintentional_saboteur
+		}
+		remove_character_modifier = unintentional_saboteur
+	}
+	if = {
+		limit = {
+			has_character_modifier = tortured_prisoner
+		}
+		remove_character_modifier = tortured_prisoner
+	}
+	if = {
+		limit = {
+			has_character_modifier = tortured
+		}
+		remove_character_modifier = tortured
+	}
+	if = {
+		limit = {
+			has_character_modifier = voice_of_satan
+		}
+		remove_character_modifier = voice_of_satan
+	}
+	if = {
+		limit = {
+			has_character_modifier = stressed_commander
+		}
+		remove_character_modifier = stressed_commander
+	}
+	if = {
+		limit = {
+			has_character_modifier = misplaced_food
+		}
+		remove_character_modifier = misplaced_food
+	}
+	if = {
+		limit = {
+			has_character_modifier = one_year_fasting
+		}
+		remove_character_modifier = one_year_fasting
+	}
+	if = {
+		limit = {
+			has_character_modifier = rats_in_cell
+		}
+		remove_character_modifier = rats_in_cell
+	}
+	if = {
+		limit = {
+			has_character_modifier = slept_in_church
+		}
+		remove_character_modifier = slept_in_church
+	}
+	if = {
+		limit = {
+			has_character_modifier = drunk_commander
+		}
+		remove_character_modifier = drunk_commander
+	}
+	if = {
+		limit = {
+			has_character_modifier = whoremaster
+		}
+		remove_character_modifier = whoremaster
+	}
+	if = {
+		limit = {
+			has_character_modifier = suspected_coward
+		}
+		remove_character_modifier = suspected_coward
+	}
+	if = {
+		limit = {
+			has_character_modifier = ignored_confessor
+		}
+		remove_character_modifier = ignored_confessor
+	}
+	if = {
+		limit = {
+			has_character_modifier = speaking_in_tounges
+		}
+		remove_character_modifier = speaking_in_tounges
+	}
+	if = {
+		limit = {
+			has_character_modifier = modifier_outfoxed
+		}
+		remove_character_modifier = modifier_outfoxed
+	}
+	if = {
+		limit = {
+			has_character_modifier = flaming_gap
+		}
+		remove_character_modifier = flaming_gap
+	}
+	if = {
+		limit = {
+			has_character_modifier = wailing_gap
+		}
+		remove_character_modifier = wailing_gap
+	}
+	if = {
+		limit = {
+			has_character_modifier = gates_hell
+		}
+		remove_character_modifier = gates_hell
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_failed_poisoner
+		}
+		remove_character_modifier = the_failed_poisoner
+	}
+	if = {
+		limit = {
+			has_character_modifier = poor_revenge_seeker
+		}
+		remove_character_modifier = poor_revenge_seeker
+	}
+	if = {
+		limit = {
+			has_character_modifier = unfunny_imam
+		}
+		remove_character_modifier = unfunny_imam
+	}
+	if = {
+		limit = {
+			has_character_modifier = mod_bad_work_calligrapher
+		}
+		remove_character_modifier = mod_bad_work_calligrapher
+	}
+	if = {
+		limit = {
+			has_character_modifier = mod_dissatisfied_calligrapher
+		}
+		remove_character_modifier = mod_dissatisfied_calligrapher
+	}
+	if = {
+		limit = {
+			has_character_modifier = broken_spirit
+		}
+		remove_character_modifier = broken_spirit
+	}
+	if = {
+		limit = {
+			has_character_modifier = expelled_jewish
+		}
+		remove_character_modifier = expelled_jewish
+	}
+	if = {
+		limit = {
+			has_character_modifier = defied_church
+		}
+		remove_character_modifier = defied_church
+	}
+	if = {
+		limit = {
+			has_character_modifier = annoyed_religious
+		}
+		remove_character_modifier = annoyed_religious
+	}
+	if = {
+		limit = {
+			has_character_modifier = borrowed_from_knights_templar
+		}
+		remove_character_modifier = borrowed_from_knights_templar
+	}
+	if = {
+		limit = {
+			has_character_modifier = borrowed_from_assassins
+		}
+		remove_character_modifier = borrowed_from_assassins
+	}
+	if = {
+		limit = {
+			has_character_modifier = borrowed_from_bektashi
+		}
+		remove_character_modifier = borrowed_from_bektashi
+	}
+	if = {
+		limit = {
+			has_character_modifier = borrowed_from_jews
+		}
+		remove_character_modifier = borrowed_from_jews
+	}
+	if = {
+		limit = {
+			has_character_modifier = borrowed_from_haruriyyah
+		}
+		remove_character_modifier = borrowed_from_haruriyyah
+	}
+	if = {
+		limit = {
+			has_character_modifier = suspected_demon_spawn
+		}
+		remove_character_modifier = suspected_demon_spawn
+	}
+	if = {
+		limit = {
+			has_character_modifier = suspected_witch
+		}
+		remove_character_modifier = suspected_witch
+	}
+	if = {
+		limit = {
+			has_character_modifier = known_witch
+		}
+		remove_character_modifier = known_witch
+	}
+	if = {
+		limit = {
+			has_character_modifier = married_monkey
+		}
+		remove_character_modifier = married_monkey
+	}
+	if = {
+		limit = {
+			has_character_modifier = troops_war_weary
+		}
+		remove_character_modifier = troops_war_weary
+	}
+	if = {
+		limit = {
+			has_character_modifier = the_diamond_thief
+		}
+		remove_character_modifier = the_diamond_thief
+	}
+	if = {
+		limit = {
+			has_character_modifier = zun_judgement
+		}
+		remove_character_modifier = zun_judgement
+	}
+	if = {
+		limit = {
+			has_character_modifier = incestuous_adulterer
+		}
+		remove_character_modifier = incestuous_adulterer
+	}
+	if = {
+		limit = {
+			has_character_modifier = incestuous_adulteress
+		}
+		remove_character_modifier = incestuous_adulteress
+	}
+	if = {
+		limit = {
+			has_character_modifier = adulterer
+		}
+		remove_character_modifier = adulterer
+	}
+	if = {
+		limit = {
+			has_character_modifier = adulteress
+		}
+		remove_character_modifier = adulteress
+	}
+	if = {
+		limit = {
+			has_character_modifier = known_sodomite
+		}
+		remove_character_modifier = known_sodomite
+	}
+	if = {
+		limit = {
+			has_character_modifier = known_sodomite_pagan
+		}
+		remove_character_modifier = known_sodomite_pagan
+	}
+	if = {
+		limit = {
+			has_character_modifier = cradle_robber
+		}
+		remove_character_modifier = cradle_robber
+	}
+	if = {
+		limit = {
+			has_character_modifier = adulterous_priest
+		}
+		remove_character_modifier = adulterous_priest
+	}
+	if = {
+		limit = {
+			has_character_modifier = wol_refused_duel
+		}
+		remove_character_modifier = wol_refused_duel
+	}
+	if = {
+		limit = {
+			has_character_modifier = despised_aristocrat
+		}
+		remove_character_modifier = despised_aristocrat
+	}
+	if = {
+		limit = {
+			has_character_modifier = minor_disease_herpes
+		}
+		remove_character_modifier = minor_disease_herpes
+	}
+	if = {
+		limit = {
+			has_character_modifier = beaten_up
+		}
+		remove_character_modifier = beaten_up
+	}
+	if = {
+		limit = {
+			has_character_modifier = epic_hangover
+		}
+		remove_character_modifier = epic_hangover
+	}
+	if = {
+		limit = {
+			has_character_modifier = vicious_rumors
+		}
+		remove_character_modifier = vicious_rumors
+	}
+	if = {
+		limit = {
+			has_character_modifier = known_murderer
+		}
+		remove_character_modifier = known_murderer
+	}
+	if = {
+		limit = {
+			has_character_modifier = failed_escape
+		}
+		remove_character_modifier = failed_escape
+	}
+	if = {
+		limit = {
+			has_character_modifier = merciless
+		}
+		remove_character_modifier = merciless
+	}
+	if = {
+		limit = {
+			has_character_modifier = too_honest
+		}
+		remove_character_modifier = too_honest
+	}
+	if = {
+		limit = {
+			has_character_modifier = impious_teachings
+		}
+		remove_character_modifier = impious_teachings
+	}
+	if = {
+		limit = {
+			has_character_modifier = alliance_breaker
+		}
+		remove_character_modifier = alliance_breaker
+	}
+	if = {
+		limit = {
+			OR = {
+				has_character_modifier = tiny_food_shortage
+				has_character_modifier = minor_food_shortage
+				has_character_modifier = normal_food_shortage
+				has_character_modifier = starving_food_shortage
+				has_character_modifier = greedy_food_shortage
+			}
+		}
+		remove_character_modifier = tiny_food_shortage
+		remove_character_modifier = minor_food_shortage
+		remove_character_modifier = normal_food_shortage
+		remove_character_modifier = starving_food_shortage
+		remove_character_modifier = greedy_food_shortage
+	}
+	if = {
+		limit = {
+			OR = {
+				has_character_modifier = mild_illness
+				has_character_modifier = severe_illness
+				has_character_modifier = bedridden_illness
+			}
+		}
+		remove_character_modifier = mild_illness
+		remove_character_modifier = severe_illness
+		remove_character_modifier = bedridden_illness
+	}
+	if = {
+		limit = {
+			has_character_modifier = recently_opened_gates
+		}
+		remove_character_modifier = recently_opened_gates
+	}
+	if = {
+		limit = {
+			has_character_modifier = consorts_with_infidels
+		}
+		remove_character_modifier = consorts_with_infidels
+	}
+	if = {
+		limit = {
+			has_character_modifier = phantom_pain
+		}
+		remove_character_modifier = phantom_pain
+	}
+}
+scmr_holding_modifier = {
+	remove_holding_modifier = new_administration
+	remove_holding_modifier = recently_conquered
+	remove_holding_modifier = occupied
+	remove_holding_modifier = occupied_different_culture
+	remove_holding_modifier = occupied_different_culturegroup
+	remove_holding_modifier = occupied_different_religion
+	remove_holding_modifier = occupied_different_religiongroup
+	remove_holding_modifier = looted_modifier
+	remove_holding_modifier = maintaining_mercenary_band
+	remove_holding_modifier = maintaining_mercenary_band_2
+	remove_holding_modifier = maintaining_mercenary_band_3
+	remove_holding_modifier = maintaining_mercenary_band_4
+	remove_holding_modifier = maintaining_mercenary_band_5
+	remove_holding_modifier = maintaining_mercenary_band_6
+	remove_holding_modifier = maintaining_mercenary_band_7
+	remove_holding_modifier = occupied_tutorial
+	remove_holding_modifier = revolt_risk
+}
+scmr_province_modifier = {
+	if = {
+		limit = {
+			has_province_flag = recent_depopulation_1
+		}
+		clr_province_flag = recent_depopulation_1
+	}
+	if = {
+		limit = {
+			has_province_flag = recent_depopulation_2
+		}
+		clr_province_flag = recent_depopulation_2
+	}
+	if = {
+		limit = {
+			has_province_flag = recent_depopulation_3
+		}
+		clr_province_flag = recent_depopulation_3
+	}
+	if = {
+		limit = {
+			has_province_modifier = depopulated_1
+		}
+		remove_province_modifier = depopulated_1
+	}
+	if = {
+		limit = {
+			has_province_modifier = depopulated_2
+		}
+		remove_province_modifier = depopulated_2
+	}
+	if = {
+		limit = {
+			has_province_modifier = depopulated_3
+		}
+		remove_province_modifier = depopulated_3
+	}
+	if = {
+		limit = {
+			has_province_modifier = epidemic_blame_1
+		}
+		remove_province_modifier = epidemic_blame_1
+	}
+	if = {
+		limit = {
+			has_province_modifier = epidemic_blame_2
+		}
+		remove_province_modifier = epidemic_blame_2
+	}
+	if = {
+		limit = {
+			has_province_modifier = excessive_bureaucracy
+		}
+		remove_province_modifier = excessive_bureaucracy
+	}
+	if = {
+		limit = {
+			has_province_modifier = peasant_crisis
+		}
+		remove_province_modifier = peasant_crisis
+	}
+	if = {
+		limit = {
+			has_province_modifier = slothful_ruler
+		}
+		remove_province_modifier = slothful_ruler
+	}
+	if = {
+		limit = {
+			has_province_modifier = missing_reinforcements
+		}
+		remove_province_modifier = missing_reinforcements
+	}
+	if = {
+		limit = {
+			has_province_modifier = religious_tension
+		}
+		remove_province_modifier = religious_tension
+	}
+	if = {
+		limit = {
+			has_province_modifier = force_converting
+		}
+		remove_province_modifier = force_converting
+	}
+	if = {
+		limit = {
+			has_province_modifier = heretic_stronghold
+		}
+		remove_province_modifier = heretic_stronghold
+	}
+	if = {
+		limit = {
+			has_province_modifier = high_taxes
+		}
+		remove_province_modifier = high_taxes
+	}
+	if = {
+		limit = {
+			has_province_modifier = incompetent_rule
+		}
+		remove_province_modifier = incompetent_rule
+	}
+	if = {
+		limit = {
+			has_province_modifier = thieves_guild
+		}
+		remove_province_modifier = thieves_guild
+	}
+	if = {
+		limit = {
+			has_province_modifier = smugglers_ring
+		}
+		remove_province_modifier = smugglers_ring
+	}
+	if = {
+		limit = {
+			has_province_modifier = highway_robber_band
+		}
+		remove_province_modifier = highway_robber_band
+	}
+	if = {
+		limit = {
+			has_province_modifier = harbour_the_homeless
+		}
+		remove_province_modifier = harbour_the_homeless
+	}
+	if = {
+		limit = {
+			has_province_modifier = thugs_rampant
+		}
+		remove_province_modifier = thugs_rampant
+	}
+	if = {
+		limit = {
+			has_province_modifier = neglected_development
+		}
+		remove_province_modifier = neglected_development
+	}
+	if = {
+		limit = {
+			has_province_modifier = merchants_unhappy
+		}
+		remove_province_modifier = merchants_unhappy
+	}
+	if = {
+		limit = {
+			has_province_modifier = temple_corruption
+		}
+		remove_province_modifier = temple_corruption
+	}
+	if = {
+		limit = {
+			has_province_modifier = local_death_cult
+		}
+		remove_province_modifier = local_death_cult
+	}
+	if = {
+		limit = {
+			has_province_modifier = construction_accident
+		}
+		remove_province_modifier = construction_accident
+	}
+	if = {
+		limit = {
+			has_province_modifier = peasants_scorned
+		}
+		remove_province_modifier = peasants_scorned
+	}
+	if = {
+		limit = {
+			has_province_modifier = peasant_unrest
+		}
+		remove_province_modifier = peasant_unrest
+	}
+	if = {
+		limit = {
+			has_province_modifier = religious_unrest
+		}
+		remove_province_modifier = religious_unrest
+	}
+	if = {
+		limit = {
+			has_province_modifier = cultural_unrest
+		}
+		remove_province_modifier = cultural_unrest
+	}
+	if = {
+		limit = {
+			has_province_modifier = minor_pagan_border_raids
+		}
+		remove_province_modifier = minor_pagan_border_raids
+	}
+	if = {
+		limit = {
+			has_province_modifier = major_pagan_border_raids
+		}
+		remove_province_modifier = major_pagan_border_raids
+	}
+	if = {
+		limit = {
+			has_province_modifier = peasants_upset
+		}
+		remove_province_modifier = peasants_upset
+	}
+	if = {
+		limit = {
+			has_province_modifier = restricted_peasant_access
+		}
+		remove_province_modifier = restricted_peasant_access
+	}
+	if = {
+		limit = {
+			has_province_modifier = arbitrary_steward
+		}
+		remove_province_modifier = arbitrary_steward
+	}
+	if = {
+		limit = {
+			has_province_modifier = stop_commerce
+		}
+		remove_province_modifier = stop_commerce
+	}
+	if = {
+		limit = {
+			has_province_modifier = prima_noctae
+		}
+		remove_province_modifier = prima_noctae
+	}
+	if = {
+		limit = {
+			has_province_modifier = active_inquisition
+		}
+		remove_province_modifier = active_inquisition
+	}
+	if = {
+		limit = {
+			has_province_modifier = sold_off_land
+		}
+		remove_province_modifier = sold_off_land
+	}
+	if = {
+		limit = {
+			has_province_modifier = leaning_tower_bad
+		}
+		remove_province_modifier = leaning_tower_bad
+	}
+}

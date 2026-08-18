@@ -1,0 +1,330 @@
+#scmr_impregnate_effect	Забеременеть (текущий персонаж в радиусе действия)
+#scmr_severely_injured	Обработать ранение
+#scmr_remove_negative	Удалить травмы/врожденные дефекты/психические проблемы
+#scmr_heal_total		Удалить все отрицательные черты
+#scmr_pre_marry			Заставить женатых развестись
+#scmr_adopt_child		Сменить фамилию ребенку усыновленного
+#scmr_spawn_10k			Создать 10К отборных войск
+#scmr_spawn_100k		Создать 100К армию
+#scmr_spawn_fleet		Создать корабли
+
+scmr_impregnate_effect = {
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					is_married = no
+					is_consort = no
+				}
+				AND = {
+					is_consort = yes
+					consort = { character = PREVPREV }
+				}
+				AND = {
+					is_married = yes
+					spouse = { character = PREVPREV }
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_pregnant = no
+			}
+			impregnate = PREV
+		}
+		else = {
+			unsafe_impregnate = PREV
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					is_married = yes
+					NOT = { spouse = { character = PREVPREV } }
+				}
+				AND = {
+					is_consort = yes
+					NOT = { consort = { character = PREVPREV } }
+				}
+			}
+		}
+		if = {
+			limit = {
+				is_pregnant = no
+			}
+			impregnate_cuckoo = PREV
+		}
+		else = {
+			unsafe_impregnate_cuckoo = PREV
+		}
+	}
+}
+scmr_severely_injured = {
+	remove_trait = severely_injured
+}
+scmr_remove_negative = {
+	remove_all_negative_congenital_traits_effect = yes
+	if = {
+		limit = { trait = wounded }
+		remove_trait = wounded
+	}
+	if = {
+		limit = { trait = maimed }
+		remove_trait = maimed
+	}
+	if = {
+		limit = { trait = mangled }
+		remove_trait = mangled
+	}
+	if = {
+		limit = { trait = one_eyed }
+		remove_trait = one_eyed
+	}
+	if = {
+		limit = { trait = one_handed }
+		remove_trait = one_handed
+	}
+	if = {
+		limit = { trait = one_legged }
+		remove_trait = one_legged
+	}
+	if = {
+		limit = { trait = disfigured }
+		remove_trait = disfigured
+	}
+	if = {
+		limit = { trait = eunuch }
+		remove_trait = eunuch
+	}
+	if = {
+		limit = { trait = stressed }
+		remove_trait = stressed
+	}
+	if = {
+		limit = { trait = depressed }
+		remove_trait = depressed
+	}
+	if = {
+		limit = { trait = lunatic }
+		remove_trait = lunatic
+	}
+	if = {
+		limit = { trait = possessed }
+		remove_trait = possessed
+	}
+	if = {
+		limit = { trait = drunkard }
+		remove_trait = drunkard
+	}
+	if = {
+		limit = { trait = infirm }
+		remove_trait = infirm
+	}
+	if = {
+		limit = { trait = incapable }
+		remove_trait = incapable
+	}
+	if = {
+		limit = { trait = uncouth }
+		remove_trait = uncouth
+	}
+	if = {
+		limit = { trait = dull }
+		remove_trait = dull
+	}
+	if = {
+		limit = { trait = is_fat }
+		remove_trait = is_fat
+	}
+	if = {
+		limit = { trait = is_malnourished }
+		remove_trait = is_malnourished
+	}
+	if = {
+		limit = { trait = feeble }
+		remove_trait = feeble
+	}
+	if = {
+		limit = { trait = burned }
+		remove_trait = burned
+	}
+	if = {
+		limit = { trait = widowed }
+		remove_trait = widowed
+	}
+	if = {
+		limit = { trait = crippled }
+		remove_trait = crippled
+	}
+	if = {
+		limit = { trait = gluttonous }
+		remove_trait = gluttonous
+	}
+}
+
+scmr_heal_total = {
+	remove_disease_flags_effect = yes
+	remove_disease_trait_effect = yes
+	remove_treatment_modifiers_effect = yes
+	end_inaccessibility_effect = yes
+	remove_symptoms_effect = yes
+	clear_disease_level_effect = yes
+	scmr_severely_injured = yes
+	scmr_remove_negative = yes
+	if = {
+		limit = { trait = lovers_pox }
+		remove_trait = lovers_pox
+	}
+	if = {
+		limit = { trait = sickly }
+		remove_trait = sickly
+	}
+}
+
+scmr_pre_marry = {
+	if = {
+		limit = {
+			OR = {
+				is_married = yes
+				is_married_matrilineally = yes
+			}
+			has_polygamy = no
+		}
+		remove_spouse = spouse
+		if = {
+			limit = {
+				is_ruler = yes
+			}
+			any_child = {
+				limit = {
+					is_ruler = no
+					employer = { NOT = { always = yes } }
+					host = { NOT = { always = yes } }
+				}
+				end_inaccessibility_effect = yes
+				move_character = PREV
+				any_child = {
+					limit = {
+						is_ruler = no
+						employer = { NOT = { always = yes } }
+						host = { NOT = { always = yes } }
+					}
+					end_inaccessibility_effect = yes
+					move_character = PREVPREV
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_child = {
+					father = {
+						is_ruler = yes
+					}
+				}
+			}
+			any_child = {
+				limit = {
+					is_ruler = no
+					employer = { NOT = { always = yes } }
+					host = { NOT = { always = yes } }
+				}
+				father = {
+					reverse_banish = PREV
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_close_relative = {
+					is_ruler = yes
+				}
+			}
+			random_close_relative = {
+				limit = {
+					is_ruler = yes
+				}
+				reverse_banish = PREV
+			}
+			any_child = {
+				limit = {
+					is_ruler = no
+					employer = { NOT = { always = yes } }
+					host = { NOT = { always = yes } }
+				}
+				random_close_relative = {
+					limit = {
+						is_ruler = yes
+					}
+					reverse_banish = PREV
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			is_betrothed = yes
+		}
+		betrothed = {
+			break_betrothal = PREV
+		}
+	}
+}
+scmr_adopt_child = {
+	any_child_even_if_dead = {
+		limit = { is_child_of = ROOT }
+		dynasty = ROOT
+		any_child_even_if_dead = {
+			limit = { is_child_of = prev }
+			dynasty = ROOT
+			any_child_even_if_dead = {
+				limit = { is_child_of = prev }
+				dynasty = ROOT
+			}
+		}
+	}
+}
+scmr_spawn_10k = {
+	spawn_unit = {
+		province = PREV
+		home = PREV
+		owner = PREVPREV
+		attrition = 0
+		reinforces = yes
+		merge = yes
+		earmark = scmr_army
+		disband_on_peace = no
+		troops = {
+			knights = { 6000 6000 }
+			horse_archers = { 4000 4000 }
+		}
+	}
+}
+scmr_spawn_100k = {
+	spawn_unit = {
+		province = PREV
+		home = PREV
+		owner = PREVPREV
+		attrition = 0
+		reinforces = yes
+		merge = yes
+		earmark = scmr_army
+		disband_on_peace = no
+		troops = {
+			archers = { 25000 25000 }
+			light_infantry = { 60000 60000 }
+			heavy_infantry = { 15000 15000 }
+		}
+	}
+}
+scmr_spawn_fleet = {
+	spawn_fleet = {
+		province = closest
+		owner = THIS
+		disband_on_peace = no
+		earmark = scmr_army
+		troops = {
+			galleys = { 1000 1000 }
+		}
+	}
+}

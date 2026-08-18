@@ -1,0 +1,1212 @@
+decisions = {
+
+    ###############
+    ######AGOT#####
+	###############
+
+	AGOT_enabled = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            NOT = { has_character_flag = AGOT_enabled }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = AGOT_enabled
+		}
+
+
+	}
+
+	AGOT_disabled = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = AGOT_enabled
+		}
+
+
+	}
+
+	###############
+    ###AGOTTRAIT###
+	###############
+
+	show_AGOT_trait = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+		    has_character_flag = AGOT_enabled
+            NOT = { has_character_flag = show_AGOT_trait }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_AGOT_trait
+		}
+
+
+	}
+
+	hide_AGOT_trait = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = AGOT_enabled
+            has_character_flag = show_AGOT_trait
+			}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_AGOT_trait
+		}
+
+
+	}
+
+	add_master_warrior = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = master_warrior }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		remove_trait = poor_warrior
+		remove_trait = trained_warrior
+        remove_trait = skilled_warrior
+        add_trait = master_warrior
+		}
+
+
+	}
+
+	remove_master_warrior = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = master_warrior
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = master_warrior
+		}
+
+
+	}
+
+
+
+	add_fashionable = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = fashionable }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = fashionable
+		}
+
+
+	}
+
+	remove_fashionable = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = fashionable
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = fashionable
+		}
+
+
+	}
+
+	add_tall = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = tall }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = tall
+		}
+
+
+	}
+
+	remove_tall = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = tall
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = tall
+		}
+
+
+	}
+
+	add_authoritative = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = authoritative }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = authoritative
+		}
+
+
+	}
+
+	remove_authoritative = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = authoritative
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = authoritative
+		}
+
+
+	}
+
+	add_familyperson = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = familyperson }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = familyperson
+		}
+
+
+	}
+
+	remove_familyperson = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = familyperson
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = familyperson
+		}
+
+
+	}
+
+	add_dragon_dreams = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = dragon_dreams }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = dragon_dreams
+		}
+
+
+	}
+
+	remove_dragon_dreams = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = dragon_dreams
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = dragon_dreams
+		}
+
+
+	}
+
+	add_greensight = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = greensight }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = greensight
+		}
+
+
+	}
+
+	remove_greensight = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = greensight
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = greensight
+		}
+
+
+	}
+
+	add_dragon_egg = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = dragon_egg }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = dragon_egg
+		}
+
+
+	}
+
+	remove_dragon_egg = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = dragon_egg
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = dragon_egg
+		}
+
+
+	}
+
+	add_dragon_rider = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = dragon_rider }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = dragon_rider
+		}
+
+
+	}
+
+	remove_dragon_rider = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = dragon_rider
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = dragon_rider
+		}
+
+
+	}
+
+
+	add_valyrian_steel = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = valyrian_steel }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = valyrian_steel
+		}
+
+
+	}
+
+	remove_valyrian_steel = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = valyrian_steel
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = valyrian_steel
+		}
+
+
+	}
+
+	add_valyrian_armour = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = valyrian_armour }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = valyrian_armour
+		}
+
+
+	}
+
+	remove_valyrian_armour = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = valyrian_armour
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = valyrian_armour
+		}
+
+
+	}
+
+	add_favored_by_rhllor = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = favored_by_rhllor }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = favored_by_rhllor
+		}
+
+
+	}
+
+	remove_favored_by_rhllor = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = favored_by_rhllor
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = favored_by_rhllor
+		}
+
+
+	}
+
+	add_chosen_by_rhllor = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            NOT = { trait = chosen_by_rhllor }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = chosen_by_rhllor
+		}
+
+
+	}
+
+	remove_chosen_by_rhllor = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_trait
+            trait = chosen_by_rhllor
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = chosen_by_rhllor
+		}
+
+
+	}
+
+	###############
+    #Modifier Flag#
+	###############
+
+	show_AGOT_mf = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+		    has_character_flag = AGOT_enabled
+            NOT = { has_character_flag = show_AGOT_mf }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_AGOT_mf
+		}
+
+
+	}
+
+	hide_AGOT_mf = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = AGOT_enabled
+            has_character_flag = show_AGOT_mf
+			}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_AGOT_mf
+		}
+
+
+	}
+
+	agot_travelagain = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_mf
+		}
+
+		allow = {
+			has_character_modifier = went_on_foreign_tour
+		}
+
+		effect = {
+            remove_character_modifier = went_on_foreign_tour
+		}
+
+
+	}
+
+	#################
+    #animal Follower#
+	#################
+
+	show_AGOT_af = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+		    has_character_flag = AGOT_enabled
+            NOT = { has_character_flag = show_AGOT_af }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_AGOT_af
+		}
+
+
+	}
+
+	hide_AGOT_af = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = AGOT_enabled
+            has_character_flag = show_AGOT_af
+			}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_AGOT_af
+		}
+
+
+	}
+
+	add_af_crow = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = crow }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = crow
+		}
+
+
+	}
+
+	remove_af_crow = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = crow
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = crow
+		}
+
+
+	}
+
+	add_af_wolf = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = wolf }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = wolf
+		}
+
+
+	}
+
+	remove_af_wolf = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = wolf
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = wolf
+		}
+
+
+	}
+
+	add_af_whale = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = whale }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = whale
+		}
+
+
+	}
+
+	remove_af_whale = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = whale
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = whale
+		}
+
+
+	}
+
+	add_af_sea_lion = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = sea_lion }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = sea_lion
+		}
+
+
+	}
+
+	remove_af_sea_lion = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = sea_lion
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = sea_lion
+		}
+
+
+	}
+
+	add_af_eagle = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = eagle }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = eagle
+		}
+
+
+	}
+
+	remove_af_eagle = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = eagle
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = eagle
+		}
+
+
+	}
+
+	add_af_shadowcat = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = shadowcat }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = shadowcat
+		}
+
+
+	}
+
+	remove_af_shadowcat = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = shadowcat
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = shadowcat
+		}
+
+
+	}
+
+	add_af_boar = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = boar }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = boar
+		}
+
+
+	}
+
+	remove_af_boar = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = boar
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = boar
+		}
+
+
+	}
+
+	add_af_snowbear = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = snowbear }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = snowbear
+		}
+
+
+	}
+
+	remove_af_snowbear = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = snowbear
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = snowbear
+		}
+
+
+	}
+
+	add_af_direwolf = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = direwolf }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = direwolf
+		}
+
+
+	}
+
+	remove_af_direwolf = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = direwolf
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = direwolf
+		}
+
+
+	}
+
+	add_af_dog = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = dog }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = dog
+		}
+
+
+	}
+
+	remove_af_dog = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = dog
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = dog
+		}
+
+
+	}
+
+	add_af_brownbear = {
+		ai = no
+
+		potential = {
+             has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            NOT = { trait = brownbear }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            add_trait = brownbear
+		}
+
+
+	}
+
+	remove_af_brownbear = {
+		ai = no
+
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = AGOT_enabled
+			has_character_flag = show_AGOT_af
+            trait = brownbear
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            remove_trait = brownbear
+		}
+
+
+	}
+
+
+	}

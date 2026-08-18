@@ -1,0 +1,363 @@
+decisions = {
+	###########
+	###Right###
+	###########
+
+	laws_cheat_enabled = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            NOT = { has_character_flag = laws_cheat_enabled }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = laws_cheat_enabled
+		}
+
+
+
+	}
+
+	laws_cheat_disabled = {
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = laws_cheat_enabled
+		}
+
+
+	}
+
+	##################
+	###Demesne laws###
+	##################
+
+	show_demesne_laws = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            NOT = { has_character_flag = show_demesne_laws }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_demesne_laws
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	hide_demesne_laws = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            has_character_flag = show_demesne_laws
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_demesne_laws
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	#####################
+	###Succession laws###
+	#####################
+
+	show_succession_laws = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            NOT = { has_character_flag = show_succession_laws }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_succession_laws
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	hide_succession_laws = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            has_character_flag = show_succession_laws
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_succession_laws
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+
+	#####################
+	###Obligation laws###
+	#####################
+
+	show_obligation_feudal = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            NOT = { has_character_flag = show_obligation_feudal }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_obligation_feudal
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	hide_obligation_feudal = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            has_character_flag = show_obligation_feudal
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_obligation_feudal
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	show_obligation_religion = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            NOT = { has_character_flag = show_obligation_religion }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_obligation_religion
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	hide_obligation_religion = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            has_character_flag = show_obligation_religion
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_obligation_religion
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	show_obligation_city = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            NOT = { has_character_flag = show_obligation_city }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_obligation_city
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	hide_obligation_city = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            has_character_flag = show_obligation_city
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_obligation_city
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+
+
+	########################
+	###Council Power laws###
+	########################
+
+	show_council_power_laws = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            NOT = { has_character_flag = show_council_power_laws }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_council_power_laws
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+	hide_council_power_laws = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = laws_cheat_enabled
+            has_character_flag = show_council_power_laws
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_council_power_laws
+		}
+
+
+
+        ai_will_do = {
+            factor = 0
+        }
+
+	}
+
+}

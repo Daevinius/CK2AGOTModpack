@@ -1,0 +1,87 @@
+targeted_decisions = {
+
+	scmr_fix_genes = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    #has_character_flag = traits_enabled
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    #ai = yes
+			NOT = { trait = dragon }
+	        NAND = {
+		        trait = genius
+		        trait = strong
+		        trait = fair
+				trait = groomed
+				trait = robust
+				#trait = shrewd
+				trait = tall
+	        }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				remove_trait = sturdy
+				remove_trait = feeble
+				remove_trait = quick
+				remove_trait = weak
+				remove_trait = ugly
+				remove_trait = slow
+				remove_trait = dull
+				remove_trait = imbecile
+				remove_trait = inbred
+			}
+			add_trait = genius
+			add_trait = fair
+			add_trait = strong
+			add_trait = groomed
+			add_trait = robust
+			#add_trait = shrewd
+			add_trait = tall
+			scmr_set_immune_all = yes
+		}
+	}
+
+	scmr_fix_genes_dragon = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    #has_character_flag = traits_enabled
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    #ai = yes
+			trait = dragon
+	        NAND = {
+		        trait = strong_dragon
+		        trait = fair_dragon
+				trait = fertile_dragon
+	        }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				remove_trait = dragon_fake
+				remove_trait = sickly_dragon
+				remove_trait = ugly_dragon
+			}
+			add_trait = strong_dragon
+			add_trait = fair_dragon
+			add_trait = fertile_dragon
+		}
+
+	}
+
+}

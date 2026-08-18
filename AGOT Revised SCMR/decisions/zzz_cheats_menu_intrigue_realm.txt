@@ -1,0 +1,1294 @@
+decisions = {
+
+	realm_cheat_enable = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            NOT = { has_character_flag = realm_cheat_enable }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = realm_cheat_enable
+		}
+
+
+	}
+
+	realm_cheat_disable = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = realm_cheat_enable
+		}
+
+
+	}
+
+
+
+	####################
+	##Culture Religion##
+	####################
+
+	show_religion_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            NOT = { has_character_flag = show_religion_culture }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_religion_culture
+		}
+
+
+
+	}
+
+	hide_religion_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_religion_culture
+		}
+
+
+
+	}
+
+	world_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			    any_character = {
+				    culture = ROOT
+			    }
+			    any_province = {
+				    culture = ROOT
+			    }
+
+			}
+		}
+
+
+	}
+
+	world_religion = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			    any_character = {
+				    unsafe_religion = ROOT
+			    }
+			    any_province = {
+				    religion = ROOT
+			    }
+
+			}
+		}
+
+
+	}
+
+	world_ethnicity = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			    any_character = {
+				    set_graphical_culture = ROOT
+			    }
+			}
+		}
+
+
+	}
+
+	convert_demesne_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				   any_demesne_title = {
+				if = {
+					limit = {
+						tier = count
+					}
+					location = {
+						if = {
+							limit = {
+								NOT = {
+									culture = PREVPREV
+								}
+							}
+							culture = PREVPREV
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+	}
+
+	convert_demesne_religion = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				any_demesne_title = {
+					if = {
+						limit = {
+							tier = count
+						}
+						location = {
+							if = {
+								limit = {
+									NOT = {
+										religion = PREVPREV
+									}
+								}
+								religion = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	convert_realm_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				    any_realm_character = {
+					    culture = ROOT
+				    }
+				    any_realm_province = {
+					    culture = ROOT
+				    }
+				}
+			}
+
+
+
+	}
+
+	convert_realm_religion = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				    any_realm_character = {
+					    unsafe_religion = ROOT
+				    }
+				    any_realm_province = {
+					    religion = ROOT
+				    }
+				}
+			}
+
+
+	}
+
+	convert_realm_ethnicity = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+				    any_realm_character = {
+					    set_graphical_culture = ROOT
+				    }
+				}
+			}
+
+
+
+	}
+
+	convert_vassal_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+
+				    any_vassal = {
+						limit = {
+							NOT = {
+						culture = PREV
+					}
+				}
+				culture = PREV
+						}
+				}
+
+		}
+
+
+	}
+
+	convert_vassal_religion = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+			    any_vassal = {
+					limit = {
+						NOT = {
+							religion = PREV
+						}
+					}
+					unsafe_religion = PREV
+				}
+			}
+		}
+
+	}
+
+	convert_courtier_culture = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+
+				    any_courtier = {
+				limit = {
+					NOT = {
+						culture = PREV
+					}
+				}
+				culture = PREV
+			}
+				}
+
+		}
+
+
+	}
+
+	convert_courtier_religion = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_religion_culture
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+		    hidden_tooltip = {
+
+				    any_courtier = {
+				limit = {
+					NOT = {
+						religion = PREV
+					}
+				}
+				unsafe_religion = PREV
+			}
+				}
+			}
+
+
+
+	}
+
+
+
+	#####################
+	##Building Modifier##
+	#####################
+	show_building_modifier = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            NOT = { has_character_flag = show_building_modifier }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_building_modifier
+		}
+
+
+
+	}
+
+	hide_building_modifier = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_building_modifier
+		}
+
+
+
+	}
+
+	enable_quick_move = {
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+		        capital_holding = {
+					if = {
+						limit = {
+							holding_type = castle
+						}
+						add_building = ca_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = temple
+						}
+						add_building = tp_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = nomad
+						}
+						add_building = no_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = city
+						}
+						add_building = ct_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = tribal
+						}
+						add_building = tr_quick_move
+					}
+
+		        }
+		    }
+        }
+	}
+
+	disable_quick_move = {
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+		        capital_holding = {
+			        if = {
+						limit = {
+							holding_type = castle
+						}
+						remove_building = ca_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = temple
+						}
+						remove_building = tp_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = nomad
+						}
+						remove_building = no_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = city
+						}
+						remove_building = ct_quick_move
+					}
+					else_if = {
+						limit = {
+							holding_type = tribal
+						}
+						remove_building = tr_quick_move
+					}
+		        }
+		    }
+        }
+	}
+
+	build_demesne_hold = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_demesne_title = {
+					if = {
+						limit = {
+							holding_type = castle
+						}
+						scmr_build_castle = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = temple
+						}
+						scmr_build_temple = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = city
+						}
+						scmr_build_city = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = tribal
+						}
+						scmr_build_tb = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = nomad
+						}
+						scmr_build_nd = yes
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	dismantle_demesne_hold = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_demesne_title = {
+					if = {
+						limit = {
+							holding_type = castle
+						}
+						scmr_dismantle_castle = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = temple
+						}
+						scmr_dismantle_temple = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = city
+						}
+						scmr_dismantle_city = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = tribal
+						}
+						scmr_dismantle_tb = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = nomad
+						}
+						scmr_dismantle_nd = yes
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	build_realm_hold = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_lord = {
+					any_demesne_title = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							scmr_build_castle = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							scmr_build_temple = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							scmr_build_city = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							scmr_build_tb = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							scmr_build_nd = yes
+						}
+					}
+				}
+				any_demesne_title = {
+					if = {
+						limit = {
+							holding_type = castle
+						}
+						scmr_build_castle = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = temple
+						}
+						scmr_build_temple = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = city
+						}
+						scmr_build_city = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = tribal
+						}
+						scmr_build_tb = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = nomad
+						}
+						scmr_build_nd = yes
+					}
+				}
+			}
+		}
+
+
+	}
+
+	dismantle_realm_hold = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+            has_character_flag = realm_cheat_enable
+			has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_lord = {
+					any_demesne_title = {
+						if = {
+							limit = {
+								holding_type = castle
+							}
+							scmr_dismantle_castle = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = temple
+							}
+							scmr_dismantle_temple = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = city
+							}
+							scmr_dismantle_city = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = tribal
+							}
+							scmr_dismantle_tb = yes
+						}
+						else_if = {
+							limit = {
+								holding_type = nomad
+							}
+							scmr_dismantle_nd = yes
+						}
+					}
+				}
+				any_demesne_title = {
+					if = {
+						limit = {
+							holding_type = castle
+						}
+						scmr_dismantle_castle = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = temple
+						}
+						scmr_dismantle_temple = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = city
+						}
+						scmr_dismantle_city = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = tribal
+						}
+						scmr_dismantle_tb = yes
+					}
+					else_if = {
+						limit = {
+							holding_type = nomad
+						}
+						scmr_dismantle_nd = yes
+					}
+				}
+			}
+		}
+
+
+	}
+
+	build_demesne_hospital = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+
+            any_demesne_province = {
+				if = {
+					limit = {
+							has_hospital = no
+						}
+					build_holding = {
+						type = hospital
+						holder = root
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+	}
+
+	destroy_demesne_hospital = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_demesne_province = {
+					if = {
+						limit = {
+								has_hospital = yes
+						}
+						destroy_hospital = THIS
+					}
+				}
+			}
+		}
+
+
+
+
+	}
+
+	build_demesne_hospital_up = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_effect = {
+				any_demesne_province = {
+					if = {
+						limit = {
+								has_hospital = no
+							}
+						build_holding = {
+							type = hospital
+							holder = root
+						}
+					}
+					scmr_build_hp = yes
+				}
+			}
+		}
+	}
+
+
+
+	build_realm_hospital = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_province = {
+					if = {
+						limit = {
+								has_hospital = no
+						}
+						build_holding = {
+							type = hospital
+							holder = root
+						}
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	destroy_realm_hospital = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_province = {
+					if = {
+						limit = {
+								has_hospital = yes
+						}
+						destroy_hospital = THIS
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	build_realm_hospital_up = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_province = {
+					if = {
+						limit = {
+								has_hospital = no
+							}
+						build_holding = {
+							type = hospital
+							holder = ROOT
+						}
+					}
+					scmr_build_hp = yes
+				}
+			}
+		}
+
+
+
+	}
+
+
+
+	build_family_palace = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			scmr_family_palace = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				scmr_build_fp = yes
+			}
+		}
+
+
+
+	}
+
+	dismantle_family_palace = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			scmr_family_palace = no
+		}
+
+		effect = {
+			hidden_tooltip = {
+				scmr_dismantle_fp = yes
+			}
+		}
+
+
+
+	}
+
+
+
+	charge_demesne_soldier = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_demesne_title = {
+					limit = {
+						tier = baron
+					}
+					refill_holding_levy = yes
+				}
+			}
+		}
+
+
+
+	}
+
+	charge_realm_soldier = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_demesne_title = {
+					limit = {
+						tier = baron
+					}
+					refill_holding_levy = yes
+				}
+				any_realm_lord = {
+					any_demesne_title = {
+						limit = {
+							tier = baron
+						}
+						refill_holding_levy = yes
+					}
+				}
+			}
+		}
+
+
+
+	}
+
+	remove_demesne_modifier = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_demesne_title = {
+					limit = {
+						tier = baron
+					}
+					scmr_holding_modifier = yes
+				}
+				any_demesne_province = {
+					scmr_province_modifier = yes
+				}
+			}
+		}
+
+
+
+	}
+
+	remove_realm_modifier = {
+
+		ai = no
+		potential = {
+
+            has_character_flag = cheats_enabled
+			has_character_flag = realm_cheat_enable
+            has_character_flag = show_building_modifier
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_tooltip = {
+				any_realm_lord = {
+					any_demesne_title = {
+						limit = {
+							tier = baron
+						}
+						scmr_holding_modifier = yes
+					}
+				}
+				any_demesne_title = {
+					limit = {
+						tier = baron
+					}
+					scmr_holding_modifier = yes
+				}
+				any_realm_province = {
+					scmr_province_modifier = yes
+				}
+			}
+		}
+
+
+
+
+	}
+
+
+
+
+}

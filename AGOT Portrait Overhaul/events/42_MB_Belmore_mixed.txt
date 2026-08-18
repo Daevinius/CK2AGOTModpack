@@ -1,0 +1,3534 @@
+###By Specialist
+namespace = mixed_culture_mix
+
+character_event = {
+	id = mixed_culture_mix.42
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###Belmore_dyn/Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = andavosi
+				}
+				20 = {
+					set_graphical_culture = braavosi
+				}
+			}
+		}
+		###Belmore_dyn/andavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				40 = {
+					set_graphical_culture = andavosi
+				}
+			}
+		}
+		###Belmore_dyn/urban-braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###UrbanBraavosi Father
+							graphical_culture  = urbanbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###UrbanBraavosi Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = urban-braavosi
+				}
+				25 = {
+					set_graphical_culture = braavosi
+				}
+			}
+		}
+		###Belmore_dyn/lysene Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###lysene Father
+							graphical_culture  = lysenegfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###lysene Mother
+							graphical_culture  = lysenegfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = lysene
+				}
+				25 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/qohorik Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###qohorik Mother
+							graphical_culture  = freecitiesgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###qohorik Father
+							graphical_culture  = freecitiesgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = qohorik
+				}
+				15 = {
+					set_graphical_culture = norvosi
+				}
+				5 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/lorathi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###lorathi Mother
+							graphical_culture  = lorathigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###lorathi Father
+							graphical_culture  = lorathigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = lorathi
+				}
+				10 = {
+					set_graphical_culture = norvosi
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/volantene Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###volantene Father
+							graphical_culture  = volantenegfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###volantene Mother
+							graphical_culture  = volantenegfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = western_valyrian
+				}
+				10 = {
+					set_graphical_culture = volantene
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/norvosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###norvosi Father
+							graphical_culture  = norvosigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###norvosi Mother
+							graphical_culture  = norvosigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = axeman
+				}
+				15 = {
+					set_graphical_culture = norvosi
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/pentosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###pentosi Mother
+							graphical_culture  = pentosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###pentosi Father
+							graphical_culture  = pentosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = andalosi
+				}
+				10 = {
+					set_graphical_culture = pentosi
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/myrman Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###myrman Father
+							graphical_culture  = myrmangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###myrman Mother
+							graphical_culture  = myrmangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = myrman
+				}
+				20 = {
+					set_graphical_culture = qohorik
+				}
+				5 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/tyroshi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###tyroshi Father
+							graphical_culture  = tyroshigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###tyroshi Mother
+							graphical_culture  = tyroshigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = tyroshi
+				}
+				10 = {
+					set_graphical_culture = andalosi
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/Gogossosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Gogossosi Mother
+							graphical_culture  = gogossosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Gogossosi Father
+							graphical_culture  = gogossosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				15 = {
+					set_graphical_culture = gogossosi
+				}
+				10 = {
+					set_graphical_culture = andavosi
+				}
+				5 = {
+					set_graphical_culture = valeman
+				}
+				5 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/Salt Dornish Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+						###Salty Dornish Mother --- Also includes Rhoynar
+						graphical_culture = saltdornishgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Salty Dornish Father --- Also includes Rhoynar
+							graphical_culture = saltdornishgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = salt_dornish
+				}
+				20 = {
+					set_graphical_culture = stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/Sand Dornish Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Sandy Dornish Mother
+							graphical_culture  = sanddornishgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Sandy Dornish Father
+							graphical_culture  = sanddornishgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = sand_dornish
+				}
+				20 = {
+					set_graphical_culture = salt_dornish
+				}
+				5 = {
+					set_graphical_culture = stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/sarnorian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###sarnorian Mother
+							graphical_culture  = sarnorigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###sarnorian Father
+							graphical_culture  = sarnorigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				40 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				10 = {
+					set_graphical_culture = rhoynar
+				}
+			}
+		}
+		###Belmore_dyn/Qartheen Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = qartheengfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = qartheengfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				30 = {
+					set_graphical_culture = Qarth-Freecity
+				}
+				10 = {
+					set_graphical_culture = qartheen
+				}
+			}
+		}
+		###Belmore_dyn/Hyrkoon Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Hyrkoon Mother
+							graphical_culture  = bonemountainsgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Hyrkoon Father
+							graphical_culture  = bonemountainsgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				10 = {
+					set_graphical_culture = stone_dornish
+				}
+				30 = {
+					set_graphical_culture = samyrianan
+				}
+			}
+		}
+		###Belmore_dyn/Asshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Asshai Mother
+							graphical_culture  = asshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Asshai Father
+							graphical_culture  = asshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				40 = {
+					set_graphical_culture = asshai
+				}
+			}
+		}
+		###Belmore_dyn/Jogos Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Jogos Mother
+							graphical_culture  = jogosgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Jogos Father
+							graphical_culture  = jogosgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = jogos_nhai
+				}
+				20 = {
+					set_graphical_culture = samyrianan
+				}
+				30 = {
+					set_graphical_culture = YiTi-Andal
+				}
+			}
+		}
+		###Belmore_dyn/Summerosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+							###Summerosi Mother
+							graphical_culture  = siwesterosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Summerosi Father
+							graphical_culture  = siwesterosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				15 = {
+					set_graphical_culture = reachman
+				}
+				10 = {
+					set_graphical_culture = Summerosi
+				}
+			}
+		}
+		###Belmore_dyn/Crownlander Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Crowlander Father
+							graphical_culture  = crownlandergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				60 = {
+					set_graphical_culture = crownlander
+				}
+			}
+		}
+		###Belmore_dyn/crownlander Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###Crowlander Mother
+							graphical_culture  = crownlandergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = crownlander
+				}
+			}
+		}
+		###Belmore_dyn/reachman Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###reachman Mother
+							graphical_culture  = reachmangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = reachman
+				}
+			}
+		}
+		###Belmore_dyn/reachman Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Reachman Father
+							graphical_culture  = reachmangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = reachman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/ironborn Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###ironborn Mother
+							graphical_culture  = ironborngfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = ironborn
+				}
+			}
+		}
+		###Belmore_dyn/ironborn Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###ironborn Father
+							graphical_culture  = ironborngfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = ironborn
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/stormlander Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###stormlander Mother
+							graphical_culture  = stormlandergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = stormlander
+				}
+			}
+		}
+		###Belmore_dyn/stormlander Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###stormlander Father
+							graphical_culture  = stormlandergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				55 = {
+					set_graphical_culture = stormlander
+				}
+				45 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/sisterman Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###sisterman Mother
+							graphical_culture  = sistermangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = sisterman
+				}
+			}
+		}
+		###Belmore_dyn/sisterman Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###sisterman Father
+							graphical_culture  = sistermangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = sisterman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/riverlander Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###riverlander Mother
+							graphical_culture  = riverlandergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = riverlander
+				}
+			}
+		}
+		###Belmore_dyn/riverlander Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###riverlander Father
+							graphical_culture  = riverlandergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = riverlander
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/valeman Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###valeman Mother
+							graphical_culture  = valemangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				85 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = valeman
+				}
+			}
+		}
+		###Belmore_dyn/valeman Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###valeman Father
+							graphical_culture  = valemangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = valeman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/westerman Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###westerman Mother
+							graphical_culture  = westermangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = westerman
+				}
+			}
+		}
+		###Belmore_dyn/westerman Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###westerman Father
+							graphical_culture  = westermangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				60 = {
+					set_graphical_culture = westerman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/half_southron Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###half_southron Mother
+							graphical_culture  = halfsouthrongfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = half_southron
+				}
+			}
+		}
+		###Belmore_dyn/half_southron Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###half_southron Father
+							graphical_culture  = halfsouthrongfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = half_southron
+				}
+				15 = {
+					set_graphical_culture = crackclawmen
+				}
+				15 = {
+					set_graphical_culture = valeman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/stone_dornish Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###stone_dornish Mother
+							graphical_culture  = stonedornishgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/stone_dornish Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###stone_dornish Father
+							graphical_culture  = stonedornishgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = stone_dornish
+				}
+				10 = {
+					set_graphical_culture = reachman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/northman Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###northman Mother
+							graphical_culture  = northmangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = northman
+				}
+			}
+		}
+		###Belmore_dyn/northman Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###northman Father
+							graphical_culture  = northmangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = northman
+				}
+				30 = {
+					set_graphical_culture = half_southron
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/crackclawmen Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###crackclawmen Mother
+							graphical_culture  = crackclawmengfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = crackclawmen
+				}
+			}
+		}
+		###Belmore_dyn/crackclawmen Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###crackclawmen Father
+							graphical_culture  = crackclawmengfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				45 = {
+					set_graphical_culture = crackclawmen
+				}
+				15 = {
+					set_graphical_culture = valeman
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/wildling Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+
+							###wildling Mother
+							graphical_culture  = freefolkgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				10 = {
+					set_graphical_culture = crackclawmen
+				}
+				10 = {
+					set_graphical_culture = northman
+				}
+			}
+		}
+		###Belmore_dyn/wildling Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###wildling Father
+							graphical_culture  = freefolkgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = wildling
+				}
+				20 = {
+					set_graphical_culture = half_southron
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Greyjoy Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+						###Greyjoy Mother
+						graphical_culture = greyjoygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Greyjoy_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Greyjoy Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Greyjoy Father
+							graphical_culture = greyjoygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Greyjoy_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Hoare Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+						###Hoare Mother
+						graphical_culture = hoaregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Hoare_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Hoare Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Hoare Father
+							graphical_culture = hoaregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Hoare_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Tyrell Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+						mother_even_if_dead = {
+						###Tyrell Mother
+						graphical_culture = tyrellgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Tyrell_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Tyrell Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+						father_even_if_dead = {
+							###Tyrell Father
+							graphical_culture = tyrellgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Tyrell_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/BARATHEON FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Baratheon FATHER
+							graphical_culture  = baratheongfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				85 = {
+					set_graphical_culture = Baratheon_dyn
+				}
+				15 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Baratheon Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Baratheon Mother
+							graphical_culture  = baratheongfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				85 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = Baratheon_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Lannister FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Lannister_dyn FATHER
+							graphical_culture  = lannistergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Lannister_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Lannister Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Lannister_dyn Mother
+							graphical_culture  = lannistergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Lannister_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Martell_dyn FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Martell_dyn FATHER
+							graphical_culture  = martellgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Martell_dyn
+				}
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Martell_dyn Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Martell_dyn Mother
+							graphical_culture  = martellgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				30 = {
+					set_graphical_culture = Martell_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Reyne FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Reyne FATHER
+							graphical_culture  = reynegfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Reyne_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Reyne Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Reyne Mother
+							graphical_culture  = reynegfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Reyne_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Tully FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Tully FATHER
+							graphical_culture  = tullygfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Tully_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Tully Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Tully Mother
+							graphical_culture  = tullygfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Tully_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Arryn FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Arryn FATHER
+							graphical_culture  = arryngfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Arryn_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Arryn Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Arryn Mother
+							graphical_culture  = arryngfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Arryn_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Stark FATHER Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Stark FATHER
+							graphical_culture  = starkgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Stark_dyn
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/Stark Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###Stark Mother
+							graphical_culture  = starkgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				80 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Stark_dyn
+				}
+			}
+		}
+		###Belmore_dyn/summer-freecity Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###summer-freecity Father
+							graphical_culture  = sifreecitygfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###summer-freecity Mother
+							graphical_culture  = sifreecitygfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				10 = {
+					set_graphical_culture = summer-freecity
+				}
+				15 = {
+					set_graphical_culture = andalosi
+				}
+				10 = {
+					set_graphical_culture = braavosi
+				}
+			}
+		}
+		###Belmore_dyn/Summer-Westerosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Summer-Westerosi Father
+							graphical_culture  = summerwesterosigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Summer-Westerosi Mother
+							graphical_culture  = summerwesterosigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				30 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				20 = {
+					set_graphical_culture = reachman
+				}
+			}
+		}
+		###Belmore_dyn/summer-rhoynar Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###summer-rhoynar Father
+							graphical_culture  = summerrhoynargfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###summer-rhoynar Mother
+							graphical_culture  = summerrhoynargfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				10 = {
+					set_graphical_culture = summer-rhoynar
+				}
+				15 = {
+					set_graphical_culture = salt_dornish
+				}
+				15 = {
+					set_graphical_culture = stone_dornish
+				}
+				10 = {
+					set_graphical_culture = sand_dornish
+				}
+			}
+		}
+		###Belmore_dyn/summer_islander Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###summer_islander Father
+							graphical_culture  = summerislandgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###summer_islander Mother
+							graphical_culture  = summerislandgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+				20 = {
+					set_graphical_culture = Summerosi
+				}
+				70 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+			}
+		}
+		###Belmore_dyn/moluu-islander Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###moluu-islander Father
+							graphical_culture  = moluuislandergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###moluu-islander Mother
+							graphical_culture  = moluuislandergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = moluu-islander
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+				25 = {
+					set_graphical_culture = Summerosi
+				}
+				60 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+			}
+		}
+		###Belmore_dyn/exile-islander Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###exile-islander Father
+							graphical_culture  = exileislandersgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###exile-islander Mother
+							graphical_culture  = exileislandersgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = exile-islander
+				}
+				10 = {
+					set_graphical_culture = summer_islander
+				}
+				25 = {
+					set_graphical_culture = Summerosi
+				}
+				60 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+			}
+		}
+		###Belmore_dyn/naathi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###naathi Father
+							graphical_culture  = naathigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###naathi Mother
+							graphical_culture  = naathigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				35 = {
+					set_graphical_culture = naathi
+				}
+				15 = {
+					set_graphical_culture = Summerosi
+				}
+				35 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				15 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+			}
+		}
+		###Belmore_dyn/grey_waste Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###grey_waste Father
+							graphical_culture  = greywastegfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###grey_waste Mother
+							graphical_culture  = greywastegfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				10 = {
+					set_graphical_culture = grey_waste
+				}
+				40 = {
+					set_graphical_culture = carcosian
+				}
+			}
+		}
+		###Belmore_dyn/yi_ti Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###grey_waste Father
+							graphical_culture  = yitigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###grey_waste Mother
+							graphical_culture  = yitigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				10 = {
+					set_graphical_culture = yi_ti
+				}
+				40 = {
+					set_graphical_culture = carcosian
+				}
+			}
+		}
+		###Belmore_dyn/nghai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###nghai Father
+							graphical_culture  = nghaigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###nghai Mother
+							graphical_culture  = nghaigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = nghai
+				}
+				20 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+			}
+		}
+		###Belmore_dyn/islander Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###islander Father
+							graphical_culture  = islandergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###islander Mother
+							graphical_culture  = islandergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = islander
+				}
+				60 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/qartheen_lowborn Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###qartheen_lowborn Father
+							graphical_culture  = qartheenlowborngfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###qartheen_lowborn Mother
+							graphical_culture  = qartheenlowborngfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = qartheen_lowborn
+				}
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				15 = {
+					set_graphical_culture = Qarth-Freecity
+				}
+				10 = {
+					set_graphical_culture = qartheen
+				}
+			}
+		}
+		###Belmore_dyn/Summer-Lengi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Summer-Lengi Father
+							graphical_culture  = summerlengigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Summer-Lengi Mother
+							graphical_culture  = summerlengigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+				10 = {
+					set_graphical_culture = Summer-Lengi
+				}
+				50 = {
+					set_graphical_culture = Half-Lengi
+				}
+				25 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+			}
+		}
+		###Belmore_dyn/vahari Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###vahari Father
+							graphical_culture  = moraqigrasslandgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###vahari Mother
+							graphical_culture  = moraqigrasslandgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = vahari
+				}
+				25 = {
+					set_graphical_culture = farosi
+				}
+				25 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				25 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/farosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###farosi Father
+							graphical_culture  = moraqiqarthgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###farosi Mother
+							graphical_culture  = moraqiqarthgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				35 = {
+					set_graphical_culture = farosi
+				}
+				15 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				10 = {
+					set_graphical_culture = Qarth-Freecity
+				}
+			}
+		}
+		###Belmore_dyn/valyrian_ghiscari Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###valyrian_ghiscari Father
+							graphical_culture  = valyrianghiscarigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###valyrian_ghiscari Mother
+							graphical_culture  = valyrianghiscarigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = valyrian-ghiscari
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				10 = {
+					set_graphical_culture = valyrian_salt_dornish
+				}
+				20 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				10 = {
+					set_graphical_culture = andalosi
+				}
+			}
+		}
+		###Belmore_dyn/rovo-dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###rovo-dothraki Father
+							graphical_culture  = rovodothrakigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###rovo-dothraki Mother
+							graphical_culture  = rovodothrakigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				15 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+			}
+		}
+		###Belmore_dyn/dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = lhazareen
+				}
+				25 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/harro-dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###harro-dothraki Father
+							graphical_culture  = harrodothrakigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###harro-dothraki Mother
+							graphical_culture  = harrodothrakigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = harro-dothraki
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				10 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				15 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn/Albino Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Albino Father
+							graphical_culture  = albinovalyriangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Albino Mother
+							graphical_culture  = albinovalyriangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = Albino
+				}
+				25 = {
+					set_graphical_culture = eastern_valyrian
+				}
+				15 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				10 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+		###Belmore_dyn/yishai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###yishai Father
+							graphical_culture  = yishaigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###yishai Mother
+							graphical_culture  = yishaigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = yishai
+				}
+				25 = {
+					set_graphical_culture = asshai
+				}
+				20 = {
+					set_graphical_culture = YiTi-Andal
+				}
+			}
+		}
+		###Belmore_dyn/jar-yitish Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###jar-yitish Father
+							graphical_culture  = yitilengigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###jar-yitish Mother
+							graphical_culture  = yitilengigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = jar-yitish
+				}
+				65 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				20 = {
+					set_graphical_culture = carcosian
+				}
+			}
+		}
+		###Belmore_dyn/lengish Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###lengish Father
+							graphical_culture  = lengiyitigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###lengish Mother
+							graphical_culture  = lengiyitigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = lengish
+				}
+				25 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				25 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = Half-Lengi
+				}
+				10 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+			}
+		}
+		###Belmore_dyn/shadowshai Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###shadowshai Father
+							graphical_culture  = shadowshaigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowshai Mother
+							graphical_culture  = shadowshaigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = shadowshai
+				}
+				25 = {
+					set_graphical_culture = asshai
+				}
+				10 = {
+					set_graphical_culture = samyrianan
+				}
+			}
+		}
+		###Belmore_dyn/shadowlander Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###shadowlander Father
+							graphical_culture  = shadowlandergfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###shadowlander Mother
+							graphical_culture  = shadowlandergfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = shadowshai
+				}
+				20 = {
+					set_graphical_culture = shadowlander
+				}
+				10 = {
+					set_graphical_culture = Summerosi
+				}
+				10 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				10 = {
+					set_graphical_culture = asshai
+				}
+			}
+		}
+		###Belmore_dyn/ulthosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###ulthosi Father
+							graphical_culture  = ulthosgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###ulthosi Mother
+							graphical_culture  = ulthosgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				15 = {
+					set_graphical_culture = ulthosi
+				}
+				15 = {
+					set_graphical_culture = Summerosi
+				}
+				30 = {
+					set_graphical_culture = shadowshai
+				}
+				40 = {
+					set_graphical_culture = Summer-Westerosi
+				}
+			}
+		}
+		###Belmore_dyn/ghiscari Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###ghiscari Father
+							graphical_culture  = ghiscarigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###ghiscari Mother
+							graphical_culture  = ghiscarigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = meereenese
+				}
+			}
+		}
+		###Belmore_dyn/High-Ghiscari Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###High-Ghiscari Father
+							graphical_culture  = highghiscarigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###High-Ghiscari Mother
+							graphical_culture  = highghiscarigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = ghiscari
+				}
+				25 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				25 = {
+					set_graphical_culture = meereenese
+				}
+				25 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/lengi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###lengi Father
+							graphical_culture  = lengigfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###lengi Mother
+							graphical_culture  = lengigfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = lengi
+				}
+				60 = {
+					set_graphical_culture = Half-Lengi
+				}
+				10 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				10 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/lhazareen Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###lhazareen Father
+							graphical_culture  = lhazareengfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###lhazareen Mother
+							graphical_culture  = lhazareengfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = lhazareen
+				}
+				20 = {
+					set_graphical_culture = meereenese
+				}
+				25 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/carcosian Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###carcosian Father
+							graphical_culture  = carcosiangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###carcosian Mother
+							graphical_culture  = carcosiangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				30 = {
+					set_graphical_culture = carcosian
+				}
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn/mornish Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###mornish Father
+							graphical_culture  = mornishgfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###mornish Mother
+							graphical_culture  = mornishgfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = mornish
+				}
+				20 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+				40 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				15 = {
+					set_graphical_culture = samyrianan
+				}
+			}
+		}
+		###Belmore_dyn/asabhadi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###asabhadi Father
+							graphical_culture  = easterngfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###asabhadi Mother
+							graphical_culture  = easterngfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = asabhadi
+				}
+				15 = {
+					set_graphical_culture = samyrianan
+				}
+				15 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				20 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				30 = {
+					set_graphical_culture = Belmore_dyn
+				}
+			}
+		}
+		###Belmore_dyn Mother/high_valyrian Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###high_valyrian Father
+							graphical_culture  = valyriangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = high_valyrian
+				}
+				15 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				10 = {
+					set_graphical_culture = western_valyrian
+				}
+				5 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn Father/high_valyrian Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###high_valyrian Mother
+							graphical_culture  = valyriangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = high_valyrian
+				}
+				15 = {
+					set_graphical_culture = western_valyrian
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn Mother/western_valyrian Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###western_valyrian Father
+							graphical_culture  = westvalyriangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = western_valyrian
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				5 = {
+					set_graphical_culture = high_valyrian
+				}
+				25 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+			}
+		}
+		###Belmore_dyn Father/western_valyrian Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###western_valyrian Mother
+							graphical_culture  = westvalyriangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				55 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = western_valyrian
+				}
+				20 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				5 = {
+					set_graphical_culture = high_valyrian
+				}
+			}
+		}
+		###Belmore_dyn Mother/elyrian Father Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###elyrian Father
+							graphical_culture  = essosivalyriangfx
+						}
+						mother_even_if_dead = {
+							###Belmore_dyn Mother
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				49 = {
+					set_graphical_culture = elyrian
+				}
+				20 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				20 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				10 = {
+					set_graphical_culture = western_valyrian
+				}
+				1 = {
+					set_graphical_culture = Albino
+				}
+			}
+		}
+		###Belmore_dyn Father/elyrian Mother Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						mother_even_if_dead = {
+							###elyrian Mother
+							graphical_culture  = essosivalyriangfx
+						}
+						father_even_if_dead = {
+							###Belmore_dyn Father
+							graphical_culture  = belmoregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				55 = {
+					set_graphical_culture = Belmore_dyn
+				}
+				25 = {
+					set_graphical_culture = elyrian
+				}
+				15 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				5 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+	}
+}

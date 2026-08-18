@@ -1,0 +1,1176 @@
+title_decisions = {
+
+	##################
+	###Demesne laws###
+	##################
+
+	# Республиканские законы
+
+	make_republic_no = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_primary_holder_title = yes
+            higher_tier_than = COUNT
+			holder_scope = {
+				OR = {
+					is_merchant_republic = yes
+					government = alliance_government
+				}
+			}
+            NOT = { has_law = republic_law_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = republic_law_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_republic_king = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_primary_holder_title = yes
+            higher_tier_than = COUNT
+			holder_scope = {
+				OR = {
+					is_merchant_republic = yes
+					government = alliance_government
+				}
+			}
+            NOT = { has_law = republic_law_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = republic_law_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_republic_triarch = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_primary_holder_title = yes
+            higher_tier_than = COUNT
+			holder_scope = {
+				government = triarch_merchant_republic_government
+			}
+            NOT = { has_law = republic_triarch_for_life }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = republic_triarch_for_life
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	# Право первой ночи
+
+	make_first_night_no = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            higher_tier_than = DUKE
+			OR = {
+				tier = EMPEROR
+				NOT = { check_variable = { which = "de_facto_empire" value = 1 } }
+			}
+			holder_scope = {
+				NOT = { trait = wildling }
+				OR = {
+					religion = the_seven
+					religion = old_gods
+					culture_group = andal
+					culture = ironborn
+					culture_group = dornish
+					culture_group = first_men
+					culture = skagosi
+					capital_scope = { region = world_westeros }
+					culture_group = valyrian
+				}
+			}
+            NOT = { has_law = first_night_0 }
+
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = first_night_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_first_night_allow = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            higher_tier_than = DUKE
+			OR = {
+				tier = EMPEROR
+				NOT = { check_variable = { which = "de_facto_empire" value = 1 } }
+			}
+			holder_scope = {
+				NOT = { trait = wildling }
+				OR = {
+					religion = the_seven
+					religion = old_gods
+					culture_group = andal
+					culture = ironborn
+					culture_group = dornish
+					culture_group = first_men
+					culture = skagosi
+					capital_scope = { region = world_westeros }
+					culture_group = valyrian
+				}
+			}
+            NOT = { has_law = first_night_1 }
+
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = first_night_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+
+	# Контроль наследования владений
+
+	make_inherit_free = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = out_of_realm_inheritance_law_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = out_of_realm_inheritance_law_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_inherit_limit = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = out_of_realm_inheritance_law_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = out_of_realm_inheritance_law_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+
+
+	# Централизованная королевская власть
+
+	make_centralization_free = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = centralization_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = centralization_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_centralization_low = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = centralization_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = centralization_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_centralization_equal = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = centralization_2 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = centralization_2
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_centralization_high = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = centralization_3 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = centralization_3
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_centralization_control = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = centralization_4 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = centralization_4
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	# Законы о духовенстве
+
+	make_investiture_limit = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            NOT = { has_law = investiture_law_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = investiture_law_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_investiture_free = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            NOT = { has_law = investiture_law_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = investiture_law_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_investiture_equal = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            NOT = { has_law = investiture_law_2 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = investiture_law_2
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_investiture_top = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+            NOT = { has_law = investiture_law_3 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = investiture_law_3
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	# Законы о рабстве
+
+	make_slavery_free = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+
+            NOT = { has_law = slavery_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = slavery_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_slavery_low = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+
+            NOT = { has_law = slavery_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = slavery_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_slavery_equal = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+
+            NOT = { has_law = slavery_2 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = slavery_2
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_slavery_high = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_demesne_laws
+		}
+		potential = {
+            is_titular = no
+            temporary = no
+
+            NOT = { has_law = slavery_3 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = slavery_3
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	#####################
+	###Succession laws###
+	#####################
+
+    make_primogeniture = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_primogeniture }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = primogeniture
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_gavelkind = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_gavelkind }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = gavelkind
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+	make_elective_gavelkind = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_elective_gavelkind }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = {
+				base_type = elective_gavelkind
+				voting_rules = elective_gavelkind
+			}
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+	make_eldership = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_eldership }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = {
+				base_type = tanistry
+				voting_rules = eldership_rules
+			}
+			elective_voting_rules = eldership_rules
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_seniority = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_seniority }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = seniority
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_ultimogeniture = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_ultimogeniture }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = ultimogeniture
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_tanistry = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_tanistry }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = {
+				base_type = tanistry
+				voting_rules = tanistry
+			}
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_elective = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_feudal_elective }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = {
+				base_type = feudal_elective
+				voting_rules = feudal_elective
+			}
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+	make_elective_noble = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = noble_oligarchy_elective }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = {
+				base_type = feudal_elective
+				voting_rules = noble_oligarchy_elective
+			}
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+	make_turkish_succession = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = succ_turkish_succession }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			succession = turkish_succession
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_agnatic = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = agnatic_succession }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			gender_succ = agnatic
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_cognatic = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = cognatic_succession }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			gender_succ = cognatic
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_true_cognatic = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = true_cognatic_succession }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			gender_succ = true_cognatic
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_enatic = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = enatic_succession }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			gender_succ = enatic
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+    make_enatic_cognatic = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_succession_laws
+		}
+		potential = {
+            NOT = { has_law = enatic_cognatic_succession }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			gender_succ = enatic_cognatic
+			holder_scope = {
+				recalc_succession = yes
+			}
+		}
+
+    }
+
+	########################
+	###Council Power laws###
+	########################
+
+	make_law_voting_limit = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = law_voting_power_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = law_voting_power_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_law_voting_allow = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = law_voting_power_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = law_voting_power_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_diplomacy_voting_limit = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = diplomacy_voting_power_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = diplomacy_voting_power_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_diplomacy_voting_allow = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = diplomacy_voting_power_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = diplomacy_voting_power_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_titles_voting_limit = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = titles_voting_power_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = titles_voting_power_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_titles_voting_allow = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = titles_voting_power_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = titles_voting_power_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_justice_voting_limit = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = justice_voting_power_0 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = justice_voting_power_0
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	make_justice_voting_allow = {
+		filter = owned
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_council_power_laws
+		}
+		potential = {
+            higher_tier_than = BARON
+			holder_scope = {
+				is_tribal = no
+				is_nomadic = no
+			}
+            NOT = { has_law = justice_voting_power_1 }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_law = justice_voting_power_1
+		}
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+
+
+}

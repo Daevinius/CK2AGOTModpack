@@ -1,0 +1,1560 @@
+###By Specialist
+namespace =  mixed_culture_mix
+
+character_event = {
+	id = mixed_culture_mix.24
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###Dothraki/Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				40 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				40 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				10 = {
+					set_graphical_culture = braavosi
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/andavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				35 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				35 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = braavosi
+				}
+				10 = {
+					set_graphical_culture = tyroshi
+				}
+			}
+		}
+		###Dothraki/urban-braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###UrbanBraavosi Father
+							graphical_culture  = urbanbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###UrbanBraavosi Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				30 = {
+					set_graphical_culture = urban-braavosi
+				}
+				20 = {
+					set_graphical_culture = myrman
+				}
+				20 = {
+					set_graphical_culture = urban-braavosi
+				}
+			}
+		}
+		###Dothraki/lysene Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###lysene Father
+							graphical_culture  = lysenegfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###lysene Mother
+							graphical_culture  = lysenegfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = valyrian_dothraki
+				}
+				15 = {
+					set_graphical_culture = harro-dothraki
+				}
+				15 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				10 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				10 = {
+					set_graphical_culture = tyroshi
+				}
+			}
+		}
+		###Dothraki/Freecities Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Freecities Father
+							graphical_culture  = freecitiesgfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Freecities Mother
+							graphical_culture  = freecitiesgfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				30 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				20 = {
+					set_graphical_culture = harro-dothraki
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = myrman
+				}
+			}
+		}
+		###Dothraki/Norvosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Norvosi Father
+							graphical_culture  = norvosigfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Norvosi Mother
+							graphical_culture  = norvosigfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				30 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				20 = {
+					set_graphical_culture = harro-dothraki
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = tyroshi
+				}
+			}
+		}
+		###Dothraki/Myrman Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Myrman Father
+							graphical_culture  = myrmangfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Myrman Mother
+							graphical_culture  = myrmangfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				30 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				20 = {
+					set_graphical_culture = urban-braavosi
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = myrman
+				}
+			}
+		}
+		###Dothraki/pentosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###pentosi Father
+							graphical_culture  = pentosigfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###pentosi Mother
+							graphical_culture  = pentosigfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				30 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				30 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				20 = {
+					set_graphical_culture = harro-dothraki
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = tyroshi
+				}
+			}
+		}
+		###Dothraki/lorathi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###lorathi Father
+							graphical_culture  = lorathigfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###lorathi Mother
+							graphical_culture  = lorathigfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				25 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				30 = {
+					set_graphical_culture = harro-dothraki
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = tyroshi
+				}
+			}
+		}
+		###Salt Dornish/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+						###Salty Dornish Mother
+						graphical_culture = saltdornishgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Salty Dornish Father
+							graphical_culture = saltdornishgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = lhazareen
+				}
+				20 = {
+					set_graphical_culture = dothraki
+				}
+				15 = {
+					set_graphical_culture = sand_dornish
+				}
+				15 = {
+					set_graphical_culture = rhoynar
+				}
+			}
+		}
+		###Sand Dornish/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Sandy Dornish Mother
+							graphical_culture  = sanddornishgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Sandy Dornish Father
+							graphical_culture  = sanddornishgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = lhazareen
+				}
+				25 = {
+					set_graphical_culture = sand_dornish
+				}
+				25 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Stone Dornish/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Stoney Dornish Mother
+							graphical_culture  = stonedornishgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Stoney Dornish Father
+							graphical_culture  = stonedornishgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				20 = {
+					set_graphical_culture = lhazareen
+				}
+				20 = {
+					set_graphical_culture = dothraki
+				}
+				20 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				20 = {
+					set_graphical_culture = sand_dornish
+				}
+				20 = {
+					set_graphical_culture = salt_dornish
+				}
+			}
+		}
+		###Sarnori/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Sarnori Mother
+							graphical_culture  = sarnorigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Sarnori Father
+							graphical_culture  = sarnorigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = lhazareen
+				}
+				25 = {
+					set_graphical_culture = sarnorian
+				}
+				25 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Qartheen/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = qartheengfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = qartheengfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Moraqi-Grassland
+				}
+				20 = {
+					set_graphical_culture = lhazareen
+				}
+				20 = {
+					set_graphical_culture = dothraki
+				}
+				5 = {
+					set_graphical_culture = rovo-dothraki
+				}
+				5 = {
+					set_graphical_culture = qartheen
+				}
+			}
+		}
+		###Ghiscari/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Ghiscari Mother
+							graphical_culture  = ghiscarigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Ghiscari Father
+							graphical_culture  = ghiscarigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = lhazareen
+				}
+				25 = {
+					set_graphical_culture = ghiscari
+				}
+				15 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = qartheen_lowborn
+				}
+			}
+		}
+		###Moraqi/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Moraqi Mother
+							graphical_culture  = farosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Moraqi Father
+							graphical_culture  = farosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = dothraki
+				}
+				25 = {
+					set_graphical_culture = farosi
+				}
+				50 = {
+					set_graphical_culture = Moraqi-Grassland
+				}
+			}
+		}
+		###Lengi/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+						###Lengi Mother
+						graphical_culture = lengigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Lengi Father
+							graphical_culture = lengigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = dothraki
+				}
+				25 = {
+					set_graphical_culture = sarnorian
+				}
+				25 = {
+					set_graphical_culture = Half-Lengi
+				}
+				25 = {
+					set_graphical_culture = lengi
+				}
+			}
+		}
+		###Yi Tish/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+						###Yi Tish Mother
+						graphical_culture = yitigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Yi Tish Father
+							graphical_culture = yitigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-YiTish
+				}
+				30 = {
+					set_graphical_culture = YiTish-Jogos
+				}
+			}
+		}
+		###Hyrkoon/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Hyrkoon Mother
+							graphical_culture  = bonemountainsgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Hyrkoon Father
+							graphical_culture  = bonemountainsgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = asabhadi
+				}
+				25 = {
+					set_graphical_culture = dothraki
+				}
+				25 = {
+					set_graphical_culture = sarnorian
+				}
+				25 = {
+					set_graphical_culture = lhazareen
+				}
+			}
+		}
+		###Asshai/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Asshai Mother
+							graphical_culture  = asshaigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Asshai Father
+							graphical_culture  = asshaigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = lhazareen
+				}
+				25 = {
+					set_graphical_culture = dothraki
+				}
+				25 = {
+					set_graphical_culture = asshai
+				}
+				25 = {
+					set_graphical_culture = yishai
+				}
+			}
+		}
+		###Jogos/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Jogos Mother
+							graphical_culture  = jogosgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Jogos Father
+							graphical_culture  = jogosgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				25 = {
+					set_graphical_culture = jogos_nhai
+				}
+				25 = {
+					set_graphical_culture = dothraki
+				}
+				50 = {
+					set_graphical_culture = Dothraki-YiTish
+				}
+			}
+		}
+		###Summer/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+							###Summer Mother
+							graphical_culture  = summerislandgfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Summer Father
+							graphical_culture  = summerislandgfx
+						}
+					}
+				}
+			}
+			random_list = {
+				50 = {
+					set_graphical_culture = Summer-Grasslands
+				}
+				20 = {
+					set_graphical_culture = Summerosi
+				}
+				20 = {
+					set_graphical_culture = summer-rhoynar
+				}
+			}
+		}
+		###Dothraki/Andal Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Crowlander Father
+							graphical_culture  = crownlandergfx
+						}
+						mother_even_if_dead = {
+							###DothrakiMother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Crowlander Mother
+							graphical_culture  = crownlandergfx
+						}
+						father_even_if_dead = {
+							###DothrakiFather
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+               				 	father_even_if_dead = {
+
+                    				graphical_culture = reachmangfx
+                				}
+             					mother_even_if_dead = {
+                  					  graphical_culture =
+dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							graphical_culture  = reachmangfx
+						}
+						father_even_if_dead = {
+
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Ironborn Father
+							graphical_culture  = ironborngfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Ironborn Mother
+							graphical_culture  = ironborngfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Riverlander Father
+							graphical_culture  = riverlandergfx
+						}
+						mother_even_if_dead = {
+							###DothrakiMother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Riverlander Mother
+							graphical_culture  = riverlandergfx
+						}
+						father_even_if_dead = {
+							###DothrakiFather
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Sisterman Father
+							graphical_culture  = sistermangfx
+						}
+						mother_even_if_dead = {
+							###DothrakiMother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Sisterman Mother
+							graphical_culture  = sistermangfx
+						}
+						father_even_if_dead = {
+							###DothrakiFather
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Stormlander Father
+							graphical_culture  = stormlandergfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Stormlander Mother
+							graphical_culture  = stormlandergfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Valeman Father
+							graphical_culture  = valemangfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Valeman Mother
+							graphical_culture  = valemangfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Westerman Father
+							graphical_culture  = westermangfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Weserman Mother
+							graphical_culture  = westermangfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Half Southron Father
+							graphical_culture  = halfsouthrongfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Half Southron Mother
+							graphical_culture  = halfsouthrongfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Stone Dornish Father
+							graphical_culture  = stonedornishgfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Stone Dornish Mother
+							graphical_culture  = stonedornishgfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				20 = {
+					set_graphical_culture = salt_dornish
+				}
+				10 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/First Man Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Northman Father
+							graphical_culture  = northmangfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Northman Mother
+							graphical_culture  = northmangfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Crackclawmen Father
+							graphical_culture  = crackclawmengfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Crackclawmen Mother
+							graphical_culture  = crackclawmengfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						father_even_if_dead = {
+							###Free Folk Father
+							graphical_culture  = freefolkgfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Free Folk Mother
+							graphical_culture  = freefolkgfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Northman
+				}
+				20 = {
+					set_graphical_culture = dothraki
+				}
+				10 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+			}
+		}
+		###Greyjoy/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+						###Greyjoy Mother
+						graphical_culture = greyjoygfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Greyjoy Father
+							graphical_culture = greyjoygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = Greyjoy_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Hoare/Dothraki Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+						mother_even_if_dead = {
+						###Hoare Mother
+						graphical_culture = hoaregfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+						father_even_if_dead = {
+							###Hoare Father
+							graphical_culture = hoaregfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = Hoare_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/Tyrell Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Tyrell Father
+							graphical_culture  = tyrellgfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Tyrell Mother
+							graphical_culture  = tyrellgfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = Tyrell_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/Baratheon Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Baratheon Father
+							graphical_culture  = baratheongfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Baratheon Mother
+							graphical_culture  = baratheongfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = Baratheon_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/Lannister Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Lannister Father
+							graphical_culture  = lannistergfx
+						}
+						mother_even_if_dead = {
+							###Qartheen Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Lannister Mother
+							graphical_culture  = lannistergfx
+						}
+						father_even_if_dead = {
+							###Qartheen Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = Lannister_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Summer/Reyne Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Reyne Father
+							graphical_culture  = reynegfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Reyne Mother
+							graphical_culture  = reynegfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Northman
+				}
+				25 = {
+					set_graphical_culture = Reyne_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/Tully Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Tully Father
+							graphical_culture  = tullygfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Tully Mother
+							graphical_culture  = tullygfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Westerosi
+				}
+				25 = {
+					set_graphical_culture = Tully_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/Arryn Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Arryn Father
+							graphical_culture  = arryngfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Arryn Mother
+							graphical_culture  = arryngfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = harro-dothraki
+				}
+				25 = {
+					set_graphical_culture = Arryn_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+		###Dothraki/Stark Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Stark Father
+							graphical_culture  = starkgfx
+						}
+						mother_even_if_dead = {
+							###Dothraki Mother
+							graphical_culture  = dothrakigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Stark Mother
+							graphical_culture  = starkgfx
+						}
+						father_even_if_dead = {
+							###Dothraki Father
+							graphical_culture  = dothrakigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = Dothraki-Northman
+				}
+				25 = {
+					set_graphical_culture = Stark_dyn
+				}
+				5 = {
+					set_graphical_culture = dothraki
+				}
+			}
+		}
+	}
+}

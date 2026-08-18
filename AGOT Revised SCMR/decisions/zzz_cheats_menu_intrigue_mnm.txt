@@ -1,0 +1,4788 @@
+decisions = {
+
+    show_mnm_jade = {
+
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+            NOT = { has_character_flag = show_mnm_jade }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_mnm_jade
+		}
+
+
+	}
+
+    hide_mnm_jade = {
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+            has_character_flag = show_mnm_jade
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_mnm_jade
+		}
+
+
+	}
+
+	##############
+	##M&M Status##
+	##############
+
+	show_interaction = {
+
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            NOT = { has_character_flag = show_interaction }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_interaction
+		}
+
+
+	}
+
+    hide_interaction = {
+
+
+		ai = no
+		potential = {
+           OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_interaction
+		}
+
+
+	}
+
+	scmr_leader = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			is_society_grandmaster = no
+			is_in_society = yes
+		}
+
+		effect = {
+            set_society_grandmaster = yes
+		}
+
+
+
+	}
+
+	scmr_leave = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			is_in_society = yes
+		}
+
+		effect = {
+            leave_society = yes
+		}
+
+
+
+	}
+
+	scmr_rank_up = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			society_can_rank_up = yes
+		}
+
+		effect = {
+            society_rank_up = 1
+		}
+
+
+
+	}
+
+	scmr_rank_down = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			is_in_society = yes
+		}
+
+		effect = {
+            society_rank_down = 1
+		}
+
+
+
+	}
+
+	scmr_society_currency = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			is_in_society = yes
+		}
+
+		effect = {
+            change_society_currency = 500
+		}
+
+
+
+	}
+
+	scmr_write_up = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			OR = {
+				has_character_flag = decent_book_potential
+				has_character_flag = good_book_potential
+				has_character_flag = great_book_potential
+			}
+		}
+
+		effect = {
+            set_higher_quality_of_book_flags_effect = yes
+		}
+
+
+
+	}
+
+	scmr_write_down = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			OR = {
+				has_character_flag = decent_book_potential
+				has_character_flag = good_book_potential
+				has_character_flag = great_book_potential
+			}
+		}
+
+		effect = {
+            set_lower_quality_of_book_flags_effect = yes
+		}
+
+
+
+	}
+
+	scmr_write_again = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			hidden_trigger = {
+				OR = {
+					has_character_flag = has_explored_all_topics
+					has_character_flag = wrote_about_dynasty
+					has_character_flag = wrote_about_battle
+					has_character_flag = wrote_about_administration
+					has_character_flag = wrote_about_religion
+					has_character_flag = wrote_about_relationships
+					has_character_flag = wrote_magnum_opus
+					has_character_modifier = uninspired
+					has_character_modifier = write_theory_paper_decision_cooldown_timer
+					has_character_flag = flag_declared_bloodline_invasion
+				}
+			}
+		}
+
+		effect = {
+            hidden_effect = {
+				clr_character_flag = has_explored_all_topics
+				clr_character_flag = wrote_about_dynasty
+				clr_character_flag = wrote_about_battle
+				clr_character_flag = wrote_about_administration
+				clr_character_flag = wrote_about_religion
+				clr_character_flag = wrote_about_relationships
+				clr_character_flag = wrote_magnum_opus
+				remove_character_modifier = uninspired
+				remove_character_modifier = write_theory_paper_decision_cooldown_timer
+				clr_character_flag = flag_declared_bloodline_invasion
+				if = {
+					limit = {
+						any_owned_bloodline = {
+							has_bloodline_flag = founder_invasions
+						}
+						NOT = { has_character_flag = is_child_of_destiny }
+					}
+					set_character_flag = is_child_of_destiny
+				}
+			}
+		}
+
+
+
+	}
+
+
+	mc_leader = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_society_grandmaster = no
+				is_in_society = yes
+			}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_society_grandmaster = yes
+			}
+		}
+
+
+
+	}
+
+	mc_leave = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_in_society = yes
+			}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				leave_society = yes
+			}
+		}
+
+
+
+	}
+
+	mc_rank_up = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_in_society = yes
+			}
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				society_rank_up = 1
+			}
+		}
+
+
+
+	}
+
+	mc_rank_down = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_in_society = yes
+			}
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				society_rank_down = 1
+			}
+		}
+
+
+
+	}
+
+	mc_society_currency = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_interaction
+		}
+
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_in_society = yes
+			}
+
+		}
+
+		effect = {
+            random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				change_society_currency = 500
+			}
+		}
+
+
+
+	}
+
+
+	#####################
+	## Forge Bloodline ##
+	#####################
+
+	show_forge_blood = {
+
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            NOT = { has_character_flag = show_forge_blood }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_forge_blood
+		}
+
+
+	}
+
+    hide_forge_blood = {
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_forge_blood
+		}
+	}
+
+	scmr_add_murder_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_child
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = cruel } }
+				add_trait = cruel
+			}
+			hidden_tooltip = {
+				if = {
+					limit = { this_has_super_cool_nickname_trigger = no }
+					random_list = {
+						10 = {
+							give_nickname = nick_the_deaths_child
+						}
+						10 = {
+							give_nickname = nick_the_snakeling
+						}
+						10 = {
+							give_nickname = nick_the_little_spider
+						}
+						10 = {
+							give_nickname = nick_the_eerie
+						}
+						10 = {
+							give_nickname = nick_the_little_nightmare
+						}
+					}
+				}
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_murder_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_murder_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_murder_child
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_murder_child
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_murder_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_macabre_banquet
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = cruel } }
+				add_trait = cruel
+			}
+			if = {
+				limit = { NOT = { trait = lunatic } }
+				random = {
+					chance = 5
+					add_trait = lunatic
+				}
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				#	culture_group = latin
+				}
+				ROOT = { give_nickname = nick_the_ferrante }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				#	NOT = { culture_group = latin }
+				}
+				ROOT = { give_nickname = nick_the_iron_heart }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_murder_bloodline_02
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_murder_bloodline_02
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_macabre_banquet
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_macabre_banquet
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_murder_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_deflection
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = paranoid } }
+				add_trait = paranoid
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = no
+				}
+				ROOT = { give_nickname = nick_the_pale_spider }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = yes
+				}
+				ROOT = { give_nickname = nick_the_grim_mistress }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_murder_bloodline_03
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_murder_bloodline_03
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_murder_deflection
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_murder_deflection
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_murder_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_stalk
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = cruel } }
+				add_trait = cruel
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = no
+				}
+				ROOT = { give_nickname = nick_the_ripper }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = yes
+				}
+				ROOT = { give_nickname = nick_the_black_widow }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_murder_bloodline_04
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_murder_bloodline_04
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_murder_stalk
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_murder_stalk
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_murder_5 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_burn
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = cannibal_trait } }
+				add_trait = cannibal_trait
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = no
+				}
+				ROOT = { give_nickname = nick_the_dragon }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = yes
+				}
+				ROOT = { give_nickname = nick_the_dragoness }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_murder_bloodline_05
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_murder_bloodline_05
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_5 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_murder_burn
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_murder_burn
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_war_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_heroes
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = brave } }
+				add_trait = brave
+			}
+			hidden_tooltip = {
+				if = {
+					limit = { this_has_super_cool_nickname_trigger = no }
+					random_list = {
+						10 = {
+							give_nickname = nick_the_young_eagle
+						}
+						10 = {
+							give_nickname = nick_the_green_warrior
+						}
+						10 = {
+							give_nickname = nick_the_warrior_child
+						}
+						10 = {
+							give_nickname = nick_the_young_conqueror
+						}
+					}
+				}
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_war_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_war_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_war_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_heroes
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_heroes
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_war_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_knights
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = brave } }
+				add_trait = brave
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = no
+				}
+				ROOT = { give_nickname = nick_the_white_knight }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = yes
+				}
+				ROOT = { give_nickname = nick_the_virago }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_war_bloodline_02
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_war_bloodline_02
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_war_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_knights
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_knights
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_war_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_reaver
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = wroth } }
+				add_trait = wroth
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = no
+				}
+				ROOT = { give_nickname = nick_the_bloodhound }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					is_female = yes
+				}
+				ROOT = { give_nickname = nick_the_fury }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_war_bloodline_03
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_war_bloodline_03
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_war_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_reaver
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_reaver
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_war_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_drill
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = diligent } }
+				add_trait = diligent
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_warrior_philosopher }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_war_bloodline_04
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_war_bloodline_04
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_war_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_drill
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_drill
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_peace_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_less_factions
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = kind } }
+				add_trait = kind
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_peace_maker }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_peace_bloodline_02
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_peace_bloodline_02
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_peace_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_less_factions
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_less_factions
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_peace_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_endearing
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = { NOT = { trait = charitable } }
+				add_trait = charitable
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_munificent }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_peace_bloodline_03
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_peace_bloodline_03
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_peace_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_endearing
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_endearing
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_construction_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_architect
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_architect }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_architect_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_architect_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_construction_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_architect
+				NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_architect
+					NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_construction_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_castellan
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_castellan }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_castellan_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_castellan_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_construction_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_castellan
+				NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_castellan
+					NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_construction_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_monumental
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					religion = the_seven
+				}
+				ROOT = { give_nickname = nick_the_carpenter }
+			}
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+					NOT = { religion = the_seven }
+				}
+				ROOT = { give_nickname = nick_the_grandiose }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = pure_monumental_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = pure_monumental_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+
+	scmr_remove_construction_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_monumental
+				NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_monumental
+					NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+
+	# MC Character #
+
+
+	mc_add_murder_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = {
+						any_owned_bloodline = {
+							has_bloodline_flag = bloodline_murder_child
+						}
+					}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = cruel } }
+					add_trait = cruel
+				}
+				hidden_tooltip = {
+					if = {
+						limit = { this_has_super_cool_nickname_trigger = no }
+						random_list = {
+							10 = {
+								give_nickname = nick_the_deaths_child
+							}
+							10 = {
+								give_nickname = nick_the_snakeling
+							}
+							10 = {
+								give_nickname = nick_the_little_spider
+							}
+							10 = {
+								give_nickname = nick_the_eerie
+							}
+							10 = {
+								give_nickname = nick_the_little_nightmare
+							}
+						}
+					}
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_murder_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_murder_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_child
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_murder_child
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_murder_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					NOT = {
+						has_bloodline_flag = bloodline_macabre_banquet
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = cruel } }
+					add_trait = cruel
+				}
+				if = {
+					limit = { NOT = { trait = lunatic } }
+					random = {
+						chance = 5
+						add_trait = lunatic
+					}
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						#culture_group = latin
+					}
+					give_nickname = nick_the_ferrante
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						#NOT = { culture_group = latin }
+					}
+					give_nickname = nick_the_iron_heart
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_murder_bloodline_02
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_murder_bloodline_02
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_macabre_banquet
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_macabre_banquet
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_murder_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_murder_deflection
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = paranoid } }
+					add_trait = paranoid
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = no
+					}
+					give_nickname = nick_the_pale_spider
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = yes
+					}
+					give_nickname = nick_the_grim_mistress
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_murder_bloodline_03
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_murder_bloodline_03
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_deflection
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_murder_deflection
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_murder_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_murder_stalk
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = cruel } }
+					add_trait = cruel
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = no
+					}
+					give_nickname = nick_the_ripper
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = yes
+					}
+					give_nickname = nick_the_black_widow
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_murder_bloodline_04
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_murder_bloodline_04
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_stalk
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_murder_stalk
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_murder_5 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_murder_burn
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = cannibal_trait } }
+					add_trait = cannibal_trait
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = no
+					}
+					give_nickname = nick_the_dragon
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = yes
+					}
+					give_nickname = nick_the_dragoness
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_murder_bloodline_05
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_murder_bloodline_05
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_5 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_murder_burn
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_murder_burn
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_war_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+					has_character_flag = mind_controlled
+					NOT = {
+						any_owned_bloodline = {
+							has_bloodline_flag = bloodline_heroes
+						}
+					}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = brave } }
+					add_trait = brave
+				}
+				hidden_tooltip = {
+					if = {
+						limit = { this_has_super_cool_nickname_trigger = no }
+						random_list = {
+							10 = {
+								give_nickname = nick_the_young_eagle
+							}
+							10 = {
+								give_nickname = nick_the_green_warrior
+							}
+							10 = {
+								give_nickname = nick_the_warrior_child
+							}
+							10 = {
+								give_nickname = nick_the_young_conqueror
+							}
+						}
+					}
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_war_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_war_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_war_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_heroes
+				}
+			}
+		}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_heroes
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_war_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_knights
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = brave } }
+					add_trait = brave
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = no
+					}
+					give_nickname = nick_the_white_knight
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = yes
+					}
+					give_nickname = nick_the_virago
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_war_bloodline_02
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_war_bloodline_02
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_war_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_knights
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_knights
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_war_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_reaver
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = wroth } }
+					add_trait = wroth
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = no
+					}
+					give_nickname = nick_the_bloodhound
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						is_female = yes
+					}
+					give_nickname = nick_the_fury
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_war_bloodline_03
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_war_bloodline_03
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_war_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_reaver
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_reaver
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_war_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_drill
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = diligent } }
+					add_trait = diligent
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_warrior_philosopher
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_war_bloodline_04
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_war_bloodline_04
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_war_4 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_drill
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_drill
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_peace_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_less_factions
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = kind } }
+					add_trait = kind
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_peace_maker
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_peace_bloodline_02
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_peace_bloodline_02
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_peace_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_less_factions
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_less_factions
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_peace_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_endearing
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = { NOT = { trait = charitable } }
+					add_trait = charitable
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_munificent
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_peace_bloodline_03
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_peace_bloodline_03
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_peace_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_endearing
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_endearing
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_construction_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_architect
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_architect
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_architect_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_architect_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_construction_1 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_architect
+					NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_architect
+						NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_construction_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_castellan
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_castellan
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_castellan_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_castellan_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_construction_2 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_castellan
+					NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_castellan
+						NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_construction_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_monumental
+					}
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						religion = the_seven
+					}
+					give_nickname = nick_the_carpenter
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+						NOT = { religion = the_seven }
+					}
+					give_nickname = nick_the_grandiose
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = pure_monumental_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = pure_monumental_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+
+	mc_remove_construction_3 = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_forge_blood
+			hidden_tooltip = {
+				any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_monumental
+					NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_monumental
+						NOT = { has_bloodline_flag = bloodline_peace_prosperity }
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+
+
+	#####################
+	## Event Bloodline ##
+	#####################
+
+	show_event_blood = {
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            NOT = { has_character_flag = show_event_blood }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_event_blood
+		}
+
+
+	}
+
+    hide_event_blood = {
+
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_event_blood
+		}
+
+
+	}
+
+	scmr_add_murder_war = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_faster_claims
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_griffin }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_murder_war_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_murder_war_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_war = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_faster_claims
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_faster_claims
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_murder_peace = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_dismantle_factions
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_compassionate }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_murder_peace_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_murder_peace_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_peace = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_dismantle_factions
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_dismantle_factions
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_murder_build = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_blood_building
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_bloodlime }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_murder_builder_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_murder_builder_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_murder_build = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_blood_building
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_blood_building
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_triple_build = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+		}
+
+		allow = {
+			NOR = {
+				is_nomadic = yes
+				is_tribal = yes
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_founder }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_builder_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_builder_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_add_peace_architect = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NAND = {
+				any_owned_bloodline = { has_bloodline_flag = bloodline_architect }
+				any_owned_bloodline = { has_bloodline_flag = bloodline_peace_prosperity }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_patron_of_arts }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_peace_architect_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_peace_architect_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_peace_architect = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_architect
+				has_bloodline_flag = bloodline_peace_prosperity
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_architect
+					has_bloodline_flag = bloodline_peace_prosperity
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_peace_castellan = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NAND = {
+				any_owned_bloodline = { has_bloodline_flag = bloodline_castellan }
+				any_owned_bloodline = { has_bloodline_flag = bloodline_peace_prosperity }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_bastion_of_capital }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_peace_castellan_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_peace_castellan_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_peace_castellan = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_castellan
+				has_bloodline_flag = bloodline_peace_prosperity
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_castellan
+					has_bloodline_flag = bloodline_peace_prosperity
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_peace_monumental = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NAND = {
+				any_owned_bloodline = { has_bloodline_flag = bloodline_monumental }
+				any_owned_bloodline = { has_bloodline_flag = bloodline_peace_prosperity }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_holy_mason }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = hybrid_peace_monumental_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = hybrid_peace_monumental_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_peace_monumental = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_monumental
+				has_bloodline_flag = bloodline_peace_prosperity
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_monumental
+					has_bloodline_flag = bloodline_peace_prosperity
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_family = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_dynastic_meddling
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_cool_nickname_trigger = no
+					this_has_super_cool_nickname_trigger = no
+					is_female = no
+				}
+				ROOT = { give_nickname = nick_the_grand_patriarch }
+			}
+			if = {
+				limit = {
+					this_has_cool_nickname_trigger = no
+					this_has_super_cool_nickname_trigger = no
+					is_female = yes
+				}
+				ROOT = { give_nickname = nick_the_grand_matriarch }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = event_family_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = event_family_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_family = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_dynastic_meddling
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_dynastic_meddling
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_technology = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NAND = {
+				any_owned_bloodline = { has_bloodline_flag = bloodline_wandering_artists }
+				any_owned_bloodline = { has_bloodline_flag = bloodline_more_philosophers }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_cool_nickname_trigger = no
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_philosopher }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = event_technology_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = event_technology_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_technology = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_wandering_artists
+				has_bloodline_flag = bloodline_more_philosophers
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_wandering_artists
+					has_bloodline_flag = bloodline_more_philosophers
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+	scmr_add_benevolent = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_cool_nickname_trigger = no
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_benevolent }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = event_benevolent_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = event_benevolent_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_add_ruthless = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			NOT = {
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_revocation_plot
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					this_has_cool_nickname_trigger = no
+					this_has_super_cool_nickname_trigger = no
+				}
+				ROOT = { give_nickname = nick_the_ruthless }
+			}
+			if = {
+				limit = { is_female = no }
+				create_bloodline = {
+					type = event_ruthless_bloodline_01
+				}
+			}
+			if = {
+				limit = { is_female = yes }
+				create_bloodline = {
+					type = event_ruthless_bloodline_01
+					inheritance = matrilineal
+				}
+			}
+		}
+	}
+
+	scmr_remove_ruthless = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_revocation_plot
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_revocation_plot
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+
+	# MC Character #
+
+	mc_add_murder_war = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					NOT = {
+						has_bloodline_flag = bloodline_faster_claims
+					}
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_griffin
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_murder_war_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_murder_war_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_war = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_faster_claims
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_faster_claims
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_murder_peace = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_dismantle_factions
+					}
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_compassionate
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_murder_peace_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_murder_peace_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_peace = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_dismantle_factions
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_dismantle_factions
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_murder_build = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_blood_building
+					}
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_bloodlime
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_murder_builder_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_murder_builder_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_murder_build = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_blood_building
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_blood_building
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_triple_build = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+		}
+
+		allow = {
+			NOR = {
+				is_nomadic = yes
+				is_tribal = yes
+			}
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_founder
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_builder_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_builder_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_add_peace_architect = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NAND = {
+					any_owned_bloodline = { has_bloodline_flag = bloodline_architect }
+					any_owned_bloodline = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_patron_of_arts
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_peace_architect_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_peace_architect_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_peace_architect = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_architect
+					has_bloodline_flag = bloodline_peace_prosperity
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_architect
+						has_bloodline_flag = bloodline_peace_prosperity
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_peace_castellan = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NAND = {
+					any_owned_bloodline = { has_bloodline_flag = bloodline_castellan }
+					any_owned_bloodline = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_bastion_of_capital
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_peace_castellan_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_peace_castellan_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_peace_castellan = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_castellan
+					has_bloodline_flag = bloodline_peace_prosperity
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_castellan
+						has_bloodline_flag = bloodline_peace_prosperity
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_peace_monumental = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NAND = {
+					any_owned_bloodline = { has_bloodline_flag = bloodline_monumental }
+					any_owned_bloodline = { has_bloodline_flag = bloodline_peace_prosperity }
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_holy_mason
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = hybrid_peace_monumental_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = hybrid_peace_monumental_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_peace_monumental = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_monumental
+					has_bloodline_flag = bloodline_peace_prosperity
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_monumental
+						has_bloodline_flag = bloodline_peace_prosperity
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_family = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_dynastic_meddling
+					}
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_cool_nickname_trigger = no
+						this_has_super_cool_nickname_trigger = no
+						is_female = no
+					}
+					give_nickname = nick_the_grand_patriarch
+				}
+				if = {
+					limit = {
+						this_has_cool_nickname_trigger = no
+						this_has_super_cool_nickname_trigger = no
+						is_female = yes
+					}
+					give_nickname = nick_the_grand_matriarch
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = event_family_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = event_family_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_family = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_dynastic_meddling
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_dynastic_meddling
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_technology = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NAND = {
+					any_owned_bloodline = { has_bloodline_flag = bloodline_wandering_artists }
+					any_owned_bloodline = { has_bloodline_flag = bloodline_more_philosophers }
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_cool_nickname_trigger = no
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_philosopher
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = event_technology_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = event_technology_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_technology = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_wandering_artists
+					has_bloodline_flag = bloodline_more_philosophers
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_wandering_artists
+						has_bloodline_flag = bloodline_more_philosophers
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	mc_add_benevolent = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_cool_nickname_trigger = no
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_benevolent
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = event_benevolent_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = event_benevolent_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_add_ruthless = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					any_owned_bloodline = {
+						has_bloodline_flag = bloodline_revocation_plot
+					}
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				if = {
+					limit = {
+						this_has_cool_nickname_trigger = no
+						this_has_super_cool_nickname_trigger = no
+					}
+					give_nickname = nick_the_ruthless
+				}
+				if = {
+					limit = { is_female = no }
+					create_bloodline = {
+						type = event_ruthless_bloodline_01
+					}
+				}
+				if = {
+					limit = { is_female = yes }
+					create_bloodline = {
+						type = event_ruthless_bloodline_01
+						inheritance = matrilineal
+					}
+				}
+			}
+		}
+	}
+
+	mc_remove_ruthless = {
+
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_event_blood
+			hidden_tooltip = {
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = bloodline_revocation_plot
+				}
+			}
+		}
+		}
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				random_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = bloodline_revocation_plot
+					}
+					destroy_bloodline = yes
+				}
+			}
+		}
+	}
+
+	#######################
+	## Special Bloodlines ##
+	#######################
+
+	show_special_blood = {
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            NOT = { has_character_flag = show_special_blood }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_special_blood
+		}
+
+
+	}
+
+    hide_special_blood = {
+
+		ai = no
+		potential = {
+            OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_special_blood
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_special_blood
+		}
+	}
+
+	scmr_clear_bloodline = {
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_special_blood
+			any_owned_bloodline = {
+				has_bloodline_flag = created_bloodline
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			any_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = created_bloodline
+				}
+				destroy_bloodline = yes
+			}
+			hidden_effect = {
+				clr_character_flag = is_child_of_destiny
+				clear_event_target = child_of_destiny
+				clr_global_flag = child_of_destiny_founded_bloodline_@ROOT
+				change_variable = { which = global_children_of_destiny_bloodlines_founded value = 0 }
+			}
+		}
+	}
+
+	mc_clear_bloodline = {
+		ai = no
+		potential = {
+            has_character_flag = mind_control_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_special_blood
+			any_character = {
+				has_character_flag = mind_controlled
+				any_owned_bloodline = {
+					has_bloodline_flag = created_bloodline
+				}
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				any_owned_bloodline = {
+					limit = {
+						has_bloodline_flag = created_bloodline
+					}
+					destroy_bloodline = yes
+				}
+				hidden_effect = {
+					clr_character_flag = is_child_of_destiny
+					clear_event_target = child_of_destiny
+					clr_global_flag = child_of_destiny_founded_bloodline_@ROOT
+					change_variable = { which = global_children_of_destiny_bloodlines_founded value = 0 }
+				}
+			}
+		}
+	}
+
+
+
+	scmr_add_destiny = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_special_blood
+			NAND = {
+				any_owned_bloodline = { has_bloodline_flag = founder_invasions }
+				any_owned_bloodline = { has_bloodline_flag = bloodline_ambition }
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_effect = {
+				set_character_flag = is_child_of_destiny
+				save_event_target_as = child_of_destiny
+				set_global_flag = child_of_destiny_founded_bloodline_@ROOT
+				change_variable = { which = global_children_of_destiny_bloodlines_founded value = 1 }
+			}
+			if = {
+				limit = {
+					is_female = yes
+				}
+				create_bloodline = {
+					type = child_of_destiny_female
+				}
+				new_bloodline = {
+					set_description = "bloodline_desc_child_of_destiny"
+				}
+			}
+			if = {
+				limit = {
+					is_female = no
+				}
+				create_bloodline = {
+					type = child_of_destiny_male
+				}
+				new_bloodline = {
+					set_description = "bloodline_desc_child_of_destiny"
+				}
+			}
+			if = {
+				limit = {
+					NOR = {
+						this_has_cool_nickname_trigger = yes
+						this_has_super_cool_nickname_trigger = yes
+					}
+				}
+				give_nickname = nick_the_great
+			}
+			prestige = 1000
+		}
+	}
+
+	scmr_remove_destiny = {
+
+		ai = no
+		potential = {
+            has_character_flag = cheats_enabled
+			has_character_flag = show_mnm_jade
+            has_character_flag = show_special_blood
+			has_global_flag = child_of_destiny_founded_bloodline_@ROOT
+			any_owned_bloodline = {
+				has_bloodline_flag = bloodline_ambition
+				has_bloodline_flag = founder_invasions
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_effect = {
+				clr_character_flag = is_child_of_destiny
+				clear_event_target = child_of_destiny
+				clr_global_flag = child_of_destiny_founded_bloodline_@ROOT
+				change_variable = { which = global_children_of_destiny_bloodlines_founded value = 0 }
+			}
+			random_owned_bloodline = {
+				limit = {
+					has_bloodline_flag = bloodline_ambition
+					has_bloodline_flag = founder_invasions
+				}
+				destroy_bloodline = yes
+			}
+		}
+	}
+}
+
+
+
+

@@ -1,0 +1,448 @@
+settlement_decisions = {
+
+	scmr_upgrade_building = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            scmr_notfull_building = yes
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			if = {
+				limit = {
+					holding_type = castle
+				}
+				scmr_build_castle = yes
+			}
+           	else_if = {
+				limit = {
+					holding_type = temple
+				}
+				scmr_build_temple = yes
+			}
+			else_if = {
+				limit = {
+					holding_type = city
+				}
+				scmr_build_city = yes
+			}
+			else_if = {
+				limit = {
+					holding_type = tribal
+				}
+				scmr_build_tb = yes
+			}
+			else_if = {
+				limit = {
+					holding_type = nomad
+				}
+				scmr_build_nd = yes
+			}
+		}
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_dismantle_building = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            scmr_notfull_building = no
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			if = {
+				limit = {
+					holding_type = castle
+				}
+				scmr_dismantle_castle = yes
+			}
+           	else_if = {
+				limit = {
+					holding_type = temple
+				}
+				scmr_dismantle_temple = yes
+			}
+			else_if = {
+				limit = {
+					holding_type = city
+				}
+				scmr_dismantle_city = yes
+			}
+			else_if = {
+				limit = {
+					holding_type = tribal
+				}
+				scmr_dismantle_tb = yes
+			}
+			else_if = {
+				limit = {
+					holding_type = nomad
+				}
+				scmr_dismantle_nd = yes
+			}
+		}
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    scmr_upgrade_hospital = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+			#always = yes
+			is_capital = yes
+			location = { scmr_hp_building = yes }
+		}
+        allow = {
+            always = yes
+        }
+        effect = {
+            location = {
+				if = {
+					limit = {
+						has_hospital = no
+					}
+					build_holding = {
+						type = hospital
+						holder = FROM
+					}
+				}
+				scmr_build_hp = yes
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+
+	scmr_upgrade_tradeport = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+           #always = yes
+		   is_capital = yes
+		   location = { scmr_trade_building = yes }
+		}
+        allow = {
+            always = yes
+        }
+        effect = {
+            location = {
+				if = {
+					limit = {
+						has_trade_post = no
+					}
+					build_holding = {
+						type = trade_post
+						holder = FROM
+					}
+				}
+				scmr_build_trade = yes
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    scmr_delete_holding = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            NOT = { is_capital = yes }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+            destroy_settlement = ROOT
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_add_holding_hospital = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            is_capital = yes
+			location = { has_hospital = no }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			location = {
+				build_holding = {
+					type = hospital
+					holder = from
+				}
+			}
+		}
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_add_holding_fort = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+			is_capital = yes
+			location = { has_fort = no }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			location = {
+				ROOT = { create_fort = PREV }
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_add_holding_trade_post = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            is_capital = yes
+			location = { has_trade_post = no }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			location = {
+				build_holding = {
+					type = trade_post
+					holder = FROM
+				}
+			}
+		}
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_destroy_holding_hospital = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+			is_capital = yes
+			location = { has_hospital = yes }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			location = {
+				destroy_hospital = THIS
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_destroy_holding_fort = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            is_capital = yes
+			location = { has_fort = yes }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			location = {
+				destroy_fort = THIS
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_destroy_holding_trade_post = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+            is_capital = yes
+			location = { has_trade_post = yes }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			location = {
+				destroy_tradepost = THIS
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+	scmr_make_capital = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+        }
+        potential = {
+			holder_scope = { num_of_baron_titles >= 2 }
+			location = { NOT = { is_capital = yes } }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+			if = {
+				limit = {
+					NOT = { is_capital = yes }
+				}
+				make_capital_holding = yes
+			}
+            owner = {
+				capital = ROOT
+			}
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    scmr_convert_castle = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+            #is_liege_of = ROOT
+        }
+        potential = {
+            NOR = {
+                is_capital = yes
+                holding_type = castle
+            }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+            convert_to = castle
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    scmr_convert_temple = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+            #is_liege_of = ROOT
+        }
+        potential = {
+            NOR = {
+                is_capital = yes
+                holding_type = temple
+            }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+            convert_to = temple
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    scmr_convert_city = {
+        filter = owned
+		ai = no
+
+        from_potential = {
+            has_character_flag = cheats_enabled
+            #is_liege_of = ROOT
+        }
+        potential = {
+            NOR = {
+                is_capital = yes
+                holding_type = city
+            }
+        }
+        allow = {
+            always = yes
+        }
+        effect = {
+            convert_to = city
+        }
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+}

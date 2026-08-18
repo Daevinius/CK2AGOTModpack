@@ -1,0 +1,3672 @@
+decisions = {
+    scmr_cheats_disable = {
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+		}
+
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				scmr_clr_all_flag = yes
+			}
+		}
+	}
+
+    scmr_cheats_enable = {
+		ai = no
+
+		potential = {
+			NOT = { has_character_flag = cheats_enabled }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			set_character_flag = cheats_enabled
+		}
+	}
+
+	scmr_clean_mod = {
+		ai = no
+
+		potential = {
+			NOT = { has_character_flag = cheats_enabled }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			hidden_effect = {
+				scmr_clean_mod_effect = yes
+			}
+		}
+	}
+
+}
+
+targeted_decisions = {
+
+	scmr_mind_control_disable = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+
+		potential = {
+			has_character_flag = mind_control_enabled
+		}
+
+		allow = {
+			always = yes
+		}
+		effect = {
+			 clr_character_flag = mind_control_enabled
+		}
+
+	}
+
+    scmr_mind_control_enable = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+			NOT = { has_character_flag = mind_control_enabled }
+		}
+
+		allow = {
+			always = yes
+		}
+		effect = {
+			 set_character_flag = mind_control_enabled
+		}
+
+	}
+
+	scmr_control_mind = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+		    has_character_flag = mind_control_enabled
+		}
+		potential = {
+            NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				clr_character_flag = mind_controlled
+			}
+			if = {
+				limit = {
+					ai = yes
+				}
+				set_character_flag = mind_controlled
+			}
+		}
+	}
+
+	#################
+	###Right Click###
+	#################
+
+
+	reverse_on_close = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            if = {
+				limit = {
+					has_character_flag = show_self_relation
+				}
+				clr_character_flag = show_self_relation
+			}
+			else = {
+				set_character_flag = show_self_relation
+			}
+			if = {
+				limit = {
+					has_character_flag = show_self_status
+				}
+				clr_character_flag = show_self_status
+			}
+			else = {
+				set_character_flag = show_self_status
+			}
+			if = {
+				limit = {
+					has_character_flag = show_politic_relation
+				}
+				clr_character_flag = show_politic_relation
+			}
+			else = {
+				set_character_flag = show_politic_relation
+			}
+		}
+
+
+
+	}
+
+
+	show_self_relation = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+            NOT = { has_character_flag = show_self_relation }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_self_relation
+		}
+
+
+
+	}
+
+	hide_self_relation = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_self_relation
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_self_relation
+		}
+
+
+
+	}
+
+	show_politic_relation = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+            NOT = { has_character_flag = show_politic_relation }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_politic_relation
+		}
+
+
+
+	}
+
+	hide_politic_relation = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_politic_relation
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_politic_relation
+		}
+
+	}
+
+	show_self_status = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+            NOT = { has_character_flag = show_self_status }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            set_character_flag = show_self_status
+		}
+
+
+
+	}
+
+	hide_self_status = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+		potential = {
+			OR = {
+				has_character_flag = cheats_enabled
+				has_character_flag = mind_control_enabled
+			}
+			has_character_flag = show_self_status
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+            clr_character_flag = show_self_status
+		}
+
+
+
+	}
+
+	#####################
+	##Self Relationship##
+	#####################
+
+	scmr_first_lady = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    ai = yes
+			OR = {
+				is_married = yes
+				is_married_matrilineally = yes
+			}
+			is_main_spouse = no
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			make_primary_spouse = yes
+		}
+
+	}
+
+	scmr_make_consort = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+            has_concubinage = yes
+		}
+		potential = {
+		    ai = yes
+		    NOR = {
+				same_sex = FROM
+				is_consort = FROM
+				#any_spouse = { character = from }
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				add_consort = ROOT
+			}
+		}
+	}
+
+	scmr_remove_consort = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    ai = yes
+			is_consort = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			consort = { remove_consort = ROOT }
+		}
+	}
+
+    scmr_befriend = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            NOT = { is_friend = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 add_friend = FROM
+		}
+
+	}
+
+	scmr_defriend = {
+		filter = friends
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            is_friend = FROM
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 remove_friend = FROM
+		}
+
+	}
+
+	scmr_make_rival = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            NOT = { is_rival = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 add_rival = FROM
+		}
+
+	}
+
+    scmr_remove_rival = {
+		filter = rivals
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            is_rival = FROM
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_rival = FROM
+		}
+
+	}
+
+    scmr_make_lover = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            NOT = { is_lover = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 add_lover = FROM
+		}
+
+	}
+
+	scmr_remove_lover = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            is_lover = FROM
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 remove_lover = FROM
+		}
+
+	}
+
+	scmr_remove_sreligion = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            has_secret_religion = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_secret_religion_trait_effect = yes
+		}
+
+	}
+
+	scmr_convert_religion = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            NOT = {	religion = FROM	}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			unsafe_religion = FROM
+		}
+
+	}
+
+	scmr_convert_sreligion = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+			has_secret_religion = yes
+		}
+		potential = {
+            ai = yes
+            NOT = {	religion = { target = FROM target_type = secret }	}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_secret_religion = FROM
+		}
+
+	}
+
+	scmr_convert_culture = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            NOT = { culture = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			culture = FROM
+		}
+
+	}
+
+	scmr_change_ethnicity = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    NOT = { graphical_culture = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_graphical_culture = FROM
+		}
+
+	}
+
+	scmr_convert_religion_1 = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			FROM = {
+				NOT = {
+					religion = ROOT
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				unsafe_religion = ROOT
+			}
+		}
+	}
+
+	scmr_convert_sreligion_1 = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			FROM = {
+				NOT = {
+					religion = { target = ROOT target_type = secret }
+				}
+			}
+			has_secret_religion = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				set_secret_religion = ROOT
+			}
+		}
+
+	}
+
+	scmr_convert_culture_1 = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			FROM = {
+				NOT = {
+					culture = ROOT
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			reverse_culture = FROM
+		}
+
+	}
+
+	scmr_change_ethnicity_1 = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    ai = yes
+			FROM = {
+				NOT = {
+					graphical_culture = ROOT
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				set_graphical_culture = ROOT
+			}
+		}
+
+	}
+
+
+	scmr_make_immortal = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            NOT = { trait = immortal }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_trait = immortal
+			if = {
+                limit = {
+                    is_female = no
+                    has_dlc = "Holy Fury"
+                }
+                create_bloodline = {
+					type = immortal_bloodline_01
+                }
+            }
+            if = {
+                limit = {
+                    is_female = yes
+                    has_dlc = "Holy Fury"
+                }
+                create_bloodline = {
+                    type = immortal_bloodline_01
+                    inheritance = matrilineal
+                }
+            }
+		}
+
+	}
+
+	scmr_remove_immortal = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            trait = immortal
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = immortal
+		}
+
+	}
+
+
+	scmr_increase_stats = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    always = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			change_diplomacy = 10
+			change_intrigue = 10
+			change_martial = 10
+			change_learning = 10
+			change_stewardship = 10
+		}
+
+	}
+
+	scmr_decrease_stats = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    always = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			change_diplomacy = -10
+			change_intrigue = -10
+			change_martial = -10
+			change_learning = -10
+			change_stewardship = -10
+		}
+
+	}
+
+	scmr_impregnate = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		#	age >= 11
+		}
+		potential = {
+		    ai = yes
+		    age = 13
+			is_female = yes
+			is_pregnant = no
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				ROOT = {
+					scmr_impregnate_effect = yes
+				}
+			}
+		}
+
+	}
+
+	scmr_cancel_pregnancy = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+			is_pregnant = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			cancel_pregnancy = yes
+		}
+
+	}
+
+	scmr_join_their_society = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			is_in_society = yes
+            NOT = {	same_society_as = FROM	}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				if = {
+					limit = {
+						is_in_society = yes
+					}
+					leave_society = yes
+				}
+			}
+			ROOT = {
+				society = {
+					FROM = {
+						join_society = PREV
+					}
+				}
+			}
+		}
+
+	}
+
+	scmr_join_my_society = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+			is_in_society = yes
+		}
+		potential = {
+            ai = yes
+            NOT = {	same_society_as = FROM	}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					is_in_society = yes
+				}
+				leave_society = yes
+			}
+			FROM = {
+				society = {
+					ROOT = {
+						join_society = PREV
+					}
+				}
+			}
+		}
+
+	}
+
+
+
+	scmr_remove_nickname = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    has_nickname = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+            remove_nickname = yes
+		}
+
+	}
+
+	scmr_set_immune_to_pruning = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    ai = yes
+			is_immune_to_pruning = no
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			set_immune_to_pruning = yes
+		}
+	}
+
+	scmr_disband_army = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            has_earmarked_regiments = scmr_army
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			disband_event_forces = scmr_army
+		}
+	}
+
+	scmr_grant_council = {
+		filter = realm_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+			hidden_trigger = {
+				NOR = {
+					has_character_flag = special_marshal
+					has_character_flag = special_treasurer
+					has_character_flag = special_chancellor
+					has_character_flag = special_spiritual
+					has_character_flag = special_spymaster
+				}
+				is_female = yes
+				is_adult = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				set_character_flag = special_marshal
+				set_character_flag = special_treasurer
+				set_character_flag = special_chancellor
+				set_character_flag = special_spiritual
+				set_character_flag = special_spymaster
+			}
+		}
+
+	}
+
+	scmr_retract_council = {
+		filter = realm_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            hidden_trigger = {
+					has_character_flag = special_marshal
+					has_character_flag = special_treasurer
+					has_character_flag = special_chancellor
+					has_character_flag = special_spiritual
+					has_character_flag = special_spymaster
+			}
+
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				clr_character_flag = special_marshal
+				clr_character_flag = special_treasurer
+				clr_character_flag = special_chancellor
+				clr_character_flag = special_spiritual
+				clr_character_flag = special_spymaster
+			}
+		}
+
+	}
+
+	#Edit from Ck2Plus ( prune_family )
+
+	prune_dynasty_tree = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		potential = {
+			has_character_flag = cheats_enabled
+            has_character_flag = show_self_relation
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+	        hidden_tooltip = {
+				any_dynasty_member_even_if_dead = {	#Any->All,Random->Random
+					limit = {
+						is_alive = no
+						has_children = no
+						is_ruler = no
+					}
+					set_father = 0
+					set_mother = 0
+					dynasty = none
+				}
+			}
+		}
+	}
+
+
+
+	scmr_get_disinherited = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			NOT = { trait = disinherited }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				add_trait = disinherited
+				recalc_succession = yes
+			}
+		}
+
+	}
+
+	scmr_remove_disinherited = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			trait = disinherited
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				remove_trait = disinherited
+				recalc_succession = yes
+			}
+		}
+
+	}
+
+	scmr_remove_malice = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			hidden_trigger = {
+				scmr_has_malice = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				remove_trait = dishonorable1
+				remove_trait = dishonorable2
+				remove_trait = dishonorable3
+				remove_trait = dishonorable4
+				remove_trait = dishonorable5
+				remove_trait = dishonorable6
+				remove_trait = dishonorable7
+				remove_trait = dishonorable8
+				remove_trait = dishonorable9
+				remove_trait = dishonorable10
+				remove_trait = dyn_dishonorable1
+				remove_trait = dyn_dishonorable2
+				remove_trait = dyn_dishonorable3
+				remove_trait = dyn_dishonorable4
+				remove_trait = dyn_dishonorable5
+				remove_trait = dyn_dishonorable6
+				remove_trait = dyn_dishonorable7
+				remove_trait = dyn_dishonorable8
+				remove_trait = dyn_dishonorable9
+				remove_trait = dyn_dishonorable10
+				remove_trait = tyrant1
+				remove_trait = tyrant2
+				remove_trait = tyrant3
+				remove_trait = tyrant4
+				remove_trait = tyrant5
+				remove_trait = tyrant6
+				remove_trait = tyrant7
+				remove_trait = tyrant8
+				remove_trait = tyrant9
+				remove_trait = tyrant10
+				remove_trait = tyrant11
+				remove_trait = tyrant12
+				remove_trait = tyrant13
+				remove_trait = tyrant14
+				remove_trait = tyrant15
+				remove_trait = tyrant16
+				remove_trait = tyrant17
+				remove_trait = tyrant18
+				remove_trait = tyrant19
+				remove_trait = tyrant20
+				remove_trait = tyrannical_stain
+				remove_trait = tyrannical_stain
+				remove_trait = kinslayer
+				remove_trait = familial_kinslayer
+				remove_trait = tribal_kinslayer
+				remove_trait = suspected_kinslayer
+				remove_trait = excommunicated
+			}
+		}
+	}
+
+	scmr_remove_black_brother = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			trait = nightswatch
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = nightswatch
+			recalc_succession = yes
+		}
+
+	}
+
+	scmr_remove_maester = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			trait = maester
+			trait = archmaester
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = maester
+			remove_trait = archmaester
+			recalc_succession = yes
+		}
+
+	}
+
+	scmr_remove_kingsguard = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			trait = kingsguard
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			remove_trait = kingsguard
+			recalc_succession = yes
+		}
+
+	}
+
+	scmr_remove_priest = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            #ai = yes
+            #is_ruler = yes
+			hidden_trigger = {
+				scmr_is_priest = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				remove_trait = septon
+				remove_trait = septa
+				remove_trait = silent_sister
+				remove_trait = red_priest
+				remove_trait = drowned
+				remove_trait = grace
+				remove_trait = shadowbinder
+				remove_trait = bearded_priest
+				remove_trait = love_priest
+				recalc_succession = yes
+			}
+		}
+
+	}
+
+	scmr_make_loyal = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_opinion_modifier = { who = FROM  modifier = opinion_cheat_loyal } }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			ROOT = {
+				opinion = {
+					modifier = opinion_cheat_loyal
+					who = FROM
+				}
+			}
+		}
+
+	}
+
+	scmr_kill_dynasty = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            NOT = { dynasty = FROM }
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+		    death = { death_reason = death_murder_unknown killer = FROM }
+			any_dynasty_member = {
+			    death = { death_reason = death_murder_unknown killer = FROM }
+			}
+		}
+
+	}
+
+
+
+	##########################
+	##Political Relationship##
+	##########################
+
+	scmr_pollinate = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+			is_married = yes
+			OR = {
+				AND = {
+					is_female = no
+					spouse = {
+						is_female = yes
+						is_pregnant = no
+					}
+				}
+				AND = {
+					is_female = yes
+					is_pregnant = no
+				}
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					is_female = no
+					spouse = {
+						is_female = yes
+						is_pregnant = no
+					}
+				}
+				spouse = { impregnate = PREV }
+			}
+			if = {
+				limit = {
+					is_female = yes
+					is_pregnant = no
+					spouse = {
+						is_female = no
+					}
+				}
+				spouse = {
+					ROOT = {
+						impregnate = PREV
+					}
+				}
+			}
+		}
+	}
+
+	scmr_imprison_them = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					prisoner = yes
+				}
+				prisoner = no
+			}
+			imprison = from
+		}
+
+	}
+
+	scmr_kill_them = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			death = { death_reason = death_murder_unknown killer = FROM }
+		}
+
+	}
+
+	scmr_add_alliance = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            NOT = { is_allied_with = from }
+			is_ruler = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			add_alliance = { who = from years = 10 }
+		}
+
+	}
+
+	scmr_break_alliance = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            is_allied_with = from
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			break_alliance = from
+		}
+
+	}
+
+	scmr_get_artifact = {
+		filter = all
+		third_party_filter = artifacts
+		third_party = ROOT
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			num_of_artifacts = 1
+		}
+		third_party_potential = {
+			FROMFROM = {
+				show_scope_change = no
+			}
+		}
+		allow = {
+			ROOT = {
+				num_of_artifacts = 1
+			}
+		}
+		effect = {
+			FROMFROM = {
+				set_artifact_flag = selected
+			}
+			any_artifact = {
+				if = {
+					limit = {
+						has_artifact_flag = selected
+					}
+					transfer_artifact = { from = ROOT to = FROM }
+					clr_artifact_flag = selected
+				}
+			}
+		}
+
+	}
+
+	scmr_force_marry = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+		    ai = yes
+		}
+		allow = {
+			NOT = { any_spouse = { character = from } }
+		}
+		effect = {
+			FROM = {
+				scmr_pre_marry = yes
+			}
+			scmr_pre_marry = yes
+			if = {
+				limit = {
+					is_female = no
+				}
+				add_spouse_matrilineal = FROM
+			}
+			else = {
+				add_spouse = FROM
+			}
+		}
+	}
+
+	scmr_divorce_them = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+		    ai = yes
+			OR = {
+				is_married = yes
+				is_married_matrilineally = yes
+				is_betrothed = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						is_married = yes
+						is_married_matrilineally = yes
+					}
+				}
+				remove_spouse = spouse
+				if = {
+					limit = {
+						is_ruler = yes
+					}
+					any_child = {
+						limit = {
+							is_ruler = no
+							employer = { NOT = { always = yes } }
+							host = { NOT = { always = yes } }
+						}
+						end_inaccessibility_effect = yes
+						move_character = PREV
+						any_child = {
+							limit = {
+								is_ruler = no
+								employer = { NOT = { always = yes } }
+								host = { NOT = { always = yes } }
+							}
+							end_inaccessibility_effect = yes
+							move_character = PREVPREV
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						any_child = {
+							father = {
+								is_ruler = yes
+							}
+						}
+					}
+					any_child = {
+						limit = {
+							is_ruler = no
+							employer = { NOT = { always = yes } }
+							host = { NOT = { always = yes } }
+						}
+						father = {
+							reverse_banish = PREV
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						any_close_relative = {
+							is_ruler = yes
+						}
+					}
+					random_close_relative = {
+						limit = {
+							is_ruler = yes
+						}
+						reverse_banish = PREV
+					}
+					any_child = {
+						limit = {
+							is_ruler = no
+							employer = { NOT = { always = yes } }
+							host = { NOT = { always = yes } }
+						}
+						random_close_relative = {
+							limit = {
+								is_ruler = yes
+							}
+							reverse_banish = PREV
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_betrothed = yes
+				}
+				betrothed = {
+					break_betrothal = ROOT
+				}
+			}
+		}
+	}
+
+
+	scmr_help_me_off = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+			is_primary_war_attacker = yes
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			FROM = {
+				war = yes
+				is_ruler = yes
+				ROOT = {
+					scmr_can_help = yes
+				}
+			}
+		}
+		effect = {
+			join_attacker_wars = FROM
+		}
+
+	}
+
+	scmr_help_me_def = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+			is_primary_war_defender = yes
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			FROM = {
+				war = yes
+				#is_ruler = yes
+				ROOT = {
+					scmr_can_help = yes
+				}
+			}
+		}
+		effect = {
+			join_defender_wars = FROM
+		}
+
+	}
+
+	scmr_help_them_off = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			is_primary_war_attacker = yes
+		}
+		allow = {
+			ROOT = {
+				war = yes
+				#is_ruler = yes
+				FROM = {
+					scmr_can_help = yes
+				}
+			}
+		}
+		effect = {
+			FROM = {
+				join_attacker_wars = ROOT
+			}
+		}
+
+	}
+
+	scmr_help_them_def = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			is_primary_war_defender = yes
+		}
+		allow = {
+			ROOT = {
+				war = yes
+				is_ruler = yes
+				FROM = {
+					scmr_can_help = yes
+				}
+			}
+		}
+		effect = {
+			FROM = {
+				join_defender_wars = ROOT
+			}
+		}
+
+	}
+
+	scmr_adopt_them = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+			NAND = {
+				is_child_of = FROM
+				dynasty = FROM
+			}
+			ai = yes
+		}
+		allow = {
+		    always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					FROM = {
+						NOT = {
+							is_female = yes
+						}
+					}
+				}
+				if = {
+					limit = {
+						real_father = { character = FROM }
+					}
+					father_even_if_dead = { ROOT = { set_real_father = prev } }
+					set_mother = 0
+				}
+				set_father = FROM
+				dynasty = FROM
+				hidden_tooltip = {
+					scmr_adopt_child = yes
+				}
+			}
+			if = {
+				limit = {
+					FROM = {
+						is_female = yes
+					}
+				}
+				set_mother = FROM
+				dynasty = FROM
+				hidden_tooltip = {
+					scmr_adopt_child = yes
+				}
+			}
+			recalc_succession = yes
+		}
+	}
+
+	scmr_disown_them = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            OR = {
+				mother_even_if_dead = { always = yes }
+				father_even_if_dead = { always = yes }
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			if = {
+				limit = {
+					NOR = {
+						mother_even_if_dead = { always = yes }
+						father_even_if_dead = { always = yes }
+					}
+				}
+				if = {
+					limit = {
+						is_father_real_father = yes
+					}
+					if = {
+						limit = {
+							father_even_if_dead = { ROOT = { NOT = { dynasty = PREV } } }
+						}
+						father_even_if_dead = { ROOT = { dynasty = PREV } }
+					}
+					else = {
+						father_even_if_dead = { ROOT = { set_real_father = PREV } }
+						set_father = 0
+						set_mother = 0
+					}
+				}
+				else = {
+					real_father_even_if_dead = {
+						ROOT = {
+							dynasty = PREV
+							set_father = PREV
+							set_mother = 0
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					mother_even_if_dead = { always = yes }
+					father_even_if_dead = { always = yes }
+				}
+				if = {
+					limit = {
+						father_even_if_dead = {
+							dynasty = ROOT
+						}
+						mother_even_if_dead = {
+							NOT = {
+								dynasty = ROOT
+							}
+						}
+					}
+					if = {
+						limit = {
+							is_father_real_father = yes
+						}
+						father_even_if_dead = { ROOT = { set_real_father = PREV } }
+					}
+					mother_even_if_dead = {
+					    ROOT = {
+		                    dynasty = PREV
+					    }
+				    }
+					set_father = 0
+				}
+				if = {
+					limit = {
+						mother_even_if_dead = {
+							dynasty = ROOT
+						}
+						father_even_if_dead = {
+							NOT = {
+								dynasty = ROOT
+							}
+						}
+					}
+					father_even_if_dead = {
+					    ROOT = {
+		                    dynasty = PREV
+					    }
+				    }
+				    set_mother = 0
+				}
+				if = {
+					limit = {
+						father_even_if_dead = {
+							dynasty = ROOT
+						}
+						mother_even_if_dead = {
+							dynasty = ROOT
+						}
+					}
+					if = {
+						limit = {
+							is_father_real_father = no
+						}
+						real_father_even_if_dead = {
+							ROOT = {
+								dynasty = PREV
+								set_father = PREV
+							}
+						}
+					}
+					else = {
+						set_father = 0
+						dynasty = father_bastard
+					}
+				}
+				if = {
+					limit = {
+						mother_even_if_dead = {
+							NOT = {
+								dynasty = ROOT
+							}
+						}
+						father_even_if_dead = {
+							NOT = {
+								dynasty = ROOT
+							}
+						}
+					}
+					if = {
+						limit = {
+							is_father_real_father = no
+						}
+						real_father_even_if_dead = {
+							ROOT = {
+								dynasty = PREV
+								set_father = PREV
+							}
+						}
+					}
+					else = {
+						set_father = 0
+					}
+				    set_mother = 0
+				}
+				hidden_effect = {
+					scmr_adopt_child = yes
+				}
+				recalc_succession = yes
+			}
+		}
+	}
+
+	scmr_move_them = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+		    ai = yes
+		    NOT = { employer = { character = FROM } }
+		    is_landed = no
+		    is_ruler = no
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			end_inaccessibility_effect = yes
+			move_character = FROM
+			if = {
+				limit = {
+					OR = {
+						is_married = no
+						AND = {
+							OR = {
+								is_married = yes
+								is_married_matrilineally = yes
+							}
+							spouse = {
+								is_landed = no
+								is_ruler = no
+							}
+						}
+					}
+				}
+				spouse = {
+					end_inaccessibility_effect = yes
+					move_character = FROM
+				}
+				any_child = {
+					if = {
+						limit = {
+							is_adult = no
+							is_ruler = no
+							is_landed = no
+						}
+						end_inaccessibility_effect = yes
+						move_character = FROM
+					}
+				}
+			}
+		}
+	}
+
+	scmr_back_plot = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+			has_plot = yes
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = {
+				back_plot = ROOT
+			}
+		}
+
+	}
+
+
+	scmr_get_favor = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+			NOT = { holds_favor_on = ROOT }
+		}
+		potential = {
+            ai = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			FROM = { add_favor = ROOT }
+		}
+
+	}
+
+	scmr_abdicate = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+            is_ruler = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+		    abdicate_to = FROM
+			any_artifact = {
+				transfer_artifact = { from = ROOT to = FROM }
+			}
+		}
+
+	}
+
+
+
+
+
+	scmr_vassalize = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+            is_ruler = yes
+            lower_real_tier_than = FROM
+            NOT = { vassal_of = FROM }
+
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			 set_defacto_liege = FROM
+		}
+
+	}
+
+	scmr_join_their_dynasty = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_politic_relation
+			NOT = { is_child_of = ROOT }
+		}
+
+		potential = {
+			#ROOT = { age_diff = { who = FROM years = 16 } }
+			is_older_than = FROM
+			ai = yes
+		}
+
+		allow = {
+		    always = yes
+		}
+
+		effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = {
+							is_female = yes
+						}
+					}
+				}
+				FROM = {
+					set_father = ROOT
+					if = {
+						limit = {
+							is_married = yes
+						}
+						ROOT = {
+							spouse_even_if_dead = {
+								FROM = {
+									set_mother = PREV
+								}
+							}
+						}
+					}
+					if = {
+						limit = {
+							is_married = no
+						}
+						ROOT = {
+							spouse_even_if_dead = {
+								FROM = {
+									set_mother = 0
+								}
+							}
+						}
+					}
+					dynasty = ROOT
+					hidden_tooltip = {
+						any_child = {
+							dynasty = ROOT
+							any_child = {
+								limit = { is_child_of = THIS }
+								dynasty = ROOT
+
+								any_child = {
+									limit = { is_child_of = THIS }
+									dynasty = ROOT
+								}
+						    }
+					    }
+					}
+				}
+			}
+			if = {
+				limit = {
+					ROOT = {
+						NOT = {
+							is_female = no
+						}
+					}
+				}
+				FROM = {
+					set_mother = ROOT
+					if = {
+						limit = {
+							is_married = yes
+						}
+						ROOT = {
+							spouse_even_if_dead = {
+								FROM = {
+									set_father = PREV
+								}
+							}
+						}
+					}
+					if = {
+						limit = {
+							is_married = yes
+						}
+						ROOT = {
+							spouse_even_if_dead = {
+								FROM = {
+									set_father = 0
+								}
+							}
+						}
+					}
+					dynasty = ROOT
+					hidden_tooltip = {
+						any_child = {
+							dynasty = ROOT
+
+							any_child = {
+								limit = { is_child_of = THIS }
+								dynasty = ROOT
+
+								any_child = {
+									limit = { is_child_of = THIS }
+									dynasty = ROOT
+								}
+						    }
+					    }
+					}
+				}
+			}
+		}
+
+	}
+
+	###############
+	##Self Status##
+	###############
+
+	scmr_abdicate_to = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            ai = yes
+			is_playable = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				FROM = {
+					scmr_clr_all_flag = yes
+				}
+			}
+			FROM = {
+				set_player_character = ROOT
+			}
+		}
+	}
+
+	scmr_abdicate_total = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+
+		potential = {
+            ai = yes
+            #is_ruler = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_tooltip = {
+				if = {
+					limit = {
+						NOT = {
+							dynasty = FROM
+						}
+					}
+					dynasty = FROM
+				}
+				wealth = FROM
+				FROM = {
+					clr_character_flag = cheats_enabled
+					clear_wealth = PREV
+					any_artifact = {
+						transfer_artifact = { from = FROM to = root }
+					}
+					abdicate_to = root
+				}
+				if = {
+					limit = {
+						is_father_real_father = yes
+					}
+					father_even_if_dead = { ROOT = { dynasty = prev } }
+				}
+				if = {
+					limit = {
+						was_conceived_a_bastard = yes
+					}
+					mother_even_if_dead = { ROOT = { dynasty = prev } }
+				}
+				if = {
+					limit = {
+						real_father = { always = yes }
+					}
+					real_father_even_if_dead = {
+						ROOT = {
+							dynasty = PREV
+							set_father = PREV
+						}
+					}
+				}
+				recalc_succession = yes
+			}
+		}
+
+	}
+
+    scmr_heal_them = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    #has_character_flag = traits_enabled
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+		    #ai = yes
+			hidden_trigger = {
+				scmr_has_negative = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			cure_illness = yes
+			scmr_set_immune_disease = yes
+			hidden_effect = {
+				scmr_heal_total = yes
+			}
+		}
+
+	}
+
+	scmr_heal_them_court = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    #has_character_flag = traits_enabled
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+		    is_ruler = yes
+			any_courtier_or_vassal = {
+				is_ill = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_courtier_or_vassal = {
+				scmr_set_immune_disease = yes
+				cure_illness = yes
+				remove_disease_flags_effect = yes
+			}
+		}
+	}
+
+	scmr_add_bloodline_member = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            any_owned_bloodline = {
+				always = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_owned_bloodline = {
+				add_bloodline_member = from
+			}
+		}
+	}
+
+	scmr_destroy_all_bloodline = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            any_owned_bloodline = {
+				always = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_owned_bloodline = {
+				destroy_bloodline = yes
+			}
+		}
+	}
+
+
+	scmr_fall_on_sword = {
+		filter = self
+		ai_target_filter = none
+		ai = no
+
+		potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			hidden_effect = {
+				scmr_clr_all_flag = yes
+			}
+			current_heir = {
+				any_artifact = {
+					transfer_artifact = { from = root to = prev }
+				}
+			}
+			death = {
+				death_reason = death_natural
+			}
+		}
+
+	}
+
+	scmr_clear_focus = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            OR = {
+				has_focus = focus_ch_pride # Обучение гордости (Фокус детства)
+				has_focus = focus_ch_humility # Обучение скромности
+				has_focus = focus_ch_duty # Обучение долгу
+				has_focus = focus_ch_etiquette # Обучение этикету
+				has_focus = focus_ch_thrift # Обучение бережливости
+				has_focus = focus_ch_faith # Обучение вере
+				has_focus = focus_ch_struggle # Обучение соперничеству / борьбе
+				has_focus = focus_ch_heritage # Обучение традициям
+
+				has_focus = focus_ed_diplomacy # Дипломатическое воспитание (Фокус юности)
+				has_focus = focus_ed_martial # Военное воспитание
+				has_focus = focus_ed_stewardship # Управленческое воспитание
+				has_focus = focus_ed_intrigue # Воспитание в интригах
+				has_focus = focus_ed_learning # Учёное воспитание
+
+				has_focus = focus_rulership # Сосредоточенность на правлении (Фокус взрослой жизни)
+				has_focus = focus_business # Сосредоточенность на коммерции
+				has_focus = focus_seduction # Сосредоточенность на соблазнении
+				has_focus = focus_intrigue # Сосредоточенность на интригах
+				has_focus = focus_hunting # Сосредоточенность на охоте
+				has_focus = focus_war # Сосредоточенность на войне
+				has_focus = focus_carousing # Сосредоточенность на развлечениях
+				has_focus = focus_family # Сосредоточенность на семье
+				has_focus = focus_scholarship # Сосредоточенность на учёбе
+				has_focus = focus_theology # Сосредоточенность на богословии
+			}
+		}
+		allow = {
+	        always = yes
+		}
+		effect = {
+	        hidden_tooltip = {
+		        clear_focus = yes
+		    }
+		}
+
+	}
+
+	scmr_clear_ambition = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = cheats_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            has_ambition = yes
+		}
+		allow = {
+	        always = yes
+		}
+		effect = {
+	        cancel_ambition = yes
+		}
+
+	}
+
+	################
+	##Mind Control##
+	################
+
+	mc_imprison = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            prisoner = no
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_ruler = yes
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+			    ROOT = {
+					if = {
+						limit = {
+							prisoner = yes
+						}
+						prisoner = no
+					}
+					imprison = PREV
+				}
+			}
+		}
+
+	}
+
+	mc_impregnate = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+            age = 13
+			is_pregnant = no
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				age = 13
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				ROOT = {
+					scmr_impregnate_effect = yes
+				}
+			}
+		}
+
+	}
+
+	mc_convert_religion = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					religion = root
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				unsafe_religion = root
+			}
+		}
+
+	}
+
+	mc_convert_sreligion = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				has_secret_religion = yes
+				NOT = { religion = { target = root target_type = secret } }
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_secret_religion = root
+			}
+		}
+
+	}
+
+	mc_convert_culture = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					culture = root
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				culture = root
+			}
+		}
+
+	}
+
+	mc_change_ethnicity = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					graphical_culture = root
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				set_graphical_culture = root
+			}
+		}
+
+	}
+
+	mc_lover = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			age = 16
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				age = 16
+				NOT = { is_lover = root }
+				OR = {
+					AND = {
+						is_female = no
+						ROOT = { is_female = yes }
+					}
+					AND = {
+						is_female = yes
+						ROOT = { is_female = no }
+					}
+					AND = {
+						trait = homosexual
+						ROOT = { trait = homosexual }
+					}
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_lover = root
+			}
+		}
+
+	}
+
+	mc_remove_lover = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_lover = root
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_lover = root
+			}
+		}
+
+	}
+
+	mc_friend = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { is_friend = root }
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_friend = root
+			}
+		}
+
+	}
+
+	mc_remove_friend = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_friend = root
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_friend = root
+			}
+		}
+
+	}
+
+	mc_rival = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = { is_rival = root }
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_rival = root
+			}
+		}
+
+	}
+
+	mc_remove_rival = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_rival = root
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				remove_rival = root
+			}
+		}
+
+	}
+
+	mc_vassalize = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            #ai = yes
+            is_ruler = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+                higher_tier_than = root
+                NOT = {
+					is_liege_of = root
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				ROOT = {
+					set_defacto_liege = PREV
+				}
+			}
+		}
+
+	}
+
+	mc_abdicate = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+            is_ruler = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				ROOT = {
+					abdicate_to = PREV
+					any_artifact = {
+						transfer_artifact = { from = root to = prevprev }
+					}
+				}
+			}
+		}
+
+	}
+
+	mc_abdicate_them = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			NOT = { has_character_flag = mind_controlled }
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_ruler = yes
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				abdicate_to = root
+				any_artifact = {
+					transfer_artifact = { from = prev to = root }
+				}
+			}
+		}
+
+	}
+
+	mc_add_alliance = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+			is_ruler = yes
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				is_ruler = yes
+				NOT = {
+					is_allied_with = from
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_alliance = { who = root years = 10 }
+			}
+		}
+	}
+
+	mc_break_alliance = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            any_character = {
+				has_character_flag = mind_controlled
+				is_allied_with = from
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				break_alliance = root
+			}
+		}
+
+	}
+
+	mc_marry = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			NOT = {
+				has_character_flag = mind_controlled
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			scmr_pre_marry = yes
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				scmr_pre_marry = yes
+				if = {
+					limit = {
+						is_female = yes
+					}
+					add_spouse_matrilineal = root
+				}
+				else = {
+					add_spouse = root
+				}
+			}
+		}
+	}
+
+	mc_join_their_society = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+            ai = yes
+			is_in_society = yes
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				NOT = {
+					same_society_as = root
+				}
+			}
+		}
+		effect = {
+			any_character = {
+				if = {
+					limit = {
+						has_character_flag = mind_controlled
+						is_in_society = yes
+					}
+					leave_society = yes
+				}
+			}
+			ROOT = {
+				society = {
+					any_character = {
+						limit = {
+							has_character_flag = mind_controlled
+						}
+						join_society = PREV
+					}
+				}
+			}
+		}
+
+	}
+
+
+	mc_make_consort = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_relation
+		}
+		potential = {
+		    ai = yes
+			NOT = {
+				has_character_flag = mind_controlled
+			}
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				has_concubinage = yes
+				NOT = {
+					same_sex = root
+					#is_consort = yes
+				}
+			}
+
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				add_consort = root
+			}
+		}
+
+	}
+
+	mc_help_them_off = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			NOT = {
+				has_character_flag = mind_controlled
+			}
+			is_primary_war_attacker = yes
+		}
+		allow = {
+			war = yes
+			is_ruler = yes
+			any_character = {
+				has_character_flag = mind_controlled
+				scmr_can_help = yes
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				join_attacker_wars = root
+			}
+		}
+
+	}
+
+	mc_help_them_def = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+            ai = yes
+			NOT = {
+				has_character_flag = mind_controlled
+			}
+			is_primary_war_defender = yes
+		}
+		allow = {
+			war = yes
+			is_ruler = yes
+			any_character = {
+				has_character_flag = mind_controlled
+				scmr_can_help = yes
+			}
+		}
+		effect = {
+			any_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				join_defender_wars = root
+			}
+		}
+
+	}
+
+	mc_adopt_them = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+			has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+			always = yes
+		}
+		allow = {
+		    any_character = {
+				has_character_flag = mind_controlled
+				NOT = { character = root }
+				ROOT = {
+					NAND = {
+						is_child_of = PREV
+						dynasty = PREV
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					any_character = {
+						has_character_flag = mind_controlled
+						NOT = {
+							is_female = yes
+						}
+					}
+				}
+				if = {
+					limit = {
+						any_character = {
+							has_character_flag = mind_controlled
+							ROOT = {
+								NOT = {
+									real_father = { character = prev }
+								}
+							}
+						}
+					}
+					father_even_if_dead = { ROOT = { set_real_father = prev } }
+					set_mother = 0
+				}
+				any_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					ROOT = {
+						set_father = PREV
+						dynasty = PREV
+					}
+				}
+				hidden_tooltip = {
+					scmr_adopt_child = yes
+				}
+			}
+			if = {
+				limit = {
+					any_character = {
+						has_character_flag = mind_controlled
+						is_female = yes
+					}
+				}
+				any_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					ROOT = {
+						set_mother = PREV
+						dynasty = PREV
+					}
+				}
+				hidden_tooltip = {
+					scmr_adopt_child = yes
+				}
+			}
+			recalc_succession = yes
+		}
+
+	}
+
+
+	mc_move_them = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+		}
+		potential = {
+		    ai = yes
+		    is_landed = no
+		    is_ruler = no
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				ROOT = {
+					NOT = {
+						employer = {
+							character = PREVPREV
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				ROOT = {
+					end_inaccessibility_effect = yes
+					move_character = PREV
+					if = {
+						limit = {
+							OR = {
+								is_married = no
+								AND = {
+									OR = {
+										is_married = yes
+										is_married_matrilineally = yes
+									}
+									spouse = {
+										is_landed = no
+										is_ruler = no
+								   }
+								}
+							}
+						}
+						spouse = {
+							end_inaccessibility_effect = yes
+							move_character = PREVPREV
+						}
+						any_child = {
+							if = {
+								limit = {
+									is_adult = no
+									is_ruler = no
+									is_landed = no
+								}
+								end_inaccessibility_effect = yes
+								move_character = PREVPREV
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	mc_back_plot = {
+		filter = all_including_me
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_politic_relation
+
+		}
+		potential = {
+            always = yes
+		}
+		allow = {
+			any_character = {
+				has_character_flag = mind_controlled
+				has_plot = yes
+			}
+		}
+		effect = {
+			random_character = {
+				limit = {
+					has_character_flag = mind_controlled
+				}
+				back_plot = ROOT
+			}
+		}
+
+	}
+
+	mc_add_bloodline_member = {
+		filter = all
+		ai_target_filter = none
+		ai = no
+
+		from_potential = {
+		    has_character_flag = mind_control_enabled
+			has_character_flag = show_self_status
+		}
+		potential = {
+            any_owned_bloodline = {
+				always = yes
+			}
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			any_owned_bloodline = {
+				any_character = {
+					limit = {
+						has_character_flag = mind_controlled
+					}
+					add_to_bloodline = PREV
+				}
+			}
+		}
+	}
+
+
+
+
+}

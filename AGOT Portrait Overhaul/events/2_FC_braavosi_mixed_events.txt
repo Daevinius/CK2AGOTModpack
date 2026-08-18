@@ -1,0 +1,677 @@
+###By Specialist
+namespace = mixed_culture_mix
+
+character_event = {
+	id = mixed_culture_mix.2
+	hide_window = yes ###No visible event, just an elicited effect
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		###Braavosi/Braavosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				4 = {
+					set_graphical_culture = tyroshi
+				}
+				4 = {
+					set_graphical_culture = myrman
+				}
+				50 = {
+					set_graphical_culture = braavosi
+				}
+				4 = {
+					set_graphical_culture = elyrian
+				}
+				4 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				4 = {
+					set_graphical_culture = volantene
+				}
+				4 = {
+					set_graphical_culture = andavosi
+				}
+				4 = {
+					set_graphical_culture = urban-braavosi
+				}
+				4 = {
+					set_graphical_culture = rhoynar
+				}
+				4 = {
+					set_graphical_culture = Huravosi
+				}
+				4 = {
+					set_graphical_culture = lorathi
+				}
+				2 = {
+					set_graphical_culture = lysene
+				}
+				2 = {
+					set_graphical_culture = valyrian-summer
+				}
+				2 = {
+					set_graphical_culture = valyrian_sarnori
+				}
+				2 = {
+					set_graphical_culture = moroshi
+				}
+				2 = {
+					set_graphical_culture = valyrian_moraqi
+				}
+			}
+		}
+		###Urban/Urban Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Urban Father
+							graphical_culture  = urbanbraavosigfx
+						}
+						mother_even_if_dead = {
+							###Urban Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Urban Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+						father_even_if_dead = {
+							###Urban Father
+							graphical_culture  = urbanbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				10 = {
+					set_graphical_culture = summer-freecity
+				}
+				10 = {
+					set_graphical_culture = Huravosi
+				}
+				50 = {
+					set_graphical_culture = urban-braavosi
+				}
+				10 = {
+					set_graphical_culture = YiTish-Myrman
+				}
+				10 = {
+					set_graphical_culture = summer_tyroshi
+				}
+				5 = {
+					set_graphical_culture = valyrian_lengi
+				}
+			}
+		}
+		###Braavosi/andavosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Braavosi Father
+							graphical_culture  = braavosigfx
+						}
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = moroshi
+				}
+				10 = {
+					set_graphical_culture = pentosi
+				}
+				30 = {
+					set_graphical_culture = braavosi
+				}
+				30 = {
+					set_graphical_culture = andavosi
+				}
+				10 = {
+					set_graphical_culture = lorathi
+				}
+				5 = {
+					set_graphical_culture = lysene
+				}
+				5 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				5 = {
+					set_graphical_culture = Huravosi
+				}
+			}
+		}
+		###Urban/andavosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Urban Father
+							graphical_culture  = urbanbraavosigfx
+						}
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Urban Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = norvosi
+				}
+				30 = {
+					set_graphical_culture = urban-braavosi
+				}
+				30 = {
+					set_graphical_culture = braavosi
+				}
+				30 = {
+					set_graphical_culture = andavosi
+				}
+				5 = {
+					set_graphical_culture = mountain_valyrian
+				}
+			}
+		}
+		###andavosi/andavosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					set_graphical_culture = pentosi
+				}
+				10 = {
+					set_graphical_culture = qohorik
+				}
+				50 = {
+					set_graphical_culture = andavosi
+				}
+				10 = {
+					set_graphical_culture = old_andal
+				}
+				10 = {
+					set_graphical_culture = valyrian_stone_dornish
+				}
+				5 = {
+					set_graphical_culture = lorathi
+				}
+				5 = {
+					set_graphical_culture =	lysene
+				}
+			}
+		}
+		###Huravosi/Huravosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Huravosi Father
+							graphical_culture  = yitibraavosigfx
+						}
+						mother_even_if_dead = {
+							###Huravosi Mother
+							graphical_culture  = yitibraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Huravosi Mother
+							graphical_culture  = yitibraavosigfx
+						}
+						father_even_if_dead = {
+							###Huravosi Father
+							graphical_culture  = yitibraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				10 = {
+					set_graphical_culture = volantene
+				}
+				10 = {
+					set_graphical_culture = braavosi
+				}
+				50 = {
+					set_graphical_culture = Huravosi
+				}
+				10 = {
+					set_graphical_culture = moroshi
+				}
+				10 = {
+					set_graphical_culture = jogos_valyrian
+				}
+				5 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				5 = {
+					set_graphical_culture =	valyrian_yi_ti
+				}
+			}
+		}
+		###Huravosi/braavosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Huravosi Father
+							graphical_culture  = yitibraavosigfx
+						}
+						mother_even_if_dead = {
+							###braavosi Mother
+							graphical_culture  = braavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Huravosi Mother
+							graphical_culture  = yitibraavosigfx
+						}
+						father_even_if_dead = {
+							###braavosi Father
+							graphical_culture  = braavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = norvosi
+				}
+				10 = {
+					set_graphical_culture = volantene
+				}
+				30 = {
+					set_graphical_culture = braavosi
+				}
+				40 = {
+					set_graphical_culture = Huravosi
+				}
+				10 = {
+					set_graphical_culture = moroshi
+				}
+				5 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+			}
+		}
+		###Huravosi/urban-braavosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Huravosi Father
+							graphical_culture  = yitibraavosigfx
+						}
+						mother_even_if_dead = {
+							###urban-braavosi Mother
+							graphical_culture  = urbanbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Huravosi Mother
+							graphical_culture  = yitibraavosigfx
+						}
+						father_even_if_dead = {
+							###urban-braavosi Father
+							graphical_culture  = urbanbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = valyrian_lengi
+				}
+				5 = {
+					set_graphical_culture = moroshi
+				}
+				10 = {
+					set_graphical_culture = YiTish-Myrman
+				}
+				30 = {
+					set_graphical_culture = urban-braavosi
+				}
+				30 = {
+					set_graphical_culture = Huravosi
+				}
+				10 = {
+					set_graphical_culture = gogossosi
+				}
+				5 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				5 = {
+					set_graphical_culture = valyrian-summer
+				}
+			}
+		}
+		###Huravosi/andavosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Huravosi Father
+							graphical_culture  = yitibraavosigfx
+						}
+						mother_even_if_dead = {
+							###andavosi Mother
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Huravosi Mother
+							graphical_culture  = yitibraavosigfx
+						}
+						father_even_if_dead = {
+							###andavosi Father
+							graphical_culture  = andalbraavosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = YiTi-Andal
+				}
+				5 = {
+					set_graphical_culture = tyroshi
+				}
+				10 = {
+					set_graphical_culture = volantene
+				}
+				30 = {
+					set_graphical_culture = andavosi
+				}
+				30 = {
+					set_graphical_culture = Huravosi
+				}
+				10 = {
+					set_graphical_culture = qohorik
+				}
+				5 = {
+					set_graphical_culture = norvosi
+				}
+				5 = {
+					set_graphical_culture = Andal-Ghiscari
+				}
+			}
+		}
+		###Huravosi/Jaedovosi
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###Huravosi Father
+							graphical_culture  = yitibraavosigfx
+						}
+						mother_even_if_dead = {
+							###Jaedovosi Mother
+							graphical_culture  = sifreecitygfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###Huravosi Mother
+							graphical_culture  = yitibraavosigfx
+						}
+						father_even_if_dead = {
+							###Jaedovosi Father
+							graphical_culture  = sifreecitygfx
+						}
+					}
+				}
+			}
+			random_list = {
+				5 = {
+					set_graphical_culture = valyrian_lengi
+				}
+				5 = {
+					set_graphical_culture = YiTish-Myrman
+				}
+				10 = {
+					set_graphical_culture = Summer-YiTish
+				}
+				30 = {
+					set_graphical_culture = Jaedovosi
+				}
+				30 = {
+					set_graphical_culture = Huravosi
+				}
+				10 = {
+					set_graphical_culture = urban-braavosi
+				}
+				5 = {
+					set_graphical_culture = dothrak_tyroshi
+				}
+				5 = {
+					set_graphical_culture = valyrian-summer
+				}
+			}
+		}
+		###pentosi/pentosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###pentosi Father
+							graphical_culture  = pentosigfx
+						}
+						mother_even_if_dead = {
+							###pentosi Mother
+							graphical_culture  = pentosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###pentosi Mother
+							graphical_culture  = pentosigfx
+						}
+						father_even_if_dead = {
+							###pentosi Father
+							graphical_culture  = pentosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = pentosi
+				}
+				9 = {
+					set_graphical_culture = norvosi
+				}
+				9 = {
+					set_graphical_culture = lorathi
+				}
+				4 = {
+					set_graphical_culture = andalosi
+				}
+				4 = {
+					set_graphical_culture = lysene
+				}
+				2 = {
+					set_graphical_culture = qohorik
+				}
+				2 = {
+					set_graphical_culture = western_valyrian
+				}
+			}
+		}
+		###norvosi/norvosi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###norvosi Father
+							graphical_culture  = norvosigfx
+						}
+						mother_even_if_dead = {
+							###norvosi Mother
+							graphical_culture  = norvosigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###norvosi Mother
+							graphical_culture  = norvosigfx
+						}
+						father_even_if_dead = {
+							###norvosi Father
+							graphical_culture  = norvosigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				100 = {
+					set_graphical_culture = norvosi
+				}
+			}
+		}
+		###tyroshi/tyroshi Hybrid Event
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						father_even_if_dead = {
+							###tyroshi Father
+							graphical_culture  = tyroshigfx
+						}
+						mother_even_if_dead = {
+							###tyroshi Mother
+							graphical_culture  = tyroshigfx
+						}
+					}
+					AND = {
+						mother_even_if_dead = {
+							###tyroshi Mother
+							graphical_culture  = tyroshigfx
+						}
+						father_even_if_dead = {
+							###tyroshi Father
+							graphical_culture  = tyroshigfx
+						}
+					}
+				}
+			}
+			random_list = {
+				70 = {
+					set_graphical_culture = tyroshi
+				}
+				9 = {
+					set_graphical_culture = myrman
+				}
+				9 = {
+					set_graphical_culture = qohorik
+				}
+				4 = {
+					set_graphical_culture = braavosi
+				}
+				4 = {
+					set_graphical_culture = pentosi
+				}
+				2 = {
+					set_graphical_culture = lysene
+				}
+				2 = {
+					set_graphical_culture = valyrian_salt_dornish
+				}
+			}
+		}
+	}
+}

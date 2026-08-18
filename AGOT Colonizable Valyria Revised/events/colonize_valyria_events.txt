@@ -1,0 +1,277 @@
+#Unoccupied Province Events
+namespace = colonise_val
+
+#Initialise Unoccupied provinces
+character_event = {
+	id = colonise_val.1
+	desc = "EVTDESCunoccupied.1"
+
+	is_triggered_only = yes #Triggered from on_startup
+	only_rulers = yes
+	hide_window = yes
+
+	trigger = {
+		has_landed_title = e_rebels
+		NOT = { had_global_flag = { flag = scenario_initialised  days = 5 } }
+	}
+
+	option = {
+		name = "EVTOPTAunoccupied.1" #Yes
+
+		#Colonizable Valyria
+		if = { # Post Doom and Alt Start
+			limit = {
+				OR = {
+					is_alternate_start = yes
+					year = 7886
+				}
+			}
+			#596 = { make_province_ruin_effect = yes }
+			#597 = { make_province_ruin_effect = yes }
+			#755 = { make_province_ruin_effect = yes }
+			#756 = { make_province_ruin_effect = yes }
+			#757 = { make_province_ruin_effect = yes }
+			#758 = { make_province_ruin_effect = yes }
+			#759 = { make_province_ruin_effect = yes }
+			#760 = { make_province_ruin_effect = yes }
+			#761 = { make_province_ruin_effect = yes } #Telyria - in base
+			#1151 = { make_province_ruin_effect = yes }
+			#1152 = { make_province_ruin_effect = yes }
+			#1153 = { make_province_ruin_effect = yes }
+			#1154 = { make_province_ruin_effect = yes }
+			#1155 = { make_province_ruin_effect = yes }
+			#1156 = { make_province_ruin_effect = yes }
+			#1157 = { make_province_ruin_effect = yes } #Lyztarys
+			#1158 = { make_province_ruin_effect = yes }
+			#1159 = { make_province_ruin_effect = yes }
+			#1160 = { make_province_ruin_effect = yes }
+			#1161 = { make_province_ruin_effect = yes }
+			#1162 = { make_province_ruin_effect = yes }
+			#1163 = { make_province_ruin_effect = yes }
+			#1164 = { make_province_ruin_effect = yes } #Klios
+			#1165 = { make_province_ruin_effect = yes }
+			#1166 = { make_province_ruin_effect = yes }
+			#1167 = { make_province_ruin_effect = yes }
+			#1168 = { make_province_ruin_effect = yes }
+			#1169 = { make_province_ruin_effect = yes }
+			#1170 = { make_province_ruin_effect = yes }
+			#1171 = { make_province_ruin_effect = yes }
+			#1172 = { make_province_ruin_effect = yes }
+			#1173 = { make_province_ruin_effect = yes }
+			#1174 = { make_province_ruin_effect = yes }
+			#1175 = { make_province_ruin_effect = yes }
+			#1176 = { make_province_ruin_effect = yes }
+			#1177 = { make_province_ruin_effect = yes }
+			#1178 = { make_province_ruin_effect = yes }
+			#1179 = { make_province_ruin_effect = yes }
+			#1180 = { make_province_ruin_effect = yes }
+			#1181 = { make_province_ruin_effect = yes }
+			#1182 = { make_province_ruin_effect = yes }
+			#1183 = { make_province_ruin_effect = yes } #The Qelbar (River!)
+			#1184 = { make_province_ruin_effect = yes }
+			#1185 = { make_province_ruin_effect = yes }
+			#1186 = { make_province_ruin_effect = yes }
+			#1187 = { make_province_ruin_effect = yes }
+			#1188 = { make_province_ruin_effect = yes }
+			#1189 = { make_province_ruin_effect = yes }
+			#1190 = { make_province_ruin_effect = yes }
+			#1191 = { make_province_ruin_effect = yes }
+			#1192 = { make_province_ruin_effect = yes }
+			#1193 = { make_province_ruin_effect = yes } #Buzdari Valley
+			#1194 = { make_province_ruin_effect = yes } #Elinis
+			#1195 = { make_province_ruin_effect = yes }
+			#character_event = { id = colonise_val.2 days = 2 } #Set holy sites with 2 days delay to prevent overwriting
+		}
+	}
+}
+
+#Reset holy sites
+# character_event = {
+# 	id = colonise_val.2
+# 	desc = "EVTDESCunoccupied.2"
+
+# 	is_triggered_only = yes #Triggered from on_chronicle_start
+# 	only_rulers = yes
+# 	hide_window = yes
+
+# 	immediate = {
+# 		#Set holy sites
+# 		c_mantarys = { #c_valyria
+# 			remove_holy_site = valyrian_rel
+# 			remove_holy_site = valyrian_rel_reformed
+# 			remove_holy_site = dragon_rel
+# 		}
+# 		c_valyria = { #c_valyria
+# 			set_holy_site = valyrian_rel
+# 			set_holy_site = valyrian_rel_reformed
+# 			set_holy_site = dragon_rel
+# 		}
+# 		c_velos = { #c_oros
+# 			remove_holy_site = valyrian_rel
+# 			remove_holy_site = valyrian_rel_reformed
+# 			remove_holy_site = dragon_rel
+# 		}
+# 		c_oros = { #c_oros
+# 			set_holy_site = valyrian_rel
+# 			set_holy_site = valyrian_rel_reformed
+# 			set_holy_site = dragon_rel
+# 		}
+# 		c_oldvolantis = { #c_valyria
+# 			remove_holy_site = many_faced_god
+# 			remove_holy_site = weeping_lady
+# 			remove_holy_site = weeping_lady_reformed
+# 			remove_holy_site = boash
+# 			remove_holy_site = boash_reformed
+# 			remove_holy_site = starry_wisdom
+# 			remove_holy_site = shadowbinders
+# 			remove_holy_site = shadowbinders_reformed
+# 			remove_holy_site = pagan
+# 			remove_holy_site = aztec_reformed
+# 			remove_holy_site = aztec
+# 			remove_holy_site = ruin_rel
+# 		}
+# 		c_valyria = { #c_valyria
+# 			set_holy_site = many_faced_god
+# 			set_holy_site = weeping_lady
+# 			set_holy_site = weeping_lady_reformed
+# 			set_holy_site = boash
+# 			set_holy_site = boash_reformed
+# 			set_holy_site = starry_wisdom
+# 			set_holy_site = shadowbinders
+# 			set_holy_site = shadowbinders_reformed
+# 			set_holy_site = pagan
+# 			set_holy_site = aztec_reformed
+# 			set_holy_site = aztec
+# 			set_holy_site = ruin_rel
+# 		}
+# 	}
+# }
+
+####  Colonists of Valyria become deformed
+#gone, was colonise_val.2
+
+#Smoking Sea - Straits
+character_event = {
+	id = colonise_val.3
+	desc = "EVTDESCevil.1"
+	picture = "GFX_valyria_dragon"
+
+	ai = no #to prevent too much abuse
+
+	trigger = {
+		start_date = 7886.1.1
+		OR = {
+			location = { province_id = 1008 }
+			location = { province_id = 1009 }
+		}
+		NOT = { religion = old_ones }
+		NOT = { has_artifact = dragon_egg }
+		NOT = { has_artifact = valyrian_steel }
+		NOT = { has_artifact = valyrian_armour }
+		wealth < 500
+		NOT = {
+			has_game_rule = {
+				name = silly_events
+				value = off
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = "EVTOPTAevil.1"
+		chronicle = {
+			entry = CHRONICLE_SMOKING_SEA
+		}
+		random_list = {
+			95 = {
+				set_graphical_culture = cat
+				add_trait = ruthless
+				change_variable = { which = "tyrant" value = 10 }
+				character_event = { id = maintenance.1 } #tyrant trait
+
+				troops = -0.95
+			}
+			2 = {
+				prestige = 250
+				wealth = 500
+				chronicle = {
+					entry = CHRONICLE_SMOKING_SEA_TREASURES
+				}
+			}
+			1 = {
+				trigger = {
+					NOT = { has_game_rule = { name = dragon_hatching_taming value = off } }
+				}
+				modifier = {
+					factor = 0
+					has_artifact = dragon_egg
+				}
+				prestige = 250
+				add_artifact = dragon_egg
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+				chronicle = {
+					entry = CHRONICLE_SMOKING_SEA_DRAGON_EGG
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_artifact = valyrian_steel
+				}
+				prestige = 250
+				add_artifact = valyrian_steel
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+				chronicle = {
+					entry = CHRONICLE_SMOKING_SEA_SWORD
+				}
+			}
+			1 = {
+				modifier = {
+					factor = 0
+					has_artifact = valyrian_armour
+				}
+				prestige = 250
+				add_artifact = valyrian_armour
+				new_artifact = { set_artifact_flag = heirloom_@PREV }
+				# chronicle = {
+					# entry = CHRONICLE_SMOKING_SEA_SWORD
+				# }
+			}
+		}
+	}
+}
+
+#Valyria dragon egg
+province_event = {
+	id = colonise_val.4
+
+	hide_window = yes
+	has_flag = colony_province
+
+	trigger = {
+		region = world_valyria
+		has_province_flag = ruined_province
+		owner = {
+			NOT = { culture = ruin }
+		}
+		NOT = { has_province_flag = ruin_dragon_egg }
+		NOT = { has_game_rule = { name = dragon_hatching_taming value = off } }
+	}
+
+	mean_time_to_happen = {
+		years = 150
+	}
+
+	immediate = {
+		set_province_flag = ruin_dragon_egg
+		owner = { character_event = { id = unoccupied.1501 } }
+	}
+
+	option = {
+		name = OK
+	}
+}
