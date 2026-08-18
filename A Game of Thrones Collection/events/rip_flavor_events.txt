@@ -2592,8 +2592,7 @@ character_event = {
 							}
 							set_character_flag = no_court_invites
 						}
-						if = {
-							limit = { NOT = { maester_culture_trigger = yes } }
+						else = {
 							add_trait = physician
 						}
 						remove_trait = cynical
@@ -10131,10 +10130,10 @@ character_event = {
 
 		trigger_switch = {
 			on_trigger = has_character_flag
-			give_wounded	= { add_trait_wounded_effect = yes }
-			give_mangled	= { mangle_effect = yes }
-			give_one_eyed	= { add_trait_one_eyed_effect = yes }
-			give_one_handed	= { add_trait_one_handed_effect = yes }
+			give_wounded    = { add_trait_wounded_effect = yes }
+			give_mangled    = { mangle_effect = yes }
+			give_one_eyed   = { add_trait_one_eyed_effect = yes }
+			give_one_handed = { add_trait_one_handed_effect = yes }
 		}
 
 		clr_character_flag = give_wounded

@@ -59,7 +59,7 @@ character_event = { # Dooley successfully becomes immortal
 	}
 
 	mean_time_to_happen = {
-		months = 360 # Thirty years
+		years = 30 # Thirty years
 
 		modifier = {
 			factor = 0.5
@@ -146,16 +146,15 @@ character_event = { # Dooley successfully becomes immortal
 
 character_event = { # Ensures Dooley becomes an Archmaester if you start before he does it in the above Event
 	id = TSP_1KI_story_mode.3
+
+	is_triggered_only = yes
 	hide_window = yes
+
+	has_character_flag = is_strange_green_archmaester
 
 	trigger = {
 #		character = 770659 # Dooley "Blackfish" Swiggity, the Maester Master of the Fish
-		has_character_flag = is_strange_green_archmaester
 		age = 30
-	}
-
-	mean_time_to_happen = {
-		months = 60 # Five years
 	}
 
 	option = {
@@ -413,7 +412,7 @@ letter_event = { # Once you go Cthulhu, you never go back
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.2
 			OR = {
@@ -596,7 +595,7 @@ character_event = { # TO DO: the immortal Fish Witch begins to become a threat a
 	hide_window = yes
 
 	mean_time_to_happen = {
-		months = 600
+		years = 50
 	}
 
 	trigger = {

@@ -221,11 +221,11 @@ long_character_event = {
 	has_global_flag = triarchy_initiated
 
 	only_independent = yes
+	war = no
 
 	trigger = {
 		has_landed_title = e_three_daughters
 		NOT = { has_character_flag = begin_invading_steps }
-		war = no
 	}
 
 	mean_time_to_happen = {
@@ -1156,6 +1156,8 @@ character_event = {
 	desc = EVTDESCtdp_three_daughters.5
 	picture = GFX_free_cities_planning
 
+	is_triggered_only = yes
+
 	only_independent = yes
 	culture_group = dornish
 
@@ -1179,10 +1181,6 @@ character_event = {
 				trait = charismatic_negotiator
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		years = 1
 	}
 
 	option = {
@@ -1254,6 +1252,7 @@ character_event = {
 character_event = {
 	id = tdp_three_daughters.9999
 
+	is_triggered_only = yes
 	hide_window = yes
 
 	ai = yes
@@ -1264,21 +1263,13 @@ character_event = {
 	trigger = {
 		has_landed_title = e_three_daughters
 
-		OR = {
-			any_independent_ruler = {
+		any_independent_ruler = {
+			OR = {
 				has_landed_title = k_lys
-			}
-			any_independent_ruler = {
 				has_landed_title = k_tyrosh
-			}
-			any_independent_ruler = {
 				has_landed_title = k_myr
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		years = 1
 	}
 
 	immediate = {

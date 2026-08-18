@@ -139,7 +139,7 @@ character_event = {
 		}
 		OR = {
 			higher_real_tier_than = BARON
-			NOT = { is_ruler = yes }
+			is_ruler = no
 		}
 		NOR = {
 			trait = dragon_rider
@@ -1069,6 +1069,7 @@ character_event = {
 character_event = {
 	id = tdp_dragonseeds.12
 
+	is_triggered_only = yes
 	hide_window = yes
 
 	trigger = {
@@ -1104,10 +1105,6 @@ character_event = {
 				has_character_flag = tdp_crown_dragon_lead
 			}
 		}
-	}
-
-	mean_time_to_happen = {
-		years = 1
 	}
 
 	immediate = {
@@ -1170,9 +1167,9 @@ character_event = {
 	id = tdp_dragonseeds.2
 
 	hide_window = yes
-	ai = yes
 
 	has_character_flag = tdp_dragonseed
+	ai = yes
 
 	trigger = {
 		is_lowborn = no
@@ -1197,9 +1194,9 @@ character_event = {
 	id = tdp_dragonseeds.3
 
 	hide_window = yes
-	ai = yes
 
 	has_character_flag = tdp_dragonseed
+	ai = yes
 
 	trigger = {
 		NOT = { is_heir = yes }
@@ -1348,14 +1345,11 @@ character_event = {
 character_event = {
 	id = tdp_dragonseeds.32
 
+	is_triggered_only = yes
 	hide_window = yes
-	ai = yes
 
 	has_character_flag = spurned_dragonseed
-
-	mean_time_to_happen = {
-		years = 10
-	}
+	ai = yes
 
 	immediate = {
 		set_character_flag = candidate_for_war
