@@ -5,10 +5,13 @@ character_event = {
 	id = sb_maintenance.1
 
 	hide_window = yes
+
+	culture = high_valyrian
 	ai = yes
 
 	trigger = {
 		dynasty = 496
+
 		OR = {
 			spouse = {
 				dynasty = PREV
@@ -25,8 +28,7 @@ character_event = {
 		days = 1
 	}
 
-	option = {
-		name = OK
+	immediate = {
 		any_spouse = {
 			move_character = ROOT
 			remove_spouse = ROOT
@@ -43,12 +45,12 @@ character_event = {
 		}
 	}
 }
+
 #AI only - Remove Forbid Marriage from kid 2 months after parent tried to marry them
 character_event = {
 	id = sb_maintenance.101
 
 	is_triggered_only = yes
-
 	hide_window = yes
 
 	ai = yes
@@ -58,25 +60,33 @@ character_event = {
 		trait = forbid_marriage
 	}
 
-	option = {
-		name = OK
+	immediate = {
 		clr_character_flag = parent_marriage
 		remove_trait = forbid_marriage
 	}
 }
-#AI only - Avoid Dragonriders from being "In Hiding" during ofensive dragon conquest
+
+#AI only - Avoid Dragonriders from being "In Hiding" during offensive/defensive dragon conquest
 character_event = {
 	id = sb_maintenance.2
 
 	hide_window = yes
+
+	war = yes
+	friends = yes
 	ai = yes
 
 	trigger = {
 		trait = dragon_rider
 		trait = in_hiding
 		NOT = { trait = craven }
+
 		any_war = {
-			attacker = { character = ROOT }
+			OR = {
+				attacker = { character = ROOT }
+				defender = { character = ROOT }
+			}
+
 			using_cb = dragon_conquest
 		}
 	}
@@ -85,36 +95,7 @@ character_event = {
 		days = 1
 	}
 
-	option = {
-		name = OK
-		ai_chance = { factor = 100 }
-		remove_trait = in_hiding
-	}
-}
-#AI only - Avoid Dragonriders from being "In Hiding" during defensive dragon conquest
-character_event = {
-	id = sb_maintenance.201
-
-	hide_window = yes
-	ai = yes
-
-	trigger = {
-		trait = dragon_rider
-		trait = in_hiding
-		NOT = { trait = craven }
-		any_war = {
-			defender = { character = ROOT }
-			using_cb = dragon_conquest
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 1
-	}
-
-	option = {
-		name = OK
-		ai_chance = { factor = 100 }
+	immediate = {
 		remove_trait = in_hiding
 	}
 }

@@ -626,6 +626,7 @@ character_event = {
 
 	trigger = {
 		higher_real_tier_than = DUKE
+
 		OR = {
 			has_landed_title = c_bloodstone
 			has_landed_title = c_wreckstone
@@ -641,47 +642,24 @@ character_event = {
 			has_landed_title = c_greygallows
 			has_landed_title = c_last_lamp
 			has_landed_title = c_southstone
+
 			any_realm_lord = {
-				has_landed_title = c_bloodstone
-			}
-			any_realm_lord = {
-				has_landed_title = c_wreckstone
-			}
-			any_realm_lord = {
-				has_landed_title = c_sunstone
-			}
-			any_realm_lord = {
-				has_landed_title = c_shameisle
-			}
-			any_realm_lord = {
-				has_landed_title = c_dwarfstone
-			}
-			any_realm_lord = {
-				has_landed_title = c_darkden
-			}
-			any_realm_lord = {
-				has_landed_title = c_theskulls
-			}
-			any_realm_lord = {
-				has_landed_title = c_fishskins
-			}
-			any_realm_lord = {
-				has_landed_title = c_dim_cove
-			}
-			any_realm_lord = {
-				has_landed_title = c_torturersdeep
-			}
-			any_realm_lord = {
-				has_landed_title = c_lastrefuge
-			}
-			any_realm_lord = {
-				has_landed_title = c_greygallows
-			}
-			any_realm_lord = {
-				has_landed_title = c_last_lamp
-			}
-			any_realm_lord = {
-				has_landed_title = c_southstone
+				OR = {
+					has_landed_title = c_bloodstone
+					has_landed_title = c_wreckstone
+					has_landed_title = c_sunstone
+					has_landed_title = c_shameisle
+					has_landed_title = c_dwarfstone
+					has_landed_title = c_darkden
+					has_landed_title = c_theskulls
+					has_landed_title = c_fishskins
+					has_landed_title = c_dim_cove
+					has_landed_title = c_torturersdeep
+					has_landed_title = c_lastrefuge
+					has_landed_title = c_greygallows
+					has_landed_title = c_last_lamp
+					has_landed_title = c_southstone
+				}
 			}
 		}
 	}
@@ -713,10 +691,13 @@ character_event = {
 	}
 
 	immediate = {
+		set_character_flag = partial_tolling_narrow_sea
+
 		add_character_modifier = {
 			name = partial_tolling_narrow_sea
 			duration = -1
 		}
+
 		any_playable_ruler = {
 			limit = {
 				NOR = {
@@ -775,6 +756,7 @@ character_event = {
 
 	hide_window = yes
 
+	has_character_flag = partial_tolling_narrow_sea
 	only_independent = yes
 
 	trigger = {
@@ -867,7 +849,10 @@ character_event = {
 	}
 
 	immediate = {
+		clr_character_flag = partial_tolling_narrow_sea
 		remove_character_modifier = partial_tolling_narrow_sea
+		set_character_flag = full_tolling_narrow_sea
+
 		add_character_modifier = {
 			name = full_tolling_narrow_sea
 			duration = -1
@@ -964,6 +949,7 @@ character_event = {
 
 	hide_window = yes
 
+	has_character_flag = full_tolling_narrow_sea
 	only_independent = yes
 
 	trigger = {

@@ -1,17 +1,19 @@
 namespace = yiti
-province_event = { #Clear Jungle for Roads
+
+# Clear Jungle for Roads
+province_event = {
 	id = yiti.001
 	desc = "EVTDESCyiti.001"
-
 	picture = "GFX_evt_china_famine"
 
+
 	trigger = {
+		culture_group = yi_ti_group
 		NOR = {
 			has_province_modifier = yiti_road1
 			has_province_modifier = yiti_road2
 			has_province_modifier = yiti_road3
 		}
-		culture_group = yi_ti_group
 		owner = { wealth >= 100 }
 	}
 
@@ -20,25 +22,37 @@ province_event = { #Clear Jungle for Roads
 	}
 
 	option = {
-		name = "Great idea!"
+		name = "EVTOPTAyiti.001"
+
 		owner = { wealth = -50 }
+
+		set_province_flag = build_yiti_road
+
 		add_province_modifier = {
 			name = yiti_road1
 			duration = -1
 		}
-		ai_chance = { factor = 90 }
+
+		ai_chance = {
+			factor = 90
+		}
 	}
 	option = {
-		name = "I have no money to waste on this foolishness."
-		ai_chance = { factor = 10 }
+		name = "EVTOPTByiti.001"
+
+		ai_chance = {
+			factor = 10
+		}
 	}
 }
 
-province_event = { #Repairing Foundations for Roads
+# Repairing Foundations for Roads
+province_event = {
 	id = yiti.002
 	desc = "EVTDESCyiti.002"
-
 	picture = "GFX_evt_china_invades"
+
+	has_flag = build_yiti_road
 
 	trigger = {
 		has_province_modifier = yiti_road1
@@ -50,26 +64,38 @@ province_event = { #Repairing Foundations for Roads
 	}
 
 	option = {
-		name = "Let's see what we can do."
+		name = "EVTOPTAyiti.002"
+
 		owner = { wealth = -500 }
+
 		remove_province_modifier = yiti_road1
+
 		add_province_modifier = {
 			name = yiti_road2
 			duration = -1
 		}
-		ai_chance = { factor = 50 }
+
+		ai_chance = {
+			factor = 50
+		}
 	}
+
 	option = {
-		name = "Did... Did you damage the roads so you could get more money?"
-		ai_chance = { factor = 50 }
+		name = "EVTOPTByiti.002"
+
+		ai_chance = {
+			factor = 50
+		}
 	}
 }
 
-province_event = { #Construction Complete
+# Construction Complete
+province_event = {
 	id = yiti.003
 	desc = "EVTDESCyiti.003"
-
 	picture = "GFX_evt_china_open"
+
+	has_flag = build_yiti_road
 
 	trigger = {
 		has_province_modifier = yiti_road2
@@ -80,12 +106,18 @@ province_event = { #Construction Complete
 	}
 
 	option = {
-		name = "Great news!"
+		name = "EVTOPTyiti.003"
+
 		remove_province_modifier = yiti_road2
+		clr_province_flag = build_yiti_road
+
 		add_province_modifier = {
 			name = yiti_road3
 			duration = -1
 		}
-		ai_chance = { factor = 100 }
+
+		ai_chance = {
+			factor = 100
+		}
 	}
 }

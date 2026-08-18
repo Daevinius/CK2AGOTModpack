@@ -137,7 +137,7 @@ society_decisions = {
 
 				set_character_flag = invited_lodge_soldier
 				set_character_flag = lodge_warrior_original_court_@ROOT
-                set_character_flag = no_court_invites
+				set_character_flag = no_court_invites
 				save_event_target_as = invited_lodge_soldier
 			}
 			character_event = { id = more_bloodlines.310 }
@@ -170,60 +170,60 @@ society_decisions = {
 			}
 			modifier = {
 				factor = 0 #Only use if empty commander spots.
-           		OR = {
-                	AND = {
-                    	tier = COUNT
-                        any_realm_character = {
-                            count = 2
-                            liege = { character = ROOT }
-                            has_minor_title = title_commander
-                        }
-                	}
-                	AND = {
-                    	tier = DUKE
-                        any_realm_character = {
-                            count = 4
-                            liege = { character = ROOT }
-                            has_minor_title = title_commander
-                        }
-                	}
-                	AND = {
-                    	tier = KING
-                   		 is_nomadic = no
-                        any_realm_character = {
-                            count = 6
-                            liege = { character = ROOT }
-                            has_minor_title = title_commander
-                        }
-                	}
-               		AND = {
-                	    tier = EMPEROR
-                	    is_nomadic = no
-                        any_realm_character = {
-                            count = 8
-                            liege = { character = ROOT }
-                            has_minor_title = title_commander
-                        }
-                	}
-                	AND = {
-                	    tier = KING
-                 	   is_nomadic = yes
-                        any_realm_character = {
-                            count = 2
-                            liege = { character = ROOT }
-                            has_minor_title = title_commander
-                        }
-                	}
-               		AND = {
-                	    tier = EMPEROR
-                	    is_nomadic = yes
-                        any_realm_character = {
-                            count = 4
-                            liege = { character = ROOT }
-                            has_minor_title = title_commander
-                        }
-                	}
-            	}
+				OR = {
+					AND = {
+						tier = COUNT
+						any_realm_character = {
+							count = 2
+							liege = { character = ROOT }
+							has_minor_title = title_commander
+						}
+					}
+					AND = {
+						tier = DUKE
+						any_realm_character = {
+							count = 4
+							liege = { character = ROOT }
+							has_minor_title = title_commander
+						}
+					}
+					AND = {
+						tier = KING
+						is_nomadic = no
+						any_realm_character = {
+							count = 6
+							liege = { character = ROOT }
+							has_minor_title = title_commander
+						}
+					}
+					AND = {
+						tier = EMPEROR
+						is_nomadic = no
+						any_realm_character = {
+							count = 8
+							liege = { character = ROOT }
+							has_minor_title = title_commander
+						}
+					}
+					AND = {
+						tier = KING
+						is_nomadic = yes
+						any_realm_character = {
+							count = 2
+							liege = { character = ROOT }
+							has_minor_title = title_commander
+						}
+					}
+					AND = {
+						tier = EMPEROR
+						is_nomadic = yes
+						any_realm_character = {
+							count = 4
+							liege = { character = ROOT }
+							has_minor_title = title_commander
+						}
+					}
+				}
 			}
 		}
 	}

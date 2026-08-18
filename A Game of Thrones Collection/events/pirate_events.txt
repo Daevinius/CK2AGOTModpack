@@ -6,11 +6,14 @@ character_event = {
 	picture = GFX_evt_pirates
 
 	hide_from = yes
+
 	religion = pirate
 
 	trigger = {
-		NOT = { trait = nightswatch }
-		NOT = { trait = pirate }
+		NOR = {
+			trait = nightswatch
+			trait = pirate
+		}
 	}
 
 	mean_time_to_happen = {
@@ -19,31 +22,39 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAPIRATE1"
+
 		add_trait = pirate
+
 		if = {
-			limit = {
-				is_ruler = yes
-				NOT = { government = pirate_government }
-				OR = {
-					government = feudal_government
-					AND = {
-						higher_tier_than = BARON
-						is_republic = yes
-						is_patrician = no
-					}
+			limit = { is_ruler = yes }
+
+			if = {
+				limit = { government = pirate_government }
+
+				any_demesne_title = {
+					limit = { NOT = { has_law = succ_turkish_succession } }
+					succession = turkish_succession
+					gender_succ = agnatic
 				}
 			}
-			set_government_type = pirate_government
-		}
-		if = {
-			limit = { government = pirate_government }
-			any_demesne_title = {
-				limit = { NOT = { has_law = succ_turkish_succession } }
-				succession = turkish_succession
-				gender_succ = agnatic
+			else_if = {
+				limit = {
+					OR = {
+						government = feudal_government
+
+						AND = {
+							higher_tier_than = BARON
+							is_republic = yes
+							is_patrician = no
+						}
+					}
+				}
+
+				set_government_type = pirate_government
 			}
+
+			recalc_succession = yes
 		}
-		recalc_succession = yes
 	}
 }
 character_event = { #seperate event so pre-trigger can be used
@@ -52,11 +63,14 @@ character_event = { #seperate event so pre-trigger can be used
 	picture = GFX_evt_pirates
 
 	hide_from = yes
+
 	religion = corsair
 
 	trigger = {
-		NOT = { trait = nightswatch }
-		NOT = { trait = pirate }
+		NOR = {
+			trait = nightswatch
+			trait = pirate
+		}
 	}
 
 	mean_time_to_happen = {
@@ -65,31 +79,38 @@ character_event = { #seperate event so pre-trigger can be used
 
 	option = {
 		name = "EVTOPTAPIRATE1"
+
 		add_trait = pirate
+
 		if = {
-			limit = {
-				is_ruler = yes
-				NOT = { government = pirate_government }
-				OR = {
-					government = feudal_government
-					AND = {
-						higher_tier_than = BARON
-						is_republic = yes
-						is_patrician = no
-					}
+			limit = { is_ruler = yes }
+
+			if = {
+				limit = { government = pirate_government }
+				any_demesne_title = {
+					limit = { NOT = { has_law = succ_turkish_succession } }
+					succession = turkish_succession
+					gender_succ = agnatic
 				}
 			}
-			set_government_type = pirate_government
-		}
-		if = {
-			limit = { government = pirate_government }
-			any_demesne_title = {
-				limit = { NOT = { has_law = succ_turkish_succession } }
-				succession = turkish_succession
-				gender_succ = agnatic
+			else_if = {
+				limit = {
+					OR = {
+						government = feudal_government
+
+						AND = {
+							higher_tier_than = BARON
+							is_republic = yes
+							is_patrician = no
+						}
+					}
+				}
+
+				set_government_type = pirate_government
 			}
+
+			recalc_succession = yes
 		}
-		recalc_succession = yes
 	}
 }
 
@@ -102,6 +123,7 @@ character_event = {
 
 	trigger = {
 		trait = pirate
+
 		NOR = {
 			religion = pirate
 			religion = corsair
@@ -110,12 +132,15 @@ character_event = {
 
 	option = {
 		name = OK
+
 		remove_trait = pirate
+
 		if = {
 			limit = {
 				is_ruler = yes
 				government = pirate_government
 			}
+
 			set_government_type = feudal_government
 		}
 	}

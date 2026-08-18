@@ -51,10 +51,10 @@ character_event = {
 	picture = GFX_Freedmen
 
 	ai = yes
-	has_global_flag = dany_stormborn_events
+	has_global_flag = freedmen_companies
 
 	trigger = {
-		has_global_flag = freedmen_companies
+		has_global_flag = dany_stormborn_events
 		OR = {
 			has_landed_title = d_mothers_men
 			has_landed_title = d_free_brothers
@@ -115,45 +115,20 @@ character_event = {
 		name = OK
 		ai_chance = { factor = 90 }
 		set_character_flag = freedmen
-		if = {
-			limit = { culture = astapori }
-			culture = astapori_freedmen
-		}
-		if = {
-			limit = { culture = yunkaii  }
-			culture = yunkaii_freedmen
-		}
-		if = {
-			limit = { culture = meereenese  }
-			culture = meereenese_freedmen
-		}
-		if = {
-			limit = { culture = ghiscari  }
-			culture = ghiscari_freedmen
-		}
-		if = {
-			limit = { culture = summer_islander  }
-			culture = summer_islander_freedmen
-		}
-		if = {
-			limit = { culture = basilisk_islander  }
-			culture = basilisk_islander_freedmen
-		}
-		if = {
-			limit = { culture = naathi  }
-			culture = naathi_freedmen
-		}
-		if = {
-			limit = { culture = pentosi  }
-			culture = pentosi_freedmen
-		}
-		if = {
-			limit = { culture = lysene  }
-			culture = lysene_freedmen
-		}
-		if = {
-			limit = { culture = volantene  }
-			culture = volantene_freedmen
+
+		trigger_switch = {
+			on_trigger = culture
+
+			astapori          = { culture = astapori_freedmen }
+			yunkaii           = { culture = yunkaii_freedmen }
+			meereenese        = { culture = meereenese_freedmen }
+			ghiscari          = { culture = ghiscari_freedmen }
+			summer_islander   = { culture = summer_islander_freedmen }
+			basilisk_islander = { culture = basilisk_islander_freedmen }
+			naathi            = { culture = naathi_freedmen }
+			pentosi           = { culture = pentosi_freedmen }
+			lysene            = { culture = lysene_freedmen }
+			volantene         = { culture = volantene_freedmen }
 		}
 	}
 

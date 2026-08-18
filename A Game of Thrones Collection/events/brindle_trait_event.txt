@@ -18,28 +18,32 @@ character_event = {
 		days = 1
 	}
 
-	immediate = { add_trait = brindle }
+	immediate = {
+		add_trait = brindle
+	}
 
 	option = {
 		name = "EVTOPTABRINDLE1"
-		add_trait = brindle
+
 		set_character_flag = immune_red_death
+
 		any_demesne_title = { succession = turkish_succession }
 		recalc_succession = yes
 	}
 }
 
-#Brindle Horde modifiers
+# Brindle Horde modifiers
 character_event = {
 	id = brindle_man.2
 
-	only_playable = yes
-	culture = brindlemen
 	hide_window = yes
+
+	culture = brindlemen
+	only_playable = yes
 
 	trigger = {
 		trait = brindle
-		prestige = 100
+		prestige >= 100
 		NOT = { has_character_flag = brindle_horde_modifier }
 	}
 
@@ -49,7 +53,11 @@ character_event = {
 
 	immediate = {
 		set_character_flag = brindle_horde_modifier
-		character_event = { id = brindle_man.3 days = 1 }
+
+		character_event = {
+			id = brindle_man.3
+			days = 1
+		}
 	}
 }
 
