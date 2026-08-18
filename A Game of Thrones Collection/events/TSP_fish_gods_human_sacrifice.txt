@@ -1,0 +1,119 @@
+namespace = TSP_fishsacrifice
+
+# The character being sacrificed
+
+character_event = {
+	id = TSP_fishsacrifice.1
+	desc = EVTDESC_TSP_fishsacrifice.1
+
+	picture = GFX_evt_kraken
+	border = GFX_event_normal_frame_war
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			NOT = { religion = fish_gods }
+			NOT = {
+				religion = old_ones
+#				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		name = TSP_FISH_SACRIFICE_OPTION_1
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				religion = fish_gods
+				religion = old_ones
+#				has_religion_feature = religion_feature_TSP_innsmouth
+				trait = ruthless
+				trait = impaler
+				trait = cruel
+				trait = cynical
+			}
+		}
+		name = EVTOPTC73011 # Valar Morgulis!
+	}
+
+
+}
+
+# Sacrifice from the Fish Gods perspective
+
+character_event = {
+	id = TSP_fishsacrifice.2
+	desc = EVTDESC_TSP_fishsacrifice.2
+
+	picture = GFX_evt_kraken
+	border = GFX_event_normal_frame_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTA_SOA_3050 # Valar Morgulis!
+		prestige = 20
+		piety = 50
+	}
+}
+
+#------------------------------------------------------------------------------------#
+
+# The character being sacrificed
+
+character_event = {
+	id = TSP_fishsacrifice.3
+	desc = EVTDESC_TSP_fishsacrifice.3
+
+	picture = GFX_dark_corridor
+	border = GFX_event_normal_frame_war
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			NOT = { religion = fish_gods }
+			NOT = {
+				religion = old_ones
+#				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		name = TSP_FISH_SACRIFICE_OPTION_1
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				religion = fish_gods
+				religion = old_ones
+#				has_religion_feature = religion_feature_TSP_innsmouth
+				trait = ruthless
+				trait = impaler
+				trait = cruel
+				trait = cynical
+			}
+		}
+		name = EVTOPTC73011 # Valar Morgulis
+	}
+
+
+}
+
+# Sacrifice from the Old Ones perspective
+
+character_event = {
+	id = TSP_fishsacrifice.4
+	desc = EVTDESC_TSP_fishsacrifice.4
+
+	picture = GFX_evt_TSP_deep_ones_at_work
+	border = GFX_event_normal_frame_war
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTA_SOA_3050 # Valar Morgulis!
+		prestige = 20
+		piety = 50
+	}
+}

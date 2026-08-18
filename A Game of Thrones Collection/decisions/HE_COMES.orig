@@ -1,0 +1,151 @@
+decisions = {
+	TSP_unseal_the_cthulhu_in_a_can = {	# If you worship the Old Ones already (and are not part of the Old Ones religion's story chain), you can force the unlocking of Leng's Lovecraft Labyrinths without going through the normal channels
+		is_high_prio = yes
+		potential = {
+			has_called_cthulhu = yes
+			OR = {
+				AND = {
+					OR = {
+						religion = fish_gods
+						culture = islander
+					}
+					OR = {
+						trait = lunatic
+						trait = old_ones_scourge
+						trait = impaler
+						trait = cruel
+					}
+				}
+				is_devil_worshiper_trigger = yes
+				any_realm_province = { location = { region = world_yi_ti } }
+				religion_group = sothoryos_rel_group
+				religion = starry_wisdom
+				has_religion_feature = religion_feature_TSP_innsmouth
+				AND = {
+					culture = brindlemen
+					OR = {
+						trait = lunatic
+						trait = possessed
+					}
+				}
+			}
+			NOT = { has_global_flag = old_ones_scourge }
+			NOT = { religion = old_ones } # There is already an Event Chain for that
+		}
+
+		allow = {
+			has_dlc = "Reapers" # Epidemic only works for DLC
+			custom_tooltip = {
+				text = VASSAL_MUST_OWN_LENG_CLAY
+				hidden_tooltip = {
+					OR = {
+						any_realm_province = { location = { region = world_leng }	}
+						vassal_has_leng_clay = yes
+					}
+				}
+			}
+			OR = {
+				custom_tooltip = {
+					text = MUST_OWN_LENG_CLAY
+					hidden_tooltip = {
+						AND = {
+							any_demesne_province = {
+								location = { region = world_leng }
+							}
+							has_leng_clay = yes
+						}
+					}
+				}
+				has_landed_title = k_leng
+				has_religion_feature = religion_feature_TSP_innsmouth
+				religion_group = sothoryos_rel_group
+				religion = starry_wisdom
+			}
+			OR = {
+				trait = lunatic
+				religion_group = sothoryos_rel_group
+				religion = starry_wisdom
+				is_devil_worshiper_trigger = yes
+			}
+			piety = 250
+		}
+
+		effect = {
+			set_global_flag = old_ones_scourge
+			custom_tooltip = {
+				text = TSP1KI9STORYOPTC # HE COMES!!
+#				hidden_tooltip = {
+					add_trait = lunatic
+					add_trait = zealous
+					unsafe_religion = old_ones
+					any_child = {
+						limit = {
+							NOT = {
+								trait = kind
+								trait = honorable
+								trait = zealous
+								trait = just
+							}
+						}
+						unsafe_religion = old_ones
+					}
+					current_heir = {
+						if = {
+							limit = {
+								NOT = {
+									trait = kind
+									trait = honorable
+									trait = zealous
+									trait = just
+								}
+							}
+							unsafe_religion = old_ones
+						}
+					}
+					any_close_relative = {
+						limit = {
+							NOT = {
+								trait = kind
+								trait = honorable
+								trait = zealous
+								trait = just
+							}
+						}
+						unsafe_religion = old_ones
+					}
+					any_realm_province = {
+						limit = { region = world_leng }
+						custom_tooltip = {
+							text = TOOLTIPold_ones_scourge
+							spawn_disease = old_ones_scourge
+						}
+					}
+					any_realm_province = {
+						limit = {
+							OR = {
+								religion = fish_gods
+								religion = old_ones
+								religion = starry_wisdom
+								religion = sothoryos_rel
+							}
+						}
+						custom_tooltip = {
+							text = TOOLTIPold_ones_scourge
+							spawn_disease = old_ones_scourge
+						}
+					}
+					prestige = 750
+#				}
+			}
+			give_nickname = nick_the_hand_of_chaos
+			set_character_flag = unsealed_manually
+
+			narrative_event = {
+				id = essos.147
+				days = 1
+			}
+
+			custom_tooltip = { text = TSP1KI12OPTA }
+		}
+	}
+}

@@ -1,0 +1,763 @@
+namespace = TSP_1KI_story_mode
+
+character_event = { # Prevents an immortal Archmaester from permanently leading the Citadel, particularly the one I created
+	id = TSP_1KI_story_mode.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_society_grandmaster = yes
+		society_member_of = hermetics
+
+		trait = archmaester
+
+		OR = {
+			character = 770659 # Dooley "Blackfish" Swiggity, the Maester Master of the Fish
+			has_character_flag = is_strange_green_archmaester
+			trait = immortal
+			immortal = yes
+		}
+
+		OR = {
+			AND = {
+				trait = archmaester
+				is_society_grandmaster = yes
+			}
+			trait = immortal
+			character = 770659
+			has_character_flag = is_strange_green_archmaester
+		}
+	}
+
+	option = { # Step down, son
+		set_society_grandmaster = no
+		clr_character_flag = grandmaester
+		set_character_flag = special_archmaester_courtier
+		if = {
+			limit = {
+#				character = 770659
+				has_character_flag = is_strange_green_archmaester
+				NOT = { has_nickname = nick_blackfish }
+			}
+			give_nickname = nick_blackfish # He's a fish-like Thousand Islander
+		}
+	}
+}
+
+character_event = { # Dooley successfully becomes immortal
+	id = TSP_1KI_story_mode.2
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			character = 770659 # Dooley "Blackfish" Swiggity, the Maester Master of the Fish
+			has_character_flag = is_strange_green_archmaester
+		}
+		year = 8060
+		NOT = { has_global_flag = dooley_is_immortal }
+	}
+
+	mean_time_to_happen = {
+		months = 360 # Thirty years
+
+		modifier = {
+			factor = 0.5
+			trait = archmaester
+		}
+		modifier = {
+			factor = 1.15
+			OR = {
+				trait = stressed
+				trait = depressed
+			}
+		}
+	}
+
+	option = { # I HAVE DONE IT!!
+		set_society_grandmaster = no
+		clr_character_flag = grandmaester
+		set_global_flag = dooley_is_immortal
+		add_trait = immortal
+		remove_trait = depressed
+		remove_trait = stressed
+		add_trait = crippled
+		cure_illness = yes
+		if = {
+			limit = { NOT = { has_character_flag = specialisation_mysteries } }
+
+			set_character_flag = choosing_hermetic_art
+			set_character_flag = specialisation_mysteries
+			clr_character_flag = specialisation_ravenry
+			clr_character_flag = specialisation_history
+			clr_character_flag = specialisation_astronomy
+			clr_character_flag = specialisation_seasons
+			clr_character_flag = specialisation_geography
+			clr_character_flag = specialisation_math
+			clr_character_flag = specialisation_warcraft
+			clr_character_flag = specialisation_castles
+			clr_character_flag = specialisation_culture
+			clr_character_flag = specialisation_languages
+			clr_character_flag = specialisation_law
+			clr_character_flag = specialisation_medicine
+			clr_character_flag = specialisation_metallurgy
+			clr_character_flag = specialisation_herblore
+			add_trait = mystic
+			add_artifact = valyrian_steel_link
+			add_artifact = valyrian_steel_link
+			add_artifact = valyrian_steel_link
+			add_artifact = valyrian_steel_link
+			add_artifact = valyrian_steel_link
+		}
+		random_list = {
+			50 = { }
+			50 = {
+				add_trait = one_eyed
+				add_trait = scarred_mid
+			}
+		}
+		if = {
+			limit = {
+				society_rank = {
+					society = hermetics
+					rank == 2
+				}
+			}
+			society_rank_up = 1
+		}
+		if = {
+			limit = {
+				society_rank = {
+					society = hermetics
+					rank == 1
+				}
+			}
+			society_rank_up = 2
+		}
+		give_nickname = nick_blackfish # He's a fish-like Thousand Islander
+		character_event = {
+			id = maester.12 # Congratulations!
+		}
+		set_character_flag = special_archmaester_courtier
+		set_society_grandmaster = no
+		clr_character_flag = grandmaester
+	}
+}
+
+character_event = { # Ensures Dooley becomes an Archmaester if you start before he does it in the above Event
+	id = TSP_1KI_story_mode.3
+	hide_window = yes
+
+	trigger = {
+#		character = 770659 # Dooley "Blackfish" Swiggity, the Maester Master of the Fish
+		has_character_flag = is_strange_green_archmaester
+		age = 30
+	}
+
+	mean_time_to_happen = {
+		months = 60 # Five years
+	}
+
+	option = {
+		set_character_flag = choosing_hermetic_art
+		set_character_flag = specialisation_mysteries
+		clr_character_flag = specialisation_ravenry
+		clr_character_flag = specialisation_history
+		clr_character_flag = specialisation_astronomy
+		clr_character_flag = specialisation_seasons
+		clr_character_flag = specialisation_geography
+		clr_character_flag = specialisation_math
+		clr_character_flag = specialisation_warcraft
+		clr_character_flag = specialisation_castles
+		clr_character_flag = specialisation_culture
+		clr_character_flag = specialisation_languages
+		clr_character_flag = specialisation_law
+		clr_character_flag = specialisation_medicine
+		clr_character_flag = specialisation_metallurgy
+		clr_character_flag = specialisation_herblore
+		add_trait = mystic
+		add_artifact = valyrian_steel_link
+		add_artifact = valyrian_steel_link
+		add_artifact = valyrian_steel_link
+		add_artifact = valyrian_steel_link
+		add_artifact = valyrian_steel_link
+
+		if = {
+			limit = {
+				society_rank = {
+					society = hermetics
+					rank == 2
+				}
+			}
+			society_rank_up = 1
+		}
+
+		if = {
+			limit = {
+				society_rank = {
+					society = hermetics
+					rank == 1
+				}
+			}
+			society_rank_up = 1
+			society_rank_up = 1
+		}
+
+		character_event = {
+			id = maester.12 # Congratulations!
+		}
+
+		give_nickname = nick_blackfish # He's a fish-like Thousand Islander
+		set_society_grandmaster = no
+		clr_character_flag = grandmaester
+		set_character_flag = special_archmaester_courtier
+	}
+}
+
+character_event = { # Dooley joins the Citadel when he turns fifteen
+	id = TSP_1KI_story_mode.4
+	hide_window = yes
+
+	trigger = {
+#		character = 770659
+		has_character_flag = is_strange_green_archmaester
+		age = 15
+		NOT = { has_global_flag = dooley_moving_on_up }
+	}
+
+	mean_time_to_happen = {
+		days = 14
+	}
+
+	option = {
+		if = {
+			limit = { is_ruler = yes }
+#			abdicate = yes
+			abdicate = { move = no }
+		}
+		c_the_citadel = {
+			holder_scope = {
+				ROOT = {
+					move_character = PREV
+				}
+			}
+		}
+		join_society = hermetics
+		set_interested_society = hermetics
+		add_trait = maester
+		society_rank_up = 2 # I am aware that a teenager should not become a Maester this quick, but I really don't want to make YET ANOTHER Event
+		add_trait = celibate # The player should NEVER be allowed a go at someone this OP
+		set_character_flag = special_archmaester_courtier
+		set_character_flag = no_court_invites
+		set_character_flag = maester_education
+		set_global_flag = dooley_moving_on_up
+#		add_character_modifier = {
+#			name = maester_education
+#			duration = -1
+#		}
+		give_nickname = nick_blackfish # He's a fish-like Thousand Islander
+		hidden_tooltip = {
+			liege = {
+				letter_event = { id = TSP_1KI_story_mode.5 }
+			}
+			father = {
+				letter_event = { id = TSP_1KI_story_mode.5 }
+			}
+			mother = {
+				letter_event = { id = TSP_1KI_story_mode.5 }
+			}
+		}
+	}
+}
+
+letter_event = { # Dooley has left
+	id = TSP_1KI_story_mode.5
+	border = GFX_event_letter_frame_religion
+	is_friendly = yes
+	is_triggered_only = yes
+
+	desc = TSP1KI9DESC
+
+	option = {
+		name = TSP1KI9OPTA
+		prestige = 5
+	}
+}
+
+character_event = { # Sistermen get a supplementary, hidden Trait to make Fish Gods worshippers and Thousand Islanders like them, this is to maximize compatibility
+	id = TSP_1KI_story_mode.6
+	hide_window = yes
+
+	trigger = {
+		trait = the_mark
+		NOT = { trait = has_sisterman_mark }
+	}
+
+	mean_time_to_happen = {
+		days = 6
+	}
+
+	option = {
+		add_trait = has_sisterman_mark
+	}
+}
+
+character_event = { # If you are a Thousand Islander or otherwise would qualify for this Mod's Mark, you will have your normal Mark replaced
+	id = TSP_1KI_story_mode.7
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			trait = the_mark
+			trait = has_sisterman_mark
+		}
+		OR = {
+			AND = {
+				religion = fish_gods
+				NOT = { culture = sisterman }
+			}
+			religion = old_ones
+			race = islander
+			graphical_culture = islandergfx
+		}
+		NOT = {
+			trait = the_mark_of_the_deep_ones
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 6
+	}
+
+	option = {
+		if = {
+			limit = {
+				NOT = {
+					AND = {
+						culture = sisterman
+						religion = fish_gods
+					}
+				}
+			}
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = the_mark_of_the_deep_ones
+			add_trait = deep_ones_easter_egg
+		}
+		if = { # Once you go Cthulhu, you never go back
+			limit = { religion = old_ones }
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = the_mark_of_the_deep_ones
+			add_trait = deep_ones_easter_egg
+		}
+		if = { # Thousand Islanders ALWAYS get the Mod's Mark
+			limit = {
+				OR = {
+					race = islander
+					graphical_culture = islandergfx
+					ROOT = { graphical_culture = islandergfx }
+				}
+			}
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = the_mark_of_the_deep_ones
+			add_trait = deep_ones_easter_egg
+		}
+	}
+}
+
+# character_event = { # If you have the Mod version of the Mark, add the special easter egg
+# 	id = TSP_1KI_story_mode.8
+# 	hide_window = yes
+
+# 	trigger = {
+# 		trait = the_mark_of_the_deep_ones
+# 		NOT = { trait = deep_ones_easter_egg }
+# 	}
+
+# 	mean_time_to_happen = {
+# 		days = 5
+# 	}
+
+# 	option = {
+# 		add_trait = deep_ones_easter_egg
+# 	}
+# }
+
+letter_event = { # Once you go Cthulhu, you never go back
+	id = TSP_1KI_story_mode.9
+#	picture = GFX_evt_TSP_testament_of_cthulhu
+	desc = TSP1KISTORY9DESC
+
+	hide_from = yes
+
+	trigger = {
+		OR = {
+			religion = old_ones
+			AND = {
+				religion = fish_gods
+				OR = {
+					trait = cruel
+					trait = impaler
+					trait = lunatic
+				}
+			}
+#			has_religion_feature = religion_feature_TSP_innsmouth
+		}
+		NOT = { trait = cynical }
+		NOT = { trait = the_mark_of_the_deep_ones }
+	}
+
+	mean_time_to_happen = {
+		months = 240
+		modifier = {
+			factor = 0.2
+			OR = {
+				trait = zealous
+				trait = impaler
+			}
+		}
+		modifier = {
+			factor = 0.5
+			piety = 500
+			NOT = {
+				religion = old_ones
+				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		modifier = {
+			factor = 0.5
+			piety = 2500
+			NOT = {
+				trait = kind
+				trait = honorable
+				trait = just
+#				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		modifier = {
+			factor = 5
+			OR = {
+				trait = kind
+				trait = honorable
+				trait = just
+			}
+		}
+		modifier = {
+			factor = 1.5
+#			has_religion_feature = religion_feature_TSP_innsmouth
+			religion = old_ones
+		}
+	}
+
+	option = {
+		name = TSP1KI9STORYOPTA
+		add_trait = the_mark_of_the_deep_ones
+		prestige = 100
+		trigger = {
+			NOT = {
+				trait = lunatic
+				trait = zealous
+				trait = old_ones_scourge
+			}
+		}
+		hidden_tooltip = {
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = deep_ones_easter_egg
+		}
+		hidden_tooltip = {
+			random_list = {
+				50 = { }
+				30 = { add_trait = zealous }
+				10 = { add_trait = lunatic }
+				10 = { add_artifact = necronomicon }
+			}
+		}
+	}
+
+	option = {
+		name = TSP1KI9STORYOPTB
+		add_trait = the_mark_of_the_deep_ones
+		prestige = 100
+		trigger = {
+			trait = zealous
+			NOT = { trait = lunatic }
+			NOT = { trait = old_ones_scourge }
+		}
+		tooltip_info = zealous
+		hidden_tooltip = {
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = deep_ones_easter_egg
+		}
+		hidden_tooltip = {
+			random_list = {
+				60 = { }
+				30 = { add_trait = lunatic }
+				10 = {
+					add_trait = lunatic
+					add_artifact = necronomicon
+				}
+			}
+		}
+	}
+
+	option = {
+		name = TSP1KI9STORYOPTC
+		add_trait = the_mark_of_the_deep_ones
+		prestige = 100
+		trigger = {
+			trait = lunatic
+		}
+		tooltip_info = lunatic
+		hidden_tooltip = {
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = deep_ones_easter_egg
+		}
+		hidden_tooltip = {
+			random_list = {
+				60 = { }
+				30 = { add_trait = zealous }
+				10 = { add_artifact = necronomicon }
+			}
+		}
+	}
+
+	option = {
+		name = TSP1KI12OPTA
+		trigger = {
+			trait = old_ones_scourge
+		}
+		tooltip_info = old_ones_scourge
+		add_trait = the_mark_of_the_deep_ones
+		prestige = 100
+		hidden_tooltip = {
+			prestige = 100
+			remove_trait = the_mark
+			remove_trait = has_sisterman_mark
+			add_trait = deep_ones_easter_egg
+		}
+		hidden_tooltip = {
+			random_list = {
+				60 = { add_trait = lunatic }
+				30 = {
+					add_trait = zealous
+					add_trait = lunatic
+				}
+				10 = {
+					add_artifact = necronomicon
+					add_trait = lunatic
+				}
+			}
+		}
+	}
+}
+
+character_event = { # Keeps the Immortal Fish Witch in the Evil Society and keeps the Fish Witch from being "drafted" into the wrong Society at the start of the game
+	id = TSP_1KI_story_mode.10
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			character = 770689
+			has_character_flag = fish_witch
+		}
+		age = 15
+		is_alive = yes
+	}
+
+	option = {
+		if = {
+			limit = { NOT = { society_member_of = the_trollcrafters } }
+			leave_society = yes
+			join_society = the_trollcrafters
+			health = 50
+		}
+		c_yeen = { # I'd prefer to give her a band of raiders and miscreants that are ultimately stopped by the High Septon, but not in this update
+			holder_scope = {
+				ROOT = {
+					move_character = PREV
+				}
+			}
+		}
+	}
+}
+
+character_event = { # TO DO: the immortal Fish Witch begins to become a threat and the High Septon wants her DEAD
+	id = TSP_1KI_story_mode.11
+	hide_window = yes
+
+	mean_time_to_happen = {
+		months = 600
+	}
+
+	trigger = {
+		OR = {
+			character = 770689
+			has_character_flag = fish_witch
+		}
+		OR = {
+			society_rank = {
+				society = the_trollcrafters
+				rank == 4
+			}
+			is_society_grandmaster = yes
+		}
+	}
+
+	option = {
+		set_global_flag = high_sparrow_calls_for_blood
+	}
+}
+
+character_event = { # Fish Witch quietly becomes immortal once she is at the peak of her power
+	id = TSP_1KI_story_mode.14
+	hide_window = yes
+
+	has_global_flag = high_sparrow_calls_for_blood
+	has_character_flag = fish_witch
+
+	trigger = {
+		has_global_flag = high_sparrow_calls_for_blood
+		has_character_flag = fish_witch
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	option = {
+		set_global_flag = high_sparrow_calls_for_blood
+		add_trait = immortal
+	}
+}
+
+narrative_event = { # A religion has reformed to embrace Cthulhu
+	id = TSP_1KI_story_mode.12
+	title = TSP_1KI_story_mode12TITLE
+	desc = TSP_1K1_story_mode12DESC
+	picture = GFX_dark_corridor
+	border = GFX_event_narrative_frame_war
+
+	major = yes
+	is_triggered_only = yes
+
+	option = {
+		name = TSP1KI12OPTA
+		trigger = {
+			always = no
+			NOT = {
+				ai = no
+				ai = yes
+			}
+#			OR = {
+#				AND = {
+#					has_religion_feature = religion_feature_TSP_innsmouth
+#					ai = no
+#				}
+#				trait = old_ones_scourge
+#				trait = lunatic
+#				religion = fish_gods
+#				religion = old_ones
+#				religion = starry_wisdom
+#			}
+		}
+		custom_tooltip = {
+			text = TSP1KI2OPTTOOLTIP
+			hidden_tooltip = {
+				if = {
+					limit = {
+						NOT = { religion = fish_gods }
+					}
+					add_trait = lunatic
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						trait = old_ones_scourge
+						religion = old_ones
+					}
+				}
+				set_character_flag = scourge_lunatic
+				add_trait = lunatic
+			}
+		}
+	}
+
+	option = {
+		name = TSP1KI12OPTB
+		trigger = {
+			NOT = {
+				has_religion_feature = religion_feature_TSP_innsmouth
+				trait = old_ones_scourge
+				religion = old_ones
+				religion = starry_wisdom
+			}
+		}
+		custom_tooltip = { text = TSP1KI2OPTTOOLTIP }
+	}
+
+	option = {
+		name = TSP1KI12OPTC
+		trigger = {
+			culture_group = yi_ti_group
+			NOT = {
+				has_religion_feature = religion_feature_TSP_innsmouth
+				trait = old_ones_scourge
+				religion = old_ones
+				religion = starry_wisdom
+			}
+		}
+		custom_tooltip = { text = TSP1KI2OPTTOOLTIP }
+	}
+}
+
+province_event = { # When you unseal Cthulhu, all religions that worship him also get the Old Ones Scourge, but it will not spread until after fifty years, as it is in the normal Mod
+	id = TSP_1KI_story_mode.13
+#	title = "EVTTITLEessos.155"
+#	desc = "EVTDESCessos.155"
+#	picture = GFX_evt_china_devastating_plague
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	ai = no
+
+#	hide_from = yes
+
+	trigger = {
+		ai = no
+		has_global_flag = old_ones_scourge_world
+		NOT = { has_global_flag = now_thats_a_PHNGLUIMGLWNAFH_of_damage }
+	}
+
+	option = {
+#		name = "EVTOPTAessos.155"
+		set_global_flag = now_thats_a_PHNGLUIMGLWNAFH_of_damage
+		set_global_flag = old_ones_scourge_world
+		any_province = {
+			limit = {
+				OR = {
+					religion = fish_gods
+					religion = old_ones
+					religion = starry_wisdom
+					religion = sothoryos_rel
+					has_religion_feature = religion_feature_TSP_innsmouth
+					culture = brindlemen
+				}
+			}
+			custom_tooltip = {
+				text = TOOLTIPold_ones_scourge
+				spawn_disease = old_ones_scourge
+			}
+		}
+	}
+}
+
+# TSP_1KI_story_mode.14 is taken due to duplicitious error

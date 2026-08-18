@@ -114,7 +114,7 @@ character_event = {
 character_event = {
 	id = slavery.259
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -199,7 +199,7 @@ character_event = {
 							}
 						}
 						liege = { wealth = 5 }
-						clear_wealth = THIS
+						clear_wealth = yes
 						death = { death_reason = death_sold_slave }
 						break = yes
 					}
@@ -230,7 +230,7 @@ character_event = {
 	id = slavery.299
 	desc = "AI SLAVERY ACITION"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -648,7 +648,7 @@ character_event = { #Character owns slaves but does not have slave owner trait
 	id = slavery.12
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 
 	trigger = {
@@ -1009,7 +1009,7 @@ character_event = { #Character who owns no slaves has slave owner trait
 	id = slavery.13
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 
 	trigger = {
@@ -1051,7 +1051,7 @@ character_event = {
 	desc = "EVTDESCSLAVERY15"
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = slave_trader
@@ -1067,7 +1067,7 @@ character_event = {
 character_event = {
 	id = slavery.16
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unlanded
 
 	trigger = {
 		is_alive = yes
@@ -1216,7 +1216,7 @@ character_event = {
 
 	hide_window = yes
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -1402,7 +1402,7 @@ character_event = {
 					# }
 
 					# # Must be capable of having children
-					# age = 16
+					# is_adult = yes
 					# is_incapable = no
 					# NOT = { trait = eunuch }
 					# is_consort = no
@@ -1427,7 +1427,7 @@ character_event = {
 					# }
 
 					# # Must be capable of having children
-					# age = 16
+					# is_adult = yes
 					# is_incapable = no
 					# NOT = { trait = eunuch }
 					# NOT = { has_character_flag = flag_breeding_candidate }
@@ -1453,7 +1453,7 @@ character_event = {
 					# }
 
 					# # Must be capable of having children
-					# age = 16
+					# is_adult = yes
 					# is_incapable = no
 					# NOT = { trait = eunuch }
 					# NOT = { has_character_flag = flag_breeding_candidate }
@@ -2310,7 +2310,7 @@ character_event = { #inform first slave cooperates
 character_event = {
 	id = slavery.308
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_window = yes
 	only_capable = yes
 	prisoner = no
@@ -4001,8 +4001,7 @@ character_event = {
 				limit = { is_merchant_republic = yes }
 				capital_scope = { province_event = { id = slavery.1021 days = 1 } } #Calculate slave labour modifier
 			}
-			if = {
-				limit = { is_merchant_republic = no }
+			else = {
 				liege = { capital_scope = { province_event = { id = slavery.1021 days = 1 } } }#Calculate slave labour modifier
 			}
 		}
@@ -4209,8 +4208,7 @@ character_event = {
 				limit = { is_merchant_republic = yes }
 				capital_scope = { province_event = { id = slavery.1021 days = 1 } } #Calculate slave labour modifier
 			}
-			if = {
-				limit = { is_merchant_republic = no }
+			else = {
 				liege = { capital_scope = { province_event = { id = slavery.1021 days = 1 } } }#Calculate slave labour modifier
 			}
 		}
@@ -4226,7 +4224,7 @@ character_event = {
 	picture = GFX_evt_slavery
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		any_demesne_title = {
@@ -4461,7 +4459,7 @@ province_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -4709,7 +4707,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.8
 			OR = {
@@ -5107,7 +5105,7 @@ character_event = {
 				text = TOOLTIPslavery.154
 				hidden_tooltip = {
 					remove_trait = former_slave
-					clear_wealth = THIS
+					clear_wealth = yes
 					death = { death_reason = death_sold_slave }
 				}
 			}
@@ -5133,6 +5131,8 @@ character_event = {
 	picture = GFX_evt_slave_market
 
 	is_triggered_only = yes
+
+	only_playable = yes
 
 	trigger = {
 		demesne_size = 1
@@ -6085,7 +6085,7 @@ character_event = {
 	id = slavery.2500
 	desc = "Hey, AI, you want to go get some slaves from this person?"
 	picture = GFX_evt_slavery
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	war = no
 	only_playable = yes
 	ai = yes
@@ -6464,7 +6464,7 @@ character_event = {
 
 	min_age = 10
 	only_capable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	desc = {
 		text = EVTDESCSLAVERY3000
@@ -7669,7 +7669,7 @@ character_event = {
 character_event = { #on_siege_won_leader trigger
 	id = slavery.3997
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	only_playable = yes
 	hide_window = yes
 
@@ -7758,7 +7758,7 @@ character_event = { #on_siege_won_leader trigger
 character_event = { #on_siege trigger
 	id = slavery.3998
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 	only_playable = yes
 	hide_window = yes
 
@@ -7840,7 +7840,7 @@ character_event = { #on_siege trigger
 character_event = { #on_loot trigger
 	id = slavery.3999
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 	only_playable = yes
 	hide_window = yes
 
@@ -8232,8 +8232,7 @@ character_event = {
 				limit = { is_merchant_republic = yes }
 				capital_scope = { province_event = { id = slavery.1021 days = 1 } } #Calculate slave labour modifier
 			}
-			if = {
-				limit = { is_merchant_republic = no }
+			else = {
 				liege = { capital_scope = { province_event = { id = slavery.1021 days = 1 } } }#Calculate slave labour modifier
 			}
 		}
@@ -8436,7 +8435,7 @@ character_event = {
 	desc = "EVTDESCSLAVERY701"
 	picture = GFX_unsullied
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -9681,32 +9680,32 @@ character_event = {
 		custom_tooltip = { text = TOOLTIPslavery.709CANCEL }
 		if = {
 			limit = {
-				has_character_flag =  training_unsullied_1000
-				NOT = { has_character_flag =  training_unsullied_2000 }
-				NOT = { has_character_flag =  training_unsullied_3000 }
-				NOT = { has_character_flag =  training_unsullied_4000 }
+				has_character_flag = training_unsullied_1000
+				NOT = { has_character_flag = training_unsullied_2000 }
+				NOT = { has_character_flag = training_unsullied_3000 }
+				NOT = { has_character_flag = training_unsullied_4000 }
 			}
-			clr_character_flag =  training_unsullied_1000
+			clr_character_flag = training_unsullied_1000
 			remove_character_modifier = training_unsullied
 		}
 		if = {
 			limit = {
-				has_character_flag =  training_unsullied_2000
-				NOT = { has_character_flag =  training_unsullied_3000 }
-				NOT = { has_character_flag =  training_unsullied_4000 }
+				has_character_flag = training_unsullied_2000
+				NOT = { has_character_flag = training_unsullied_3000 }
+				NOT = { has_character_flag = training_unsullied_4000 }
 			}
-			clr_character_flag =  training_unsullied_2000
+			clr_character_flag = training_unsullied_2000
 		}
 		if = {
 			limit = {
-				has_character_flag =  training_unsullied_3000
-				NOT = { has_character_flag =  training_unsullied_4000 }
+				has_character_flag = training_unsullied_3000
+				NOT = { has_character_flag = training_unsullied_4000 }
 			}
-			clr_character_flag =  training_unsullied_3000
+			clr_character_flag = training_unsullied_3000
 		}
 		if = {
-			limit = { has_character_flag =  training_unsullied_4000 }
-			clr_character_flag =  training_unsullied_4000
+			limit = { has_character_flag = training_unsullied_4000 }
+			clr_character_flag = training_unsullied_4000
 		}
 	}
 	option = {
@@ -10978,8 +10977,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}

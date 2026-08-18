@@ -199,7 +199,7 @@ long_character_event = {
 	id = clash_of_kings.600
 	desc = "EVTDESCclash_of_kings.600"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	only_independent = yes
 
@@ -232,14 +232,12 @@ long_character_event = {
 		}
 		c_hornwood = {
 			holder_scope = {
-				custom_tooltip = {
-					hidden_tooltip = {
-						liege = {
-							reverse_opinion = {
-								who = PREV
-								modifier = pressed_my_claim
-								years = 2
-							}
+				hidden_tooltip = {
+					liege = {
+						reverse_opinion = {
+							who = PREV
+							modifier = pressed_my_claim
+							years = 2
 						}
 					}
 				}
@@ -381,14 +379,12 @@ long_character_event = {
 		}
 		c_hornwood = {
 			holder_scope = {
-				custom_tooltip = {
-					hidden_tooltip = {
-						liege = {
-							reverse_opinion = {
-								who = PREV
-								modifier = pressed_my_claim
-								years = 30
-							}
+				hidden_tooltip = {
+					liege = {
+						reverse_opinion = {
+							who = PREV
+							modifier = pressed_my_claim
+							years = 30
 						}
 					}
 				}
@@ -488,14 +484,12 @@ long_character_event = {
 		}
 		c_hornwood = {
 			holder_scope = {
-				custom_tooltip = {
-					hidden_tooltip = {
-						liege = {
-							reverse_opinion = {
-								who = PREV
-								modifier = pressed_my_claim
-								years = 2
-							}
+				hidden_tooltip = {
+					liege = {
+						reverse_opinion = {
+							who = PREV
+							modifier = pressed_my_claim
+							years = 2
 						}
 					}
 				}
@@ -1830,7 +1824,7 @@ character_event = {
 
 }
 #Renly stands down
-character_event  = {
+character_event = {
 	id = clash_of_kings.5
 	desc = "EVTDESCclash_of_kings.5"
 	picture = GFX_evt_parley_storms_end
@@ -1980,7 +1974,7 @@ character_event  = {
 
 }
 #Renly /Stannis dies before first war ends
-character_event  = {
+character_event = {
 	id = clash_of_kings.6
 	desc = "EVTDESCclash_of_kings.6"
 
@@ -2161,7 +2155,7 @@ character_event  = {
 	}
 }
 #Backers of winner joins war for iron throne
-character_event  = {
+character_event = {
 	id = clash_of_kings.7
 	desc = "EVTDESCclash_of_kings.7"
 
@@ -2213,7 +2207,7 @@ character_event  = {
 }
 
 #Promised crown given to ironborn
-character_event  = {
+character_event = {
 	id = clash_of_kings.8
 	desc = "EVTDESCclash_of_kings.8"
 
@@ -2236,7 +2230,7 @@ character_event  = {
 
 }
 #Set theon's relations with Robb
-character_event  = {
+character_event = {
 	id = clash_of_kings.9
 	desc = "EVTDESCclash_of_kings.9"
 
@@ -2264,7 +2258,7 @@ character_event  = {
 	}
 
 }
-character_event  = {
+character_event = {
 	id = clash_of_kings.10
 	desc = "EVTDESCclash_of_kings.10"
 
@@ -2495,7 +2489,7 @@ character_event = {
 					location = { province_id = 47 }
 				}
 				create_character = { #Create hidden character
-					name = Брандон
+					name = "Брандон"
 					dna = "0bcch0dbcb0"
 					culture = THIS
 					religion = THIS
@@ -2621,7 +2615,7 @@ character_event = {
 					location = { province_id = 47 }
 				}
 				create_character = { #Create hidden character
-					name = Рикон
+					name = "Рикон"
 					dna = "bcb0a0dbcb0"
 					culture = THIS
 					religion = THIS
@@ -2721,7 +2715,7 @@ character_event = {
 	}
 }
 #Find missing Stark child
-character_event  = {
+character_event = {
 	id = clash_of_kings.11
 	desc = "EVTDESCclash_of_kings.11"
 
@@ -2757,7 +2751,9 @@ character_event  = {
 		}
 	}
 
-	mean_time_to_happen = { days = 25 }
+	mean_time_to_happen = {
+		days = 25
+	}
 
 	immediate = {
 		set_character_flag = stark_child_found
@@ -2785,7 +2781,7 @@ character_event  = {
 		recalc_succession = yes
 		if = {
 			limit = { event_target:sansa_stark = { character = PREV } } # Sansa
-			set_name = Санса
+			set_name = "Санса"
 			remove_nickname = nick_stone
 			c_94043 = {
 				any_owned_bloodline = {
@@ -2812,7 +2808,7 @@ character_event  = {
 				has_nickname = nick_stone
 				NOT = { event_target:sansa_stark = { character = PREV } } # Sansa
 			}
-			set_name = Санса
+			set_name = "Санса"
 			remove_nickname = nick_stone
 			c_94043 = {
 				any_owned_bloodline = {
@@ -2997,8 +2993,7 @@ character_event  = {
 			character_event = { id = clash_of_kings.12 }
 			break = yes
 		}
-		if = {
-			limit = { is_ruler = no }
+		else = {
 			random_playable_ruler = {
 				limit = {
 					dynasty = 59
@@ -3075,7 +3070,7 @@ character_event  = {
 	}
 }
 #Stark child has been found!
-character_event  = {
+character_event = {
 	id = clash_of_kings.12
 	desc = "EVTDESCclash_of_kings.12"
 
@@ -3122,7 +3117,7 @@ character_event  = {
 	}
 }
 #Stark child has been found! version 2
-character_event  = {
+character_event = {
 	id = clash_of_kings.912
 	desc = "EVTDESCclash_of_kings.912"
 
@@ -3187,7 +3182,7 @@ character_event  = {
 		}
 	}
 }
-character_event  = {
+character_event = {
 	id = clash_of_kings.913
 	desc = "EVTDESCclash_of_kings.913"
 
@@ -3217,7 +3212,7 @@ character_event  = {
 	}
 }
 ##Inform King renly/Stannis declare war
-letter_event  = {
+letter_event = {
 	id = clash_of_kings.13
 	desc = "EVTDESCclash_of_kings.13"
 
@@ -3246,7 +3241,7 @@ letter_event  = {
 
 }
 ##Inform King renly declare war (from cb_types)
-letter_event  = {
+letter_event = {
 	id = clash_of_kings.19
 	desc = "EVTDESCclash_of_kings.19"
 
@@ -3260,7 +3255,7 @@ letter_event  = {
 
 }
 ##Inform Robb, balon joins in
-# letter_event  = {
+# letter_event = {
 	# id = clash_of_kings.14
 	# desc = "EVTDESCclash_of_kings.14"
 
@@ -3272,7 +3267,7 @@ letter_event  = {
 
 # }
 #Robb offers white peace to non lannisters
-character_event  = {
+character_event = {
 	id = clash_of_kings.15
 	desc = "EVTDESCclash_of_kings.15"
 
@@ -3479,7 +3474,7 @@ character_event  = {
 }
 
 ##Inform north offers peace
-letter_event  = {
+letter_event = {
 	id = clash_of_kings.16
 	border = "GFX_event_letter_frame_diplomacy"
 
@@ -3758,7 +3753,7 @@ letter_event  = {
 	}
 }
 ##Inform north accept
-letter_event  = {
+letter_event = {
 	id = clash_of_kings.17
 	desc = "EVTDESCclash_of_kings.17"
 
@@ -3821,7 +3816,7 @@ letter_event  = {
 
 }
 ##Inform north reject
-letter_event  = {
+letter_event = {
 	id = clash_of_kings.18
 	desc = "EVTDESCclash_of_kings.18"
 
@@ -3835,7 +3830,7 @@ letter_event  = {
 }
 
 ##Tyrell-Lannister Alliance
-narrative_event  = {
+narrative_event = {
 	id = clash_of_kings.20
 	desc = "EVTDESCclash_of_kings.20"
 	title = "EVTTITLEclash_of_kings.20"
@@ -4098,7 +4093,7 @@ narrative_event  = {
 	}
 }
 ##Iron Throne responds
-narrative_event  = {
+narrative_event = {
 	id = clash_of_kings.21
 	desc = "EVTDESCclash_of_kings.21"
 	title = "EVTTITLEclash_of_kings.20"
@@ -4303,7 +4298,7 @@ narrative_event  = {
 }
 
 ##offer accepted
-character_event  = {
+character_event = {
 	id = clash_of_kings.22
 	desc = "EVTDESCclash_of_kings.22"
 
@@ -4394,7 +4389,7 @@ character_event  = {
 	}
 }
 ##offer rejected
-character_event  = {
+character_event = {
 	id = clash_of_kings.23
 	desc = "EVTDESCclash_of_kings.23"
 
@@ -4425,7 +4420,7 @@ character_event  = {
 	}
 }
 ##Renly changes to primo
-character_event  = {
+character_event = {
 	id = clash_of_kings.240
 	desc = "EVTDESCclash_of_kings.24"
 
@@ -4449,7 +4444,7 @@ character_event  = {
 		father = { character_event = { id = clash_of_kings.24 } }
 	}
 }
-character_event  = {
+character_event = {
 	id = clash_of_kings.24
 	desc = "EVTDESCclash_of_kings.24"
 
@@ -4472,7 +4467,7 @@ character_event  = {
 	}
 }
 ##Starks win, decides Iron throne's fate
-character_event  = {
+character_event = {
 	id = clash_of_kings.25
 	desc = "EVTDESCclash_of_kings.25"
 
@@ -4900,7 +4895,7 @@ character_event  = {
 	}
 }
 ##Inform Robb named you king
-character_event  = {
+character_event = {
 	id = clash_of_kings.26
 	desc = "EVTDESCclash_of_kings.26"
 
@@ -4947,7 +4942,7 @@ character_event  = {
 	}
 }
 ##Inform Robb didnt name you king
-character_event  = {
+character_event = {
 	id = clash_of_kings.27
 	desc = "EVTDESCclash_of_kings.27"
 
@@ -4995,7 +4990,7 @@ character_event  = {
 	}
 }
 ##Inform others of Robb's new king
-character_event  = {
+character_event = {
 	id = clash_of_kings.28
 	desc = "EVTDESCclash_of_kings.28"
 
@@ -5006,7 +5001,7 @@ character_event  = {
 	}
 }
 ##Inform others Robb takes throne
-character_event  = {
+character_event = {
 	id = clash_of_kings.29
 	desc = "EVTDESCclash_of_kings.29"
 
@@ -5017,7 +5012,7 @@ character_event  = {
 	}
 }
 #Inform others Robb leaves power vacuum
-character_event  = {
+character_event = {
 	id = clash_of_kings.30
 	desc = "EVTDESCclash_of_kings.30"
 
@@ -5107,7 +5102,7 @@ character_event  = {
 	}
 }
 #I win the race!
-character_event  = {
+character_event = {
 	id = clash_of_kings.31
 	desc = "EVTDESCclash_of_kings.31"
 
@@ -5129,7 +5124,7 @@ character_event  = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -5238,7 +5233,7 @@ character_event  = {
 	}
 }
 #Inform someone fills vacuum
-character_event  = {
+character_event = {
 	id = clash_of_kings.32
 	desc = "EVTDESCclash_of_kings.32"
 
@@ -5283,7 +5278,7 @@ character_event  = {
 		}
 	}
 }
-character_event  = {
+character_event = {
 	id = clash_of_kings.33
 	desc = "EVTDESCclash_of_kings.33"
 
@@ -5294,7 +5289,7 @@ character_event  = {
 	}
 }
 ##Lannister supporter secures Kings Landing
-character_event  = {
+character_event = {
 	id = clash_of_kings.34
 	desc = "EVTDESCclash_of_kings.34"
 
@@ -5318,7 +5313,7 @@ character_event  = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -5336,7 +5331,7 @@ character_event  = {
 		}
 	}
 }
-character_event  = {
+character_event = {
 	id = clash_of_kings.35
 	desc = "EVTDESCclash_of_kings.35"
 
@@ -5904,7 +5899,7 @@ character_event = {
 					holder_scope = {
 						dynasty = 59
 						is_female = no
-						age = 16
+						is_adult = yes
 					}
 				}
 			}
@@ -7459,7 +7454,7 @@ narrative_event = {
 				}
 			}
 		}
-		c_600496  = {
+		c_600496 = {
 			if = {
 				limit = {
 					is_alive = yes
@@ -7475,7 +7470,7 @@ narrative_event = {
 				opinion = { who = ROOT modifier = opinion_abolished_slavery_former_slave months = 2400 }
 			}
 		}
-		c_601496  = {
+		c_601496 = {
 			if = {
 				limit = {
 					is_alive = yes
@@ -7564,7 +7559,7 @@ narrative_event = {
 	}
 }
 
-character_event  = { #Usurp wise masters
+character_event = { #Usurp wise masters
 	id = clash_of_kings.55
 	desc = "EVTDESCclash_of_kings.55"
 	picture = "GFX_evt_dany_astapor_drogon"
@@ -7790,7 +7785,7 @@ narrative_event = {
 
 	option = {
 		name = "EVTOPTAclash_of_kings.5600"
-		c_601496  = {
+		c_601496 = {
 			if = {
 				limit = {
 					is_alive = yes
@@ -8730,7 +8725,7 @@ narrative_event = {
 	title = "EVTTITLEclash_of_kings.62"
 	picture = "GFX_evt_parley_storms_end"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 
 	option = {
 		name = "EVTOPTAclash_of_kings.63" #Scream for help
@@ -8797,7 +8792,7 @@ narrative_event = {
 				}
 			}
 		}
-		c_6253  = { #Robar Royce, Emmon Cuy killed by Knight of Flowers
+		c_6253 = { #Robar Royce, Emmon Cuy killed by Knight of Flowers
 			ROOT = {
 				any_courtier = {
 					limit = {
@@ -8857,7 +8852,7 @@ narrative_event = {
 	title = "EVTTITLEclash_of_kings.62"
 	picture = "GFX_evt_parley_storms_end"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 
 	option = {
 		name = "EVTOPTAclash_of_kings.65" #Night is dark and full of terrors
@@ -8891,7 +8886,7 @@ narrative_event = {
 				}
 			}
 		}
-		c_1289  = { #Brienne is unable to defend from Emmon Cuy
+		c_1289 = { #Brienne is unable to defend from Emmon Cuy
 			ROOT = {
 				random_courtier = {
 					limit = { character = 206054 }
@@ -8902,7 +8897,7 @@ narrative_event = {
 				}
 			}
 		}
-		c_6253  = { #Robar Royce, Emmon Cuy killed by Knight of Flowers
+		c_6253 = { #Robar Royce, Emmon Cuy killed by Knight of Flowers
 			ROOT = {
 				any_courtier = {
 					limit = {
@@ -8927,7 +8922,7 @@ narrative_event = {
 	title = "EVTTITLEclash_of_kings.62"
 	picture = "GFX_evt_parley_storms_end"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 
 	option = {
 		name = "EVTOPTAclash_of_kings.66" #The terrors of night die in the daylight

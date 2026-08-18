@@ -988,8 +988,8 @@ character_event = {
 # Drill Commanders
 character_event = {
 	id = MNM.70010
-	title =  MNM.70010.t
-	desc =  MNM.70010.d
+	title = MNM.70010.t
+	desc = MNM.70010.d
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 
@@ -1078,7 +1078,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		modifier = {
 			factor = 1.25
@@ -1157,7 +1157,7 @@ character_event = {
 	}
 
 	option = {
-		name =  EXCELLENT
+		name = EXCELLENT
 		hidden_tooltip = { change_variable = { which = "services_rendered" value = 1 } }
 		liege = {
 			opinion = {
@@ -1172,8 +1172,8 @@ character_event = {
 
 character_event = {
 	id = MNM.70011
-	title =  MNM.70010.t
-	desc =  MNM.70011.d
+	title = MNM.70010.t
+	desc = MNM.70011.d
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 
@@ -1252,7 +1252,7 @@ character_event = {
 	}
 
 	option = {
-		name =  EXCELLENT
+		name = EXCELLENT
 		prestige = 5
 		if = {
 			limit = {
@@ -1542,7 +1542,7 @@ character_event = {
 	}
 
 	option = {
-		name =  EXCELLENT
+		name = EXCELLENT
 		hidden_tooltip = { change_variable = { which = "services_rendered" value = 1 } }
 		liege = {
 			opinion = {
@@ -1557,7 +1557,7 @@ character_event = {
 
 character_event = {
 	id = MNM.70013
-	desc =  MNM.70013.d
+	desc = MNM.70013.d
 	picture = GFX_evt_large_army
 	border = GFX_event_normal_frame_war
 
@@ -1658,8 +1658,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -1934,7 +1933,7 @@ character_event = {
 character_event = {
 	id = MNM.70016
 	title = MNM.70015.t
-	desc =  MNM.70016.d
+	desc = MNM.70016.d
 	picture = GFX_evt_melee
 	border = GFX_event_normal_frame_war
 
@@ -1971,7 +1970,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 120
+		years = 10
 
 		modifier = {
 			factor = 1.25
@@ -2097,7 +2096,7 @@ character_event = { # Yearly decrease
 	id = MNM.70030
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -2222,7 +2221,7 @@ character_event = { # Hunt Apostates meta event
 						# }
 					# }
 					# religion = event_target:my_liege
-					# age = 16
+					# is_adult = yes
 					# has_secret_religion_trait_trigger = yes
 					# NOT_mythical_creature_trigger = yes
 					# NOT = { is_inaccessible_trigger = yes }
@@ -2247,7 +2246,7 @@ character_event = { # Hunt Apostates meta event
 							who = event_target:my_liege
 						}
 					}
-					age = 16
+					is_adult = yes
 					is_devil_worshiper_trigger = yes
 					ai = yes
 					NOR = {
@@ -2295,7 +2294,7 @@ character_event = { # Hunt Apostates meta event
 					NOT = {
 						higher_tier_than = BARON
 					}
-					age = 16
+					is_adult = yes
 					NOR = {
 						is_devil_worshiper_trigger = yes
 						has_character_modifier = highly_suspect
@@ -2700,7 +2699,7 @@ character_event = { # Outcome event
 		event_target:my_liege = {
 			random_realm_character = {
 				limit = {
-					age = 16
+					is_adult = yes
 					ai = yes
 					is_rival = ROOT
 					NOT = {

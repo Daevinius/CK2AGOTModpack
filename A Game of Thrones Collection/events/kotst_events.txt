@@ -5,7 +5,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 
 	trigger = {
 		has_landed_title = e_iron_throne
@@ -21,7 +21,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 
 	trigger = {
 		trait = kingsguard
@@ -657,7 +657,7 @@ character_event = {
 					is_ruler = no
 					is_lowborn = yes
 					prisoner = no
-					age = 16
+					is_adult = yes
 					NOT = { is_close_relative = ROOT }
 					NOT = { trait = dragon }
 				}
@@ -1606,8 +1606,7 @@ character_event = {
 				years = 20
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			add_character_modifier = {
 					name = adulteress
 					years = 20

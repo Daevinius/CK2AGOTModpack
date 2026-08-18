@@ -37,7 +37,7 @@ letter_event = {
    }
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	immediate = {
 		if = {
@@ -882,7 +882,7 @@ character_event = {
 	id = GBC.199
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage
 	ai = no
 
 	trigger = {
@@ -1018,7 +1018,7 @@ character_event = {
 	}
 
 	option = {
-		if =  {
+		if = {
 			limit = {
 				event_target:gbc_lover = { always = yes }
 			}
@@ -1884,8 +1884,7 @@ character_event = {
 				years = 10
 			}
 		}
-		if = {
-			limit = { is_female = no }
+		else = {
 			add_character_modifier = {
 				modifier = adulterer
 				years = 10
@@ -1900,8 +1899,7 @@ character_event = {
 					years = 10
 				}
 			}
-			if = {
-				limit = { is_female = no }
+			else = {
 				add_character_modifier = {
 					modifier = adulterer
 					years = 10

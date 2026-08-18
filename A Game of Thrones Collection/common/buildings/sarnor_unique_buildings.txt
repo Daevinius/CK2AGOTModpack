@@ -1,0 +1,161 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	piety_cost = piety cost to build the building
+ #	prestige_cost = prestige cost to build the building
+ #	Be aware that you can only use one of gold, piety, and prestige cost
+ #	build_time = time to build, in days
+ #
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+
+ # Castle
+castle = {
+	###unique buildings###
+	ca_sarnath_throne = {
+		desc = ca_sarnath_throne_desc
+		potential = {
+			FROMFROM = {
+				title = b_sarnath
+			}
+		}
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		gold_cost = 200
+		build_time = 100
+		monthly_character_prestige = 0.30
+		vassal_opinion = 5
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_thousand_rooms = {
+		desc = ca_thousand_rooms_desc
+		potential = {
+			FROMFROM = {
+				title = b_sarnath
+			}
+		}
+
+		gold_cost = 500
+		build_time = 3650
+		fort_level = 4
+		tax_income = 2
+		court_size_modifier = 5
+		ai_creation_factor = 110
+
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_sallosh_library = {
+		desc = ca_sallosh_library_desc
+		potential = {
+			FROMFROM = {
+				title = b_sallosh
+			}
+		}
+
+		gold_cost = 300
+		build_time = 1460
+		monthly_character_piety = 0.30
+		ai_creation_factor = 110
+
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_sarys_port = {
+		desc = ca_sarys_port_desc
+		potential = {
+			FROMFROM = {
+				title = b_sarys
+			}
+		}
+
+		gold_cost = 300
+		build_time = 1460
+		galleys = 45
+		ai_creation_factor = 110
+
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_kasath = {
+		desc = ca_kasath_desc
+		potential = {
+			FROMFROM = {
+				title = b_kasath
+			}
+		}
+
+		gold_cost = 300
+		build_time = 1460
+		tax_income = 4
+		tradevalue = 30
+		ai_creation_factor = 110
+
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_sathar_waterfalls = {
+		desc = ca_sathar_waterfalls_desc
+		potential = {
+			FROMFROM = {
+				title = b_sathar
+			}
+		}
+
+		gold_cost = 300
+		build_time = 1460
+		monthly_character_prestige = 0.30
+		ai_creation_factor = 110
+
+		#trigger = { always = no }
+	}
+
+	ca_gornath_canals = {
+		desc = ca_gornath_canals_desc
+		potential = {
+			FROMFROM = {
+				title = b_gornath
+			}
+		}
+
+		gold_cost = 300
+		build_time = 1460
+		local_tax_modifier = 0.10
+		ai_creation_factor = 110
+
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_mardosh_walls = {
+		desc = ca_mardosh_walls_desc
+		potential = {
+			FROMFROM = {
+				title = b_mardosh
+			}
+		}
+
+		gold_cost = 300
+		build_time = 1460
+		fort_level = 5
+		garrison_size = 0.3
+		heavy_infantry = 80
+		light_cavalry = 35
+		ai_creation_factor = 110
+
+		#trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+}

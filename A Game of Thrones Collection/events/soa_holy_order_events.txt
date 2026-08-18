@@ -253,8 +253,7 @@ character_event = {
 			limit = { is_merchant_republic = no }
 			current_heir = { save_event_target_as = wealth_heir }
 		}
-		if = {
-			limit = { is_merchant_republic = yes }
+		else = {
 			family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 		}
 		transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -266,7 +265,7 @@ character_event = {
 			holder_scope = {
 				ROOT = {
 					hidden_tooltip = {
-						clear_wealth = THIS
+						clear_wealth = yes
 					}
 					move_character = PREV
 					add_trait = celibate
@@ -471,7 +470,7 @@ character_event = {
 			holder_scope = {
 				ROOT = {
 					hidden_tooltip = {
-						clear_wealth = THIS
+						clear_wealth = yes
 					}
 					move_character = PREV
 					add_trait = celibate
@@ -545,7 +544,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			d_warriors_sons = {
@@ -896,7 +895,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			d_poor_fellows = {

@@ -1,52 +1,76 @@
-#############################
-### Major Merchant Houses ###
-#############################
-### House Mopatis
+#####################
+### House Mopatis ###
+#####################
 600000040 = {
 	name = "Иллирио"
-	religion = "pentoshi_religion"
-	culture = "pentosi"
 	dna = "chbfh0b0fe0"
 	properties = "0d00b0"
 
-	martial = 4
-	diplomacy = 12
-	intrigue = 16
-	stewardship = 10
-	learning = 8
+	diplomacy = 11
+	martial = 3
+	stewardship = 14
+	intrigue = 9
+	learning = 10
 
-	add_trait = "elusive_shadow"
-	add_trait = "genius_1"
-	add_trait = "patient"
-	add_trait = "deceitful"
-	add_trait = "gregarious"
-	add_trait = "cynical"
-	#add_trait = "ambitious" #its not for himself
-	#add_trait = "arbitrary"
+	religion = "pentoshi_religion"
+	culture = "pentosi"
 
-	8243.1.1 = { birth = yes }
-	8259.1.1 = {
-		add_trait = skilled_warrior
+	add_trait = "fair"
+	add_trait = "quick_1"
+	add_trait = "strong_1"
+
+	8252.1.1 = {
+		birth = yes
 	}
-	8269.1.1 = {
-		dynasty = 300519 #grew respectable and married cousin of Prince of Pentos
-		add_spouse = 131174356 #D'han
+	8268.1.1 = {
+		add_trait = "elusive_shadow"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "deceitful"
+		add_trait = "ruthless"
+		add_trait = "gregarious"
+		add_trait = "cynical"
+		add_trait = "schemer"
+		add_trait = "duelist"
+		add_trait = "groomed"
+	}
+	8273.1.1 = {
+		dynasty = 300519
+		add_spouse = 131174356
 		create_bloodline = {
 			type = bloodline_illyrio
 			has_dlc = "Holy Fury"
 		}
 	}
-	8280.1.1 = {
-		add_trait = "gluttonous" #Becomes Fat
-		add_trait = is_fat
+	8279.1.1 = {
+		add_spouse = 400300519 # Serra
 		effect = {
-			set_variable = { which = physique_variable value = 20 }
+			add_lover = 400300519 # Serra
+		}
+	}
+	8285.1.1 = {
+		remove_trait = "skilled_warrior"
+		remove_trait = "brave"
+		remove_trait = "duelist"
+		add_trait = "gluttonous"
+		add_trait = "administrator"
+		add_trait = "widowed"
+		add_trait = "is_fat"
+		effect = {
+			set_variable = {
+				which = physique_variable
+				value = 20
+			}
 		}
 	}
 	8290.1.1 = {
-		add_spouse = 400300519
 		effect = {
-			set_variable = { which = physique_variable value = 35 }
+			set_variable = {
+				which = physique_variable
+				value = 35
+			}
 			add_character_modifier = {
 				name = obese_modifier
 				duration = -1
@@ -54,11 +78,14 @@
 		}
 	}
 	8295.1.1 = {
-		effect = { set_character_flag = has_dany_dragon_eggs }
+		effect = {
+			set_character_flag = has_dany_dragon_eggs
+		}
 	}
-	8295.1.1 = { add_trait = widowed }
 	8298.1.1 = {
-		effect = { clr_character_flag = has_dany_dragon_eggs }
+		effect = {
+			clr_character_flag = has_dany_dragon_eggs
+		}
 	}
 }
 400300519 = {
@@ -69,59 +96,83 @@
 
 	add_trait = "fair_1"
 
-	8264.1.1 = { birth = yes }
-	8290.1.1 = {
-		add_trait = former_slave
+	8255.1.1 = {
+		birth = yes
 	}
-	8295.1.1 = {
-		# Died of plague
+	8279.1.1 = {
+		add_trait = "former_slave"
+	}
+	8285.1.1 = {
 		add_trait = "has_bubonic_plague"
-		death = { death_reason = death_trait }
+		death = {
+			death_reason = death_trait
 	}
 }
+}
+### Issue of Illyrio Mopatis ###
+# By his first wife.
 100300519 = {
-	name = "Пинто"
+	name = "Пинто" # Pynto Mopatis.
 	dynasty = 300519
 	religion = "pentoshi_religion"
 	culture = "pentosi"
-	father = 600000040
+
+	father = 600000040 # Illyrio Mopatis
 	mother = 131174356
-	8275.1.1 = { birth = yes }
-	8291.1.1 = {
-		add_trait = trained_warrior
+
+	8274.1.1 = {
+		birth = yes
 	}
 }
 101300519 = {
-	name = "Брея"
+	name = "Брея" # Brea Mopatis.
 	female = yes
 	dynasty = 300519
 	religion = "pentoshi_religion"
 	culture = "pentosi"
-	father = 600000040
+
+	father = 600000040 # Illyrio Mopatis
 	mother = 131174356
-	8279.1.1 = { birth = yes }
+
+	8276.1.1 = {
+		birth = yes
 }
+}
+# By his second wife Serra.
 102300519 = {
-	name = "Люсерра"
+	name = "Люсерра" # Mopatis.
 	female = yes
 	dynasty = 300519
 	religion = "pentoshi_religion"
 	culture = "pentosi"
-	father = 600000040
-	mother = 400300519
-	8291.1.1 = { birth = yes }
+
+	add_trait = "fair_2"
+
+	father = 600000040 # Illyrio Mopatis
+	mother = 400300519 # Serra
+
+	8280.1.1 = {
+		birth = yes
+	}
 }
 103300519 = {
 	name = "Лото"
 	dynasty = 300519
 	religion = "pentoshi_religion"
 	culture = "pentosi"
-	father = 600000040
-	mother = 400300519
-	8293.1.1 = { birth = yes }
-}
 
-### House Theltis
+	add_trait = "fair_1"
+
+	father = 600000040 # Illyrio Mopatis
+	mother = 400300519 # Serra
+
+	8282.1.1 = {
+		birth = yes
+	}
+}
+#####################
+### House Theltis ###
+#####################
 344300526 = {
 	name = "Пинто"	# a lord
 	dynasty = 300526
@@ -989,7 +1040,7 @@
 	8292.1.1 = { death = yes }
 }
 131174356 = {
-	name = "Торма"	# Illyrio's first wife
+	name = "Торма" # first wife of Illyrio Mopatis.
 	female = yes
 	dynasty = 174356
 
@@ -999,7 +1050,7 @@
 	father = 129174356
 
 	8232.1.1 = { birth = yes }
-	8285.1.1 = { death = yes }
+	8278.1.1 = { death = yes }
 }
 135174356 = {
 	name = "Беллегера"	# not a lord

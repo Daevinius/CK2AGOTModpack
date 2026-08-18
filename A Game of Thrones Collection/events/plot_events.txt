@@ -73,7 +73,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = { #CK2+
-		months = 120
+		years = 10
 
 		modifier = {
 			factor = 0.5
@@ -1700,8 +1700,7 @@ letter_event = {
 				# factor = 0
 				# FROM = {
 					# NOT = {
-						# faction_power =
-						# {
+						# faction_power = {
 							# faction = faction_succ_gavelkind
 							# power = 0.25
 						# }
@@ -1796,8 +1795,7 @@ letter_event = {
 			# modifier = { #CK2+
 				# factor = 0.9
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_succ_gavelkind
 						# power = 0.8
 					# }
@@ -1806,8 +1804,7 @@ letter_event = {
 			# modifier = { #CK2+
 				# factor = 0.75
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_succ_gavelkind
 						# power = 1.0
 					# }
@@ -1816,8 +1813,7 @@ letter_event = {
 			# modifier = { #CK2+
 				# factor = 0.5
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_succ_gavelkind
 						# power = 2.0
 					# }
@@ -2254,8 +2250,7 @@ letter_event = {
 				# factor = 0
 				# NOT = {
 					# FROM = {
-						# faction_power =
-						# {
+						# faction_power = {
 							# faction = faction_lower_tribal_organization
 							# power = 1.0
 						# }
@@ -2379,8 +2374,7 @@ letter_event = {
 			# modifier = {
 				# factor = 0.75
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_lower_tribal_organization
 						# power = 1.5
 					# }
@@ -2389,8 +2383,7 @@ letter_event = {
 			# modifier = {
 				# factor = 0.5
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_lower_tribal_organization
 						# power = 1.0
 					# }
@@ -2399,8 +2392,7 @@ letter_event = {
 			# modifier = {
 				# factor = 0.5
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_lower_tribal_organization
 						# power = 2.0
 					# }
@@ -2409,8 +2401,7 @@ letter_event = {
 			# modifier = {
 				# factor = 0.5
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_lower_tribal_organization
 						# power = 3.0
 					# }
@@ -2419,8 +2410,7 @@ letter_event = {
 			# modifier = {
 				# factor = 0.5
 				# FROM = {
-					# faction_power =
-					# {
+					# faction_power = {
 						# faction = faction_lower_tribal_organization
 						# power = 4.0
 					# }
@@ -3999,7 +3989,7 @@ letter_event = {
 									}
 									OR = {	#pretender is...
 										event_target:supported_claimant = { NOT = { demesne_size = 1 } } #unlanded
-										AND =  { #small baron
+										AND = { #small baron
 											event_target:supported_claimant = { tier = BARON }
 											PREV = { higher_tier_than = COUNT }
 										}
@@ -5090,7 +5080,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -5149,7 +5139,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -5335,7 +5325,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				is_incapable = no
@@ -5397,7 +5387,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -6358,7 +6348,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3600
+		years = 300
 
 		modifier = {
 			factor = 0.7
@@ -6579,7 +6569,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3600
+		years = 300
 
 		modifier = {
 			factor = 0.6
@@ -8913,7 +8903,7 @@ letter_event = {
 	id = 7508
 	desc = "EVTDESC7508"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_birth
 
 	option = {
 		name = "EVTOPTA7508"
@@ -9051,7 +9041,7 @@ province_event = { #province event , to ensure player gets event on heir if char
 	id = 7512
 
 	is_triggered_only = yes
-	hide_window =  yes
+	hide_window = yes
 
 	immediate = {
 		event_target:weaken_fellow_vassal_title = {
@@ -9124,7 +9114,7 @@ character_event = {
 character_event = {
 	id = 7514
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 	hide_window = yes
 
 	trigger = {
@@ -9308,7 +9298,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			is_ruler = yes
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
 			is_incapable = no
@@ -9327,7 +9317,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -9513,7 +9503,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				is_ruler = yes
 				is_incapable = no
 				prisoner = no
@@ -9534,7 +9524,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -10334,9 +10324,7 @@ character_event = {
 	desc = {
 		trigger = {
 			event_target:plot_target = {
-				NOT = {
-					is_inaccessible_trigger = yes
-				}
+				is_inaccessible_trigger = no
 			}
 		}
 		text = EVTDESC7712
@@ -10493,7 +10481,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
 			is_incapable = no
 			prisoner = no
@@ -10511,7 +10499,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -10697,7 +10685,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -10717,7 +10705,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -11670,7 +11658,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1200
+		years = 100
 
 		modifier = {
 			factor = 0.7
@@ -11873,7 +11861,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1200
+		years = 100
 
 		modifier = {
 			factor = 0.6
@@ -12845,7 +12833,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1200
+		years = 100
 
 		modifier = {
 			factor = 0.7
@@ -13052,7 +13040,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1200
+		years = 100
 
 		modifier = {
 			factor = 0.6
@@ -13976,7 +13964,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1200
+		years = 100
 
 		modifier = {
 			factor = 0.7
@@ -14181,7 +14169,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1200
+		years = 100
 
 		modifier = {
 			factor = 0.6
@@ -15139,7 +15127,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3600
+		years = 300
 
 		modifier = {
 			factor = 0.7
@@ -15346,7 +15334,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3600
+		years = 300
 
 		modifier = {
 			factor = 0.6
@@ -16253,7 +16241,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			prisoner = no
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
@@ -16270,7 +16258,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -16456,7 +16444,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -16475,7 +16463,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -17417,7 +17405,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			prisoner = no
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
@@ -17437,7 +17425,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -17623,7 +17611,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -17645,7 +17633,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -18602,7 +18590,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3600
+		years = 300
 
 		modifier = {
 			factor = 0.7
@@ -18809,7 +18797,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3600
+		years = 300
 
 		modifier = {
 			factor = 0.6
@@ -19749,7 +19737,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			prisoner = no
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
@@ -19767,7 +19755,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -19953,7 +19941,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -19973,7 +19961,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -20913,7 +20901,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			prisoner = no
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
@@ -20931,7 +20919,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -21117,7 +21105,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -21137,7 +21125,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -23313,7 +23301,7 @@ character_event = {
 	picture = "GFX_evt_siege"
 	border = "GFX_event_normal_frame_war"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 
 	trigger = {
 		siege = {
@@ -25431,7 +25419,7 @@ character_event = {
 				any_vassal = { tier = KING }
 				num_of_king_titles = 2
 			}
-			NOT =  { #Interregnum
+			NOT = { #Interregnum
 				primary_title = {
 					is_variable_equal = { which = "lord_paramount_status" value = 2 }
 				}
@@ -26290,7 +26278,7 @@ letter_event = {
 	id = plot_event.43
 	desc = "EVTDESCplot_event.43"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		FROM = {
@@ -26360,8 +26348,7 @@ letter_event = {
 				limit = { is_merchant_republic = no }
 				current_heir = { save_event_target_as = wealth_heir }
 			}
-			if = {
-				limit = { is_merchant_republic = yes }
+			else = {
 				family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 			}
 			transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -26508,7 +26495,7 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			is_ruler = yes
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
 			OR = {
@@ -26541,7 +26528,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -26730,7 +26717,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				is_ruler = yes
 				at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
 				OR = {
@@ -26768,7 +26755,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -27489,7 +27476,7 @@ character_event = {
 	picture = GFX_evt_scandal
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -27828,7 +27815,7 @@ character_event = {
 			is_ruler = yes
 			war = yes
 			any_current_enemy = { character = ROOT }
-			age = 16
+			is_adult = yes
 			NOT = { is_incapable = yes }
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -27860,7 +27847,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 120
+		years = 10
 
 		modifier = {
 			factor = 0.9
@@ -28090,7 +28077,7 @@ character_event = {
 	picture = GFX_evt_bandits
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim

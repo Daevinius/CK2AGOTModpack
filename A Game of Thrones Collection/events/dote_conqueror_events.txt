@@ -49,7 +49,7 @@ narrative_event = {
 	}
 
 	ai = no
-    is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	trigger = {
 		is_landed = yes
@@ -174,7 +174,7 @@ narrative_event = {
 						knights = { 100 100 }
 					}
 					attrition = 0
-					maintenance_multiplier  = 0
+					maintenance_multiplier = 0
 				}
 				#Adds Fleet
 				spawn_fleet = {
@@ -245,7 +245,7 @@ narrative_event = {
 		name = EVTOPTAdote_conqueror.1
 		trigger = { character = 77025 } #Bittersteel
 
-		narrative_event = { id = dote_conqueror.6 days = 1 }
+		# narrative_event = { id = dote_conqueror.6 days = 1 }
 	}
 
 	#Focus on Westeros
@@ -266,7 +266,7 @@ character_event = {
 	id = dote_conqueror.1997
 
 	hide_window = yes
-    is_triggered_only = yes
+	is_triggered_only = yes # on_birth
 
 	trigger = {
 		dynasty = 496
@@ -285,7 +285,7 @@ character_event = {
 	id = dote_conqueror.1998
 
 	hide_window = yes
-    is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	has_character_flag = dragon_of_the_east
 
@@ -301,7 +301,7 @@ character_event = {
 	}
 
 	immediate = {
-        remove_claim = e_iron_throne
+		remove_claim = e_iron_throne
 		remove_claim = d_kings_landing
 		remove_claim = c_kings_landing
 		remove_claim = k_dragonstone
@@ -315,12 +315,12 @@ character_event = {
 	id = dote_conqueror.1999
 
 	hide_window = yes
-    is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	has_character_flag = dragon_of_the_east
 
 	trigger = {
-	    dynasty = 496
+		dynasty = 496
 		OR = {
 			has_claim = e_iron_throne
 			has_claim = d_kings_landing
@@ -332,7 +332,7 @@ character_event = {
 	}
 
 	immediate = {
-        remove_claim = e_iron_throne
+		remove_claim = e_iron_throne
 		remove_claim = d_kings_landing
 		remove_claim = c_kings_landing
 		remove_claim = k_dragonstone
@@ -348,9 +348,9 @@ character_event = {
 	id = dote_conqueror.2
 	title = EVTTITLEdote_conqueror.2
 	desc = EVTDESCdote_conqueror.2
-    picture = GFX_tamingdragon
+	picture = GFX_tamingdragon
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTAdote_conqueror.2
@@ -695,9 +695,9 @@ narrative_event = {
 	id = dote_conqueror.3
 	title = EVTTITLEdote_conqueror.3
 	desc = EVTDESCdote_conqueror.3
-    picture = GFX_daemon_blackfyre
+	picture = GFX_daemon_blackfyre
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTAdote_conqueror.3
@@ -742,9 +742,9 @@ narrative_event = {
 	id = dote_conqueror.4
 	title = EVTTITLEdote_conqueror.4
 	desc = EVTDESCdote_conqueror.4
-    picture = GFX_viserys_targaryen
+	picture = GFX_viserys_targaryen
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	option = {
 		name = EVTOPTAdote_conqueror.4
@@ -888,7 +888,7 @@ narrative_event = {
 	desc = EVTDESCdote_conqueror.5
 	picture = GFX_evt_birth
 
-    is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	trigger = {
 		start_date = 8298.10.9
@@ -976,7 +976,7 @@ character_event = {
 	id = dote_conqueror.51
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_death
 
 	min_age = 1
 

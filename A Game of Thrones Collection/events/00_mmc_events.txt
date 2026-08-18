@@ -5,7 +5,7 @@ character_event = { #Event to convert a holding into a military command
 	desc = EVTDESC_MMC_10
 	picture = GFX_evt_spymaster
 	border = GFX_event_normal_frame_intrigue
-	is_triggered_only = yes #decision make_military
+	is_triggered_only = yes # make_military (mmc_decisions.txt)
 	hide_from = yes
 
 	ai = no
@@ -145,7 +145,7 @@ character_event = { #Event to convert a holding into a military command
 
 character_event = { #This is a ping event to get the scoping correct for the unmilitary-ing
 	id = mmc.20
-	is_triggered_only = yes #decision unmake_military
+	is_triggered_only = yes # make_military (mmc_decisions.txt)
 	hide_window = yes
 
 	#ROOT - the title owner
@@ -165,7 +165,7 @@ character_event = { #This is a ping event to get the scoping correct for the unm
 character_event = { #This event converts a non-historical military command into a regular holding
 	id = mmc.25
 	picture = GFX_evt_spymaster
-	is_triggered_only = yes #event mmc.20
+	is_triggered_only = yes # mmc.20 (00_mmc_events.txt)
 
 	#ROOT - the decision maker
 	#FROM - the title owner
@@ -223,11 +223,11 @@ character_event = { #This event converts a non-historical military command into 
 						limit = { primary_title = { event_target:target_unmake_military = { title = PREV } } }
 						if = {
 							limit = { event_target:target_unmake_military = { holding_type = castle } }
-							set_government_type = feudal
+							set_government_type = feudal_government
 							event_target:target_unmake_military = { succession = primogeniture }
 						}
 						else = {
-							set_government_type = republic
+							set_government_type = republic_government
 							event_target:target_unmake_military = { succession = elective }
 						}
 					}

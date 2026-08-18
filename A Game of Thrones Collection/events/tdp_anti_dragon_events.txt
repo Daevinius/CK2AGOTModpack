@@ -24,7 +24,7 @@ namespace = tdp_anti_dragon
 character_event = {
 	id = tdp_anti_dragon.0
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 	hide_window = yes
 
 	only_independent = yes
@@ -154,7 +154,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.1
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	hide_window = yes
 
@@ -204,7 +204,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.10
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	has_global_flag = tdp_dance_of_dragons
@@ -1225,7 +1225,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.12
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	hide_window = yes
 
 	has_global_flag = tdp_dance_of_dragons
@@ -1235,7 +1235,7 @@ character_event = {
 		OR = {
 			any_realm_character = {
 				NOT = { is_primary_heir = ROOT }
-				age = 16
+				is_adult = yes
 				trait = dragon_rider
 				has_character_flag = candidate_for_war
 				NOR = {
@@ -1313,7 +1313,7 @@ character_event = {
 			limit = {
 				any_realm_character = {
 					NOT = { is_primary_heir = ROOT }
-					age = 16
+					is_adult = yes
 					trait = dragon_rider
 					has_character_flag = candidate_for_war
 					NOR = {
@@ -1483,7 +1483,7 @@ character_event = {
 					dynasty = ROOT
 					trait = dragon_rider
 					has_character_flag = candidate_for_war
-					age = 16
+					is_adult = yes
 					OR = {
 						any_friend = {
 							trait = dragon
@@ -1504,7 +1504,7 @@ character_event = {
 					dynasty = ROOT
 					trait = dragon_rider
 					has_character_flag = candidate_for_war
-					age = 16
+					is_adult = yes
 					OR = {
 						any_friend = {
 							trait = dragon
@@ -1690,7 +1690,7 @@ character_event = {
 				any_realm_character = {
 					NOT = { dynasty = ROOT }
 					trait = dragon_rider
-					age = 16
+					is_adult = yes
 					has_character_flag = candidate_for_war
 					OR = {
 						any_friend = {
@@ -1711,7 +1711,7 @@ character_event = {
 				limit = {
 					NOT = { dynasty = ROOT }
 					trait = dragon_rider
-					age = 16
+					is_adult = yes
 					has_character_flag = candidate_for_war
 					OR = {
 						any_friend = {
@@ -2059,18 +2059,6 @@ character_event = {
 					}
 				}
 				else = {
-					limit = {
-						event_target:crown_dragon = {
-							capital_scope = {
-								NOR = {
-									region = world_free_cities
-									region = world_ghiscar
-									region = world_westeros
-									region = world_valyrian_peninsula
-								}
-							}
-						}
-					}
 					spawn_unit = {
 						province = 484 #Little Valyria
 						home = ROOT
@@ -2477,7 +2465,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.1898
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -2510,7 +2498,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.1999
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory, on_war_ended_invalid, on_war_ended_defeat
 	hide_window = yes
 
 	trigger = {
@@ -2585,7 +2573,7 @@ province_event = {
 			tier = EMPEROR
 			top_liege = {
 				war = yes
-				capital_scope  = {
+				capital_scope = {
 					any_province_holding = {
 						has_building = ca_dragon_pit
 					}
@@ -3114,7 +3102,7 @@ province_event = {
 character_event = {
 	id = tdp_anti_dragon.200
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	hide_window = yes
 
 	immediate = {
@@ -3461,16 +3449,29 @@ character_event = {
 
 	trigger = {
 		trait = dragon_rider
+
 		any_friend = {
 			trait = dragon
 			age < 10
 		}
-		war_with = {
+
+		any_war = {
 			OR = {
-				e_iron_isles
-				k_iron_islands
+				attacker = {
+					OR = {
+						has_landed_title = e_iron_isles
+						has_landed_title = k_iron_isles
+					}
+				}
+				defender = {
+					OR = {
+						has_landed_title = e_iron_isles
+						has_landed_title = k_iron_isles
+					}
+				}
 			}
 		}
+
 		is_at_sea = yes
 	}
 
@@ -3507,7 +3508,7 @@ character_event = {
 	ai = no
 
 	option = {
-		name = "Какая серьёзная оплошность!"
+		name = "EVTOPTtdp_anti_dragon.810"
 	}
 }
 
@@ -3515,7 +3516,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.4
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_independent = yes
@@ -3563,7 +3564,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.40
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 	hide_window = yes
 
 	culture_group = valyrian
@@ -3600,7 +3601,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.5
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -3644,7 +3645,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Конечно, почему бы и нет?"
+		name = "EVTOPTAtdp_anti_dragon.90"
 		event_target:absolute_mad_lad = {
 			character_event = { id = tdp_anti_dragon.51 days = 3 }
 		}
@@ -3654,7 +3655,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Нет. Это самоубийство."
+		name = "EVTOPTBtdp_anti_dragon.90"
 		ai_chance = {
 			factor = 70
 		}
@@ -3672,7 +3673,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Улыбнись, сукин сын..."
+		name = "EVTOPTAtdp_anti_dragon.51"
 		any_character = {
 			limit = { character = 77990001 } #Balerion
 			any_dynasty_member = {
@@ -3702,7 +3703,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Может быть, это была плохая идея."
+		name = "EVTOPTBtdp_anti_dragon.51"
 		death = {
 			death_reason = death_battle_dragon_fire
 			killer = 77000 #roasted by Aegon
@@ -3732,7 +3733,7 @@ character_event = { #To Aegon
 	is_triggered_only = yes
 
 	option = {
-		name = "ОН ЧТО??"
+		name = "EVTOPTAtdp_anti_dragon.92"
 	}
 }
 
@@ -3745,7 +3746,7 @@ character_event = { #To KingInDaNorf
 	is_triggered_only = yes
 
 	option = {
-		name = "Брандон, Убийца драконов!"
+		name = "EVTOPTAtdp_anti_dragon.920"
 	}
 }
 
@@ -3758,7 +3759,7 @@ character_event = { #To Aegon
 	is_triggered_only = yes
 
 	option = {
-		name = "Дурак."
+		name = "EVTOPTAtdp_anti_dragon.93"
 	}
 }
 
@@ -3771,7 +3772,7 @@ character_event = { #To KingInDaNorf
 	is_triggered_only = yes
 
 	option = {
-		name = "Я не должен был его отправлять..."
+		name = "EVTOPTAtdp_anti_dragon.930"
 	}
 }
 
@@ -3779,7 +3780,7 @@ character_event = { #To KingInDaNorf
 character_event = {
 	id = tdp_anti_dragon.6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -3837,7 +3838,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "Клятвопреступник!"
+		name = "EVTOPTAtdp_anti_dragon.940"
 	}
 }
 
@@ -3848,7 +3849,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.8
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 	hide_window = yes
 	ai = yes
 
@@ -3877,7 +3878,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.80
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_birth
 	hide_window = yes
 	ai = yes
 
@@ -3904,7 +3905,7 @@ character_event = {
 character_event = {
 	id = tdp_anti_dragon.81
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_decade_pulse
 	hide_window = yes
 	ai = yes
 
@@ -3950,7 +3951,7 @@ character_event = {
 	id = tdp_anti_dragon.82
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_birth
 
 	trigger = {
 		dynasty = 496
@@ -3980,7 +3981,7 @@ character_event = {
 	id = tdp_anti_dragon.820
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_childhood_pulse
 
 	has_character_flag = training_for_darksister
 	ai = yes
@@ -4032,7 +4033,7 @@ character_event = {
 	id = tdp_anti_dragon.821
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_childhood_pulse, on_adolescence_pulse
 
 	has_character_flag = training_for_darksister
 
@@ -4079,7 +4080,7 @@ character_event = {
 	id = tdp_anti_dragon.822
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adolescence_pulse
 
 	has_character_flag = training_for_darksister
 
@@ -4102,7 +4103,7 @@ character_event = {
 			set_focus = focus_ed_martial
 		}
 		if = {
-			limit = { age = 16 }
+			limit = { is_adult = yes }
 			clr_character_flag = training_for_darksister
 
 			random_list = {

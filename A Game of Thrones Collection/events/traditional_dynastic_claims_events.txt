@@ -22,7 +22,7 @@ character_event = {
 	id = traditional_claims.1
 	desc = "EVTDESCtraditional_claims.1"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
 	hide_window = yes
 
 	trigger = {
@@ -40,10 +40,6 @@ character_event = {
 	immediate = {
 		set_dynasty_flag = traditional_title_grant_@FROM
 	}
-
-	option = {
-		name = OK
-	}
 }
 ###Claim on/Ownership of Iron Throne gives extra claims in crownlands
 character_event = {
@@ -51,7 +47,7 @@ character_event = {
 	desc = "EVTDESCtraditional_claims.2"
 	picture = GFX_KINGS_LANDING
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	#only_independent = yes
 
 	trigger = {
@@ -153,7 +149,7 @@ character_event = {
 character_event = { #on new holder
 	id = traditional_claims.198
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = {
@@ -180,10 +176,6 @@ character_event = { #on new holder
 				character_event = { id = traditional_claims.199 days = 2 }
 			}
 		}
-	}
-
-	option = {
-		name = OK
 	}
 }
 character_event = {
@@ -516,7 +508,7 @@ character_event = {
 character_event = { #Conventional trigger event, seperate so subsequent event can be triggered in other ways
 	id = traditional_claims.200
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -1996,7 +1988,7 @@ character_event = { #Inform
 character_event = {
 	id = traditional_claims.203
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_create_title
 	only_independent = yes
 	only_capable = yes
 	prisoner = no
@@ -2104,7 +2096,7 @@ character_event = {
 	id = traditional_claims.14
 	desc = "EVTDESCtraditional_claims.14"
 	picture = GFX_evt_battle
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_game_rule = { name = traditional_dynastic_claims value = on }

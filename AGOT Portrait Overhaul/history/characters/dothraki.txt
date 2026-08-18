@@ -818,13 +818,56 @@
 	}
 }
 
-################################
-### Khal Drogo and his court ###
-################################
-300100 = {
-	name = "Дрого" # Khal Drogo
+########################
+### Bharbo and Drogo ###
+########################
+1300100 = {
+	name = "Бхарбо" # Bharbo, khal of the Dothraki.
+
+	diplomacy = 7
+	martial = 5
+	stewardship = 5
+	intrigue = 8
+	learning = 5
+
 	religion = "dothraki_pagan"
 	culture = "dothraki"
+
+	add_trait = "strong_2"
+
+	disallow_random_traits = yes
+
+	8243.1.1 = {
+		birth = yes
+	}
+	8259.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "cavalry_leader"
+		add_trait = "aggressive_leader"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "wroth"
+		add_trait = "proud"
+		add_trait = "ruthless"
+		add_trait = "authoritative"
+	}
+	8273.1.1 = {
+		dynasty = 600200
+		effect = {
+			set_character_flag = flag_dothraki_dynasty_founded
+		}
+		create_bloodline = {
+			type = bloodline_khal_bharbo
+			has_dlc = "Holy Fury"
+		}
+	}
+	8287.1.1 = {
+		death = yes
+}
+}
+### Issue of Bharbo ###
+300100 = {
+	name = "Дрого" # Drogo, khal of the Dothraki.
 	#dna = "didlmobeaac"
 	#properties = "0i00e"
 	dna = "ckcmewlbbdl"
@@ -836,87 +879,77 @@
 	intrigue = 8
 	learning = 5
 
-	add_trait = brilliant_strategist
+	religion = "dothraki_pagan"
+	culture = "dothraki"
+
 	add_trait = strong_2
-	add_trait = authoritative
-	add_trait = wroth
-	add_trait = brave
-	add_trait = ruthless
-	add_trait = cavalry_leader
-	add_trait = aggressive_leader
-	#add_trait = dothraki
 
-	father = 1300100
+	disallow_random_traits = yes
 
-	8268.1.1 = {
+	father = 1300100 # Bharbo
+
+	8267.1.1 = {
 		birth = yes
 	}
-	8273.1.1 = { dynasty = 600200 }
-	8277.1.1 = { add_trait = "poor_warrior" }
-	8279.1.1 = {
-		remove_trait = "poor_warrior"
-		add_trait = "trained_warrior"
+	8273.1.1 = {
+		dynasty = 600200
 	}
-	8282.1.1 = {
-		remove_trait = "trained_warrior"
-		add_trait = "skilled_warrior"
-	}
-	8285.1.1 = {
-		remove_trait = "skilled_warrior"
+	8283.1.1 = {
+		add_trait = "brilliant_strategist"
+		add_trait = "cavalry_leader"
+		add_trait = "organizer"
+		add_trait = "aggressive_leader"
 		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "wroth"
+		add_trait = "proud"
+		add_trait = "ruthless"
+		add_trait = "authoritative"
 	}
 	8287.1.1 = {
 		dynasty = 600201
-		effect = { set_character_flag = flag_dothraki_dynasty_founded }
+		effect = {
+			set_character_flag = flag_dothraki_dynasty_founded
+		}
 		create_bloodline = {
 			type = bloodline_khal_drogo
 			has_dlc = "Holy Fury"
 		}
 	}
-
-	8290.1.1 = {	#Drogo's allies according to AFFC Appendix
+	8290.1.1 = {
 		effect = {
-			c_126600215 = { add_alliance = { who = ROOT years = 10 } }	#Khal Jommo
-			c_137600213 = { add_alliance = { who = ROOT years = 10 } }	#Khal Moro
+			c_126600215 = { # Khal Jommo
+				add_alliance = {
+					who = ROOT
+					years = 10
+				}
 		}
+			c_137600213 = { # Khal Moro
+				add_alliance = {
+					who = ROOT
+					years = 10
 	}
+	}
+	}
+}
 
 	8298.1.1 = {
-		add_spouse = 77041
+		add_spouse = 77041 # Daenerys Targaryen Stormborn
 	}
-	8298.9.10 = { add_trait = wounded }
+	8298.9.10 = {
+		add_trait = "wounded"
+	}
 	8298.10.10 = {
-		remove_trait = wounded
-		add_trait = incapable
-		death = { death_reason = death_trait }
-	}
-}
-
-1300100 = {
-	name = "Бхарбо" # Drogo's father
-	religion = "dothraki_pagan"
-	culture = "dothraki"
-
-	add_trait = tough_soldier
-	add_trait = skilled_warrior
-	#add_trait = dothraki
-
-	8243.1.1 = {
-		birth = yes
-	}
-	8273.1.1 = {
-		dynasty = 600200
-		effect = { set_character_flag = flag_dothraki_dynasty_founded }
-		create_bloodline = {
-			type = bloodline_khal_bharbo
-			has_dlc = "Holy Fury"
+		remove_trait = "wounded"
+		add_trait = "incapable"
+		death = {
+			death_reason = death_trait
 		}
 	}
-	8287.1.1 = { death = yes }
 }
-
+### Issue of Drogo ###
 2300100 = {
-	name = "Рейго"
+	name = "Рейго" # Rhaego the Stallion Who Mounts the World.
 	dynasty = 600201
 	dna = "ckcmstmbjia"
 	properties = "0i00a"
@@ -963,7 +996,9 @@
 	}
 }
 
-# Drogo's Bloodriders
+############################
+### Bloodriders of Drogo ###
+############################
 3300100 = {
 	name = "Кохолло"
 	religion = "dothraki_pagan"
@@ -1009,6 +1044,7 @@
 	name = "Квото"
 	religion = "dothraki_pagan"
 	culture = "dothraki"
+	dynasty = 18785
 
 	add_trait = tough_soldier
 	add_trait = trained_warrior
@@ -1044,6 +1080,7 @@
 	name = "Хагго"
 	religion = "dothraki_pagan"
 	culture = "dothraki"
+	dynasty = 18786
 
 	add_trait = tough_soldier
 	add_trait = trained_warrior
@@ -1121,6 +1158,7 @@
 }
 3300103 = {
 	name = "Маго"
+	dynasty = 18784
 	religion = "dothraki_pagan"
 	culture = "dothraki"
 
@@ -1163,6 +1201,11 @@
 	}
 	8287.1.1 = {
 		employer = 300100
+		add_trait = "brave"
+	}
+	8294.1.1 = {
+		effect = { add_friend = 7300100 }
+		effect = { add_friend = 8300100 }
 	}
 	8298.1.1 = {
 		add_trait = trained_warrior
@@ -1206,9 +1249,12 @@
 	}
 	8287.1.1 = {
 		employer = 300100
+		add_trait = "brave"
 	}
 	8294.1.1 = {
 		add_trait = trained_warrior
+		effect = { add_friend = 6300100 }
+		effect = { add_friend = 8300100 }
 	}
 	8298.10.10 = { employer = 3300101 }
 	8298.10.10 = {  # Drogo's death
@@ -1252,9 +1298,14 @@
 	}
 	8287.1.1 = {
 		employer = 300100
+		add_trait = "brave"
 	}
 	8292.1.1 = {
 		add_trait = trained_warrior
+	}
+	8294.1.1 = {
+		effect = { add_friend = 6300100 }
+		effect = { add_friend = 7300100 }
 	}
 	8298.10.10 = { employer = 3300101 }
 	8298.10.10 = {  # Drogo's death
@@ -1288,14 +1339,16 @@
 	add_trait = "robust"
 	add_trait = "wroth"
 
-	8236.1.1 = {
+	8242.1.1 = {
 		birth = yes
 		effect = { set_immune_to_pruning = yes }
 	}
-	8262.1.1 = {
+	8258.1.1 = {
 		add_trait = "tough_soldier"
 		add_trait = "trained_warrior"
+		add_trait = "brave"
 	}
+	8264.1.1 = { add_spouse = 1646701 }
 	8290.1.1 = {
 		employer = 300100
 	}
@@ -1306,6 +1359,114 @@
 			type = dany_bloodrider_blood
 			has_dlc = "Holy Fury"
 		}
+	}
+}
+
+1646701 = {
+	name = "Римми"
+	female = yes
+
+	religion = "dothraki_pagan"
+	culture = "dothraki"
+
+	8248.1.1 = { birth = yes }
+	8264.1.1 = { add_spouse = 14300100 }
+}
+1646702 = { #
+	name = "Кваро"
+	religion = "dothraki_pagan"
+	culture = "dothraki"
+
+	father = 14300100
+	mother = 1646701
+
+
+	8265.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8281.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+	}
+	8290.1.1 = {
+		employer = 300100
+	}
+	8298.10.10 = {
+		employer = 77041
+		dynasty = 18780
+	}
+}
+1646703 = { #
+	name = "Ремекко"
+	religion = "dothraki_pagan"
+	culture = "dothraki"
+
+	father = 14300100
+	mother = 1646701
+
+
+	8268.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8284.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+	}
+	8290.1.1 = {
+		employer = 300100
+	}
+	8298.10.10 = {
+		employer = 77041
+		dynasty = 18780
+	}
+}
+1646704 = { #
+	name = "Джаки"
+	female = yes
+	religion = "dothraki_pagan"
+	culture = "dothraki"
+
+	father = 14300100
+	mother = 1646701
+
+
+	8269.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8290.1.1 = {
+		employer = 300100
+	}
+	8298.10.10 = {
+		employer = 77041
+		dynasty = 18780
+	}
+}
+1646705 = { #
+	name = "Доско"
+	religion = "dothraki_pagan"
+	culture = "dothraki"
+
+	father = 14300100
+	mother = 1646701
+
+
+	8272.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8288.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+	}
+	8290.1.1 = {
+		employer = 300100
+	}
+	8298.10.10 = {
+		employer = 77041
+		dynasty = 18780
 	}
 }
 # Daenerys's Handmaidens
@@ -1363,7 +1524,7 @@
 }
 11300100 = {
 	name = "Дорея"
-	religion = "rhllor"
+	religion = "weeping_lady"
 	culture = "lysene"
 	female = yes
 
@@ -1390,7 +1551,7 @@
 #Other Dany Courtiers
 12400101 = {
 	name = "Гролео"  #made an admiral by Daenerys
-	religion = "rhllor"
+	religion = "pentoshi_religion"
 	culture = "pentosi"
 
 	martial = 4
@@ -1412,11 +1573,13 @@
 	8258.1.1 = {
 		add_trait = "trained_warrior"
 	}
+	8265.1.1 = { add_spouse = 1546701 }
 	8284.1.1 = {
 		employer = 600000040 #Illyrio
 	}
 	8299.6.1 = { #Dany
 		employer = 77041
+		dynasty = 32637
 	}
 	8300.5.1 = {
 		death = { #Executed as hostage
@@ -1425,6 +1588,134 @@
 		}
 	}
 }
+1546701 = {
+	name = "Кваррия"
+	female = yes
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	8246.1.1 = { birth = yes }
+	8265.1.1 = { add_spouse = 12400101 }
+}
+1546702 = { #
+	name = "Гилено"
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	father = 12400101
+	mother = 1546701
+
+	8268.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8284.1.1 = {
+		employer = 600000040 #Illyrio
+	}
+	8290.1.1 = { add_spouse = 1546705 }
+	8299.6.1 = { 
+		dynasty = 32637
+	}
+}
+1546703 = { #
+	name = "Тейна"
+	female = yes
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	father = 12400101
+	mother = 1546701
+
+	8270.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8284.1.1 = {
+		employer = 600000040 #Illyrio
+	}
+	8299.6.1 = { 
+		dynasty = 32637
+	}
+}
+1546704 = { #
+	name = "Орделло"
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	father = 12400101
+	mother = 1546701
+
+	8272.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8284.1.1 = {
+		employer = 600000040 #Illyrio
+	}
+	8299.6.1 = { 
+		dynasty = 32637
+	}
+}
+1546705 = {
+	name = "Тирельна"
+	female = yes
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	8270.1.1 = { birth = yes }
+	8290.1.1 = { add_spouse = 1546702 }
+}
+1546706 = { #
+	name = "Лукрецция"
+	female = yes
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	father = 1546702
+	mother = 1546705
+
+	8292.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8299.6.1 = { 
+		dynasty = 32637
+	}
+}
+1546707 = { #
+	name = "Воринея"
+	female = yes
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	father = 1546702
+	mother = 1546705
+
+	8294.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8299.6.1 = { 
+		dynasty = 32637
+	}
+}
+1546708 = { #
+	name = "Гролео"
+	religion = "pentoshi_religion"
+	culture = "pentosi"
+
+	father = 1546702
+	mother = 1546705
+
+	8296.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8299.6.1 = { 
+		dynasty = 32637
+	}
+}
+
 
 #########################################
 ### Canon Khals in timespan of ASOIAF ###

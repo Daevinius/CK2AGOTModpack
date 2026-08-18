@@ -13,7 +13,7 @@ character_event = {
 		NOT = { trait = pirate }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -59,7 +59,7 @@ character_event = { #seperate event so pre-trigger can be used
 		NOT = { trait = pirate }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -98,7 +98,7 @@ character_event = {
 	desc = "EVTDESCPIRATE2"
 	picture = GFX_evt_pirates
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
 		trait = pirate
@@ -169,7 +169,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 960
+		years = 80
 
 		modifier = {
 			factor = 20
@@ -791,7 +791,7 @@ character_event = {
 	desc = "EVTDESCpirate.7"
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	only_playable = yes
 
 	trigger = {
@@ -849,7 +849,7 @@ character_event = {
 					trait = pirate
 					is_ruler = no
 					is_female = no
-					age = 16
+					is_adult = yes
 					OR = {
 						prestige = 500
 						martial = 10
@@ -1072,7 +1072,7 @@ character_event = {
 			#If no usurper and no non-pirate vassals
 			if = {
 				limit = {
-					NOT = { event_target:pirate_usurper  = { always = yes } }
+					NOT = { event_target:pirate_usurper = { always = yes } }
 					NOT = {
 						any_vassal = {
 							higher_tier_than = BARON
@@ -1158,7 +1158,7 @@ character_event = {
 					trait = pirate
 					is_ruler = no
 					is_female = no
-					age = 16
+					is_adult = yes
 					OR = {
 						prestige = 250
 						martial = 10
@@ -1191,11 +1191,11 @@ character_event = { #inform liege
 
 	desc = {
 		text = EVTDESCPIRATE799
-		trigger = { event_target:pirate_usurper  = { always = no } }
+		trigger = { event_target:pirate_usurper = { always = no } }
 	}
 	desc = {
 		text = EVTDESCPIRATE799B
-		trigger = { event_target:pirate_usurper  = { always = yes } }
+		trigger = { event_target:pirate_usurper = { always = yes } }
 	}
 
 	option = {
@@ -1577,7 +1577,7 @@ character_event = {
 	desc = "EVTDESCPIRATE13"
 	picture = GFX_evt_pirates
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	is_patrician = yes
 	min_age = 16
 	only_capable = yes
@@ -2331,7 +2331,7 @@ long_character_event = {
 	desc = "EVTDESCPIRATE21"
 	picture = GFX_evt_pirates
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	min_age = 16
 	only_capable = yes
@@ -3623,7 +3623,7 @@ character_event = {
 		NOT = { has_character_flag = pirate_fleet_modifier }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -3740,7 +3740,7 @@ character_event = {
 character_event = {
 	id = pirate.42
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
 	hide_window = yes
 
 	trigger = {
@@ -4009,7 +4009,7 @@ character_event = {
 	desc = "EVTDESCpirate.55"
 	picture = GFX_evt_pirates
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	war = no
@@ -4383,7 +4383,7 @@ character_event = {
 	desc = "EVTDESCpirate.65"
 	picture = GFX_evt_pirates
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	war = no
@@ -4490,11 +4490,11 @@ character_event = {
 				}
 				modifier = {
 					factor = 1.4
-					event_target:smuggle_target_province = { wealth < 0 }
+					event_target:smuggle_target_province = { owner = { wealth < 0 } }
 				}
 				modifier = {
 					factor = 1.4
-					event_target:smuggle_target_province = { has_regent = yes }
+					event_target:smuggle_target_province = { owner = { has_regent = yes } }
 				}
 				character_event = { id = pirate.66 days = 5 tooltip = TOOLTIPpirate.66 }
 			}

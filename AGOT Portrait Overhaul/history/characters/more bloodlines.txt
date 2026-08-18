@@ -242,6 +242,29 @@
 		add_trait = "charismatic_negotiator"
 		add_trait = "stubborn"
 		employer = 59
+		effect = { #
+			add_character_modifier = {
+				name = pet_cat
+				duration = -1
+			}
+			hidden_tooltip = {
+				#Get name
+				e_rebels = {
+					create_random_steward = {
+						name = "Тогги"
+						random_traits = yes
+						dynasty = none
+						female = random
+						culture = cat
+						religion = ROOT
+					}
+					new_character = {
+						ROOT = { save_persistent_event_target = { name = cat_name scope = PREV } }
+						death = yes
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1717,7 +1740,7 @@
 
 	give_nickname = nick_barstark
 
-	8241.1.1 = {
+	8240.1.1 = {
 		birth = yes
 		effect = {
 			set_graphical_culture = "Stark_dyn"
@@ -1945,7 +1968,7 @@
 
 	give_nickname = nick_harstark
 
-	8240.9.1 = {
+	8240.1.1 = {
 		birth = yes
 		effect = {
 			set_graphical_culture = "Stark_dyn"
@@ -1965,7 +1988,7 @@
 		add_trait = "squire"
 		add_trait = "brave"
 	}
-	8253.1.1 = {
+	8256.1.1 = {
 		remove_trait = "poor_warrior"
 		remove_trait = "squire"
 		add_trait = "trained_warrior"
@@ -2138,6 +2161,9 @@
 		add_trait = "squire"
 	}
 }
+######################################################
+### Children of the Forest and the three-eyed crow ###
+######################################################
 1993001 = {
 	name = "Веточка"
 
@@ -2158,7 +2184,9 @@
 		birth = yes
 
 	}
-	8252.6.1 = { death = yes }
+	8252.6.1 = {
+		death = yes
+	}
 }
 1993002 = {
 	name = "Трехглазая Ворона"
@@ -2166,18 +2194,20 @@
 	dna = "nffdqevnsrt"
 	properties = "aj00ib0000000a"
 
-	martial = 12
 	diplomacy = 5
+	martial = 12
+	stewardship = 9
 	intrigue = 7
-	stewardship = 13
+	learning = 6
 
 	religion = "old_gods"
 	culture = "old_first_man"
 
+	add_trait = "quick_1"
+
 	disallow_random_traits = yes
 
-
-	8175.6.1 = {
+	8175.1.1 = {
 		birth = yes
 		effect = {
 			set_immune_to_pruning = yes
@@ -2189,19 +2219,19 @@
 			dynasty = none
 		}
 	}
-	8252.6.1 = {
+	8252.1.1 = {
+		add_trait = "elusive_shadow"
+		add_trait = "diligent"
 		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "deceitful"
+		add_trait = "ruthless"
 		add_trait = "crow"
+		add_trait = "mystic"
+		add_trait = "one_eyed"
+		add_trait = "kinslayer"
 		add_trait = "greensight"
 		add_trait = "greenseer"
-		add_trait = "mystic" 		#Was called a sorcerer for a reason...
-		add_trait = flanker
-		add_trait = "deceitful"
-		add_trait = one_eyed
-		add_trait = kinslayer
-		add_trait = "ruthless"
-		add_trait = "hunter"
-		add_trait = "just"
 		add_trait = "greenseer_weirwood"
 		create_bloodline = {
 			type = greenseer_bloodline
@@ -2521,7 +2551,7 @@
 	culture = "old_first_man"
 
 	6503.1.1 = { birth = yes }
-	7835.1.1 = { death = "yes" }
+	7835.1.1 = { death = yes }
 }
 #######House Greystark
 8480070 = {
@@ -4424,7 +4454,7 @@
 	}
 	8240.1.1 = {
 		give_nickname = nick_old_prefix
-		effect = { set_name = Нэн }
+		effect = { set_name = "Нэн" }
 	}
 	8250.1.1 = {
 		effect = {

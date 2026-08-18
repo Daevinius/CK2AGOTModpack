@@ -3125,9 +3125,7 @@ eldership_rules = {
 			localisation_key = tooltip_feudal_elector_vote_child
 			FROM = {
 				age = 10
-				NOT = {
-					age = 16
-				}
+				is_adult = no
 			}
 		}
 		additive_modifier = { #Still too young for older rulers
@@ -3135,7 +3133,7 @@ eldership_rules = {
 			localisation_key = tooltip_feudal_elector_vote_youngster
 			age = 30
 			FROM = {
-				age = 16
+				is_adult = yes
 				NOT = {
 					age = 25
 				}

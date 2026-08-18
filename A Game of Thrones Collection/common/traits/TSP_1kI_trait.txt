@@ -1,0 +1,187 @@
+fishy = { # Fish Gods clergyman
+	religious = yes
+
+	potential = {
+		religion = fish_gods
+	}
+
+	martial = 1
+	intrigue = 2
+	monthly_character_piety = 0.5
+
+	islands_rel_church_opinion = 15
+	same_religion_opinion = 10
+	infidel_opinion = -5
+
+#	cannot_marry = yes # Disabled so that a Fish Gods clergyman can hold counties and up, the religion commands make them unmarried anyway
+	cannot_inherit = yes
+
+	customizer = no
+
+	male_compliment_adj = COMPL_DEVOUT
+	female_compliment_adj = COMPL_DEVOUT
+}
+
+bad_priest_fish_gods = { # Fish Gods
+	religious = yes
+
+	potential = {
+		religion = fish_gods
+		trait = fishy
+		OR = {
+			is_theocracy = yes
+			is_ruler = no
+		}
+	}
+
+	islands_rel_church_opinion = -15
+	islands_rel_opinion = -10
+	general_opinion = -5
+
+	monthly_character_piety = -1
+
+	customizer = no
+	random = no
+
+	child_insult = INSULT_SCARECROW
+	male_insult_adj = INSULT_DECADENT
+	female_insult_adj = INSULT_CORRUPT
+	child_insult_adj = INSULT_CRUMMY
+}
+
+sympathy_islands_rel = {
+	potential = {
+		NOT = { religion = fish_gods }
+	}
+	opposites = {
+		zealous
+	}
+
+	inherit_chance = 5
+
+	random = no
+
+	islands_rel_church_opinion = 5
+	fish_gods_opinion = 10
+
+	tolerates_islands_rel = yes
+}
+
+the_mark_of_the_deep_ones = {
+	birth = 5 # Thousand Islanders automatically get it, everyone else has a chance if they are in the right situationsm it can also appear sporadically
+	inherit_chance = 20
+
+	potential = {
+		OR = {
+			race = islander
+			graphical_culture = islandergfx
+			religion = old_ones
+			AND = {
+				culture = sisterman
+				OR = {
+					religion = old_ones
+					religion = fish_gods
+				}
+			}
+			father_even_if_dead = { race = islander }
+			father_even_if_dead = { graphical_culture = islandergfx }
+			mother_even_if_dead = { race = islander }
+			mother_even_if_dead = { graphical_culture = islandergfx }
+			father_even_if_dead = { trait = the_mark_of_the_deep_ones }
+			mother_even_if_dead = { trait = the_mark_of_the_deep_ones }
+			AND = {
+				father_even_if_dead = {
+					OR = {
+						culture = sisterman
+						trait = the_mark
+						race = islander
+						graphical_culture = islandergfx
+					}
+				}
+				OR = {
+					religion = fish_gods
+					religion = old_ones
+					culture = islander
+					graphical_culture = islandergfx
+					race = islander
+				}
+			}
+			AND = {
+				mother_even_if_dead = {
+					OR = {
+						culture = sisterman
+						trait = the_mark
+						race = islander
+						graphical_culture = islandergfx
+					}
+				}
+				OR = {
+					religion = fish_gods
+					religion = old_ones
+					culture = islander
+					graphical_culture = islandergfx
+					race = islander
+				}
+			}
+		}
+		NOT = {
+			trait = the_mark
+			AND = {
+				culture = sisterman
+				NOT = { religion = fish_gods }
+			}
+		}
+	}
+
+	opposites = {
+		the_mark
+		has_sisterman_mark
+	}
+
+	sex_appeal_opinion = -10
+	general_opinion = -10
+	sisterman_opinion = 25
+	fish_gods_opinion = 25
+	islander_opinion = 5
+
+	male_insult_adj = INSULT_HIDEOUS
+	female_insult_adj = INSULT_HIDEOUS
+	male_insult = INSULT_ABOMINATION
+	female_insult = INSULT_ABOMINATION
+	child_insult_adj = INSULT_UGLY
+}
+
+has_sisterman_mark = { # This allows those with the Mod's normal Mark Trait to get the 1KI benefits
+	potential = {
+		trait = the_mark
+	}
+
+	opposites = {
+		the_mark_of_the_deep_ones
+	}
+
+	fish_gods_opinion = 25
+	old_ones_opinion = 40
+	islander_opinion = 5
+
+	hidden = yes
+
+	male_insult = INSULT_ABOMINATION
+	female_insult = INSULT_ABOMINATION
+	child_insult_adj = INSULT_UGLY
+}
+
+deep_ones_easter_egg = { # This keeps the special Old Ones religion as the Easter egg that it was meant to be
+	potential = {
+		trait = the_mark_of_the_deep_ones
+	}
+
+	opposites = {
+		the_mark
+		has_sisterman_mark
+	}
+
+	hidden = yes
+
+	old_ones_opinion = 40
+}

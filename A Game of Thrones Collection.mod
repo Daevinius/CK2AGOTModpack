@@ -71,3 +71,6 @@ replace_path = "history/wars"
 replace_path = "localisation"
 replace_path = "localisation/customizable_localisation"
 replace_path = "music"
+dependencies = {
+	"[BETA] CK II - Russian 3.3.5.1 (e479)"
+}

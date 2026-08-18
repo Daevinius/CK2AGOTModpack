@@ -4267,7 +4267,7 @@
 ###############
 
 88005 = {
-	name = "Тромбо"	# Canon, Black Trombo, killed
+	name = "Тромбо" # Black Trombo, Myrish sellsword in the service of House Vance of Wayfarer's Rest during the Dance of the Dragons.
 	dynasty = 300705
 
 	religion = "myrish_religion"
@@ -4275,13 +4275,17 @@
 
 	father = 115300705
 
-	add_trait = gregarious
-	add_trait = brave
-
-	8087.1.1 = { birth = yes }
+	8087.1.1 = {
+		birth = yes
+	}
 	8103.1.1 = {
-		add_trait = skilled_tactician
-		add_trait = skilled_warrior
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "proud"
+		add_trait = "gregarious"
+		add_trait = "poet"
 		give_nickname = nick_the_black_prefix
 	}
 	8120.1.1 = {
@@ -4292,27 +4296,38 @@
 			}
 		}
 	}
-	8137.1.1 = { death = yes }
+	8137.1.1 = {
+		death = yes
+	}
 }
 
 88007 = {
-	name = "Морош"	# Canon, Morosh the Myrman, one of Stannis' mercenaries
+	name = "Морош" # Morosh the Myrman, a sellsail admiral in service to Stannis Baratheon.
+
+	martial = 5
 
 	religion = "rhllor"
 	culture = "myrman"
 
-	8265.1.1 = { birth = yes }
+	8265.1.1 = {
+		birth = yes
+	}
 	8281.1.1 = {
-		add_trait = trained_warrior
-		add_trait = tough_soldier
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "gregarious"
+		add_trait = "zealous"
 	}
 	8298.6.1 = {
-		employer = 4317 #Stannis had been gathering forces sometime between AGOT and ACOK
+		employer = 4317 # Stannis Baratheon
+		give_nickname = nick_the_myrman
 	}
 	8299.7.2 = {
 		death = {
-			death_reason = death_battle		#Myrish contingent was in the battle on the river. Propably destroyed by wildfire
-			killer = 5190 #Tyrion
+			death_reason = death_battle # Battle of the Blackwater
+			killer = 5190 # Tyrion Lannister
 		}
 	}
 }

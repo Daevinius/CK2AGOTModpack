@@ -1,0 +1,273 @@
+e_dagonos = {
+	color = { 106 150 104 }
+#	color2 = { 214 157 41 }
+
+	capital = 834
+	culture = islander
+	religion = fish_gods
+
+	title_prefix = "ETERNAL_FISH_EMPIRE"
+	title = "ETERNAL_FISH_IMPERATOR"
+	title_female = "ETERNAL_FISH_IMPERATRIX"
+	foa = "EXALTED_FISHER_OF_THE_WORLD"
+
+	allow = {
+		OR = {
+			AND = {
+				num_of_holy_sites = 4
+				religion = fish_gods
+			}
+			num_of_king_titles = 3
+			realm_size = 120
+		}
+		OR = {
+			religion = fish_gods
+			culture = islander
+			capital_scope = { province_id = 834 } # Thousand Islands
+		}
+		OR = {
+			owns = 834 # The Thousand Islands
+			any_realm_lord = {
+				owns = 834 # The Thousand Islands
+			}
+		}
+		hidden_tooltip = { NOT = { culture_group = winter_group } }
+	}
+
+	k_great_fish_dominion = {
+		color = { 114 141 41 }
+#		color2 = { 214 157 41 }
+
+		capital = 834
+		culture = islander
+		religion = fish_gods
+
+		title_prefix = "DEEP_CROWN_OF_THE"
+		title = "GREAT_FISH_KING"
+		title_female = "GREAT_FISH_QUEEN"
+		foa = "SERVANT_OF_THE_DEEP"
+
+		allow = {
+			OR = {
+				num_of_holy_sites = 3
+				num_of_duke_titles = 4
+				realm_size = 50
+			}
+			OR = {
+				religion = fish_gods
+				culture = islander
+				capital_scope = { province_id = 834 } # Thousand Islands
+			}
+			OR = {
+				owns = 834 # The Thousand Islands
+				any_realm_lord = {
+					owns = 834 # The Thousand Islands
+				}
+			}
+			hidden_tooltip = { NOT = { culture_group = winter_group } }
+		}
+
+		d_thousand_islands = {
+			color = { 159 139 73 }
+#			color2 = { 214 157 41 }
+
+			capital = 834
+			culture = islander
+			religion = fish_gods
+
+			title = "LORD_FISHERMAN"
+			title_female = "FISHER_WOMAN"
+			foa = "SERVANT_OF_THE_DEEP"
+
+			allow = {
+				OR = {
+					culture = islander
+					religion = fish_gods
+					capital_scope = { province_id = 834 } # Thousand Islands
+					tier = EMPEROR
+				}
+				OR = {
+					tier = KING
+					prestige = 1000
+					num_of_count_titles = 4
+					AND = {
+						num_of_holy_sites = 2
+						religion = fish_gods
+					}
+				}
+				OR = {
+					owns = 834 # The Thousand Islands
+					any_realm_lord = {
+						owns = 834 # The Thousand Islands
+					}
+				}
+				hidden_tooltip = { NOT = { culture_group = winter_group } }
+			}
+
+			c_thousand_islands = { # 834
+				color = { 140 150 90 }
+#				color2 = { 214 157 41 }
+
+				culture = islander
+				religion = fish_gods
+
+				title = "FISH_LORD"
+				title_female = "FISH_LADY"
+				title_prefix = "ARCHIPELAGO_OF"
+				foa = "SERVANT_OF_THE_DEEP"
+
+				holy_site = fish_gods
+
+				monthly_income = 0.5
+
+				b_thousand_islands_castle = { # Extant
+					culture = islander
+				}
+
+				b_thousand_islands_temple = { # Extant
+					short_name = yes
+					culture = islander
+					religion = fish_gods
+					used_for_dynasty_names = no
+#					dignity = 5
+
+					gain_effect = {
+						if = {
+							limit = { primary_title = { title = b_thousand_islands_temple } }
+							set_government_type = theocracy_government
+							b_thousand_islands_temple = { succession = appointment }
+							recalc_succession = yes
+						}
+					}
+				}
+
+				b_thousand_islands_marlin_zone = {
+					culture = islander
+				}
+
+				b_thousand_islands_nemo_zone = {
+					culture = islander
+				}
+
+				b_thousand_islands_dory_zone = {
+					culture = islander
+				}
+			}
+			c_ragaroth = {
+				color = { 48 79 36 }
+				color2 = { 214 157 41 }
+
+				b_ragaroth = {
+				}
+				b_ragaroth2 = {
+				}
+				b_ragaroth3 = {
+				}
+				b_ragaroth4 = {
+				}
+			}
+			c_centre_isles = {
+				color = { 40 57 33 }
+				color2 = { 214 157 41 }
+
+				b_centre_isles = {
+				}
+				b_centre_isles2 = {
+				}
+				b_centre_isles3 = {
+				}
+			}
+		}
+		d_lower_islands = {
+			color = { 111 135 84 }
+			color2 = { 214 157 41 }
+
+			capital = 834 #The Thousand Islands
+
+			culture = islander
+			religion = fish_gods
+
+			allow = {
+				OR = {
+					culture = islander
+					religion = fish_gods
+					capital_scope = { province_id = 834 } # Thousand Islands
+					tier = EMPEROR
+				}
+				OR = {
+					tier = KING
+					prestige = 1000
+					num_of_count_titles = 4
+					AND = {
+						num_of_holy_sites = 2
+						religion = fish_gods
+					}
+				}
+				OR = {
+					owns = 834 # The Thousand Islands
+					any_realm_lord = {
+						owns = 834 # The Thousand Islands
+					}
+				}
+				hidden_tooltip = { NOT = { culture_group = winter_group } }
+			}
+
+			c_black_islands = {
+				color = { 11 24 13 }
+				color2 = { 214 157 41 }
+
+				b_black_islands = {
+				}
+				b_black_islands2 = {
+				}
+			}
+			c_totem_islands = {
+				color = { 98 81 36 }
+				color2 = { 214 157 41 }
+
+				holy_site = fish_gods
+
+				b_totem_islands = {
+				}
+				b_totem_islands2 = {
+				}
+			}
+			c_deep_paths = {
+				color = { 71 102 57 }
+				color2 = { 214 157 41 }
+
+				b_deep_paths = {
+				}
+				b_deep_paths2 = {
+				}
+				b_deep_paths3 = {
+				}
+			}
+		}
+	}
+}
+
+d_thousand_islands_rel_head = {
+	color = { 111 255 3 }
+	color2 = { 214 157 41 }
+
+	primary = yes
+	landless = yes
+	dignity = 200 # The religious head should not take another title as his primary
+
+	short_name = yes
+	capital = 834 # Thousand Islands
+
+	title = "PONTIFEX_OF_THE_DEEP"
+	title_female = "MOTHER_OF_THE_DEEP"
+	foa = "SERVANT_OF_THE_DEEP"
+
+	controls_religion = fish_gods
+	religion = fish_gods
+	culture = islander
+
+	monthly_income = 1
+
+	used_for_dynasty_names = no
+	can_be_usurped = no
+}

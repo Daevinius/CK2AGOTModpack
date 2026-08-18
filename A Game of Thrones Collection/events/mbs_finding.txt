@@ -2,7 +2,7 @@ namespace = mbs_finding
 
 ################################
 #Find missing Stark child
-narrative_event  = {
+narrative_event = {
 	id = mbs_finding.1
 	title = "EVTtitlembs_finding.1"
 	desc = "EVTDESCmbs_finding.1"
@@ -27,7 +27,9 @@ narrative_event  = {
 		}
 	}
 
-	mean_time_to_happen = { days = 5 }
+	mean_time_to_happen = {
+		days = 5
+	}
 
 	immediate = {
 		set_character_flag = stark_bastard_found
@@ -118,8 +120,7 @@ narrative_event  = {
 			character_event = { id = mbs_finding.2 }
 			break = yes
 		}
-		if = {
-			limit = { is_ruler = no }
+		else = {
 			random_playable_ruler = {
 				limit = {
 					dynasty = 59
@@ -196,7 +197,7 @@ narrative_event  = {
 	}
 }
 #Stark child has been found!
-narrative_event  = {
+narrative_event = {
 	id = mbs_finding.2
 	title = "EVTtitlembs_finding.2"
 	desc = {

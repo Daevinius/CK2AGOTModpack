@@ -26,7 +26,7 @@ character_event = {
 				war = no
 				in_command = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 				NOT = { has_character_flag = do_not_disturb }
 			}
 			letter_event = {
@@ -52,25 +52,25 @@ letter_event = {
 		name = EVTOPTA_RoI_2001 # Go
 		ai_chance = {
 			factor = 2
-			modifier  = {
+			modifier = {
 				factor = 5
 				has_focus = focus_hunting
 			}
-			modifier  = {
+			modifier = {
 				factor = 0.1
 				is_inaccessible_trigger = yes
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
-				opinion = { who = from value = -30 }
+				opinion = { who = FROM value = -30 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 5
-				opinion = { who = from value = -15 }
+				opinion = { who = FROM value = -15 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 5
-				opinion = { who = from value = 0 }
+				opinion = { who = FROM value = 0 }
 			}
 		}
 		set_character_flag = do_not_disturb
@@ -91,9 +91,9 @@ letter_event = {
 		name = EVTOPTB_RoI_2001 # Don't go
 		ai_chance = {
 			factor = 1
-			modifier  = {
+			modifier = {
 				factor = 0
-				opinion = { who = from value = 25 }
+				opinion = { who = FROM value = 25 }
 				NOT = { is_inaccessible_trigger = yes }
 			}
 		}

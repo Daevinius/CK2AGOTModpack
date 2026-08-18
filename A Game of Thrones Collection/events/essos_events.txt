@@ -31,7 +31,7 @@ namespace = essos
 character_event = {
 	id = essos.1
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -74,7 +74,7 @@ character_event = {
 	picture = GFX_naath_butterflies
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 
 	trigger = {
 		location = {
@@ -195,7 +195,7 @@ character_event = {
 	picture = "GFX_evt_shadowbinder"
 	border = "GFX_event_normal_frame_religion"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	only_playable = yes
 	only_men = yes
 	min_age = 16
@@ -424,7 +424,7 @@ character_event = {
 									ROOT = { has_claim = PREV }
 								}
 								is_incapable = no
-								age = 16
+								is_adult = yes
 								NOT = { trait = bastard }
 								NOT = { trait = lunatic }
 								NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -677,7 +677,7 @@ character_event = {
 	picture = GFX_evt_warlock
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	religion = qarth_warlocks
 
 	notification = yes
@@ -1007,15 +1007,15 @@ character_event = {
 			has_plot = plot_kill_spouse
 		}
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			at_location = ROOT # The Plot Head needs to be at the target's location to get a chance
 			is_incapable = no
 			prisoner = no
 		}
-		OR = {
-					NOT = { has_character_flag = murder_in_motion }
-					had_character_flag = { flag = murder_in_motion days = 100 }
-				}
+		trigger_if = {
+			limit = { has_character_flag = murder_in_motion }
+			had_character_flag = { flag = murder_in_motion days = 100 }
+		}
 		plot_power_contribution = {
 			plotter = ROOT
 			power = 0.025
@@ -1023,7 +1023,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.7
@@ -1230,7 +1230,7 @@ character_event = {
 			}
 			plot_power = 0.5
 			plot_target_char = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 			}
@@ -1248,7 +1248,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 8400
+		years = 700
 
 		modifier = {
 			factor = 0.6
@@ -1912,7 +1912,7 @@ character_event = {
 	picture = GFX_evt_scandal
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -2159,7 +2159,7 @@ character_event = {
 	desc = EVTDESCESSOS27
 	picture = GFX_evt_zorse
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	only_capable = yes
@@ -2295,8 +2295,7 @@ character_event = {
 			limit = { ai = no }
 			event_target:gave_gift_zorse = { move_character = ROOT }
 		}
-		if = {
-			limit = { ai = yes }
+		else = {
 			create_random_soldier = {
 				random_traits = yes
 				dynasty = none
@@ -3010,7 +3009,7 @@ character_event = {
 	desc = "EVTDESCessos.39"
 	picture = "GFX_evt_china_isolationist"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -3241,7 +3240,7 @@ character_event = {
 character_event = { #random courtiers
 	id = essos.449
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 
@@ -3322,14 +3321,14 @@ character_event = {
 	trigger = {
 		has_landed_title = e_yi_ti
 		OR = {
-			culture = yi_ti
+			culture_group = yi_ti_group
 			primary_title = { title = e_yi_ti }
 		}
 		NOT = { e_yi_ti = { is_variable_equal = { which = "lord_paramount_status" value = 2 } } } #Not in interregnum
 		NOT = { has_character_flag = golden_emperor }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -3352,8 +3351,7 @@ character_event = {
 			set_character_flag = golden_emperor
 			character_event = { id = essos.46 }
 		}
-		if = {
-			limit = { NOT = { has_dynasty_flag = yi_ti_emperor_colour_assigned } }
+		else = {
 			if = {
 				limit = { ai = no }
 				set_character_flag = essos_4699_page_1
@@ -5079,7 +5077,7 @@ character_event = {
 	desc = "EVTDESCessos.47"
 	picture = GFX_kayakayanaya
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 13
 	max_age = 14
 	only_men = yes
@@ -5284,8 +5282,7 @@ character_event = { #geld son
 						limit = { is_patrician = yes }
 						abdicate = yes
 					}
-					if = {
-						limit = { is_patrician = no }
+					else = {
 						current_heir = {
 							ROOT_FROM = {
 								abdicate_to = PREV
@@ -5427,7 +5424,7 @@ character_event = { #inform gelded
 	desc = "EVTDESCessos.49"
 	picture = GFX_kayakayanaya
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	option = {
 		name = "EVTOPTAessos.49"
@@ -5442,8 +5439,7 @@ character_event = { #inform gelded
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -5452,8 +5448,7 @@ character_event = { #inform gelded
 				limit = { is_patrician = yes }
 				abdicate = yes
 			}
-			if = {
-				limit = { is_patrician = no }
+			else = {
 				current_heir = {
 					ROOT = {
 						abdicate_to = PREV
@@ -5490,7 +5485,7 @@ character_event = {
 	desc = "EVTDESCessos.51"
 	picture = GFX_kayakayanaya
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	culture_group = hyrkoon_group
 	only_men = yes
@@ -5687,7 +5682,7 @@ character_event = {
 character_event = {
 	id = essos.52
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_rulers = yes
 	culture_group = hyrkoon_group
@@ -5741,7 +5736,7 @@ character_event = {
 				is_ruler = no
 				is_married = no
 				liege = { character = ROOT }
-				age = 16
+				is_adult = yes
 				NOT = {
 					OR = {
 						trait = eunuch
@@ -5763,7 +5758,7 @@ character_event = {
 				NOT = { real_father_even_if_dead = { always = yes } }
 				is_ruler = no
 				liege = { character = ROOT }
-				age = 16
+				is_adult = yes
 				age < 30
 				NOT = {
 					OR = {
@@ -5945,7 +5940,7 @@ character_event = {
 	desc = "EVTDESCessos.5495"
 	picture = GFX_kayakayanaya
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adolescence_pulse
 	only_men = yes
 	only_rulers = yes
 	culture_group = hyrkoon_group
@@ -6534,9 +6529,9 @@ character_event = {
 
 	trigger = {
 		trait = has_butterfly_fever
-		OR = {
+		trigger_if = {
+			limit = { has_character_flag = manifest_butterfly_fever }
 			had_character_flag = { flag = manifest_butterfly_fever days = 30 }
-			NOT = { has_character_flag = manifest_butterfly_fever }
 		}
 	}
 
@@ -6601,7 +6596,7 @@ character_event = {
 character_event = {
 	id = essos.57
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -6661,7 +6656,7 @@ long_character_event = {
 	desc = "EVTDESCessos.60"
 	picture = GFX_summer_island_temple
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adulthood
 	only_capable = yes
 	prisoner = no
 
@@ -7012,8 +7007,7 @@ character_event = { #Inform liege
 					limit = { is_female = no }
 					add_trait = seducer
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					add_trait = seductress
 				}
 			}
@@ -7114,8 +7108,7 @@ character_event = {
 					limit = { is_female = no }
 					add_trait = seducer
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					add_trait = seductress
 				}
 			}
@@ -7206,8 +7199,7 @@ character_event = { #Inform liege
 					limit = { is_female = no }
 					add_trait = seducer
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					add_trait = seductress
 				}
 			}
@@ -7222,7 +7214,7 @@ character_event = {
 	desc = EVTDESCESSOS100
 	picture = GFX_evt_merchant_ship_at_sea_republic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	only_capable = yes
@@ -7319,7 +7311,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	only_capable = yes
@@ -7560,7 +7552,8 @@ character_event = {
 	desc = "EVTDESCessos.106"
 	picture = GFX_evt_china_open
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder_inheritance
+	culture_group = yi_ti_group
 	min_age = 25
 	only_capable = yes
 	prisoner = no
@@ -7568,7 +7561,7 @@ character_event = {
 
 	trigger = {
 		FROM = { title = e_yi_ti }
-		culture = yi_ti
+		culture_group = yi_ti_group
 		NOT = { trait = eunuch }
 		trait = just
 		trait = honorable
@@ -7801,8 +7794,7 @@ province_event = {
 						abdicate_to = PREVPREV
 					}
 				}
-				if = {
-					limit = { has_holder = no }
+				else = {
 					gain_title = PREV
 				}
 			}
@@ -8112,7 +8104,7 @@ character_event = {
 long_character_event = { #now a seperate hidden trigger event so subsequent event can be manually triggered in wikid quest
 	id = essos.115
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	only_capable = yes
@@ -9780,7 +9772,7 @@ long_character_event = {
 	trigger = {
 		any_courtier = {
 			liege = { character = ROOT }
-			age = 16
+			is_adult = yes
 			prisoner = no
 			is_incapable = no
 			ai = yes
@@ -9796,7 +9788,7 @@ long_character_event = {
 		random_courtier = {
 			limit = {
 				liege = { character = ROOT }
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				ai = yes
@@ -10076,8 +10068,7 @@ character_event = { #From decision
 							limit = { is_ruler = yes }
 							capital_scope = { reverse_religion = PREV }
 						}
-						if = {
-							limit = { is_ruler = no }
+						else = {
 							liege = { capital_scope = { reverse_religion = PREV } }
 						}
 					}
@@ -10132,7 +10123,7 @@ character_event = { #Inform World
 character_event = {
 	id = essos.151
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	has_global_flag = old_ones_scourge
@@ -10205,7 +10196,7 @@ narrative_event = { #Inform World
 character_event = {
 	id = essos.154
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	has_global_flag = old_ones_scourge
@@ -10410,7 +10401,7 @@ character_event = {
 character_event = {
 	id = essos.159
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	is_sick = yes
 	min_age = 12
@@ -11030,7 +11021,7 @@ character_event = {
 character_event = { #AI pulse event trigger, player uses decision
 	id = essos.1859
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_combat_pulse
 	hide_window = yes
 	ai = yes
 
@@ -11255,7 +11246,7 @@ character_event = {
 character_event = { #AI pulse event trigger, player uses decision
 	id = essos.1869
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_combat_pulse
 	hide_window = yes
 	ai = yes
 
@@ -11663,8 +11654,8 @@ character_event = { #Lengi/YiTish demand consort
 		text = EVTDESCessos.200B
 		trigger = {
 			NOR = {
-				any_spouse = { culture = yi_ti is_alive = yes }
-				any_consort = { culture = yi_ti is_senior_consort_party = no }
+				any_spouse = { culture_group = yi_ti_group is_alive = yes }
+				any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 			}
 			NOT = { has_character_modifier = refused_yi_ti_consort }
 			NOT = { has_character_flag = leng_empress_marriage_check }
@@ -11685,8 +11676,8 @@ character_event = { #Lengi/YiTish demand consort
 		text = EVTDESCessos.200D
 		trigger = {
 			NOR = {
-				any_spouse = { culture = yi_ti is_alive = yes }
-				any_consort = { culture = yi_ti is_senior_consort_party = no }
+				any_spouse = { culture_group = yi_ti_group is_alive = yes }
+				any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 			}
 			NOT = { has_character_modifier = refused_yi_ti_consort }
 			has_character_flag = leng_empress_marriage_check
@@ -11703,7 +11694,7 @@ character_event = { #Lengi/YiTish demand consort
 		is_married = yes
 		OR = {
 			culture = lengi
-			culture = yi_ti
+			culture_group = yi_ti_group
 		}
 		OR = {
 			religion = yiti_gods
@@ -11721,8 +11712,8 @@ character_event = { #Lengi/YiTish demand consort
 			}
 			AND = {
 				NOR = {
-					any_spouse = { culture = yi_ti is_alive = yes }
-					any_consort = { culture = yi_ti is_senior_consort_party = no }
+					any_spouse = { culture_group = yi_ti_group is_alive = yes }
+					any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 				}
 				NOT = { has_character_modifier = refused_yi_ti_consort }
 			}
@@ -11747,8 +11738,8 @@ character_event = { #Lengi/YiTish demand consort
 			if = {
 				limit = {
 					NOR = {
-						any_spouse = { culture = yi_ti is_alive = yes }
-						any_consort = { culture = yi_ti is_senior_consort_party = no }
+						any_spouse = { culture_group = yi_ti_group is_alive = yes }
+						any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 					}
 					NOT = { has_character_modifier = refused_yi_ti_consort }
 				}
@@ -11775,7 +11766,7 @@ character_event = { #Lengi/YiTish demand consort
 						can_marry_trigger = yes
 						OR = {
 							culture = lengi
-							culture = yi_ti
+							culture_group = yi_ti_group
 						}
 						NAND = {
 							culture = lengi
@@ -11787,11 +11778,11 @@ character_event = { #Lengi/YiTish demand consort
 							}
 						}
 						NAND = {
-							culture = yi_ti
+							culture_group = yi_ti_group
 							ROOT = {
 								OR = {
-									any_spouse = { culture = yi_ti is_alive = yes }
-									any_consort = { culture = yi_ti is_senior_consort_party = no }
+									any_spouse = { culture_group = yi_ti_group is_alive = yes }
+									any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 								}
 							}
 						}
@@ -11908,7 +11899,7 @@ character_event = { #Lengi/YiTish demand consort
 											}
 											OR = {
 												culture = lengi
-												culture = yi_ti
+												culture_group = yi_ti_group
 											}
 											OR = {
 												is_married = PREV
@@ -11958,14 +11949,14 @@ character_event = { #Lengi/YiTish demand consort
 		if = {
 			limit = {
 				NOR = {
-					any_spouse = { culture = yi_ti is_alive = yes }
-					any_consort = { culture = yi_ti is_senior_consort_party = no }
+					any_spouse = { culture_group = yi_ti_group is_alive = yes }
+					any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 				}
 				NOT = { has_character_modifier = refused_yi_ti_consort }
 			}
 			add_character_modifier = { name = refused_yi_ti_consort duration = 3650 }
 			any_realm_province = {
-				limit = { culture = yi_ti }
+				limit = { culture_group = yi_ti_group }
 				add_province_modifier = { name = empress_refused_yi_ti_consort duration = 3650 }
 			}
 		}

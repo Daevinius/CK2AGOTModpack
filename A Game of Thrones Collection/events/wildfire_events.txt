@@ -512,7 +512,7 @@ character_event = {
 character_event = { #member trigger
 	id = wildfire.909
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	hide_window = yes
 
 	trigger = {
@@ -562,7 +562,7 @@ character_event = { #member trigger
 character_event = { #non member trigger
 	id = wildfire.9
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	hide_window = yes
 
 	trigger = {
@@ -729,7 +729,7 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAwildfire.9"
-		character_event = { id = wildfire.10 tooltip = "EVTwildfire.10" }
+		character_event = { id = wildfire.10 tooltip = "EVTTOOLTIPwildfire.10" }
 		if = {
 			limit = { society_member_of = alchemists_guild }
 			detract_society_currency_minor_effect = yes
@@ -745,7 +745,7 @@ character_event = {
 						troops = -0.2
 						morale = -0.5
 					}
-					leader = { character_event = { id = wildfire.11 tooltip = "EVTwildfire.11" } }
+					leader = { character_event = { id = wildfire.11 tooltip = "EVTTOOLTIPwildfire.11" } }
 				}
 			}
 			if = {
@@ -1533,7 +1533,7 @@ province_event = {
 			remove_province_modifier = wildfire_5
 		}
 		hidden_tooltip = {
-			province_event = { id = wildfire.22 days = 240 random = 110 }  #outbreak ends
+			owner = { character_event = { id = wildfire.22 days = 240 random = 110 } }  #outbreak ends
 		}
 	}
 }
@@ -3241,14 +3241,14 @@ character_event = {
 
 #From on_character_ask_to_join_society
 character_event = {
-    id = wildfire.45
+	id = wildfire.45
 	hide_window = yes
-    is_triggered_only = yes
-    trigger = {
-    	FROM = { any_society_member = { society_member_of = alchemists_guild } }
-    }
-    immediate = {
-    	FROM = {
+	is_triggered_only = yes # on_character_ask_to_join_society
+	trigger = {
+		FROM = { any_society_member = { society_member_of = alchemists_guild } }
+	}
+	immediate = {
+		FROM = {
 			random_society_member = {
 				limit = {
 					society_rank == 4
@@ -3273,29 +3273,29 @@ character_event = {
 				character_event = { id = wildfire.46 }
 			}
 		}
-    }
+	}
 }
 
 #Ping event
 character_event = {
-    id = wildfire.46
+	id = wildfire.46
 	hide_window = yes
-    is_triggered_only = yes
-    immediate = {
-    	FROM = { letter_event = { id = wildfire.47 } }
-    }
+	is_triggered_only = yes
+	immediate = {
+		FROM = { letter_event = { id = wildfire.47 } }
+	}
 }
 
 #Welcome letter
 letter_event = {
-    id = wildfire.47
-    desc = EVTDESCwildfire.47
-    border = GFX_event_letter_frame_religion
+	id = wildfire.47
+	desc = EVTDESCwildfire.47
+	border = GFX_event_letter_frame_religion
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    option = {
-        name = EVTOPTAwildfire.47
+	option = {
+		name = EVTOPTAwildfire.47
 		join_society = alchemists_guild
 		hidden_tooltip = { #add more randoms if lack of members
 			if = {
@@ -3442,17 +3442,17 @@ letter_event = {
 				set_society_grandmaster = yes
 			}
 		}
-    }
+	}
 }
 
 #MISSIONS
 
 #Mission tombola
 character_event = {
-    id = wildfire.50
-    hide_window = yes
+	id = wildfire.50
+	hide_window = yes
 
-    is_triggered_only = yes
+	is_triggered_only = yes # on_society_bi_yearly_pulse
 
 	is_in_society = yes
 
@@ -3463,7 +3463,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 	}
 
-    immediate = {
+	immediate = {
 		#If shortage of nearby wisdoms, create one
 		if = {
 			limit = {
@@ -3512,7 +3512,7 @@ character_event = {
 					society = {
 						any_society_member = {
 							NOT = { character = ROOT }
-    						is_within_diplo_range = ROOT
+							is_within_diplo_range = ROOT
 							opinion = { who = ROOT value = -20 }
 							society_rank >= 3
 						}
@@ -3573,47 +3573,47 @@ character_event = {
 				character_event = { id = wildfire.170 }
 			}
 		}
-    	#Picks out mission giver
-    	random_list = {
-    		1 = { #International society member
-    			society = {
-    				random_society_member = {
-    					limit = {
+		#Picks out mission giver
+		random_list = {
+			1 = { #International society member
+				society = {
+					random_society_member = {
+						limit = {
 							NOT = { character = ROOT }
-    						is_within_diplo_range = ROOT
+							is_within_diplo_range = ROOT
 							opinion = { who = ROOT value = -20 }
 							society_rank >= 3
-    					}
-    					save_event_target_as = alchemist_collaborator
-    				}
-    			}
-    		}
-    		100 = { #Realm society member
-    			trigger = {
-    				society = {
-    					any_society_member = {
-    						NOT = { character = ROOT }
-    						is_within_diplo_range = ROOT
-							opinion = { who = ROOT value = -20 }
-							same_realm = ROOT
-							society_rank >= 3
-    					}
-    				}
-    			}
-    			society = {
-    				random_society_member = {
-    					limit = {
-    						NOT = { character = ROOT }
-    						is_within_diplo_range = ROOT
+						}
+						save_event_target_as = alchemist_collaborator
+					}
+				}
+			}
+			100 = { #Realm society member
+				trigger = {
+					society = {
+						any_society_member = {
+							NOT = { character = ROOT }
+							is_within_diplo_range = ROOT
 							opinion = { who = ROOT value = -20 }
 							same_realm = ROOT
 							society_rank >= 3
-    					}
-    					save_event_target_as = alchemist_collaborator
-    				}
-    			}
-    		}
-    	}
+						}
+					}
+				}
+				society = {
+					random_society_member = {
+						limit = {
+							NOT = { character = ROOT }
+							is_within_diplo_range = ROOT
+							opinion = { who = ROOT value = -20 }
+							same_realm = ROOT
+							society_rank >= 3
+						}
+						save_event_target_as = alchemist_collaborator
+					}
+				}
+			}
+		}
 		if = {
 			limit = { event_target:alchemist_collaborator = { always = yes } }
 			#Randomizes mission
@@ -3840,7 +3840,7 @@ character_event = {
 				}
 			}
 		}
-    }
+	}
 }
 #Alchemist Hired
 character_event = {
@@ -3853,15 +3853,17 @@ character_event = {
 	immediate = {
 		#find culture
 		random_demesne_province = {
-			limit = { has_character_modifier = building_alchemist_guild }
+			limit = { owner = { has_character_modifier = building_alchemist_guild } }
 			save_event_target_as = alchemist_origin
 		}
 		if = {
 			limit = { NOT = { event_target:alchemist_origin = { always = yes } } }
 			random_province = {
 				limit = {
-					has_character_modifier = building_alchemist_guild
-					owner = { is_within_diplo_range = ROOT }
+					owner = {
+						has_character_modifier = building_alchemist_guild
+						is_within_diplo_range = ROOT
+					}
 				}
 				save_event_target_as = alchemist_origin
 			}
@@ -4817,9 +4819,8 @@ character_event = { #forgery discovered
 					hidden_tooltip = { character_event = { id = wildfire.83 } }
 				}
 			}
-			if = {
-				limit = { owner = { character = ROOT } }
-				destroy_artifact = ROOT
+			else = {
+				destroy_artifact = yes
 			}
 		}
 		if = {
@@ -4854,7 +4855,7 @@ character_event = { #inform gift receiver
 	option = {
 		name = "EVTOPTAwildfire.83"
 		event_target:fake_artifact = {
-			destroy_artifact = ROOT
+			destroy_artifact = yes
 		}
 	}
 }
@@ -5240,8 +5241,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					capital_scope = { save_event_target_as = tour_destination }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { capital_scope = { save_event_target_as = tour_destination } }
 				}
 			}
@@ -7554,7 +7554,7 @@ character_event = {
 	desc = "EVTDESCwildfire.138"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_combat_pulse
 	only_rulers = yes
 	has_global_flag = alchemist_flame_creature_discovered
 	is_in_society = yes
@@ -8473,7 +8473,7 @@ character_event = { #Inform target Success basic
 		name = "EVTOPTBwildfire.154" #Join society
 		trigger = {
 			NOT = { is_in_society = yes }
-			age = 16
+			is_adult = yes
 			is_nomadic = no
 			NOR = {
 				trait = kingsguard
@@ -9469,7 +9469,7 @@ character_event = { #Courtier intervenes
 									FROM = { has_claim = PREV }
 								}
 								is_incapable = no
-								age = 16
+								is_adult = yes
 								NOT = { trait = bastard }
 								NOT = { trait = lunatic }
 								NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -9646,7 +9646,7 @@ character_event = { #Courtier intervenes
 							FROM = { has_claim = PREV }
 						}
 						is_incapable = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = bastard }
 						NOT = { trait = lunatic }
 						NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -9680,7 +9680,7 @@ character_event = { #Courtier intervenes
 							FROM = { has_claim = PREV }
 						}
 						is_incapable = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = bastard }
 						NOT = { trait = lunatic }
 						NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -9841,7 +9841,7 @@ character_event = { #Inform killed by courtier
 	desc = "EVTDESCwildfire.188"
 	picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 
 	option = {
 		name = "EVTOPTAwildfire.188"

@@ -95,13 +95,13 @@ character_event = {
 			limit = {
 				has_dynasty_flag = in_blood_feud
 				dynasty_head = { character = ROOT }
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				FROMFROM = {
 					has_opinion_modifier = { who = ROOT modifier = opinion_blood_feud }
 					dynasty_head = { character = PREV } # Must be senior member
-					age = 16
+					is_adult = yes
 					NOT = { dynasty = ROOT }
 					is_incapable = no
 					NOT = { war_with = ROOT }
@@ -1301,7 +1301,7 @@ character_event = {
 						NOT = { trait = homosexual }
 						NOT = { trait = eunuch }
 						is_incapable = no
-						age = 16
+						is_adult = yes
 						OR = {
 							trait = lunatic
 							trait = arbitrary
@@ -1377,52 +1377,52 @@ letter_event = {
 		trigger = { NOT = { is_inaccessible_trigger = yes } }
 		ai_chance = {
 			factor = 1
-			modifier  = {
+			modifier = {
 				factor = 2
 				is_liege_or_above = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				FROM = { has_character_flag = lavishly_spend }
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				FROMFROM = { spouse = { dynasty = ROOT } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				FROMFROM = { spouse = { is_close_relative = ROOT } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				dynasty = FROMFROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				is_close_relative = FROMFROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				opinion = { who = FROM value = 15 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				opinion = { who = FROM value = 30 }
 			}
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = gregarious
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = hedonist
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = lustful
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = gluttonous
 			}
@@ -1448,11 +1448,11 @@ letter_event = {
 		name = "EVTOPTB180525" #Refuse
 		ai_chance = {
 			factor = 1
-			modifier  = {
+			modifier = {
 				factor = 3
 				FROM = { has_character_flag = low_spend }
 			}
-			modifier  = {
+			modifier = {
 				factor = 0
 				OR = {
 					opinion = { who = FROM value = 50 }
@@ -1473,33 +1473,33 @@ letter_event = {
 					}
 				}
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				NOT = { opinion = { who = FROM value = -15 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				NOT = { opinion = { who = FROM value = -30 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				NOT = { opinion = { who = FROM value = -45 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -60 } }
 			}
 
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = shy
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = chaste
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = temperate
 			}
@@ -1730,7 +1730,7 @@ character_event = {
 						has_opinion_modifier = { modifier = opinion_attending_wedding who = ROOT }
 						prisoner = no
 						is_incapable = no
-						age = 16
+						is_adult = yes
 					}
 					if = {
 						limit = { ROOT = { has_character_flag = lavishly_food } }
@@ -1755,7 +1755,7 @@ character_event = {
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = ROOT }
 					prisoner = no
 					is_incapable = no
-					age = 16
+					is_adult = yes
 				}
 				random = {
 					chance = 5
@@ -1790,7 +1790,7 @@ character_event = {
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = ROOT }
 					prisoner = no
 					is_incapable = no
-					age = 16
+					is_adult = yes
 				}
 				random_list = {
 					25 = { }
@@ -1826,7 +1826,7 @@ character_event = {
 						has_opinion_modifier = { modifier = opinion_attending_wedding who = ROOT }
 						prisoner = no
 						is_incapable = no
-						age = 16
+						is_adult = yes
 					}
 					random = {
 						chance = 50
@@ -1849,7 +1849,7 @@ character_event = {
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = ROOT }
 					prisoner = no
 					is_incapable = no
-					age = 16
+					is_adult = yes
 					NOT = { trait = slave }
 					is_lowborn = no
 				}
@@ -2054,7 +2054,7 @@ character_event = {
 				is_ruler = yes
 				FROM = {
 					any_opinion_modifier_target = {
-						age = 16
+						is_adult = yes
 						has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 						NOT = { character = ROOT }
 						NOT = { is_rival = ROOT }
@@ -2093,7 +2093,7 @@ character_event = {
 				FROM = {
 					NOT = { reverse_opinion = { who = ROOT value = -15 } }
 					any_opinion_modifier_target = {
-						age = 16
+						is_adult = yes
 						has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 						NOT = { character = ROOT }
 						NOT = { character = PREV }
@@ -2130,7 +2130,7 @@ character_event = {
 		#Friendly with another guest's spouse
 		if = {
 			limit = {
-				age = 16
+				is_adult = yes
 				age < 60
 				is_married = yes
 				OR = {
@@ -2149,7 +2149,7 @@ character_event = {
 						has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 						spouse = {
 							prisoner = no
-							age = 16
+							is_adult = yes
 							age < 60
 							is_pregnant = no
 							NOT = { trait = eunuch }
@@ -2205,7 +2205,7 @@ character_event = {
 		#Hook up with another guest
 		if = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					AND = {
 						has_lover = no
@@ -3075,7 +3075,7 @@ character_event = {
 				who = ROOT
 			}
 			any_opinion_modifier_target = {
-				age = 16
+				is_adult = yes
 				has_character_flag = guest_ball_started
 				has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 				NOT = { character = ROOT }
@@ -3093,7 +3093,7 @@ character_event = {
 		FROMFROM = {
 			random_opinion_modifier_target = {
 				limit = {
-					age = 16
+					is_adult = yes
 					has_character_flag = guest_ball_started
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 					NOT = { character = ROOT }
@@ -3154,7 +3154,7 @@ character_event = {
 				reverse_opinion = { who = ROOT value = -15 }
 			}
 			any_opinion_modifier_target = {
-				age = 16
+				is_adult = yes
 				has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 				NOT = { character = ROOT }
 				NOT = { is_rival = ROOT }
@@ -3172,7 +3172,7 @@ character_event = {
 		FROMFROM = {
 			random_opinion_modifier_target = {
 				limit = {
-					age = 16
+					is_adult = yes
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 					NOT = { character = ROOT }
 					NOT = { is_rival = ROOT }
@@ -3243,7 +3243,7 @@ character_event = {
 				has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 				spouse = {
 					prisoner = no
-					age = 16
+					is_adult = yes
 					age < 60
 					is_pregnant = no
 					NOT = { trait = eunuch }
@@ -3305,7 +3305,7 @@ character_event = {
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = PREV }
 					spouse = {
 						prisoner = no
-						age = 16
+						is_adult = yes
 						age < 60
 						is_pregnant = no
 						NOT = { trait = eunuch }
@@ -3691,7 +3691,7 @@ character_event = {
 			limit = {
 				NOT = { trait = just }
 				NOT = { trait = arbitrary }
-				NOT = { personality_traits  = 6 }
+				NOT = { personality_traits = 6 }
 			}
 			random = {
 				chance = 50
@@ -3738,7 +3738,7 @@ character_event = {
 			limit = {
 				NOT = { trait = just }
 				NOT = { trait = arbitrary }
-				NOT = { personality_traits  = 6 }
+				NOT = { personality_traits = 6 }
 			}
 			random = {
 				chance = 50
@@ -4110,7 +4110,7 @@ character_event = {
 					}
 				}
 				is_pregnant = no
-				age = 16
+				is_adult = yes
 				OR = {
 					AND = {
 						has_lover = no
@@ -4225,7 +4225,7 @@ character_event = {
 						}
 					}
 					is_pregnant = no
-					age = 16
+					is_adult = yes
 					OR = {
 						AND = {
 							has_lover = no
@@ -4358,8 +4358,7 @@ character_event = {
 						limit = { is_female = yes }
 						impregnate_cuckoo = FROM
 					}
-					if = {
-						limit = { is_female = no }
+					else = {
 						FROM = { impregnate_cuckoo = ROOT }
 					}
 				}
@@ -4583,8 +4582,7 @@ character_event = {
 					limit = { is_female = yes }
 					impregnate_cuckoo = FROMFROM
 				}
-				if = {
-					limit = { is_female = no }
+				else = {
 					FROMFROM = { impregnate_cuckoo = ROOT }
 				}
 			}
@@ -5210,7 +5208,7 @@ character_event = { #Inform Host
 						AND = {
 							culture = dothraki
 							is_female = no
-							age = 16
+							is_adult = yes
 						}
 					}
 					NOT = { character = PREV }
@@ -5238,7 +5236,7 @@ character_event = { #Inform Guests
 		trigger = {
 			culture = dothraki
 			is_female = no
-			age = 16
+			is_adult = yes
 			is_ill = no
 			NOT = { trait = eunuch }
 			NOT = { has_severe_disability_trigger = yes }
@@ -5259,7 +5257,7 @@ character_event = { #Inform Guests
 		trigger = {
 			culture = dothraki
 			is_female = no
-			age = 16
+			is_adult = yes
 			is_ill = no
 			NOT = { trait = eunuch }
 			NOT = { has_severe_disability_trigger = yes }

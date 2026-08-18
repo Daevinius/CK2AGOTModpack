@@ -40,7 +40,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.1"
 	picture = "GFX_kingsguard"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_avoided_imprison_fled_country, on_exiled, on_death
 
 	trigger = {
 		trait = kingsguard
@@ -145,7 +145,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -3420,7 +3420,7 @@ character_event = {
 	# desc = "EVTDESCkingsguard.16"
 	# picture = GFX_kingsguard
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 
@@ -3440,7 +3440,7 @@ character_event = {
 					limit = {
 						can_be_kingsguard_candidate_trigger = yes
 						is_primary_heir = no
-						age = 16
+						is_adult = yes
 						trait = knight
 					}
 					add_trait = kingsguard
@@ -3644,8 +3644,7 @@ character_event = { #move courtier out
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 			break = yes
@@ -3662,8 +3661,7 @@ character_event = { #move courtier out
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -3681,8 +3679,7 @@ character_event = { #move courtier out
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -3746,8 +3743,7 @@ character_event = { #move courtier out
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -3764,8 +3760,7 @@ character_event = { #move courtier out
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 			break = yes
@@ -3969,7 +3964,7 @@ character_event = {
 		kingsguard = { is_alive = yes }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -4387,7 +4382,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.24"
 	picture = "GFX_kingsguard"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -4468,25 +4463,25 @@ character_event = {
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					reverse_opinion = { who = ROOT value =  10 }
+					reverse_opinion = { who = ROOT value = 10 }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					reverse_opinion = { who = ROOT value =  70 }
+					reverse_opinion = { who = ROOT value = 70 }
 				}
 			}
 			modifier = {
 				factor = 4
 				event_target:kingsguard_kin_while_at_war = {
-					opinion = { who = ROOT value =  25 }
+					opinion = { who = ROOT value = 25 }
 				}
 			}
 			modifier = {
@@ -4585,7 +4580,7 @@ character_event = {
 				OR = {
 					trait = honorable
 					trait = just
-					event_target:kingsguard_kin_while_at_war = { reverse_opinion = { who = ROOT value =  20 } }
+					event_target:kingsguard_kin_while_at_war = { reverse_opinion = { who = ROOT value = 20 } }
 				}
 				NOT = { trait = paranoid }
 				NOT = { trait = lunatic }
@@ -4597,25 +4592,25 @@ character_event = {
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -10 } }
+					NOT = { reverse_opinion = { who = ROOT value = -10 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -70 } }
+					NOT = { reverse_opinion = { who = ROOT value = -70 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { opinion = { who = ROOT value =  -25 } }
+					NOT = { opinion = { who = ROOT value = -25 } }
 				}
 			}
 			modifier = {
@@ -4705,7 +4700,7 @@ character_event = {
 				OR = {
 					trait = honorable
 					trait = just
-					event_target:kingsguard_kin_while_at_war = { reverse_opinion = { who = ROOT value =  0 } }
+					event_target:kingsguard_kin_while_at_war = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 				NOT = { trait = paranoid }
 				NOT = { trait = lunatic }
@@ -4717,25 +4712,25 @@ character_event = {
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -10 } }
+					NOT = { reverse_opinion = { who = ROOT value = -10 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -70 } }
+					NOT = { reverse_opinion = { who = ROOT value = -70 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:kingsguard_kin_while_at_war = {
-					NOT = { opinion = { who = ROOT value =  -25 } }
+					NOT = { opinion = { who = ROOT value = -25 } }
 				}
 			}
 			modifier = {
@@ -4937,7 +4932,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				NOT  = { trait = proud }
+				NOT = { trait = proud }
 			}
 			###Strong King
 			modifier = {
@@ -5493,7 +5488,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.31"
 	picture = "GFX_kingsguard"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_executed
 
 	immediate = {
 		set_character_flag = unjust_execution #This give family the vengeance modifier
@@ -6406,7 +6401,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.53"
 	picture = "GFX_kingsguard"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_executed
 
 	option = {
 		name = "Ok"
@@ -6554,7 +6549,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.64"
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		trait = kingsguard
@@ -6909,6 +6904,16 @@ character_event = {
 						trait = dancer
 						trait = loves_end
 						trait = bullsroar
+						trait = mercy
+						trait = loyalty
+						trait = grey_wanderer
+						trait = swiftend
+						trait = sundown
+						trait = moons_kiss
+						trait = wavecarver
+						trait = curtail
+						trait = righteousness
+						trait = scorpion
 					}
 				}
 				save_event_target_as = kg_past_member_1
@@ -6925,8 +6930,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -6951,8 +6955,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -7141,7 +7144,7 @@ character_event = {
 	prisoner = no
 	only_men = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = kingsguard
@@ -7159,7 +7162,7 @@ character_event = {
 					prisoner = no
 					is_abroad = no
 					is_pregnant = no
-					age = 16
+					is_adult = yes
 					NOT = { is_female = no }
 					OR = {
 						AND = {
@@ -7218,7 +7221,7 @@ character_event = {
 						prisoner = no
 						is_abroad = no
 						is_pregnant = no
-						age = 16
+						is_adult = yes
 						OR = {
 							AND = {
 								is_female = yes
@@ -7286,7 +7289,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.68"
 	picture = GFX_evt_lovers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	only_capable = yes
 	prisoner = no
@@ -8081,7 +8084,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.75"
 	picture = GFX_evt_lovers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_executed
 
 	option = {
 		name = "EVTOPTAkingsguard.75" #Execute!
@@ -8244,9 +8247,9 @@ character_event = {
 character_event = {
 	id = kingsguard.76
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		demesne_size = 1
@@ -8493,10 +8496,11 @@ character_event = {
 				}
 			}
 			regent = { character_event = { id = kingsguard.86 } }
-			break = yes
 		}
 		#Else King chooses
-		character_event = { id = kingsguard.86 }
+		else = {
+			character_event = { id = kingsguard.86 }
+		}
 	}
 
 	option = {

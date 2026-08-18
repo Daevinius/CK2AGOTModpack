@@ -131,7 +131,7 @@ character_event = {
 				}
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 			}
 			if = {
 				limit = { ROOT = { has_character_flag = lavishly_food } }
@@ -166,7 +166,7 @@ character_event = {
 				}
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 			}
 			random = {
 				chance = 5
@@ -216,7 +216,7 @@ character_event = {
 						}
 						prisoner = no
 						is_incapable = no
-						age = 16
+						is_adult = yes
 					}
 					random = {
 						chance = 10
@@ -265,7 +265,7 @@ character_event = {
 				}
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 			}
 			random_list = {
 				25 = { }
@@ -313,7 +313,7 @@ character_event = {
 						}
 						prisoner = no
 						is_incapable = no
-						age = 16
+						is_adult = yes
 					}
 					random_list = {
 						25 = { }
@@ -354,7 +354,7 @@ character_event = {
 					}
 					prisoner = no
 					is_incapable = no
-					age = 16
+					is_adult = yes
 				}
 				random = {
 					chance = 50
@@ -395,7 +395,7 @@ character_event = {
 				}
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 			}
 			random = {
 				chance = 2
@@ -431,7 +431,7 @@ character_event = {
 						}
 						prisoner = no
 						is_incapable = no
-						age = 16
+						is_adult = yes
 					}
 					random = {
 						chance = 4
@@ -450,7 +450,7 @@ character_event = {
 		#Friendly with another guest's spouse
 		if = {
 			limit = {
-				age = 16
+				is_adult = yes
 				age < 60
 				fertility = 0.4
 				is_pregnant = no
@@ -872,7 +872,7 @@ character_event = {
 			#Landless guest seeks redress
 			random_realm_character = {
 				limit = {
-					age = 16
+					is_adult = yes
 					is_liege_or_above = ROOT
 					OR = {
 						NOT = { liege = { character = ROOT } }
@@ -1010,7 +1010,7 @@ character_event = {
 			limit = {
 				FROM = {
 					any_courtier_or_vassal = {
-						age = 16
+						is_adult = yes
 						OR = {
 							has_character_flag = guest_feast_started
 							has_character_flag = coming_to_feast
@@ -1066,7 +1066,7 @@ character_event = {
 				FROM = {
 					NOT = { reverse_opinion = { who = ROOT value = -15 } }
 					any_courtier_or_vassal = {
-						age = 16
+						is_adult = yes
 						OR = {
 							has_character_flag = guest_feast_started
 							has_character_flag = coming_to_feast
@@ -1120,7 +1120,7 @@ character_event = {
 		#Duel
 		if = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					is_female = no
 					female_get_masculine_event_trigger = yes
@@ -1137,7 +1137,7 @@ character_event = {
 				NOT = { trait = craven }
 				FROM = {
 					any_courtier_or_vassal = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -1191,7 +1191,7 @@ character_event = {
 		#Friendly with another guest's spouse
 		if = {
 			limit = {
-				age = 16
+				is_adult = yes
 				age < 60
 				is_married = yes
 				OR = {
@@ -1221,7 +1221,7 @@ character_event = {
 						liege = { character = ROOT_FROM }
 						spouse = {
 							prisoner = no
-							age = 16
+							is_adult = yes
 							age < 60
 							is_pregnant = no
 							NOT = { trait = eunuch }
@@ -1296,7 +1296,7 @@ character_event = {
 				intrigue = 10
 				any_rival = {
 					same_liege = ROOT
-					age = 16
+					is_adult = yes
 					OR = {
 						has_character_flag = guest_feast_started
 						has_character_flag = coming_to_feast
@@ -1867,7 +1867,7 @@ character_event = {
 				is_incapable = no
 				NOT = { has_character_modifier = holding_large_feast }
 				war = no
-				age = 16
+				is_adult = yes
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = { has_character_flag = do_not_disturb }
 			}
@@ -1974,15 +1974,15 @@ letter_event = {
 		name = EVTOPTA72011 #Travel to the feast
 		ai_chance = {
 			factor = 2
-			modifier  = {
+			modifier = {
 				factor = 2
 				opinion = { who = FROM value = -10 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 5
 				opinion = { who = FROM value = 10 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 5
 				opinion = { who = FROM value = 20 }
 			}
@@ -1993,12 +1993,12 @@ letter_event = {
 		name = EVTOPTB72011 #Refuse
 		ai_chance = {
 			factor = 1
-			modifier  = {
+			modifier = {
 				factor = 0
 				opinion = { who = FROM value = 25 }
 				NOT = { is_inaccessible_trigger = yes }
 			}
-			modifier  = {
+			modifier = {
 				factor = 0
 				has_landed_title = d_prince_pentos
 				is_patrician = no
@@ -3793,7 +3793,7 @@ character_event = {
 			has_character_flag = host_feast_started
 			has_character_modifier = holding_large_feast
 			any_courtier_or_vassal = {
-				age = 16
+				is_adult = yes
 				OR = {
 					has_character_flag = guest_feast_started
 					AND = {
@@ -3825,7 +3825,7 @@ character_event = {
 		FROMFROM = {
 			random_courtier_or_vassal = {
 				limit = {
-					age = 16
+					is_adult = yes
 					OR = {
 						has_character_flag = guest_feast_started
 						AND = {
@@ -3876,7 +3876,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTA72026
-		add_friend  = FROM
+		add_friend = FROM
 	}
 }
 
@@ -3905,7 +3905,7 @@ character_event = {
 			has_character_modifier = holding_large_feast
 			NOT = { reverse_opinion = { who = ROOT value = -15 } }
 			any_courtier_or_vassal = {
-				age = 16
+				is_adult = yes
 				OR = {
 					has_character_flag = guest_feast_started
 					AND = {
@@ -3938,7 +3938,7 @@ character_event = {
 		FROMFROM = {
 			random_courtier_or_vassal = {
 				limit = {
-					age = 16
+					is_adult = yes
 					OR = {
 						has_character_flag = guest_feast_started
 						AND = {
@@ -3990,7 +3990,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTA72028
-		add_friend  = FROM
+		add_friend = FROM
 		FROMFROMFROM = { tooltip = { show_portrait = yes } }
 	}
 }
@@ -4040,7 +4040,7 @@ character_event = {
 			any_courtier_or_vassal = {
 				war = no
 				in_command = no
-				age = 16
+				is_adult = yes
 				OR = {
 					is_female = no
 					female_get_masculine_event_trigger = yes
@@ -4085,7 +4085,7 @@ character_event = {
 				limit = {
 					war = no
 					in_command = no
-					age = 16
+					is_adult = yes
 					is_female = no
 					prisoner = no
 					OR = {
@@ -4287,7 +4287,7 @@ character_event = {
 				}
 				spouse = {
 					prisoner = no
-					age = 16
+					is_adult = yes
 					age < 60
 					is_pregnant = no
 					NOT = { trait = eunuch }
@@ -4344,7 +4344,7 @@ character_event = {
 					}
 					spouse = {
 						prisoner = no
-						age = 16
+						is_adult = yes
 						age < 60
 						is_pregnant = no
 						NOT = { trait = eunuch }
@@ -5074,7 +5074,7 @@ character_event = {
 			limit = {
 				NOT = { trait = just }
 				NOT = { trait = arbitrary }
-				NOT = { personality_traits  = 6 }
+				NOT = { personality_traits = 6 }
 				age = 14
 			}
 			random = {
@@ -5121,7 +5121,7 @@ character_event = {
 			limit = {
 				NOT = { trait = just }
 				NOT = { trait = arbitrary }
-				NOT = { personality_traits  = 6 }
+				NOT = { personality_traits = 6 }
 				age = 14
 			}
 			random = {
@@ -5951,7 +5951,7 @@ character_event = {
 			}
 			is_married = yes
 			spouse = {
-				age = 16
+				is_adult = yes
 				NOT = { is_close_relative = ROOT }
 				OR = {
 					AND = {
@@ -6004,7 +6004,7 @@ character_event = {
 				}
 				is_married = yes
 				spouse = {
-					age = 16
+					is_adult = yes
 					NOT = { is_close_relative = ROOT }
 					OR = {
 						AND = {
@@ -6301,7 +6301,7 @@ character_event = {
 				war = no
 				in_command = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				OR = {
 					has_character_flag = guest_feast_started
 					has_character_flag = guest_ball_started
@@ -6392,7 +6392,7 @@ character_event = {
 				limit = {
 					has_opinion_modifier = { modifier = opinion_attending_wedding who = ROOT }
 
-					age = 16
+					is_adult = yes
 					war = no
 					in_command = no
 					prisoner = no
@@ -6420,7 +6420,7 @@ character_event = {
 				war = no
 				in_command = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				OR = {
 					has_character_flag = guest_feast_started
 					has_character_flag = guest_ball_started
@@ -6451,7 +6451,7 @@ character_event = {
 	option = {
 		name = EVTOPTA72080
 		event_target:feast_late_night_talk = {
-			add_friend  = ROOT
+			add_friend = ROOT
 			character_event = {
 				id = 72081
 				tooltip = EVTTOOLTIP72081
@@ -6470,7 +6470,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTA72081
-		add_friend  = FROM
+		add_friend = FROM
 	}
 }
 
@@ -10913,7 +10913,7 @@ character_event = { #Liege receives peititon
 	id = feast.121
 	desc = EVTDESCfeast.121 #GetFeastPetitionSubject must be updated for new crimes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 
 	trigger = {
 		is_ruler = yes
@@ -11667,7 +11667,7 @@ character_event = { #Liege receives peititon
 				limit = {
 					NOT = { trait = just }
 					NOT = { trait = arbitrary }
-					NOT = { personality_traits  = 6 }
+					NOT = { personality_traits = 6 }
 					age = 14
 				}
 				random = {
@@ -12518,7 +12518,7 @@ character_event = {
 		trigger = { event_target:accused = { has_character_flag = charge_rape } }
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 	portrait = event_target:accused
 
 	trigger = {
@@ -12800,8 +12800,7 @@ character_event = {
 					value = -0.5
 				}
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				if = {
 					limit = { wealth < 50 }
 					wealth = -20
@@ -12914,7 +12913,7 @@ character_event = {
 			limit = {
 				NOT = { trait = just }
 				NOT = { trait = arbitrary }
-				NOT = { personality_traits  = 6 }
+				NOT = { personality_traits = 6 }
 				age = 14
 			}
 			random = {
@@ -13146,8 +13145,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -13694,8 +13692,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -14017,8 +14014,7 @@ character_event = {
 							limit = { is_female = no }
 							set_special_character_title = title_ser
 						}
-						if = {
-							limit = { is_female = yes }
+						else = {
 							set_special_character_title = title_lady
 						}
 					}

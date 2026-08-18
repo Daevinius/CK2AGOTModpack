@@ -242,6 +242,29 @@
 		add_trait = "charismatic_negotiator"
 		add_trait = "stubborn"
 		employer = 59
+		effect = { #
+			add_character_modifier = {
+				name = pet_cat
+				duration = -1
+			}
+			hidden_tooltip = {
+				#Get name
+				e_rebels = {
+					create_random_steward = {
+						name = "Тогги"
+						random_traits = yes
+						dynasty = none
+						female = random
+						culture = cat
+						religion = ROOT
+					}
+					new_character = {
+						ROOT = { save_persistent_event_target = { name = cat_name scope = PREV } }
+						death = yes
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1714,7 +1737,7 @@
 
 	give_nickname = nick_barstark
 
-	8241.1.1 = {
+	8240.1.1 = {
 		birth = yes
 		effect = {
 			set_graphical_culture = "Stark_dyn"
@@ -1942,7 +1965,7 @@
 
 	give_nickname = nick_harstark
 
-	8240.9.1 = {
+	8240.1.1 = {
 		birth = yes
 		effect = {
 			set_graphical_culture = "Stark_dyn"
@@ -1962,7 +1985,7 @@
 		add_trait = "squire"
 		add_trait = "brave"
 	}
-	8253.1.1 = {
+	8256.1.1 = {
 		remove_trait = "poor_warrior"
 		remove_trait = "squire"
 		add_trait = "trained_warrior"
@@ -2135,6 +2158,9 @@
 		add_trait = "squire"
 	}
 }
+######################################################
+### Children of the Forest and the three-eyed crow ###
+######################################################
 1993001 = {
 	name = "Веточка"
 
@@ -2153,7 +2179,9 @@
 		birth = yes
 
 	}
-	8252.6.1 = { death = yes }
+	8252.6.1 = {
+		death = yes
+	}
 }
 1993002 = {
 	name = "Трехглазая Ворона"
@@ -2161,18 +2189,20 @@
 	dna = "djbmhqgjacs"
 	properties = "aj00ib0000000a"
 
-	martial = 12
 	diplomacy = 5
+	martial = 12
+	stewardship = 9
 	intrigue = 7
-	stewardship = 13
+	learning = 6
 
 	religion = "old_gods"
 	culture = "old_first_man"
 
+	add_trait = "quick_1"
+
 	disallow_random_traits = yes
 
-
-	8175.6.1 = {
+	8175.1.1 = {
 		birth = yes
 		effect = {
 			set_immune_to_pruning = yes
@@ -2184,19 +2214,19 @@
 			dynasty = none
 		}
 	}
-	8252.6.1 = {
+	8252.1.1 = {
+		add_trait = "elusive_shadow"
+		add_trait = "diligent"
 		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "deceitful"
+		add_trait = "ruthless"
 		add_trait = "crow"
+		add_trait = "mystic"
+		add_trait = "one_eyed"
+		add_trait = "kinslayer"
 		add_trait = "greensight"
 		add_trait = "greenseer"
-		add_trait = "mystic" 		#Was called a sorcerer for a reason...
-		add_trait = flanker
-		add_trait = "deceitful"
-		add_trait = one_eyed
-		add_trait = kinslayer
-		add_trait = "ruthless"
-		add_trait = "hunter"
-		add_trait = "just"
 		add_trait = "greenseer_weirwood"
 		create_bloodline = {
 			type = greenseer_bloodline
@@ -2232,25 +2262,45 @@
 		employer = 1993002
 	}
 }
-#######House Greywolf
+######################
+### House Greywolf ###
+######################
 848001 = {
-	name = "Гавен"
+	name = "Гавен" # Gaven Greywolf
 
 	dynasty = 18774
 
 	religion = "old_gods"
 	culture = "northman"
-	add_trait = "mystic"
-	add_trait = "zealous"
-	add_trait = "wolf"
-	add_trait = "direwolf"
-	add_trait = "dog"
-	add_trait = "greensight"
-	give_nickname = nick_warg_king
 
+	disallow_random_traits = yes
+
+	add_trait = "quick_1"
 
 	6402.1.1 = {
 		birth = yes
+	}
+	6418.1.1 = {
+		add_trait = "brilliant_strategist"
+		add_trait = "experimenter"
+		add_trait = "organizer"
+		add_trait = "inspiring_leader"
+		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "wroth"
+		add_trait = "proud"
+		add_trait = "just"
+		add_trait = "ruthless"
+		add_trait = "authoritative"
+		add_trait = "ambitious"
+		add_trait = "zealous"
+		add_trait = "mystic"
+		add_trait = "dog"
+		add_trait = "wolf"
+		add_trait = "direwolf"
+		add_trait = "greensight"
+		give_nickname = nick_warg_king
 		create_bloodline = {
 			type = great_warg
 			has_dlc = "Holy Fury"
@@ -2258,57 +2308,14 @@
 	}
 	6442.1.1 = {
 		death = {
-			death_reason = death_battle
-			killer = 8115059
+			death_reason = death_duel_battle # War of the Wolves.
+			killer = 8115059 # Brandon IV Stark.
 		}
 	}
 }
-848002 = {
-	name = "Ларра"
-	female = yes
-
-	dynasty = 18774
-
-
-	religion = "old_gods"
-	culture = "northman"
-	add_trait = "mystic"
-	add_trait = "zealous"
-	add_trait = "wolf"
-	add_trait = "greensight"
-
-	father = 848001
-
-	6422.1.1 = {
-		birth = yes
-	}
-	6442.1.1 = { add_spouse = 8115059 } #
-	6460.1.1 = { death = yes }
-}
-8480021 = {
-	name = "Лианна"
-	female = yes
-
-	dynasty = 18774
-
-
-	religion = "old_gods"
-	culture = "northman"
-	add_trait = "mystic"
-	add_trait = "zealous"
-	add_trait = "wolf"
-	add_trait = "greensight"
-
-	father = 848001
-
-	6424.1.1 = {
-		birth = yes
-	}
-	6442.1.1 = { add_spouse = 8480049 } #
-	6463.1.1 = { death = yes }
-}
+### Issue of Gaven Greywolf the Warg King ###
 8480022 = {
-	name = "Гарлан"
+	name = "Гарланд" # Garland Greywolf the Warg Prince
 
 	dynasty = 18774
 
@@ -2323,16 +2330,62 @@
 	add_trait = "greensight"
 	give_nickname = nick_warg_prince
 
-	father = 848001
+	father = 848001 # Gaven Greywolf
 
 	6419.1.1 = {
 		birth = yes
 	}
 	6442.1.1 = {
 		death = {
-			death_reason = death_battle
-			killer = 8115059
+			death_reason = death_duel_battle # War of the Wolves.
+			killer = 8115059 # Brandon IV Stark.
 		}
+	}
+}
+848002 = {
+	name = "Гвенис"
+	female = yes
+
+	dynasty = 18774
+
+
+	religion = "old_gods"
+	culture = "northman"
+	add_trait = "mystic"
+	add_trait = "zealous"
+	add_trait = "wolf"
+	add_trait = "greensight"
+
+	father = 848001 # Gaven Greywolf
+
+	6421.1.1 = {
+		birth = yes
+	}
+	6460.1.1 = {
+		death = yes
+	}
+}
+8480021 = {
+	name = "Джиллиана"
+	female = yes
+
+	dynasty = 18774
+
+
+	religion = "old_gods"
+	culture = "northman"
+	add_trait = "mystic"
+	add_trait = "zealous"
+	add_trait = "wolf"
+	add_trait = "greensight"
+
+	father = 848001 # Gaven Greywolf
+
+	6423.1.1 = {
+		birth = yes
+	}
+	6463.1.1 = {
+		death = yes
 	}
 }
 #######House Dustin
@@ -2401,7 +2454,7 @@
 	culture = "old_first_man"
 
 	6503.1.1 = { birth = yes }
-	7835.1.1 = { death = "yes" }
+	7835.1.1 = { death = yes }
 }
 #######House Greystark
 8480070 = {
@@ -3909,48 +3962,6 @@
 		}
 	}
 }
-564324 = {
-	name = "Басс"
-
-	religion = "old_gods"
-	culture = "northman"
-
-
-	8255.1.1 = {
-		birth = yes
-		effect = {
-			dynasty = none
-			set_immune_to_pruning = yes
-		}
-		add_trait = hunter
-	}
-	8270.1.1 = { add_trait = trained_warrior }
-	8276.1.1 = {
-		add_trait = "nightswatch"
-		employer = 121000
-		effect = {
-			give_minor_title = title_kennelmaster_mbs
-		}
-	}
-	8288.1.1 = {
-		#employer = 121000
-		effect = {
-			give_minor_title = title_kennelmaster_mbs
-		}
-	}
-	8299.7.8 = {
-		employer = 200353
-		effect = {
-			give_minor_title = title_kennelmaster_mbs
-		}
-	}
-	8300.3.1 = {
-		employer = 1002059
-		effect = {
-			give_minor_title = title_kennelmaster_mbs
-		}
-	}
-}
 7799201 = {
 	name = "Найла"
 	dynasty = 496
@@ -4304,7 +4315,7 @@
 	}
 	8240.1.1 = {
 		give_nickname = nick_old_prefix
-		effect = { set_name = Нэн }
+		effect = { set_name = "Нэн" }
 	}
 	8250.1.1 = {
 		effect = {
@@ -4583,10 +4594,6 @@
 	culture = "valeman"
 
 
-	add_trait = "kind"
-	add_trait = "content"
-	add_trait = gluttonous
-	add_trait = lustful
 
 	8265.1.1 = {
 		birth = yes
@@ -4598,9 +4605,16 @@
 			}
 		}
 	}
+	8281.1.1 = {
+		add_trait = "kind"
+		add_trait = "content"
+		add_trait = gluttonous
+		add_trait = lustful
+	}
 	8285.1.1 = {
 		add_trait = is_fat
 		effect = {
+			set_character_flag = mbs_pr_no
 			set_variable = { which = physique_variable value = 20 }
 		}
 	}
@@ -5235,5 +5249,31 @@
 				duration = -1
 			}
 		}
+	}
+}
+150190 = {
+	name = "Коллио" #
+
+	diplomacy = 2
+	martial = 2
+	stewardship = 3
+	intrigue = 3
+	learning = 1
+
+	religion = "trios"
+	culture = "tyroshi"
+
+	8264.1.1 = {
+		birth = yes
+		effect = { set_immune_to_pruning = yes }
+	}
+	8280.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+		add_trait = "ambitious"
+		add_trait = "deceitful"
+	}
+	8282.1.1 = {
+		give_nickname = nick_mbs_forgettable
 	}
 }

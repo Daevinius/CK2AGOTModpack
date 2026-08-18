@@ -1,0 +1,306 @@
+e_braavos = {
+	color = { 78 0 37 }
+	color2 = { 100 0 47 }
+
+	capital = 470 #Braavos
+
+	culture = braavosi
+
+	dignity = 25
+
+	allow = {
+		OR = {
+			realm_size = 180
+			custom_tooltip = {
+				text = form_new_empire_requirement_tooltip
+				hidden_tooltip = {
+					any_demesne_title = {
+						count = 3
+						tier = KING
+					}
+				}
+			}
+		}
+		capital_scope = { province_id = 470 }
+		custom_tooltip = {
+			text = TOOLTIPINDEPENDENTCONDITION
+			hidden_tooltip = {
+				independent = yes
+				primary_title = { NOT = { check_variable = { which = "de_facto_empire" value = 1 } } }
+			}
+		}
+	}
+
+	k_braavos = {
+		color = { 128 0 64 }
+		color2 = { 128 0 64 }
+
+		capital = 470 #Braavos
+
+		culture = braavosi
+
+		allow = {
+			hidden_tooltip = {
+				NOT = { culture_group = winter_group }
+				capital_scope = { kingdom = { title = FROM } } #prevent early forming
+			}
+		}
+
+		d_braavos = {
+			color = { 186 34 109 }
+			color2 = { 128 0 64 }
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			capital = 470 #Braavos
+
+			c_braavos = {
+				color = { 128 0 64 }
+				color2 = { 128 0 64 }
+
+				holy_site = lady_of_the_waves
+				holy_site = lady_of_the_waves_reformed
+				holy_site = moonsingers
+				holy_site = moonsingers_reformed
+				#holy_site = bakkalon
+				#holy_site = bakkalon_reformed
+				holy_site = many_faced_god
+				holy_site = gods_lorath
+				holy_site = gods_lorath_reformed
+				holy_site = starry_wisdom
+				holy_site = father_of_waters
+				holy_site = father_of_waters_reformed
+
+				b_braavos = {
+				}
+				b_sealordpalace = {
+				}
+				b_titan = {
+				}
+				b_arsenal = {
+				}
+				b_purpleharbor = {
+				}
+				b_ragmansharbor = {
+				}
+				b_templemoonsingers = {
+				}
+			}
+
+			c_themarshes = {
+				color = { 222 32 126 }
+				color2 = { 255 255 255 }
+
+				holy_site = moonsingers
+				holy_site = moonsingers_reformed
+				holy_site = father_of_waters
+				holy_site = father_of_waters_reformed
+
+				b_themarshescastle = {
+				}
+				b_themarshes = {
+				}
+				b_themarshestemple = {
+				}
+			}
+
+			c_braavosishore = {
+				color = { 186 59 107 }
+				color2 = { 255 255 255 }
+
+				b_braavosishore = {
+				}
+				b_braavosishorecastle = {
+				}
+				b_braavosishoretemple = {
+				}
+			}
+		}
+
+		d_braavosiancoastlands = {
+			color = { 166 69 117 }
+			color2 = { 128 0 64 }
+
+			old_andal = "Побережье Андалов"
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_malaqovos = {
+				color = { 128 0 64 }
+				color2 = { 255 255 255 }
+
+				b_malaqovoscastle = {
+				}
+				b_malaqovos = {
+				}
+				b_malaqovostemple = {
+				}
+			}
+
+			c_freneros = {
+				color = { 166 69 117 }
+				color2 = { 255 255 255 }
+
+				b_freneros = {
+				}
+				b_freneroscastle = {
+				}
+				b_frenerostemple = {
+				}
+			}
+		}
+
+		d_sweetwater = {
+			color = { 231 40 134 }
+			color2 = { 128 0 64 }
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_braavosianhills = {
+				color = { 92 32 62 }
+				color2 = { 255 255 255 }
+
+				holy_site = moonsingers
+				holy_site = moonsingers_reformed
+				holy_site = father_of_waters
+				holy_site = father_of_waters_reformed
+
+				b_braavosianhillscastle = {
+				}
+				b_braavosianhills = {
+				}
+				b_braavosianhillstemple = {
+				}
+			}
+
+			c_prestaynos = {
+				color = { 166 69 117 }
+				color2 = { 255 255 255 }
+
+				holy_site = father_of_waters
+				holy_site = father_of_waters_reformed
+
+				b_prestaynoscastle = {
+				}
+				b_prestaynos = {
+				}
+				b_prestaynostemple = {
+				}
+			}
+
+			c_braavosian_fields = {
+				color = { 222 32 126 }
+				color2 = { 255 255 255 }
+
+				b_braavosian_fields = {
+				}
+				b_braavosian_fieldscastle = {
+				}
+				b_braavosian_fieldstemple = {
+				}
+			}
+
+		}
+
+		d_east_braavosiancoastlands = {
+			color = { 166 69 117 }
+			color2 = { 128 0 64 }
+
+			old_andal = "Восточно-Андальское побережье"
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_morrogos = {
+				color = { 115 171 115 }
+				color2 = { 255 255 255 }
+
+				b_morrogoscastle = {
+				}
+				b_morrogos = {
+				}
+				b_morrogostemple = {
+				}
+			}
+
+			c_antaryonos = {
+				color = { 23 198 23 }
+				color2 = { 255 255 255 }
+
+				b_antaryonos = {
+				}
+				b_antaryonoscastle = {
+				}
+				b_antaryonostemple = {
+				}
+			}
+		}
+	}
+}

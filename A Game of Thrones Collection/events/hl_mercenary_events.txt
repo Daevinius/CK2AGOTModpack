@@ -22,7 +22,7 @@ namespace = HL
 character_event = {
 	id = HL.10100
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_rulers = yes
 	only_capable = yes
@@ -172,7 +172,7 @@ character_event = {
 character_event = {
 	id = HL.10200
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -253,7 +253,7 @@ character_event = {
 character_event = {
 	id = HL.10210
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -336,7 +336,7 @@ character_event = {
 character_event = {
 	id = HL.10220
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -411,7 +411,7 @@ character_event = {
 character_event = {
 	id = HL.10230
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -492,7 +492,7 @@ character_event = {
 character_event = {
 	id = HL.10240
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -581,7 +581,7 @@ character_event = {
 character_event = {
 	id = HL.10250
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -658,7 +658,7 @@ character_event = {
 character_event = {
 	id = HL.10260
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -741,7 +741,7 @@ character_event = {
 character_event = {
 	id = HL.10270
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -870,10 +870,10 @@ character_event = {
 character_event = {
 	id = HL.10400
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
-	only_rulers = yes
+	only_playable = yes
 	only_capable = yes
 	prisoner = no
 	ai = yes
@@ -882,14 +882,16 @@ character_event = {
 	trigger = {
 		primary_title = {
 			NOT = { has_title_flag = ze_dyn_merc }
-			mercenary = yes
+
+			capital_scope = {
+				owner = {
+					NOT = { religion_group = ROOT }
+				}
+			}
 		}
+
+		mercenary = yes
 		NOT = { trait = zealous }
-		location = {
-			NOT = { religion_group = ROOT }
-			NOT = { religion_group = FROM }
-			is_land = yes
-		}
 	}
 
 	weight_multiplier = {
@@ -904,91 +906,42 @@ character_event = {
 	}
 
 	immediate = {
-		location = {
-			save_event_target_as = merc_location
-		}
 		primary_title = {
+			capital_scope = {
+				save_event_target_as = merc_location
+
+				owner = {
+					trigger_switch = {
+						on_trigger = religion_group
+
+						westerosi_religion  = { ROOT = { add_trait = sympathy_westerosi } }
+						drowned_god_group   = { ROOT = { add_trait = sympathy_drowned_god } }
+						essos_group         = { ROOT = { add_trait = sympathy_essos_group } }
+						ghiscar_rel         = { ROOT = { add_trait = sympathy_ghiscar_rel } }
+						valyrian_rel_group  = { ROOT = { add_trait = sympathy_valyrian_rel_group } }
+						wildling_religion   = { ROOT = { add_trait = sympathy_wildling_religion } }
+						sarnor_rel          = { ROOT = { add_trait = sympathy_sarnor_rel } }
+						qarth_rel           = { ROOT = { add_trait = sympathy_qarth_rel } }
+						far_east_group      = { ROOT = { add_trait = sympathy_far_east_group } }
+						ibben_rel           = { ROOT = { add_trait = sympathy_ibben_rel } }
+						dothraki_rel_group  = { ROOT = { add_trait = sympathy_dothraki_rel_group } }
+						jogos_rel_group     = { ROOT = { add_trait = sympathy_jogos_rel_group } }
+						lhazar_rel_group    = { ROOT = { add_trait = sympathy_lhazar_rel_group } }
+						summer_rel_group    = { ROOT = { add_trait = sympathy_summer_rel_group } }
+						sothoryos_rel_group = { ROOT = { add_trait = sympathy_sothoryos_rel_group } }
+						pirate_group        = { ROOT = { add_trait = sympathy_pirate_group } }
+						pagan_group         = { ROOT = { add_trait = sympathy_pagans } }
+					}
+				}
+			}
+
 			band_creator = {
 				if = {
-					limit = {
-						is_alive = yes
-					}
+					limit = { is_alive = yes }
 					character_event = { id = HL.10401 }
-					break = yes
 				}
 			}
 		}
-		event_target:merc_location = {
-			if = {
-				limit = { religion_group = westerosi_religion }
-				FROM = { add_trait = sympathy_westerosi }
-			}
-			if = {
-				limit = { religion_group = drowned_god_group }
-				FROM = { add_trait = sympathy_drowned_god }
-			}
-			if = {
-				limit = { religion_group = essos_group }
-				FROM = { add_trait = sympathy_essos_group }
-			}
-			if = {
-				limit = { religion_group = ghiscar_rel }
-				FROM = { add_trait = sympathy_ghiscar_rel }
-			}
-			if = {
-				limit = { religion_group = valyrian_rel_group }
-				FROM = { add_trait = sympathy_valyrian_rel_group }
-			}
-			if = {
-				limit = { religion_group = wildling_religion }
-				FROM = { add_trait = sympathy_wildling_religion }
-			}
-			if = {
-				limit = { religion_group = sarnor_rel }
-				FROM = { add_trait = sympathy_sarnor_rel }
-			}
-			if = {
-				limit = { religion_group = qarth_rel }
-				FROM = { add_trait = sympathy_qarth_rel }
-			}
-			if = {
-				limit = { religion_group = far_east_group }
-				FROM = { add_trait = sympathy_far_east_group }
-			}
-			if = {
-				limit = { religion_group = ibben_rel }
-				FROM = { add_trait = sympathy_ibben_rel }
-			}
-			if = {
-				limit = { religion_group = dothraki_rel_group }
-				FROM = { add_trait = sympathy_dothraki_rel_group }
-			}
-			if = {
-				limit = { religion_group = jogos_rel_group }
-				FROM = { add_trait = sympathy_jogos_rel_group }
-			}
-			if = {
-				limit = { religion_group = lhazar_rel_group }
-				FROM = { add_trait = sympathy_lhazar_rel_group }
-			}
-			if = {
-				limit = { religion_group = summer_rel_group }
-				FROM = { add_trait = sympathy_summer_rel_group }
-			}
-			if = {
-				limit = { religion_group = sothoryos_rel_group }
-				FROM = { add_trait = sympathy_sothoryos_rel_group }
-			}
-			if = {
-				limit = { religion_group = pirate_group }
-				FROM = { add_trait = sympathy_pirate_group }
-			}
-			if = {
-				limit = { religion_group = pagan_group }
-				FROM = { add_trait = sympathy_pagans }
-			}
-		}
-		clear_event_target = merc_location
 	}
 }
 
@@ -1000,76 +953,36 @@ character_event = {
 
 	is_triggered_only = yes
 
+	ai = no
+
 	option = {
 		name = "EVTOPTA_HL_10401"
-		event_target:merc_location = {
-			if = {
-				limit = { religion_group = westerosi_religion }
-				FROM = { add_trait = sympathy_westerosi }
-			}
-			if = {
-				limit = { religion_group = drowned_god_group }
-				FROM = { add_trait = sympathy_drowned_god }
-			}
-			if = {
-				limit = { religion_group = essos_group }
-				FROM = { add_trait = sympathy_essos_group }
-			}
-			if = {
-				limit = { religion_group = ghiscar_rel }
-				FROM = { add_trait = sympathy_ghiscar_rel }
-			}
-			if = {
-				limit = { religion_group = valyrian_rel_group }
-				FROM = { add_trait = sympathy_valyrian_rel_group }
-			}
-			if = {
-				limit = { religion_group = wildling_religion }
-				FROM = { add_trait = sympathy_wildling_religion }
-			}
-			if = {
-				limit = { religion_group = sarnor_rel }
-				FROM = { add_trait = sympathy_sarnor_rel }
-			}
-			if = {
-				limit = { religion_group = qarth_rel }
-				FROM = { add_trait = sympathy_qarth_rel }
-			}
-			if = {
-				limit = { religion_group = far_east_group }
-				FROM = { add_trait = sympathy_far_east_group }
-			}
-			if = {
-				limit = { religion_group = ibben_rel }
-				FROM = { add_trait = sympathy_ibben_rel }
-			}
-			if = {
-				limit = { religion_group = dothraki_rel_group }
-				FROM = { add_trait = sympathy_dothraki_rel_group }
-			}
-			if = {
-				limit = { religion_group = jogos_rel_group }
-				FROM = { add_trait = sympathy_jogos_rel_group }
-			}
-			if = {
-				limit = { religion_group = lhazar_rel_group }
-				FROM = { add_trait = sympathy_lhazar_rel_group }
-			}
-			if = {
-				limit = { religion_group = summer_rel_group }
-				FROM = { add_trait = sympathy_summer_rel_group }
-			}
-			if = {
-				limit = { religion_group = sothoryos_rel_group }
-				FROM = { add_trait = sympathy_sothoryos_rel_group }
-			}
-			if = {
-				limit = { religion_group = pirate_group }
-				FROM = { add_trait = sympathy_pirate_group }
-			}
-			if = {
-				limit = { religion_group = pagan_group }
-				FROM = { add_trait = sympathy_pagans }
+
+		tooltip = {
+			FROM = {
+				show_scope_change = no
+
+				trigger_switch = {
+					on_trigger = trait
+
+					sympathy_westerosi           = { add_trait = sympathy_westerosi }
+					sympathy_drowned_god         = { add_trait = sympathy_drowned_god }
+					sympathy_essos_group         = { add_trait = sympathy_essos_group }
+					sympathy_ghiscar_rel         = { add_trait = sympathy_ghiscar_rel }
+					sympathy_valyrian_rel_group  = { add_trait = sympathy_valyrian_rel_group }
+					sympathy_wildling_religion   = { add_trait = sympathy_wildling_religion }
+					sympathy_sarnor_rel          = { add_trait = sympathy_sarnor_rel }
+					sympathy_qarth_rel           = { add_trait = sympathy_qarth_rel }
+					sympathy_far_east_group      = { add_trait = sympathy_far_east_group }
+					sympathy_ibben_rel           = { add_trait = sympathy_ibben_rel }
+					sympathy_dothraki_rel_group  = { add_trait = sympathy_dothraki_rel_group }
+					sympathy_jogos_rel_group     = { add_trait = sympathy_jogos_rel_group }
+					sympathy_lhazar_rel_group    = { add_trait = sympathy_lhazar_rel_group }
+					sympathy_summer_rel_group    = { add_trait = sympathy_summer_rel_group }
+					sympathy_sothoryos_rel_group = { add_trait = sympathy_sothoryos_rel_group }
+					sympathy_pirate_group        = { add_trait = sympathy_pirate_group }
+					sympathy_pagans              = { add_trait = sympathy_pagans }
+				}
 			}
 		}
 	}
@@ -1079,7 +992,7 @@ character_event = {
 character_event = {
 	id = HL.10410
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -1166,7 +1079,7 @@ character_event = {
 	id = HL.10500
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -1259,7 +1172,7 @@ character_event = {
 					random_courtier = {
 						limit = {
 							possibly_romantically_interested_in_each_other_trigger = yes
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_married = no
 							has_lover = no
@@ -1431,7 +1344,7 @@ character_event = {
 	id = HL.10510
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	prisoner = no
 	only_capable = yes
@@ -1976,7 +1889,7 @@ character_event = {
 character_event = {
 	id = HL.10600
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_rulers = yes
@@ -2054,7 +1967,7 @@ character_event = {
 	only_capable = yes
 	only_men = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_guardian = yes

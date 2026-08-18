@@ -527,3 +527,32 @@
         }
     }
 }
+#c_mbs_whalerspoint
+1893008 = {
+    name = " "
+
+    religion = "ruin_rel"
+    culture = "ruin"
+
+    6000.1.1 = {
+        birth = yes
+        effect = {
+            if = {
+                limit = { is_ruler = no }
+                death = yes
+            }
+            if = {
+                limit = { is_ruler = yes }
+                add_trait = ruin
+                set_defacto_liege = THIS
+                c_mbs_whalerspoint = {
+                    location = {
+                        set_province_flag = ct_colony_2
+                        set_province_flag = ruined_province
+                    }
+                }
+                character_event = { id = unoccupied.101 }
+            }
+        }
+    }
+}

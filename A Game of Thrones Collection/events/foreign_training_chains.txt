@@ -26,7 +26,7 @@ character_event = {
 	desc = "EVTDESCforeign_training.1" 	#I hear rumors about Braavosian...
 	picture = "GFX_sirio"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	min_age = 6
 	max_age = 16
@@ -86,7 +86,7 @@ character_event = {
 		#find trainer
 		random_character = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				culture = braavosi
 				OR = {
@@ -190,8 +190,7 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -203,7 +202,7 @@ character_event = {
 		}
 		random_character = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				is_within_diplo_range = ROOT
 				NOT = { culture_group = ROOT }
@@ -313,8 +312,7 @@ character_event = {
 							limit = { is_female = no }
 							set_special_character_title = title_ser
 						}
-						if = {
-							limit = { is_female = yes }
+						else = {
 							set_special_character_title = title_lady
 						}
 					}
@@ -535,7 +533,7 @@ character_event = {
 	option = {
 		name = "Ok"
 		if = {
-			limit  = { FROM = { is_ruler = no } }
+			limit = { FROM = { is_ruler = no } }
 			scaled_wealth = { value = -0.2 min = -50 max = -150 }
 		}
 		event_target:foreign_trainer = {
@@ -556,7 +554,7 @@ character_event = {
 	desc = "EVTDESCforeign_training.5" #Pentosi Teacher (Stewardship)
 	picture = "GFX_magistrate"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	min_age = 6
 	max_age = 16
@@ -606,7 +604,7 @@ character_event = {
 		#find trainer
 		random_character = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				is_within_diplo_range = ROOT
 				NOT = { culture_group = ROOT }
@@ -895,7 +893,7 @@ character_event = {
 	desc = "EVTDESCforeign_training.7" #I hear roumors about sexy Tyroshi
 	picture = "GFX_tyroshi"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	min_age = 6
 	max_age = 16
@@ -942,7 +940,7 @@ character_event = {
 		#find trainer
 		random_character = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				is_within_diplo_range = ROOT
 				NOT = { culture_group = ROOT }

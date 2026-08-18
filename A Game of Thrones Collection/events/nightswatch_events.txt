@@ -107,7 +107,7 @@ character_event = {
 		any_realm_character = {
 			limit = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				NOT = { trait = nightswatch }
 				NOT = { wildling_culture_trigger = yes }
 				is_republic = no
@@ -154,7 +154,7 @@ character_event = {
 		any_realm_character = {
 			limit = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				trait = nightswatch
 				NOR = {
 					trait = maester
@@ -435,8 +435,7 @@ character_event = {
 												limit = { is_female = no }
 												set_special_character_title = title_ser
 											}
-											if = {
-												limit = { is_female = yes }
+											else = {
 												set_special_character_title = title_lady
 											}
 										}
@@ -576,15 +575,15 @@ character_event = {
 		}
 		modifier = {
 			factor = 0.9
-			martial  = 15
+			martial = 15
 		}
 		modifier = {
 			factor = 0.9
-			martial  = 17
+			martial = 17
 		}
 		modifier = {
 			factor = 0.9
-			martial  = 19
+			martial = 19
 		}
 		modifier = {
 			factor = 1.2
@@ -1096,7 +1095,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.4"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 
 	trigger = {
@@ -1307,7 +1306,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.5"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	war = no
 	only_rulers = yes
 
@@ -1399,7 +1398,7 @@ character_event = {
 	min_age = 14
 	only_men = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -1908,7 +1907,7 @@ character_event = {
 	picture = GFX_evt_the_wall
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -1943,7 +1942,7 @@ character_event = {
 				random_character = {
 					limit = {
 						is_female = no
-						age = 16
+						is_adult = yes
 						nightswatch_culture_trigger = yes
 						is_primary_heir = no
 						is_ruler = no
@@ -2022,7 +2021,7 @@ character_event = {
 character_event = {
 	id = nightswatch.899
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_capable = yes
@@ -2370,7 +2369,7 @@ character_event = {
 	desc = "No women or children in the Watch!"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		liege = {
@@ -2407,8 +2406,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -2423,8 +2421,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						ROOT = { move_character = PREV }
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { ROOT = { move_character = PREV } }
 					}
 					break = yes
@@ -2440,8 +2437,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						ROOT = { move_character = PREV }
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { ROOT = { move_character = PREV } }
 					}
 					break = yes
@@ -2497,8 +2493,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						ROOT = { move_character = PREV }
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { ROOT = { move_character = PREV } }
 					}
 					break = yes
@@ -2513,8 +2508,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -2571,7 +2565,7 @@ character_event = {
 	id = nightswatch.12
 	desc = "The Night's Watch takes no part in the feuds of the realm"
 	picture = GFX_evt_the_wall
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 
@@ -3169,7 +3163,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.16"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_men = yes
 	min_age = 16
@@ -3942,7 +3936,9 @@ character_event = {
 		# }
 	# }
 
-	# mean_time_to_happen = { years = 1 }
+	# mean_time_to_happen = {
+		# years = 1
+	# }
 
 
 	# option = {
@@ -4001,7 +3997,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.22"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_combat_pulse
 
 	trigger = {
 		location = {
@@ -4581,7 +4577,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.28"
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 
 	immediate = {
 		job_marshal = {
@@ -5373,8 +5369,7 @@ character_event = { #move courtiers back
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 		}
@@ -5531,7 +5526,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 60
+		years = 5
 
 		modifier = {
 			factor = 1.25
@@ -5692,7 +5687,7 @@ character_event = {
 				}
 			}
 		}
-		d_nightswatch = { holder_scope = { letter_event  = { id = nightswatch.42 tooltip = TOOLTIPnightswatch.42 } } }
+		d_nightswatch = { holder_scope = { letter_event = { id = nightswatch.42 tooltip = TOOLTIPnightswatch.42 } } }
 	}
 
 	option = {
@@ -5726,7 +5721,7 @@ character_event = {
 				}
 			}
 		}
-		d_nightswatch = { holder_scope = { letter_event  = { id = nightswatch.43 tooltip = TOOLTIPnightswatch.43 } } }
+		d_nightswatch = { holder_scope = { letter_event = { id = nightswatch.43 tooltip = TOOLTIPnightswatch.43 } } }
 		piety = 25
 		prestige = 25
 	}
@@ -5797,8 +5792,7 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -5812,7 +5806,7 @@ character_event = {
 				}
 			}
 		}
-		d_nightswatch = { holder_scope = { letter_event  = { id = nightswatch.44 tooltip = TOOLTIPnightswatch.44 } } }
+		d_nightswatch = { holder_scope = { letter_event = { id = nightswatch.44 tooltip = TOOLTIPnightswatch.44 } } }
 		piety = 60
 		prestige = 60
 	}
@@ -6568,7 +6562,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.51"
 	picture = "GFX_evt_reavingvillageraid"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	ai = no
 
 	trigger = {
@@ -7196,7 +7190,7 @@ character_event = {
 				random_courtier = {
 					limit = {
 						is_female = no
-						age = 16
+						is_adult = yes
 						age < 40
 						is_ruler = no
 						trait = nightswatch
@@ -7438,7 +7432,7 @@ character_event = {
 					5 = {
 						create_character = {
 							age = 14
-							name = Олли
+							name = "Олли"
 							dynasty = none
 							female = no
 							culture = northman
@@ -7539,7 +7533,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.91"
 	picture = GFX_evt_council
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7645,6 +7639,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.92"
 	picture = GFX_evt_the_wall
 
+	only_playable = yes
 	only_men = yes
 	min_age = 16
 	prisoner = no
@@ -8091,6 +8086,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.97"
 	picture = GFX_evt_the_wall
 
+	only_playable = yes
 	only_men = yes
 	min_age = 16
 	prisoner = no
@@ -8309,6 +8305,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.98"
 	picture = GFX_evt_the_wall
 
+	only_playable = yes
 	only_men = yes
 	min_age = 16
 	prisoner = no
@@ -8709,7 +8706,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.103"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	prisoner = no
 
 	trigger = {
@@ -9041,7 +9038,7 @@ character_event = {
 		random_realm_character = {
 			limit = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				is_primary_heir = no
 				NOT = { any_pretender_title = { always = yes } }
 				NOT = { any_heir_title = { always = yes } }
@@ -9149,7 +9146,7 @@ character_event = {
 	desc = "EVTDESCnightswatch.120"
 	picture = GFX_evt_the_wall
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_independent = yes
 
 	trigger = {
@@ -9406,7 +9403,7 @@ character_event = { #on_new_holder_usurpation
 	border = GFX_event_normal_frame_war
 
 	major = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_usurpation
 
 	trigger = {
 		FROM = { title = d_the_wall }

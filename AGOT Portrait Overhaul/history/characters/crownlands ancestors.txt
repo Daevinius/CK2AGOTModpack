@@ -474,8 +474,7 @@
 					limit = { ai = no }
 					character_event = { id = aegons_landing.1 }
 				}
-				if = {
-					limit = { ai = yes }
+				else = {
 					character_event = { id = aegons_landing.1 days = 1 }
 				}
 				b_stone_drum = { ROOT = { capital = PREV } }
@@ -539,8 +538,7 @@
 					limit = { ai = no }
 					character_event = { id = aegons_landing.4 }
 				}
-				if = {
-					limit = { ai = yes }
+				else = {
 					character_event = { id = aegons_landing.4 days = 1 }
 				}
 				b_stone_drum = { ROOT = { capital = PREV } }
@@ -5759,7 +5757,7 @@
 #Issue by Rhaenyra is below
 
 ###Issue of Aegon II###
-77138  = { # married Aegon III
+77138 = { # married Aegon III
 	name = "Джейхейра"
 	female = yes
 	dynasty = 496
@@ -5807,7 +5805,7 @@
 		}
 	}
 }
-60500496  = { # eldest son of Aegon II
+60500496 = { # eldest son of Aegon II
 	name = "Джейхейрис"
 
 	dynasty = 496
@@ -5832,7 +5830,7 @@
 	}
 	8129.7.2 = { death = { death_reason = death_murder killer = 779496 } } # Murdered on the orders of Daemon Targaryen after Lucerys is killed "a Son for a Son."
 }
-60510496  = { # youngest son of Aegon II
+60510496 = { # youngest son of Aegon II
 	name = "Мейлор"
 
 	dynasty = 496
@@ -5869,7 +5867,7 @@
 	}
 }
 ###Issue of Aemond###
-60550496  = {
+60550496 = {
 	name = "Эймон" # acclaimed rightful king of Westeros by his mother
 	dynasty = 496
 
@@ -8826,7 +8824,7 @@
 	8174.1.1 = {
 		birth = yes
 		effect = {
-			set_character_flag = targaryen_fourth
+			set_character_flag = sigil_dyn_fourth
 			add_character_modifier = {
 				name = "grandchild_of_incest"
 				duration = -1
@@ -9125,7 +9123,6 @@
 		birth = yes
 
 		effect = {
-			set_character_flag = daeron_coa
 			culture = high_valyrian
 			set_character_flag = potential_targ_lunatic
 			if = {
@@ -9806,7 +9803,7 @@
 	}
 }
 
-77036  = {
+77036 = {
 	name = "Джейхейрис"
 	# AKA: Jaehaerys II
 	dna = "cuvls0xati0"
@@ -9933,7 +9930,7 @@
 	}
 }
 
-77137  = { #
+77137 = { #
 	name = "Дейрон" # Third son of Aegon V
 	dna = "adsaptpflud"
 	properties = "at00b00"
@@ -11650,6 +11647,7 @@
 			culture = western_valyrian
 			dynasty = none
 			set_immune_to_pruning = yes
+			set_character_flag = hugh_hammer
 		}
 	}
 	8129.4.1 = {
@@ -11718,6 +11716,7 @@
 			culture = western_valyrian
 			dynasty = none
 			set_immune_to_pruning = yes
+			set_character_flag = ulf_white
 		}
 	}
 	8129.4.1 = {
@@ -23261,7 +23260,11 @@
 	culture = "stormlander"
 
 	7821.1.1 = { birth = yes }
-	7837.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7837.1.1 = {
+		add_trait = knight
+		add_trait = poor_warrior
+		add_trait = mercy
+	}
 	7838.1.1 = {
 		create_bloodline = {
 			type = Gaunt_Blood
@@ -23280,6 +23283,7 @@
 	father = 344023
 
 	7848.1.1 = { birth = yes }
+	7862.1.1 = { add_trait = mercy }
 	7864.1.1 = { add_trait = knight add_trait = poor_warrior }
 	7887.1.1 = { death = yes }
 }
@@ -23293,6 +23297,7 @@
 	father = 343023
 
 	7883.1.1 = { birth = yes }
+	7887.1.1 = { add_trait = mercy }
 	7899.1.1 = { add_trait = knight add_trait = poor_warrior }
 	7936.1.1 = { death = yes }
 }
@@ -23307,6 +23312,7 @@
 
 	7912.1.1 = { birth = yes }
 	7928.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7936.1.1 = { add_trait = mercy }
 	7981.1.1 = { death = yes }
 }
 340023 = {
@@ -23320,6 +23326,7 @@
 
 	7940.1.1 = { birth = yes }
 	7956.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7981.1.1 = { add_trait = mercy }
 	7985.1.1 = { death = yes }
 }
 6000023 = {
@@ -23333,6 +23340,7 @@
 
 	7956.1.1 = { birth = yes }
 	7977.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7985.1.1 = { add_trait = mercy }
 	8001.1.1 = { death = { death_reason = death_battle } }
 }
 6100123 = {
@@ -23345,7 +23353,11 @@
 	father = 6000023
 
 	7982.1.1 = { birth = yes }
-	8000.1.1 = { add_trait = knight add_trait = skilled_warrior }
+	8000.1.1 = {
+		add_trait = knight
+		add_trait = skilled_warrior
+		add_trait = mercy
+	}
 	8027.1.1 = { effect = { culture = "crownlander" } }
 	8050.1.1 = { death = yes }
 }
@@ -23361,6 +23373,7 @@
 	8007.1.1 = { birth = yes }
 	8023.1.1 = { add_trait = knight add_trait = trained_warrior }
 	8027.1.1 = { effect = { culture = "crownlander" } }
+	8050.1.1 = { add_trait = mercy }
 	8067.1.1 = { death = { death_reason = death_murder } }
 }
 6000823 = {
@@ -23374,6 +23387,7 @@
 
 	8030.1.1 = { birth = yes }
 	8046.1.1 = { add_trait = knight add_trait = skilled_warrior }
+	8067.1.1 = { add_trait = mercy }
 	8085.1.1 = { death = yes }
 }
 6001023 = {
@@ -23387,6 +23401,7 @@
 
 	8055.1.1 = { birth = yes }
 	8071.1.1 = { add_trait = poor_warrior }
+	8085.1.1 = { add_trait = mercy }
 	8099.1.1 = { death = yes }
 }
 6001423 = {
@@ -23399,6 +23414,7 @@
 	father = 6001023
 
 	8086.1.1 = { birth = yes }
+	8099.1.1 = { add_trait = mercy }
 	8102.1.1 = { add_trait = knight add_trait = poor_warrior }
 	8132.1.1 = { death = yes }
 }
@@ -23413,6 +23429,7 @@
 
 	8107.1.1 = { birth = yes }
 	8123.1.1 = { add_trait = knight }
+	8132.1.1 = { add_trait = mercy }
 	8144.1.1 = { death = yes }
 }
 6001723 = {
@@ -23425,6 +23442,7 @@
 	father = 6001623
 
 	8132.1.1 = { birth = yes }
+	8144.1.1 = { add_trait = mercy }
 	8148.1.1 = { add_trait = knight add_trait = trained_warrior }
 	8186.1.1 = { death = yes }
 }
@@ -23452,6 +23470,7 @@
 
 	8167.1.1 = { birth = yes }
 	8183.1.1 = { add_trait = poor_warrior }
+	8186.1.1 = { add_trait = mercy }
 	8224.1.1 = { death = yes }
 }
 6002323 = {
@@ -23465,6 +23484,7 @@
 
 	8201.1.1 = { birth = yes }
 	8217.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8224.1.1 = { add_trait = mercy }
 	8232.1.1 = { death = yes }
 }
 

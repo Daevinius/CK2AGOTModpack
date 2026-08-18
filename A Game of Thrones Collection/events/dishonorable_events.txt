@@ -4,7 +4,7 @@ namespace = dishonorable
 character_event = {
 	id = dishonorable.2
 	picture = GFX_evt_lunatic
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_character_flag = filthy_murderer
 
 	trigger = {
@@ -198,9 +198,9 @@ character_event = {
 	id = dishonorable.3
 	picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_capable = yes
-	prisoner =  no
+	prisoner = no
 	has_character_flag = filthy_murderer
 
 	trigger = {
@@ -218,7 +218,7 @@ character_event = {
 			}
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			NOT = { has_job_title = job_spymaster }
 			prisoner = no
@@ -310,7 +310,7 @@ character_event = {
 		name = "EVTOPTAdishonorable.3"
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				NOT = { has_job_title = job_spymaster }
 				prisoner = no

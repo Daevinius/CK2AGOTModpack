@@ -78,7 +78,7 @@ character_event = {
 	desc = "EVTDESCwidowed.3"
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	hide_window = yes
 	is_married = yes
 
@@ -128,7 +128,7 @@ character_event = {
 character_event = {
 	id = widowed.399
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	hide_window = yes
 
 	trigger = {
@@ -473,8 +473,7 @@ character_event = {
 								limit = { is_merchant_republic = no }
 								current_heir = { save_event_target_as = wealth_heir }
 							}
-							if = {
-								limit = { is_merchant_republic = yes }
+							else = {
 								family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 							}
 							transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -555,7 +554,7 @@ character_event = {
 			NOT = { trait = chaste }
 			NOT = { trait = celibate }
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				ai = yes
 				OR = {
 					AND = {
@@ -633,7 +632,7 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				ai = yes
 				OR = {
 					AND = {

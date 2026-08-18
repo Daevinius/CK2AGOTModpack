@@ -47,21 +47,22 @@ character_event = {
 	immediate = {
 		clr_character_flag = finger_dance
 		clr_character_flag = reaving_duel
-		if = {
-			limit = { trait = poor_warrior }
-			change_variable = { which = "reaving_party_skill" value = 1 }
-		}
-		if = {
-			limit = { trait = trained_warrior }
-			change_variable = { which = "reaving_party_skill" value = 2 }
-		}
-		if = {
-			limit = { trait = skilled_warrior }
-			change_variable = { which = "reaving_party_skill" value = 3 }
-		}
-		if = {
-			limit = { trait = master_warrior }
-			change_variable = { which = "reaving_party_skill" value = 4 }
+
+		trigger_switch = {
+			on_trigger = trait
+
+			poor_warrior = {
+				change_variable = { which = "reaving_party_skill" value = 1 }
+			}
+			trained_warrior = {
+				change_variable = { which = "reaving_party_skill" value = 2 }
+			}
+			skilled_warrior = {
+				change_variable = { which = "reaving_party_skill" value = 3 }
+			}
+			master_warrior = {
+				change_variable = { which = "reaving_party_skill" value = 4 }
+			}
 		}
 	}
 
@@ -189,41 +190,43 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
+
 		if = {
 			limit = { FROM = { has_character_flag = disputed_lands_raid } }
 			custom_tooltip = { text = TOOLTIPREAVINGDISPUTEDLANDS }
 			set_character_flag = disputed_lands_raid
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { has_character_flag = north_essos_raid } }
 			custom_tooltip = { text = TOOLTIPREAVINGNORTHESSOS }
 			set_character_flag = north_essos_raid
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { has_character_flag = summer_sea_raid } }
 			custom_tooltip = { text = TOOLTIPREAVINGSUMMERSEA }
 			set_character_flag = summer_sea_raid
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { has_character_flag = slavers_bay_raid } }
 			custom_tooltip = { text = TOOLTIPREAVINGSLAVERSBAY }
 			set_character_flag = slavers_bay_raid
 		}
+
 		prestige = 20
 		piety = 20
 		clr_character_flag = ironborn_reaving
@@ -242,21 +245,22 @@ letter_event = {
 				months = 14
 			}
 			character_event = { id = raid_events.999 days = 450 } #safety catch
-			if = {
-				limit = { trait = poor_warrior }
-				FROM = { change_variable = { which = "reaving_party_skill" value = 1 } }
-			}
-			if = {
-				limit = { trait = trained_warrior }
-				FROM = { change_variable = { which = "reaving_party_skill" value = 2 } }
-			}
-			if = {
-				limit = { trait = skilled_warrior }
-				FROM = { change_variable = { which = "reaving_party_skill" value = 3 } }
-			}
-			if = {
-				limit = { trait = master_warrior }
-				FROM = { change_variable = { which = "reaving_party_skill" value = 4 } }
+
+			trigger_switch = {
+				on_trigger = trait
+
+				poor_warrior = {
+					FROM = { change_variable = { which = "reaving_party_skill" value = 1 } }
+				}
+				trained_warrior = {
+					FROM = { change_variable = { which = "reaving_party_skill" value = 2 } }
+				}
+				skilled_warrior = {
+					FROM = { change_variable = { which = "reaving_party_skill" value = 3 } }
+				}
+				master_warrior = {
+					FROM = { change_variable = { which = "reaving_party_skill" value = 4 } }
+				}
 			}
 		}
 	}
@@ -290,23 +294,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 4
-				NOT = {
-					OR = {
-						trait = master_warrior
-						trait = skilled_warrior
-						trait = trained_warrior
-						trait = poor_warrior
-					}
+				NOR = {
+					trait = master_warrior
+					trait = skilled_warrior
+					trait = trained_warrior
+					trait = poor_warrior
 				}
 			}
 			modifier = {
 				factor = 2
-				NOT = {
-					OR = {
-						trait = master_warrior
-						trait = skilled_warrior
-						trait = trained_warrior
-					}
+				NOR = {
+					trait = master_warrior
+					trait = skilled_warrior
+					trait = trained_warrior
 				}
 			}
 			modifier = {
@@ -335,19 +335,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.2
-				NOT = { opinion = { who = FROM value =  -20 } }
+				opinion = { who = FROM value < -20 }
 			}
 			modifier = {
 				factor = 1.2
-				NOT = { opinion = { who = FROM value =  -40 } }
+				opinion = { who = FROM value < -40 }
 			}
 			modifier = {
 				factor = 1.2
-				NOT = { opinion = { who = FROM value =  -60 } }
+				opinion = { who = FROM value < -60 }
 			}
 			modifier = {
 				factor = 1.2
-				NOT = { opinion = { who = FROM value =  -80 } }
+				opinion = { who = FROM value < -80 }
 			}
 			modifier = {
 				factor = 2
@@ -357,8 +357,8 @@ letter_event = {
 		if = {
 			limit = {
 				age < 35
-				OR = {
-					NOT = { has_character_flag = ironborn_reaving }
+				trigger_if = {
+					limit = { has_character_flag = ironborn_reaving }
 					had_character_flag = { flag = ironborn_reaving days = 1825 }
 				}
 			}
@@ -387,13 +387,12 @@ character_event = {
 	option = {
 		name = "EVTOPTAraid_events.3"
 		trigger = {
-			OR = {
+			trigger_if = {
+				limit = { demesne_size = 1 }
 				war = no
-				NOT = { demesne_size = 1 }
 			}
-			OR = {
+			trigger_else = {
 				liege = { war = no }
-				demesne_size = 1
 			}
 		}
 		add_trait = on_reaving
@@ -437,15 +436,12 @@ character_event = {
 	option = {
 		name = "EVTOPTBraid_events.3"
 		trigger = {
-			OR = {
-				AND = {
-					war = yes
-					demesne_size = 1
-				}
-				AND = {
-					liege = { war = yes }
-					NOT = { demesne_size = 1 }
-				}
+			trigger_if = {
+				limit = { demesne_size = 1 }
+				war = yes
+			}
+			trigger_else = {
+				liege = { war = yes }
 			}
 		}
 		prestige = -20
@@ -499,8 +495,10 @@ character_event = { #inform liege
 		name = {
 			text = "EVTOPTBraid_events.399"
 			trigger = {
-				NOT = { religion_group = drowned_god_group }
-				NOT = { culture_group = iron_isles_culture }
+				NOR = {
+					religion_group = drowned_god_group
+					culture_group = iron_isles_culture
+				}
 			}
 		}
 		FROM = {
@@ -591,8 +589,7 @@ character_event = {
 						}
 					}
 				}
-				if = {
-					limit = { NOT = { demesne_size = 1 } }
+				else = {
 					liege = {
 						if = {
 							limit = {
@@ -1448,86 +1445,76 @@ character_event = {
 		prestige = 40
 		piety = 20
 		wealth = 40
-		if = {
-			limit = { has_character_flag = nick_ironreaver }
-			give_nickname = nick_ironreaver
-			clr_character_flag = nick_ironreaver
+
+		trigger_switch = {
+			on_trigger = has_character_flag
+
+			nick_ironreaver = {
+				give_nickname = nick_ironreaver
+				clr_character_flag = nick_ironreaver
+			}
+			nick_the_red_reaver = {
+				give_nickname = nick_the_red_reaver
+				clr_character_flag = nick_the_red_reaver
+			}
+			nick_the_black_reaver = {
+				give_nickname = nick_the_black_reaver
+				clr_character_flag = nick_the_black_reaver
+			}
+			nick_ironfist = {
+				give_nickname = nick_ironfist
+				clr_character_flag = nick_ironfist
+			}
+			nick_ironsword = {
+				give_nickname = nick_ironsword
+				clr_character_flag = nick_ironsword
+			}
+			nick_ironshield = {
+				give_nickname = nick_ironshield
+				clr_character_flag = nick_ironshield
+			}
+			nick_the_raider = {
+				give_nickname = nick_the_raider
+				clr_character_flag = nick_the_raider
+			}
+			nick_ironraider = {
+				give_nickname = nick_ironraider
+				clr_character_flag = nick_ironraider
+			}
+			nick_ironheart = {
+				give_nickname = nick_ironheart
+				clr_character_flag = nick_ironheart
+			}
+			nick_butcher = {
+				give_nickname = nick_butcher
+				clr_character_flag = nick_butcher
+			}
+			nick_ironhand = {
+				give_nickname = nick_ironhand
+				clr_character_flag = nick_ironhand
+			}
+			nick_hardhand = {
+				give_nickname = nick_hardhand
+				clr_character_flag = nick_hardhand
+			}
+			nick_the_strong = {
+				give_nickname = nick_the_strong
+				clr_character_flag = nick_the_strong
+			}
+			nick_the_bold = {
+				give_nickname = nick_the_bold
+				clr_character_flag = nick_the_bold
+			}
+			nick_the_warrior = {
+				give_nickname = nick_the_warrior
+				clr_character_flag = nick_the_warrior
+			}
+			nick_the_iron_storm = {
+				give_nickname = nick_the_iron_storm
+				clr_character_flag = nick_the_iron_storm
+			}
 		}
-		if = {
-			limit = { has_character_flag = nick_the_red_reaver }
-			give_nickname = nick_the_red_reaver
-			clr_character_flag = nick_the_red_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_the_black_reaver }
-			give_nickname = nick_the_black_reaver
-			clr_character_flag = nick_the_black_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_ironfist }
-			give_nickname = nick_ironfist
-			clr_character_flag = nick_ironfist
-		}
-		if = {
-			limit = { has_character_flag = nick_ironsword }
-			give_nickname = nick_ironsword
-			clr_character_flag = nick_ironsword
-		}
-		if = {
-			limit = { has_character_flag = nick_ironshield }
-			give_nickname = nick_ironshield
-			clr_character_flag = nick_ironshield
-		}
-		if = {
-			limit = { has_character_flag = nick_the_raider }
-			give_nickname = nick_the_raider
-			clr_character_flag = nick_the_raider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironraider }
-			give_nickname = nick_ironraider
-			clr_character_flag = nick_ironraider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironheart }
-			give_nickname = nick_ironheart
-			clr_character_flag = nick_ironheart
-		}
-		if = {
-			limit = { has_character_flag = nick_butcher }
-			give_nickname = nick_butcher
-			clr_character_flag = nick_butcher
-		}
-		if = {
-			limit = { has_character_flag = nick_ironhand }
-			give_nickname = nick_ironhand
-			clr_character_flag = nick_ironhand
-		}
-		if = {
-			limit = { has_character_flag = nick_hardhand }
-			give_nickname = nick_hardhand
-			clr_character_flag = nick_hardhand
-		}
-		if = {
-			limit = { has_character_flag = nick_the_strong }
-			give_nickname = nick_the_strong
-			clr_character_flag = nick_the_strong
-		}
-		if = {
-			limit = { has_character_flag = nick_the_bold }
-			give_nickname = nick_the_bold
-			clr_character_flag = nick_the_bold
-		}
-		if = {
-			limit = { has_character_flag = nick_the_warrior }
-			give_nickname = nick_the_warrior
-			clr_character_flag = nick_the_warrior
-		}
-		if = {
-			limit = { has_character_flag = nick_the_iron_storm }
-			give_nickname = nick_the_iron_storm
-			clr_character_flag = nick_the_iron_storm
-		}
+
 		if = {
 			limit = { trait = on_reaving }
 			hidden_tooltip = {
@@ -1842,86 +1829,76 @@ character_event = {
 		prestige = 30
 		piety = 15
 		wealth = 15
-		if = {
-			limit = { has_character_flag = nick_ironreaver }
-			give_nickname = nick_ironreaver
-			clr_character_flag = nick_ironreaver
+
+		trigger_switch = {
+			on_trigger = has_character_flag
+
+			nick_ironreaver = {
+				give_nickname = nick_ironreaver
+				clr_character_flag = nick_ironreaver
+			}
+			nick_the_red_reaver = {
+				give_nickname = nick_the_red_reaver
+				clr_character_flag = nick_the_red_reaver
+			}
+			nick_the_black_reaver = {
+				give_nickname = nick_the_black_reaver
+				clr_character_flag = nick_the_black_reaver
+			}
+			nick_ironfist = {
+				give_nickname = nick_ironfist
+				clr_character_flag = nick_ironfist
+			}
+			nick_ironsword = {
+				give_nickname = nick_ironsword
+				clr_character_flag = nick_ironsword
+			}
+			nick_ironshield = {
+				give_nickname = nick_ironshield
+				clr_character_flag = nick_ironshield
+			}
+			nick_the_raider = {
+				give_nickname = nick_the_raider
+				clr_character_flag = nick_the_raider
+			}
+			nick_ironraider = {
+				give_nickname = nick_ironraider
+				clr_character_flag = nick_ironraider
+			}
+			nick_ironheart = {
+				give_nickname = nick_ironheart
+				clr_character_flag = nick_ironheart
+			}
+			nick_butcher = {
+				give_nickname = nick_butcher
+				clr_character_flag = nick_butcher
+			}
+			nick_ironhand = {
+				give_nickname = nick_ironhand
+				clr_character_flag = nick_ironhand
+			}
+			nick_hardhand = {
+				give_nickname = nick_hardhand
+				clr_character_flag = nick_hardhand
+			}
+			nick_the_strong = {
+				give_nickname = nick_the_strong
+				clr_character_flag = nick_the_strong
+			}
+			nick_the_bold = {
+				give_nickname = nick_the_bold
+				clr_character_flag = nick_the_bold
+			}
+			nick_the_warrior = {
+				give_nickname = nick_the_warrior
+				clr_character_flag = nick_the_warrior
+			}
+			nick_the_iron_storm = {
+				give_nickname = nick_the_iron_storm
+				clr_character_flag = nick_the_iron_storm
+			}
 		}
-		if = {
-			limit = { has_character_flag = nick_the_red_reaver }
-			give_nickname = nick_the_red_reaver
-			clr_character_flag = nick_the_red_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_the_black_reaver }
-			give_nickname = nick_the_black_reaver
-			clr_character_flag = nick_the_black_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_ironfist }
-			give_nickname = nick_ironfist
-			clr_character_flag = nick_ironfist
-		}
-		if = {
-			limit = { has_character_flag = nick_ironsword }
-			give_nickname = nick_ironsword
-			clr_character_flag = nick_ironsword
-		}
-		if = {
-			limit = { has_character_flag = nick_ironshield }
-			give_nickname = nick_ironshield
-			clr_character_flag = nick_ironshield
-		}
-		if = {
-			limit = { has_character_flag = nick_the_raider }
-			give_nickname = nick_the_raider
-			clr_character_flag = nick_the_raider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironraider }
-			give_nickname = nick_ironraider
-			clr_character_flag = nick_ironraider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironheart }
-			give_nickname = nick_ironheart
-			clr_character_flag = nick_ironheart
-		}
-		if = {
-			limit = { has_character_flag = nick_butcher }
-			give_nickname = nick_butcher
-			clr_character_flag = nick_butcher
-		}
-		if = {
-			limit = { has_character_flag = nick_ironhand }
-			give_nickname = nick_ironhand
-			clr_character_flag = nick_ironhand
-		}
-		if = {
-			limit = { has_character_flag = nick_hardhand }
-			give_nickname = nick_hardhand
-			clr_character_flag = nick_hardhand
-		}
-		if = {
-			limit = { has_character_flag = nick_the_strong }
-			give_nickname = nick_the_strong
-			clr_character_flag = nick_the_strong
-		}
-		if = {
-			limit = { has_character_flag = nick_the_bold }
-			give_nickname = nick_the_bold
-			clr_character_flag = nick_the_bold
-		}
-		if = {
-			limit = { has_character_flag = nick_the_warrior }
-			give_nickname = nick_the_warrior
-			clr_character_flag = nick_the_warrior
-		}
-		if = {
-			limit = { has_character_flag = nick_the_iron_storm }
-			give_nickname = nick_the_iron_storm
-			clr_character_flag = nick_the_iron_storm
-		}
+
 		hidden_tooltip = {
 			random = {
 				chance = 16
@@ -2146,7 +2123,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = { has_character_flag = north_essos_raid }
 			random_list = {
 				50 = {
@@ -2187,7 +2164,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = { has_character_flag = summer_sea_raid }
 			random_list = {
 				90 = {
@@ -2230,7 +2207,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = { has_character_flag = slavers_bay_raid }
 			random_list = {
 				50 = {
@@ -2362,12 +2339,6 @@ character_event = {
 		piety = 10
 		event_target:raiding_salt_wife = {
 			if = {
-				limit = { NOT = { has_dlc = "The Old Gods" } }#Uses new DLC system instead if owned
-				add_trait = salt_wife
-				set_character_flag = no_court_invites
-				save_persistent_event_target = { name = salt_wife_owner scope = ROOT }
-			}
-			if = {
 				limit = { has_dlc = "The Old Gods" } #Uses new DLC system instead if owned
 				add_trait = salt_wife
 				ROOT = { add_consort = PREV }
@@ -2375,6 +2346,11 @@ character_event = {
 					modifier = opinion_forced_consort
 					who = ROOT
 				}
+			}
+			else = {
+				add_trait = salt_wife
+				set_character_flag = no_court_invites
+				save_persistent_event_target = { name = salt_wife_owner scope = ROOT }
 			}
 		}
 	}
@@ -2407,7 +2383,7 @@ character_event = {
 character_event = { #on_unit_entering_province
 	id = raid_events.2099
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	hide_window = yes
 	in_command = yes
 
@@ -2507,7 +2483,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = { has_character_flag = north_essos_raid }
 			random_list = {
 				50 = {
@@ -2548,7 +2524,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = { has_character_flag = summer_sea_raid }
 			random_list = {
 				90 = {
@@ -2591,7 +2567,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = { has_character_flag = slavers_bay_raid }
 			random_list = {
 				50 = {
@@ -3065,8 +3041,7 @@ character_event = {
 			prestige = -20
 			piety = -20
 		}
-		if = {
-			limit = { has_character_flag = reaving_begins }
+		else = {
 			prestige = -40
 			piety = -40
 			clr_character_flag = reaving_begins
@@ -3348,8 +3323,7 @@ character_event = {
 			prestige = -15
 			piety = -15
 		}
-		if = {
-			limit = { has_character_flag = reaving_begins }
+		else = {
 			prestige = -30
 			piety = -30
 			clr_character_flag = reaving_begins
@@ -3507,7 +3481,7 @@ character_event = {
 character_event = { #trigger for on map looting
 	id = raid_events.3299
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	hide_window = yes
 	in_command = yes
 
@@ -3721,86 +3695,76 @@ character_event = {
 		prestige = 30
 		piety = 30
 		wealth = 40
-		if = {
-			limit = { has_character_flag = nick_ironreaver }
-			give_nickname = nick_ironreaver
-			clr_character_flag = nick_ironreaver
+
+		trigger_switch = {
+			on_trigger = has_character_flag
+
+			nick_ironreaver = {
+				give_nickname = nick_ironreaver
+				clr_character_flag = nick_ironreaver
+			}
+			nick_the_red_reaver = {
+				give_nickname = nick_the_red_reaver
+				clr_character_flag = nick_the_red_reaver
+			}
+			nick_the_black_reaver = {
+				give_nickname = nick_the_black_reaver
+				clr_character_flag = nick_the_black_reaver
+			}
+			nick_ironfist = {
+				give_nickname = nick_ironfist
+				clr_character_flag = nick_ironfist
+			}
+			nick_ironsword = {
+				give_nickname = nick_ironsword
+				clr_character_flag = nick_ironsword
+			}
+			nick_ironshield = {
+				give_nickname = nick_ironshield
+				clr_character_flag = nick_ironshield
+			}
+			nick_the_raider = {
+				give_nickname = nick_the_raider
+				clr_character_flag = nick_the_raider
+			}
+			nick_ironraider = {
+				give_nickname = nick_ironraider
+				clr_character_flag = nick_ironraider
+			}
+			nick_ironheart = {
+				give_nickname = nick_ironheart
+				clr_character_flag = nick_ironheart
+			}
+			nick_butcher = {
+				give_nickname = nick_butcher
+				clr_character_flag = nick_butcher
+			}
+			nick_ironhand = {
+				give_nickname = nick_ironhand
+				clr_character_flag = nick_ironhand
+			}
+			nick_hardhand = {
+				give_nickname = nick_hardhand
+				clr_character_flag = nick_hardhand
+			}
+			nick_the_strong = {
+				give_nickname = nick_the_strong
+				clr_character_flag = nick_the_strong
+			}
+			nick_the_bold = {
+				give_nickname = nick_the_bold
+				clr_character_flag = nick_the_bold
+			}
+			nick_the_warrior = {
+				give_nickname = nick_the_warrior
+				clr_character_flag = nick_the_warrior
+			}
+			nick_the_iron_storm = {
+				give_nickname = nick_the_iron_storm
+				clr_character_flag = nick_the_iron_storm
+			}
 		}
-		if = {
-			limit = { has_character_flag = nick_the_red_reaver }
-			give_nickname = nick_the_red_reaver
-			clr_character_flag = nick_the_red_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_the_black_reaver }
-			give_nickname = nick_the_black_reaver
-			clr_character_flag = nick_the_black_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_ironfist }
-			give_nickname = nick_ironfist
-			clr_character_flag = nick_ironfist
-		}
-		if = {
-			limit = { has_character_flag = nick_ironsword }
-			give_nickname = nick_ironsword
-			clr_character_flag = nick_ironsword
-		}
-		if = {
-			limit = { has_character_flag = nick_ironshield }
-			give_nickname = nick_ironshield
-			clr_character_flag = nick_ironshield
-		}
-		if = {
-			limit = { has_character_flag = nick_the_raider }
-			give_nickname = nick_the_raider
-			clr_character_flag = nick_the_raider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironraider }
-			give_nickname = nick_ironraider
-			clr_character_flag = nick_ironraider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironheart }
-			give_nickname = nick_ironheart
-			clr_character_flag = nick_ironheart
-		}
-		if = {
-			limit = { has_character_flag = nick_butcher }
-			give_nickname = nick_butcher
-			clr_character_flag = nick_butcher
-		}
-		if = {
-			limit = { has_character_flag = nick_ironhand }
-			give_nickname = nick_ironhand
-			clr_character_flag = nick_ironhand
-		}
-		if = {
-			limit = { has_character_flag = nick_hardhand }
-			give_nickname = nick_hardhand
-			clr_character_flag = nick_hardhand
-		}
-		if = {
-			limit = { has_character_flag = nick_the_strong }
-			give_nickname = nick_the_strong
-			clr_character_flag = nick_the_strong
-		}
-		if = {
-			limit = { has_character_flag = nick_the_bold }
-			give_nickname = nick_the_bold
-			clr_character_flag = nick_the_bold
-		}
-		if = {
-			limit = { has_character_flag = nick_the_warrior }
-			give_nickname = nick_the_warrior
-			clr_character_flag = nick_the_warrior
-		}
-		if = {
-			limit = { has_character_flag = nick_the_iron_storm }
-			give_nickname = nick_the_iron_storm
-			clr_character_flag = nick_the_iron_storm
-		}
+
 		if = {
 			limit = { trait = on_reaving }
 			hidden_tooltip = {
@@ -3837,8 +3801,7 @@ character_event = {
 				hidden_tooltip = { character_event = { id = raid_events.37 days = 1 } }
 			}
 		}
-		if = {
-			limit = { NOT = { trait = on_reaving } }
+		else = {
 			hidden_tooltip = {
 				random = {
 					chance = 2
@@ -3913,8 +3876,7 @@ character_event = {
 				hidden_tooltip = { character_event = { id = raid_events.38 days = 1 } }
 			}
 		}
-		if = {
-			limit = { NOT = { trait = on_reaving } }
+		else = {
 			hidden_tooltip = {
 				random = {
 					chance = 2
@@ -3996,8 +3958,7 @@ character_event = {
 				hidden_tooltip = { character_event = { id = raid_events.39 days = 1 } }
 			}
 		}
-		if = {
-			limit = { NOT = { trait = on_reaving }  }
+		else = {
 			hidden_tooltip = {
 				random = {
 					chance = 3
@@ -4089,8 +4050,7 @@ character_event = {
 				hidden_tooltip = { character_event = { id = raid_events.40 days = 1 } }
 			}
 		}
-		if = {
-			limit = { NOT = { trait = on_reaving }  }
+		else = {
 			hidden_tooltip = {
 				random = {
 					chance = 6
@@ -4184,86 +4144,76 @@ character_event = {
 		prestige = 25
 		piety = 25
 		wealth = 15
-		if = {
-			limit = { has_character_flag = nick_ironreaver }
-			give_nickname = nick_ironreaver
-			clr_character_flag = nick_ironreaver
+
+		trigger_switch = {
+			on_trigger = has_character_flag
+
+			nick_ironreaver = {
+				give_nickname = nick_ironreaver
+				clr_character_flag = nick_ironreaver
+			}
+			nick_the_red_reaver = {
+				give_nickname = nick_the_red_reaver
+				clr_character_flag = nick_the_red_reaver
+			}
+			nick_the_black_reaver = {
+				give_nickname = nick_the_black_reaver
+				clr_character_flag = nick_the_black_reaver
+			}
+			nick_ironfist = {
+				give_nickname = nick_ironfist
+				clr_character_flag = nick_ironfist
+			}
+			nick_ironsword = {
+				give_nickname = nick_ironsword
+				clr_character_flag = nick_ironsword
+			}
+			nick_ironshield = {
+				give_nickname = nick_ironshield
+				clr_character_flag = nick_ironshield
+			}
+			nick_the_raider = {
+				give_nickname = nick_the_raider
+				clr_character_flag = nick_the_raider
+			}
+			nick_ironraider = {
+				give_nickname = nick_ironraider
+				clr_character_flag = nick_ironraider
+			}
+			nick_ironheart = {
+				give_nickname = nick_ironheart
+				clr_character_flag = nick_ironheart
+			}
+			nick_butcher = {
+				give_nickname = nick_butcher
+				clr_character_flag = nick_butcher
+			}
+			nick_ironhand = {
+				give_nickname = nick_ironhand
+				clr_character_flag = nick_ironhand
+			}
+			nick_hardhand = {
+				give_nickname = nick_hardhand
+				clr_character_flag = nick_hardhand
+			}
+			nick_the_strong = {
+				give_nickname = nick_the_strong
+				clr_character_flag = nick_the_strong
+			}
+			nick_the_bold = {
+				give_nickname = nick_the_bold
+				clr_character_flag = nick_the_bold
+			}
+			nick_the_warrior = {
+				give_nickname = nick_the_warrior
+				clr_character_flag = nick_the_warrior
+			}
+			nick_the_iron_storm = {
+				give_nickname = nick_the_iron_storm
+				clr_character_flag = nick_the_iron_storm
+			}
 		}
-		if = {
-			limit = { has_character_flag = nick_the_red_reaver }
-			give_nickname = nick_the_red_reaver
-			clr_character_flag = nick_the_red_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_the_black_reaver }
-			give_nickname = nick_the_black_reaver
-			clr_character_flag = nick_the_black_reaver
-		}
-		if = {
-			limit = { has_character_flag = nick_ironfist }
-			give_nickname = nick_ironfist
-			clr_character_flag = nick_ironfist
-		}
-		if = {
-			limit = { has_character_flag = nick_ironsword }
-			give_nickname = nick_ironsword
-			clr_character_flag = nick_ironsword
-		}
-		if = {
-			limit = { has_character_flag = nick_ironshield }
-			give_nickname = nick_ironshield
-			clr_character_flag = nick_ironshield
-		}
-		if = {
-			limit = { has_character_flag = nick_the_raider }
-			give_nickname = nick_the_raider
-			clr_character_flag = nick_the_raider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironraider }
-			give_nickname = nick_ironraider
-			clr_character_flag = nick_ironraider
-		}
-		if = {
-			limit = { has_character_flag = nick_ironheart }
-			give_nickname = nick_ironheart
-			clr_character_flag = nick_ironheart
-		}
-		if = {
-			limit = { has_character_flag = nick_butcher }
-			give_nickname = nick_butcher
-			clr_character_flag = nick_butcher
-		}
-		if = {
-			limit = { has_character_flag = nick_ironhand }
-			give_nickname = nick_ironhand
-			clr_character_flag = nick_ironhand
-		}
-		if = {
-			limit = { has_character_flag = nick_hardhand }
-			give_nickname = nick_hardhand
-			clr_character_flag = nick_hardhand
-		}
-		if = {
-			limit = { has_character_flag = nick_the_strong }
-			give_nickname = nick_the_strong
-			clr_character_flag = nick_the_strong
-		}
-		if = {
-			limit = { has_character_flag = nick_the_bold }
-			give_nickname = nick_the_bold
-			clr_character_flag = nick_the_bold
-		}
-		if = {
-			limit = { has_character_flag = nick_the_warrior }
-			give_nickname = nick_the_warrior
-			clr_character_flag = nick_the_warrior
-		}
-		if = {
-			limit = { has_character_flag = nick_the_iron_storm }
-			give_nickname = nick_the_iron_storm
-			clr_character_flag = nick_the_iron_storm
-		}
+
 		hidden_tooltip = {
 			random = {
 				chance = 16
@@ -5064,7 +5014,7 @@ character_event = {
 		name = "EVTOPTAraid_events.60" #To arms!
 		if = {
 			limit = {
-				NOT = { check_variable = { which = "reaving_party_skill" value = 5 } }
+				check_variable = { which = "reaving_party_skill" value < 5 }
 			}
 			random_list = {
 				25 = {
@@ -5077,10 +5027,9 @@ character_event = {
 				}
 			}
 		}
-		if = {
+		else_if = {
 			limit = {
-				check_variable = { which = "reaving_party_skill" value = 5 }
-				NOT = { check_variable = { which = "reaving_party_skill" value = 10 } }
+				check_variable = { which = "reaving_party_skill" value < 10 }
 			}
 			random_list = {
 				50 = {
@@ -5093,10 +5042,7 @@ character_event = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				check_variable = { which = "reaving_party_skill" value = 10 }
-			}
+		else = {
 			random_list = {
 				75 = {
 					custom_tooltip = { text = TOOLTIPKRAKENDEFEATED }
@@ -5347,7 +5293,7 @@ character_event = {
 	id = raid_events.66
 	picture = "GFX_evt_saltwife"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	#only_rulers = yes #Unlanded characters cannot have concubines (hardcoded) FIXED
 	religion_group = drowned_god_group
 	culture_group = iron_isles_culture
@@ -5381,7 +5327,7 @@ character_event = {
 					is_alive = yes
 					is_ruler = no
 					NOT = { same_sex = ROOT }
-					age = 16
+					is_adult = yes
 					at_location = ROOT
 					NOT = { is_inaccessible_trigger = yes }
 					NOT = { has_pilgrimage_trait_trigger = yes }
@@ -5435,7 +5381,7 @@ character_event = {
 						is_alive = yes
 						is_ruler = no
 						NOT = { same_sex = ROOT }
-						age = 16
+						is_adult = yes
 						at_location = ROOT
 						NOT = { is_inaccessible_trigger = yes }
 						NOT = { has_pilgrimage_trait_trigger = yes }
@@ -5452,7 +5398,7 @@ character_event = {
 						is_alive = yes
 						is_ruler = no
 						NOT = { same_sex = ROOT }
-						age = 16
+						is_adult = yes
 						at_location = ROOT
 						NOT = { is_inaccessible_trigger = yes }
 						NOT = { has_pilgrimage_trait_trigger = yes }
@@ -5470,7 +5416,7 @@ character_event = {
 						is_alive = yes
 						is_ruler = no
 						NOT = { same_sex = ROOT }
-						age = 16
+						is_adult = yes
 						at_location = ROOT
 						NOT = { is_inaccessible_trigger = yes }
 						NOT = { has_pilgrimage_trait_trigger = yes }
@@ -5558,8 +5504,7 @@ character_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -5608,8 +5553,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						reverse_banish = PREV
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { reverse_banish = PREVPREV }
 					}
 					PREV = {
@@ -5738,8 +5682,7 @@ character_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -5788,8 +5731,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						reverse_banish = PREV
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { reverse_banish = PREVPREV }
 					}
 					PREV = {
@@ -5917,8 +5859,7 @@ character_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -5967,8 +5908,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						reverse_banish = PREV
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { reverse_banish = PREVPREV }
 					}
 					PREV = {
@@ -6049,7 +5989,7 @@ character_event = {
 	id = raid_events.665
 	picture = "GFX_evt_saltwife"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 
 	desc = {
 		text = EVTDESCraid_events.66 #salt wife
@@ -6139,7 +6079,7 @@ character_event = {
 					is_alive = yes
 					#is_ruler = no
 					NOT = { same_sex = ROOT }
-					age = 16
+					is_adult = yes
 					at_location = ROOT
 					NOT = { is_inaccessible_trigger = yes }
 					NOT = { has_pilgrimage_trait_trigger = yes }
@@ -6194,7 +6134,7 @@ character_event = {
 						is_alive = yes
 						#is_ruler = no
 						NOT = { same_sex = ROOT }
-						age = 16
+						is_adult = yes
 						at_location = ROOT
 						NOT = { is_inaccessible_trigger = yes }
 						NOT = { has_pilgrimage_trait_trigger = yes }
@@ -6211,7 +6151,7 @@ character_event = {
 						is_alive = yes
 						#is_ruler = no
 						NOT = { same_sex = ROOT }
-						age = 16
+						is_adult = yes
 						at_location = ROOT
 						NOT = { is_inaccessible_trigger = yes }
 						NOT = { has_pilgrimage_trait_trigger = yes }
@@ -6229,7 +6169,7 @@ character_event = {
 						is_alive = yes
 						#is_ruler = no
 						NOT = { same_sex = ROOT }
-						age = 16
+						is_adult = yes
 						at_location = ROOT
 						NOT = { is_inaccessible_trigger = yes }
 						NOT = { has_pilgrimage_trait_trigger = yes }
@@ -6317,8 +6257,7 @@ character_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -6367,8 +6306,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						reverse_banish = PREV
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { reverse_banish = PREVPREV }
 					}
 					PREV = {
@@ -6505,8 +6443,7 @@ character_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -6555,8 +6492,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						reverse_banish = PREV
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { reverse_banish = PREVPREV }
 					}
 					PREV = {
@@ -6692,8 +6628,7 @@ character_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -6742,8 +6677,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						reverse_banish = PREV
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { reverse_banish = PREVPREV }
 					}
 					PREV = {
@@ -6955,7 +6889,7 @@ character_event = {
 	desc = "EVTDESCraid_events.67"
 	picture = "GFX_evt_valyrian_steel"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 
 	min_age = 14
 	only_capable = yes
@@ -7145,7 +7079,7 @@ character_event = {
 	desc = "EVTDESCraid_events.67"
 	picture = "GFX_evt_valyrian_steel"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 
 	min_age = 14
 	only_capable = yes
@@ -7579,8 +7513,7 @@ character_event = { #Sword owner surrenders
 			limit = { is_ruler = yes }
 			FROM = { imprison = ROOT }
 		}
-		if = {
-			limit = { is_ruler = no }
+		else = {
 			liege = { FROM = { imprison = PREV } }
 		}
 		FROM = {
@@ -7773,8 +7706,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				ROOT = { imprison = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { imprison = PREV } }
 			}
 		}
@@ -8291,22 +8223,22 @@ character_event = {
 				wealth = -15
 				prestige = -15
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { liege = { tier = COUNT } } }
 				wealth = -30
 				prestige = -30
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { liege = { tier = DUKE } } }
 				wealth = -60
 				prestige = -60
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { liege = { tier = KING } } }
 				wealth = -100
 				prestige = -100
 			}
-			if = {
+			else_if = {
 				limit = { FROM = { liege = { tier = EMPEROR } } }
 				wealth = -150
 				prestige = -150
@@ -8325,25 +8257,15 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAraid_events.102"
-		if = {
-			limit = { tier = BARON }
-			wealth = 15
-		}
-		if = {
-			limit = { tier = COUNT }
-			wealth = 30
-		}
-		if = {
-			limit = { tier = DUKE }
-			wealth = 60
-		}
-		if = {
-			limit = { tier = KING }
-			wealth = 100
-		}
-		if = {
-			limit = { tier = EMPEROR }
-			wealth = 150
+
+		trigger_switch = {
+			on_trigger = tier
+
+			BARON   = { wealth =  15 }
+			COUNT   = { wealth =  30 }
+			DUKE    = { wealth =  60 }
+			KING    = { wealth = 100 }
+			EMPEROR = { wealth = 150 }
 		}
 	}
 }
@@ -8632,7 +8554,7 @@ letter_event = {
 		any_realm_lord = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROMFROM modifier = opinion_looted }
-				NOT = { has_opinion_modifier  = { who = FROMFROM modifier = forbidden_raid_target } }
+				NOT = { has_opinion_modifier = { who = FROMFROM modifier = forbidden_raid_target } }
 			}
 			opinion = {
 				who = ROOT
@@ -8689,11 +8611,11 @@ letter_event = {
 			limit = { higher_tier_than = DUKE }
 			prestige = -75
 		}
-		if = {
+		else_if = {
 			limit = { tier = DUKE }
 			prestige = -50
 		}
-		if = {
+		else_if = {
 			limit = { tier = COUNT }
 			prestige = -25
 		}
@@ -8708,7 +8630,7 @@ letter_event = {
 				limit = {
 					NOT = { tier = BARON }
 					is_allowed_to_loot = yes
-					NOT = { has_opinion_modifier  = { who = FROMFROM modifier = forbidden_raid_target } }
+					NOT = { has_opinion_modifier = { who = FROMFROM modifier = forbidden_raid_target } }
 				}
 				opinion = { who = FROMFROM modifier = forbidden_raid_target months = 24 } #forbid further raids
 			}
@@ -8731,11 +8653,11 @@ letter_event = {
 			limit = { higher_tier_than = DUKE }
 			prestige = -75
 		}
-		if = {
+		else_if = {
 			limit = { tier = DUKE }
 			prestige = -50
 		}
-		if = {
+		else_if = {
 			limit = { tier = COUNT }
 			prestige = -25
 		}
@@ -8768,11 +8690,11 @@ letter_event = { #Inform diplomatically reject
 			limit = { FROM = { higher_tier_than = DUKE } }
 			prestige = 75
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { tier = DUKE } }
 			prestige = 50
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { tier = COUNT } }
 			prestige = 25
 		}
@@ -8993,8 +8915,7 @@ letter_event = { #Vassal receives demand to stop raiding
 					casus_belli = overthrow_ruler
 				}
 			}
-			if = {
-				limit = { NOT = { ROOT = { vassal_of = PREV } } }
+			else = {
 				ROOT = { set_defacto_liege = PREV }
 				reverse_war = {
 					target = ROOT
@@ -9027,11 +8948,11 @@ letter_event = { #Vassal receives demand to stop raiding
 			limit = { higher_tier_than = DUKE }
 			prestige = -75
 		}
-		if = {
+		else_if = {
 			limit = { tier = DUKE }
 			prestige = -50
 		}
-		if = {
+		else_if = {
 			limit = { lower_tier_than = DUKE }
 			prestige = -25
 		}
@@ -9064,11 +8985,11 @@ letter_event = { #Vassal receives demand to stop raiding
 			limit = { higher_tier_than = DUKE }
 			prestige = -75
 		}
-		if = {
+		else_if = {
 			limit = { tier = DUKE }
 			prestige = -50
 		}
-		if = {
+		else_if = {
 			limit = { lower_tier_than = DUKE }
 			prestige = -25
 		}
@@ -9172,11 +9093,11 @@ letter_event = { #Inform ROOT reject, diplomacy
 			limit = { FROM = { higher_tier_than = DUKE } }
 			prestige = 75
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { tier = DUKE } }
 			prestige = 50
 		}
-		if = {
+		else_if = {
 			limit = { FROM = { tier = COUNT } }
 			prestige = 25
 		}
@@ -9242,17 +9163,19 @@ character_event = {
 				has_artifact_flag = flagship
 				is_artifact_equipped = yes
 			}
-			if = {
-				limit = { artifact_type = enormous_flagship }
-				ROOT = { change_variable = { which = "reaving_party_skill" value = 5 } }
-			}
-			if = {
-				limit = { artifact_type = regular_flagship }
-				ROOT = { change_variable = { which = "reaving_party_skill" value = 3 } }
-			}
-			if = {
-				limit = { artifact_type = small_flagship }
-				ROOT = { change_variable = { which = "reaving_party_skill" value = 1 } }
+
+			trigger_switch = {
+				on_trigger = artifact_type
+
+				enormous_flagship = {
+					ROOT = { change_variable = { which = "reaving_party_skill" value = 5 } }
+				}
+				regular_flagship = {
+					ROOT = { change_variable = { which = "reaving_party_skill" value = 3 } }
+				}
+				small_flagship = {
+					ROOT = { change_variable = { which = "reaving_party_skill" value = 1 } }
+				}
 			}
 		}
 	}
@@ -9264,7 +9187,7 @@ character_event = {
 #Flagship lost
 character_event = {
 	id = raid_events.161
-	desc =  "EVTDESCraid_events.161"
+	desc = "EVTDESCraid_events.161"
 	picture = "GFX_evt_reaving_ship_lost"
 
 	is_triggered_only = yes
@@ -9293,18 +9216,21 @@ character_event = {
 				has_artifact_flag = flagship
 				is_artifact_equipped = yes
 			}
-			if = {
-				limit = { artifact_type = enormous_flagship }
-				ROOT = { prestige = -100 }
+
+			trigger_switch = {
+				on_trigger = artifact_type
+
+				enormous_flagship = {
+					ROOT = { prestige = -100 }
+				}
+				regular_flagship = {
+					ROOT = { prestige = -50 }
+				}
+				small_flagship = {
+					ROOT = { prestige = -25 }
+				}
 			}
-			if = {
-				limit = { artifact_type = regular_flagship }
-				ROOT = { prestige = -50 }
-			}
-			if = {
-				limit = { artifact_type = small_flagship }
-				ROOT = { prestige = -25 }
-			}
+
 			destroy_artifact = yes
 		}
 	}

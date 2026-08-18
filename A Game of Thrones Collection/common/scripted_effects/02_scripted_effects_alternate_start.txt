@@ -670,9 +670,7 @@ rename_titles_altstart = {
 			limit = {
 				holder_scope = {
 					primary_title = { title = PREVPREV }
-					NOT = {
-						is_lowborn = yes
-					}
+					is_lowborn = no
 					NOT = { culture = dragon_culture }
 					NOT = { culture = white_walker }
 				}
@@ -684,9 +682,7 @@ rename_titles_altstart = {
 		else = {
 			random_character = {
 				limit = {
-					NOT = {
-						is_lowborn = yes
-					}
+					is_lowborn = no
 					NOT = { culture = dragon_culture }
 					NOT = { culture = white_walker }
 				}
@@ -766,9 +762,7 @@ rename_titles_altstart_duchies = {
 			limit = {
 				holder_scope = {
 					primary_title = { title = PREVPREV }
-					NOT = {
-						is_lowborn = yes
-					}
+					is_lowborn = no
 				}
 			}
 			holder_scope = {
@@ -778,9 +772,7 @@ rename_titles_altstart_duchies = {
 		else = {
 			random_character = {
 				limit = {
-					NOT = {
-						is_lowborn = yes
-					}
+					is_lowborn = no
 				}
 				save_event_target_as = target_name
 			}
@@ -1137,9 +1129,7 @@ spawn_one_bloodline_effect = {
 
 		if = {
 			limit = {
-				NOT = {
-					has_nickname = yes
-				}
+				has_nickname = no
 			}
 			random_list = {
 				10 = {
@@ -3345,7 +3335,7 @@ spawn_nightswatch_alt_start_effect = {
 		random_character = {
 			limit = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				c_castle_black = { holder_scope = { culture = PREVPREV } }
 				is_primary_heir = no
 				is_ruler = no

@@ -2456,7 +2456,7 @@ faction_succ_feudal_elective = {
 		modifier = {
 			factor = 0
 			FROM = {
-				has_elective_culture_religion_trigger =  no
+				has_elective_culture_religion_trigger = no
 				OR = {
 					in_faction = faction_claimant
 					in_faction = faction_independence
@@ -3568,7 +3568,7 @@ faction_lower_crown_authority = {
 			}
 			FROM = {
 				NOR = {
-					culture = yi_ti
+					culture_group = yi_ti_group
 					culture_group = sarnor_group
 				}
 			}
@@ -3649,7 +3649,7 @@ faction_lower_crown_authority = {
 			factor = 2
 			FROM = {
 				OR = {
-					culture = yi_ti
+					culture_group = yi_ti_group
 					culture_group = sarnor_group
 				}
 			}
@@ -4033,7 +4033,7 @@ faction_lower_crown_authority = {
 				any_demesne_title = { has_law = republic_alliance_member }
 			}
 			NOR = {
-				culture = yi_ti
+				culture_group = yi_ti_group
 				culture_group = sarnor_group
 			}
 			NOT = {
@@ -4085,7 +4085,7 @@ faction_lower_crown_authority = {
 			factor = 0
 			trait = just
 			NOR = {
-				culture = yi_ti
+				culture_group = yi_ti_group
 				culture_group = sarnor_group
 			}
 			NAND = {
@@ -4114,7 +4114,7 @@ faction_lower_crown_authority = {
 		modifier = {
 			factor = 2
 			OR = {
-				culture = yi_ti
+				culture_group = yi_ti_group
 				culture_group = sarnor_group
 			}
 		}
@@ -4895,7 +4895,7 @@ faction_independence = {
 			}
 			liege = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				NOT = { is_weak_khal_trigger = yes }
 				OR = {
 					is_nomadic = no
@@ -5694,7 +5694,7 @@ faction_independence = {
 			}
 			liege = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				NOT = { is_weak_khal_trigger = yes }
 				OR = {
 					is_nomadic = no
@@ -8957,7 +8957,7 @@ faction_depose_liege = {
 				}
 				liege = {
 					is_female = no
-					age = 16
+					is_adult = yes
 					NOT = { is_weak_khal_trigger = yes }
 					OR = {
 						is_nomadic = no
@@ -9931,7 +9931,7 @@ faction_depose_liege = {
 				}
 				liege = {
 					is_female = no
-					age = 16
+					is_adult = yes
 					NOT = { is_weak_khal_trigger = yes }
 					OR = {
 						is_nomadic = no

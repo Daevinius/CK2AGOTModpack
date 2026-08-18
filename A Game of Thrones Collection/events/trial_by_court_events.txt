@@ -35,21 +35,21 @@ namespace = trial
 
 #Choice event for courtier
 character_event = {
-   id = trial.0
-   desc = "EVTDESCtrial.0"
-   picture = GFX_evt_accused
+	id = trial.0
+	desc = "EVTDESCtrial.0"
+	picture = GFX_evt_accused
 
-   is_triggered_only = yes
+	is_triggered_only = yes
 
-   desc = {
+	desc = {
 		text = EVTDESCtrial.0
 		trigger = {
 			NOT = { has_character_flag = choosing_champion }
 			NOT = { has_character_flag = choosing_seven_champion }
 		}
-   }
+	}
 
-   desc = {
+	desc = {
 		text = EVTDESCtrial.0B
 		trigger = {
 			OR = {
@@ -57,9 +57,9 @@ character_event = {
 				has_character_flag = choosing_champion
 			}
 		}
-   }
+	}
 
-   trigger = {
+	trigger = {
 		OR = {
 			AND = {
 				prisoner = yes
@@ -99,7 +99,7 @@ character_event = {
 			modifier = {
 				factor = 10
 				combat_rating = 60
-				age = 16
+				is_adult = yes
 				is_ill = no
 				NOT = { has_severe_disability_trigger = yes }
 				OR = {
@@ -111,7 +111,7 @@ character_event = {
 				factor = 0.2
 				host = {
 					any_courtier = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -155,7 +155,7 @@ character_event = {
 				factor = 0
 				NOT = {
 					any_dynasty_member = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -192,7 +192,7 @@ character_event = {
 				}#
 				NOT = {
 					any_courtier = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -258,8 +258,7 @@ character_event = {
 				set_character_flag = select_champion
 				character_event = { id = trial_by_combat.999 }
 			}
-			if = {
-				limit = { ai = yes } #Ai select via event
+			else = { #Ai select via event
 				character_event = { id = trial_by_combat.27 days = 5 random = 2 }
 			}
 			hidden_tooltip = { #30 day time limit to find champion
@@ -493,7 +492,7 @@ character_event = {
 				}
 				random_courtier = {
 					limit = {
-						age = 16
+						is_adult = yes
 						is_incapable = no
 						NOT = { trait = slave }
 						NOT = { trait = dragon }
@@ -514,7 +513,7 @@ character_event = {
 		trigger = {
 			has_character_flag = first_trial.0_event
 			NOT = { has_character_flag = lunatic_trial }
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			religion = the_seven
 			FROM = { FROM = { religion = the_seven } }
@@ -555,7 +554,7 @@ character_event = {
 			modifier = {
 				factor = 10
 				any_courtier = {
-					age = 16
+					is_adult = yes
 					OR = {
 						is_female = no
 						female_get_masculine_event_trigger = yes
@@ -595,7 +594,7 @@ character_event = {
 				factor = 0.2
 				host = {
 					any_courtier = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -638,7 +637,7 @@ character_event = {
 				factor = 0
 				NOT = {
 					any_dynasty_member = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -675,7 +674,7 @@ character_event = {
 				}#
 				NOT = {
 					any_courtier = {
-						age = 16
+						is_adult = yes
 						OR = {
 							is_female = no
 							female_get_masculine_event_trigger = yes
@@ -746,18 +745,18 @@ character_event = {
 
 #Inform host trial by combat
 character_event = {
-   id = trial.1
-   desc = "EVTDESCtrial.1"
-   picture = GFX_knights
+	id = trial.1
+	desc = "EVTDESCtrial.1"
+	picture = GFX_knights
 
-   is_triggered_only = yes
+	is_triggered_only = yes
 
-   trigger = {
+	trigger = {
 		OR = {
 			FROM = { prisoner = yes  }
 			has_character_flag = lunatic_trial
 		}
-   }
+	}
 
 	option = { #FROM is summoning his champion, the trial by combat will commence shortly
 		name = "EVTOPTAtrial.1"
@@ -766,11 +765,11 @@ character_event = {
 }
 #Inform host champion not found
 character_event = {
-   id = trial.50
-   desc = "EVTDESCtrial.50"
+	id = trial.50
+	desc = "EVTDESCtrial.50"
 	picture = GFX_evt_courtiers_talking
 
-   is_triggered_only = yes
+	is_triggered_only = yes
 
 	option = {
 		name = OK
@@ -1552,9 +1551,9 @@ character_event = {
 #This allows for a ballanced reflection of the characters traits VS eachother.
 #FROM = accused
 character_event = {
-   id = trial.19
-   desc = "EVTDESCtrial.19"
-   picture = GFX_evt_accused
+	id = trial.19
+	desc = "EVTDESCtrial.19"
+	picture = GFX_evt_accused
 
 	is_triggered_only = yes
 
@@ -1779,7 +1778,7 @@ character_event = {
 			liege = {
 				any_courtier = {
 					limit = {
-						age = 16
+						is_adult = yes
 						opinion = { who = FROM value = -25 }
 						NOT = { character = ROOT }
 						NOT = { character = FROM }
@@ -2018,7 +2017,7 @@ character_event = {
 			liege = {
 				any_courtier = {
 					limit = {
-						age = 16
+						is_adult = yes
 						NOT = { opinion = { who = FROM value = 75 } }
 						NOT = { character = ROOT }
 						NOT = { character = FROM }
@@ -2036,11 +2035,11 @@ character_event = {
 
 #The accused is guilty, You won, pick sentence. Accused is FROMFROM, citadel is FROM.
 character_event = {
-   id = trial.21
-   desc = "EVTDESCtrial.21" #He is guilty and i will decide his fate.
-   picture = GFX_evt_judged_by_ruler
+	id = trial.21
+	desc = "EVTDESCtrial.21" #He is guilty and i will decide his fate.
+	picture = GFX_evt_judged_by_ruler
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_exiled
 
 	immediate = {
 		clr_character_flag = lunatic_trial
@@ -2648,9 +2647,9 @@ character_event = {
 
 #DEATH
 character_event = {
-   id = trial.22
-   desc = "EVTDESCtrial.22"
-   picture = GFX_evt_beheading
+	id = trial.22
+	desc = "EVTDESCtrial.22"
+	picture = GFX_evt_beheading
 
 	is_triggered_only = yes
 
@@ -2672,8 +2671,8 @@ character_event = {
 
 #Sent to wall
 character_event = {
-   id = trial.23
-   picture = GFX_evt_judged_by_ruler
+	id = trial.23
+	picture = GFX_evt_judged_by_ruler
 
 	desc = {
 		text = "EVTDESCtrial.23"
@@ -2713,11 +2712,11 @@ character_event = {
 
 #Sent to priesthood
 character_event = {
-   id = trial.235
-   desc = "EVTDESCtrial.235"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.235
+	desc = "EVTDESCtrial.235"
+	picture = GFX_evt_judged_by_ruler
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		FROM = {
@@ -2773,8 +2772,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -2796,10 +2794,10 @@ character_event = {
 
 #Exiled
 character_event = {
-   id = trial.237
-   picture = GFX_evt_judged_by_ruler
+	id = trial.237
+	picture = GFX_evt_judged_by_ruler
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	desc = {
 		text = "EVTDESCtrial.237"
@@ -2847,8 +2845,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -2862,9 +2859,9 @@ character_event = {
 
 #Paraded through street naked
 character_event = {
-   id = trial.24
-   desc = "EVTDESCtrial.24"
-   picture = GFX_evt_humiliation_prisoner
+	id = trial.24
+	desc = "EVTDESCtrial.24"
+	picture = GFX_evt_humiliation_prisoner
 
 	is_triggered_only = yes
 
@@ -2912,9 +2909,9 @@ character_event = {
 
 #Released because the accuser was magananimous
 character_event = {
-   id = trial.25
-   desc = "EVTDESCtrial.25"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.25
+	desc = "EVTDESCtrial.25"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -2966,9 +2963,9 @@ character_event = {
 }
 #Council decide
 character_event = {
-   id = trial.239
-   desc = "EVTDESCtrial.239"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.239
+	desc = "EVTDESCtrial.239"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -2996,9 +2993,9 @@ character_event = {
 ###Inform Judge of punishment###
 #DEATH
 character_event = {
-   id = trial.220
-   desc = "EVTDESCtrial.220"
-   picture = GFX_evt_beheading
+	id = trial.220
+	desc = "EVTDESCtrial.220"
+	picture = GFX_evt_beheading
 
 	is_triggered_only = yes
 
@@ -3009,9 +3006,9 @@ character_event = {
 }
 #Sent to wall
 character_event = {
-   id = trial.230
-   desc = "EVTDESCtrial.230"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.230
+	desc = "EVTDESCtrial.230"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -3022,9 +3019,9 @@ character_event = {
 }
 #Sent to priesthood
 character_event = {
-   id = trial.236
-   desc = "EVTDESCtrial.236"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.236
+	desc = "EVTDESCtrial.236"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -3035,9 +3032,9 @@ character_event = {
 }
 #Exiled
 character_event = {
-   id = trial.238
-   desc = "EVTDESCtrial.238"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.238
+	desc = "EVTDESCtrial.238"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -3048,9 +3045,9 @@ character_event = {
 }
 #Paraded through street naked
 character_event = {
-   id = trial.240
-   desc = "EVTDESCtrial.240"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.240
+	desc = "EVTDESCtrial.240"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -3062,9 +3059,9 @@ character_event = {
 
 #Released because the accuser was magananimous
 character_event = {
-   id = trial.250
-   desc = "EVTDESCtrial.250"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.250
+	desc = "EVTDESCtrial.250"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -3076,9 +3073,9 @@ character_event = {
 }
 #Council decision
 character_event = {
-   id = trial.251
-   desc = "EVTDESCtrial.251"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.251
+	desc = "EVTDESCtrial.251"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 
@@ -3091,9 +3088,9 @@ character_event = {
 
 #I lost the case and am upset about it.
 character_event = {
-   id = trial.27
-   desc = "EVTDESCtrial.27"
-   picture = GFX_evt_throne_room
+	id = trial.27
+	desc = "EVTDESCtrial.27"
+	picture = GFX_evt_throne_room
 
 	is_triggered_only = yes
 
@@ -3394,9 +3391,9 @@ character_event = {
 
 #I was found innocent and am released FROM prison
 character_event = {
-   id = trial.26
-   desc = "EVTDESCtrial.26"
-   picture = GFX_evt_throne_room
+	id = trial.26
+	desc = "EVTDESCtrial.26"
+	picture = GFX_evt_throne_room
 
 	is_triggered_only = yes
 
@@ -3433,9 +3430,9 @@ character_event = {
 
 #DEATH (Unjust)
 character_event = {
-   id = trial.28
-   desc = "EVTDESCtrial.28"
-   picture = GFX_evt_beheading
+	id = trial.28
+	desc = "EVTDESCtrial.28"
+	picture = GFX_evt_beheading
 
 	is_triggered_only = yes
 
@@ -3464,9 +3461,9 @@ character_event = {
 
 #Back to the cells, unjust
 character_event = {
-   id = trial.29
-   desc = "EVTDESCtrial.29"
-   picture = GFX_evt_into_the_dungeon
+	id = trial.29
+	desc = "EVTDESCtrial.29"
+	picture = GFX_evt_into_the_dungeon
 
 	is_triggered_only = yes
 
@@ -3513,9 +3510,9 @@ character_event = {
 ###Inform Judge of unjust punishment###
 #DEATH
 character_event = {
-   id = trial.280
-   desc = "EVTDESCtrial.280"
-   picture = GFX_evt_beheading
+	id = trial.280
+	desc = "EVTDESCtrial.280"
+	picture = GFX_evt_beheading
 
 	is_triggered_only = yes
 
@@ -3527,9 +3524,9 @@ character_event = {
 }
 #Sent to prison
 character_event = {
-   id = trial.290
-   desc = "EVTDESCtrial.290"
-   picture = GFX_evt_judged_by_ruler
+	id = trial.290
+	desc = "EVTDESCtrial.290"
+	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
 

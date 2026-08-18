@@ -12,10 +12,10 @@ namespace = JD
 
 #Strategist (AGOT adaptation: strategist appears from distant land)
 character_event = {
-    id = JD.20039
+	id = JD.20039
 
-    hide_window = yes
-    is_triggered_only = yes
+	hide_window = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_dlc = "Jade Dragon"
 	only_playable = yes
 	only_capable = yes
@@ -31,7 +31,7 @@ character_event = {
 		NOT_mythical_creature_trigger = yes
 	}
 
-    immediate = {
+	immediate = {
 		#find far away location
 		random_playable_ruler = {
 			limit = {
@@ -158,8 +158,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -377,22 +376,22 @@ character_event = {
 				}
 				ROOT = { letter_event = { id = JD.20040 } }
 			}
-        }
-    }
+		}
+	}
 }
 
 #Governor presents strategist
 letter_event = {
-    id = JD.20040
-    desc = EVTDESC_JD_20040
-    border = GFX_event_letter_frame_diplomacy
+	id = JD.20040
+	desc = EVTDESC_JD_20040
+	border = GFX_event_letter_frame_diplomacy
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 	has_dlc = "Jade Dragon"
 	portrait = event_target:chinese_strategist
 
-    option = {
-        name = EVTOPTA_JD_20040
+	option = {
+		name = EVTOPTA_JD_20040
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -417,22 +416,22 @@ letter_event = {
 			}
 		}
 		scaled_wealth = { value = -0.5 min = -75 max = -200 }
-        event_target:chinese_strategist = {
-            show_scope_change = no
-            show_portrait = yes
+		event_target:chinese_strategist = {
+			show_scope_change = no
+			show_portrait = yes
 			move_character = ROOT
-            if = {
-                limit = {
-                    can_hold_title = title_commander
-                    ROOT = { can_grant_title = title_commander }
-                }
-                give_minor_title = title_commander
-            }
+			if = {
+				limit = {
+					can_hold_title = title_commander
+					ROOT = { can_grant_title = title_commander }
+				}
+				give_minor_title = title_commander
+			}
 			hidden_tooltip = { wealth = 40 }
-        }
-    }
+		}
+	}
 	option = {
-        name = EVTOPTB_JD_20040
+		name = EVTOPTB_JD_20040
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -475,23 +474,23 @@ letter_event = {
 
 #Strategist has taught someone else, event for picking commander and trait (hidden)
 character_event = {
-    id = JD.20041
-    hide_window = yes
+	id = JD.20041
+	hide_window = yes
 
-    is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_dlc = "Jade Dragon"
 
-    only_playable = yes
+	only_playable = yes
 
-    trigger = {
-        any_courtier_or_vassal = { #Chinese commander
-            has_character_modifier = jd_strategist
+	trigger = {
+		any_courtier_or_vassal = { #Chinese commander
+			has_character_modifier = jd_strategist
 			is_incapable = no
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			liege = { character = ROOT }
-        }
-    }
+		}
+	}
 
 
 	weight_multiplier = {
@@ -505,9 +504,9 @@ character_event = {
 		}
 	}
 
-    immediate = {
-        random_courtier_or_vassal = {
-            limit = {
+	immediate = {
+		random_courtier_or_vassal = {
+			limit = {
 				has_character_modifier = jd_strategist
 				is_incapable = no
 				prisoner = no
@@ -527,8 +526,8 @@ character_event = {
 						}
 					}
 				}
-            }
-            save_event_target_as = commander_teacher
+			}
+			save_event_target_as = commander_teacher
 			liege = {
 				random_courtier_or_vassal = {
 					limit = {
@@ -590,61 +589,61 @@ character_event = {
 					character_event = { id = JD.20042 }
 				}
 			}
-        }
-    }
+		}
+	}
 }
 
 #Ping event
 character_event = {
-    id = JD.20042
-    hide_window = yes
-    is_triggered_only = yes
+	id = JD.20042
+	hide_window = yes
+	is_triggered_only = yes
 	has_dlc = "Jade Dragon"
-    immediate = {
-    	FROM = { character_event = { id = JD.20043 } }
-    	character_event = { id = JD.20044 days = 1 } #clear flag
-    }
+	immediate = {
+		FROM = { character_event = { id = JD.20043 } }
+		character_event = { id = JD.20044 days = 1 } #clear flag
+	}
 }
 
 #Handing out trait and notifying liege
 character_event = {
-    id = JD.20043
-    border = GFX_event_normal_frame_war
+	id = JD.20043
+	border = GFX_event_normal_frame_war
 	picture = GFX_evt_china_invades
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 	has_dlc = "Jade Dragon"
 
-    desc = {
-        trigger = { event_target:commander_student = { has_character_flag = give_master_of_flame } }
-        text = EVTDESC_JD_20041_A
-    }
-    desc = {
-        trigger = { event_target:commander_student = { has_character_flag = give_logistics_expert } }
-        text = EVTDESC_JD_20041_B
-    }
-    desc = {
-        trigger = { event_target:commander_student = { has_character_flag = give_levy_coordinator } }
-        text = EVTDESC_JD_20041_C
-    }
-    desc = {
-        trigger = { event_target:commander_student = { has_character_flag = give_sapper } }
-        text = EVTDESC_JD_20041_D
-    }
+	desc = {
+		trigger = { event_target:commander_student = { has_character_flag = give_master_of_flame } }
+		text = EVTDESC_JD_20041_A
+	}
+	desc = {
+		trigger = { event_target:commander_student = { has_character_flag = give_logistics_expert } }
+		text = EVTDESC_JD_20041_B
+	}
+	desc = {
+		trigger = { event_target:commander_student = { has_character_flag = give_levy_coordinator } }
+		text = EVTDESC_JD_20041_C
+	}
+	desc = {
+		trigger = { event_target:commander_student = { has_character_flag = give_sapper } }
+		text = EVTDESC_JD_20041_D
+	}
 
-    option = {
+	option = {
 		name = OK
 		event_target:commander_student = {
 			set_character_flag = taught_chinese_strategy
-            trigger_switch = {
-                on_trigger = has_character_flag
-                give_master_of_flame    = { add_trait = master_of_flame }
-                give_logistics_expert   = { add_trait = logistics_expert }
-                give_levy_coordinator   = { add_trait = levy_coordinator }
-                give_sapper             = { add_trait = sapper }
-            }
-        }
-    }
+			trigger_switch = {
+				on_trigger = has_character_flag
+				give_master_of_flame    = { add_trait = master_of_flame }
+				give_logistics_expert   = { add_trait = logistics_expert }
+				give_levy_coordinator   = { add_trait = levy_coordinator }
+				give_sapper             = { add_trait = sapper }
+			}
+		}
+	}
 }
 #Clear flag separately so desc works for notification
 character_event = {

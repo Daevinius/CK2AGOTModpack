@@ -3,7 +3,7 @@ namespace = valyrian_blood_maintenance
 character_event = { # Give blood traits to created characters, characters with unknown parents
 	id = valyrian_blood_maintenance.1
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_alive = yes
@@ -24,7 +24,7 @@ character_event = { # Give blood traits to created characters, characters with u
 			trait = mostly_diluted_blood
 			trait = dragon
 			culture = dragon_culture
-			graphical_culture =dragongfx
+			graphical_culture = dragongfx
 		}
 	}
 
@@ -145,7 +145,7 @@ character_event = { # Give blood traits to created characters, characters with u
 character_event = { # Remove flag upon death, called from on_death on_actions
 	id = valyrian_blood_maintenance.2
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	hide_window = yes
 
 	has_character_flag = has_valyrian_blood_trait
@@ -163,7 +163,7 @@ character_event = { # Remove flag upon death, called from on_death on_actions
 character_event = { # Remove flag on already dead characters
 	id = valyrian_blood_maintenance.3
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	has_character_flag = has_valyrian_blood_trait
@@ -184,7 +184,7 @@ character_event = { # Remove flag on already dead characters
 character_event = { # Add blood traits to those that should get them
 	id = valyrian_blood_maintenance.4
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_alive = yes
@@ -751,7 +751,7 @@ character_event = { # Add blood traits to those that should get them
 character_event = {
 	id = valyrian_blood_maintenance.5
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_birth
 
 	trigger = {
 		any_sibling = {

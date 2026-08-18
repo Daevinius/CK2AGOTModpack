@@ -36,7 +36,7 @@ character_event = {
 	id = maester.1
 	desc = "EVTDESCmaester.1"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -59,7 +59,7 @@ character_event = {
 
 	immediate = {
 		if = { #make sure citadel title has holder
-			limit = { c_the_citadel  = { has_holder = no } }
+			limit = { c_the_citadel = { has_holder = no } }
 			c_the_citadel = { gain_title = ROOT }
 		}
 		if = {
@@ -134,7 +134,7 @@ character_event = {
 	id = maester.2
 	desc = "EVTDESCmaester.2"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	is_married = yes
 
 	trigger = {
@@ -897,7 +897,7 @@ character_event = {
 	desc = "EVTDESCmaester.11"
 	picture = GFX_evt_library
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -2196,7 +2196,7 @@ character_event = {
 			limit = {
 				higher_tier_than = DUKE
 				demesne_size = 1
-				NOT = { has_character_flag =  rejected_citadel }
+				NOT = { has_character_flag = rejected_citadel }
 				NOT = { culture_group = winter_group }
 				any_vassal = {
 					primary_title = { NOT = { holding_type = temple } }
@@ -2285,7 +2285,7 @@ character_event = {
 						grant_title = PREVPREV
 					}
 				}
-				clr_character_flag =  new_home_found
+				clr_character_flag = new_home_found
 			}
 
 		}
@@ -2721,7 +2721,7 @@ character_event = {
 		NOT = { has_character_flag = grand_maester_selected }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -3024,7 +3024,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -3099,7 +3099,7 @@ character_event = {
 	desc = "Only Archmaesters may lead The Citadel"
 
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -3279,8 +3279,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 			break = yes
@@ -3297,8 +3296,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -3316,8 +3314,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -3381,8 +3378,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 				break = yes
@@ -3399,8 +3395,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 			break = yes
@@ -5260,7 +5255,7 @@ character_event = { #Start studying
 								is_incapable = no
 								in_command = no
 								prisoner = no
-								age = 16
+								is_adult = yes
 								NOT = { is_friend = ROOT }
 								NOT = { is_rival = ROOT }
 								opinion = { who = ROOT value = 0 }
@@ -5312,7 +5307,7 @@ character_event = { #Start studying
 								is_incapable = no
 								in_command = no
 								prisoner = no
-								age = 16
+								is_adult = yes
 								NOT = { is_friend = ROOT }
 								NOT = { is_rival = ROOT }
 								NOT = { opinion = { who = ROOT value = -20 } }
@@ -5463,8 +5458,8 @@ character_event = { #Start studying
 	}
 }
 character_event = { #Success
-    id = maester.49
-    border = GFX_event_normal_frame_religion
+	id = maester.49
+	border = GFX_event_normal_frame_religion
 
 	desc = {
 		text = EVTDESCmaester.49
@@ -5543,7 +5538,7 @@ character_event = { #Success
 		trigger = { has_character_flag = mysteries_study }
 	}
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 	only_capable = yes
 	prisoner = no
 	portrait = event_target:archmaester_tutor
@@ -5574,7 +5569,7 @@ character_event = { #Success
 		clr_character_flag = mysteries_study
 	}
 
-    option = {
+	option = {
 		name = {
 			text = EVTOPTAmaester.49
 			trigger = { has_character_flag = study_great_success }
@@ -5722,7 +5717,7 @@ character_event = { #Success
 			}
 			clr_character_flag = mysteries_study
 		}
-     	clr_quest = study_for_link
+		clr_quest = study_for_link
 		sound_effect = hermetic_society_recover_scroll
 		if = {
 			limit = { has_character_flag = study_great_success }
@@ -5775,15 +5770,15 @@ character_event = { #Success
 		character_event = { id = maester.5 } #check for promotion
 		character_event = { id = maester.42 days = 3 } #increase learning edu level
 		character_event = { id = MNM.1000 days = 100 random = 100 } #mission tombola
-    }
+	}
 }
 character_event = { #Fail
-    id = maester.50
+	id = maester.50
 	desc = EVTDESCmaester.50
-    picture = GFX_evt_bad_news
-    border = GFX_event_normal_frame_religion
+	picture = GFX_evt_bad_news
+	border = GFX_event_normal_frame_religion
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 	only_capable = yes
 	prisoner = no
 	portrait = event_target:archmaester_tutor
@@ -5813,7 +5808,7 @@ character_event = { #Fail
 		clr_character_flag = mysteries_study
 	}
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.50
 		clr_character_flag = ravenry_study
 		clr_character_flag = history_study
@@ -5838,18 +5833,18 @@ character_event = { #Fail
 		}
 		remove_trait = travelling
 		character_event = { id = MNM.1000 days = 150 random = 125 } #mission tombola
-    }
+	}
 }
 #Maester requests permission to go study
 character_event = {
-    id = maester.51
+	id = maester.51
 	desc = EVTDESCmaester.51
-    picture = GFX_evt_library
-    border = GFX_event_normal_frame_religion
+	picture = GFX_evt_library
+	border = GFX_event_normal_frame_religion
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.51 #OK
 		FROM = {
 			custom_tooltip = {
@@ -5876,9 +5871,9 @@ character_event = {
 	}
 }
 character_event = { #Finished
-    id = maester.52
+	id = maester.52
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 	hide_window = yes
 	only_capable = yes
 	prisoner = no
@@ -6033,19 +6028,19 @@ character_event = { #Finished
 		}
 	}
 
-    option = {
+	option = {
 		name = OK
 	}
 }
 character_event = { #Inform liege
-    id = maester.53
+	id = maester.53
 	desc = EVTDESCmaester.53
-    picture = GFX_evt_library
-    border = GFX_event_normal_frame_religion
+	picture = GFX_evt_library
+	border = GFX_event_normal_frame_religion
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.53
 		FROM = {
 			if = {
@@ -6079,7 +6074,7 @@ character_event = { #Inform liege
 				clr_character_flag = is_liege_maester_quest
 			}
 			tooltip = {
-				add_artifact = event_target:new_maester_link
+				add_artifact = event_target:maester_link
 				remove_trait = travelling
 			}
 		}
@@ -6143,7 +6138,7 @@ character_event = { #Make friend
 				is_incapable = no
 				in_command = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				NOT = { is_friend = ROOT }
 				NOT = { is_rival = ROOT }
 				opinion = { who = ROOT value = 0 }
@@ -6170,7 +6165,7 @@ character_event = { #Make friend
 					is_incapable = no
 					in_command = no
 					prisoner = no
-					age = 16
+					is_adult = yes
 					NOT = { is_friend = ROOT }
 					NOT = { is_rival = ROOT }
 					opinion = { who = ROOT value = 0 }
@@ -6186,7 +6181,7 @@ character_event = { #Make friend
 	option = {
 		name = EVTOPTAmaester.55
 		event_target:maester_friend = {
-			add_friend  = ROOT
+			add_friend = ROOT
 			character_event = { id = maester.56 }
 		}
 	}
@@ -6201,7 +6196,7 @@ character_event = { #Inform second
 
 	option = {
 		name = EVTOPTAmaester.56
-		add_friend  = FROM
+		add_friend = FROM
 	}
 }
 character_event = { #Make rival
@@ -6232,7 +6227,7 @@ character_event = { #Make rival
 				is_incapable = no
 				in_command = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				NOT = { is_friend = ROOT }
 				NOT = { is_rival = ROOT }
 				NOT = { opinion = { who = ROOT value = -20 } }
@@ -6259,7 +6254,7 @@ character_event = { #Make rival
 					is_incapable = no
 					in_command = no
 					prisoner = no
-					age = 16
+					is_adult = yes
 					NOT = { is_friend = ROOT }
 					NOT = { is_rival = ROOT }
 					NOT = { opinion = { who = ROOT value = -20 } }
@@ -6866,9 +6861,9 @@ character_event = {
 	}
 }
 character_event = { #Success
-    id = maester.83
-    picture = GFX_evt_dragon_skull
-    border = GFX_event_normal_frame_religion
+	id = maester.83
+	picture = GFX_evt_dragon_skull
+	border = GFX_event_normal_frame_religion
 
 	desc = {
 		text = EVTDESCmaester.83
@@ -6887,11 +6882,11 @@ character_event = { #Success
 		trigger = { has_character_flag = kill_dragon_regular }
 	}
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	portrait = event_target:target_dragon
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.83
 		event_target:target_dragon = {
 			add_character_modifier = {
@@ -6900,18 +6895,18 @@ character_event = { #Success
 				hidden = yes
 			}
 		}
-     	clr_quest = kill_dragon
+		clr_quest = kill_dragon
 		sound_effect = hermetic_society_recover_scroll
 		add_society_currency_medium_effect = yes
 		clr_character_flag = kill_dragon_scholar
 		clr_character_flag = kill_dragon_physician
 		clr_character_flag = kill_dragon_herbologist
-    }
+	}
 }
 character_event = { #Fail
-    id = maester.84
-    picture = GFX_evt_dragon_angry
-    border = GFX_event_normal_frame_religion
+	id = maester.84
+	picture = GFX_evt_dragon_angry
+	border = GFX_event_normal_frame_religion
 
 	desc = {
 		text = EVTDESCmaester.84
@@ -6930,23 +6925,23 @@ character_event = { #Fail
 		trigger = { has_character_flag = kill_dragon_regular }
 	}
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	portrait = event_target:target_dragon
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.84
 		clr_quest = { id = kill_dragon failure = yes }
 		detract_society_currency_minor_effect = yes
 		clr_character_flag = kill_dragon_scholar
 		clr_character_flag = kill_dragon_physician
 		clr_character_flag = kill_dragon_herbologist
-    }
+	}
 }
 character_event = { #Fail + injury
-    id = maester.85
-    picture = GFX_evt_dragon_flame_death
-    border = GFX_event_normal_frame_religion
+	id = maester.85
+	picture = GFX_evt_dragon_flame_death
+	border = GFX_event_normal_frame_religion
 
 	desc = {
 		text = EVTDESCmaester.85
@@ -6965,11 +6960,11 @@ character_event = { #Fail + injury
 		trigger = { has_character_flag = kill_dragon_regular }
 	}
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	portrait = event_target:target_dragon
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.85
 		if = {
 			limit = { has_character_flag = kill_dragon_scholar }
@@ -7011,7 +7006,7 @@ character_event = { #Fail + injury
 		clr_character_flag = kill_dragon_scholar
 		clr_character_flag = kill_dragon_physician
 		clr_character_flag = kill_dragon_herbologist
-    }
+	}
 }
 ####Kill Magic Person Mission
 #Ping event for mission
@@ -7099,9 +7094,9 @@ society_quest_event = {
 	}
 }
 character_event = { #Check mission every 50 days
-    id = maester.92
+	id = maester.92
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 	hide_window = yes
 
 	immediate = {
@@ -7131,42 +7126,42 @@ character_event = { #Check mission every 50 days
 		repeat_event = { id = maester.92 days = 50 }
 	}
 
-    option = {
+	option = {
 		name = OK
 	}
 }
 
 character_event = { #Success
-    id = maester.93
-    border = GFX_event_normal_frame_religion
+	id = maester.93
+	border = GFX_event_normal_frame_religion
 	desc = EVTDESCmaester.93
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	portrait = event_target:target_courtier
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.93
-     	clr_quest = maester_kill_magic_person
+		clr_quest = maester_kill_magic_person
 		sound_effect = hermetic_society_recover_scroll
 		add_society_currency_medium_effect = yes
-    }
+	}
 }
 character_event = { #Minor Success
-    id = maester.94
-    border = GFX_event_normal_frame_religion
+	id = maester.94
+	border = GFX_event_normal_frame_religion
 	desc = EVTDESCmaester.94
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
 	portrait = event_target:target_courtier
 
-    option = {
+	option = {
 		name = EVTOPTAmaester.94
-     	clr_quest = maester_kill_magic_person
+		clr_quest = maester_kill_magic_person
 		sound_effect = hermetic_society_recover_scroll
 		add_society_currency_minor_effect = yes
-    }
+	}
 }
 #Offered eternal life by necromancer maester
 character_event = {

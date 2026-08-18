@@ -118,7 +118,7 @@ character_event = {
 	picture = GFX_naath_butterflies
 	portrait = 12400102
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_new_holder
 	has_character_flag = daenerys_targaryen
 	has_global_flag = dany_stormborn_events
 
@@ -145,7 +145,7 @@ character_event = {
 	option = {
 		name = "EVTOPTA_daenerys_missandei_friendship.4A"      #Grant main Naath county to Missandei
 		ai_chance = { factor = 40 }
-		set_global_flag =  missandei_lady_naath
+		set_global_flag = missandei_lady_naath
 		c_12400102 = {
 			c_naath = {
 				grant_title = PREV
@@ -168,7 +168,7 @@ character_event = {
 	option = {
 		name = "EVTOPTC_daenerys_missandei_friendship.4"         #Keep Missandei as courtier
 		ai_chance = { factor = 20 }
-		set_global_flag =  missandei_refused_naath
+		set_global_flag = missandei_refused_naath
 		any_vassal = {
 			limit = { has_landed_title = c_naath }
 			d_naath = {
@@ -185,7 +185,7 @@ character_event = {
 	picture = GFX_naath_butterflies
 	portrait = 12400102
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_new_holder
 
 	only_independent = yes
 	has_character_flag = daenerys_targaryen
@@ -216,7 +216,7 @@ character_event = {
 				succession = primogeniture
 				gender_succ = true_cognatic
 			}
-			set_character_flag =  princess_naath
+			set_character_flag = princess_naath
 		}
 		any_playable_ruler = {
 			limit = { has_landed_title = d_naath }

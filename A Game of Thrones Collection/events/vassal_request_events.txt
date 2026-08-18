@@ -19,7 +19,7 @@ character_event = {
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -699,7 +699,7 @@ character_event = {
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -720,7 +720,7 @@ character_event = {
 			prisoner = no
 			is_incapable = no
 			NOT = { character = ROOT }
-			age = 16
+			is_adult = yes
 			intrigue < 10
 		}
 	}
@@ -762,7 +762,7 @@ character_event = {
 				prisoner = no
 				is_incapable = no
 				NOT = { character = ROOT }
-				age = 16
+				is_adult = yes
 				intrigue < 10
 			}
 			save_event_target_as = requested_rival_removal
@@ -1212,7 +1212,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 216
+		years = 18
 
 		modifier = {
 			factor = 3
@@ -1820,7 +1820,7 @@ character_event = {
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -2428,7 +2428,7 @@ character_event = {
 	desc = EVTDESC63050
 	picture = GFX_evt_into_the_dungeon
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	prisoner = yes
 	min_age = 12
 	only_capable = yes
@@ -3020,7 +3020,7 @@ character_event = {
 	picture = GFX_evt_carriage
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	min_age = 16
 	only_capable = yes
@@ -3339,7 +3339,7 @@ character_event = {
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_over_vassal_limit_succession
 
 	desc = {
 		text = EVTDESC63100
@@ -3508,7 +3508,7 @@ character_event = {
 				new_character = {
 					is_female = no
 					prestige = 0
-					age = 16
+					is_adult = yes
 					OR = {
 						prestige = 1000
 						martial = 14
@@ -3534,7 +3534,7 @@ character_event = {
 				liege = {
 					is_female = no
 					prestige = 0
-					age = 16
+					is_adult = yes
 					OR = {
 						prestige = 1000
 						martial = 14
@@ -4308,7 +4308,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -4334,7 +4334,7 @@ character_event = {
 				any_vassal = { tier = KING }
 				num_of_king_titles = 2
 			}
-			NOT =  { #Interregnum
+			NOT = { #Interregnum
 				primary_title = {
 					is_variable_equal = { which = "lord_paramount_status" value = 2 }
 				}
@@ -6450,7 +6450,7 @@ character_event = {
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -7361,7 +7361,7 @@ character_event = {
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	only_capable = yes
 	prisoner = no

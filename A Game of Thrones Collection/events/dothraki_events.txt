@@ -460,7 +460,7 @@ character_event = {
 character_event = {
 	id = dothraki.203
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 
@@ -595,7 +595,7 @@ character_event = {
 character_event = {
 	id = dothraki.204
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	hide_window = yes
 
@@ -1262,7 +1262,7 @@ character_event = {
 				religion = ROOT
 				NOT = { has_severe_disability_trigger = yes }
 				prisoner = no
-				age = 16
+				is_adult = yes
 				age < 40
 				is_ill = no
 				OR = {
@@ -1638,7 +1638,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 600
+		years = 50
 
 		modifier = {
 			factor = 0.33
@@ -1779,7 +1779,7 @@ character_event = {
 			any_courtier = {
 				is_female = no
 				culture = ROOT
-				age = 16
+				is_adult = yes
 				NOT = { has_severe_disability_trigger = yes }
 				prisoner = no
 				combat_rating = 20
@@ -1849,7 +1849,7 @@ character_event = {
 			limit = {
 				is_female = no
 				culture = ROOT
-				age = 16
+				is_adult = yes
 				NOT = { has_severe_disability_trigger = yes }
 				prisoner = no
 				combat_rating = 20
@@ -1889,7 +1889,7 @@ character_event = {
 	desc = "EVTDESCDOTHRAKI406"
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_over_vassal_limit_succession
 
 	trigger = {
 		is_nomadic = yes
@@ -1997,7 +1997,7 @@ character_event = {
 				is_incapable = no
 				NOT = { is_crippled_trigger = yes }
 				prisoner = no
-				age = 16
+				is_adult = yes
 				age < 40
 				is_ill = no
 				OR = {
@@ -2029,7 +2029,7 @@ character_event = {
 				is_incapable = no
 				NOT = { is_crippled_trigger = yes }
 				prisoner = no
-				age = 16
+				is_adult = yes
 				age < 40
 				is_ill = no
 				OR = {
@@ -2828,7 +2828,7 @@ character_event = {
 character_event = { #from province looting
 	id = dothraki.697
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_province
 	hide_window = yes
 
 	trigger = {
@@ -4345,7 +4345,8 @@ character_event = {
 	desc = "EVTDESCDOTHRAKI700"
 	picture = GFX_evt_horse_friend
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
+	culture = dothraki
 	min_age = 12
 	max_age = 14
 	only_capable = yes
@@ -5377,7 +5378,7 @@ character_event = {
 character_event = {
 	id = dothraki.806
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 	hide_window = yes
 	#only_women = yes
 	#min_age = 12
@@ -5525,7 +5526,7 @@ character_event = {
 	desc = "EVTDESCDOTHRAKI808"
 	picture = GFX_evt_birth
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 	only_playable = yes
 	religion = dothraki_pagan
 
@@ -5723,7 +5724,7 @@ character_event = {
 	desc = "EVTDESCDOTHRAKI815"
 
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_nomadic = yes
@@ -6094,7 +6095,7 @@ character_event = {
 	id = dothraki.820
 	desc = "Hey, AI, you want to raid this person?"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_independent = yes
 	ai = yes
 	war = no
@@ -6166,7 +6167,7 @@ character_event = {
 						}
 					}
 				}
-				save_event_target_as =  opinion_raid_target_evaluation
+				save_event_target_as = opinion_raid_target_evaluation
 				break = yes
 			}
 			random_independent_ruler = { #neighboring realm in anywhere
@@ -6206,7 +6207,7 @@ character_event = {
 						}
 					}
 				}
-				save_event_target_as =  opinion_raid_target_evaluation
+				save_event_target_as = opinion_raid_target_evaluation
 				break = yes
 			}
 		}
@@ -6337,7 +6338,7 @@ character_event = {
 					}
 				}
 			}
-			save_event_target_as =  opinion_raid_target_evaluation
+			save_event_target_as = opinion_raid_target_evaluation
 		}
 	}
 
@@ -6921,7 +6922,11 @@ character_event = {
 character_event = {
 	id = dothraki.850
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
+
+	only_playable = yes
+	only_men = yes
+	min_age = 16
 
 	trigger = {
 		is_nomadic = yes
@@ -6942,7 +6947,7 @@ character_event = {
 			trait = trained_warrior
 			trait = poor_warrior
 		}
-		age = 16
+		is_adult = yes
 		is_female = no
 	}
 
@@ -7028,7 +7033,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -7293,7 +7298,7 @@ character_event = {
 character_event = { #on_war_ended_victory
 	id = dothraki.880
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 	hide_window = yes
 
 	trigger = { is_nomadic = yes }
@@ -7309,7 +7314,7 @@ character_event = { #on_war_ended_victory
 character_event = { #on_war_ended_defeat
 	id = dothraki.881
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_defeat
 	hide_window = yes
 
 	trigger = { FROM = { is_nomadic = yes } }

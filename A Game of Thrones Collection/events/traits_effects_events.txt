@@ -22,7 +22,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = lustful
@@ -150,7 +150,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_men = yes
 
 	trigger = {
@@ -210,7 +210,7 @@ character_event = {
 	only_men = yes
 	only_playable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = lustful
@@ -225,7 +225,7 @@ character_event = {
 
 		any_courtier = {
 			is_female = yes
-			age = 16
+			is_adult = yes
 			age < 35
 			NOT = { has_ugly_trait_trigger = yes }
 			NOT = { is_close_relative = ROOT }
@@ -260,7 +260,7 @@ character_event = {
 		random_courtier = {
 			limit = {
 				is_female = yes
-				age = 16
+				is_adult = yes
 				age < 35
 				NOT = { has_ugly_trait_trigger = yes }
 				NOT = { is_close_relative = ROOT }
@@ -353,8 +353,11 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
+	war = no
+	only_men = yes
+	in_command = no
 
 	trigger = {
 		trait = lustful
@@ -425,7 +428,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -499,7 +502,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	religion = the_seven
 
@@ -566,7 +569,7 @@ character_event = {
 		name = EVTOPTC3020
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					trait = lustful
@@ -598,7 +601,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	religion = the_seven
 
@@ -687,7 +690,7 @@ character_event = {
 	only_playable = yes
 	religion = the_seven
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = chaste
@@ -768,7 +771,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_men = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 
 	trigger = {
@@ -803,7 +806,7 @@ character_event = {
 		random_courtier = {
 			limit = {
 				is_female = yes
-				age = 16
+				is_adult = yes
 				is_married = no
 				has_lover = no
 				OR = {
@@ -856,7 +859,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_men = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -987,7 +990,7 @@ character_event = {
 	only_men = yes
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	rivals = yes
 
 	trigger = {
@@ -1092,7 +1095,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_men = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = chaste
@@ -1159,7 +1162,7 @@ character_event = {
 				ai = yes
 				is_female = yes
 				is_married = no
-				age = 16
+				is_adult = yes
 				age < 35
 				OR = {
 					NOT = { is_immediate_relative_ROOT_trigger = yes }
@@ -1241,7 +1244,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -1252,10 +1255,10 @@ character_event = {
 			liege = { character = ROOT }
 			NOT = { is_close_relative = ROOT }
 			is_ruler = no
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
-			NOT = { trait  = dragon }
+			NOT = { trait = dragon }
 			NOT = { trait = slave }
 			is_incapable = no
 			NOT = { trait = eunuch }
@@ -1273,10 +1276,10 @@ character_event = {
 				liege = { character = ROOT }
 				NOT = { is_close_relative = ROOT }
 				is_ruler = no
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
-				NOT = { trait  = dragon }
+				NOT = { trait = dragon }
 				NOT = { trait = slave }
 				is_incapable = no
 				NOT = { trait = eunuch }
@@ -1403,7 +1406,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -1414,7 +1417,7 @@ character_event = {
 
 		any_vassal = {
 			trait = gluttonous
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			is_incapable = no
@@ -1428,7 +1431,7 @@ character_event = {
 		random_vassal = {
 			limit = {
 				trait = gluttonous
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				is_incapable = no
@@ -1466,7 +1469,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -1553,7 +1556,7 @@ character_event = {
 		scaled_wealth = { value = -0.2 min = -30 max = -150 }
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				is_incapable = no
@@ -1587,7 +1590,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = gluttonous
@@ -1634,7 +1637,7 @@ character_event = {
 					trait = drunkard
 					trait = gluttonous
 				}
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				is_incapable = no
@@ -1701,7 +1704,7 @@ character_event = {
 	min_age = 40
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -1794,7 +1797,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -1830,7 +1833,7 @@ character_event = {
 		prestige = -50
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { character = ROOT }
 				is_incapable = no
@@ -1906,7 +1909,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -1958,7 +1961,7 @@ character_event = {
 		name = EVTOPTB3060
 		trigger = {
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				NOT = { is_close_relative = ROOT }
 				NOT = { character = ROOT }
 				NOT = { demesne_size = 1 }
@@ -1972,7 +1975,7 @@ character_event = {
 		wealth = 10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { is_close_relative = ROOT }
 				NOT = { character = ROOT }
 				NOT = { demesne_size = 1 }
@@ -2000,7 +2003,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	friends = yes
 
@@ -2009,7 +2012,7 @@ character_event = {
 		in_command = no
 		NOT = { trait = honorable }
 		any_friend = {
-			age = 16
+			is_adult = yes
 			ai = yes
 			NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_betrayed } }
 			NOT = { trait = dragon }
@@ -2062,7 +2065,7 @@ character_event = {
 		scaled_wealth = { value = 0.1 min = 15 max = 100 }
 		random_friend = {
 			limit = {
-				age = 16
+				is_adult = yes
 				ai = yes
 				NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_betrayed } }
 				NOT = { trait = dragon }
@@ -2084,7 +2087,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -2247,7 +2250,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 
 	trigger = {
@@ -2311,14 +2314,14 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
 		trait = charitable
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { opinion = { who = ROOT value = 0 } }
 			NOT = { trait = dragon }
 		}
@@ -2339,7 +2342,7 @@ character_event = {
 		name = EVTOPTA3080
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { opinion = { who = ROOT value = 0 } }
 				NOT = { trait = dragon }
 			}
@@ -2351,13 +2354,13 @@ character_event = {
 		trigger = {
 			is_ruler = yes
 			any_vassal = {
-				age = 16
+				is_adult = yes
 				NOT = { opinion = { who = ROOT value = 0 } }
 			}
 		}
 		random_vassal = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { opinion = { who = ROOT value = 0 } }
 			}
 			opinion = { who = ROOT modifier = charitable_to_you }
@@ -2374,7 +2377,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -2461,7 +2464,7 @@ character_event = {
 	min_age = 16
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = charitable
@@ -2517,14 +2520,14 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 	only_playable = yes
 
 	trigger = {
 		trait = charitable
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			OR = {
 				trait = lustful
 				trait = gluttonous
@@ -2545,7 +2548,7 @@ character_event = {
 		name = EVTOPTA3083
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					trait = lustful
 					trait = gluttonous
@@ -2579,7 +2582,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 	only_playable = yes
 
@@ -2630,7 +2633,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 
 	trigger = {
@@ -2697,7 +2700,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = charitable
@@ -2877,7 +2880,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = slothful
@@ -2947,7 +2950,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = slothful
@@ -3032,7 +3035,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = slothful
@@ -3100,7 +3103,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = slothful
@@ -3222,7 +3225,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = diligent
@@ -3313,7 +3316,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = diligent
@@ -3454,7 +3457,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = diligent
@@ -3465,11 +3468,11 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_vassal = {
-			age = 16
+			is_adult = yes
 			NOT = { is_inaccessible_trigger = yes }
 			ai = yes
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = { character = PREV }
 				NOT = { character = ROOT }
@@ -3518,11 +3521,11 @@ character_event = {
 		name = EVTOPTA3123
 		random_vassal = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { is_inaccessible_trigger = yes }
 				ai = yes
 				any_courtier = {
-					age = 16
+					is_adult = yes
 					NOT = { is_inaccessible_trigger = yes }
 					NOT = { character = PREV }
 					NOT = { character = ROOT }
@@ -3535,7 +3538,7 @@ character_event = {
 			}
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					NOT = { is_inaccessible_trigger = yes }
 					NOT = { character = PREV }
 					NOT = { character = ROOT }
@@ -3575,7 +3578,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = diligent
@@ -3641,7 +3644,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = diligent
@@ -3700,7 +3703,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = diligent
@@ -3779,7 +3782,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -3793,7 +3796,7 @@ character_event = {
 		}
 		martial = 8
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { demesne_size = 1 }
 			prisoner = no
 			OR = {
@@ -3817,7 +3820,7 @@ character_event = {
 		name = EVTOPTA3140
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				OR = {
@@ -3860,7 +3863,7 @@ character_event = {
 		name = EVTOPTB3140
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				OR = {
@@ -3932,7 +3935,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -3942,7 +3945,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		diplomacy = 8
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { demesne_size = 1 }
 			prisoner = no
 			diplomacy = ROOT
@@ -3962,7 +3965,7 @@ character_event = {
 		name = EVTOPTA3141
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				diplomacy = ROOT
@@ -4001,7 +4004,7 @@ character_event = {
 		name = EVTOPTB3141
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				diplomacy = ROOT
@@ -4069,7 +4072,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -4079,7 +4082,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		stewardship = 8
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { demesne_size = 1 }
 			prisoner = no
 			stewardship = ROOT
@@ -4099,7 +4102,7 @@ character_event = {
 		name = EVTOPTA3142
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				stewardship = ROOT
@@ -4138,7 +4141,7 @@ character_event = {
 		name = EVTOPTB3142
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				stewardship = ROOT
@@ -4206,7 +4209,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -4216,7 +4219,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		intrigue = 8
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { demesne_size = 1 }
 			prisoner = no
 			intrigue = ROOT
@@ -4236,7 +4239,7 @@ character_event = {
 		name = EVTOPTA3143
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				intrigue = ROOT
@@ -4275,7 +4278,7 @@ character_event = {
 		name = EVTOPTB3143
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				intrigue = ROOT
@@ -4343,7 +4346,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -4353,7 +4356,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		learning = 8
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { demesne_size = 1 }
 			prisoner = no
 			learning = ROOT
@@ -4373,7 +4376,7 @@ character_event = {
 		name = EVTOPTA3144
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				learning = ROOT
@@ -4412,7 +4415,7 @@ character_event = {
 		name = EVTOPTB3144
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { demesne_size = 1 }
 				prisoner = no
 				learning = ROOT
@@ -4483,7 +4486,7 @@ character_event = {
 	only_capable = yes
 	is_married = yes
 	war = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = envious
@@ -4491,7 +4494,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		num_of_children < 1
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			age < 26
 			NOT = { demesne_size = 1 }
 			prisoner = no
@@ -4513,7 +4516,7 @@ character_event = {
 		name = EVTOPTA3145
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				age < 26
 				NOT = { demesne_size = 1 }
 				prisoner = no
@@ -4554,7 +4557,7 @@ character_event = {
 		name = EVTOPTB3145
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				age < 26
 				NOT = { demesne_size = 1 }
 				prisoner = no
@@ -4623,7 +4626,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -4673,7 +4676,7 @@ character_event = {
 		piety = 40
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { trait = cruel }
 				NOT = { trait = proud }
@@ -4741,7 +4744,7 @@ character_event = {
 	only_playable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -4861,7 +4864,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = kind
@@ -4871,7 +4874,7 @@ character_event = {
 			has_character_modifier = the_kind
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = {
 				character = ROOT
@@ -4900,7 +4903,7 @@ character_event = {
 	immediate = {
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					character = ROOT
@@ -4987,7 +4990,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -5060,7 +5063,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = wroth
@@ -5073,7 +5076,7 @@ character_event = {
 		NOT = { trait = kind }
 		stewardship = 8
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			OR = {
 				trait = trusting
 				trait = craven
@@ -5092,7 +5095,7 @@ character_event = {
 		name = EVTOPTA3185
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					trait = trusting
 					trait = craven
@@ -5158,7 +5161,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -5207,7 +5210,7 @@ character_event = {
 		piety = -10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				NOT = { character = ROOT }
@@ -5354,7 +5357,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = wroth
@@ -5445,7 +5448,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = patient
@@ -5454,7 +5457,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			trait = wroth
 			NOT_mythical_creature_trigger = yes
 			is_incapable = no
@@ -5470,7 +5473,7 @@ character_event = {
 	immediate = {
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				trait = wroth
 				NOT_mythical_creature_trigger = yes
 				is_incapable = no
@@ -5553,7 +5556,7 @@ character_event = {
 	max_age = 50
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = patient
@@ -5623,7 +5626,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 	only_playable = yes
 
@@ -5633,7 +5636,7 @@ character_event = {
 		war = no
 		in_command = no
 		any_vassal = {
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			NOT = { reverse_opinion = { who = ROOT value = -25 } }
 			NOT = { is_rival = ROOT }
@@ -5668,7 +5671,7 @@ character_event = {
 		}
 		random_vassal = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				NOT = { reverse_opinion = { who = ROOT value = -25 } }
 				NOT = { is_rival = ROOT }
@@ -5730,12 +5733,15 @@ character_event = {
 	desc = EVTDESC3205
 	picture = GFX_evt_knight_kneeling
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	religion_group = westerosi_religion
 	min_age = 16
 	only_capable = yes
 	prisoner = no
+	only_men = yes
+	war = no
+	in_command = no
 
 	trigger = {
 		trait = patient
@@ -5749,7 +5755,7 @@ character_event = {
 		learning = 7
 		NOT = { has_character_modifier = mercy_to_sinners }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			religion = ROOT
 			OR = {
 				trait = cynical
@@ -5780,7 +5786,7 @@ character_event = {
 		name = EVTOPTA3205
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				religion = ROOT
 				OR = {
 					trait = cynical
@@ -5880,7 +5886,7 @@ character_event = {
 			years = 5
 		}
 		name = EVTOPTA3207
-		piety  = 10
+		piety = 10
 
 	}
 }
@@ -5894,7 +5900,7 @@ character_event = {
 	is_triggered_only = yes
 	option = {
 		name = EVTOPTA3208
-		piety  = 5
+		piety = 5
 
 	}
 }
@@ -5909,7 +5915,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = proud
@@ -5991,7 +5997,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = proud
@@ -5999,7 +6005,7 @@ character_event = {
 		in_command = no
 		wealth < 100
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { character = ROOT }
 			is_councillor = yes
@@ -6031,7 +6037,7 @@ character_event = {
 		name = EVTOPTA3225
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { character = ROOT }
 				is_councillor = yes
@@ -6106,7 +6112,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = proud
@@ -6157,7 +6163,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = proud
@@ -6167,7 +6173,7 @@ character_event = {
 		NOT = { trait = patient }
 		NOT = { trait = kind }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			OR = {
 				trait = gregarious
@@ -6211,7 +6217,7 @@ character_event = {
 		name = EVTOPTA3235
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				OR = {
 					trait = gregarious
@@ -6293,7 +6299,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	religion = the_seven
 
 	trigger = {
@@ -6359,7 +6365,7 @@ character_event = {
 	only_playable = yes
 	religion = the_seven
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = humble
@@ -6408,7 +6414,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -6471,7 +6477,7 @@ character_event = {
 	only_playable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = humble
@@ -6519,7 +6525,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = humble
@@ -6564,7 +6570,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = humble
@@ -6611,7 +6617,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -6659,7 +6665,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = humble
@@ -6704,8 +6710,11 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
+	war = no
+	only_men = yes
+	in_command = no
 
 	trigger = {
 		trait = deceitful
@@ -6733,7 +6742,7 @@ character_event = {
 		name = EVTOPTA3260 #Appear to be X
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					martial = 10
 					trait = honest
@@ -6774,7 +6783,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -6802,7 +6811,7 @@ character_event = {
 		name = EVTOPTA3261 #Appear to be X
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					stewardship = 10
 					trait = honest
@@ -6843,7 +6852,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -6871,7 +6880,7 @@ character_event = {
 		name = EVTOPTA3262 #Appear to be X
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					diplomacy = 10
 					trait = honest
@@ -6912,7 +6921,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -6940,7 +6949,7 @@ character_event = {
 		name = EVTOPTA3263 #Appear to be X
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					learning = 10
 					trait = honest
@@ -6985,7 +6994,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = honest
@@ -6994,7 +7003,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { trait = honest }
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -7035,7 +7044,7 @@ character_event = {
 		name = EVTOPTA3280
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { trait = honest }
 				OR = {
 					AND = {
@@ -7102,7 +7111,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = honest
@@ -7145,7 +7154,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = honest
@@ -7268,7 +7277,7 @@ letter_event = {
 		# in_command = no
 		# NOT = { is_inaccessible_trigger = yes }
 		# any_vassal = {
-			# age = 16
+			# is_adult = yes
 			# NOT = { is_inaccessible_trigger = yes }
 			# OR = {
 				# trait = charitable
@@ -7289,7 +7298,7 @@ letter_event = {
 	# immediate = {
 		# random_vassal = {
 			# limit = {
-				# age = 16
+				# is_adult = yes
 				# NOT = { is_inaccessible_trigger = yes }
 				# OR = {
 					# trait = charitable
@@ -7372,7 +7381,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7433,7 +7442,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7446,7 +7455,7 @@ character_event = {
 			tier = count
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -7495,7 +7504,7 @@ character_event = {
 		name = EVTOPTA3305
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = {
@@ -7577,7 +7586,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7623,7 +7632,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7659,7 +7668,7 @@ character_event = {
 		top_liege = {
 			random_realm_character = {
 				limit = {
-					age = 16
+					is_adult = yes
 					prisoner = no
 					in_command = yes
 					at_location = ROOT
@@ -7715,7 +7724,7 @@ character_event = {
 	prisoner = no
 	only_men = yes
 	only_capable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7898,7 +7907,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7946,7 +7955,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -7993,7 +8002,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8111,7 +8120,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8158,7 +8167,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8167,7 +8176,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -8210,7 +8219,7 @@ character_event = {
 		name = EVTOPTA3345
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_female = no
 				NOT = {
@@ -8285,7 +8294,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8332,7 +8341,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8340,7 +8349,7 @@ character_event = {
 		war = no
 		in_command = no
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = {
 				character = ROOT
@@ -8382,7 +8391,7 @@ character_event = {
 		name = EVTOPTA3355
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					character = ROOT
@@ -8456,7 +8465,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8502,7 +8511,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = ambitious
@@ -8515,7 +8524,7 @@ character_event = {
 			prestige = 500
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = {
 				character = ROOT
@@ -8559,7 +8568,7 @@ character_event = {
 		name = EVTOPTA3365
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					character = ROOT
@@ -8635,7 +8644,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8695,7 +8704,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8705,7 +8714,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		NOT = { has_character_modifier = the_merciful }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			in_command = no
@@ -8743,7 +8752,7 @@ character_event = {
 		name = EVTOPTA3375
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				in_command = no
@@ -8865,7 +8874,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -8874,7 +8883,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -8887,7 +8896,7 @@ character_event = {
 			NOT = {
 				trait = incapable
 			}
-			NOT = { trait  = dragon }
+			NOT = { trait = dragon }
 		}
 	}
 
@@ -8918,7 +8927,7 @@ character_event = {
 		name = EVTOPTA3380
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				OR = {
 					trait = stressed
@@ -9018,7 +9027,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		war = no
@@ -9073,7 +9082,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -9127,7 +9136,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = content
@@ -9137,7 +9146,7 @@ character_event = {
 			trait = diligent
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			is_incapable = no
 			OR = {
@@ -9177,7 +9186,7 @@ character_event = {
 		name = EVTOPTA3395
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				OR = {
@@ -9248,7 +9257,7 @@ character_event = {
 	id = 3400
 	desc = EVTDESC3400
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_independent = yes
 	min_age = 16
 	only_capable = yes
@@ -9339,7 +9348,7 @@ character_event = {
 character_event = {
 	id = traits_effects.100
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	hide_window = yes
 	only_playable = yes
 	min_age = 16
@@ -9577,7 +9586,7 @@ character_event = {
 	desc = EVTDESC3410
 	picture = GFX_evt_scandal
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 	min_age = 16
 	only_capable = yes
@@ -9729,7 +9738,7 @@ character_event = {
 	id = 3415
 	desc = EVTDESC3415
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 	min_age = 16
 	only_capable = yes
@@ -9740,7 +9749,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier_or_vassal = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			prisoner = no
 			NOT = { opinion = { who = ROOT value = -10 } }
@@ -9800,7 +9809,7 @@ character_event = {
 	immediate = {
 		random_courtier_or_vassal = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				prisoner = no
 				NOT = { opinion = { who = ROOT value = -10 } }
@@ -9915,7 +9924,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = just
@@ -9923,7 +9932,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
 			in_command = no
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -9971,7 +9980,7 @@ character_event = {
 		name = EVTOPTA3420
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				OR = {
 					trait = just
@@ -10051,7 +10060,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -10098,7 +10107,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -10146,14 +10155,14 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = just
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -10191,7 +10200,7 @@ character_event = {
 		name = EVTOPTA3435
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					trait = incapable
@@ -10210,7 +10219,7 @@ character_event = {
 		name = EVTOPTB3435
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					trait = incapable
@@ -10412,7 +10421,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = cynical
@@ -10422,7 +10431,7 @@ character_event = {
 			has_character_modifier = the_cynical
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -10466,7 +10475,7 @@ character_event = {
 		name = EVTOPTA3440
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				wealth = 20
 				NOT = {
@@ -10545,14 +10554,14 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
 		trait = cynical
 		in_command = no
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			trait = cynical
 			NOT = { trait = dragon }
@@ -10596,7 +10605,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = cynical
@@ -10606,7 +10615,7 @@ character_event = {
 			has_character_modifier = the_cynical
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -10649,7 +10658,7 @@ character_event = {
 		name = EVTOPTA3450
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					character = ROOT
@@ -10727,7 +10736,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -10735,7 +10744,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		trait = cynical
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -10786,7 +10795,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -10796,7 +10805,7 @@ character_event = {
 		NOT = { is_voter = yes }
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			prisoner = no
 			religion = ROOT
@@ -10844,7 +10853,7 @@ character_event = {
 		name = EVTOPTA3460
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -10922,7 +10931,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -10969,7 +10978,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -11118,7 +11127,7 @@ character_event = {
 	desc = EVTDESC3475
 	picture = GFX_evt_council
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 	min_age = 16
 	only_capable = yes
@@ -11445,13 +11454,13 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = paranoid
 		in_command = no
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			OR = {
 				trait = trusting
@@ -11494,7 +11503,7 @@ character_event = {
 		name = EVTOPTA3480
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				OR = {
 					trait = trusting
@@ -11536,7 +11545,7 @@ character_event = {
 		FROM = {
 			character_event = {
 				id = 3482
-				days  = 3
+				days = 3
 				tooltip = EVTTOOLTIP3482
 			}
 		}
@@ -11572,7 +11581,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = paranoid
@@ -11617,7 +11626,7 @@ character_event = {
 		name = EVTOPTB3485
 		trigger = {
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				OR = {
@@ -11639,7 +11648,7 @@ character_event = {
 
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				OR = {
@@ -11675,7 +11684,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	friends = yes
 
 	trigger = {
@@ -11683,7 +11692,7 @@ character_event = {
 		war = no
 		in_command = no
 		any_friend = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = {
 				character = ROOT
@@ -11724,7 +11733,7 @@ character_event = {
 		name = EVTOPTA3490
 		random_friend = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = {
 					character = ROOT
@@ -11800,7 +11809,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -11849,7 +11858,7 @@ character_event = {
 		name = EVTOPTB3495
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { trait = dragon }
 			}
@@ -11871,7 +11880,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -11919,7 +11928,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -11929,7 +11938,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		lower_tier_than = KING
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			NOT = {
@@ -11968,7 +11977,7 @@ character_event = {
 		name = EVTOPTA3505
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = {
@@ -12045,7 +12054,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -12096,7 +12105,7 @@ character_event = {
 	min_age = 16
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_playable = yes
 
 	trigger = {
@@ -12105,7 +12114,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -12154,7 +12163,7 @@ character_event = {
 		name = EVTOPTA3515
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -12241,7 +12250,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = celibate
@@ -12393,7 +12402,7 @@ character_event = {
 	min_age = 27
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -12410,7 +12419,7 @@ character_event = {
 		}
 		any_vassal = {
 			trait = chaste
-			age = 16
+			is_adult = yes
 			age < 25
 			NOT = { is_inaccessible_trigger = yes }
 			NOR = {
@@ -12439,7 +12448,7 @@ character_event = {
 		random_vassal = {
 			limit = {
 				trait = chaste
-				age = 16
+				is_adult = yes
 				age < 25
 				NOT = { is_inaccessible_trigger = yes }
 				NOR = {
@@ -12579,7 +12588,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = celibate
@@ -12590,7 +12599,7 @@ character_event = {
 			trait = lustful
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			is_priest = yes
 			is_female = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -12622,7 +12631,7 @@ character_event = {
 		name = EVTOPA3530
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_priest = yes
 				is_female = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -12719,7 +12728,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	religion = the_seven
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -12731,7 +12740,7 @@ character_event = {
 			trait = lustful
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			trait = celibate
@@ -12902,7 +12911,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -12920,7 +12929,7 @@ character_event = {
 			trait = content
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
 				learning = 10
@@ -12958,7 +12967,7 @@ character_event = {
 	immediate = {
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
 					learning = 10
@@ -13134,7 +13143,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = scholar
@@ -13151,7 +13160,7 @@ character_event = {
 			has_character_modifier = the_idle
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			NOT = {
@@ -13185,7 +13194,7 @@ character_event = {
 		name = EVTOPTA3543
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				is_priest = yes
@@ -13238,7 +13247,7 @@ character_event = {
 	}
 	option = {
 		name = EVTOPTB3544
-		add_friend  = FROM
+		add_friend = FROM
 		FROM = {
 			set_character_flag = you_friend
 			character_event = {
@@ -13273,7 +13282,7 @@ character_event = {
 			has_character_flag = you_friend
 		}
 		clr_character_flag = you_friend
-		add_friend  = FROM
+		add_friend = FROM
 	}
 	option = {
 		name = EVTOPTB3545
@@ -13301,7 +13310,7 @@ character_event = {
 	only_capable = yes
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = scholar
@@ -13309,9 +13318,7 @@ character_event = {
 		in_command = no
 		any_child = {
 			age = 6
-			NOT = {
-				age = 16
-			}
+			is_adult = no
 			NOT = {
 				trait = content
 			}
@@ -13332,9 +13339,7 @@ character_event = {
 		random_child = {
 			limit = {
 				age = 6
-				NOT = {
-					age = 16
-				}
+				is_adult = no
 				NOT = {
 					trait = content
 				}
@@ -13356,9 +13361,7 @@ character_event = {
 		random_child = {
 			limit = {
 				age = 6
-				NOT = {
-					age = 16
-				}
+				is_adult = no
 				NOT = {
 					trait = content
 				}
@@ -13380,9 +13383,7 @@ character_event = {
 		random_child = {
 			limit = {
 				age = 6
-				NOT = {
-					age = 16
-				}
+				is_adult = no
 				NOT = {
 					trait = content
 				}
@@ -13656,7 +13657,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = scholar
@@ -13670,7 +13671,7 @@ character_event = {
 		OR = {
 			is_married = yes
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = {
 					trait = scholar
@@ -13722,7 +13723,7 @@ character_event = {
 		trigger = {
 			is_married = no
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = {
 					trait = scholar
@@ -13738,7 +13739,7 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = {
 					trait = scholar
@@ -13864,7 +13865,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = gardener
@@ -14158,7 +14159,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -14180,7 +14181,7 @@ character_event = {
 			}
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -14205,7 +14206,7 @@ character_event = {
 		piety = -10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					learning = 10
@@ -14225,7 +14226,7 @@ character_event = {
 		name = EVTOPTB3560 #Ask nicely
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					learning = 10
@@ -14246,7 +14247,7 @@ character_event = {
 		scaled_wealth = { value = -0.1 min = -10 max = -100 }
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					learning = 10
@@ -14387,7 +14388,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -14403,7 +14404,7 @@ character_event = {
 		OR = {
 			is_married = yes
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = greedy
 				stewardship = 8
@@ -14467,7 +14468,7 @@ character_event = {
 		name = EVTOPTC3563
 		trigger = {
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = greedy
 				stewardship = 8
@@ -14476,7 +14477,7 @@ character_event = {
 		scaled_wealth = { value = -0.15 min = -15 max = -125 }
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = greedy
 				stewardship = 8
@@ -14640,7 +14641,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -14655,7 +14656,7 @@ character_event = {
 			health = 6
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			OR = {
 				is_voter = yes
 				is_councillor = yes
@@ -14688,7 +14689,7 @@ character_event = {
 		name = EVTOPTA3568
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				OR = {
 					is_voter = yes
 					is_councillor = yes
@@ -15006,7 +15007,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -15030,7 +15031,7 @@ character_event = {
 			}
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			OR = {
 				learning = 10
@@ -15056,7 +15057,7 @@ character_event = {
 			chance = 25
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					in_command = no
 					OR = {
 						learning = 10
@@ -15079,7 +15080,7 @@ character_event = {
 			chance = 25
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					in_command = no
 					OR = {
 						learning = 10
@@ -15103,7 +15104,7 @@ character_event = {
 			chance = 25
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					in_command = no
 					OR = {
 						learning = 10
@@ -15254,7 +15255,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = mystic
@@ -15262,7 +15263,7 @@ character_event = {
 		in_command = no
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -15293,7 +15294,7 @@ character_event = {
 		name = EVTOPTA3575
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -15484,7 +15485,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = mystic
@@ -15678,7 +15679,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = mystic
@@ -15820,7 +15821,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = mystic
@@ -15829,7 +15830,7 @@ character_event = {
 		in_command = no
 		is_ill = no
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			prisoner = no
 			OR = {
@@ -15861,7 +15862,7 @@ character_event = {
 		random_courtier = {
 			limit = {
 				prisoner = no
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					has_epidemic = yes
@@ -16066,7 +16067,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = impaler
@@ -16081,7 +16082,7 @@ character_event = {
 		OR = {
 			is_married = yes
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = greedy
 				stewardship = 8
@@ -16140,7 +16141,7 @@ character_event = {
 		name = EVTOPTA3600
 		trigger = {
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = greedy
 				stewardship = 8
@@ -16154,7 +16155,7 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = greedy
 				stewardship = 8
@@ -16447,7 +16448,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = impaler
@@ -16469,7 +16470,7 @@ character_event = {
 		}
 		num_of_prisoners = 1
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -16499,7 +16500,7 @@ character_event = {
 		piety = -10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					learning = 10
@@ -16525,7 +16526,7 @@ character_event = {
 		prestige = -10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					learning = 10
@@ -16555,7 +16556,7 @@ character_event = {
 		scaled_wealth = { value = -0.1 min = -10 max = -100 }
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					learning = 10
@@ -16709,7 +16710,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = impaler
@@ -16973,7 +16974,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = impaler
@@ -17326,7 +17327,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = duelist
@@ -17610,7 +17611,7 @@ character_event = {
 	only_men = yes
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = duelist
@@ -18060,7 +18061,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = duelist
@@ -18079,7 +18080,7 @@ character_event = {
 		OR = {
 			is_married = yes
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = {
@@ -18133,7 +18134,7 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = {
@@ -18279,7 +18280,7 @@ character_event = {
 	max_age = 65
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -18565,7 +18566,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -18583,7 +18584,7 @@ character_event = {
 			trait = craven
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -18624,7 +18625,7 @@ character_event = {
 		piety = -10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -18646,7 +18647,7 @@ character_event = {
 		prestige = -10
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -18668,7 +18669,7 @@ character_event = {
 		scaled_wealth = { value = -0.1 min = -10 max = -100 }
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -18825,14 +18826,14 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
 		trait = hunter
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			OR = {
 				is_voter = yes
@@ -18881,7 +18882,7 @@ character_event = {
 		name = EVTOPTA3645
 		trigger = {
 			job_marshal = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					trait = hunter
@@ -18906,7 +18907,7 @@ character_event = {
 		name = EVTOPTB3645
 		trigger = {
 			job_chancellor = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					trait = hunter
@@ -18931,7 +18932,7 @@ character_event = {
 		name = EVTOPTC3645
 		trigger = {
 			job_spymaster = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				OR = {
 					trait = hunter
@@ -19123,7 +19124,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -19141,7 +19142,7 @@ character_event = {
 			has_character_modifier = master_hunter
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -19500,7 +19501,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -19510,7 +19511,7 @@ character_event = {
 
 		NOT = { is_inaccessible_trigger = yes }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -19698,7 +19699,7 @@ character_event = {
 		}
 		random_child = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_abroad = no
 				prisoner = no
 				NOT = { is_inaccessible_trigger = yes }
@@ -19843,7 +19844,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = poet
@@ -20069,7 +20070,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -20081,7 +20082,7 @@ character_event = {
 			trait = wroth
 		}
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			OR = {
@@ -20106,7 +20107,7 @@ character_event = {
 		name = EVTOPTB3665
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				OR = {
@@ -20142,7 +20143,7 @@ character_event = {
 		piety = 10
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				trait = zealous
@@ -20184,7 +20185,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -20417,7 +20418,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -20426,7 +20427,7 @@ character_event = {
 		has_lover = no
 		trait = deceitful
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			has_character_modifier = poetry_timer
 			war = no
 			in_command = no
@@ -20672,7 +20673,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = poet
@@ -20765,7 +20766,7 @@ character_event = {
 		trigger = {
 			has_lover = no
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				has_lover = no
 				prisoner = no
@@ -20796,7 +20797,7 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				prisoner = no
 				OR = {
@@ -20880,7 +20881,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTA3687
-		add_lover = from
+		add_lover = FROM
 		hidden_tooltip = {
 			FROM = {
 				character_event = {
@@ -20916,7 +20917,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTA3688
-		add_lover = from
+		add_lover = FROM
 	}
 }
 
@@ -20957,7 +20958,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	is_married = yes
 
 	trigger = {
@@ -21406,7 +21407,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		in_command = no
@@ -21417,7 +21418,7 @@ character_event = {
 			prisoner = no
 			NOT = { is_inaccessible_trigger = yes }
 			opinion = { who = ROOT value = 20 }
-			age = 16
+			is_adult = yes
 			NOT = {
 				trait = falconer
 			}
@@ -21447,7 +21448,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				opinion = { who = ROOT value = 20 }
-				age = 16
+				is_adult = yes
 				NOT = {
 					trait = falconer
 				}
@@ -21491,7 +21492,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				opinion = { who = ROOT value = 20 }
-				age = 16
+				is_adult = yes
 				NOT = {
 					trait = falconer
 				}
@@ -21545,7 +21546,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				opinion = { who = ROOT value = 20 }
-				age = 16
+				is_adult = yes
 				NOT = {
 					trait = falconer
 				}
@@ -21588,7 +21589,7 @@ character_event = {
 			limit = {
 				prisoner = no
 				opinion = { who = ROOT value = 20 }
-				age = 16
+				is_adult = yes
 				NOT = {
 					trait = falconer
 				}
@@ -22062,7 +22063,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = gregarious
@@ -22231,7 +22232,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		trait = gregarious
@@ -22428,7 +22429,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -22436,7 +22437,7 @@ character_event = {
 		NOT = { is_inaccessible_trigger = yes }
 		trait = gregarious
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = { is_inaccessible_trigger = yes }
 			trait = proud
@@ -22463,7 +22464,7 @@ character_event = {
 		name = EVTOPTA3720
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				trait = proud
@@ -22536,7 +22537,7 @@ character_event = {
 		}
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				trait = proud
 				opinion = { who = ROOT value = 10 }
@@ -22558,7 +22559,7 @@ character_event = {
 		name = EVTOPTC3720
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = { is_inaccessible_trigger = yes }
 				trait = proud
@@ -22711,7 +22712,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		war = no
@@ -22719,7 +22720,7 @@ character_event = {
 		trait = gregarious
 		NOT = { tier = COUNT }
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			in_command = no
 			NOT = {
 				trait = gregarious
@@ -22737,7 +22738,7 @@ character_event = {
 		prestige = 10
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = {
 					trait = gregarious
@@ -22772,7 +22773,7 @@ character_event = {
 		name = EVTOPTB3725
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				in_command = no
 				NOT = {
 					trait = gregarious
@@ -22818,7 +22819,7 @@ character_event = {
 	desc = EVTDESC3726
 	picture = GFX_evt_courtiers_talking
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -22907,7 +22908,7 @@ character_event = {
 		trigger = { NOT = { event_target:imprison_target = { always = yes } } }
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	portrait = event_target:imprison_target
 
 	min_age = 16

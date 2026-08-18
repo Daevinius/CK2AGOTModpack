@@ -740,7 +740,7 @@ letter_event = {
 					NOT = {
 						FROM = {
 							any_child = {
-								age = 16
+								is_adult = yes
 								is_married = no
 								is_ruler = no
 								prisoner = no
@@ -761,7 +761,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 3
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -781,7 +781,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 4
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -801,7 +801,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 5
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -821,7 +821,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 6
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -851,7 +851,7 @@ letter_event = {
 					d_warriors_sons = { has_holder = yes religion = FROM }
 					FROM = {
 						any_child = {
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -873,7 +873,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 3
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -894,7 +894,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 4
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -915,7 +915,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 5
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -936,7 +936,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 6
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -2015,7 +2015,7 @@ letter_event = {
 					NOT = {
 						FROM = {
 							any_child = {
-								age = 16
+								is_adult = yes
 								is_married = no
 								is_ruler = no
 								prisoner = no
@@ -2036,7 +2036,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 3
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -2056,7 +2056,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 4
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -2076,7 +2076,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 5
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -2096,7 +2096,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 6
-							age = 16
+							is_adult = yes
 							is_married = no
 							is_ruler = no
 							prisoner = no
@@ -2131,7 +2131,7 @@ letter_event = {
 					NOT = {
 						FROM = {
 							any_child = {
-								age = 16
+								is_adult = yes
 								is_ruler = no
 								is_female = no
 								prisoner = no
@@ -2154,7 +2154,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 3
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -2175,7 +2175,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 4
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -2196,7 +2196,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 5
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -2217,7 +2217,7 @@ letter_event = {
 					FROM = {
 						any_child = {
 							count = 6
-							age = 16
+							is_adult = yes
 							is_ruler = no
 							is_female = no
 							prisoner = no
@@ -2432,7 +2432,7 @@ letter_event = {
 	immediate = {
 		random_child = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_married = no
 				is_ruler = no
 				prisoner = no
@@ -2479,8 +2479,7 @@ letter_event = {
 					limit = { is_female = yes }
 					add_trait = septa
 				}
-				if = {
-					limit = { is_female = no }
+				else = {
 					add_trait = septon
 				}
 				move_character = PREV
@@ -2509,7 +2508,7 @@ letter_event = {
 	immediate = {
 		random_child = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_married = no
 				is_ruler = no
 				is_female = no
@@ -3563,20 +3562,20 @@ letter_event = {
 		# hidden_tooltip = { character_event = { id = HF.20300 } } #Go to budget event
 		# #First of all, if the Emperor has Rome, it is asked automatically as an additional gift.
 		# #Latium Check
-		# if  = {
+		# if = {
 			# limit = { has_landed_title = c_roma }
 			# c_roma = {
 				# grant_title = FROM
 				# any_de_jure_vassal = { #Pope vassalizes all vassal titles in the scope
 					# limit = {
 						# vassal_of = ROOT
-						# NOT = { owner =  { character = ROOT } }
+						# NOT = { owner = { character = ROOT } }
 					# }
 					# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 				# }
 				# any_de_jure_vassal_title = { #Pope takes over any titles under the title he's taking over from you.
-					# limit = { owner =  { character = ROOT } }
+					# limit = { owner = { character = ROOT } }
 					# grant_title = FROM
 				# }
 			# }
@@ -3584,7 +3583,7 @@ letter_event = {
 		# #Secondly, check for all Duchies within the borders of the historical Donation of Pepin (Latium, Spoleto, Ancona, Ferrara, Benevento).
 		# #If the Emperor owns them directly, the Pope takes the title, if his vassals do, said vassals will become the Papacy's vassals.
 		# #Latium Check
-		# if  = {
+		# if = {
 			# limit = {
 				# any_demesne_title = {
 					# can_be_given_away = yes
@@ -3597,19 +3596,19 @@ letter_event = {
 				# any_de_jure_vassal = {
 					# limit = {
 						# vassal_of = ROOT
-						# NOT = { owner =  { character = ROOT } }
+						# NOT = { owner = { character = ROOT } }
 					# }
 					# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 				# }
 				# any_de_jure_vassal_title = {
-					# limit = { owner =  { character = ROOT } }
+					# limit = { owner = { character = ROOT } }
 					# grant_title = FROM
 				# }
 			# }
 			# break = yes
 		# }
-		# if  = {
+		# if = {
 			# limit = {
 				# any_vassal = {
 					# lower_tier_than = FROM
@@ -3626,12 +3625,12 @@ letter_event = {
 					# lower_tier_than = FROM
 				# }
 				# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 			# }
 			# break = yes
 		# }
 		# #Spoleto Check
-		# if  = {
+		# if = {
 			# limit = {
 				# any_demesne_title = {
 					# can_be_given_away = yes
@@ -3644,19 +3643,19 @@ letter_event = {
 				# any_de_jure_vassal = {
 					# limit = {
 						# vassal_of = ROOT
-						# NOT = { owner =  { character = ROOT } }
+						# NOT = { owner = { character = ROOT } }
 					# }
 					# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 				# }
 				# any_de_jure_vassal_title = {
-					# limit = { owner =  { character = ROOT } }
+					# limit = { owner = { character = ROOT } }
 					# grant_title = FROM
 				# }
 			# }
 			# break = yes
 		# }
-		# if  = {
+		# if = {
 			# limit = {
 				# any_vassal = {
 					# lower_tier_than = FROM
@@ -3673,12 +3672,12 @@ letter_event = {
 					# lower_tier_than = FROM
 				# }
 				# set_defacto_liege = FROM
-				# hidden_tooltip = { character_event =  { id = HF.20230 } }
+				# hidden_tooltip = { character_event = { id = HF.20230 } }
 			# }
 			# break = yes
 		# }
 		# #Ancona Check
-		# if  = {
+		# if = {
 			# limit = {
 				# any_demesne_title = {
 					# can_be_given_away = yes
@@ -3691,19 +3690,19 @@ letter_event = {
 				# any_de_jure_vassal = {
 					# limit = {
 						# vassal_of = ROOT
-						# NOT = { owner =  { character = ROOT } }
+						# NOT = { owner = { character = ROOT } }
 					# }
 					# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 				# }
 				# any_de_jure_vassal_title = {
-					# limit = { owner =  { character = ROOT } }
+					# limit = { owner = { character = ROOT } }
 					# grant_title = FROM
 				# }
 			# }
 			# break = yes
 		# }
-		# if  = {
+		# if = {
 			# limit = {
 				# any_vassal = {
 					# lower_tier_than = FROM
@@ -3720,12 +3719,12 @@ letter_event = {
 					# lower_tier_than = FROM
 				# }
 				# set_defacto_liege = FROM
-				# hidden_tooltip = { character_event =  { id = HF.20230 } }
+				# hidden_tooltip = { character_event = { id = HF.20230 } }
 			# }
 			# break = yes
 		# }
 		# #Ferrara
-		# if  = {
+		# if = {
 			# limit = {
 				# any_demesne_title = {
 					# can_be_given_away = yes
@@ -3738,19 +3737,19 @@ letter_event = {
 				# any_de_jure_vassal = {
 					# limit = {
 						# vassal_of = ROOT
-						# NOT = { owner =  { character = ROOT } }
+						# NOT = { owner = { character = ROOT } }
 					# }
 					# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 				# }
 				# any_de_jure_vassal_title = {
-					# limit = { owner =  { character = ROOT } }
+					# limit = { owner = { character = ROOT } }
 					# grant_title = FROM
 				# }
 			# }
 			# break = yes
 		# }
-		# if  = {
+		# if = {
 			# limit = {
 				# any_vassal = {
 					# lower_tier_than = FROM
@@ -3767,12 +3766,12 @@ letter_event = {
 					# lower_tier_than = FROM
 				# }
 				# set_defacto_liege = FROM
-				# hidden_tooltip = { character_event =  { id = HF.20230 } }
+				# hidden_tooltip = { character_event = { id = HF.20230 } }
 			# }
 			# break = yes
 		# }
 		# #Benevento
-		# if  = {
+		# if = {
 			# limit = {
 				# any_demesne_title = {
 					# can_be_given_away = yes
@@ -3785,19 +3784,19 @@ letter_event = {
 				# any_de_jure_vassal = {
 					# limit = {
 						# vassal_of = ROOT
-						# NOT = { owner =  { character = ROOT } }
+						# NOT = { owner = { character = ROOT } }
 					# }
 					# set_defacto_liege = FROM
-					# hidden_tooltip = { character_event =  { id = HF.20230 } }
+					# hidden_tooltip = { character_event = { id = HF.20230 } }
 				# }
 				# any_de_jure_vassal_title = {
-					# limit = { owner =  { character = ROOT } }
+					# limit = { owner = { character = ROOT } }
 					# grant_title = FROM
 				# }
 			# }
 			# break = yes
 		# }
-		# if  = {
+		# if = {
 			# limit = {
 				# any_vassal = {
 					# lower_tier_than = FROM
@@ -3814,7 +3813,7 @@ letter_event = {
 					# lower_tier_than = FROM
 				# }
 				# set_defacto_liege = FROM
-				# hidden_tooltip = { character_event =  { id = HF.20230 } }
+				# hidden_tooltip = { character_event = { id = HF.20230 } }
 			# }
 			# break = yes
 		# }
@@ -3869,7 +3868,7 @@ letter_event = {
 		# }
 		# hidden_tooltip = { character_event = { id = HF.20300 } } #Go to budget event
 		# #Check if there is an available bordering province, in order to limit bordergore.
-		# if  = {
+		# if = {
 			# limit = {
 				# any_demesne_title = {
 					# can_be_given_away = yes
@@ -3924,12 +3923,12 @@ letter_event = {
 							# limit = {
 								# vassal_of = ROOT
 								# lower_tier_than = PREVPREVPREV
-								# NOT = { owner =  { character = ROOT } }
+								# NOT = { owner = { character = ROOT } }
 							# }
 							# set_defacto_liege = PREVPREVPREV
 						# }
 						# any_de_jure_vassal_title = { 	#Take over dejure titles under the Duchy
-							# limit = { owner =  { character = ROOT }  }
+							# limit = { owner = { character = ROOT }  }
 							# grant_title = PREVPREVPREV
 						# }
 					# }
@@ -3960,12 +3959,12 @@ letter_event = {
 							# limit = {
 								# vassal_of = ROOT
 								# lower_tier_than = PREVPREVPREV
-								# NOT = { owner =  { character = ROOT } }
+								# NOT = { owner = { character = ROOT } }
 							# }
 							# set_defacto_liege = PREVPREVPREV
 						# }
 						# any_de_jure_vassal_title = {
-							# limit = { owner =  { character = ROOT } }
+							# limit = { owner = { character = ROOT } }
 							# grant_title = PREVPREVPREV
 						# }
 					# }
@@ -5016,7 +5015,7 @@ character_event = {
 	# id = HF.20222
 	# desc = {
 		# trigger = {
-			# NOT  = { religion = FROMFROM }
+			# NOT = { religion = FROMFROM }
 		# }
 		# text = EVTDESCHFA20222
 	# }
@@ -5184,7 +5183,7 @@ character_event = {
 	# id = HF.20224
 	# desc = {
 		# trigger = {
-			# NOT  = { has_character_flag = flag_pepin_for_coronation }
+			# NOT = { has_character_flag = flag_pepin_for_coronation }
 			# NOT = { has_character_flag = flag_pope_gifts_artifact }
 		# }
 		# text = EVTDESCHFA20224
@@ -5198,7 +5197,7 @@ character_event = {
 	# }
 	# desc = {
 		# trigger = {
-			# NOT  = { has_character_flag = flag_pepin_for_coronation }
+			# NOT = { has_character_flag = flag_pepin_for_coronation }
 			# has_character_flag = flag_pope_gifts_artifact
 		# }
 		# text = EVTDESCHFC20224
@@ -5227,7 +5226,7 @@ character_event = {
 				# random_artifact = {
 					# limit = {
 						# has_artifact_flag = christian
-						# NOR =  {
+						# NOR = {
 							# has_artifact_flag = very_rare
 							# has_artifact_flag = unique #Won't give the holiest ones away.
 						# }
@@ -5351,7 +5350,7 @@ character_event = {
 character_event = {
 	id = HF.20228
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	has_character_flag = flag_excommunicated_for_coronation
 
@@ -5388,7 +5387,7 @@ character_event = {
 character_event = {
 	id = HF.20231
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	only_rulers = yes
 	min_age = 16
@@ -6156,7 +6155,7 @@ character_event = {
 		hidden_tooltip = {
 			character_event = { id = HF.20305 days = 11 } #Ceremony actually starts
 			any_realm_character = {
-				limit =  {
+				limit = {
 					OR = {
 						higher_tier_than = COUNT
 						AND = {
@@ -6251,7 +6250,7 @@ character_event = {
 		hidden_tooltip = {
 			character_event = { id = HF.20305 days = 11 } #Ceremony actually starts
 			any_realm_character = {
-				limit =  {
+				limit = {
 					OR = {
 						higher_tier_than = COUNT
 						AND = {
@@ -6336,7 +6335,7 @@ character_event = {
 		hidden_tooltip = {
 			character_event = { id = HF.20305 days = 11 } #Ceremony actually starts
 			any_courtier = {
-				limit =  {
+				limit = {
 					prisoner = no
 					NOT = { has_character_flag = do_not_disturb }
 					NOT = { has_character_modifier = holding_large_feast }
@@ -6392,39 +6391,39 @@ letter_event = {
 	option = {
 		name = EVTOPTAHF20301
 		ai_chance = {
-			factor = 0.8
+			factor = 80
 
-			modifier  = {
+			modifier = {
 				factor = 3
 				dynasty = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				is_close_relative = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				opinion = { who = FROM value = 15 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				opinion = { who = FROM value = 30 }
 			}
 
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = gregarious
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = hedonist
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = just
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = honorable
 			}
@@ -6439,20 +6438,17 @@ letter_event = {
 			name = out_traveling #Vassal travel is short, so no regent needed.
 			duration = 45
 		}
-		ai_chance = {
-			factor = 70
-		}
 	}
 	option = {	#End of the line
 		name = EVTOPTBHF20301
 		ai_chance = {
-			factor = 0.2
+			factor = 20
 
 			modifier = {		#Of course he will be present.
 				factor = 0
 				event_target:coronation_priest = { character = ROOT }
 			}
-			modifier  = {
+			modifier = {
 				factor = 0
 				OR = {
 					opinion = { who = FROM value = 50 }
@@ -6473,32 +6469,32 @@ letter_event = {
 					}
 				}
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -15 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -30 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -45 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -60 } }
 			}
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = shy
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = arbitrary
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = ruthless
 			}
@@ -6538,37 +6534,37 @@ letter_event = {
 		ai_chance = {
 			factor = 0.5
 
-			modifier  = {
+			modifier = {
 				factor = 3
 				dynasty = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				is_close_relative = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				opinion = { who = FROM value = 15 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				opinion = { who = FROM value = 30 }
 			}
 
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = gregarious
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = hedonist
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = just
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = honorable
 			}
@@ -6597,7 +6593,7 @@ letter_event = {
 				factor = 0
 				event_target:coronation_priest = { character = ROOT }
 			}
-			modifier  = {
+			modifier = {
 				factor = 0
 				OR = {
 					opinion = { who = FROM value = 50 }
@@ -6618,32 +6614,32 @@ letter_event = {
 					}
 				}
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -15 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -30 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -45 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -60 } }
 			}
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = shy
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = arbitrary
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = ruthless
 			}
@@ -7320,7 +7316,7 @@ character_event = {
 	id = HF.20316
 	desc = {
 		trigger = {
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFA20316
 	}
@@ -7436,7 +7432,7 @@ character_event = {
 	id = HF.20317
 	desc = {
 		trigger = {
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFA20317
 	}
@@ -7462,7 +7458,7 @@ character_event = {
 		name = EVTOPTAHF20317
 		custom_tooltip = { text = EVTTOOLTIPAHF20317 }
 		if = {
-			limit = { age = 16 }
+			limit = { is_adult = yes }
 			prestige = 75
 		}
 		if = {
@@ -7503,7 +7499,7 @@ character_event = {
 	id = HF.20318
 	desc = {
 		trigger = {
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFA20318
 	}
@@ -7529,7 +7525,7 @@ character_event = {
 		name = EVTOPTAHF20318
 		custom_tooltip = { text = EVTTOOLTIPAHF20318 }
 		if = {
-			limit = { age = 16 }
+			limit = { is_adult = yes }
 			prestige = -90
 		}
 		if = {
@@ -7571,7 +7567,7 @@ character_event = {
 	id = HF.20319
 	desc = {
 		trigger = {
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFA20319
 	}
@@ -7612,7 +7608,7 @@ character_event = {
 	id = HF.20320
 	desc = {
 		trigger = {
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFA20320
 	}
@@ -7834,7 +7830,7 @@ character_event = {
 	option = {
 		name = EVTOPTAHF20324
 		if = {
-			limit = { age = 16 }
+			limit = { is_adult = yes }
 			piety = 40
 		}
 		if = {
@@ -8295,7 +8291,7 @@ character_event = {
 	option = {
 		name = EVTOPTAHF20332
 		if = {
-			limit = { age = 16 }
+			limit = { is_adult = yes }
 			piety = -75
 		}
 		if = {
@@ -9197,14 +9193,14 @@ character_event = {
 	desc = {
 		trigger = {
 			NOT = { is_female = yes }
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFA20346
 	}
 	desc = {
 		trigger = {
 			is_female = yes
-			age = 16
+			is_adult = yes
 		}
 		text = EVTDESCHFB20346
 	}
@@ -9252,8 +9248,7 @@ character_event = {
 					limit = { is_female = no }
 					set_special_character_title = title_ser
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					set_special_character_title = title_lady
 				}
 			}
@@ -9433,7 +9428,7 @@ character_event = {
 
 					modifier = {
 						factor = 0
-						age = 16
+						is_adult = yes
 					}
 					modifier = {
 						factor = 1.5
@@ -10604,13 +10599,13 @@ character_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		if =  {
+		if = {
 			limit = {
 				NOT = { check_variable = { which = coronation_count value = 2 } }
 			}
 			random_coronation_events_effect = yes
 		}
-		if =  {
+		if = {
 			limit = {
 				check_variable = { which = coronation_count value = 2 }
 			}
@@ -10646,7 +10641,7 @@ character_event = {
 				NOT = { has_landed_title = e_iron_throne }
 				NOT = { has_character_flag = flag_secluded_coronation }
 				has_character_flag = flag_crowned_by_pope
-				age = 16
+				is_adult = yes
 			}
 		}
 		text = EVTDESCHFB20366		# Localization for any adult Emperor crowned by the Pope (not in a barn).
@@ -10673,7 +10668,7 @@ character_event = {
 				tier = KING
 				NOT = { has_character_flag = flag_secluded_coronation }
 				has_character_flag = flag_crowned_by_pope
-				age = 16
+				is_adult = yes
 			}
 		}
 		text = EVTDESCHFD20366		# Localization for any adult King crowned by the Pope (not in a barn).
@@ -10699,7 +10694,7 @@ character_event = {
 				NOT = { has_landed_title = e_iron_throne }
 				NOT = { has_character_flag = flag_secluded_coronation }
 				NOT = { has_character_flag = flag_crowned_by_pope }
-				age = 16
+				is_adult = yes
 			}
 		}
 		text = EVTDESCHFF20366		# Localization for any adult ruler crowned by a Bishop or Priest (not in a barn).
@@ -10724,7 +10719,7 @@ character_event = {
 				war = no
 				has_character_flag = flag_secluded_coronation
 				has_character_flag = flag_crowned_by_pope
-				age = 16
+				is_adult = yes
 			}
 		}
 		text = EVTDESCHFH20366		# Localization for any adult ruler crowned by the Pope in a barn.
@@ -10840,7 +10835,7 @@ character_event = {
 		name = EVTOPTZHF20366
 		trigger = {
 			tier = EMPEROR
-			age = 16 # Has to be strong enough to grab the crown from the Pope's clutches.
+			is_adult = yes # Has to be strong enough to grab the crown from the Pope's clutches.
 			event_target:coronation_priest = { has_landed_title = k_the_most_devout }
 			has_character_flag = flag_extravagant_coronation				#Only allowed to screw everything up if you have spent the most money in it already.
 			OR = {
@@ -11038,7 +11033,7 @@ character_event = {
 				NOT = { has_landed_title = e_iron_throne }
 				NOT = { has_character_flag = flag_secluded_coronation }
 				has_character_flag = flag_crowned_by_pope
-				age = 16
+				is_adult = yes
 				war = no
 			}
 		}
@@ -11065,7 +11060,7 @@ character_event = {
 				tier = KING
 				NOT = { has_character_flag = flag_secluded_coronation }
 				has_character_flag = flag_crowned_by_pope
-				age = 16
+				is_adult = yes
 				war = no
 			}
 		}
@@ -11091,7 +11086,7 @@ character_event = {
 				NOT = { has_landed_title = e_iron_throne }
 				NOT = { has_character_flag = flag_secluded_coronation }
 				NOT = { has_character_flag = flag_crowned_by_pope }
-				age = 16
+				is_adult = yes
 				war = no
 			}
 		}
@@ -11116,7 +11111,7 @@ character_event = {
 			FROM = {
 				has_character_flag = flag_secluded_coronation
 				has_character_flag = flag_crowned_by_pope
-				age = 16
+				is_adult = yes
 				war = no
 			}
 		}
@@ -11763,7 +11758,7 @@ character_event = {
 		is_feudal_monarch_trigger = yes
 		ruled_years = 5
 		religion = the_seven
-		NOR =  {
+		NOR = {
 			# trait = crowned_by_priest
 			# trait = crowned_by_bishop
 			# trait = crowned_by_pope
@@ -13050,7 +13045,7 @@ character_event = {
 				20 = {
 					modifier = {
 						factor = 0
-						FROM = { age = 16 }
+						FROM = { is_adult = yes }
 					}
 					set_character_flag = flag_homage_child
 				}
@@ -13269,78 +13264,6 @@ character_event = {
 ################################################
 #Crown-related flavor. Triggered on_action randomly.
 
-#The nail in the Iron Cross.
-character_event = {
-	id = HF.20399
-	desc = EVTDESCHFA20399
-
-	picture = GFX_evt_holy_emperor
-	border = GFX_event_normal_frame_religion
-
-	ai = no
-	min_age = 8
-
-	trigger = {
-		NOT = { has_dynasty_flag = flag_nail_in_crown }
-		NOT = { is_inaccessible_trigger = yes }
-		religion = the_seven
-		any_artifact = {
-			artifact_type = iron_crown_of_lombardy
-			is_artifact_equipped = yes
-		}
-	}
-
-	is_triggered_only = yes
-
-	weight_multiplier = {
-		days = 1
-		modifier = {
-			factor = 1.5
-			trait = shrewd
-		}
-		modifier = {
-			factor = 0.5
-			trait = dull
-		}
-		modifier = {
-			factor = 1.25
-			trait = scholar
-		}
-		modifier = {
-			factor = 2
-			trait = cynical
-		}
-		modifier = {
-			factor = 2
-			age < 16
-		}
-	}
-
-	immediate = { set_dynasty_flag = flag_nail_in_crown }
-
-
-	option = { #Look for it
-		name = EVTOPTAHF20399
-		change_learning = 3
-		random = {
-			chance = 10
-			piety = -100
-			custom_tooltip = { text = iron_cross_broken }
-			hidden_tooltip = {
-				any_artifact = {
-					limit = { artifact_type = iron_crown_of_lombardy }
-					unsafe_destroy_artifact = yes
-					add_artifact = fragment_of_true_cross
-				}
-			}
-		}
-	}
-	option = { #Better not to touch.
-		name = EVTOPTBHF20399
-		piety = 75
-	}
-}
-
 #The HRE crown and the prince.
 character_event = {
 	id = HF.20400
@@ -13555,7 +13478,7 @@ character_event = {
 		religion = the_seven
 		is_vice_royalty = no
 		NOT = { check_variable = { which = uncrowned_count value = 30 } } #Stop at minus thirty.
-		NOR =  {
+		NOR = {
 			has_character_flag = crowned_by_high_septon
 			#trait = crowned_by_priest
 			#trait = crowned_by_bishop
@@ -13832,7 +13755,7 @@ character_event = {
 				20 = {
 					modifier = {
 						factor = 0
-						ROOT = { age = 16 }
+						ROOT = { is_adult = yes }
 					}
 					set_character_flag = flag_homage_child
 				}
@@ -13959,7 +13882,7 @@ character_event = {
 		custom_tooltip = { text = tooltip_HF20410_B }
 		trigger = {
 			has_character_flag = flag_homage_attractive
-			age = 16
+			is_adult = yes
 			OR = {
 				AND = {
 					FROMFROM = { is_female = yes }

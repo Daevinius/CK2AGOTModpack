@@ -54,7 +54,7 @@ targeted_decisions = {
 						}
 						#Master of Ships
 						AND = {
-							FROM = { NOT = { any_vassal = { has_minor_title  = title_high_admiral } } }
+							FROM = { NOT = { any_vassal = { has_minor_title = title_high_admiral } } }
 							can_be_admiral_trigger = yes
 							OR = {
 								has_landed_title = c_driftmark
@@ -139,9 +139,9 @@ targeted_decisions = {
 					give_job_title = job_spymaster
 				}
 				#Master of Ships
-				else = {
+				else_if = {
 					limit = {
-						FROM = { NOT = { any_vassal = { has_minor_title  = title_high_admiral } } }
+						FROM = { NOT = { any_vassal = { has_minor_title = title_high_admiral } } }
 						can_be_admiral_trigger = yes
 						OR = {
 							has_landed_title = c_driftmark

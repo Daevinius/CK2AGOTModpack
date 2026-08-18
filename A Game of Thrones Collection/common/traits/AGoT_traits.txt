@@ -182,14 +182,49 @@ wildling = {
 	male_insult_adj = INSULT_SAVAGE
 	female_insult_adj = INSULT_SAVAGE
 }
+grey_lander = {
+	general_opinion = -50
+	same_opinion = 50
+	ai_honor = -25
+	customizer = no
+
+	male_insult_adj = INSULT_SAVAGE
+	female_insult_adj = INSULT_SAVAGE
+}
+t_islander = {
+	general_opinion = -20
+	same_opinion = 20
+	ai_honor = -5
+	customizer = no
+
+	male_insult_adj = INSULT_SAVAGE
+	female_insult_adj = INSULT_SAVAGE
+}
+brindle = {
+	general_opinion = -20
+	same_opinion = 20
+	customizer = no
+	combat_rating = 20
+
+	male_insult_adj = INSULT_SAVAGE
+	female_insult_adj = INSULT_SAVAGE
+}
 giant = {
 	customizer = no
-	cannot_marry = yes
-	opposites = { wildling } # Counteract wildling general malus
-	opposite_opinion = 100
-	sympathy_wildling_religion_opinion = 25
-	general_opinion = -40
-	same_opinion = 40
+	general_opinion = -10
+	free_folk_opinion = 20
+	diplomacy = -2
+	learning = -1
+	intrigue = -3
+	martial = 6
+	health = 3
+	combat_rating = 80
+	fear_modifier = 25
+	fertility = -0.30
+
+	command_modifier = {
+		morale_offence = 0.05
+	}
 }
 disinherited = {
 	monthly_character_prestige = -0.5
@@ -238,12 +273,22 @@ white_walker = {
 	immortal = yes
 	fertility = -50.0
 	cannot_marry = yes
-	combat_rating = 45
+	combat_rating = 60
 	#cannot_inherit = yes
 
 	general_opinion = -100
 	same_opinion = 100
 	cold_gods_opinion = 130
+	diplomacy = 2
+	learning = 3
+	intrigue = 2
+	martial = 5
+	stewardship = 3
+
+	command_modifier = {
+		morale_offence = 0.1
+		morale_defence = 0.1
+	}
 }
 winter_wasteland = {
 	cannot_marry = yes
@@ -321,4 +366,31 @@ undead = { #Robert Strong
 	male_insult_adj = INSULT_MONSTROUS
 	female_insult_adj = INSULT_HIDEOUS
 	child_insult_adj = INSULT_UGLY
+}
+lion_avatar = {
+	religious = yes
+	health = 3
+	fertility = 0.2
+	combat_rating = 20
+
+	monthly_character_piety = 0.5
+	monthly_character_prestige = 0.35
+	customizer = no
+
+	yiti_gods_opinion = -50
+	lion_night_opinion = 20
+	fear_modifier = 50
+	intrigue = 1
+	martial = 2
+
+	ai_zeal = 50
+
+	command_modifier = {
+		terrain = desert
+		morale_offence = 0.1
+		morale_defence = 0.2
+	}
+
+	female_compliment_adj = COMPL_DIVINE
+	male_compliment_adj = COMPL_DIVINE
 }

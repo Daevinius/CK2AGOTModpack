@@ -46,7 +46,7 @@ narrative_event = {
 		}
 		c_125009 = {
 			is_alive = yes
-			age = 16
+			is_adult = yes
 			OR = {
 				character = ROOT
 				liege = { character = ROOT }
@@ -318,8 +318,7 @@ character_event = {
 								limit = { ai = no }
 								letter_event = { id = TOG.1276 }
 							}
-							if = {
-								limit = { ai = yes }
+							else = {
 								letter_event = { id = TOG.1276 days = 1 }
 							}
 						}
@@ -328,8 +327,7 @@ character_event = {
 							limit = { ai = no }
 							letter_event = { id = TOG.1276 }
 						}
-						if = {
-							limit = { ai = yes }
+						else = {
 							letter_event = { id = TOG.1276 days = 1 }
 						}
 					}
@@ -930,7 +928,7 @@ narrative_event = {
 	picture = "GFX_valyria_dragon"
 
 	major = yes
-	only_playable = yes
+	only_rulers = yes
 
 	trigger = {
 		has_landed_title = d_golden_company
@@ -952,7 +950,7 @@ narrative_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -1209,7 +1207,7 @@ province_event = {
 				ai = yes
 				culture = summer_islander
 				is_female = no
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				martial = 16
 				prestige = 1000
@@ -2182,8 +2180,7 @@ character_event = {
 								limit = { ai = no }
 								letter_event = { id = TOG.1276 }
 							}
-							if = {
-								limit = { ai = yes }
+							else = {
 								letter_event = { id = TOG.1276 days = 1 }
 							}
 						}
@@ -2192,8 +2189,7 @@ character_event = {
 							limit = { ai = no }
 							letter_event = { id = TOG.1276 }
 						}
-						if = {
-							limit = { ai = yes }
+						else = {
 							letter_event = { id = TOG.1276 days = 1 }
 						}
 					}
@@ -2290,7 +2286,7 @@ character_event = {
 character_event = {
 	id = invasions.602
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	only_capable = yes
 	prisoner = no
@@ -2594,8 +2590,7 @@ province_event = {
 						abdicate_to = PREVPREV
 					}
 				}
-				if = {
-					limit = { has_holder = no }
+				else = {
 					gain_title = PREV
 				}
 			}

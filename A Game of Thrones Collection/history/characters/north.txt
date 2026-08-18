@@ -512,7 +512,7 @@
 		}
 		add_trait = dead_crown_of_winter
 		effect = {
-			set_character_flag = stark_martial
+			set_character_flag = sigil_dyn_martial
 			add_artifact = stark_armour
 			k_north = { destroy_landed_title = THIS }
 			remove_trait = dead_crown_of_winter
@@ -567,8 +567,7 @@
 				limit = { ai = no }
 				long_character_event = { id = clash_of_kings.500 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				long_character_event = { id = clash_of_kings.500 days = 1 }
 			}
 			set_character_flag = robb_stark
@@ -1043,7 +1042,10 @@
 	8291.1.1 = {
 		birth = yes
 		add_trait = strong_seed_block
-		effect_even_if_dead = { set_graphical_culture = Tully_dyn }
+		effect_even_if_dead = {
+			set_graphical_culture = Tully_dyn
+			set_character_flag = brandon_stark
+		}
 	}
 	8297.8.1 = {
 		add_trait = "brave"
@@ -1229,7 +1231,7 @@
 			set_focus = focus_ed_intrigue # Thanks, Littlefinger
 			set_character_flag = sansa_stark
 			set_character_flag = missing_stark_child
-			set_name = Алейна
+			set_name = "Алейна"
 			add_trait = bastard
 			save_global_event_target_as = sansa_stark
 			give_nickname = nick_stone
@@ -8316,7 +8318,12 @@
 	father = 13065
 
 	8259.1.1 = { birth = yes }
-	8275.1.1 = { add_spouse = 1065 }
+	8275.1.1 = {
+		add_spouse = 1065
+		add_trait = poor_warrior
+		add_trait = brave
+	}
+	8280.1.1 = { add_trait = "sundown" }
 }
 1065 = {
 	name = "Лиетта"
@@ -8339,7 +8346,12 @@
 	father = 65
 	mother = 1065
 
-	8277.1.1 = { birth = yes }
+	8276.1.1 = { birth = yes }
+	8292.1.1 = {
+		add_trait = skilled_warrior
+		add_trait = skilled_tactician
+		add_trait = brave
+	}
 }
 12065 = {
 	name = "Джутта"
@@ -11567,7 +11579,11 @@
 	father = 16174831
 
 	8245.1.1 = { birth = yes }
-	8270.1.1 = { add_trait = "happyness" }
+	8261.1.1 = {
+		add_trait = "knight"
+		add_trait = "trained_warrior"
+	}
+	8270.1.1 = { add_trait = "moons_kiss" }
 	8290.1.1 = { death = yes }
 }
 18174831 = {
@@ -11580,7 +11596,11 @@
 	father = 17174831
 
 	8270.1.1 = { birth = yes }
-	8290.1.1 = { add_trait = "happyness" }
+	8286.1.1 = {
+		add_trait = "knight"
+		add_trait = "trained_warrior"
+	}
+	8290.1.1 = { add_trait = "moons_kiss" }
 }
 19174831 = {
 	name = "Родрик"
@@ -11592,6 +11612,10 @@
 	father = 17174831
 
 	8274.1.1 = { birth = yes }
+	8290.1.1 = {
+		add_trait = "knight"
+		add_trait = "trained_warrior"
+	}
 }
 20174831 = {
 	name = "Дункан"

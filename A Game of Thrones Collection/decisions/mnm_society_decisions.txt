@@ -1261,7 +1261,7 @@ targeted_decisions = {
 			}
 			#Head of Religion
 			if = {
-				limit  = {
+				limit = {
 					controls_religion = yes
 				}
 				hidden_effect = { FROM = { character_event = { id = MNM.7500 } } }
@@ -1351,7 +1351,7 @@ targeted_decisions = {
 			}
 			#Holy Man
 			if = {
-				limit  = {
+				limit = {
 					OR = {
 						is_priest = yes
 						is_ascetic_trigger = yes
@@ -1444,7 +1444,7 @@ targeted_decisions = {
 			}
 			#Dwarf
 			if = {
-				limit  = {
+				limit = {
 					is_short_trigger = yes
 				}
 				hidden_effect = { FROM = { character_event = { id = MNM.7502 } } }
@@ -1534,7 +1534,7 @@ targeted_decisions = {
 			}
 			#Child
 			if = {
-				limit  = {
+				limit = {
 					age < 16
 				}
 				hidden_effect = { FROM = { character_event = { id = MNM.7503 } } }
@@ -1624,7 +1624,7 @@ targeted_decisions = {
 			}
 			#Virgin
 			if = {
-				limit  = {
+				limit = {
 					is_virgin_trigger = yes
 				}
 				hidden_effect = { FROM = { character_event = { id = MNM.7504 } } }
@@ -1827,7 +1827,7 @@ targeted_decisions = {
 			host = { character = FROM }
 			is_female = yes
 			is_pregnant = no
-			age = 16
+			is_adult = yes
 			OR = {
 				age < 45
 				immortal = yes
@@ -2179,7 +2179,7 @@ targeted_decisions = {
 		potential = {
 			ai = yes
 			prisoner = yes
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			OR = {
 				AND = {
@@ -2226,7 +2226,7 @@ targeted_decisions = {
 		}
 
 		allow = {
-			age = 16
+			is_adult = yes
 			FROM = { society_currency >= 25 }
 			NOT = { same_society_as = FROM }
 			NOT = { trait = zealous }
@@ -2350,9 +2350,7 @@ targeted_decisions = {
 		effect = {
 			if = {
 				limit = {
-					NOT = {
-						is_ruler = yes
-					}
+					is_ruler = no
 				}
 				FROM = {
 					detract_society_currency_tiny_effect = yes
@@ -2494,7 +2492,7 @@ decisions = {
 				mercenary = no
 				ai = no
 			}
-			age = 16
+			is_adult = yes
     		is_incapable = no
 			OR = {
 				ai = no

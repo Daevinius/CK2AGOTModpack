@@ -771,7 +771,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTA_REP_306
-		plot_target_province =  {
+		plot_target_province = {
 			seize_trade_post = ROOT
 		}
 		clr_character_flag = plot_seize_trade_post_decision_taken
@@ -832,24 +832,24 @@ letter_event = {
 			factor = 1
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  25 }
+				opinion = { who = FROM value = 25 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
+				opinion = { who = FROM value = 50 }
 			}
 			modifier = {
 				factor = 3
-				opinion = { who = FROM value =  75 }
+				opinion = { who = FROM value = 75 }
 			}
 			modifier = {
 				factor = 0
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 		}
 		FROM = {
 			plot_target_char = {
-				character_event = { id = REP.311 days = 5 tooltip =  EVTTOOLTIPREP.311 }
+				character_event = { id = REP.311 days = 5 tooltip = EVTTOOLTIPREP.311 }
 				opinion = {
 					who = ROOT
 					modifier = opinion_disgruntled
@@ -871,11 +871,11 @@ letter_event = {
 			factor = 1
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  10 } }
+				NOT = { opinion = { who = FROM value = 10 } }
 			}
 			modifier = {
 				factor = 0
-				opinion = { who = FROM value =  90 }
+				opinion = { who = FROM value = 90 }
 			}
 		}
 		FROM = {
@@ -937,7 +937,7 @@ letter_event = {
 				months = 60
 			}
 		}
-		plot_target_province =  {
+		plot_target_province = {
 			seize_trade_post = ROOT
 		}
 	}
@@ -950,7 +950,7 @@ character_event = {
 	id = REP.400
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	ai = yes
 	only_capable = yes
 	prisoner = no
@@ -1290,7 +1290,7 @@ character_event = {
 	id = REP.404
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	ai = yes
 	only_capable = yes
 	prisoner = no
@@ -1527,7 +1527,7 @@ character_event = {
 	id = REP.408
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	ai = yes
 	only_capable = yes
 	prisoner = no
@@ -1676,7 +1676,7 @@ character_event = {
 	id = REP.410
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	ai = yes
 	only_capable = yes
 	prisoner = no
@@ -1821,7 +1821,7 @@ character_event = {
 	id = REP.412
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	ai = yes
 	only_capable = yes
 	prisoner = no
@@ -2587,7 +2587,7 @@ province_event = {
 			ROOT = {
 				owner = {
 					NOT = { any_realm_lord = { character = PREVPREVPREV } }
-					NOT = { opinion = { who = PREVPREV value =  0 } }
+					NOT = { opinion = { who = PREVPREV value = 0 } }
 					NOT = { has_opinion_modifier = { who = PREVPREV modifier = opinion_bribed_tp } }
 					NOT = { has_opinion_modifier = { who = PREVPREV modifier = opinion_thwarted_tp_destruction } }
 					NOT = { has_opinion_modifier = { who = PREVPREV modifier = opinion_burned_tp } }
@@ -2600,14 +2600,14 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 1620
+		years = 135
 
 		modifier = {
 			factor = 0.7
 			trade_post_owner = {
 				ROOT = {
 					owner = {
-						NOT = { opinion = { who = PREVPREV value =  -20 } }
+						NOT = { opinion = { who = PREVPREV value = -20 } }
 					}
 				}
 			}
@@ -2617,7 +2617,7 @@ province_event = {
 			trade_post_owner = {
 				ROOT = {
 					owner = {
-						NOT = { opinion = { who = PREVPREV value =  -40 } }
+						NOT = { opinion = { who = PREVPREV value = -40 } }
 					}
 				}
 			}
@@ -2627,7 +2627,7 @@ province_event = {
 			trade_post_owner = {
 				ROOT = {
 					owner = {
-						NOT = { opinion = { who = PREVPREV value =  -60 } }
+						NOT = { opinion = { who = PREVPREV value = -60 } }
 					}
 				}
 			}
@@ -2637,7 +2637,7 @@ province_event = {
 			trade_post_owner = {
 				ROOT = {
 					owner = {
-						NOT = { opinion = { who = PREVPREV value =  -80 } }
+						NOT = { opinion = { who = PREVPREV value = -80 } }
 					}
 				}
 			}
@@ -3379,7 +3379,7 @@ character_event = {
 	id = REP.904
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		is_patrician = yes
@@ -3407,8 +3407,7 @@ character_event = {
 			limit = { is_merchant_republic = yes }
 			save_event_target_as = merchant_republic_ruler
 		}
-		if = {
-			limit = { is_merchant_republic = no }
+		else = {
 			liege = { save_event_target_as = merchant_republic_ruler }
 		}
 		event_target:merchant_republic_ruler = {
@@ -3581,8 +3580,7 @@ character_event = { #Inform new family
 			limit = { is_merchant_republic = yes }
 			save_event_target_as = merchant_republic_ruler
 		}
-		if = {
-			limit = { is_merchant_republic = no }
+		else = {
 			liege = { save_event_target_as = merchant_republic_ruler }
 		}
 		event_target:merchant_republic_ruler = {
@@ -3630,8 +3628,7 @@ character_event = { #cull new patrician
 			limit = { is_merchant_republic = yes }
 			save_event_target_as = merchant_republic_ruler
 		}
-		if = {
-			limit = { is_merchant_republic = no }
+		else = {
 			liege = { save_event_target_as = merchant_republic_ruler }
 		}
 		event_target:merchant_republic_ruler = {
@@ -3657,7 +3654,7 @@ character_event = { #cull new patrician
 							is_councillor = yes
 						}
 					}
-					clear_wealth = THIS
+					clear_wealth = yes
 					family_palace = { destroy_settlement = THIS }
 					set_character_flag = culled_patrician
 					death = yes
@@ -3676,7 +3673,7 @@ character_event = {
 	id = REP.908
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	only_rulers = yes
 
 	trigger = {
@@ -3887,7 +3884,7 @@ character_event = {
 	id = REP.920
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	is_patrician = yes
 	ai = yes
 	war = no

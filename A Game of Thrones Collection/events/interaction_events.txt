@@ -14,7 +14,7 @@ character_event = {
 	id = interaction.899
 	desc = "EVTDESCinteraction.899"
 
-	is_triggered_only = yes #
+	is_triggered_only = yes
 	only_rulers = yes
 	war = yes
 	prisoner = no
@@ -166,7 +166,7 @@ letter_event = {
 	id = interaction.8
 	desc = "EVTDESCinteraction.8"
 
-	is_triggered_only = yes #
+	is_triggered_only = yes
 
 	trigger = {
 		OR = {
@@ -479,8 +479,7 @@ letter_event = {
 					set_character_flag = stand_down_vote_for
 					set_variable = { which = council_end_war_votes value = 1 }
 				}
-				if = {
-					limit = { has_regent = yes }
+				else = {
 					set_variable = { which = council_end_war_votes value = 0 }
 				}
 			}
@@ -1230,7 +1229,7 @@ letter_event = {
 #Inform vassal refused to stand down
 letter_event = { #FROMFROMFROM is the liege, FROMFROM is the asker
 	id = interaction.14
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 	desc = "EVTDESCinteraction.14"
 
 	option = {
@@ -1553,7 +1552,7 @@ character_event = {
 				any_rival = {
 					NOT = { character = ROOT }
 					is_liege_or_above = ROOT
-					age = 16
+					is_adult = yes
 					prisoner = no
 					can_press_claims_trigger = yes
 					NOT = { any_claim = { holder = ROOT_FROMFROM is_primary_holder_title = yes } }
@@ -1568,7 +1567,7 @@ character_event = {
 				limit = {
 					NOT = { character = ROOT }
 					is_liege_or_above = ROOT
-					age = 16
+					is_adult = yes
 					prisoner = no
 					can_press_claims_trigger = yes
 					NOT = { any_claim = { holder = ROOT_FROMFROM is_primary_holder_title = yes } }
@@ -3107,7 +3106,7 @@ character_event = {
 character_event = {
 	id = interaction.29
 	picture = GFX_evt_quarrel
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 
 	desc = EVTDESCinteraction.29
 
@@ -3214,7 +3213,7 @@ character_event = {
 character_event = {
 	id = interaction.30
 	picture = GFX_evt_quarrel
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 
 	desc = EVTDESCinteraction.30
 
@@ -3317,7 +3316,7 @@ character_event = {
 character_event = {
 	id = interaction.31
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -3394,7 +3393,7 @@ character_event = {
 						NOT = { any_consort = { character = ROOT } }
 						NOT = { is_married = ROOT }
 						NOT = { is_former_lover = ROOT }
-						age = 16
+						is_adult = yes
 
 						OR = {
 							custom_tooltip = {
@@ -3483,7 +3482,7 @@ character_event = {
 					NOT = { any_consort = { character = ROOT } }
 					NOT = { is_married = ROOT }
 					NOT = { is_former_lover = ROOT }
-					age = 16
+					is_adult = yes
 
 					OR = {
 						custom_tooltip = {

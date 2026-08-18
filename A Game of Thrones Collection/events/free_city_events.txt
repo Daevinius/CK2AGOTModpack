@@ -32,7 +32,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 600
+		years = 50
 
 		modifier = {
 			factor = 0.8
@@ -450,7 +450,7 @@ character_event = {
 character_event = { #pentos lose aggressive war, root is defender
 	id = free_cities.1023
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_defeat
 	hide_window = yes
 
 	trigger = {
@@ -476,7 +476,7 @@ character_event = { #pentos lose defensive war, root is defender
 	desc = "EVTDESCFREECITIES102"
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 
 	trigger = {
 		has_landed_title = k_pentos
@@ -737,8 +737,7 @@ character_event = { #move courtiers back
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 		}
@@ -755,7 +754,7 @@ character_event = {
 	picture = "GFX_evt_throne_room"
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_landed_title = d_prince_pentos
@@ -852,7 +851,7 @@ character_event = {
 	picture = "GFX_evt_throne_room"
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_landed_title = d_prince_pentos
@@ -948,7 +947,7 @@ character_event = {
 	desc = "EVT_DESC_free_cities_1209"
 	picture = "GFX_evt_throne_room"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	war = no
@@ -1460,7 +1459,7 @@ character_event = {
 	desc = "EVTDESCfree_cities.8"
 	picture = "GFX_braavos"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	war = no
@@ -1603,7 +1602,7 @@ character_event = {
 	picture = GFX_evt_wildlings
 
 	hide_from = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	max_age = 17
 	only_women = yes
@@ -1680,7 +1679,7 @@ character_event = {
 	desc = "EVTDESCfree_cities.10"
 	picture = GFX_evt_throne_room
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 43
 	max_age = 44
 	only_women = yes
@@ -1703,7 +1702,7 @@ character_event = {
 	desc = "EVTDESCfree_cities.11"
 	picture = GFX_evt_pregnancy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 27
 	max_age = 28
 	only_women = yes
@@ -1735,7 +1734,7 @@ character_event = {
 	desc = "EVTDESCfree_cities.12"
 	picture = GFX_evt_pregnancy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_women = yes
 	prisoner = no
 
@@ -1919,7 +1918,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -2025,7 +2024,7 @@ character_event = {
 character_event = {
 	id = free_cities.11027
 
-	is_triggered_only = yes #check yearly
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	war = no
 
@@ -3000,8 +2999,7 @@ character_event = { #move courtiers back
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 		}
@@ -3607,8 +3605,7 @@ character_event = { #Initial setup
 					limit = { is_ruler = yes }
 					add_trait = bearded_priest
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					dynasty = none
 					if = {
 						limit = { is_alive = yes }
@@ -3687,8 +3684,7 @@ character_event = { #Initial setup
 						limit = { is_ruler = yes }
 						add_trait = bearded_priest
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						dynasty = none
 						if = {
 							limit = { is_alive = yes }
@@ -3814,7 +3810,7 @@ character_event = {
 	desc = "EVTDESCfree_cities.226"
 	picture = "GFX_evt_throne_room"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 
 	trigger = {
@@ -3946,7 +3942,7 @@ character_event = {
 	desc = "EVTDESCFREECITIES229"
 	picture = GFX_evt_norvos
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	min_age = 16
@@ -4228,7 +4224,7 @@ character_event = {
 	desc = "EVTDESCFREECITIES230"
 	picture = GFX_evt_catching_heretic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	min_age = 16
@@ -4572,7 +4568,7 @@ character_event = { #Inform liege did not execute
 character_event = {
 	id = free_cities.233
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	min_age = 16
 	only_men = yes
@@ -4617,7 +4613,7 @@ character_event = {
 			}
 			war = no
 			NOT = { has_character_flag = asked_for_landed_title }
-			NOT =  { #Interregnum
+			NOT = { #Interregnum
 				primary_title = {
 					higher_tier_than = DUKE
 					is_variable_equal = { which = "lord_paramount_status" value = 2 }
@@ -4973,7 +4969,7 @@ character_event = {
 		}
 		scaled_wealth = { value = -0.25 min = -5 max = -75 }
 		if = {
-			limit =  { NOT = { has_character_modifier = pet_cat } }
+			limit = { NOT = { has_character_modifier = pet_cat } }
 			add_cat_effect = yes
 		}
 		else = {

@@ -13,7 +13,7 @@ character_event = {
 	id = ZE.10000
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	has_dlc = "Zeus"
@@ -568,7 +568,7 @@ character_event = {
 	id = ZE.10038
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_mercenary_hired
 
 	immediate = {
 		primary_title = {
@@ -582,7 +582,7 @@ character_event = {
 	id = ZE.10039
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_mercenary_dismissed
 
 	immediate = {
 		primary_title = {
@@ -646,7 +646,7 @@ character_event = {
 
 	immediate = {
 		primary_title = {
-			band_creator =  {
+			band_creator = {
 				letter_event = { id = ZE.10076 }
 			}
 		}
@@ -784,8 +784,7 @@ character_event = {
 				limit = { is_female = yes }
 				add_spouse = FROM
 			}
-			if = {
-				limit = { is_female = no }
+			else = {
 				add_spouse_matrilineal = FROM
 			}
 		}
@@ -1029,7 +1028,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_mercenary_captain_replacement
 
 	immediate = {
 		save_event_target_as = old_captain

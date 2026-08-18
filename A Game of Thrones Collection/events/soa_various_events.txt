@@ -873,7 +873,7 @@ character_event = {
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	show_from_from = yes
 
@@ -992,7 +992,7 @@ character_event = {
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adulthood
 	has_character_flag = demon_child_non_pagan
 
 	trigger = {
@@ -1192,7 +1192,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_character_flag = demon_child_non_pagan
 
 	trigger = {
@@ -2226,8 +2226,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 			}
@@ -2536,7 +2535,7 @@ character_event = {
 	id = SoA.3091
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	has_character_flag = demon_child_non_pagan
 

@@ -194,7 +194,7 @@ character_event = {
 						has_focus = focus_seduction
 						trait = hedonist
 					}
-					age = 16
+					is_adult = yes
 					is_female = no
 					NOT = { trait = celibate }
 					NOT = { trait = chaste }
@@ -845,7 +845,7 @@ character_event = {
 			}
 			2 = { # Fall in love with common girl
 				trigger = {
-					age = 16
+					is_adult = yes
 					age < 30
 					is_female = no
 					OR = {
@@ -925,7 +925,6 @@ character_event = {
 							reverse_has_opinion_modifier = { who = ROOT modifier = opinion_blood_feud }
 							NOT = { opinion = { who = ROOT value = 0 } }
 							NOT = { reverse_opinion = { who = ROOT value = 0 } }
-							is_female = no
 							NOT = { trait = shy }
 							NOT = { trait = honorable }
 							NOT = { has_severe_disability_trigger = yes }
@@ -1633,19 +1632,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 		if = {
@@ -1764,19 +1763,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2
@@ -2125,7 +2124,7 @@ character_event = {
 							NAND = {
 								trait = dragon_rider
 								any_courtier = {
-									age = 16
+									is_adult = yes
 									prisoner = no
 									is_incapable = no
 									ai = yes
@@ -2455,8 +2454,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -2721,7 +2719,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				NOT = { FROM = { age = 16 } }
+				NOT = { FROM = { is_adult = yes } }
 			}
 		}
 		FROM = {
@@ -2982,7 +2980,9 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = { days = 7 }
+	mean_time_to_happen = {
+		days = 7
+	}
 
 	immediate = {
 		if = {
@@ -6702,7 +6702,7 @@ character_event = {
 	desc = "EVTDESC70030"
 	picture = "GFX_evt_market"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	# trigger = {
 	# }
@@ -6829,7 +6829,7 @@ character_event = {
 		if = {
 			limit = {
 				trait = squire
-				age = 16
+				is_adult = yes
 			}
 			remove_trait = squire
 		}
@@ -8760,15 +8760,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  30 }
+				opinion = { who = FROM value = 30 }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  90 }
+				opinion = { who = FROM value = 90 }
 			}
 		}
 		FROM = { character_event = { id = 70075 tooltip = "EVTTOOLTIP70075" } }
@@ -8791,15 +8791,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -30 } }
+				NOT = { opinion = { who = FROM value = -30 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 		}
 		name = "EVTOPTB70074" #no thanks
@@ -8842,15 +8842,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  30 }
+				opinion = { who = FROM value = 30 }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  90 }
+				opinion = { who = FROM value = 90 }
 			}
 		}
 		FROM = { character_event = { id = 70076 tooltip = "EVTTOOLTIP70076" } }
@@ -8886,19 +8886,19 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -30 } }
+				NOT = { opinion = { who = FROM value = -30 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 3
-				NOT = { opinion = { who = FROM value =  -90 } }
+				NOT = { opinion = { who = FROM value = -90 } }
 			}
 		}
 		name = "EVTOPTB70075" #no thanks
@@ -9574,17 +9574,17 @@ character_event = { #liege decide on drunkard fate
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  0 }
+				opinion = { who = FROM value = 0 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 		}
 		prestige = -30
 		FROM = {
 			opinion = { who = ROOT modifier = opinion_happy months = 12 }
-			hidden_tooltip =  {
+			hidden_tooltip = {
 				character_event = { id = 70084 }
 			}
 		}
@@ -9623,7 +9623,7 @@ character_event = { #liege decide on drunkard fate
 			}
 		}
 		FROM = {
-			hidden_tooltip =  {
+			hidden_tooltip = {
 				character_event = { id = 70085 }
 			}
 		}
@@ -9673,7 +9673,7 @@ character_event = { #liege decide on drunkard fate
 		}
 		FROM = {
 			tooltip = { imprison = ROOT }
-			hidden_tooltip =  {
+			hidden_tooltip = {
 				character_event = { id = tourney.786 }
 			}
 		}
@@ -9897,19 +9897,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 		set_character_flag = attending_tournament
@@ -9970,19 +9970,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2
@@ -10573,7 +10573,7 @@ character_event = {
 					NOT = { trait = lustful }
 					NOT = { trait = chaste }
 				}
-				random  = {
+				random = {
 					chance = 20
 					add_trait = lustful
 					hidden_tooltip = {
@@ -10624,7 +10624,7 @@ character_event = {
 					NOT = { trait = temperate }
 					NOT = { trait = gluttonous }
 				}
-				random  = {
+				random = {
 					chance = 33
 					add_trait = temperate
 					lose_weight_medium_effect = yes
@@ -10680,7 +10680,7 @@ character_event = {
 					NOT = { trait = wroth }
 					NOT = { trait = patient }
 				}
-				random  = {
+				random = {
 					chance = 20
 					add_trait = wroth
 					hidden_tooltip = {

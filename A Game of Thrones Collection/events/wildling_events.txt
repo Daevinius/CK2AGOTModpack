@@ -44,7 +44,7 @@ character_event = {
 		NOT = { trait = wildling }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -63,7 +63,7 @@ character_event = { #on_character_convert_culture
 	desc = "EVTDESCWILDLING2"
 	picture = GFX_evt_throne_room
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_culture
 
 	trigger = {
 		trait = wildling
@@ -95,11 +95,21 @@ province_event = {
 		text = "EVTDESCWILDLING3B" # The shadowmen in PROVINCE have risen up against your rule!
 		trigger = { culture = shadowlander }
 	}
+	desc = {
+		text = "EVTDESCWILDLING3C" # The grey clansmen in PROVINCE have risen up against your rule!
+		trigger = { waste_culture_trigger = yes }
+	}
+	desc = {
+		text = "EVTDESCWILDLING3D" # The yi tanny in PROVINCE have risen up against your rule!
+		trigger = { culture = yi_tan }
+	}
 
 	trigger = {
 		OR = {
 			wildling_culture_trigger = yes
 			culture = shadowlander
+			waste_culture_trigger = yes
+			culture = yi_tan
 		}
 		NOT = { culture = skagosi }
 		NOT = { culture = thenn }
@@ -111,6 +121,7 @@ province_event = {
 					AND = {
 						NOT = { culture = ROOT }
 						ROOT = { culture = shadowlander }
+						ROOT = { culture = yi_tan }
 					}
 					NOT = { religion = ROOT }
 					martial < 8
@@ -151,7 +162,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 12
+		years = 1
 
 		modifier = {
 			factor = 2.5
@@ -164,11 +175,13 @@ province_event = {
 			factor = 20
 			owner = { top_liege = { culture_group = ROOT } }
 			NOT = { culture = shadowlander }
+			NOT = { culture = yi_tan }
 		}
 		modifier = {
 			factor = 20
 			owner = { top_liege = { culture = ROOT } }
 			culture = shadowlander
+			culture = yi_tan
 		}
 
 		modifier = {
@@ -554,6 +567,30 @@ province_event = {
 						holder = THIS
 					}
 				}
+				if = {
+					limit = { waste_culture_trigger = yes }
+					create_title = {
+						tier = DUKE
+						landless = yes
+						temporary = yes
+						rebel = yes
+						culture = ROOT
+						name = "GREY_CLANSMEN_REVOLT"
+						holder = THIS
+					}
+				}
+				if = {
+					limit = { culture = yi_tan }
+					create_title = {
+						tier = DUKE
+						landless = yes
+						temporary = yes
+						rebel = yes
+						culture = ROOT
+						name = "YI_TANNY_REVOLT"
+						holder = THIS
+					}
+				}
 				spawn_wildling_army_effect = yes
 
 				if = {
@@ -763,7 +800,7 @@ character_event = {
 		trigger = { has_character_flag = wildling_defeat_realm_fracture }
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	only_rulers = yes
 
 	trigger = {
@@ -814,7 +851,7 @@ character_event = {
 					trait = wildling
 					is_ruler = no
 					is_female = no
-					age = 16
+					is_adult = yes
 					prisoner = no
 					is_incapable = no
 					NOT = { trait = maester }
@@ -886,7 +923,7 @@ character_event = {
 					trait = wildling
 					is_ruler = no
 					is_female = no
-					age = 16
+					is_adult = yes
 					OR = {
 						prestige = 500
 						martial = 10
@@ -1069,6 +1106,43 @@ character_event = {
 				add_pressed_claim = ROOT
 			}
 		}
+		#Always lose kingdom of the shadow
+		any_demesne_title = {
+			limit = { title = k_asshai }
+			destroy_landed_title = THIS
+			if = {
+				limit = { ROOT = { has_character_flag = wildling_defeat_realm_fracture } }
+				add_pressed_claim = ROOT
+			}
+		}
+		#Always lose kingdom of the grey wastes
+		any_demesne_title = {
+			limit = { title = k_the_grey_wastes }
+			destroy_landed_title = THIS
+			if = {
+				limit = { ROOT = { has_character_flag = wildling_defeat_realm_fracture } }
+				add_pressed_claim = ROOT
+			}
+		}
+		#Always lose kingdom of carcosa
+		any_demesne_title = {
+			limit = { title = k_carcosa }
+			destroy_landed_title = THIS
+			if = {
+				limit = { ROOT = { has_character_flag = wildling_defeat_realm_fracture } }
+				add_pressed_claim = ROOT
+			}
+		}
+		#Always lose kingdom of valator
+		any_demesne_title = {
+			limit = { title = k_valator }
+			destroy_landed_title = THIS
+			if = {
+				limit = { ROOT = { has_character_flag = wildling_defeat_realm_fracture } }
+				add_pressed_claim = ROOT
+			}
+		}
+
 		#Destroy all titles higher than duke if no non-wildling duke vassals
 		if = {
 			limit = { is_feudal = yes }
@@ -1123,7 +1197,7 @@ character_event = {
 			#If no usurper and no non-wildling vassals
 			if = {
 				limit = {
-					NOT = { event_target:wildling_usurper  = { always = yes } }
+					NOT = { event_target:wildling_usurper = { always = yes } }
 					NOT = {
 						any_vassal = {
 							higher_tier_than = BARON
@@ -1287,7 +1361,7 @@ character_event = {
 	id = wildling.102
 	desc = "EVTDESCwildling.102"
 	picture = GFX_evt_wildlings
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = nightswatch
@@ -1385,7 +1459,7 @@ character_event = {
 	id = wildling.8
 	desc = "EVTDESCWILDLING8"
 	picture = GFX_evt_wildlings
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	option = {
 		name = "EVTOPTAWILDLING8"
@@ -1473,8 +1547,7 @@ character_event = {
 				limit = { is_merchant_republic = no }
 				current_heir = { save_event_target_as = wealth_heir }
 			}
-			if = {
-				limit = { is_merchant_republic = yes }
+			else = {
 				family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 			}
 			transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -1526,7 +1599,7 @@ character_event = {
 	picture = GFX_evt_wildlings
 	desc = "EVTDESCWILDLING11"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	lacks_dlc = "Reapers"
 	only_playable = yes
 
@@ -2212,7 +2285,7 @@ character_event = {
 	desc = "EVTDESCwildling.23" #Ancient graves of Joramun
 	picture = "GFX_evt_wildlings"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	only_rulers = yes
 
 	trigger = {
@@ -2703,7 +2776,7 @@ character_event = {
 	id = wildling.60
 	desc = "Hey, AI, you want to invade this person?"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_independent = yes
 	ai = yes
 	min_age = 16
@@ -2729,6 +2802,7 @@ character_event = {
 		# Opinion flag a target
 		random_independent_ruler = {
 			limit = {
+				demesne_size = 1
 				#NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_enforced_truce } }
 				NOT = { reverse_has_truce = ROOT }
 				OR = {
@@ -3031,7 +3105,7 @@ long_character_event = {
 	id = wildling.63
 	picture = GFX_evt_wildlings
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	only_capable = yes
 	prisoner = no
 	in_command = yes
@@ -3381,7 +3455,7 @@ character_event = {
 		NOT = { has_character_flag = wildling_horde_modifier }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 

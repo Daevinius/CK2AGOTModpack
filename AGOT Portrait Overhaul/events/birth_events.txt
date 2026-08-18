@@ -13,7 +13,7 @@ character_event = {
 	id = birth.990
 	picture = GFX_evt_birth
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_birth
 	hide_window = yes
 
 	immediate = { #Determine status (bastard, slave etc)
@@ -2869,7 +2869,7 @@ character_event = {
 	id = 450
 	desc = EVTDESC450
 	picture = "GFX_gentle_kiss"
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_capable = yes
@@ -2911,7 +2911,7 @@ character_event = {
 
 		liege = {
 			possibly_romantically_interested_in_each_other_trigger = yes
-			age = 16
+			is_adult = yes
 			NOT = { character = ROOT }
 			num_of_lovers < 5
 			is_pregnant = no
@@ -3604,7 +3604,7 @@ character_event = {
 	}
 	picture = GFX_evt_pregnancy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 
 	trigger = {
 		NOT = { trait = pregnant }
@@ -3777,7 +3777,7 @@ character_event = {
 		# Stillbirths, potentially
 		stillbirth_chance_effect = yes
 
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			if = {
 				limit = {
 					OR = {
@@ -3861,7 +3861,7 @@ character_event = {
 		custom_tooltip = { text = tooltip_20404_abortion }
 		remove_trait = pregnant
 		add_character_modifier = { modifier = aborted_child years = 1 }
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			cancel_pregnancy = yes
 			moon_tea_effects = yes #random events
 			if = {
@@ -4075,7 +4075,7 @@ character_event = {
 	desc = EVTDESC401
 	picture = GFX_evt_pregnancy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 	is_married = no
 
 	trigger = {
@@ -4216,7 +4216,7 @@ character_event = {
 				}
 			}
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			if = {
 				limit = {
 					OR = {
@@ -4278,7 +4278,7 @@ character_event = {
 			}
 		}
 
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			if = {
 				limit = {
 					OR = {
@@ -4448,7 +4448,7 @@ character_event = {
 	desc = EVTDESC402
 	picture = "GFX_evt_pregnancy"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 
 	trigger = {
 		NOT = { trait = pregnant }
@@ -5057,7 +5057,7 @@ character_event = {
 			}
 		}
 
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			if = {
 				limit = {
 					OR = {
@@ -5250,7 +5250,7 @@ character_event = {
 	desc = EVTDESC40299
 	picture = "GFX_evt_pregnancy"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 
 	has_character_flag = forced_child
 
@@ -5567,7 +5567,7 @@ character_event = {
 	id = 403
 	picture = GFX_evt_pregnancy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	desc = EVTDESC403
 
@@ -5775,7 +5775,7 @@ character_event = {
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	option = {
 		name = EVTOPTA21001 # Hire someone to find out
@@ -7255,7 +7255,7 @@ character_event = {
 	desc = EVTDESC410
 	picture = GFX_evt_pregnancy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 
 	trigger = {
 		NOT = { trait = pregnant }
@@ -7389,7 +7389,7 @@ character_event = {
 		# Stillbirths, potentially
 		stillbirth_chance_effect = yes
 
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			if = {
 				limit = {
 					OR = {
@@ -7457,7 +7457,7 @@ character_event = {
 		custom_tooltip = { text = tooltip_20404_abortion }
 		remove_trait = pregnant
 		add_character_modifier = { modifier = aborted_child years = 1 }
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			cancel_pregnancy = yes
 			moon_tea_effects = yes #random events
 		}
@@ -7655,7 +7655,7 @@ character_event = {
 	desc = EVTDESC412
 	picture = "GFX_evt_pregnancy"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_pregnancy
 
 	trigger = {
 		NOT = { trait = pregnant }
@@ -7797,7 +7797,7 @@ character_event = {
 		# Stillbirths, potentially
 		stillbirth_chance_effect = yes
 
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			if = {
 				limit = {
 					OR = {
@@ -7868,7 +7868,7 @@ character_event = {
 	id = 300
 	picture = GFX_evt_birth
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adulthood, on_navy_returns_with_loot
 
 	immediate = {
 		if = {
@@ -7914,8 +7914,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						ROOT = { move_character = PREV }
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { ROOT = { move_character = PREV } }
 					}
 				}
@@ -7930,8 +7929,7 @@ character_event = {
 						limit = { is_ruler = yes }
 						ROOT = { move_character = PREV }
 					}
-					if = {
-						limit = { is_ruler = no }
+					else = {
 						liege = { ROOT = { move_character = PREV } }
 					}
 				}
@@ -8211,8 +8209,7 @@ character_event = {
 						limit = { mother_even_if_dead = { always = yes } }
 						bastard_nickname_mother_effect = yes
 					}
-					if = {
-						limit = { NOT = { mother_even_if_dead = { always = yes } } }
+					else = {
 						bastard_nickname_father_effect = yes
 					}
 				}
@@ -8516,7 +8513,7 @@ character_event = {
 		trigger = { is_female = yes }
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	option = {
 		name = EVTOPTA304
@@ -8587,7 +8584,7 @@ character_event = {
 	desc = EVTDESC305
 	picture = GFX_evt_quarrel
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_ask_to_join_society
 	show_from_from = yes
 
 	trigger = { NOT = { culture = summer_islander } }
@@ -8656,7 +8653,7 @@ character_event = {
 	id = 308
 	picture = GFX_evt_quarrel
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse, on_society_bi_yearly_pulse
 	show_from_from = yes
 
 	trigger = { NOT = { culture = summer_islander } }
@@ -8784,7 +8781,7 @@ character_event = {
 					is_feudal = yes
 					OR = {
 						culture = lengi
-						culture = yi_ti
+						culture_group = yi_ti_group
 					}
 					OR = {
 						religion = yiti_gods
@@ -9366,7 +9363,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_post_birth
 
 	trigger = {
 		age < 1
@@ -10069,7 +10066,7 @@ character_event = {
 	desc = "EVTDESC450"
 	picture = "GFX_gentle_kiss"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	max_age = 65
 	only_capable = yes
@@ -10208,7 +10205,7 @@ character_event = {
 			random_courtier = {
 				limit = {
 					possibly_romantically_interested_in_each_other_trigger = yes
-					age = 16
+					is_adult = yes
 					OR = {
 						is_ruler = no
 						at_location = ROOT
@@ -10501,7 +10498,7 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { character = ROOT }
 				is_incapable = no
 				NOT = { is_parent_of = FROM }

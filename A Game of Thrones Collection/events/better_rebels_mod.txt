@@ -28,6 +28,9 @@ province_event = {
 			clr_province_flag = rebel_stack_spawned
 			clr_province_flag = brm_rebel_offer_rejected
 		}
+
+		set_province_flag = brm_revolt_flag
+
 		add_province_modifier = {
 			name = brm_revolt
 			duration = 1825
@@ -178,6 +181,8 @@ character_event = {
 	desc = "EVTDESCbetter_rebels.5"
 	picture = "GFX_evt_peasants"
 
+	is_triggered_only = yes
+
 	only_playable = yes
 	prisoner = no
 	in_command = no
@@ -190,19 +195,19 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 50
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 0.5
+			factor = 2
 			has_character_modifier = curse_of_harrenhal
 		}
 		modifier = {
-			factor = 5.0
-			age < 16
+			factor = 0.2
+			is_adult = no
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2
 			NOT = {
 				location = {
 					any_province_lord = {
@@ -283,6 +288,8 @@ character_event = {
 	desc = "EVTDESCbetter_rebels.5"
 	picture = "GFX_evt_peasants"
 
+	is_triggered_only = yes
+
 	only_playable = yes
 	prisoner = no
 	in_command = no
@@ -295,16 +302,16 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 40
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 0.5
+			factor = 2
 			has_character_modifier = curse_of_harrenhal
 		}
 		modifier = {
-			factor = 5.0
-			age < 16
+			factor = 0.2
+			is_adult = no
 		}
 		modifier = {
 			factor = 0.5
@@ -388,6 +395,8 @@ character_event = {
 	desc = "EVTDESCbetter_rebels.5"
 	picture = "GFX_evt_peasants"
 
+	is_triggered_only = yes
+
 	only_rulers = yes
 	prisoner = no
 	in_command = no
@@ -400,14 +409,15 @@ character_event = {
 		tier = BARON
 	}
 
-	mean_time_to_happen = {
-		years = 30
+	weight_multiplier = {
+		days = 1
+
 		modifier = {
-			factor = 5.0
-			age < 16
+			factor = 0.2
+			is_adult = no
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2.0
 			NOT = {
 				location = {
 					any_province_lord = {
@@ -489,6 +499,8 @@ character_event = {
 	desc = "EVTDESCbetter_rebels.5"
 	picture = "GFX_evt_peasants"
 
+	is_triggered_only = yes
+
 	in_command = no
 	prisoner = no
 
@@ -500,19 +512,19 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 100
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 0.5
+			factor = 2
 			has_character_modifier = curse_of_harrenhal
 		}
 		modifier = {
-			factor = 5.0
-			age < 16
+			factor = 0.2
+			is_adult = no
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2
 			NOT = {
 				location = {
 					any_province_lord = {
@@ -620,13 +632,15 @@ province_event = {
 	picture = GFX_evt_peasants
 	#is_triggered_only = yes
 
+	has_flag = brm_revolt_flag
+
 	trigger = {
 		has_province_modifier = brm_revolt
 		NOT = { has_province_flag = rebel_stack_spawned }
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		modifier = {
 			factor = 2.0
@@ -773,6 +787,8 @@ province_event = {
 	desc = "EVTDESCbetter_rebels.14"
 	picture = "GFX_evt_emissary"
 
+	has_flag = brm_revolt_flag
+
 	trigger = {
 		has_province_modifier = brm_revolt
 		NOT = { has_province_flag = rebel_stack_spawned }
@@ -797,7 +813,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 120
+		years = 10
 
 		modifier = {
 			factor = 0.75
@@ -891,6 +907,7 @@ province_event = {
 		}
 
 		remove_province_modifier = brm_revolt
+		clr_province_flag = brm_revolt_flag
 		add_province_modifier = {
 			name = brm_reduced_tax
 			duration = 3650 # 10 years
@@ -914,6 +931,9 @@ character_event = {
 	desc = "EVTDESCbetter_rebels.15"
 	picture = "GFX_evt_large_army"
 
+	is_triggered_only = yes
+
+	has_job_title = yes
 	only_capable = yes
 	prisoner = no
 
@@ -929,39 +949,39 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		months = 24
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			martial < 2
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			martial < 4
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			martial < 6
 		}
 		modifier = {
-			factor = 1.25
+			factor = 0.8
 			martial < 8
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.333
 			martial = 12
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.333
 			martial = 14
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.333
 			martial = 16
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.333
 			martial = 18
 		}
 	}
@@ -973,6 +993,7 @@ character_event = {
 		liege = { letter_event = { id = better_rebels.16 days = 7 tooltip = "EVTTOOLTIPbetter_rebels.16" } }
 		location = {
 			remove_province_modifier = brm_revolt
+			clr_province_flag = brm_revolt_flag
 		}
 	}
 }
@@ -993,8 +1014,10 @@ letter_event = {
 character_event = {
 	id = better_rebels.17
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
+
+	only_playable = yes
 
 	trigger = {
 		OR = {

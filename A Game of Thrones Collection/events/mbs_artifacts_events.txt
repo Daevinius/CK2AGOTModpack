@@ -1,0 +1,52 @@
+namespace = mbs_artifacts
+###################################
+
+# Armors Artifacts
+character_event = {
+	id = mbs_artifacts.001
+	desc = EVTDESCmbs_artifacts.001
+	picture = GFX_knighted
+
+	is_triggered_only = yes # on_startup, on_yearly_pulse
+
+	trigger = {
+		trait = kingsguard
+		NOT = { any_artifact = { has_artifact_flag = kingsguard_armour } }
+	}
+
+	option = {
+		name = EVTOPTAmbs_artifacts.001 #
+
+		if = {
+			limit = { dynasty = 190 }
+			add_artifact = jaime_lannister_armour
+		}
+		else = {
+			add_artifact = kingsguard_armour
+		}
+	}
+}
+
+# Misc Artifacts
+character_event = {
+	id = mbs_artifacts.101
+	desc = EVTDESCmbs_artifacts.101
+	picture = GFX_knighted
+
+	is_triggered_only = yes # on_startup, on_yearly_pulse
+
+	has_job_title = yes
+
+	trigger = {
+		has_job_title = job_castellan
+		vassal_of = e_iron_throne
+		NOT = { has_character_flag = got_hand_pin_mbs }
+	}
+
+	option = {
+		name = EVTOPTAmbs_artifacts.101 #
+
+		add_artifact = hand_ofthe_king_pin
+		set_character_flag = got_hand_pin_mbs
+	}
+}

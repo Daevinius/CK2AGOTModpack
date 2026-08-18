@@ -75,7 +75,7 @@ targeted_decisions = {
 		}
 		allow = {
 			FROM = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_incapable = yes }
 				NOT = { has_opinion_modifier = { modifier = opinion_refused_imperialguard who = ROOT } }
@@ -93,7 +93,7 @@ targeted_decisions = {
 			}
 			age = 14
 			OR = {
-				age = 16
+				is_adult = yes
 				combat_rating = 60
 			}
 			is_married = no
@@ -125,7 +125,7 @@ targeted_decisions = {
 						}
 					}
 				}
-				FROM = { liege = { character_event = { id = sb_imperialguard.201 tooltip = TOOLTIPinteraction.85 } } }
+				# FROM = { liege = { character_event = { id = sb_imperialguard.201 tooltip = TOOLTIPinteraction.85 } } }
 			}
 			else = {
 				character_event = { id = sb_imperialguard.15 }

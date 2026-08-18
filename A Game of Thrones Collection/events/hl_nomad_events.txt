@@ -224,7 +224,7 @@ character_event = { # Clear the 'Rampaging Nomads'-Modifier when conquered by a 
 	id = HL.4811
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_usurpation
 
 	trigger = {
 		NOT = { ROOT = { is_nomadic = yes } }
@@ -250,7 +250,7 @@ character_event = { # Clear nomadic pillage holding modifiers upon succession/co
 	id = HL.4812
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 
 	trigger = {
 		FROM = {
@@ -286,7 +286,7 @@ character_event = { # Nomads may pillage holdings on siege
 	border = GFX_event_normal_frame_war
 	portrait = event_target:top_liege_target
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 
 	trigger = {
 		is_nomadic = yes
@@ -834,7 +834,7 @@ character_event = {
 	id = HL.4996
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_usurpation
 
 	trigger = {
 		ROOT = { is_nomadic = yes }
@@ -874,7 +874,7 @@ character_event = {
 	id = HL.4998
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	only_playable = yes
 	only_independent = yes
 
@@ -1081,7 +1081,7 @@ character_event = {
 	id = HL.4999
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_usurpation
 
 	trigger = {
 		ROOT = {

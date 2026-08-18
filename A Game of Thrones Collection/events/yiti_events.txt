@@ -1,0 +1,91 @@
+namespace = yiti
+province_event = { #Clear Jungle for Roads
+	id = yiti.001
+	desc = "EVTDESCyiti.001"
+
+	picture = "GFX_evt_china_famine"
+
+	trigger = {
+		NOR = {
+			has_province_modifier = yiti_road1
+			has_province_modifier = yiti_road2
+			has_province_modifier = yiti_road3
+		}
+		culture_group = yi_ti_group
+		owner = { wealth >= 100 }
+	}
+
+	mean_time_to_happen = {
+		years = 3
+	}
+
+	option = {
+		name = "Great idea!"
+		owner = { wealth = -50 }
+		add_province_modifier = {
+			name = yiti_road1
+			duration = -1
+		}
+		ai_chance = { factor = 90 }
+	}
+	option = {
+		name = "I have no money to waste on this foolishness."
+		ai_chance = { factor = 10 }
+	}
+}
+
+province_event = { #Repairing Foundations for Roads
+	id = yiti.002
+	desc = "EVTDESCyiti.002"
+
+	picture = "GFX_evt_china_invades"
+
+	trigger = {
+		has_province_modifier = yiti_road1
+		owner = { wealth >= 750 }
+	}
+
+	mean_time_to_happen = {
+		years = 3
+	}
+
+	option = {
+		name = "Let's see what we can do."
+		owner = { wealth = -500 }
+		remove_province_modifier = yiti_road1
+		add_province_modifier = {
+			name = yiti_road2
+			duration = -1
+		}
+		ai_chance = { factor = 50 }
+	}
+	option = {
+		name = "Did... Did you damage the roads so you could get more money?"
+		ai_chance = { factor = 50 }
+	}
+}
+
+province_event = { #Construction Complete
+	id = yiti.003
+	desc = "EVTDESCyiti.003"
+
+	picture = "GFX_evt_china_open"
+
+	trigger = {
+		has_province_modifier = yiti_road2
+	}
+
+	mean_time_to_happen = {
+		years = 5
+	}
+
+	option = {
+		name = "Great news!"
+		remove_province_modifier = yiti_road2
+		add_province_modifier = {
+			name = yiti_road3
+			duration = -1
+		}
+		ai_chance = { factor = 100 }
+	}
+}

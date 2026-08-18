@@ -1143,7 +1143,7 @@ other_claim = {
 								}
 								OR = {	#pretender is...
 									ROOT = { NOT = { demesne_size = 1 } } #unlanded
-									AND =  { #small baron
+									AND = { #small baron
 										ROOT = { tier = BARON }
 										PREV = { higher_tier_than = COUNT }
 									}
@@ -2771,8 +2771,7 @@ other_claim_on_liege = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -2800,7 +2799,7 @@ other_claim_on_liege = {
 						}
 						OR = {	#pretender is...
 							ROOT = { NOT = { demesne_size = 1 } } #unlanded
-							AND =  { #small baron
+							AND = { #small baron
 								ROOT = { tier = BARON }
 								PREV = { higher_tier_than = COUNT }
 							}
@@ -2847,7 +2846,7 @@ other_claim_on_liege = {
 					usurp_title_plus_barony_if_unlanded_and_vassals_no_adj = { target = ROOT type = claim }
 				}
 			}
-			ROOT =  {
+			ROOT = {
 				clr_character_flag = abdication_usurp
 				clr_character_flag = patrician_usurp
 			}
@@ -5415,7 +5414,7 @@ invasion = {
 
 			if = {
 				limit = { has_character_flag = summer_islander_invader }
-				hidden_tooltip  = { wealth = -250 }
+				hidden_tooltip = { wealth = -250 }
 				FROM = { wealth = 250 }
 				clr_character_flag = summer_islander_invader
 			}
@@ -6192,8 +6191,7 @@ excommunicated_ruler = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -6624,110 +6622,126 @@ bid_for_independence = {
 			clr_character_flag = indep_war
 		}
 		ROOT = {
-			if = { 	limit = { has_landed_title = e_north }
-					k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_north }
+				k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_riverlands }
-					k_riverlands  = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_riverlands }
+				k_riverlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_vale }
-					k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_vale }
+				k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_westerlands }
-					k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_westerlands }
+				k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_reach }
-					k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_reach }
+				k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_stormlands }
-					k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_stormlands }
+				k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_dorne }
-					k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_dorne }
+				k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_iron_isles }
-					k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_iron_isles }
+				k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
 			hidden_tooltip = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {
@@ -6798,110 +6812,126 @@ bid_for_independence = {
 			}
 		}
 		ROOT = {
-			if = { 	limit = { has_landed_title = e_north }
-					k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_north }
+				k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_riverlands }
-					k_riverlands  = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_riverlands }
+				k_riverlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_vale }
-					k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_vale }
+				k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_westerlands }
-					k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_westerlands }
+				k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_reach }
-					k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_reach }
+				k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_stormlands }
-					k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_stormlands }
+				k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_dorne }
-					k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_dorne }
+				k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_iron_isles }
-					k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_iron_isles }
+				k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
 			hidden_tooltip = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {
@@ -6944,85 +6974,93 @@ bid_for_independence = {
 				}
 			}
 			ROOT = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {
@@ -7055,85 +7093,93 @@ bid_for_independence = {
 			clr_character_flag = post_civil_war_indep_war
 			clr_character_flag = indep_war
 			hidden_tooltip = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {
@@ -9312,110 +9358,126 @@ cb_faction_independence = {
 			}
 			clr_character_flag = post_civil_war_indep_war
 			clr_character_flag = indep_war
-			if = { 	limit = { has_landed_title = e_north }
-					k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_north }
+				k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_riverlands }
-					k_riverlands  = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_riverlands }
+				k_riverlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_vale }
-					k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_vale }
+				k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_westerlands }
-					k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_westerlands }
+				k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_reach }
-					k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_reach }
+				k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_stormlands }
-					k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_stormlands }
+				k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_dorne }
-					k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_dorne }
+				k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_iron_isles }
-					k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_iron_isles }
+				k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
 			hidden_tooltip = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {
@@ -9488,110 +9550,126 @@ cb_faction_independence = {
 			}
 			clr_character_flag = post_civil_war_indep_war
 			clr_character_flag = indep_war
-			if = { 	limit = { has_landed_title = e_north }
-					k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_north }
+				k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_riverlands }
-					k_riverlands  = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_riverlands }
+				k_riverlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_vale }
-					k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_vale }
+				k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_westerlands }
-					k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_westerlands }
+				k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_reach }
-					k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_reach }
+				k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_stormlands }
-					k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_stormlands }
+				k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_dorne }
-					k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_dorne }
+				k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
-			if = { 	limit = { has_landed_title = e_iron_isles }
-					k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+			if = {
+				limit = { has_landed_title = e_iron_isles }
+				k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 			}
 			hidden_tooltip = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {
@@ -9672,110 +9750,126 @@ cb_faction_independence = {
 					remove_character_modifier = indep_war
 					clr_character_flag = post_civil_war_indep_war
 					clr_character_flag = indep_war
-					if = { 	limit = { has_landed_title = e_north }
-							k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_north }
+						k_north = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_riverlands }
-							k_riverlands  = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_riverlands }
+						k_riverlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_vale }
-							k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_vale }
+						k_vale = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_westerlands }
-							k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_westerlands }
+						k_westerlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_reach }
-							k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_reach }
+						k_reach = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_stormlands }
-							k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_stormlands }
+						k_stormlands = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_dorne }
-							k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_dorne }
+						k_dorne = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
-					if = { 	limit = { has_landed_title = e_iron_isles }
-							k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
+					if = {
+						limit = { has_landed_title = e_iron_isles }
+						k_iron_isles = { custom_tooltip = { text = TOOLTIPbid_for_indep_fail } }
 					}
 					hidden_tooltip = {
-						if = { 	limit = { has_landed_title = e_north }
-								k_north = { grant_title = PREV  }
-								FROM = {
-									primary_title = {
-										k_north = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_north }
+							k_north = { grant_title = PREV  }
+							FROM = {
+								primary_title = {
+									k_north = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_riverlands }
-								k_riverlands  = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_riverlands = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_riverlands }
+							k_riverlands = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_riverlands = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_vale }
-								k_vale = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_vale = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_vale }
+							k_vale = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_vale = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_westerlands }
-								k_westerlands = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_westerlands = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_westerlands }
+							k_westerlands = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_westerlands = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_reach }
-								k_reach = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_reach = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_reach }
+							k_reach = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_reach = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_stormlands }
-								k_stormlands = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_stormlands = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_stormlands }
+							k_stormlands = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_stormlands = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_dorne }
-								k_dorne = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_dorne = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_dorne }
+							k_dorne = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_dorne = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
-						if = { 	limit = { has_landed_title = e_iron_isles }
-								k_iron_isles = { grant_title = PREV }
-								FROM = {
-									primary_title = {
-										k_iron_isles = {
-											de_jure_liege = PREV
-										}
+						if = {
+							limit = { has_landed_title = e_iron_isles }
+							k_iron_isles = { grant_title = PREV }
+							FROM = {
+								primary_title = {
+									k_iron_isles = {
+										de_jure_liege = PREV
 									}
 								}
+							}
 						}
 						if = {
 							limit = {
@@ -9816,85 +9910,93 @@ cb_faction_independence = {
 			clr_character_flag = post_civil_war_indep_war
 			clr_character_flag = indep_war
 			hidden_tooltip = {
-				if = { 	limit = { has_landed_title = e_north }
-						k_north = { grant_title = PREV  }
-						FROM = {
-							primary_title = {
-								k_north = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_north }
+					k_north = { grant_title = PREV  }
+					FROM = {
+						primary_title = {
+							k_north = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_riverlands }
-						k_riverlands  = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_riverlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_riverlands }
+					k_riverlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_riverlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_vale }
-						k_vale = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_vale = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_vale }
+					k_vale = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_vale = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_westerlands }
-						k_westerlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_westerlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_westerlands }
+					k_westerlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_westerlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_reach }
-						k_reach = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_reach = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_reach }
+					k_reach = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_reach = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_stormlands }
-						k_stormlands = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_stormlands = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_stormlands }
+					k_stormlands = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_stormlands = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_dorne }
-						k_dorne = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_dorne = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_dorne }
+					k_dorne = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_dorne = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
-				if = { 	limit = { has_landed_title = e_iron_isles }
-						k_iron_isles = { grant_title = PREV }
-						FROM = {
-							primary_title = {
-								k_iron_isles = {
-									de_jure_liege = PREV
-								}
+				if = {
+					limit = { has_landed_title = e_iron_isles }
+					k_iron_isles = { grant_title = PREV }
+					FROM = {
+						primary_title = {
+							k_iron_isles = {
+								de_jure_liege = PREV
 							}
 						}
+					}
 				}
 				if = {
 					limit = {

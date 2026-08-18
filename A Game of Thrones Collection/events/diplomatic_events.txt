@@ -1020,7 +1020,7 @@ character_event = {
 	}
 
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		higher_tier_than = DUKE
@@ -1439,7 +1439,7 @@ character_event = {
 
 	only_playable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_new_holder
 	war = no
 
 	trigger = {
@@ -2075,7 +2075,7 @@ letter_event = { #inform realm revoked
 character_event = { #privilege maintenance, on_new_holder
 	id = diplomatic.56
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = {
@@ -2759,19 +2759,19 @@ long_character_event = {
 
 			modifier = {
 				factor = 1.5
-				FROM  = { diplomacy = 13 }
+				FROM = { diplomacy = 13 }
 			}
 			modifier = {
 				factor = 1.5
-				FROM  = { diplomacy = 16 }
+				FROM = { diplomacy = 16 }
 			}
 			modifier = {
 				factor = 1.5
-				FROM  = { diplomacy = 19 }
+				FROM = { diplomacy = 19 }
 			}
 			modifier = {
 				factor = 1.5
-				FROM  = { diplomacy = 22 }
+				FROM = { diplomacy = 22 }
 			}
 			modifier = {
 				factor = 4
@@ -2870,7 +2870,7 @@ long_character_event = {
 			modifier = { #is not dejure liege
 				factor = 2
 				NOR = {
-					event_target:diplomatic_annexation_king  = { de_jure_vassal_or_below = PREV }
+					event_target:diplomatic_annexation_king = { de_jure_vassal_or_below = PREV }
 					AND = {
 						event_target:diplomatic_annexation_king = { has_landed_title = e_iron_throne }
 						primary_title = {
@@ -2989,7 +2989,7 @@ character_event = {
 			modifier = { #is not dejure liege
 				factor = 2
 				NOR = {
-					event_target:diplomatic_annexation_king  = { de_jure_vassal_or_below = PREV }
+					event_target:diplomatic_annexation_king = { de_jure_vassal_or_below = PREV }
 					AND = {
 						event_target:diplomatic_annexation_king = { has_landed_title = e_iron_throne }
 						primary_title = {
@@ -3268,7 +3268,7 @@ character_event = {
 				is_alive = yes
 				is_ruler = no
 				is_primary_heir = no
-				age = 16
+				is_adult = yes
 				trait = knight
 				OR = {
 					trait = trained_warrior
@@ -3287,7 +3287,7 @@ character_event = {
 				is_alive = yes
 				is_ruler = no
 				is_primary_heir = no
-				age = 16
+				is_adult = yes
 				trait = knight
 				OR = {
 					trait = trained_warrior
@@ -3470,19 +3470,19 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				FROM = { FROM  = { diplomacy = 13 } }
+				FROM = { FROM = { diplomacy = 13 } }
 			}
 			modifier = {
 				factor = 1.5
-				FROM = { FROM  = { diplomacy = 16 } }
+				FROM = { FROM = { diplomacy = 16 } }
 			}
 			modifier = {
 				factor = 1.5
-				FROM = { FROM  = { diplomacy = 19 } }
+				FROM = { FROM = { diplomacy = 19 } }
 			}
 			modifier = {
 				factor = 1.5
-				FROM = { FROM  = { diplomacy = 22 } }
+				FROM = { FROM = { diplomacy = 22 } }
 			}
 			modifier = {
 				factor = 1.5
@@ -4187,7 +4187,7 @@ character_event = {
 						k_north = { custom_tooltip = { text = TOOLTIPdejure_kingdom_claim_EMP_success } }
 				}
 				if = { 	limit = { primary_title = { title = e_riverlands } }
-						k_riverlands  = { custom_tooltip = { text = TOOLTIPdejure_kingdom_claim_EMP_success } }
+						k_riverlands = { custom_tooltip = { text = TOOLTIPdejure_kingdom_claim_EMP_success } }
 				}
 				if = { 	limit = { primary_title = { title = e_vale } }
 						k_vale = { custom_tooltip = { text = TOOLTIPdejure_kingdom_claim_EMP_success } }
@@ -5047,7 +5047,7 @@ letter_event = {
 			any_vassal = {
 				limit = {
 					religion = ROOT
-					age = 16
+					is_adult = yes
 				}
 				opinion = {
 					who = ROOT
@@ -5060,7 +5060,7 @@ letter_event = {
 					limit = {
 						is_ruler = no
 						religion = ROOT
-						age = 16
+						is_adult = yes
 						NOT = { trait = slave }
 						NOT = { trait = dragon }
 					}

@@ -473,22 +473,34 @@
 	name = "Самарро"	# Canon, Ninepenny King
 	dynasty = 982370
 
+	diplomacy = 10
+	martial = 12
+	stewardship = 5
+	intrigue = 8
+	learning = 4
+
 	religion = "pirate"
 	culture = "lysene"
 
-	martial = 12
-	diplomacy = 10
-	intrigue = 8
-	stewardship = 5
 	add_trait = "pirate"
-	add_trait = greedy
-	add_trait = ruthless
-	add_trait = proud
 
 	father = 115982370
 
-	8227.1.1 = { birth = yes }
-	8243.1.1 = { add_trait = skilled_warrior }
+	8227.1.1 = {
+		birth = yes
+	}
+	8243.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "proud"
+		add_trait = "greedy"
+		add_trait = "ruthless"
+		add_trait = "gregarious"
+	}
+	8258.1.1 = {
+		add_spouse = 600000064 # Old Mother
+	}
 	8259.1.1 = {
 		give_nickname = nick_the_last_valyrian
 		effect = {
@@ -502,7 +514,9 @@
 			}
 		}
 	}
-	8280.1.1 = { death = yes }
+	8280.1.1 = {
+		death = yes
+	}
 }
 ### Salladhor ! A mighty pirate ! ###
 119982370 = {
@@ -520,7 +534,8 @@
 	religion = "pirate"
 	culture = "lysene"
 
-	father = 118982370
+	father = 118982370 # Samarro Saan
+	mother = 600000064 # Old Mother
 
 	add_trait = "proud"
 	add_trait = "groomed"
@@ -2124,24 +2139,33 @@
 ### Band of Nine ###
 ####################
 600000064 = {
-	name = "Старая Мать"	# Canon, Ninepenny King, "Old Mother" pirate queen
+	name = "Старая Мать" # The Old Mother the Pirate Queen
 	female = yes
 	dynasty = 11300907
+
+	diplomacy = 10
+	martial = 6
+	stewardship = 5
+	intrigue = 8
+	learning = 4
 
 	religion = "pirate"
 	culture = "lysene"
 
-	martial = 6
-	diplomacy = 10
-	intrigue = 8
-	stewardship = 5
 	add_trait = "pirate"
-	add_trait = greedy
-	add_trait = ruthless
-	add_trait = proud
 
-	8214.1.1 = { birth = yes }
-	8243.1.1 = { add_trait = skilled_warrior }
+	8214.1.1 = {
+		birth = yes
+	}
+	8243.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "greedy"
+		add_trait = "ruthless"
+		add_trait = "proud"
+		add_trait = "ambitious"
+	}
 	8259.1.1 = {
 		effect = {
 			set_character_flag = band_of_nine
@@ -2160,24 +2184,32 @@
 	name = "Том"	# Canon, Ninepenny King, Spotted Tom the Butcher, captain of one of the free companies
 	dynasty = 11300906
 
+	diplomacy = 4
+	martial = 9
+	stewardship = 4
+	intrigue = 4
+	learning = 4
+
 	religion = "the_seven"
 	culture = "stormlander"
 
-	martial = 9
-	intrigue = 4
-
-	add_trait = greedy
-	add_trait = ruthless
-	add_trait = proud
-	add_trait = cruel
-	add_trait = deceitful
-
-	8227.1.1 = { birth = yes }
+	8227.1.1 = {
+		birth = yes
+	}
 	8243.1.1 = {
-		add_trait = skilled_warrior
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "greedy"
+		add_trait = "ruthless"
+		add_trait = "proud"
+		add_trait = "cruel"
+		add_trait = "deceitful"
+		add_trait = "ambitious"
 		give_nickname = nick_spotted_butcher
 	}
 	8259.1.1 = {
+		employer = 10757 # Maelys Blackfyre
 		effect = {
 			set_character_flag = band_of_nine
 			liege = {
@@ -2189,26 +2221,35 @@
 			}
 		}
 	}
-	8270.1.1 = { death = yes }
+	8270.1.1 = {
+		death = yes
+	}
 }
 600000066 = {
 	name = "Меро" # Canon, Ninepenny King, Nine Eyes, captain of Jolly Fellows
 	dynasty = 11300905
 
-	religion = "pentoshi_religion"
-	culture = "pentosi"
-
+	diplomacy = 5
 	martial = 10
+	stewardship = 4
 	intrigue = 4
+	learning = 4
 
-	add_trait = greedy
-	add_trait = ruthless
-	add_trait = proud
-	add_trait = cruel
+	religion = "myrish_religion"
+	culture = "myrman"
 
-	8224.1.1 = { birth = yes }
+	8224.1.1 = {
+		birth = yes
+	}
 	8243.1.1 = {
-		add_trait = skilled_warrior
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "proud"
+		add_trait = "greedy"
+		add_trait = "ruthless"
+		add_trait = "ambitious"
+		add_trait = "strategist"
 		give_nickname = nick_nine_eyes
 	}
 	8259.1.1 = {
@@ -2221,30 +2262,41 @@
 					years = 20
 				}
 			}
+			add_claim = k_myr
 		}
 	}
-	8266.1.1 = { death = yes }
+	8266.1.1 = {
+		death = yes
+	}
 }
 600000067 = {
 	name = "Лиомонд" # Canon, Ninepenny King, Liamond Lashare the Lord of Battles, captain of one of the free companies
 	dynasty = 11300713
 
-	religion = "rhllor"
-	culture = "myrman"
-
-	martial = 12
 	diplomacy = 5
-	intrigue = 8
+	martial = 12
 	stewardship = 5
+	intrigue = 8
+	learning = 6
 
-	add_trait = greedy
-	add_trait = ruthless
-	add_trait = proud
-	add_trait = cruel
+	religion = "weeping_lady"
+	culture = "lysene"
 
-	8226.1.1 = { birth = yes }
-	8243.1.1 = {
-		add_trait = skilled_warrior
+	8226.1.1 = {
+		birth = yes
+	}
+	8242.1.1 = {
+		add_trait = "brilliant_strategist"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "proud"
+		add_trait = "greedy"
+		add_trait = "ruthless"
+		add_trait = "gregarious"
+		add_trait = "authoritative"
+		add_trait = "ambitious"
+		add_trait = "strategist"
 	}
 	8250.1.1 = {
 		give_nickname = nick_lord_battles
@@ -2259,7 +2311,10 @@
 					years = 20
 				}
 			}
+			add_claim = k_lys
 		}
 	}
-	8266.1.1 = { death = yes }
+	8266.1.1 = {
+		death = yes
+	}
 }

@@ -6,7 +6,7 @@ character_event = {
 	title = "EVTTITLE_sb_imperialguard.0"
 	picture = "GFX_kingsguard"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	has_character_flag = LC_imperialguard
 
@@ -74,7 +74,7 @@ narrative_event = {
 		}
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.3
+				id = sb_imperialguard.3
 				days = 1
 			}
 		}
@@ -106,7 +106,7 @@ narrative_event = {
 		}
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.3
+				id = sb_imperialguard.3
 				days = 5
 			}
 		}
@@ -137,7 +137,7 @@ narrative_event = {
 		}
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.3
+				id = sb_imperialguard.3
 				days = 5
 			}
 		}
@@ -169,7 +169,7 @@ narrative_event = {
 		}
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.3
+				id = sb_imperialguard.3
 				days = 5
 			}
 		}
@@ -238,7 +238,7 @@ character_event = {
 		ai_chance = { factor = 85 }
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.111
+				id = sb_imperialguard.111
 				days = 1
 			}
 		}
@@ -268,7 +268,7 @@ character_event = {
 		ai_chance = { factor = 5 }
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.111
+				id = sb_imperialguard.111
 				days = 1
 			}
 		}
@@ -291,7 +291,7 @@ character_event = {
 		ai_chance = { factor = 5 }
 		ROOT = {
 			narrative_event = {
-				id =  sb_imperialguard.111
+				id = sb_imperialguard.111
 				days = 1
 			}
 		}
@@ -521,8 +521,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -547,8 +546,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -1262,7 +1260,7 @@ character_event = {
 		any_playable_ruler = {
 			limit = { has_landed_title = e_ghiscar }
 			narrative_event = {
-				id =  sb_imperialguard.8
+				id = sb_imperialguard.8
 				days = 1
 			}
 		}
@@ -1288,7 +1286,7 @@ character_event = {
 		any_playable_ruler = {
 			limit = { has_landed_title = e_ghiscar }
 			narrative_event = {
-				id =  sb_imperialguard.9
+				id = sb_imperialguard.9
 				days = 1
 			}
 		}
@@ -1314,7 +1312,7 @@ character_event = {
 		any_playable_ruler = {
 			limit = { has_landed_title = e_ghiscar }
 			narrative_event = {
-				id =  sb_imperialguard.10
+				id = sb_imperialguard.10
 				days = 1
 			}
 		}
@@ -2529,7 +2527,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -2595,7 +2593,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -2710,7 +2708,7 @@ character_event = {
 	desc = "EVTDESCkingsguard.1"
 	picture = "GFX_kingsguard"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		trait = imperialguard
@@ -3098,25 +3096,25 @@ character_event = {
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					reverse_opinion = { who = ROOT value =  10 }
+					reverse_opinion = { who = ROOT value = 10 }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					reverse_opinion = { who = ROOT value =  70 }
+					reverse_opinion = { who = ROOT value = 70 }
 				}
 			}
 			modifier = {
 				factor = 4
 				event_target:imperialguard_kin_while_at_war = {
-					opinion = { who = ROOT value =  25 }
+					opinion = { who = ROOT value = 25 }
 				}
 			}
 			modifier = {
@@ -3215,7 +3213,7 @@ character_event = {
 				OR = {
 					trait = honorable
 					trait = just
-					event_target:imperialguard_kin_while_at_war = { reverse_opinion = { who = ROOT value =  20 } }
+					event_target:imperialguard_kin_while_at_war = { reverse_opinion = { who = ROOT value = 20 } }
 				}
 				NOT = { trait = paranoid }
 				NOT = { trait = lunatic }
@@ -3227,25 +3225,25 @@ character_event = {
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -10 } }
+					NOT = { reverse_opinion = { who = ROOT value = -10 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -70 } }
+					NOT = { reverse_opinion = { who = ROOT value = -70 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { opinion = { who = ROOT value =  -25 } }
+					NOT = { opinion = { who = ROOT value = -25 } }
 				}
 			}
 			modifier = {
@@ -3335,7 +3333,7 @@ character_event = {
 				OR = {
 					trait = honorable
 					trait = just
-					event_target:imperialguard_kin_while_at_war = { reverse_opinion = { who = ROOT value =  0 } }
+					event_target:imperialguard_kin_while_at_war = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 				NOT = { trait = paranoid }
 				NOT = { trait = lunatic }
@@ -3347,25 +3345,25 @@ character_event = {
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -10 } }
+					NOT = { reverse_opinion = { who = ROOT value = -10 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { reverse_opinion = { who = ROOT value =  -70 } }
+					NOT = { reverse_opinion = { who = ROOT value = -70 } }
 				}
 			}
 			modifier = {
 				factor = 2
 				event_target:imperialguard_kin_while_at_war = {
-					NOT = { opinion = { who = ROOT value =  -25 } }
+					NOT = { opinion = { who = ROOT value = -25 } }
 				}
 			}
 			modifier = {
@@ -3648,7 +3646,7 @@ character_event = {
 
 	is_triggered_only = yes
 	hide_window = yes
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		demesne_size = 1

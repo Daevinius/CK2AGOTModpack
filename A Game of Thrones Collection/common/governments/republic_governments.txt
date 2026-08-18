@@ -430,4 +430,77 @@ republic_governments = {
 		}
 		capital_move_delay = 600
 	}
+	brothel_republic_government = {
+		preferred_holdings = { CITY }
+		allowed_holdings = {
+			CITY
+		}
+		allowed_holdings_culture = { # Will not get the wrong government type penalty for tribes of the same culture
+			#TRIBAL
+		}
+		accepts_liege_governments = { # Accepts other republics
+			feudal_government
+			feudal_government_LP
+			colony_government
+			noble_oligarchy
+			alliance_government
+			republic_government
+			merchant_republic_government
+			theocracy_government
+			wildling_feudal_government
+			nomadic_government
+			NW_government
+			military_command_government
+			military_command_government_city
+			triarch_merchant_republic_government
+		}
+		free_revoke_on_governments_religion = { # Tribal vassals of other religions can have their titles revoked for free
+			# tribal_government
+		}
+		free_revoke_on_governments = {
+			# military_command_government
+			# military_command_government_city
+			# outlaw_government
+			# pirate_government
+		}
+		frame_suffix = "_merchantrepublic"
+		title_prefix = "city_"
+		potential = {
+			trait = prostitute
+			is_nomadic = no
+		}
+
+		color = { 101 79 109 }
+
+		gets_religion_opinion_penalties = no
+		gives_religion_opinion_penalties = no
+		can_create_kingdoms = no
+		can_create_empires = no
+		can_usurp_kingdoms_and_empires = no
+		can_build_holdings = no
+		can_build_forts = no
+		can_build_castle = no
+		can_build_city = no
+		can_build_temple = no
+		can_build_tribal = no
+		can_inherit = no
+		can_be_granted_kingdoms_and_empires_by_other_government = no
+		allow_title_revokation = no
+		allow_looting = no
+		can_imprison_without_reason = no
+		can_revoke_without_reason = no
+
+
+
+		have_gender_laws = yes
+		barons_need_dynasty = no
+		frame_suffix = "_republic"
+		title_prefix = "city_"
+
+
+		ignore_in_vassal_limit_calculation = {
+			#tribal_government
+		}
+		capital_move_delay = 600
+	}
 }

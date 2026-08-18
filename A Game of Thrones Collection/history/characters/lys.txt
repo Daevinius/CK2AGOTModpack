@@ -584,8 +584,9 @@
 		birth = yes
 	}
 }
-
-### House Rogare
+####################
+### House Rogare ###
+####################
 34455999 = {
 	name = "Лиронис"	# a lord
 	dynasty = 55999
@@ -701,9 +702,13 @@
 
 	8055.1.1 = { birth = yes }
 	8071.1.1 = { add_trait = skilled_warrior }
+	8076.1.1 = {
+		add_spouse = 88000310 # Baratheon
+	}
 	8077.1.1 = { add_trait = "truth" }
 	8115.1.1 = { death = yes }
 }
+### Issue of Rogare ###
 107300539 = {
 	name = "Гилено"	# a lord
 	dynasty = 55999
@@ -711,11 +716,12 @@
 	religion = "weeping_lady"
 	culture = "lysene"
 
-	father = 106300539
+	father = 106300539 # Rogare
+	mother = 88000310 # Baratheon
 
 	8076.1.1 = { birth = yes }
-	8091.1.1 = { add_spouse = 207300539 }
 	8092.1.1 = { add_trait = poor_warrior }
+	8095.1.1 = { add_spouse = 207300539 }
 	8115.1.1 = { add_trait = "truth" }
 	8125.1.1 = { death = yes }
 }
@@ -729,35 +735,47 @@
 	8076.1.1 = { birth = yes }
 	8125.1.1 = { death = yes }
 }
+### Issue of Rogare ###
 108300539 = {
 	name = "Лисандро"	# a lord
 	dynasty = 55999
 
-	stewardship = 8
-	martial = 2
 	diplomacy = 7
+	martial = 2
+	stewardship = 8
 	intrigue = 3
 	learning = 3
 
 	religion = "weeping_lady"
 	culture = "high_valyrian"
 
+	add_trait = "quick_1"
+
 	father = 107300539
 	mother = 207300539
 
-	add_trait = ambitious
-	add_trait = ruthless
-	add_trait = gregarious
-	add_trait = lustful
-	add_trait = midas_touched
-	add_trait = quick_1
-
 	8092.1.1 = {
 		birth = yes
-		effect = { culture = lysene }
+		effect = {
+			culture = lysene
+		}
 	}
-	8108.1.1 = { add_trait = trained_warrior add_spouse = 208300539 }
-	8125.1.1 = { add_trait = "truth" }
+	8108.1.1 = {
+		add_trait = "midas_touched"
+		add_trait = "trained_warrior"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "proud"
+		add_trait = "lustful"
+		add_trait = "ruthless"
+		add_trait = "gregarious"
+		add_trait = "ambitious"
+		add_trait = "administrator"
+		add_spouse = 208300539
+	}
+	8125.1.1 = {
+		add_trait = "truth"
+	}
 	8130.1.1 = {
 		give_nickname = nick_the_magnificent
 		create_bloodline = {
@@ -765,8 +783,8 @@
 			has_dlc = "Holy Fury"
 		}
 	}
-	8135.12.2 = { #day after his brother
-		culture = lysene
+	8135.12.2 = {
+		culture = "lysene"
 		death = {
 			death_reason = death_murder_unknown # the Iron Bank will have its due
 			killer = 500515
@@ -814,6 +832,7 @@
 		}
 	}
 }
+### Issue of Lysandro the Magnificent ###
 110300539 = {
 	name = "Лисаро"	# A Lord
 	dynasty = 55999
@@ -981,7 +1000,7 @@
 	}
 }
 159300539 = {
-	name = "Ларра"	# Married Viserys II Targaryen
+	name = "Ларра" # Larra Rogare, married Viserys II Targaryen.
 	female = yes
 	dynasty = 55999
 	dna = "aceaewlccas"
@@ -1628,13 +1647,21 @@
 
 	father = 103300523
 
-	add_trait = skilled_tactician
-	add_trait = ambitious
-	add_trait = lustful
-
-	8079.1.1 = { birth = yes }
-	8095.1.1 = { add_trait = skilled_warrior }
-	8131.9.1 = { death = { death_reason = death_murder } } #murdered by rival
+	8079.1.1 = {
+		birth = yes
+	}
+	8095.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+		add_trait = "proud"
+		add_trait = "lustful"
+		add_trait = "ambitious"
+	}
+	8131.9.1 = {
+		death = {
+			death_reason = death_murder # Murdered by a rival
+		}
+	}
 }
 111300523 = {
 	name = "Трегар"	# a lord
@@ -1898,7 +1925,9 @@
 	8093.1.1 = {
 		birth = yes
 	}
-	8109.1.1 = { add_spouse = 19300263 }
+	8109.1.1 = {
+		add_spouse = 19300263
+	}
 	8135.12.3 = {
 		death = {
 			death_reason = death_murder_poison
@@ -1996,23 +2025,30 @@
 		}
 	}
 }
+### Issue of Torreo ###
 25300263 = {
-	name = "Мирмадора"	# Canon, hoped to wed a king
+	name = "Мирмадора" # Myrmadora Haen, one of the maidens who attended the Maiden's Day Ball for Aegon III Targaryen.
 	female = yes
 	dynasty = 300263
 
 	religion = "weeping_lady"
 	culture = "lysene"
 
-	father = 18300263
+	add_trait = "fair_1"
+
+	father = 18300263 # Torreo Haen
 	mother = 19300263
 
-	add_trait = fair_1
-	add_trait = ambitious
-	add_trait = lustful
-
-	8117.1.1 = {
+	8109.1.1 = {
 		birth = yes
+	}
+	8125.1.1 = {
+		add_trait = "midas_touched"
+		add_trait = "diligent"
+		add_trait = "proud"
+		add_trait = "gregarious"
+		add_trait = "ambitious"
+		add_trait = "groomed"
 	}
 	8135.12.3 = {
 		death = {
@@ -2200,33 +2236,47 @@
 
 
 ### Other Canon Characters
-600000047 = { #mistress of Aegon IV
-	name = "Серенея"
+600000047 = {
+	name = "Серенея" # Serenei of Lys, ninth and last mistress of Aegon IV Targaryen.
 	dynasty = 300505
 	female = yes
 
-	religion = "rhllor"
+	diplomacy = 7
+	martial = 2
+	stewardship = 5
+	intrigue = 10
+	learning = 7
+
+	religion = "weeping_lady"
 	culture = "lysene"
 
-	martial = 2
-	diplomacy = 7
-	intrigue = 5
-	stewardship = 5
-	add_trait = "fair_2"
-	add_trait = "lustful"
-	add_trait = "proud"
-	add_trait = "rude"
-	add_trait = "scholar"
-	add_trait = "charismatic_negotiator"
+	add_trait = "fair_1"
 
 	8139.1.1 = {
 		birth = yes
-		effect = { set_immune_to_pruning = yes }
+		effect = {
+			set_immune_to_pruning = yes
+		}
 	}
-	8180.1.1 = {
-		employer = 77020
+	8155.1.1 = {
+		add_trait = "intricate_webweaver"
+		add_trait = "proud"
+		add_trait = "lustful"
+		add_trait = "gregarious"
+		add_trait = "rude"
+		add_trait = "mystic"
+		add_trait = "seductress"
+		add_trait = "groomed"
 	}
-	8181.1.1 = { death = { death_reason = death_childbirth } } # Childbirth
+	8177.1.1 = {
+		employer = 77020 # Aegon IV Targaryen
+		give_nickname = nick_the_sweet
+	}
+	8178.1.1 = {
+		death = {
+			death_reason = death_childbirth
+		}
+	}
 }
 
 #######################
@@ -2241,7 +2291,10 @@
 	culture = "high_valyrian"
 
 	7835.1.1 = { birth = yes }
-	7851.1.1 = { add_trait = trained_warrior add_trait = dragon_rider }
+	7851.1.1 = {
+		add_trait = trained_warrior
+		add_trait = dragon_rider
+	}
 	7898.1.1 = { #dov
 		death = {
 			death_reason = death_missing
@@ -2306,6 +2359,9 @@
 			create_bloodline = {
 				type = blood_of_the_dragon
 			}
+		}
+		create_bloodline = {
+			type = dragon_rider_tracker
 		}
 	}
 	7880.1.1 = {

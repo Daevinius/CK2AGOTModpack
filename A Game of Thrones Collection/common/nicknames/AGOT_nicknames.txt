@@ -46,7 +46,7 @@ nick_the_reaver = {
 }
 nick_the_firegazer = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = fire_obsessed
 		NOT = { any_dynasty_member_even_if_dead = { has_nickname = nick_the_firegazer } }
 	}
@@ -56,7 +56,7 @@ nick_the_firegazer = {
 }
 nick_the_dragonlord = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = dragon_rider
 		is_female = no
 		NOT = { dynasty = 496 }
@@ -81,7 +81,7 @@ nick_the_dragonlord = {
 }
 nick_the_elegant = {
 	allow = {
-		age = 16
+		is_adult = yes
 		has_fashionable_groomed_trigger = yes
 		NOT = { has_ugly_trait_trigger = yes }
 		NOT = { any_dynasty_member_even_if_dead = { has_nickname = nick_the_elegant } }
@@ -96,7 +96,7 @@ nick_the_elegant = {
 }
 nick_the_imperious = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = authoritative
 		OR = {
 			trait = just
@@ -112,7 +112,7 @@ nick_the_imperious = {
 }
 nick_the_rude = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = rude
 		NOT = { any_dynasty_member_even_if_dead = { has_nickname = nick_the_rude } }
 	}
@@ -122,7 +122,7 @@ nick_the_rude = {
 }
 nick_the_uncaring = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = selfish
 		NOT = { trait = kind }
 		NOT = { trait = diligent }
@@ -140,7 +140,7 @@ nick_the_uncaring = {
 }
 nick_the_merciless = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = ruthless
 		NOT = { trait = kind }
 		NOT = { any_dynasty_member_even_if_dead = { has_nickname = nick_the_merciless } }
@@ -159,7 +159,7 @@ nick_the_merciless = {
 }
 nick_the_red_robed = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = red_priest
 		is_theocracy = no
 	}
@@ -169,7 +169,7 @@ nick_the_red_robed = {
 }
 nick_the_drowned_king = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = drowned
 		is_feudal_monarch_trigger = yes
 		is_female = no
@@ -181,7 +181,7 @@ nick_the_drowned_king = {
 }
 nick_the_septon_king = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = septon
 		is_feudal_monarch_trigger = yes
 		is_female = no
@@ -193,7 +193,7 @@ nick_the_septon_king = {
 }
 nick_stoneface = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = greyscale_scarred
 	}
 	chance = {
@@ -202,7 +202,7 @@ nick_stoneface = {
 }
 nick_the_tolerant = {
 	allow = {
-		age = 16
+		is_adult = yes
 		has_any_sympathy_trait_trigger = yes
 		NOT = { trait = proud }
 		NOT = { trait = wroth }
@@ -564,8 +564,37 @@ nick_the_beggar_king = {
 		factor = 0.5
 	}
 }
-nick_the_mountain_that_rides = { }
-
+nick_the_mountain_that_rides = {
+	allow = {
+		age = 16
+		is_strong_trigger = yes
+		trait = tall
+		combat_rating = 60
+	}
+	chance = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			trait = cruel
+		}
+		modifier = {
+			factor = 1.25
+			trait = poor_warrior
+		}
+		modifier = {
+			factor = 1.5
+			trait = trained_warrior
+		}
+		modifier = {
+			factor = 1.75
+			trait = skilled_warrior
+		}
+		modifier = {
+			factor = 2
+			trait = master_warrior
+		}
+	}
+}
 nick_the_imp = {
 	allow = {
 		age = 15
@@ -593,7 +622,7 @@ nick_the_imp = {
 }
 nick_the_gallant = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = honorable
 		OR = {
 			trait = knight
@@ -646,7 +675,7 @@ nick_the_unworthy = { 			#77020 Aegon IV the Unworthy
 }
 nick_the_monstrous = {
 	allow = {
-		age = 16
+		is_adult = yes
 		OR = {
 			AND = {
 				is_ugly_trigger = yes
@@ -713,7 +742,7 @@ nick_silverhair = {
 }
 nick_the_gross = {
 	allow = {
-		age = 16
+		is_adult = yes
 		trait = is_fat
 		OR = {
 			trait = hedonist
@@ -727,8 +756,15 @@ nick_the_gross = {
 		factor = 2
 	}
 }
-nick_the_lazy = { }
-
+nick_the_lazy = {
+	allow = {
+		age = 16
+		trait = slothful
+	}
+	chance = {
+		factor = 1
+	}
+}
 nick_the_old_bear = {
 	allow = {
 		age = 55
@@ -755,8 +791,39 @@ nick_the_skinchanger = {
 	allow = {
 		trait = greensight
 		OR = {
-			trait = wolf
 			trait = crow
+			trait = wolf
+			trait = cata
+			trait = dog
+			trait = goat
+			trait = bat
+			trait = great_bat
+			trait = eagle
+			trait = deer
+			trait = boar
+			trait = brownbear
+			trait = snowbear
+			trait = sea_lion
+			trait = whale
+			trait = shadowcat
+			trait = crane
+			trait = lizardlion
+			trait = hrakkar
+			trait = lion
+			trait = vulture
+			trait = walrus
+			trait = panda
+			trait = great_ape
+			trait = fox_mbs
+			trait = mammoth
+			trait = unicorn_MBS
+			trait = owl
+			trait = rabbit
+			trait = badger
+			trait = squirrel
+			trait = aurochs
+			trait = rat
+			trait = direwolf
 		}
 		NOT = { any_dynasty_member_even_if_dead = { has_nickname = nick_the_skinchanger } }
 	}
@@ -858,7 +925,7 @@ nick_the_stallion_that_mounts_the_world = {
 		tier = EMPEROR
 		culture = dothraki
 		is_female = no
-		age = 16
+		is_adult = yes
 		prestige = 4000
 		is_nomadic = yes
 		has_character_modifier = greatest_of_khans
@@ -908,7 +975,7 @@ nick_the_knight_of_kisses = {
 }
 nick_the_beautiful = {
 	allow = {
-		age = 16
+		is_adult = yes
 		has_fashionable_groomed_trigger = yes
 		is_fair_trigger = yes
 		NOT = { any_dynasty_member_even_if_dead = { has_nickname = nick_the_beautiful } }
@@ -1167,6 +1234,47 @@ nick_the_young_wolf = {
 		}
 	}
 }
+nick_the_old_wolf = {
+	allow = {
+		dynasty = 59
+		age = 55
+		ruled_years = 5
+		is_female = no
+	}
+	chance = {
+		factor = 2
+	}
+}
+nick_the_shewolf = {
+	allow = {
+		is_female = yes
+		ruled_years = 10
+		OR = {
+			dynasty = 59
+			trait = direwolf
+		}
+		OR = {
+			trait = skilled_warrior
+			trait = master_warrior
+			prestige = 2000
+		}
+	}
+	chance = {
+		factor = 2
+		modifier = {
+			factor = 2
+			prestige = 2000
+		}
+		modifier = {
+			factor = 2
+			prestige = 3000
+		}
+		modifier = {
+			factor = 2
+			prestige = 4000
+		}
+	}
+}
 nick_stormborn = {}
 nick_the_kingslayer = {}
 nick_the_hound = {}
@@ -1256,7 +1364,7 @@ nick_the_kingmaker = {}
 nick_the_demon_of_darry = {}
 nick_the_dogshead = {}
 nick_the_lord_lamprey = {}
-nick_duckfield  = {}
+nick_duckfield = {}
 nick_ironhand = {}
 nick_the_purple = {}
 nick_the_laughing_storm = {}
@@ -1416,6 +1524,7 @@ nick_one_hand = {}
 nick_the_vulture_king = {}
 nick_the_savage = {}
 nick_the_devout = {}
+nick_the_dragonless = {}
 nick_palehair = {}
 nick_the_flea = {}
 nick_the_sea_lion = {}
@@ -1520,7 +1629,7 @@ nick_the_breaker_of_chains = { }
 nick_the_deliverer = { }
 nick_mother = { }
 nick_father = { }
-nick_the_iron = { }
+nick_the_iron = { is_prefix = yes }
 nick_the_mage = { }
 nick_the_enchantress = { }
 nick_the_seductress = { }
@@ -1630,3 +1739,23 @@ nick_the_catamite = {}
 nick_the_brindled_butcher = {}
 nick_the_she_snake = {}
 nick_the_sweetling = {}
+nick_the_boisterous = { }
+nick_the_boastful = { }
+nick_long_lance = {}
+nick_the_cat = {}
+nick_the_leopard = {}
+nick_the_bronze_giant = {}
+nick_the_dragons_hammer = {}
+nick_hot_prefix = { is_prefix = yes }
+nick_blackmane = {}
+nick_silverhorn = {}
+nick_no_nose = {}
+nick_the_great_kraken = {}
+nick_strongbrother = {}
+nick_thrallsbane = {}
+nick_the_leviathan = {}
+nick_the_last_giant = {}
+nick_fist_of_the_gods = {}
+nick_the_peasant_king = {} 
+nick_goldstag = { }
+						  

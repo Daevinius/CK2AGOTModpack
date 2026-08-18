@@ -442,7 +442,7 @@ add_trait_arbitrary_effect = {
 	}
 }
 
-add_trait_brave_effect  = {
+add_trait_brave_effect = {
 	if = {
 		limit = {
 			NOR = {
@@ -482,7 +482,7 @@ add_trait_chaste_effect = {
 	}
 }
 
-add_trait_craven_effect  = {
+add_trait_craven_effect = {
 	if = {
 		limit = {
 			NOR = {
@@ -495,7 +495,7 @@ add_trait_craven_effect  = {
 	}
 }
 
-add_trait_cruel_effect  = {
+add_trait_cruel_effect = {
 	if = {
 		limit = {
 			NOR = {
@@ -880,7 +880,7 @@ add_trait_silently_arbitrary_effect = {
 	}
 }
 
-add_trait_silently_brave_effect  = {
+add_trait_silently_brave_effect = {
 	if = {
 		limit = {
 			NOR = {
@@ -917,7 +917,7 @@ add_trait_silently_chaste_effect = {
 	}
 }
 
-add_trait_silently_craven_effect  = {
+add_trait_silently_craven_effect = {
 	if = {
 		limit = {
 			NOR = {
@@ -929,7 +929,7 @@ add_trait_silently_craven_effect  = {
 	}
 }
 
-add_trait_silently_cruel_effect  = {
+add_trait_silently_cruel_effect = {
 	if = {
 		limit = {
 			NOR = {
@@ -4908,7 +4908,7 @@ remove_prison_reason_effect = {
 
 add_cat_effect = {
 	if = {
-		limit =  { NOT = { has_character_modifier = pet_cat } }
+		limit = { NOT = { has_character_modifier = pet_cat } }
 		add_character_modifier = {
 			name = pet_cat
 			duration = -1
@@ -4946,7 +4946,7 @@ add_cat_effect = {
 
 add_dog_effect = {
 	if = {
-		limit =  { NOT = { has_character_modifier = pet_hunting_dog } }
+		limit = { NOT = { has_character_modifier = pet_hunting_dog } }
 		add_character_modifier = {
 			name = pet_hunting_dog
 			duration = -1
@@ -5007,7 +5007,7 @@ remove_secret_religion_trait_effect = {
 		# limit = { is_variable_equal = { which = assassins_debt value = 50 } }
 		# wealth = -50
 		# hidden_tooltip = {
-			# event_target:grand_master  = {
+			# event_target:grand_master = {
 				# if = {
 					# limit = {
 						# ai = yes
@@ -5022,7 +5022,7 @@ remove_secret_religion_trait_effect = {
 		# limit = { is_variable_equal = { which = assassins_debt value = 250 } }
 		# wealth = -250
 		# hidden_tooltip = {
-			# event_target:grand_master  = {
+			# event_target:grand_master = {
 				# if = {
 					# limit = {
 						# ai = yes
@@ -5037,7 +5037,7 @@ remove_secret_religion_trait_effect = {
 		# limit = { is_variable_equal = { which = assassins_debt value = 300 } }
 		# wealth = -300
 		# hidden_tooltip = {
-			# event_target:grand_master  = {
+			# event_target:grand_master = {
 				# if = {
 					# limit = {
 						# ai = yes
@@ -6423,15 +6423,15 @@ clr_artifact_searcher_effect = {
 add_artifact_search_payment_effect = {
 	if = {
 		limit = { has_character_modifier = relic_rumor_minor }
-		add_character_modifier =  { name = pays_for_artifact_hunt_minor duration = -1 }
+		add_character_modifier = { name = pays_for_artifact_hunt_minor duration = -1 }
 	}
 	if = {
 		limit = { has_character_modifier = relic_rumor_medium }
-		add_character_modifier =  { name = pays_for_artifact_hunt_medium duration = -1 }
+		add_character_modifier = { name = pays_for_artifact_hunt_medium duration = -1 }
 	}
 	if = {
 		limit = { has_character_modifier = relic_rumor_major }
-		add_character_modifier =  { name = pays_for_artifact_hunt_major duration = -1 }
+		add_character_modifier = { name = pays_for_artifact_hunt_major duration = -1 }
 	}
 }
 
@@ -8367,8 +8367,7 @@ spawn_nationalist_reinforcements_effect = {
 					limit = { is_female = no }
 					set_special_character_title = title_ser
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					set_special_character_title = title_lady
 				}
 			}
@@ -8435,8 +8434,7 @@ spawn_nationalist_reinforcements_effect = {
 					limit = { is_female = no }
 					set_special_character_title = title_ser
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					set_special_character_title = title_lady
 				}
 			}
@@ -9133,8 +9131,7 @@ add_ascetic_trait_effect = {
 			add_trait = septon
 			set_special_character_title = title_septon
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			add_trait = silent_sister
 		}
 	}
@@ -10168,31 +10165,31 @@ set_horoscope_modifier_effect = { # Modifiers received by target during the Herm
 			destined_steward = {
 				add_character_modifier = {
     				name = guided_by_horoscope_stewardship
-    				duration =-1
+    				duration = -1
     			}
 			}
 			destined_fighter = {
 				add_character_modifier = {
     				name = guided_by_horoscope_martial
-    				duration =-1
+    				duration = -1
     			}
 			}
 			destined_diplomat = {
 				add_character_modifier = {
     				name = guided_by_horoscope_diplomacy
-    				duration =-1
+    				duration = -1
     			}
 			}
 			destined_schemer = {
 				add_character_modifier = {
     				name = guided_by_horoscope_intrigue
-    				duration =-1
+    				duration = -1
     			}
 			}
 			destined_scholar = {
 				add_character_modifier = {
     				name = guided_by_horoscope_learning
-    				duration =-1
+    				duration = -1
     			}
 			}
 		}
@@ -10869,8 +10866,7 @@ spawn_good_commander_effect = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -11051,8 +11047,7 @@ spawn_great_commander_effect = {
 							limit = { is_female = no }
 							set_special_character_title = title_ser
 						}
-						if = {
-							limit = { is_female = yes }
+						else = {
 							set_special_character_title = title_lady
 						}
 					}
@@ -11355,8 +11350,7 @@ spawn_fantastic_commander_effect = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -11474,8 +11468,7 @@ spawn_fantastic_diplomat_effect = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -11597,8 +11590,7 @@ spawn_fantastic_scholar_effect = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -12996,7 +12988,7 @@ random_coronation_events_effect = {
 			}
 			modifier = {
 				factor = 0
-				age = 16
+				is_adult = yes
 			}
 			modifier = {
 				factor = 1.5
@@ -13103,7 +13095,7 @@ random_coronation_events_effect = {
 			}
 			modifier = {
 				factor = 0
-				age = 16
+				is_adult = yes
 			}
 			modifier = {
 				factor = 0
@@ -13254,7 +13246,7 @@ random_coronation_events_effect = {
 						any_rival = {
 							independent = yes
 							has_opinion_modifier = {
-								who =  event_target:coronation_ruler
+								who = event_target:coronation_ruler
 								modifier = opinion_coronation_guest
 							}
 						}
@@ -14419,7 +14411,7 @@ troubled_pregnancy_variable_easy_effect = {
 			factor = 1.5
 			persistent_event_target:pregnancy_regent_physician_per = { learning = 20 }
 		}
-		change_variable =  { which = troubled_pregnancy_variable value = -2 }
+		change_variable = { which = troubled_pregnancy_variable value = -2 }
 	}
 	40 = {
 		modifier = {
@@ -14470,7 +14462,7 @@ troubled_pregnancy_variable_easy_effect = {
 			factor = 0.8
 			has_character_modifier = mother_comforted
 		}
-		change_variable =  { which = troubled_pregnancy_variable value = 2 }
+		change_variable = { which = troubled_pregnancy_variable value = 2 }
 	}
 	}
 }
@@ -14678,7 +14670,7 @@ troubled_pregnancy_variable_hard_effect = {
 			factor = 1.5
 			persistent_event_target:pregnancy_regent_physician_per = { learning = 20 }
 		}
-		change_variable =  { which = troubled_pregnancy_variable value = -3 }
+		change_variable = { which = troubled_pregnancy_variable value = -3 }
 	}
 	70 = {
 		modifier = {
@@ -14729,7 +14721,7 @@ troubled_pregnancy_variable_hard_effect = {
 			factor = 0.8
 			has_character_modifier = mother_comforted
 		}
-		change_variable =  { which = troubled_pregnancy_variable value = 3 }
+		change_variable = { which = troubled_pregnancy_variable value = 3 }
 	}
 	}
 }
@@ -15036,7 +15028,7 @@ gain_weight_large_effect = {
 }
 
 #Used for training and balanced lifestyle.
-balance_weight_small_effect =  {
+balance_weight_small_effect = {
 	#custom_tooltip = {
 		hidden_tooltip = {
 			#If variable is above 1, reduce it. If it's below 1 increase it.
@@ -16711,7 +16703,7 @@ add_scarred_tiered_effect = {
 			}
 		}
 	}
-	else_if =  {
+	else_if = {
 		limit = { NOT = { has_dlc = "Holy Fury" } }
 		add_trait = scarred
 	}
@@ -16767,7 +16759,7 @@ add_scarred_medium_effect = {
 			add_trait = scarred_mid
 		}
 	}
-	else_if =  {
+	else_if = {
 		limit = { NOT = { has_dlc = "Holy Fury" } }
 		add_trait = scarred
 	}
@@ -16821,7 +16813,7 @@ add_scarred_high_effect = {
 			add_trait = scarred_high
 		}
 	}
-	else_if =  {
+	else_if = {
 		limit = { NOT = { has_dlc = "Holy Fury" } }
 		add_trait = scarred
 	}
@@ -16879,7 +16871,7 @@ add_scarred_start_effect = {
 			change_variable = { which = scarred_variable value = 10 }
 		}
 	}
-	else_if =  {
+	else_if = {
 		limit = { NOT = { has_dlc = "Holy Fury" } }
 		add_trait = scarred
 	}
@@ -21356,8 +21348,7 @@ knight_character_effect = {
 				limit = { is_female = no }
 				set_special_character_title = title_ser
 			}
-			if = {
-				limit = { is_female = yes }
+			else = {
 				set_special_character_title = title_lady
 			}
 		}
@@ -21383,8 +21374,7 @@ ROOT_knight_character_effect = {
 				limit = { is_female = no }
 				set_special_character_title = title_ser
 			}
-			if = {
-				limit = { is_female = yes }
+			else = {
 				set_special_character_title = title_lady
 			}
 		}
@@ -22013,7 +22003,7 @@ murder_success_calulator_effect = {
 				}
 			}
 			modifier = {
-				factor = 0.9
+				factor = 0.7
 				OR = {
 					has_landed_title = e_iron_throne
 					AND = {
@@ -22038,7 +22028,7 @@ murder_success_calulator_effect = {
 				}
 			}
 			modifier = {
-				factor = 0.75
+				factor = 0.4
 				OR = {
 					has_landed_title = e_iron_throne
 					AND = {
@@ -22063,7 +22053,7 @@ murder_success_calulator_effect = {
 				}
 			}
 			modifier = {
-				factor = 0.6
+				factor = 0.08
 				OR = {
 					has_landed_title = e_iron_throne
 					AND = {
@@ -22304,6 +22294,19 @@ increase_holding_base_value_effect = {
 			add_building = ca_asoiaf_valyria_basevalue_6
 
 		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_islander_basevalue_5 }
+			add_building = ca_asoiaf_islander_basevalue_6
+
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_waste_basevalue_5 }
+			add_building = ca_asoiaf_waste_basevalue_6
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_brindle_basevalue_5 }
+			add_building = ca_asoiaf_brindle_basevalue_6
+		}
 		#####
 		else_if = {
 			limit = { has_building = ca_asoiaf_north_basevalue_4 }
@@ -22384,6 +22387,18 @@ increase_holding_base_value_effect = {
 		else_if = {
 			limit = { has_building = ca_asoiaf_valyria_basevalue_4 }
 			add_building = ca_asoiaf_valyria_basevalue_5
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_islander_basevalue_4 }
+			add_building = ca_asoiaf_islander_basevalue_5
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_waste_basevalue_4 }
+			add_building = ca_asoiaf_waste_basevalue_5
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_brindle_basevalue_4 }
+			add_building = ca_asoiaf_brindle_basevalue_5
 		}
 		####
 		else_if = {
@@ -22466,6 +22481,18 @@ increase_holding_base_value_effect = {
 			limit = { has_building = ca_asoiaf_valyria_basevalue_3 }
 			add_building = ca_asoiaf_valyria_basevalue_4
 		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_islander_basevalue_3 }
+			add_building = ca_asoiaf_islander_basevalue_4
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_waste_basevalue_3 }
+			add_building = ca_asoiaf_waste_basevalue_4
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_brindle_basevalue_3 }
+			add_building = ca_asoiaf_brindle_basevalue_4
+		}
 		####
 		else_if = {
 			limit = { has_building = ca_asoiaf_north_basevalue_2 }
@@ -22547,6 +22574,18 @@ increase_holding_base_value_effect = {
 			limit = { has_building = ca_asoiaf_valyria_basevalue_2 }
 			add_building = ca_asoiaf_valyria_basevalue_3
 		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_islander_basevalue_2 }
+			add_building = ca_asoiaf_islander_basevalue_3
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_waste_basevalue_2 }
+			add_building = ca_asoiaf_waste_basevalue_3
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_brindle_basevalue_2 }
+			add_building = ca_asoiaf_brindle_basevalue_3
+		}
 		####
 		else_if = {
 			limit = { has_building = ca_asoiaf_north_basevalue_1 }
@@ -22627,6 +22666,18 @@ increase_holding_base_value_effect = {
 		else_if = {
 			limit = { has_building = ca_asoiaf_valyria_basevalue_1 }
 			add_building = ca_asoiaf_valyria_basevalue_2
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_islander_basevalue_1 }
+			add_building = ca_asoiaf_islander_basevalue_2
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_waste_basevalue_1 }
+			add_building = ca_asoiaf_waste_basevalue_2
+		}
+		else_if = {
+			limit = { has_building = ca_asoiaf_brindle_basevalue_1 }
+			add_building = ca_asoiaf_brindle_basevalue_2
 		}
 		####
 		else_if = {
@@ -22726,6 +22777,7 @@ increase_holding_base_value_effect = {
 			limit = {
 				location = {
 					region = world_summer_sea
+					NOT = { region = world_sothoryos }
 				}
 			}
 			add_building = ca_asoiaf_summerisland_basevalue_1
@@ -22812,6 +22864,30 @@ increase_holding_base_value_effect = {
 			}
 			add_building = ca_asoiaf_valyria_basevalue_1
 		}
+		else_if = {
+			limit = {
+				location = {
+					region = world_thousand_islands
+				}
+			}
+			add_building = ca_asoiaf_islander_basevalue_1
+		}
+		else_if = {
+			limit = {
+				location = {
+					region = world_wastes
+				}
+			}
+			add_building = ca_asoiaf_waste_basevalue_1
+		}
+		else_if = {
+			limit = {
+				location = {
+					region = world_sothoryos
+				}
+			}
+			add_building = ca_asoiaf_brindle_basevalue_1
+		}
 	}
 	else_if = {
 		limit = { holding_type = city }
@@ -22896,6 +22972,18 @@ increase_holding_base_value_effect = {
 			limit = { has_building = ct_asoiaf_valyria_basevalue_5 }
 			add_building = ct_asoiaf_valyria_basevalue_6
 		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_islander_basevalue_5 }
+			add_building = ct_asoiaf_islander_basevalue_6
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_waste_basevalue_5 }
+			add_building = ct_asoiaf_waste_basevalue_6
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_brindle_basevalue_5 }
+			add_building = ct_asoiaf_brindle_basevalue_6
+		}
 		####
 
 		else_if = {
@@ -22978,6 +23066,18 @@ increase_holding_base_value_effect = {
 			limit = { has_building = ct_asoiaf_valyria_basevalue_4 }
 			add_building = ct_asoiaf_valyria_basevalue_5
 		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_islander_basevalue_4 }
+			add_building = ct_asoiaf_islander_basevalue_5
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_waste_basevalue_4 }
+			add_building = ct_asoiaf_waste_basevalue_5
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_brindle_basevalue_4 }
+			add_building = ct_asoiaf_brindle_basevalue_5
+		}
 		####
 		else_if = {
 			limit = { has_building = ct_asoiaf_north_basevalue_3 }
@@ -23058,6 +23158,18 @@ increase_holding_base_value_effect = {
 		else_if = {
 			limit = { has_building = ct_asoiaf_valyria_basevalue_3 }
 			add_building = ct_asoiaf_valyria_basevalue_4
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_islander_basevalue_3 }
+			add_building = ct_asoiaf_islander_basevalue_4
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_waste_basevalue_3 }
+			add_building = ct_asoiaf_waste_basevalue_4
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_brindle_basevalue_3 }
+			add_building = ct_asoiaf_brindle_basevalue_4
 		}
 		####
 		else_if = {
@@ -23140,6 +23252,18 @@ increase_holding_base_value_effect = {
 			limit = { has_building = ct_asoiaf_valyria_basevalue_2 }
 			add_building = ct_asoiaf_valyria_basevalue_3
 		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_islander_basevalue_2 }
+			add_building = ct_asoiaf_islander_basevalue_3
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_waste_basevalue_2 }
+			add_building = ct_asoiaf_waste_basevalue_3
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_brindle_basevalue_2 }
+			add_building = ct_asoiaf_brindle_basevalue_3
+		}
 		####
 		else_if = {
 			limit = { has_building = ct_asoiaf_north_basevalue_1 }
@@ -23220,6 +23344,18 @@ increase_holding_base_value_effect = {
 		else_if = {
 			limit = { has_building = ct_asoiaf_valyria_basevalue_1 }
 			add_building = ct_asoiaf_valyria_basevalue_2
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_islander_basevalue_1 }
+			add_building = ct_asoiaf_islander_basevalue_2
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_waste_basevalue_1 }
+			add_building = ct_asoiaf_waste_basevalue_2
+		}
+		else_if = {
+			limit = { has_building = ct_asoiaf_brindle_basevalue_1 }
+			add_building = ct_asoiaf_brindle_basevalue_2
 		}
 		####
 		else_if = {
@@ -23319,6 +23455,7 @@ increase_holding_base_value_effect = {
 			limit = {
 				location = {
 					region = world_summer_sea
+					NOT = { region = world_sothoryos }
 				}
 			}
 			add_building = ct_asoiaf_summerisland_basevalue_1
@@ -23404,6 +23541,30 @@ increase_holding_base_value_effect = {
 				}
 			}
 			add_building = ct_asoiaf_valyria_basevalue_1
+		}
+		else_if = {
+			limit = {
+				location = {
+					region = world_thousand_islands
+				}
+			}
+			add_building = ct_asoiaf_islander_basevalue_1
+		}
+		else_if = {
+			limit = {
+				location = {
+					region = world_wastes
+				}
+			}
+			add_building = ct_asoiaf_waste_basevalue_1
+		}
+		else_if = {
+			limit = {
+				location = {
+					region = world_sothoryos
+				}
+			}
+			add_building = ct_asoiaf_brindle_basevalue_1
 		}
 	}
 	hidden_tooltip = { refill_holding_levy = yes }
@@ -24954,8 +25115,7 @@ add_priest_trait_effect = {
 			add_trait = septon
 			set_special_character_title = title_septon
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			add_trait = septa
 			set_special_character_title = title_septa
 		}
@@ -25020,22 +25180,20 @@ add_priest_trait_effect = {
 				is_female = no
 				is_ruler = yes
 			}
-			liege = {
-				create_random_priest = {
-					random_traits = yes
-					dynasty = none
-					female = yes
-					religion = PREV
-				}
-				new_character = {
-					remove_trait = imbecile
-					remove_trait = inbred
-					remove_trait = slow
-					add_trait = grace
-					ROOT = { abdicate_to = PREV }
-					primary_title = { gender_succ = enatic }
-					recalc_succession = yes
-				}
+			create_random_priest = {
+				random_traits = yes
+				dynasty = none
+				female = yes
+			religion = liege
+			}
+			new_character = {
+				remove_trait = imbecile
+				remove_trait = inbred
+				remove_trait = slow
+				add_trait = grace
+			ROOT = { abdicate_to = liege }
+				primary_title = { gender_succ = enatic }
+				recalc_succession = yes
 			}
 			if = {
 				limit = {
@@ -25065,21 +25223,19 @@ add_priest_trait_effect = {
 				is_female = no
 				is_ruler = yes
 			}
-			liege = {
-				create_random_priest = {
-					random_traits = yes
-					dynasty = none
-					female = yes
-					religion = PREV
-				}
-				new_character = {
-					remove_trait = imbecile
-					remove_trait = inbred
-					remove_trait = slow
-					add_trait = shadowbinder
-					add_trait = mystic
-					ROOT = { abdicate_to = PREV }
-				}
+			create_random_priest = {
+				random_traits = yes
+				dynasty = none
+				female = yes
+			religion = liege
+			}
+			new_character = {
+				remove_trait = imbecile
+				remove_trait = inbred
+				remove_trait = slow
+				add_trait = shadowbinder
+				add_trait = mystic
+				ROOT = { abdicate_to = liege }
 			}
 			if = {
 				limit = {
@@ -25124,8 +25280,7 @@ add_priest_trait_effect = {
 					limit = { is_female = no }
 					add_trait = seducer
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					add_trait = seductress
 				}
 			}
@@ -25819,8 +25974,7 @@ shattered_realms_effect = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -27819,7 +27973,7 @@ calculate_dragon_team_strength_effect = {
 			}
 		}
 		if = {
-			limit = { trait =  nimble_dragon }
+			limit = { trait = nimble_dragon }
 			PREV = {
 				change_variable = {
 				   which = dragon_strength
@@ -29636,10 +29790,9 @@ make_province_ruin_effect = {
 			character_event = { id = unoccupied.101 }
 		}
 	}
-	if = { #Nomad lands revert back to nomads
+	else_if = { #Nomad lands revert back to nomads
 		limit = {
 			traditional_nomad_territory_trigger = yes
-			NOT = { has_province_flag = ruined_province }
 		}
 		#Find new nomadic owner
 		FROM = { #native revolter
@@ -29774,6 +29927,11 @@ make_province_ruin_effect = {
 				build_holding = {
 				   type = nomad
 				   holder = event_target:new_nomad_owner
+				}
+				event_target:new_nomad_owner = {
+					set_government_type = nomadic_government
+					population = 1500
+					manpower = 750
 				}
 			}
 			random_province_holding = {
@@ -31100,8 +31258,9 @@ cultural_congenital_trait_chance_effect = {
 				NOT = { trait = inbred }
 			}
 			random_list = {
-				5 = { add_trait = genius }
-				25 = { add_trait = quick }
+				1 = { add_trait = genius }
+				9 = { add_trait = quick }
+				89 = {  }
 			}
 		}
 		if = {

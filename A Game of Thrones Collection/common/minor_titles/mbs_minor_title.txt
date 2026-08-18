@@ -110,7 +110,465 @@ title_kennelmaster_mbs = {
 
 	message = yes
 }
+title_stablemaster_mbs = {
 
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = martial
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+        is_adult = yes
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_falconer_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = martial
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+        is_adult = yes
+		trait = falconer
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		is_feudal = yes
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_cook_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = stewardship
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+        is_adult = yes
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_brewer_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = stewardship
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+        is_adult = yes
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_shipwright_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = stewardship
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+        is_adult = yes
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			can_assign_admiral_trigger = yes
+			AND = {
+				OR = {
+					has_landed_title = k_vale
+					has_landed_title = e_vale
+				}
+				any_realm_character = { has_landed_title = c_gulltown }
+			}
+			AND = {
+				OR = {
+					has_landed_title = k_riverlands
+					has_landed_title = e_riverlands
+				}
+				any_realm_character = { has_landed_title = c_seagard }
+			}
+			AND = {
+				OR = {
+					has_landed_title = k_north
+					has_landed_title = e_north
+				}
+				any_realm_character = {
+					has_landed_title = c_whiteharbor
+				}
+				c_whiteharbor = {
+					has_title_flag = mbs_manderly_fleet
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_gaoler_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = intrigue
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+        is_adult = yes
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_wetnurse_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = diplomacy
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+		is_female = yes
+        is_adult = yes
+		NOT = {
+			age = 50
+		}
+		any_child_even_if_dead  = {
+			count = 1
+		}
+		OR = {
+			is_lowborn = yes
+			trait = bastard
+		}
+		is_incapable = no
+		NOT = {
+			any_spouse = {
+				is_lowborn = no
+			}
+		}
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
+title_hedgemage_mbs = {
+
+	dignity = 0.05
+	grant_limit = 1
+	opinion_effect = 10
+	show_as_title = no
+	revoke_allowed = yes
+	attribute = learning
+
+	monthly_salary = 0.01
+	monthly_prestige = 0.15
+
+	allowed_to_hold = {
+		OR = {
+			learning = 10
+			trait = mystic
+			trait = dragon_dreams
+			trait = greensight
+			trait = greenseer
+			trait = cotf
+			skinchanger_trigger = yes			
+			NOT = { has_job_title = job_physician }
+			NOT = { trait = in_hiding }
+			AND = {
+				learning = 6
+				OR = {
+					trait = shrewd
+					trait = quick
+					trait = genius
+					trait = physician
+					trait = scholar
+					trait = erudite
+					trait = charismatic_negotiator
+					trait = grey_eminence
+				}
+				OR = {
+					trait = ambitious
+					trait = deceitful
+				}
+			}
+		}
+		is_adult = yes
+		is_lowborn = yes
+		is_incapable = no
+	}
+	allowed_to_grant = {
+		is_nomadic = no
+		is_tribal = no
+		OR = {
+			is_feudal = yes
+			trait = nightswatch
+		}
+		OR = {
+			culture_group = andal
+			culture_group = dornish
+			culture_group = first_men
+			culture_group = free_folk
+			culture_group = iron_isles_culture
+			primary_title = {
+				capital_scope = { region = world_westeros }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 100
+	}
+
+	gain_effect = {
+	}
+	lose_effect = {
+		opinion = {
+			who = FROM
+			modifier = opinion_fired_from_council
+		}
+	}
+
+	message = yes
+}
 title_defender_of_dispossessed = {
 	dignity = 0
 	grant_limit = 1
@@ -327,69 +785,4 @@ title_defender_marches = {
 	}
 
 	message = no
-}
-
-title_wetnurse_mbs = {
-
-	dignity = 0.05
-	grant_limit = 1
-	opinion_effect = 10
-	show_as_title = no
-	revoke_allowed = yes
-	attribute = diplomacy
-
-	monthly_salary = 0.01
-	monthly_prestige = 0.15
-
-	allowed_to_hold = {
-		is_female = yes
-		age = 16
-		NOT = {
-			age = 50
-		}
-		any_child_even_if_dead  = {
-			count = 1
-		}
-		OR = {
-			is_lowborn = yes
-			trait = bastard
-		}
-		is_incapable = no
-		NOT = {
-			any_spouse = {
-				is_lowborn = no
-			}
-		}
-	}
-	allowed_to_grant = {
-		is_nomadic = no
-		is_tribal = no
-		OR = {
-			is_feudal = yes
-		}
-		OR = {
-			culture_group = andal
-			culture_group = dornish
-			culture_group = first_men
-			culture_group = free_folk
-			culture_group = iron_isles_culture
-			primary_title = {
-				capital_scope = { region = world_westeros }
-			}
-		}
-	}
-	ai_will_do = {
-		factor = 100
-	}
-
-	gain_effect = {
-	}
-	lose_effect = {
-		opinion = {
-			who = FROM
-			modifier = opinion_fired_from_council
-		}
-	}
-
-	message = yes
 }

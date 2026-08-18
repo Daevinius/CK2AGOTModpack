@@ -1,132 +1,203 @@
-#### Beyond the Wall Ancestors ####
-20359 = {
-	name = "Баэль" #  the Bard, King beyond the Wall. Had a child with Bran the daughterless' daughter.
-	dynasty = 559131
 
-	martial = 6
-	diplomacy = 15
-	intrigue = 14
-	stewardship = 8
+#####################################
+### Ancient Kings Beyond the Wall ###
+#####################################
+904347 = {
+	name = "Джорамун" # Joramun, legendary King Beyond the Wall, brought down the Night's King alongside Brandon the Breaker.
+	dynasty = 424343
+
+	religion = "beyond_wall_old_gods"
+	culture = "wildling"
+
+	add_trait = "strong"
+
+	disallow_random_traits = yes
+
+	92.1.1 = {
+		birth = yes
+	}
+	108.1.1 = {
+		add_trait = "brilliant_strategist"
+		add_trait = "holy_warrior"
+		add_trait = "organizer"
+		add_trait = "inspiring_leader"
+		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "just"
+		add_trait = "honorable"
+		add_trait = "gregarious"
+		add_trait = "authoritative"
+	add_trait = "mystic"
+	}
+	150.1.1 = {
+		death = yes
+	}
+}
+900347 = {
+	name = "Ярл"	#non-canon, a father to make Gorne and Gendel brothers
+	dynasty = 5009897
+
+	religion = "beyond_wall_old_gods"
+	culture = "wildling"
+
+	add_trait = "trained_warrior"
+
+	4952.1.1 = { birth = yes }
+	4993.1.1 = { death = yes }
+}
+
+901347 = {
+	name = "Горн"
+	dynasty = 5009897
+
+	religion = "beyond_wall_old_gods"
+	culture = "wildling"
+
+	father = 900347
+
+	add_trait = "ambitious"
+	add_trait = "proud"
+	add_trait = "tough_soldier"
+	add_trait = "skilled_warrior"
+
+	4978.1.1 = { birth = yes }
+	5024.6.1 = {
+		#Killed in battle against the Starks
+		death = {
+			death_reason = death_battle
+		}
+	}
+}
+
+902347 = {
+	name = "Гендел"
+	dynasty = 5009897
+
+	religion = "beyond_wall_old_gods"
+	culture = "wildling"
+
+	father = 900347
+
+	add_trait = "ambitious"
+	add_trait = "stubborn"
+	add_trait = "skilled_tactician"
+	add_trait = "trained_warrior"
+
+	4980.1.1 = { birth = yes }
+	5025.1.1 = {
+		#Either lost forever or killed in battle against the Starks
+		death = {
+			death_reason = death_missing
+		}
+	}
+}
+797178 = {
+	name = "Гендел"
+	dynasty = 5009898
+
+	religion = "beyond_wall_old_gods"
+	culture = "gendels_folk"
+
+	father = 902347
+
+	add_trait = "ambitious"
+	add_trait = "stubborn"
+	add_trait = "skilled_tactician"
+	add_trait = "trained_warrior"
+	add_trait = "cannibal_trait"
+
+	5025.1.1 = { birth = yes }
+	5085.1.1 = {
+		death = {
+			death_reason = death_missing
+		}
+	}
+}
+797179 = {
+	name = "Линия Гендела"
+	dynasty = 5009898
+
+	religion = "beyond_wall_old_gods"
+	culture = "gendels_folk"
+
+	father = 797178
+
+	add_trait = "cannibal_trait"
+	occluded = yes
+
+
+	5085.1.1 = { birth = yes }
+	7900.1.1 = {
+		add_trait = has_missing
+		death = yes
+	}
+}
+903347 = {
+	name = "Рогатый Лорд" # Horned Lord
+	dynasty = 50095
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
 
 	add_trait = "ambitious"
-	add_trait = "proud"
-	add_trait = "patient"
-	add_trait = "brave"
-	add_trait = "poet"
+	add_trait = "hunter"
+	add_trait = "tough_soldier"
+	add_trait = "trained_warrior"
+	add_trait = "mystic"
+
+	3950.1.1 = {
+		birth = yes
+	}
+	4025.1.1 = {
+		death = yes
+	}
+}
+20359 = {
+	name = "Баэль" #  the Bard, King beyond the Wall. Had a child with Bran the daughterless' daughter.
+	dynasty = 559131
+
+	diplomacy = 15
+	martial = 6
+	stewardship = 8
+	intrigue = 14
+	learning = 6
+
+	religion = "beyond_wall_old_gods"
+	culture = "wildling"
+
+	add_trait = "quick_1"
+
+	7221.1.1 = {
+		birth = yes
+	}
+	7237.1.1 = {
 	add_trait = "elusive_shadow"
+		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "proud"
 	add_trait = "lustful"
-
+		add_trait = "gregarious"
+	add_trait = "ambitious"
+	add_trait = "poet"
 	give_nickname = the_bard
-
-	7212.1.1 = { birth = yes }
-	7228.1.1 = {
-		add_trait = trained_warrior
+	}
+	7244.3.1 = {
+		add_matrilineal_spouse = 1120259 # Lyanna Stark
 		create_bloodline = {
 			type = bael_the_bard
 			has_dlc = "Holy Fury"
 		}
 	}
-	7244.3.1 = {
-		add_matrilineal_spouse = 1120259	#have to make them married so that later Starks get early Stark bloodlines as they are patrilineal
-	}
 	7274.1.1 = {
-		#Killed by his own son!
 		death = {
-			death_reason = death_battle #killed in Battle against Jon Stark @ Frozen Ford, changed from execution
-			killer = 1120459
+			death_reason = death_battle_duel # Battle at the Frozen Ford
+			killer = 1120459 # Brandon Stark
 		}
 	}
 }
-# #random family
-# 100559131 = {
-	# name = "Жойен"
-	# dynasty = 559131
-
-	# religion = "beyond_wall_old_gods"
-	# culture = "wildling"
-
-	# father = 20359
-
-	# 8045.1.1 = { birth = yes }
-	# 8061.1.1 = {
-		# add_trait = trained_warrior
-	# }
-	# 8068.1.1 = {
-		# death = {
-			# death_reason = death_battle
-		# }
-	# }
-# }
-# 101559131 = {
-	# name = "Миккен"
-	# dynasty = 559131
-
-	# religion = "beyond_wall_old_gods"
-	# culture = "wildling"
-
-	# father = 20359
-
-	# 8047.1.1 = { birth = yes }
-	# 8063.1.1 = {
-		# add_trait = trained_warrior
-	# }
-	# 8068.1.1 = {
-		# death = {
-			# death_reason = death_battle
-		# }
-	# }
-# }
-# 102559131 = {
-	# name = "Дайвен"
-	# dynasty = 559131
-
-	# religion = "beyond_wall_old_gods"
-	# culture = "wildling"
-
-	# father = 20359
-
-	# 8051.1.1 = { birth = yes }
-	# 8067.1.1 = {
-		# add_trait = trained_warrior
-	# }
-	# 8068.1.1 = {
-		# death = {
-			# death_reason = death_battle
-		# }
-	# }
-# }
-# 103559131 = {
-	# name = "Рован"
-	# dynasty = 559131
-	# female = yes
-
-	# religion = "beyond_wall_old_gods"
-	# culture = "wildling"
-
-	# father = 20359
-
-	# 8052.1.1 = { birth = yes }
-	# 8097.1.1 = { death = yes }
-# }
-# 104559131 = {
-	# name = "Тормунд"
-	# dynasty = 559131
-
-	# religion = "beyond_wall_old_gods"
-	# culture = "wildling"
-
-	# father = 20359
-
-	# 8054.1.1 = { birth = yes }
-	# 8070.1.1 = {
-		# add_trait = trained_warrior
-	# }
-	# 8086.1.1 = { death = yes }
-# }
-
 ###########################
 ### Redbeard/Kingsblood ###
 ###########################
@@ -144,7 +215,9 @@
 			has_dlc = "Holy Fury"
 		}
 	}
-	7880.1.1 = { death = yes }
+	7880.1.1 = {
+		death = yes
+	}
 }
 344174353 = {
 	name = "Бернарр"	# a lord
@@ -317,30 +390,40 @@
 	8197.1.1 = { death = yes }
 }
 21359 = {
-	name = "Реймунд" # Raymun Redbeard
+	name = "Раймун" # Raymun Redbeard, King-Beyond-the-Wall.
 	dynasty = 174353 # Forester
 	dna = "cakefzeedaz"
 	properties = "ce0dbk0000"
 
-	martial = 7
 	diplomacy = 6
-	intrigue = 5
+	martial = 7
 	stewardship = 6
+	intrigue = 5
+	learning = 2
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
 
-	add_trait = "brave"
-	add_trait = "wroth"
-	add_trait = "just"
-    add_trait = "honest"
-	add_trait = "skilled_tactician"
+	add_trait = "strong_2"
 
 	father = 1021359
 
-	give_nickname = "nick_redbeard"
-
-	8188.1.1 = { birth = yes }
+	8188.1.1 = {
+		birth = yes
+	}
+	8204.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "skilled_warrior"
+	add_trait = "brave"
+		add_trait = "diligent"
+	add_trait = "wroth"
+		add_trait = "proud"
+	add_trait = "just"
+		add_trait = "gregarious"
+		add_trait = "authoritative"
+    add_trait = "honest"
+		give_nickname = nick_redbeard
+	}
 	8226.1.1 = {
 		effect = {
 			capital_scope = {
@@ -386,13 +469,13 @@
 		}
 	}
 	8226.9.9 = {
-		# Killed by Artos Stark
 		death = {
-			death_reason = death_battle
-			killer = 21459
+			death_reason = death_duel_battle # Battle at Long Lake
+			killer = 21459 # Artos Stark the Implacable
 		}
 	}
 }
+### Issue of Raymun Redbeard ###
 221359 = {
 	name = "Горн" # Son of Raymun Redbeard
 	dynasty = 174353 # Forester
@@ -403,18 +486,26 @@
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
 
-
-	add_trait = "wroth"
-	add_trait = "skilled_tactician"
+	add_trait = "strong_1"
 
 	father = 21359
 
-	8204.1.1 = { birth = yes }
+	8204.1.1 = {
+		birth = yes
+	}
+	8220.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "wroth"
+		add_trait = "proud"
+		add_trait = "gregarious"
+	}
 	8226.9.9 = {
-		# Killed by Artos Stark
 		death = {
-			death_reason = death_battle
-			killer = 21459
+			death_reason = death_duel_battle # Battle at Long Lake
+			killer = 21459 # Artos Stark the Implacable
 		}
 	}
 }
@@ -428,18 +519,26 @@
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
 
-
-	add_trait = "wroth"
-	add_trait = "skilled_tactician"
+	add_trait = "strong_1"
 
 	father = 21359
 
-	8206.1.1 = { birth = yes }
+	8206.1.1 = {
+		birth = yes
+	}
+	8222.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "wroth"
+		add_trait = "proud"
+		add_trait = "gregarious"
+	}
 	8226.9.9 = {
-		# Killed by Artos Stark
 		death = {
-			death_reason = death_battle
-			killer = 21459
+			death_reason = death_duel_battle # Battle at Long Lake
+			killer = 21459 # Artos Stark the Implacable
 		}
 	}
 }
@@ -817,141 +916,6 @@
 	8276.1.1 = { death = yes }
 }
 
-#####################################
-### Ancient Kings Beyond the Wall ###
-#####################################
-900347 = {
-	name = "Ярл"	#non-canon, a father to make Gorne and Gendel brothers
-	dynasty = 5009897
-
-	religion = "beyond_wall_old_gods"
-	culture = "wildling"
-
-	add_trait = "trained_warrior"
-
-	4952.1.1 = { birth = yes }
-	4993.1.1 = { death = yes }
-}
-
-901347 = {
-	name = "Горн"
-	dynasty = 5009897
-
-	religion = "beyond_wall_old_gods"
-	culture = "wildling"
-
-	father = 900347
-
-	add_trait = "ambitious"
-	add_trait = "proud"
-	add_trait = "tough_soldier"
-	add_trait = "skilled_warrior"
-
-	4978.1.1 = { birth = yes }
-	5024.6.1 = {
-		#Killed in battle against the Starks
-		death = {
-			death_reason = death_battle
-		}
-	}
-}
-
-902347 = {
-	name = "Гендел"
-	dynasty = 5009897
-
-	religion = "beyond_wall_old_gods"
-	culture = "wildling"
-
-	father = 900347
-
-	add_trait = "ambitious"
-	add_trait = "stubborn"
-	add_trait = "skilled_tactician"
-	add_trait = "trained_warrior"
-
-	4980.1.1 = { birth = yes }
-	5025.1.1 = {
-		#Either lost forever or killed in battle against the Starks
-		death = {
-			death_reason = death_missing
-		}
-	}
-}
-797178 = {
-	name = "Гендел"
-	dynasty = 5009898
-
-	religion = "beyond_wall_old_gods"
-	culture = "gendels_folk"
-
-	father = 902347
-
-	add_trait = "ambitious"
-	add_trait = "stubborn"
-	add_trait = "skilled_tactician"
-	add_trait = "trained_warrior"
-	add_trait = "cannibal_trait"
-
-	5025.1.1 = { birth = yes }
-	5085.1.1 = {
-		death = {
-			death_reason = death_missing
-		}
-	}
-}
-797179 = {
-	name = "Линия Гендела"
-	dynasty = 5009898
-
-	religion = "beyond_wall_old_gods"
-	culture = "gendels_folk"
-
-	father = 797178
-
-	add_trait = "cannibal_trait"
-	occluded = yes
-
-
-	5085.1.1 = { birth = yes }
-	7777.1.1 = {
-		add_trait = has_missing
-		death = yes
-	}
-}
-903347 = {
-	name = "Рогатый Лорд"		#The Horned King
-
-	religion = "beyond_wall_old_gods"
-	culture = "wildling"
-
-	#give_nickname = "nick_the_horned_king"
-
-	add_trait = "ambitious"
-	add_trait = "hunter"
-	add_trait = "tough_soldier"
-	add_trait = "trained_warrior"
-	add_trait = "mystic"
-
-	3950.1.1 = { birth = yes }
-	4025.1.1 = { death = yes }
-}
-
-904347 = {
-	name = "Джорамун"
-
-	religion = "beyond_wall_old_gods"
-	culture = "wildling"
-
-	add_trait = "mystic"
-	add_trait = "honorable"
-	add_trait = "brilliant_strategist"
-	add_trait = "skilled_warrior"
-
-	950.1.1 = { birth = yes }
-	1025.1.1 = { death = yes }
-}
-
 ########################################
 ### Placeholder historical Wildlings ###
 ########################################
@@ -1223,7 +1187,7 @@
 ### Crowhunters of Skirling Pass
 345559122 = {
 	name = "Морс"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1233,7 +1197,7 @@
 }
 344559122 = {
 	name = "Кайлиг"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1245,7 +1209,7 @@
 }
 343559122 = {
 	name = "Рик"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1257,7 +1221,7 @@
 }
 342559122 = {
 	name = "Артос"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1269,7 +1233,7 @@
 }
 341559122 = {
 	name = "Альфин"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1281,7 +1245,7 @@
 }
 340559122 = {
 	name = "Геррик"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1293,7 +1257,7 @@
 }
 101559122 = {
 	name = "Гарет"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1306,7 +1270,7 @@
 }
 103559122 = {
 	name = "Дайвен"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1319,7 +1283,7 @@
 }
 105559122 = {
 	name = "Дормунд"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1332,7 +1296,7 @@
 }
 107559122 = {
 	name = "Ленн"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1345,7 +1309,7 @@
 }
 109559122 = {
 	name = "Рик"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1358,7 +1322,7 @@
 }
 111559122 = {
 	name = "Ондри"	# not a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1371,7 +1335,7 @@
 }
 112559122 = {
 	name = "Миккен"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1384,7 +1348,7 @@
 }
 113559122 = {
 	name = "Джорамун"	# not a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1397,7 +1361,7 @@
 }
 114559122 = {
 	name = "Торвинд"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1410,7 +1374,7 @@
 }
 116559122 = {
 	name = "Геррик"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1423,7 +1387,7 @@
 }
 117559122 = {
 	name = "Оуэн"	# not a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1436,7 +1400,7 @@
 }
 118559122 = {
 	name = "Миккен"	# not a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1449,7 +1413,7 @@
 }
 119559122 = {
 	name = "Артор"	# a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
@@ -1462,26 +1426,26 @@
 }
 120559122 = {
 	name = "Манс"	# not a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
 
 	father = 119559122
 
-	8259.1.1 = { birth = yes }
+	8265.1.1 = { birth = yes }
 	8275.1.1 = { add_trait = poor_warrior }
 }
 121559122 = {
 	name = "Халлис"	# not a lord
-	dynasty = 559122
+	dynasty = 559238
 
 	religion = "beyond_wall_old_gods"
 	culture = "wildling"
 
 	father = 119559122
 
-	8262.1.1 = { birth = yes }
+	8268.1.1 = { birth = yes }
 	8278.1.1 = { add_trait = skilled_warrior }
 }
 

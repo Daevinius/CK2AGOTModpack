@@ -675,7 +675,7 @@ character_event = {
 character_event = { #on startup, check for characters who've had tyranny for too long
 	id = maintenance.498
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	hide_window = yes
 
 	trigger = {
@@ -720,7 +720,7 @@ character_event = { #on startup, check for characters who've had tyranny for too
 character_event = { #on startup, check for characters who've had dishonour for too long
 	id = maintenance.499
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	hide_window = yes
 
 	trigger = {
@@ -765,9 +765,11 @@ character_event = { #on startup, check for characters who've had dishonour for t
 character_event = {
 	id = maintenance.5
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
+
 	only_playable = yes
+	is_in_society = yes
 
 	trigger = {
 		has_landed_title = c_the_citadel
@@ -850,7 +852,7 @@ character_event = {
 						limit = {
 							is_ruler = no
 							is_female = no
-							age = 16
+							is_adult = yes
 							is_primary_heir = no
 							is_incapable = no
 							can_press_claims_trigger = yes
@@ -877,7 +879,7 @@ character_event = {
 character_event = {
 	id = maintenance.6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_capable = yes
 	prisoner = no
 	min_age = 15
@@ -970,10 +972,10 @@ character_event = {
 			}
 			AND = { #AI betrothal hesistance, ('republic' military commanders will not do this automatically)
 				is_betrothed = yes
-				age = 16
+				is_adult = yes
 				is_republic = yes
 				betrothed = {
-					age = 16
+					is_adult = yes
 					NOR = {
 						war_with = ROOT
 						liege = { war_with = ROOT }
@@ -999,8 +1001,8 @@ character_event = {
 		modifier = {
 			factor = 50
 			is_betrothed = yes
-			age = 16
-			betrothed = { age = 16 }
+			is_adult = yes
+			betrothed = { is_adult = yes }
 		}
 		modifier = {
 			factor = 50
@@ -1055,10 +1057,10 @@ character_event = {
 		if = { #AI betrothal hesistance, ('republic' military commanders will not do this automatically)
 			limit = {
 				is_betrothed = yes
-				age = 16
+				is_adult = yes
 				is_republic = yes
 				betrothed = {
-					age = 16
+					is_adult = yes
 					NOR = {
 						war_with = ROOT
 						liege = { war_with = ROOT }
@@ -1387,8 +1389,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -1853,8 +1854,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -1916,8 +1916,7 @@ character_event = {
 											limit = { is_female = no }
 											set_special_character_title = title_ser
 										}
-										if = {
-											limit = { is_female = yes }
+										else = {
 											set_special_character_title = title_lady
 										}
 									}
@@ -1969,8 +1968,7 @@ character_event = {
 											limit = { is_female = no }
 											set_special_character_title = title_ser
 										}
-										if = {
-											limit = { is_female = yes }
+										else = {
 											set_special_character_title = title_lady
 										}
 									}
@@ -2061,7 +2059,7 @@ character_event = {
 			#Random courtier
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					OR = {
 						is_female = no
 						age < 30
@@ -2218,8 +2216,7 @@ character_event = {
 												limit = { is_female = no }
 												set_special_character_title = title_ser
 											}
-											if = {
-												limit = { is_female = yes }
+											else = {
 												set_special_character_title = title_lady
 											}
 										}
@@ -2272,8 +2269,7 @@ character_event = {
 											limit = { is_female = no }
 											set_special_character_title = title_ser
 										}
-										if = {
-											limit = { is_female = yes }
+										else = {
 											set_special_character_title = title_lady
 										}
 									}
@@ -2318,8 +2314,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -2344,7 +2339,7 @@ character_event = {
 	id = maintenance.7
 	picture = "GFX_evt_council"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -3205,7 +3200,7 @@ character_event = {
 character_event = {
 	id = maintenance.12
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_from = yes
 	is_part_of_plot = yes
 	ai = yes
@@ -3232,7 +3227,7 @@ character_event = {
 character_event = {
 	id = maintenance.13
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_from = yes
 	ai = yes
 	is_part_of_plot = yes
@@ -3263,7 +3258,7 @@ character_event = {
 character_event = {
 	id = maintenance.14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_from = yes
 	min_age = 16
 	only_capable = yes
@@ -3289,7 +3284,7 @@ character_event = {
 character_event = {
 	id = maintenance.15
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_from = yes
 	min_age = 16
 	only_capable = yes
@@ -3315,7 +3310,7 @@ character_event = {
 character_event = {
 	id = maintenance.16
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -3420,7 +3415,7 @@ character_event = {
 character_event = {
 	id = maintenance.17
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -3470,7 +3465,7 @@ character_event = {
 			limit = {
 				is_ruler = no
 				is_female = no
-				age = 16
+				is_adult = yes
 				age < 50
 				martial = 12
 				is_incapable = no
@@ -3503,7 +3498,7 @@ character_event = {
 			limit = {
 				is_ruler = no
 				is_female = no
-				age = 16
+				is_adult = yes
 				age < 50
 				martial = 9
 				is_incapable = no
@@ -3536,7 +3531,7 @@ character_event = {
 			limit = {
 				is_ruler = no
 				is_female = no
-				age = 16
+				is_adult = yes
 				age < 50
 				martial = 9
 				is_incapable = no
@@ -3570,7 +3565,7 @@ character_event = {
 character_event = {
 	id = maintenance.18
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -3797,7 +3792,7 @@ character_event = {
 			}
 			if = {
 				limit = { title = e_riverlands }
-				k_riverlands  = { grant_title = ROOT copy_title_laws = e_riverlands }
+				k_riverlands = { grant_title = ROOT copy_title_laws = e_riverlands }
 			}
 			if = {
 				limit = { title = e_vale }
@@ -5397,7 +5392,7 @@ character_event = {
 character_event = {
 	id = maintenance.31
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	ai = no
 	has_character_flag = auto_assign_minor_titles
@@ -6815,7 +6810,7 @@ character_event = {
 character_event = {
 	id = maintenance.32
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 	hide_window = yes
 	only_rulers = yes
 
@@ -7466,7 +7461,7 @@ character_event = {
 	id = maintenance.39
 	desc = "AI_EVENT"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -7517,7 +7512,7 @@ character_event = {
 character_event = {
 	id = maintenance.40
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	only_capable = yes
 	prisoner = no
@@ -7640,7 +7635,7 @@ character_event = {
 						OR = {
 							AND = { #female heirs
 								is_female = yes
-								age = 16
+								is_adult = yes
 								NOT = { is_married_matrilineally = yes }
 							}
 							AND = { #non-dynast heirs, non child
@@ -7710,7 +7705,7 @@ character_event = {
 					OR = {
 						AND = {
 							is_female = yes
-							age = 16
+							is_adult = yes
 							NOT = { is_married_matrilineally = yes }
 						}
 						AND = {
@@ -7948,7 +7943,7 @@ character_event = {
 	id = maintenance.41
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	has_global_flag = summerhall_established
 	only_rulers = yes
 
@@ -8103,7 +8098,7 @@ character_event = {
 
 	hide_window = yes
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 
 	trigger = {
 		FROM = {
@@ -8141,7 +8136,7 @@ character_event = {
 			}
 		}
 		NOT = { culture_group = hyrkoon_group }
-		NOT = { culture = yi_ti }
+		NOT = { culture_group = yi_ti_group }
 		NOT = { culture = dothraki }
 		NOT = { culture = jogos_nhai }
 		is_patrician = no
@@ -8176,10 +8171,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = wolfking_male
-				break = yes
 			}
-			set_special_character_title = wolfking_female
-			break = yes
+			else = {
+				set_special_character_title = wolfking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_barrowlandsTK } }
@@ -8193,10 +8188,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = barrowking_male
-				break = yes
 			}
-			set_special_character_title = barrowking_female
-			break = yes
+			else = {
+				set_special_character_title = barrowking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_theneckTK } }
@@ -8210,10 +8205,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = marshking_male
-				break = yes
 			}
-			set_special_character_title = marshking_female
-			break = yes
+			else = {
+				set_special_character_title = marshking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_dreadfortTK } }
@@ -8227,10 +8222,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = dreadking_male
-				break = yes
 			}
-			set_special_character_title = dreadking_female
-			break = yes
+			else = {
+				set_special_character_title = dreadking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_winterfellTK } }
@@ -8244,10 +8239,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = winterking_male
-				break = yes
 			}
-			set_special_character_title = winterking_female
-			break = yes
+			else = {
+				set_special_character_title = winterking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_riverrunTK } }
@@ -8261,10 +8256,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = riverking_male
-				break = yes
 			}
-			set_special_character_title = riverking_female
-			break = yes
+			else = {
+				set_special_character_title = riverking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_dragonstone } }
@@ -8278,10 +8273,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = DORNEPRINCE
-				break = yes
 			}
-			set_special_character_title = DORNEPRINCE_female
-			break = yes
+			else = {
+				set_special_character_title = DORNEPRINCE_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = d_mbs_summerhall } }
@@ -8295,10 +8290,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = DORNEPRINCE
-				break = yes
 			}
-			set_special_character_title = DORNEPRINCE_female
-			break = yes
+			else = {
+				set_special_character_title = DORNEPRINCE_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_duskendaleTK } }
@@ -8312,10 +8307,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = shadowking_male
-				break = yes
 			}
-			set_special_character_title = shadowking_female
-			break = yes
+			else = {
+				set_special_character_title = shadowking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_shipbreakerTK } }
@@ -8329,10 +8324,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = Sking
-				break = yes
 			}
-			set_special_character_title = Sking_female
-			break = yes
+			else = {
+				set_special_character_title = Sking_female
+			}
 		}
 		if = {
 			limit = { FROM = { title = k_runestoneTK } }
@@ -8346,10 +8341,10 @@ character_event = {
 			if = {
 				limit = { is_female = no }
 				set_special_character_title = bronzeking_male
-				break = yes
 			}
-			set_special_character_title = bronzeking_female
-			break = yes
+			else = {
+				set_special_character_title = bronzeking_female
+			}
 		}
 	}
 
@@ -8364,7 +8359,7 @@ character_event = {
 
 	hide_window = yes
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder_inheritance
 
 	trigger = {
 		FROM = { mercenary = yes }
@@ -8446,7 +8441,7 @@ character_event = {
 	id = maintenance.48
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
 
 	trigger = {
 		FROM = { tier = EMPEROR }
@@ -8536,7 +8531,7 @@ character_event = {
 character_event = {
 	id = maintenance.49
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_playable = yes
@@ -8680,7 +8675,7 @@ character_event = {
 	id = maintenance.50
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_adolescence
 	ai = yes
 	culture = dragon_culture
 	max_age = 16
@@ -8709,7 +8704,7 @@ character_event = {
 
 	hide_window = yes
 	only_independent = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		tier = EMPEROR
@@ -8975,23 +8970,23 @@ character_event = {
 	hide_window = yes
 	only_independent = yes
 	ai = yes
-	#is_triggered_only = yes
+	#is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 
 	trigger = {
-		tier = EMPEROR
+		real_tier = EMPEROR
 		OR = {
 			NOT = { government = noble_oligarchy } #buggy when on inheritance
 			ruled_years = 1
 		}
 		over_vassal_limit = 1
 		NOT = { has_character_flag = changing_westerosi_kingdom_tier }
-		OR = {
-			NOT = { has_character_flag = vassal_limit_management_failed }
+		trigger_if = {
+			limit = { has_character_flag = vassal_limit_management_failed }
 			had_character_flag = { flag = vassal_limit_management_failed days = 730 }
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -9571,7 +9566,7 @@ character_event = {
 	id = maintenance.53
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	only_playable = yes
 	has_global_flag = davos_appeared
 
@@ -9611,7 +9606,7 @@ character_event = {
 character_event = {
 	id = maintenance.54
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse, on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 
 	only_playable = yes
@@ -9696,7 +9691,7 @@ character_event = {
 	id = maintenance.55
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unlanded
 
 	immediate = {
 		remove_character_modifier = martial_very_low
@@ -9725,7 +9720,7 @@ character_event = {
 		NOT = { has_character_flag = debt_modifier }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -9786,7 +9781,7 @@ character_event = {
 character_event = { #Find active player regions for maintenance
 	id = maintenance.59
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	hide_window = yes
 	ai = no
 
@@ -10057,7 +10052,7 @@ character_event = {
 						NOT = { tier = BARON }
 					}
 					NOT = { character = FROMFROM }
-					valid_exile_destination_ROOT_trigger  = yes
+					valid_exile_destination_ROOT_trigger = yes
 				}
 				save_event_target_as = new_court
 				break = yes
@@ -10069,7 +10064,7 @@ character_event = {
 				culture_group = ROOT
 				is_within_diplo_range = FROMFROM
 				NOT = { character = FROMFROM }
-				valid_exile_destination_ROOT_trigger  = yes
+				valid_exile_destination_ROOT_trigger = yes
 			}
 			save_event_target_as = new_court
 			break = yes
@@ -10079,7 +10074,7 @@ character_event = {
 				demesne_size = 1
 				is_within_diplo_range = FROMFROM
 				NOT = { character = FROMFROM }
-				valid_exile_destination_ROOT_trigger  = yes
+				valid_exile_destination_ROOT_trigger = yes
 			}
 			save_event_target_as = new_court
 			break = yes
@@ -10122,7 +10117,7 @@ character_event = {
 character_event = {
 	id = maintenance.66
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_war_started
 	only_playable = yes
 	hide_window = yes
 	war = yes
@@ -10346,7 +10341,7 @@ character_event = {
 character_event = {
 	id = maintenance.68
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_independent = yes
 	war = no
@@ -10613,7 +10608,7 @@ character_event = {
 	id = maintenance.69
 	desc = "EVTDESCmaintenance.69"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_rulers = yes
 
 	trigger = {
@@ -10642,7 +10637,7 @@ character_event = {
 			limit = {
 				liege = { character = ROOT }
 				is_ruler = no
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				NOT = { trait = slave }
@@ -10756,7 +10751,7 @@ character_event = {
 character_event = {
 	id = maintenance.70
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = {
@@ -10769,7 +10764,7 @@ character_event = {
 
 	immediate = {
 		FROMFROM = {
-			character_event = { id = 	maintenance.71 }
+			character_event = { id = maintenance.71 }
 		}
 	}
 

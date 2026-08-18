@@ -174,7 +174,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 75000
+		years = 6250
 
 		modifier = {
 			factor = 0.5
@@ -1787,7 +1787,7 @@ character_event = {
 		if = {
 			limit = { character = 77041 }
 			create_character = {
-				name = Дрогон
+				name = "Дрогон"
 				age = 0
 				culture = dragon_culture
 				religion = dragon_rel
@@ -1820,7 +1820,7 @@ character_event = {
 		if = {
 			limit = { character = 77041 }
 			create_character = {
-				name = Рейгаль
+				name = "Рейгаль"
 				age = 0
 				culture = dragon_culture
 				religion = dragon_rel
@@ -1850,7 +1850,7 @@ character_event = {
 		if = {
 			limit = { character = 77041 }
 			create_character = {
-				name = Визерион
+				name = "Визерион"
 				age = 0
 				culture = dragon_culture
 				religion = dragon_rel
@@ -1972,8 +1972,7 @@ character_event = {
 						dynasty = PREV
 					}
 				}
-				if = {
-					limit = { is_female = no }
+				else = {
 					ROOT = {
 						set_father = PREV
 						dynasty = PREV
@@ -1992,8 +1991,7 @@ character_event = {
 						set_mother = PREV
 					}
 				}
-				if = {
-					limit = { is_female = no }
+				else = {
 					ROOT = {
 						set_father = PREV
 						dynasty = PREV
@@ -2486,7 +2484,7 @@ character_event = {
 	desc = "EVTDESCdragon.8"
 	picture = "GFX_targaryen_balerion"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -3278,7 +3276,7 @@ character_event = {
 		random_friend = {
 			limit = {
 				can_use_dragon_abilities_trigger = yes
-				age = 16
+				is_adult = yes
 				is_ruler = no
 			}
 			character_event = { id = dragon.190 days = 2 }
@@ -3287,7 +3285,7 @@ character_event = {
 		random_friend = {
 			limit = {
 				can_use_dragon_abilities_trigger = yes
-				age = 16
+				is_adult = yes
 				is_playable = yes
 				OR = {
 					is_patrician = yes
@@ -3356,7 +3354,7 @@ character_event = {
 			random_friend = {
 				limit = {
 					can_use_dragon_abilities_trigger = yes
-					age = 16
+					is_adult = yes
 					independent = yes
 					ai = yes
 					war = no
@@ -8525,7 +8523,7 @@ character_event = {
 
 			modifier = {
 				factor = 0.5
-				NOT = { FROMFROM = { age = 16 } }
+				NOT = { FROMFROM = { is_adult = yes } }
 			}
 			modifier = {
 				factor = 0.5
@@ -9050,7 +9048,7 @@ character_event = {
 
 			modifier = {
 				factor = 1.33
-				NOT = { event_target:enemy_dragon_rider = { age = 16 } }
+				NOT = { event_target:enemy_dragon_rider = { is_adult = yes } }
 			}
 			modifier = {
 				factor = 1.33
@@ -9468,7 +9466,7 @@ character_event = {
 character_event = { #AI pulse event trigger, player uses decision
 	id = dragon.3199
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_combat_pulse
 	hide_window = yes
 	ai = yes
 
@@ -12573,7 +12571,7 @@ character_event = {
 	title = "EVTNAMEdragon.43"
 	picture = "GFX_evt_dragons_flying"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_combat_pulse
 	in_command = yes
 
 	trigger = {
@@ -13098,7 +13096,7 @@ character_event = {
 			# }
 
 		# }
-		#any_playable_ruler  = {
+		#any_playable_ruler = {
 		#	limit = {
 		#		ai = no
 		#	}
@@ -13149,7 +13147,7 @@ character_event = {
 			# }
 			# #dontescape
 			# 50 = {
-				# #any_playable_ruler  = {
+				# #any_playable_ruler = {
 				# #	limit = {
 				# #		ai = no
 				# #	}
@@ -15549,6 +15547,7 @@ character_event = {
 	min_age = 12
 	picture = "GFX_evt_dragonpit_storming"
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15608,6 +15607,7 @@ character_event = {
 	min_age = 12
 	picture = "GFX_evt_valyria"
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15666,6 +15666,7 @@ character_event = {
 	picture = GFX_evt_library
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15707,6 +15708,7 @@ character_event = {
 	picture = "GFX_fieldoffire"
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15748,6 +15750,7 @@ character_event = {
 	picture = "GFX_fallofharrenhal"
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15788,6 +15791,7 @@ character_event = {
 	picture = "GFX_summerhall"
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15905,6 +15909,7 @@ character_event = {
 	picture = "GFX_evt_dragon_battle"
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15940,6 +15945,7 @@ character_event = {
 	picture = GFX_evt_volantis
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -15975,6 +15981,7 @@ character_event = {
 	picture = GFX_valyria_dragon
 	min_age = 12
 
+	ai = no
 	prisoner = no
 	#only_playable = yes
 	only_capable = yes
@@ -16088,7 +16095,7 @@ character_event = {
 				tier = EMPEROR
 				is_feudal = yes
 				has_nickname = no
-				age = 16
+				is_adult = yes
 				is_female = no
 				NOT = {
 					any_playable_ruler = { has_nickname = the_king_who_knelt }
@@ -16543,7 +16550,7 @@ character_event = {
 	id = dragon.69
 	desc = "EVTDESCdragon.69"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	only_rulers = yes
 
@@ -16585,8 +16592,7 @@ character_event = {
 			limit = { ai = no }
 			current_heir = { set_character_flag = banish_me }
 		}
-		if = {
-			limit = { ai = yes }
+		else = {
 			any_war = {
 				if = {
 					limit = {
@@ -17099,7 +17105,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -17760,7 +17766,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -18572,7 +18578,7 @@ character_event = {
 	desc = "Much nickname very dragon wow"
 
 	min_age = 16
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	hide_window = yes
 
 	trigger = {
@@ -19301,7 +19307,7 @@ character_event = { #Illyrio chooses to give eggs, triggered from marriage
 	desc = EVTDESCdragon.99
 	picture = GFX_targaryen_eggs
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage
 
 	has_character_flag = has_dany_dragon_eggs
 
@@ -19440,7 +19446,7 @@ character_event = { #rename whip
 	id = dragon.499
 	desc = EVTDESCdragon.499
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_renamed
 	hide_window = yes
 
 	trigger = { trait = dragon }
@@ -21101,7 +21107,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 12
+		years = 1
 	}
 
 	immediate = {
@@ -22821,7 +22827,7 @@ character_event = {
 character_event = {
 	id = dragon.180
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_women = yes
 	prisoner = no
@@ -23126,7 +23132,7 @@ character_event = {
 		else = {
 			random_playable_ruler = {
 				limit = {
-					age = 16
+					is_adult = yes
 					prisoner = no
 					is_incapable = no
 					demesne_size = 1
@@ -23538,7 +23544,7 @@ long_character_event = { #horn blowed
 		trigger = { has_character_flag = dragonhorn_captive }
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_executed
 
 	option = {
 		name = "EVTOPTAdragon.197"
@@ -23675,7 +23681,7 @@ long_character_event = { #horn blowed
 character_event = {
 	id = dragon.200
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_window = yes
 	ai = yes
 	min_age = 14

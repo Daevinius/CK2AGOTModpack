@@ -17,7 +17,7 @@ character_event = {
 	picture = GFX_evt_crusaders
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes # Only fires for unplayable landless characters
 
 	min_age = 16
@@ -78,7 +78,7 @@ character_event = {
 				}
 			}
 			AND = { #Yi Ti Warlords
-				culture = yi_ti
+				culture_group = yi_ti_group
 				OR = {
 					has_job_title = job_marshal
 					has_minor_title = title_commander
@@ -190,7 +190,7 @@ character_event = {
 		}
 		modifier = {
 			factor = 2
-			culture = yi_ti
+			culture_group = yi_ti_group
 			OR = {
 				has_job_title = job_marshal
 				has_minor_title = title_commander
@@ -560,7 +560,7 @@ character_event = {
 		##Yi Ti warlord goes rogue
 		if = {
 			limit = {
-				culture = yi_ti
+				culture_group = yi_ti_group
 				is_ruler = no
 				OR = {
 					has_job_title = job_marshal
@@ -919,7 +919,7 @@ character_event = {
 							# remove_trait = pneumonic
 							# remove_trait = maimed
 						# }
-						# if  = {
+						# if = {
 							# limit = {
 								# is_seafarer = yes
 							# }
@@ -929,8 +929,7 @@ character_event = {
 								# province = closest # closest sea zone
 								# owner = ROOT
 								# disband_on_peace = yes
-								# troops =
-								# {
+								# troops = {
 									# galleys = { 110 110 }
 								# }
 							# }
@@ -2887,8 +2886,7 @@ character_event = {
 								limit = { ai = no }
 								letter_event = { id = TOG.1276 }
 							}
-							if = {
-								limit = { ai = yes }
+							else = {
 								letter_event = { id = TOG.1276 days = 1 }
 							}
 						}
@@ -2897,8 +2895,7 @@ character_event = {
 							limit = { ai = no }
 							letter_event = { id = TOG.1276 }
 						}
-						if = {
-							limit = { ai = yes }
+						else = {
 							letter_event = { id = TOG.1276 days = 1 }
 						}
 					}
@@ -3197,9 +3194,8 @@ character_event = {
 # (Temporary title created and a war declared)
 character_event = {
 	id = TOG.1212
-	desc = OK
-	picture = GFX_evt_crusaders
-	border = GFX_event_normal_frame_war
+	# picture = GFX_evt_crusaders
+	# border = GFX_event_normal_frame_war
 
 	hide_window = yes # Only fires for unplayable landless characters
 
@@ -3408,7 +3404,7 @@ character_event = {
 								age = 25
 								trait = trained_warrior
 							}
-							if  = {
+							if = {
 								limit = {
 									OR = {
 										trait = dragon_rider
@@ -3466,11 +3462,11 @@ character_event = {
 	}
 
 	immediate = {
-			any_liege = {
-				character_event = {
-					id = TOG.1214
-				}
+		any_liege = {
+			character_event = {
+				id = TOG.1214
 			}
+		}
 	}
 
 	option = {
@@ -3862,16 +3858,12 @@ character_event = {
 			}
 		}
 	}
-
-	option = {
-		name = OK
-	}
 }
 ###Strong claimant to title becomes ambitious
 character_event = {
 	id = TOG.1390
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	only_independent = yes
 	hide_window = yes
 
@@ -3967,9 +3959,5 @@ character_event = {
 				}
 			}
 		}
-	}
-
-	option = {
-		name = OK
 	}
 }

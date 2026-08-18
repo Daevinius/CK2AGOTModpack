@@ -9,7 +9,7 @@ long_character_event = {
 	religion_group = essos_group
 	min_age = 14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -21,7 +21,7 @@ long_character_event = {
 			trait = zealous
 			is_priest = yes
 		}
-		NOT = {
+		NOR = {
 			trait = pantera_lys
 			trait = saagael_lys
 			trait = trade_lys
@@ -308,7 +308,7 @@ long_character_event = {
 		}
 
 		if = {
-			limit =  { NOT = { has_character_modifier = pet_cat } }
+			limit = { NOT = { has_character_modifier = pet_cat } }
 			add_cat_effect = yes
 		}
 		add_trait = pantera_lys
@@ -437,7 +437,7 @@ character_event = {
 	hide_window = yes
 	min_age = 6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
 		NOR = {
@@ -475,7 +475,7 @@ long_character_event = {
 
 	min_age = 14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -487,7 +487,7 @@ long_character_event = {
 			trait = zealous
 			is_priest = yes
 		}
-		NOT = {
+		NOR = {
 			trait = pattern_tyrosh
 			trait = merling_king_tyrosh
 			trait = trios_tyrosh
@@ -629,7 +629,7 @@ character_event = {
 	hide_window = yes
 	min_age = 6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
 		OR = {
@@ -665,7 +665,7 @@ long_character_event = {
 	religion = myrish_religion
 	min_age = 14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	trigger = {
 		religion = myrish_religion
@@ -674,7 +674,7 @@ long_character_event = {
 			trait = zealous
 			is_priest = yes
 		}
-		NOT = {
+		NOR = {
 			trait = aquan_myr
 			trait = hooded_wayfarer_myr
 			trait = bakkalon_myr
@@ -1227,7 +1227,7 @@ character_event = {
 	hide_window = yes
 	min_age = 6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
 		OR = {
@@ -1270,7 +1270,7 @@ long_character_event = {
 	religion = pentoshi_religion
 	min_age = 14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	trigger = {
 		religion = pentoshi_religion
@@ -1279,7 +1279,7 @@ long_character_event = {
 			trait = zealous
 			is_priest = yes
 		}
-		NOT = {
+		NOR = {
 			trait = aquan_pentos
 			trait = hooded_wayfarer_pentos
 			trait = bakkalon_pentos
@@ -1646,7 +1646,7 @@ character_event = {
 	hide_window = yes
 	min_age = 6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
 		NOT = {
@@ -1684,7 +1684,7 @@ long_character_event = {
 
 	min_age = 14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -1696,7 +1696,7 @@ long_character_event = {
 			trait = zealous
 			is_priest = yes
 		}
-		NOT = {
+		NOR = {
 			trait = aquan_braavos
 			trait = hooded_wayfarer_braavos
 			trait = merling_king_braavos
@@ -2625,7 +2625,7 @@ character_event = {
 	hide_window = yes
 	min_age = 6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
 		NOR = {
@@ -2677,7 +2677,7 @@ long_character_event = {
 	religion_group = essos_group
 	min_age = 14
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -3043,10 +3043,10 @@ character_event = {
 	hide_window = yes
 	min_age = 6
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	trigger = {
-		NOT = {
+		NOR = {
 			religion = gods_lorath_reformed
 			religion = gods_lorath
 		}

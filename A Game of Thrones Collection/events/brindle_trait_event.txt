@@ -1,0 +1,143 @@
+namespace = brindle_man
+
+character_event = {
+	id = brindle_man.1
+	desc = "EVTDESCBRINDLE1"
+	picture = GFX_evt_mountain_clans
+
+	hide_from = yes
+	
+	culture = brindlemen
+
+	trigger = {
+		culture = brindlemen
+		NOT = { trait = brindle }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = { add_trait = brindle }
+
+	option = {
+		name = "EVTOPTABRINDLE1"
+		add_trait = brindle
+		set_character_flag = immune_red_death
+		any_demesne_title = { succession = turkish_succession }
+		recalc_succession = yes
+	}
+}
+
+#Brindle Horde modifiers
+character_event = {
+	id = brindle_man.2
+
+	only_playable = yes
+	culture = brindlemen
+	hide_window = yes
+
+	trigger = {
+		trait = brindle
+		prestige = 100
+		NOT = { has_character_flag = brindle_horde_modifier }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_character_flag = brindle_horde_modifier
+		character_event = { id = brindle_man.3 days = 1 }
+	}
+}
+
+character_event = {
+	id = brindle_man.3
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_character_flag = brindle_horde_modifier
+	}
+
+	immediate = {
+		remove_character_modifier = brindle_horde_20
+		remove_character_modifier = brindle_horde_18
+		remove_character_modifier = brindle_horde_16
+		remove_character_modifier = brindle_horde_14
+		remove_character_modifier = brindle_horde_12
+		remove_character_modifier = brindle_horde_10
+		remove_character_modifier = brindle_horde_8
+		remove_character_modifier = brindle_horde_6
+		remove_character_modifier = brindle_horde_4
+		remove_character_modifier = brindle_horde_3
+		remove_character_modifier = brindle_horde_2
+		remove_character_modifier = brindle_horde_1
+
+		if = {
+			limit = {
+				OR = {
+					NOT = { trait = brindle }
+					prestige < 99
+					is_ruler = no
+				}
+			}
+			clear_delayed_event = { id = brindle_man.3 }
+			clr_character_flag = brindle_horde_modifier
+		}
+		else = {
+			character_event = { id = brindle_man.3 days = 90 } #check modifier tri-monthly
+
+			if = {
+				limit = { prestige >= 2000 }
+				add_character_modifier = { name = brindle_horde_20 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1800 }
+				add_character_modifier = { name = brindle_horde_18 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1600 }
+				add_character_modifier = { name = brindle_horde_16 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1400 }
+				add_character_modifier = { name = brindle_horde_14 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1200 }
+				add_character_modifier = { name = brindle_horde_12 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1000 }
+				add_character_modifier = { name = brindle_horde_10 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 800 }
+				add_character_modifier = { name = brindle_horde_8 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 600 }
+				add_character_modifier = { name = brindle_horde_6 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 400 }
+				add_character_modifier = { name = brindle_horde_4 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 300 }
+				add_character_modifier = { name = brindle_horde_3 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 200 }
+				add_character_modifier = { name = brindle_horde_2 duration = -1 }
+			}
+			else = {
+				add_character_modifier = { name = brindle_horde_1 duration = -1 }
+			}
+		}
+	}
+}

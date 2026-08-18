@@ -466,7 +466,7 @@ character_event = {
 character_event = {
 	id = volantis.350
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory, on_war_ended_whitepeace, on_war_ended_defeat, on_war_ended_invalid
 	hide_window = yes
 	only_playable = yes
 
@@ -508,7 +508,7 @@ character_event = {
 	picture = GFX_evt_volantis
 
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		government = triarch_merchant_republic_government
@@ -668,7 +668,7 @@ character_event = {
 		trigger = { primary_title = { NOT = { has_law = republic_triarch_for_life } } }
 		ai_chance = {
 			factor = 1000
-			modifier  = {
+			modifier = {
 				factor = 0.001
 				is_inaccessible_trigger = yes
 			}
@@ -5463,7 +5463,7 @@ character_event = {
 character_event = {
 	id = volantis.9100
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -10025,7 +10025,7 @@ character_event = {
 	desc = EVTDESCvolantis.573
 	picture = GFX_evt_volantis_2
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		trait = triarch_statue
@@ -10141,7 +10141,7 @@ character_event = {
 	desc = EVTDESCvolantis.575
 	picture = GFX_evt_volantis_2
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unlanded
 
 	trigger = {
 		trait = triarch_statue
@@ -10159,7 +10159,7 @@ character_event = {
 character_event = {
 	id = volantis.576
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_rulers = yes
 
@@ -10168,7 +10168,7 @@ character_event = {
 		any_liege = {
 			government = triarch_merchant_republic_government
 			any_realm_lord = {
-				age = 16
+				is_adult = yes
 				NOT = { dynasty = ROOT }
 				is_incapable = no
 				in_command = no
@@ -10208,7 +10208,7 @@ character_event = {
 			}
 			random_realm_lord = {
 				limit = {
-					age = 16
+					is_adult = yes
 					NOT = { dynasty = ROOT }
 					is_incapable = no
 					in_command = no
@@ -10767,7 +10767,7 @@ character_event = {
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	show_from_from_from = yes
 
 	option = {
@@ -10799,8 +10799,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -10912,7 +10911,7 @@ character_event = {
 				is_ruler = yes
 				any_liege = {
 					is_merchant_republic = yes
-					ROOT = { relative_power = { who = PREV power  = 0.5 } }
+					ROOT = { relative_power = { who = PREV power = 0.5 } }
 				}
 			}
 			modifier = {
@@ -12250,7 +12249,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -12270,7 +12269,7 @@ character_event = {
 character_event = {
 	id = volantis.280
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder_inheritance
 	hide_window = yes
 
 	trigger = {
@@ -12291,8 +12290,7 @@ character_event = {
 					set_defacto_liege = ROOT
 					recalc_succession = yes
 				}
-				if = {
-					limit = { is_patrician = yes }
+				else = {
 					c_oldvolantis = { gain_title = ROOT }
 				}
 			}
@@ -12317,8 +12315,7 @@ character_event = {
 						set_defacto_liege = ROOT
 						recalc_succession = yes
 					}
-					if = {
-						limit = { is_patrician = yes }
+					else = {
 						c_volantis = { gain_title = ROOT }
 					}
 				}

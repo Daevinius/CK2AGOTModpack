@@ -3,7 +3,7 @@ namespace = RIP
 character_event = {
 	id = RIP.14000
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 16
@@ -1348,7 +1348,7 @@ letter_event = {
 	id = RIP.15106
 	desc = EVTDSC_RIP_15106
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		event_target:EoD_doomsday_prophet = {
@@ -1367,8 +1367,7 @@ letter_event = {
 						limit = { is_merchant_republic = no }
 						current_heir = { save_event_target_as = wealth_heir }
 					}
-					if = {
-						limit = { is_merchant_republic = yes }
+					else = {
 						family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 					}
 					transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -1623,7 +1622,7 @@ narrative_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_won_owner
 
 	#It was the only way
 	option = {
@@ -2161,7 +2160,7 @@ narrative_event = {
 	picture = GFX_evt_end_of_days
 
 	is_triggered_only = yes
-	hide_from =  yes
+	hide_from = yes
 
 	option = {
 		name = EVTOPTA_RIP_22009
@@ -2217,7 +2216,7 @@ narrative_event = {
 	picture = GFX_evt_depopulated_town
 
 	is_triggered_only = yes
-	hide_from =  yes
+	hide_from = yes
 
 	option = {
 		name = EVTOPTA_RIP_22010
@@ -2274,7 +2273,7 @@ narrative_event = {
 	picture = GFX_evt_bishop
 
 	is_triggered_only = yes
-	hide_from =  yes
+	hide_from = yes
 
 	option = {
 		name = EVTOPTA_RIP_22011

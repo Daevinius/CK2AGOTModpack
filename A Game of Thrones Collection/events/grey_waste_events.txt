@@ -1,0 +1,534 @@
+namespace = greywaste
+
+character_event = {
+	id = greywaste.1
+	desc = "EVTDESCWASTE1"
+	picture = GFX_evt_mountain_clans
+
+	hide_from = yes
+
+	culture_group = further_east
+
+	trigger = {
+		waste_culture_trigger = yes
+		NOT = { trait = grey_lander }
+	}
+
+	immediate = { add_trait = grey_lander }
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTAWASTE1"
+		add_trait = grey_lander
+		any_demesne_title = { succession = turkish_succession }
+		recalc_succession = yes
+	}
+}
+
+character_event = { #on_character_convert_culture
+	id = greywaste.2
+	desc = "EVTDESCWASTE2"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = grey_lander
+		NOT = { waste_culture_trigger = yes }
+	}
+
+	option = {
+		name = "EVTOPTAWASTE2"
+		remove_trait = grey_lander
+	}
+}
+
+#Waste Horde modifiers
+character_event = {
+	id = greywaste.3
+
+	only_playable = yes
+	culture_group = further_east
+	hide_window = yes
+
+	trigger = {
+		trait = grey_lander
+		prestige >= 100
+		NOT = { has_character_flag = waste_horde_modifier }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		set_character_flag = waste_horde_modifier
+		character_event = { id = greywaste.4 days = 1 }
+	}
+
+	option = {
+		name = OK
+	}
+}
+character_event = {
+	id = greywaste.4
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_character_flag = waste_horde_modifier
+	}
+
+	immediate = {
+		remove_character_modifier = waste_horde_20
+		remove_character_modifier = waste_horde_18
+		remove_character_modifier = waste_horde_16
+		remove_character_modifier = waste_horde_14
+		remove_character_modifier = waste_horde_12
+		remove_character_modifier = waste_horde_10
+		remove_character_modifier = waste_horde_8
+		remove_character_modifier = waste_horde_6
+		remove_character_modifier = waste_horde_4
+		remove_character_modifier = waste_horde_3
+		remove_character_modifier = waste_horde_2
+		remove_character_modifier = waste_horde_1
+
+		if = {
+			limit = {
+				OR = {
+					NOT = { trait = grey_lander }
+					prestige < 99
+					is_ruler = no
+				}
+			}
+			clear_delayed_event = { id = greywaste.4 }
+			clr_character_flag = waste_horde_modifier
+		}
+		else = {
+			character_event = { id = greywaste.4 days = 90 } #check modifier tri-monthly
+
+			if = {
+				limit = { prestige >= 2000 }
+				add_character_modifier = { name = waste_horde_20 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1800 }
+				add_character_modifier = { name = waste_horde_18 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1600 }
+				add_character_modifier = { name = waste_horde_16 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1400 }
+				add_character_modifier = { name = waste_horde_14 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1200 }
+				add_character_modifier = { name = waste_horde_12 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 1000 }
+				add_character_modifier = { name = waste_horde_10 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 800 }
+				add_character_modifier = { name = waste_horde_8 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 600 }
+				add_character_modifier = { name = waste_horde_6 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 400 }
+				add_character_modifier = { name = waste_horde_4 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 300 }
+				add_character_modifier = { name = waste_horde_3 duration = -1 }
+			}
+			else_if = {
+				limit = { prestige >= 200 }
+				add_character_modifier = { name = waste_horde_2 duration = -1 }
+			}
+			else = {
+				add_character_modifier = { name = waste_horde_1 duration = -1 }
+			}
+		}
+	}
+
+	option = {
+		name = OK
+	}
+}
+
+
+
+# Force the AI to consider invasions
+character_event = {
+	id = greywaste.60
+	desc = "Hey, AI, you want to invade this person?"
+
+	is_triggered_only = yes
+	only_independent = yes
+	ai = yes
+	min_age = 16
+	capable_only = yes
+	war = no
+
+	trigger = {
+		trait = grey_lander
+		#top_liege = { trait = grey_lander }
+		demesne_size = 1
+		wealth >= 0
+
+		OR = {
+			NOT = { has_global_flag = war_cooldown_period }
+			had_global_flag = { flag = war_cooldown_period days = 25 }
+		}
+	}
+
+	immediate = {
+		# Opinion flag a target
+		random_independent_ruler = {
+			limit = {
+				#NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_enforced_truce } }
+				NOT = { reverse_has_truce = ROOT }
+				NOT = { culture_group = unoccupied_group }
+				NOT = { culture_group = winter_group }
+				any_realm_province = {
+					has_owner = yes
+					owner = {
+						OR = {
+							character = PREVPREV
+							is_liege_or_above = PREVPREV
+						}
+					}
+					any_neighbor_province = {
+						has_owner = yes
+						owner = {
+							OR = {
+								character = ROOT
+								is_liege_or_above = ROOT
+							}
+						}
+					}
+				}
+				any_demesne_title = {
+					OR = {
+						higher_tier_than = DUKE
+						AND = {
+							tier = DUKE
+							holder_scope = { tier = DUKE }
+						}
+						AND = {
+							tier = COUNT
+							holder_scope = { tier = COUNT }
+						}
+					}
+					controls_religion = no
+				}
+				OR = { #Cannot attack vassals split by mega war
+					NOT = { has_opinion_modifier = { who = ROOT modifier = opinion_de_facto_liege } }
+					NOT = { ROOT = { higher_tier_than = PREV } }
+				}
+
+				#Target considerations
+				OR = {
+					NOT = { relative_power = { who = ROOT power = 1.75 } }
+					AND = {
+						war = yes
+						NOT = { relative_power = { who = ROOT power = 3 } }
+					}
+				}
+				OR = {
+					NOT = { reverse_opinion = { who = ROOT value = 40 } } #Don't target people they like
+					ROOT = {
+						OR = {
+							trait = ambitious
+							trait = ruthless
+						}
+					}
+				}
+				OR = { #Have to dislike close family to attack them
+					NOT = { reverse_opinion = { who = ROOT value = -15 } }
+					NOT = {
+						OR = {
+							is_married = ROOT
+							is_parent_of = ROOT
+							father = { character = ROOT }
+							mother = { character = ROOT }
+						}
+					}
+				}
+			}
+			save_event_target_as = opinion_invasion_target_evaluation
+		}
+	}
+
+	option = {
+		name = "Let's do it!"
+		ai_chance = {
+			factor = 200
+			modifier = {
+				factor = 4
+				trait = ambitious
+			}
+			modifier = {
+				factor = 0.5
+				trait = content
+			}
+			modifier = {
+				factor = 2
+				trait = greedy
+			}
+			modifier = {
+				factor = 0.5
+				trait = charitable
+			}
+			modifier = {
+				factor = 2
+				trait = cruel
+			}
+			modifier = {
+				factor = 0.5
+				trait = kind
+			}
+			modifier = {
+				factor = 2
+				trait = ruthless
+			}
+			modifier = {
+				factor = 0.5
+				trait = honorable
+			}
+			modifier = {
+				factor = 2
+				event_target:opinion_invasion_target_evaluation = {
+					NOT = {
+						relative_power = {
+							who = ROOT
+							power = 0.25
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				event_target:opinion_invasion_target_evaluation = {
+					NOT = {
+						relative_power = {
+							who = ROOT
+							power = 0.1
+						}
+					}
+				}
+			}
+		}
+		event_target:opinion_invasion_target_evaluation = {
+			random_demesne_title = {
+				limit = {
+					OR = {
+						higher_tier_than = DUKE
+						AND = {
+							tier = DUKE
+							holder_scope = { tier = DUKE }
+						}
+						AND = {
+							tier = COUNT
+							holder_scope = { tier = COUNT }
+						}
+					}
+					controls_religion = no
+				}
+				reverse_war = {
+					target = ROOT
+					casus_belli = AGOT_invasion
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "Let's not do it!"
+		ai_chance = {
+			factor = 50
+		}
+	}
+}
+
+character_event = {
+	id = greywaste.10
+	desc = "EVTDESCWASTE10"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	immediate = {
+		add_trait = lion_avatar
+		spawn_unit = {
+			owner = ROOT
+			province = 818
+			troops = {
+				archers = { 4000 4000 }
+				light_cavalry = { 2000 2000 }
+				light_infantry = { 8000 8000 }
+				heavy_infantry = { 1000 1000 }
+			}
+			attrition = 0.5
+			maintenance_multiplier = 0.2
+			reinforces = yes
+			reinforce_rate_multiplier = 0.1
+			cannot_inherit = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAWASTE10"
+		add_trait = lion_avatar
+	}
+}
+
+character_event = {
+	id = greywaste.11
+	desc = "EVTDESCWASTE11"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+	show_from_from = yes
+
+	immediate = {
+		spawn_unit = {
+			owner = ROOT
+			province = 818
+			troops = {
+				archers = { 600 600 }
+				light_cavalry = { 300 300 }
+				light_infantry = { 1000 1000 }
+				heavy_infantry = { 100 100 }
+			}
+			attrition = 0.5
+			maintenance_multiplier = 0.2
+			reinforces = yes
+			reinforce_rate_multiplier = 0.1
+			cannot_inherit = yes
+		}
+	}
+
+	option = {
+		name = "EVTOPTAWASTE11"
+		add_character_modifier = {
+			name = called_warriors1
+			duration = 800
+			hidden = yes
+		}
+	}
+}
+
+narrative_event = {
+	id = greywaste.22
+	title = "EVTNAMEwaste.22"
+	desc = "EVTDESCwaste.22"
+	picture = "GFX_evt_mountain_clans"
+
+	major = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAwaste.22" #the realm is in great danger!!!
+	}
+}
+
+###Radiers appear out of the Grey Waste
+province_event = {
+	id = greywaste.110
+	desc = "EVTDESCessos.110"
+	picture = GFX_evt_mountain_clans
+
+	trigger = {
+		province_id = 820 #Five Forts
+		d_grey_waste_raiders = {
+			holder_scope = {
+				in_command = yes
+				NOT = { demesne_size = 1 }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		years = 120
+		modifier = {
+			factor = 0.5
+			owner = { war = yes	}
+		}
+		modifier = {
+			factor = 0.25
+			owner = {
+				top_liege = {
+					war = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			e_yi_ti = { holder_scope = { war = yes } }
+		}
+	}
+
+	option = {
+		name = "EVTOPTAessos.110"
+		create_random_soldier = {
+			female = no
+			employer = e_rebels
+			culture = grey_waste
+			religion = lion_night
+			random_traits = yes
+			dynasty = none
+		}
+		custom_tooltip = { text = TOOLTIPessos.110 }
+		new_character = {
+			prestige = 100
+			random_list = {
+				25 = { add_trait = trained_warrior }
+				75 = { add_trait = skilled_warrior }
+				25 = { add_trait = master_warrior }
+			}
+
+			remove_trait = inbred
+			remove_trait = imbecile
+			remove_trait = imbecile_1
+			remove_trait = infirm
+			remove_trait = incapable
+			remove_trait = dwarf
+			remove_trait = dwarf_1
+			remove_trait = dwarf_2
+			remove_trait = hunchback
+			remove_trait = clubfooted
+			remove_trait = weak
+			remove_trait = leper
+			remove_trait = possessed
+			remove_trait = ill
+			remove_trait = pneumonic
+			remove_trait = maimed
+
+			d_grey_waste_raiders = {
+				if = {
+					limit = { has_holder = yes }
+					holder_scope = {
+						abdicate_to = PREVPREV
+					}
+				}
+				else = {
+					gain_title = PREV
+				}
+			}
+		}
+	}
+}
+

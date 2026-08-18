@@ -4,7 +4,7 @@ namespace = dynastic_rivalry
 character_event = {
 	id = dynastic_rivalry.199
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_playable = yes
@@ -24,7 +24,7 @@ character_event = {
 			random_realm_lord = {
 				limit = {
 					higher_tier_than = BARON
-					age = 16
+					is_adult = yes
 					NOT = { dynasty = ROOT }
 					is_incapable = no
 					in_command = no
@@ -451,7 +451,7 @@ character_event = {
 				add_trait_silently_wounded_effect = yes
 			}
 			liege = {
-				opinion  = {
+				opinion = {
 					who = ROOT
 					modifier = opinion_disrepected_hospitality
 				}
@@ -551,7 +551,7 @@ character_event = {
 					}
 				}
 				liege = {
-					opinion  = {
+					opinion = {
 						who = ROOT
 						modifier = opinion_disrepected_hospitality
 					}
@@ -565,7 +565,7 @@ character_event = {
 					dynasty = ROOT
 					is_female = no
 					is_ruler = no
-					age = 16
+					is_adult = yes
 					NOT = { trait = dragon }
 				}
 				add_trait_silently_wounded_effect = yes
@@ -575,7 +575,7 @@ character_event = {
 					NOT = { dynasty = ROOT }
 					is_female = no
 					is_ruler = no
-					age = 16
+					is_adult = yes
 					NOT = { trait = maester }
 					NOT = { trait = dragon }
 				}
@@ -796,7 +796,7 @@ character_event = {
 character_event = {
 	id = dynastic_rivalry.990
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_playable = yes
@@ -823,7 +823,7 @@ character_event = {
 			limit = {
 				has_opinion_modifier = { who = ROOT modifier = opinion_blood_feud }
 				dynasty_head = { character = PREV } # Must be senior member
-				age = 16
+				is_adult = yes
 				NOT = { dynasty = ROOT }
 				is_incapable = no
 				in_command = no
@@ -1834,7 +1834,7 @@ character_event = {
 character_event = {
 	id = dynastic_rivalry.100
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	only_independent = yes
@@ -1854,7 +1854,7 @@ character_event = {
 	immediate = {
 		random_independent_ruler = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { dynasty = ROOT }
 				is_lowborn = no
 				is_incapable = no
@@ -2486,7 +2486,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name =  EVTOPTAdynastic_rivalry.22
+		name = EVTOPTAdynastic_rivalry.22
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -2663,7 +2663,7 @@ character_event = {
 			add_trait_silently_wounded_effect = yes
 		}
 		event_target:blood_feud_brawl_host = {
-			opinion  = {
+			opinion = {
 				who = ROOT
 				modifier = opinion_disrepected_hospitality
 			}
@@ -2739,7 +2739,7 @@ character_event = {
 				dynasty = ROOT
 				is_female = no
 				is_ruler = no
-				age = 16
+				is_adult = yes
 				NOT = { trait = dragon }
 				NOT = { trait = wounded }
 				NOT = { has_severe_disability_trigger = yes }
@@ -2753,7 +2753,7 @@ character_event = {
 				NOT = { dynasty = ROOT }
 				is_female = no
 				is_ruler = no
-				age = 16
+				is_adult = yes
 				NOT = { trait = maester }
 				NOT = { trait = dragon }
 				NOT = { trait = wounded }
@@ -2764,7 +2764,7 @@ character_event = {
 			add_trait_silently_wounded_effect = yes
 		}
 		event_target:blood_feud_brawl_host = {
-			opinion  = {
+			opinion = {
 				who = ROOT
 				modifier = opinion_disrepected_hospitality
 			}
@@ -2832,7 +2832,7 @@ character_event = {
 	desc = EVTDESCdynastic_rivalry.30
 	picture = GFX_evt_battle
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	only_capable = yes
 	prisoner = no
 	in_command = yes
@@ -3162,7 +3162,7 @@ character_event = {
 	desc = EVTDESCdynastic_rivalry.40
 	picture = GFX_evt_council_quarrelling
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_capable = yes
 	prisoner = no
 	in_command = no

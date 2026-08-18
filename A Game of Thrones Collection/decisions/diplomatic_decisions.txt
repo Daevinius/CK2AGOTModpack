@@ -15,7 +15,7 @@ decisions = {
 		is_high_prio = yes
 		ai = no
 		potential = {
-			age = 16
+			is_adult = yes
 			tier = DUKE
 			is_incapable = no
 			demesne_size = 1
@@ -27,7 +27,7 @@ decisions = {
 					any_vassal = { tier = KING }
 					num_of_king_titles = 2
 				}
-				NOT =  { #Interregnum
+				NOT = { #Interregnum
 					primary_title = {
 						is_variable_equal = { which = "lord_paramount_status" value = 2 }
 					}
@@ -80,12 +80,10 @@ decisions = {
 						has_holder = yes
 					}
 					OR = { #Cannot request Sarnor or North Valyria if they have had no previous holder
-						NOT = {
-							OR = {
-								title = k_sarnor
-								title = k_north_valyria
-								title = k_long_summer
-							}
+						NOR = {
+							title = k_sarnor
+							title = k_north_valyria
+							title = k_long_summer
 						}
 						any_previous_holder = { always = yes }
 					}
@@ -97,41 +95,39 @@ decisions = {
 						NOT = { title = k_rhoynar }
 						ROOT = { culture_group = dornish }
 					}
-					NOT = { #cannot request a title if equivalent kingdom exists
-						OR = {
-							title = k_nightswatch
-							AND = {
-								title = k_north
-								e_north = { has_holder = yes }
-							}
-							AND = {
-								title = k_riverlands
-								e_riverlands = { has_holder = yes }
-							}
-							AND = {
-								title = k_vale
-								e_vale = { has_holder = yes }
-							}
-							AND = {
-								title = k_westerlands
-								e_westerlands = { has_holder = yes }
-							}
-							AND = {
-								title = k_reach
-								e_reach = { has_holder = yes }
-							}
-							AND = {
-								title = k_stormlands
-								e_stormlands = { has_holder = yes }
-							}
-							AND = {
-								title = k_dorne
-								e_dorne = { has_holder = yes }
-							}
-							AND = {
-								title = k_iron_isles
-								e_iron_isles = { has_holder = yes }
-							}
+					NOR = { #cannot request a title if equivalent kingdom exists
+						title = k_nightswatch
+						AND = {
+							title = k_north
+							e_north = { has_holder = yes }
+						}
+						AND = {
+							title = k_riverlands
+							e_riverlands = { has_holder = yes }
+						}
+						AND = {
+							title = k_vale
+							e_vale = { has_holder = yes }
+						}
+						AND = {
+							title = k_westerlands
+							e_westerlands = { has_holder = yes }
+						}
+						AND = {
+							title = k_reach
+							e_reach = { has_holder = yes }
+						}
+						AND = {
+							title = k_stormlands
+							e_stormlands = { has_holder = yes }
+						}
+						AND = {
+							title = k_dorne
+							e_dorne = { has_holder = yes }
+						}
+						AND = {
+							title = k_iron_isles
+							e_iron_isles = { has_holder = yes }
 						}
 					}
 				}
@@ -474,8 +470,7 @@ targeted_decisions = {
 								set_character_flag = stand_down_vote_for
 								set_variable = { which = council_end_war_votes value = 1 } #one vote in favour
 							}
-							if = {
-								limit = { has_regent = yes }
+							else = {
 								set_variable = { which = council_end_war_votes value = 0 }
 							}
 							any_courtier = {
@@ -576,40 +571,38 @@ targeted_decisions = {
 							}
 						}
 					}
-					NOT = { #cannot request a title if equivalent kingdom exists
-						OR = {
-							AND = {
-								title = k_north
-								e_north = { has_holder = yes }
-							}
-							AND = {
-								title = k_riverlands
-								e_riverlands = { has_holder = yes }
-							}
-							AND = {
-								title = k_vale
-								e_vale = { has_holder = yes }
-							}
-							AND = {
-								title = k_westerlands
-								e_westerlands = { has_holder = yes }
-							}
-							AND = {
-								title = k_reach
-								e_reach = { has_holder = yes }
-							}
-							AND = {
-								title = k_stormlands
-								e_stormlands = { has_holder = yes }
-							}
-							AND = {
-								title = k_dorne
-								e_dorne = { has_holder = yes }
-							}
-							AND = {
-								title = k_iron_isles
-								e_iron_isles = { has_holder = yes }
-							}
+					NOR = { #cannot request a title if equivalent kingdom exists
+						AND = {
+							title = k_north
+							e_north = { has_holder = yes }
+						}
+						AND = {
+							title = k_riverlands
+							e_riverlands = { has_holder = yes }
+						}
+						AND = {
+							title = k_vale
+							e_vale = { has_holder = yes }
+						}
+						AND = {
+							title = k_westerlands
+							e_westerlands = { has_holder = yes }
+						}
+						AND = {
+							title = k_reach
+							e_reach = { has_holder = yes }
+						}
+						AND = {
+							title = k_stormlands
+							e_stormlands = { has_holder = yes }
+						}
+						AND = {
+							title = k_dorne
+							e_dorne = { has_holder = yes }
+						}
+						AND = {
+							title = k_iron_isles
+							e_iron_isles = { has_holder = yes }
 						}
 					}
 				}
@@ -630,12 +623,10 @@ targeted_decisions = {
 						has_holder = yes
 					}
 					OR = { #Cannot request Sarnor or North Valyria if they have had no previous holder
-						NOT = {
-							OR = {
-								title = k_sarnor
-								title = k_north_valyria
-								title = k_long_summer
-							}
+						NOR = {
+							title = k_sarnor
+							title = k_north_valyria
+							title = k_long_summer
 						}
 						any_previous_holder = { always = yes }
 					}
@@ -789,40 +780,38 @@ targeted_decisions = {
 								}
 							}
 						}
-						NOT = { #cannot request a title if equivalent kingdom exists
-							OR = {
-								AND = {
-									title = k_north
-									e_north = { has_holder = yes }
-								}
-								AND = {
-									title = k_riverlands
-									e_riverlands = { has_holder = yes }
-								}
-								AND = {
-									title = k_vale
-									e_vale = { has_holder = yes }
-								}
-								AND = {
-									title = k_westerlands
-									e_westerlands = { has_holder = yes }
-								}
-								AND = {
-									title = k_reach
-									e_reach = { has_holder = yes }
-								}
-								AND = {
-									title = k_stormlands
-									e_stormlands = { has_holder = yes }
-								}
-								AND = {
-									title = k_dorne
-									e_dorne = { has_holder = yes }
-								}
-								AND = {
-									title = k_iron_isles
-									e_iron_isles = { has_holder = yes }
-								}
+						NOR = { #cannot request a title if equivalent kingdom exists
+							AND = {
+								title = k_north
+								e_north = { has_holder = yes }
+							}
+							AND = {
+								title = k_riverlands
+								e_riverlands = { has_holder = yes }
+							}
+							AND = {
+								title = k_vale
+								e_vale = { has_holder = yes }
+							}
+							AND = {
+								title = k_westerlands
+								e_westerlands = { has_holder = yes }
+							}
+							AND = {
+								title = k_reach
+								e_reach = { has_holder = yes }
+							}
+							AND = {
+								title = k_stormlands
+								e_stormlands = { has_holder = yes }
+							}
+							AND = {
+								title = k_dorne
+								e_dorne = { has_holder = yes }
+							}
+							AND = {
+								title = k_iron_isles
+								e_iron_isles = { has_holder = yes }
 							}
 						}
 					}
@@ -840,12 +829,10 @@ targeted_decisions = {
 							has_holder = yes
 						}
 						OR = { #Cannot request Sarnor or North Valyria if they have had no previous holder
-							NOT = {
-								OR = {
-									title = k_sarnor
-									title = k_north_valyria
-									title = k_long_summer
-								}
+							NOR = {
+								title = k_sarnor
+								title = k_north_valyria
+								title = k_long_summer
 							}
 							any_previous_holder = { always = yes }
 						}
@@ -1629,7 +1616,7 @@ targeted_decisions = {
 				hidden_tooltip = {
 					any_realm_lord = {
 						reverse_has_opinion_modifier = { who = FROM modifier = opinion_looted }
-						NOT = { has_opinion_modifier  = { who = FROM modifier = forbidden_raid_target } }
+						NOT = { has_opinion_modifier = { who = FROM modifier = forbidden_raid_target } }
 					}
 				}
 			}

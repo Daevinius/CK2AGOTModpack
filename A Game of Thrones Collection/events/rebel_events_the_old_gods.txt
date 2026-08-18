@@ -1758,7 +1758,7 @@ character_event = {
 	picture = GFX_evt_siege
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 
 	desc = OK
 
@@ -2039,7 +2039,7 @@ character_event = {
 	picture = GFX_evt_siege
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 
 	desc = OK
 
@@ -2387,7 +2387,7 @@ province_event = {
 							religion = stone_cow
 						}
 						else_if = {
-							limit = { culture = yi_ti }
+							limit = { culture_group = yi_ti_group }
 							religion = yiti_gods
 						}
 						else_if = {
@@ -2488,8 +2488,7 @@ province_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -2900,7 +2899,7 @@ character_event = {
 	picture = GFX_evt_siege
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 
 	desc = OK
 
@@ -3197,8 +3196,7 @@ province_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -3817,7 +3815,7 @@ character_event = {
 character_event = {
 	id = TOG.1062
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	hide_window = yes
 
 	immediate = {
@@ -3860,8 +3858,7 @@ character_event = {
 				limit = { is_merchant_republic = no }
 				current_heir = { save_event_target_as = wealth_heir }
 			}
-			if = {
-				limit = { is_merchant_republic = yes }
+			else = {
 				family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 			}
 			transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -3869,8 +3866,7 @@ character_event = {
 				limit = { is_merchant_republic = no }
 				abdicate = yes
 			}
-			if = {
-				limit = { is_merchant_republic = yes }
+			else = {
 				character_event = { id = REP.903 tooltip = TOOLTIPREP.903B } #Hold Election
 			}
 			break = yes
@@ -4169,7 +4165,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 
 	has_character_flag = religious_revolter
 
@@ -4338,7 +4334,7 @@ character_event = {
 	picture = GFX_evt_beheading
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_loc_chars
 
 	trigger = {
 		new_character = {
@@ -4699,7 +4695,7 @@ character_event = {
 	id = TOG.10702
 	desc = "EVTDESCTOG10702"
 	picture = GFX_evt_siege
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 
 	trigger = {
 		trait = liberator

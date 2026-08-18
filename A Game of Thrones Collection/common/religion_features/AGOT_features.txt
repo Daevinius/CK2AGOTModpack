@@ -220,6 +220,7 @@ religion_doctrine = {
 	}
 	religion_feature_the_seven = {
 		picture = GFX_religion_feature_the_seven
+
 		potential = {
 			has_game_started = yes
 			NOT = {
@@ -227,6 +228,7 @@ religion_doctrine = {
 			}
 			NOT = { religion = the_seven } #just in case
 		}
+
 		trigger = {
 			NOT = { has_selected_religion_feature = religion_dogmatic }
 			NOT = { has_selected_religion_feature = religion_feature_norse }
@@ -245,14 +247,17 @@ religion_doctrine = {
 				}
 			}
 		}
+
 		effect = {
-			custom_tooltip = { text = tooltip_religion_feature_the_seven }
-			hidden_tooltip = {
-				random_playable_ruler = {
+			custom_tooltip = {
+				text = tooltip_religion_feature_the_seven
+
+				any_playable_ruler = {
 					limit = { religion = the_seven }
 					add_intermarry = ROOT
 					ROOT = { add_intermarry = PREV }
 				}
+
 				any_playable_ruler = {
 					limit = {
 						has_religion_feature = religion_feature_the_seven
@@ -261,6 +266,7 @@ religion_doctrine = {
 					add_intermarry = ROOT
 					ROOT = { add_intermarry = PREV }
 				}
+
 				set_character_modifier = {
 					the_seven_opinion = 5
 					key = "the_seven_RELIGION"

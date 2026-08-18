@@ -108,7 +108,7 @@ character_event = {
 			NOT = { FROM = { is_plot_target_of = ROOT } }
 			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
 			NOT = { FROM = { is_rival = ROOT } }
-			FROM = { any_child  = { character = ROOT } }
+			FROM = { any_child = { character = ROOT } }
 		}
 		tooltip = { FROM = { add_trait = in_hiding } }
 	}
@@ -142,7 +142,7 @@ character_event = {
 			NOT = { FROM = { is_plot_target_of = ROOT } }
 			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
 			NOT = { FROM = { is_rival = ROOT } }
-			FROM = { any_child  = { character = ROOT } }
+			FROM = { any_child = { character = ROOT } }
 		}
 		tooltip = { FROM = { remove_trait = in_hiding } }
 	}
@@ -176,7 +176,7 @@ character_event = {
 			NOT = { FROMFROM = { is_plot_target_of = ROOT } }
 			NOT = {	FROMFROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
 			NOT = { FROMFROM = { is_rival = ROOT } }
-			FROMFROM = { any_child  = { character = ROOT } }
+			FROMFROM = { any_child = { character = ROOT } }
 		}
 		tooltip = { FROMFROM = { add_trait = in_hiding } }
 	}
@@ -210,7 +210,7 @@ character_event = {
 			NOT = { FROM = { is_plot_target_of = ROOT } }
 			NOT = {	FROM = { any_known_plotter = { any_plot_backer = { character = ROOT }	} }	}
 			NOT = { FROM = { is_rival = ROOT } }
-			FROM = { any_child  = { character = ROOT } }
+			FROM = { any_child = { character = ROOT } }
 		}
 		tooltip = { FROM = { remove_trait = in_hiding } }
 	}
@@ -301,7 +301,7 @@ character_event = {
 	desc = EVTDESC_CM_6100
 	picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -373,7 +373,7 @@ character_event = {
 	desc = EVTDESC_CM_6102
 	picture = GFX_evt_shadowy_cabal
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -393,12 +393,12 @@ character_event = {
 	desc = EVTDESC_CM_6104
 	picture = GFX_evt_recovery
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
 		NOT = { trait = celibate }
-		age = 16
+		is_adult = yes
 	}
 
 	option = {
@@ -497,7 +497,7 @@ character_event = {
 	desc = EVTDESC_CM_6106
 	picture = GFX_evt_bishop
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -523,7 +523,7 @@ character_event = {
 	desc = EVTDESC_CM_6108
 	picture = GFX_evt_bad_news
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -543,7 +543,7 @@ character_event = {
 	desc = EVTDESC_CM_6110
 	picture = GFX_evt_illness
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -588,7 +588,7 @@ character_event = {
 	desc = EVTDESC_CM_6112
 	picture = GFX_evt_pope_feast
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -618,7 +618,7 @@ character_event = {
 	desc = EVTDESC_CM_6114
 	picture = GFX_evt_recovery
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -638,7 +638,7 @@ character_event = {
 	desc = EVTDESC_CM_6116
 	picture = GFX_evt_recovery
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -658,7 +658,7 @@ character_event = {
 	desc = EVTDESC_CM_6118
 	picture = GFX_evt_recovery
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -679,7 +679,7 @@ character_event = {
 	desc = EVTDESC_CM_6120
 	picture = GFX_evt_recovery
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -701,7 +701,7 @@ character_event = {
 
 	lacks_dlc = "Way of Life"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -724,7 +724,7 @@ character_event = {
 	lacks_dlc = "Way of Life"
 
 	min_age = 10
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -746,7 +746,7 @@ character_event = {
 	min_age = 13
 	lacks_dlc = "Way of Life"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -765,7 +765,7 @@ character_event = {
 	desc = EVTDESC_CM_6128
 	picture = GFX_evt_monk
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -785,7 +785,7 @@ character_event = {
 	desc = EVTDESC_CM_6130
 	picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = in_hiding
@@ -809,14 +809,14 @@ character_event = {
 	desc = EVTDESC_CM_6132
 	picture = GFX_evt_drunk
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 
 
 	trigger = {
 		trait = in_hiding
 		NOT = { trait = drunkard }
-		age = 16
+		is_adult = yes
 	}
 
 	weight_multiplier = {
@@ -868,7 +868,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		any_plotter = {
@@ -1055,7 +1055,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 24
+		years = 2
 		modifier = {   # If no real plot is afoot, the paranoia doesn't set in too often
 			factor = 10
 			trait = paranoid
@@ -1198,7 +1198,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 24
+		years = 2
 		modifier = {   # If no real plot is afoot, the paranoia doesn't set in too often
 			factor = 10
 			trait = paranoid
@@ -1785,7 +1785,7 @@ narrative_event = {
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -2288,7 +2288,7 @@ narrative_event = {
 	picture = GFX_evt_recovery
 	border = GFX_event_narrative_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -2794,7 +2794,7 @@ narrative_event = {
 	picture = GFX_evt_recieve_letter
 	border = GFX_event_narrative_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -3298,7 +3298,7 @@ narrative_event = {
 	picture = GFX_evt_shadow
 	border = GFX_event_narrative_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -3801,7 +3801,7 @@ narrative_event = {
 	picture = GFX_evt_illness
 	border = GFX_event_narrative_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -4305,7 +4305,7 @@ narrative_event = {
 	picture = GFX_evt_child_play
 	border = GFX_event_narrative_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	immediate = {
 		save_event_target_as = target_victim

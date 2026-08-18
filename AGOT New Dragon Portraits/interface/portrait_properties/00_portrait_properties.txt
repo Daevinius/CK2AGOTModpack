@@ -196,7 +196,7 @@
 				AND = {
 					is_alive = yes
 					in_command = no
-					NOT = { has_job_title  = job_marshal }
+					NOT = { has_job_title = job_marshal }
 					NOT = { government = military_command_government }
 				}
 				AND = {
@@ -245,7 +245,7 @@
 		modifier = {
 			factor = 0
 			NOT = { culture = dragon_culture }
-			NOT = { has_minor_title  = title_justice_of_king }
+			NOT = { has_minor_title = title_justice_of_king }
 			NOT = { trait = cruel }
 			NOT = { trait = impaler }
 			NOT = { death_execution_trigger = yes }
@@ -1113,7 +1113,7 @@
 			in_command = no
 			NOT = { government = military_command_government }
 			NOT = { government = order_government }
-			NOT = { has_job_title  = job_marshal }
+			NOT = { has_job_title = job_marshal }
 			NOT = { primary_title = { OR = { mercenary = yes holy_order = yes } } }
 			NOT = { liege = { primary_title = { OR = { mercenary = yes holy_order = yes } } } }
 			NOT = { trait = bearded_priest }
@@ -1185,7 +1185,7 @@
 			factor = 0
 			NOR = {
 				AND = {
-					has_minor_title  =  title_commander_gold_cloaks
+					has_minor_title = title_commander_gold_cloaks
 					OR = {
 						culture_group = dornish
 						culture_group = andal
@@ -1220,7 +1220,7 @@
 			in_command = no
 			NOT = { government = military_command_government }
 			NOT = { government = order_government }
-			NOT = { has_job_title  = job_marshal }
+			NOT = { has_job_title = job_marshal }
 			NOT = { primary_title = { OR = { mercenary = yes holy_order = yes } } }
 			NOT = { liege = { primary_title = { OR = { mercenary = yes holy_order = yes } } } }
 			NOT = { trait = bearded_priest }
@@ -1252,7 +1252,7 @@
 			in_command = no
 			NOT = { government = military_command_government }
 			NOT = { government = order_government }
-			NOT = { has_job_title  = job_marshal }
+			NOT = { has_job_title = job_marshal }
 			NAND = {
 				trait = undead
 				combat_rating = 10
@@ -1389,7 +1389,7 @@
 			in_command = no
 			NOT = { government = military_command_government }
 			NOT = { government = order_government }
-			NOT = { has_job_title  = job_marshal }
+			NOT = { has_job_title = job_marshal }
 			NAND = {
 				trait = undead
 				combat_rating = 10
@@ -1823,7 +1823,7 @@
 				trait = bearded_priest
 				in_command = yes
 				government = military_command_government
-				has_job_title  = job_marshal
+				has_job_title = job_marshal
 				primary_title = { mercenary = yes }
 				prisoner = yes
 				trait = slave
@@ -1897,7 +1897,7 @@
 		modifier = {
 			factor = 10	#Likely
 			in_command = no
-			OR =  {
+			OR = {
 				trait = maester
 				trait = nightswatch
 				trait = slave
@@ -1915,9 +1915,9 @@
 				}
 				AND = {
 					in_command = no
-					OR =  {
+					OR = {
 						trait = bearded_priest
-						has_job_title  = job_marshal
+						has_job_title = job_marshal
 						primary_title = { OR = { mercenary = yes holy_order = yes } }
 					}
 				}
@@ -1970,7 +1970,7 @@
 			factor = 0
 			NOR = {  		#is not crownlander Culture and a Gold Cloak
 				AND = {
-					has_minor_title  =  title_commander_gold_cloaks
+					has_minor_title = title_commander_gold_cloaks
 					OR = {
 						culture_group = dornish
 						culture_group = andal
@@ -2774,7 +2774,7 @@
 		}
 	}
 
-	1 =  { #blinded
+	1 = { #blinded
 		factor = 100
 		modifier = {
 			factor = 0
@@ -6058,291 +6058,6 @@
 34 = {
 	0 = { # blank
 		factor = 100
-		# modifier = { #Templar special headgear.
-			# factor = 0
-			# may_wear_martial_headgear_trigger = yes
-			# religion = catholic
-			# OR = {
-				# has_landed_title = d_knights_templar
-				# has_landed_title = d_knights_hospitaler
-				# has_landed_title = d_teutonic_order
-				# has_landed_title = k_teutonic_state
-				# has_landed_title = d_livonian_order
-				# has_landed_title = d_knights_santiago
-				# has_landed_title = d_knights_calatrava
-				# liege = { has_landed_title = d_knights_templar }
-				# liege = { has_landed_title = d_knights_hospitaler }
-				# liege = { has_landed_title = d_teutonic_order }
-				# liege = { has_landed_title = k_teutonic_state }
-				# liege = { has_landed_title = d_livonian_order }
-				# liege = { has_landed_title = d_knights_santiago }
-				# liege = { has_landed_title = d_knights_calatrava }
-			# }
-		# }
-		modifier = { #Wearable Crown artifacts.
-			factor = 0
-			may_wear_martial_headgear_trigger = yes
-			OR = {
-				any_artifact = { artifact_type = crown_crusader_king is_artifact_equipped = yes }
-				any_artifact = { artifact_type = crown_winged_helmet is_artifact_equipped = yes }
-				any_artifact = { artifact_type = crown_wrapped_helmet is_artifact_equipped = yes }
-			}
-		}
-		modifier = { #Unicorn
-			factor = 0
-			any_artifact = { artifact_type = crown_unicorn_helmet is_artifact_equipped = yes }
-		}
-	}
-	1 = { #Templar special headgear.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-		modifier = {
-			factor = 0
-			always = yes
-		}
-	}
-	2 = {  #Crusader King helmet - Male.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			NOT = {
-				any_artifact = {
-					artifact_type = crown_crusader_king
-					is_artifact_equipped = yes
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			is_female = yes
-		}
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-	}
-	3 = { #Crusader King helmet - Female.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			NOT = {
-				any_artifact = {
-					artifact_type = crown_crusader_king
-					is_artifact_equipped = yes
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			is_female = no
-		}
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-	}
-	4 = { #Hospitaler special headgear.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-		modifier = {
-			factor = 0
-			always = yes
-		}
-	}
-	5 = {  #Teuton special headgear.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-		modifier = {
-			factor = 0
-			always = yes
-		}
-	}
-	6 = { #Wearable Winged Helmet
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			NOT = {
-				any_artifact = {
-					artifact_type = crown_winged_helmet
-					is_artifact_equipped = yes
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-	}
-	7 = {  #Calatrava/Santiago special headgear.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-		modifier = {
-			factor = 0
-			always = yes
-		}
-	}
-	8 = { #Wearable Wrapped Helmet
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			NOT = {
-				any_artifact = {
-					artifact_type = crown_wrapped_helmet
-					is_artifact_equipped = yes
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-	}
-	9 = { #Livonian special headgear.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		modifier = {
-			factor = 0
-			may_wear_martial_headgear_trigger = no
-		}
-		modifier = {
-			factor = 0
-			always = yes
-		}
-	}
-	10 = { #Unicorn headgear.
-		factor = 100
-		hide_layers = { 12 = { } } #Hide layer 12 (disfigured masks) when this frame is picked.
-		hide_layers = { 5 = { } } #Hide layer 5 (headgear) when this frame is picked.
-		hide_layers = { 1 = { } } #Hide Hair.
-		hide_layers = { 3 = { } } #Hide Clothes.
-		hide_layers = { 18 = { } } #Hide layers with special crowns.
-		hide_layers = { 19 = { } } #Hide layers with special crowns.
-		hide_layers = { 36 = { } } #Hide layers with special crowns.
-		hide_layers = { 39 = { } } #Hide layers with special crowns.
-		hide_layers = { 31 = { } } #Veil overload.
-		hide_layers = { 32 = { } }
-		hide_layers = { 33 = { } }
-		#modifier = {
-		#	factor = 0
-		#	may_wear_martial_headgear_trigger = no
-		#}
-		modifier = {
-			factor = 0
-			NOT = {
-				any_artifact = {
-					artifact_type = crown_unicorn_helmet
-					is_artifact_equipped = yes
-				}
-			}
-		}
 	}
 }
 
@@ -6845,7 +6560,7 @@
 			}
 		}
 	}
-	1 =  { #eagle
+	1 = { #eagle
 		factor = 100
 		modifier = {
 			factor = 0

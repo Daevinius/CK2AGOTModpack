@@ -12,18 +12,14 @@ decisions = {
 			}
 			OR = {
 				liege = {
-					NOT = {
-						OR = {
-							religion_group = westerosi_religion
-							religion_group = drowned_god_group
-						}
-					}
-				}
-				NOT = {
-					OR = {
+					NOR = {
 						religion_group = westerosi_religion
 						religion_group = drowned_god_group
 					}
+				}
+				NOR = {
+					religion_group = westerosi_religion
+					religion_group = drowned_god_group
 				}
 			}
 			controls_religion = no
@@ -31,7 +27,7 @@ decisions = {
 		}
 		allow = {
 			is_incapable = no
-			age = 16
+			is_adult = yes
 			NOT = { trait = zealous }
 			prestige = 400
 		}
@@ -51,7 +47,7 @@ decisions = {
 			any_vassal = {
 				limit = {
 					religion = ROOT
-					age = 16
+					is_adult = yes
 				}
 				opinion = {
 					who = ROOT
@@ -64,7 +60,7 @@ decisions = {
 					limit = {
 						is_ruler = no
 						religion = ROOT
-						age = 16
+						is_adult = yes
 						NOT = { trait = slave }
 						NOT = { trait = dragon }
 					}
@@ -141,7 +137,7 @@ decisions = {
 		}
 		allow = {
 			is_incapable = no
-			age = 16
+			is_adult = yes
 			prestige = 200
 		}
 		effect = {
@@ -151,7 +147,7 @@ decisions = {
 				any_vassal = {
 					limit = {
 						culture_group = ROOT
-						age = 16
+						is_adult = yes
 					}
 					opinion = {
 						who = ROOT
@@ -165,7 +161,7 @@ decisions = {
 						limit = {
 							is_ruler = no
 							culture_group = ROOT
-							age = 16
+							is_adult = yes
 							NOT = { trait = slave }
 							NOT = { trait = dragon }
 						}
@@ -296,7 +292,7 @@ decisions = {
 			}
 			prestige = 200
 			is_incapable = no
-			age = 16
+			is_adult = yes
 		}
 		effect = {
 			if = {
@@ -305,7 +301,7 @@ decisions = {
 				any_vassal = {
 					limit = {
 						culture_group = ROOT
-						age = 16
+						is_adult = yes
 					}
 					opinion = {
 						who = ROOT
@@ -319,7 +315,7 @@ decisions = {
 						limit = {
 							is_ruler = no
 							culture_group = ROOT
-							age = 16
+							is_adult = yes
 							NOT = { trait = slave }
 							NOT = { trait = dragon }
 						}
@@ -432,7 +428,7 @@ decisions = {
 			}
 			prestige = 400
 			is_incapable = no
-			age = 16
+			is_adult = yes
 		}
 		effect = {
 			if = {
@@ -450,7 +446,7 @@ decisions = {
 			any_vassal = {
 				limit = {
 					religion = ROOT
-					age = 16
+					is_adult = yes
 				}
 				opinion = {
 					who = ROOT
@@ -463,7 +459,7 @@ decisions = {
 					limit = {
 						is_ruler = no
 						religion = ROOT
-						age = 16
+						is_adult = yes
 						NOT = { trait = slave }
 						NOT = { trait = dragon }
 					}

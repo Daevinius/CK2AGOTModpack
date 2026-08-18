@@ -370,7 +370,9 @@ province_event = {
 		}
 	}
 
-	mean_time_to_happen = { days = 6 }
+	mean_time_to_happen = {
+		days = 6
+	}
 
 	immediate = {
 		add_province_modifier = {
@@ -678,7 +680,7 @@ character_event = {
 		NOT = { trait = white_walker }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -1926,7 +1928,7 @@ character_event = {
 	desc = EVTDESCcold_winds.12
 	picture = "GFX_evt_white_shadows"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	only_capable = yes
 	prisoner = no
 	in_command = yes
@@ -2623,7 +2625,7 @@ character_event = {
 	id = cold_winds.201
 
 	only_independent = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	culture_group = winter_group
 	hide_window = yes
 
@@ -3074,7 +3076,6 @@ character_event = {
 					}
 					new_character = {
 						remove_trait = imbecile
-						remove_trait = imbecile
 						remove_trait = imbecile_1
 						remove_trait = inbred
 						remove_trait = slow
@@ -3178,7 +3179,9 @@ character_event = {
 			has_landed_title = d_winter
 			has_landed_title = d_winter_essos
 			any_demesne_province = {
-				has_province_flag = winter_wasteland
+				location = {
+					has_province_flag = winter_wasteland
+				}
 				county = {
 					holder_scope = { character = ROOT }
 				}
@@ -3186,7 +3189,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -3264,7 +3267,7 @@ character_event = {
 character_event = {
 	id = cold_winds.203
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	culture_group = winter_group
 
@@ -3679,7 +3682,7 @@ character_event = {
 	desc = "EVTDESCcold_winds.703"
 	picture = "GFX_evt_white_shadows"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_over_winner
 
 	trigger = {
 		trait = white_walker
@@ -3781,7 +3784,7 @@ character_event = {
 	picture = "GFX_evt_white_shadows"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	option = {
 		name = "EVTOPTAcold_winds.704"
@@ -3868,8 +3871,7 @@ character_event = {
 									limit = { is_merchant_republic = no }
 									current_heir = { save_event_target_as = wealth_heir }
 								}
-								if = {
-									limit = { is_merchant_republic = yes }
+								else = {
 									family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 								}
 								transfer_scaled_wealth = { to = event_target:wealth_heir value = all }

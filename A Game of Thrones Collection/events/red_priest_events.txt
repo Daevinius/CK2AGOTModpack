@@ -430,7 +430,7 @@ narrative_event = {
 		modifier = { #try not to happen too often
 			factor = 4
 			has_global_flag = chosen_by_rhllor_found
-			NOT = { had_global_flag = { flag = chosen_by_rhllor_found days = 36500 } }
+			had_global_flag = { flag = chosen_by_rhllor_found years < 100 }
 		}
 
 		modifier = {
@@ -1366,7 +1366,9 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = { days = 60 }
+	mean_time_to_happen = {
+		months = 2
+	}
 
 	immediate = {
 		plot_target_char = { save_event_target_as = shadow_baby_target }
@@ -1612,7 +1614,7 @@ character_event = {
 	picture = GFX_evt_death
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 
 	option = {
 		name = "EVTOPTAred_priest.8"
@@ -1856,19 +1858,19 @@ character_event = {
 
 	option = { #yes
 		name = {
-			text  = "EVTOPTAred_priest.13"
+			text = "EVTOPTAred_priest.13"
 			trigger = {
 				FROMFROM = { religion = rhllor }
 			}
 		}
 		name = {
-			text  = "EVTOPTAred_priest.13B"
+			text = "EVTOPTAred_priest.13B"
 			trigger = {
 				FROMFROM = { religion = qarth_warlocks }
 			}
 		}
 		name = {
-			text  = "EVTOPTAred_priest.13C"
+			text = "EVTOPTAred_priest.13C"
 			trigger = {
 				FROMFROM = { has_dark_magic_religion_trigger = yes }
 			}
@@ -2372,7 +2374,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 120
+		years = 10
 		modifier = {
 			factor = 1.25
 			job_spiritual = { learning < 2 }
@@ -4959,7 +4961,7 @@ character_event = { #Dies of old age
 	}
 
 	mean_time_to_happen = {
-		months = 420
+		years = 35
 		modifier = {
 			factor = 0.5
 			age = 80

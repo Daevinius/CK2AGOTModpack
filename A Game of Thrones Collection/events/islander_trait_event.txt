@@ -1,0 +1,45 @@
+namespace = islander_thousand
+
+character_event = {
+	id = islander_thousand.1
+	desc = "EVTDESCISLANDER1"
+	picture = GFX_evt_mountain_clans
+
+	hide_from = yes
+
+	culture = islander
+
+	trigger = {
+		culture = islander
+		NOT = { trait = t_islander }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = { add_trait = t_islander }
+
+	option = {
+		name = "EVTOPTAISLANDER1"
+		tooltip = { add_trait = t_islander }
+	}
+}
+
+character_event = { #on_character_convert_culture
+	id = islander_thousand.2
+	desc = "EVTDESCISLANDER2"
+	picture = GFX_evt_throne_room
+
+	is_triggered_only = yes
+
+	trigger = {
+		trait = t_islander
+		NOT = { culture = islander }
+	}
+
+	option = {
+		name = "EVTOPTAISLANDER2"
+		remove_trait = t_islander
+	}
+}

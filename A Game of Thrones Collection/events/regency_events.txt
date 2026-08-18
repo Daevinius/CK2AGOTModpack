@@ -17,7 +17,7 @@ character_event = {
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	prisoner = no
 	only_capable = yes
@@ -203,7 +203,7 @@ character_event = { #liege suspects
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	immediate = { FROM = { character_event = { id = regency.61001 } } }
 
@@ -219,7 +219,7 @@ character_event = { #steward suspects
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = { FROM = { is_alive = yes } }
 
@@ -435,7 +435,7 @@ character_event = { #liege has proof
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	immediate = { FROM = { character_event = { id = regency.61003 } } }
 
@@ -451,7 +451,7 @@ character_event = { #steward has proof
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = { FROM = { is_alive = yes } }
 
@@ -1611,7 +1611,7 @@ letter_event = { #realm informed of corruption
 										# higher_tier_than = COUNT
 										# is_patrician = yes
 									# }
-									# age = 16
+									# is_adult = yes
 									# is_incapable = no
 									# OR = {
 										# trait = just
@@ -1755,7 +1755,7 @@ character_event = {
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	prisoner = no
 	only_capable = yes
@@ -1765,7 +1765,7 @@ character_event = {
 		independent = no
 		liege = {
 			scaled_wealth = 0.25
-			age = 16
+			is_adult = yes
 			trait = incapable
 		}
 	}
@@ -1832,7 +1832,7 @@ character_event = {
 	picture = GFX_evt_lunatic
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	min_age = 16
 	prisoner = no
@@ -1872,7 +1872,7 @@ character_event = {
 	desc = EVTDESC61120
 	picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	prisoner = no
 	only_capable = yes
@@ -1885,7 +1885,7 @@ character_event = {
 		}
 		NOT = { has_character_flag = mean_regent }
 		liege = {
-			age = 16
+			is_adult = yes
 			trait = incapable
 			NOT = { is_inaccessible_trigger = yes }
 		}
@@ -1986,7 +1986,7 @@ character_event = {
 			limit = {
 				trait = just
 				liege = { character = ROOT }
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				OR = {
@@ -2009,7 +2009,7 @@ character_event = {
 			limit = {
 				trait = just
 				liege = { character = ROOT }
-				age = 16
+				is_adult = yes
 				prisoner = no
 				is_incapable = no
 				OR = {
@@ -2420,7 +2420,7 @@ character_event = {
 				limit = {
 					NOT = { liege = { regent = { character = PREVPREV } } }
 					prisoner = no
-					age = 16
+					is_adult = yes
 					is_incapable = no
 				}
 				gain_regency_effect = yes
@@ -2529,7 +2529,7 @@ character_event = {
 	desc = EVTDESC61135
 	picture = GFX_evt_child_sword
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	min_age = 4
 	max_age = 15
@@ -2610,7 +2610,7 @@ character_event = {
 	desc = EVTDESC61140
 	picture = GFX_evt_child_play
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	prisoner = no
 	only_capable = yes
@@ -2808,7 +2808,7 @@ character_event = {
 	desc = EVTDESC61141
 	picture = GFX_evt_child_play
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	prisoner = no
 	only_capable = yes
@@ -4044,7 +4044,7 @@ character_event = {
 	desc = EVTDESC61165
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	min_age = 16
 	prisoner = no
@@ -4369,7 +4369,7 @@ character_event = {
 	desc = EVTDESC61190
 	picture = GFX_evt_castle_construction
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	prisoner = no
 	only_capable = yes
@@ -8379,7 +8379,7 @@ character_event = {
 	only_capable = yes
 
 	trigger = {
-		age = 16
+		is_adult = yes
 		liege = { has_regent = yes }
 	}
 
@@ -8423,7 +8423,7 @@ character_event = {
 character_event = { # Check war, ROOT defender
 	id = regency.60
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -8594,7 +8594,7 @@ character_event = { #Inform regent declared war
 character_event = {
 	id = regency.70
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	min_age = 10

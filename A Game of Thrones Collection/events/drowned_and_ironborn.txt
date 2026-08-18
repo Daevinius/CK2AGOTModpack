@@ -66,62 +66,62 @@ narrative_event = {
 		name = "EVTOPTAironborn_events.10" #I have seen the halls of the dorwned god in their glory!
 		add_trait = drowned
 		if = {
-			limit =  { is_married = yes }
+			limit = { is_married = yes }
 			remove_spouse = spouse
 		}
 		if = {
-			limit =  { trait = hedonist }
+			limit = { trait = hedonist }
 			remove_trait = hedonist
 		}
 		if = {
-			limit =  { trait = lustful }
+			limit = { trait = lustful }
 			remove_trait = lustful
 		}
 		if = {
-			limit =  { trait = gluttonous }
+			limit = { trait = gluttonous }
 			remove_trait = gluttonous
 			lose_weight_medium_effect = yes
 			weight_trait_check_effect = yes
 		}
 		if = {
-			limit =  { trait = greedy }
+			limit = { trait = greedy }
 			remove_trait = greedy
 		}
 		if = {
-			limit =  { trait = cynical }
+			limit = { trait = cynical }
 			remove_trait = cynical
 		}
 		if = {
-			limit =  { trait = drunkard }
+			limit = { trait = drunkard }
 			remove_trait = drunkard
 		}
 		if = {
-			limit =  { trait = slothful }
+			limit = { trait = slothful }
 			remove_trait = slothful
 		}
 		if = {
-			limit =  { trait = maester }
+			limit = { trait = maester }
 			remove_trait = maester
 			remove_special_character_title = title_maester
 		}
 		if = {
-			limit =  { trait = archmaester }
+			limit = { trait = archmaester }
 			remove_trait = archmaester
 		}
 		if = {
-			limit =  { NOT = { trait = chaste } }
+			limit = { NOT = { trait = chaste } }
 			add_trait = chaste
 		}
 		if = {
-			limit =  { NOT = { trait = diligent } }
+			limit = { NOT = { trait = diligent } }
 			add_trait = diligent
 		}
 		if = {
-			limit =  { NOT = { trait = zealous } }
+			limit = { NOT = { trait = zealous } }
 			add_trait = zealous
 		}
 		if = {
-			limit =  { NOT = { trait = temperate } }
+			limit = { NOT = { trait = temperate } }
 			add_trait = temperate
 			lose_weight_medium_effect = yes
 			weight_trait_check_effect = yes
@@ -245,7 +245,7 @@ character_event = {
 			limit = {
 				ai = yes
 				is_female = no
-				age = 16
+				is_adult = yes
 				age < 30
 				culture_group = iron_isles_culture
 				NOT_mythical_creature_trigger = yes
@@ -451,7 +451,7 @@ character_event = {
 	desc = "EVTDESCironborn_events.13"
 	picture = GFX_GREYJOY
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_men = yes
 	only_rulers = yes
@@ -462,7 +462,7 @@ character_event = {
 		any_child = {
 			is_alive = yes
 			is_female = no
-			age = 16
+			is_adult = yes
 			NOT = { trait = dragon }
 			NOT = { trait = nightswatch }
 			NOT = { trait = kingsguard }
@@ -480,7 +480,7 @@ character_event = {
 			limit = {
 				is_alive = yes
 				is_female = no
-				age = 16
+				is_adult = yes
 				NOT = { trait = dragon }
 				NOT = { trait = nightswatch }
 				NOT = { trait = kingsguard }
@@ -499,7 +499,7 @@ character_event = {
 			limit = {
 				is_alive = yes
 				is_female = no
-				age = 16
+				is_adult = yes
 				NOT = { trait = dragon }
 				NOT = { trait = nightswatch }
 				NOT = { trait = kingsguard }
@@ -637,7 +637,7 @@ character_event = {
 	desc = "EVTDESCironborn_events.1"
 	picture = "GFX_drowned"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_rulers = yes
 	only_capable = yes
@@ -722,7 +722,7 @@ character_event = {
 	desc = "EVTDESCironborn_events.2"
 	picture = "GFX_evt_jugglers"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -853,7 +853,7 @@ character_event = {
 	desc = "EVTDESCironborn_events.3"
 	picture = GFX_GREYJOY
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_men = yes
@@ -1335,7 +1335,7 @@ character_event = {
 	desc = "EVTDESCironborn_events.61"
 	picture = "GFX_evt_saltwife"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 14
 	only_women = yes
@@ -1386,7 +1386,7 @@ character_event = {
 	desc = "EVTDESCironborn_events.62"
 	picture = "GFX_evt_saltwife"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 14
 	only_women = yes
 	only_capable = yes
@@ -4345,7 +4345,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.66
 			has_artifact = enormous_flagship
@@ -4435,7 +4435,7 @@ character_event = {
 	desc = EVTDESCironborn_events.91
 	picture = "GFX_evt_reaving3"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 
 	trigger = {
 		num_of_artifacts = 1

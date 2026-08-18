@@ -12,7 +12,10 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAharrenhal.1"
-		#AI takes loan if shortage of cash
+
+		set_global_flag = harrenhal_rebuilt
+
+		# AI takes loan if shortage of cash
 		if = {
 			limit = {
 				ai = yes
@@ -52,7 +55,9 @@ character_event = {
 			set_character_flag = loan_amount_found
 			character_event = { id = bankruptcy.1 }
 		}
+
 		wealth = -800
+
 		107 = {
 			add_province_modifier = {
 				name = rebuilding_harrenhal duration = -1
@@ -72,9 +77,11 @@ character_event = {
 character_event = {
 	id = harrenhal.199
 
-	is_triggered_only = yes
-	only_playable = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
+
+	only_playable = yes
+	has_global_flag = harrenhal_rebuilt
 
 	trigger = {
 		has_landed_title = c_harrenhal
@@ -399,7 +406,7 @@ character_event = { #Inform liege
 	desc = "EVTDESCharrenhal.5"
 	picture = "GFX_evt_council"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 
 	option = {
 		name = "EVTOPTAharrenhal.5"
@@ -460,42 +467,37 @@ character_event = { #Inform liege
 		custom_tooltip = { text = HARRENHALNOMONEY }
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = badstuff5 }
-					remove_province_modifier = badstuff5
-					add_province_modifier = { name = badstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff4 }
-					remove_province_modifier = badstuff4
-					add_province_modifier = { name = badstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff3 }
-					remove_province_modifier = badstuff3
-					add_province_modifier = { name = badstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff2 }
-					remove_province_modifier = badstuff2
-					add_province_modifier = { name = badstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff1 }
-					remove_province_modifier = badstuff1
-					add_province_modifier = { name = badstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOR = {
-							has_province_modifier = badstuff6
-							has_province_modifier = badstuff5
-							has_province_modifier = badstuff4
-							has_province_modifier = badstuff3
-							has_province_modifier = badstuff2
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					badstuff5 = {
+						remove_province_modifier = badstuff5
+						add_province_modifier = { name = badstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = badstuff1 duration = -1 }
+
+					badstuff4 = {
+						remove_province_modifier = badstuff4
+						add_province_modifier = { name = badstuff5 duration = -1 }
+					}
+
+					badstuff3 = {
+						remove_province_modifier = badstuff3
+						add_province_modifier = { name = badstuff4 duration = -1 }
+					}
+
+					badstuff2 = {
+						remove_province_modifier = badstuff2
+						add_province_modifier = { name = badstuff3 duration = -1 }
+					}
+
+					badstuff1 = {
+						remove_province_modifier = badstuff1
+						add_province_modifier = { name = badstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = badstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -519,49 +521,44 @@ character_event = { #Inform liege
 	desc = "EVTDESCharrenhal.7"
 	picture = "GFX_evt_council"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_became_imprisoned
 
 	option = { #Ok here is the money (gets goodstuff) (customtooltip)
 		name = "EVTOPTAharrenhal.7"
 		wealth = -200
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = goodstuff5 }
-					remove_province_modifier = goodstuff5
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff4 }
-					remove_province_modifier = goodstuff4
-					add_province_modifier = { name = goodstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff3 }
-					remove_province_modifier = goodstuff3
-					add_province_modifier = { name = goodstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff2 }
-					remove_province_modifier = goodstuff2
-					add_province_modifier = { name = goodstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff1 }
-					remove_province_modifier = goodstuff1
-					add_province_modifier = { name = goodstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOR = {
-							has_province_modifier = goodstuff6
-							has_province_modifier = goodstuff5
-							has_province_modifier = goodstuff4
-							has_province_modifier = goodstuff3
-							has_province_modifier = goodstuff2
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					goodstuff5 = {
+						remove_province_modifier = goodstuff5
+						add_province_modifier = { name = goodstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = goodstuff1 duration = -1 }
+
+					goodstuff4 = {
+						remove_province_modifier = goodstuff4
+						add_province_modifier = { name = goodstuff5 duration = -1 }
+					}
+
+					goodstuff3 = {
+						remove_province_modifier = goodstuff3
+						add_province_modifier = { name = goodstuff4 duration = -1 }
+					}
+
+					goodstuff2 = {
+						remove_province_modifier = goodstuff2
+						add_province_modifier = { name = goodstuff3 duration = -1 }
+					}
+
+					goodstuff1 = {
+						remove_province_modifier = goodstuff1
+						add_province_modifier = { name = goodstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = goodstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -614,42 +611,37 @@ character_event = { #Inform liege
 		}
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = badstuff5 }
-					remove_province_modifier = badstuff5
-					add_province_modifier = { name = badstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff4 }
-					remove_province_modifier = badstuff4
-					add_province_modifier = { name = badstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff3 }
-					remove_province_modifier = badstuff3
-					add_province_modifier = { name = badstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff2 }
-					remove_province_modifier = badstuff2
-					add_province_modifier = { name = badstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff1 }
-					remove_province_modifier = badstuff1
-					add_province_modifier = { name = badstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOR = {
-							has_province_modifier = badstuff6
-							has_province_modifier = badstuff5
-							has_province_modifier = badstuff4
-							has_province_modifier = badstuff3
-							has_province_modifier = badstuff2
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					badstuff5 = {
+						remove_province_modifier = badstuff5
+						add_province_modifier = { name = badstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = badstuff1 duration = -1 }
+
+					badstuff4 = {
+						remove_province_modifier = badstuff4
+						add_province_modifier = { name = badstuff5 duration = -1 }
+					}
+
+					badstuff3 = {
+						remove_province_modifier = badstuff3
+						add_province_modifier = { name = badstuff4 duration = -1 }
+					}
+
+					badstuff2 = {
+						remove_province_modifier = badstuff2
+						add_province_modifier = { name = badstuff3 duration = -1 }
+					}
+
+					badstuff1 = {
+						remove_province_modifier = badstuff1
+						add_province_modifier = { name = badstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = badstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -659,42 +651,37 @@ character_event = { #Inform liege
 		custom_tooltip = { text = HARRENHALNOMONEY }
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = badstuff5 }
-					remove_province_modifier = badstuff5
-					add_province_modifier = { name = badstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff4 }
-					remove_province_modifier = badstuff4
-					add_province_modifier = { name = badstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff3 }
-					remove_province_modifier = badstuff3
-					add_province_modifier = { name = badstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff2 }
-					remove_province_modifier = badstuff2
-					add_province_modifier = { name = badstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff1 }
-					remove_province_modifier = badstuff1
-					add_province_modifier = { name = badstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOR = {
-							has_province_modifier = badstuff6
-							has_province_modifier = badstuff5
-							has_province_modifier = badstuff4
-							has_province_modifier = badstuff3
-							has_province_modifier = badstuff2
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					badstuff5 = {
+						remove_province_modifier = badstuff5
+						add_province_modifier = { name = badstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = badstuff1 duration = -1 }
+
+					badstuff4 = {
+						remove_province_modifier = badstuff4
+						add_province_modifier = { name = badstuff5 duration = -1 }
+					}
+
+					badstuff3 = {
+						remove_province_modifier = badstuff3
+						add_province_modifier = { name = badstuff4 duration = -1 }
+					}
+
+					badstuff2 = {
+						remove_province_modifier = badstuff2
+						add_province_modifier = { name = badstuff3 duration = -1 }
+					}
+
+					badstuff1 = {
+						remove_province_modifier = badstuff1
+						add_province_modifier = { name = badstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = badstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -839,273 +826,317 @@ character_event = {
 #Progress made, debris removed
 character_event = {
 	id = harrenhal.9
-	desc = "EVTDESCharrenhal.9"
 	picture = "GFX_evt_castle_construction"
 
+	desc = {
+		text = "EVTDESCharrenhal.9"
+		trigger = {
+			107 = {
+				OR = {
+					has_province_modifier = debris3
+					has_province_modifier = debris2
+					has_province_modifier = debris1
+				}
+			}
+		}
+	}
+	desc = {
+		text = "EVTDESCharrenhal.13"
+		trigger = {
+			107 = {
+				OR = {
+					has_province_modifier = debris0
+					has_province_modifier = hbuild1
+					has_province_modifier = hbuild2
+				}
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
 	only_playable = yes
+	has_global_flag = harrenhal_rebuilt
 
 	trigger = {
 		has_landed_title = c_harrenhal
 		107 = {
 			has_province_modifier = rebuilding_harrenhal
-			OR = {
-				has_province_modifier = debris3
-				has_province_modifier = debris2
-				has_province_modifier = debris1
-			}
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 50
+	weight_multiplier = {
+		days = 1
 
 		#Slavery helps
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			107 = { has_province_modifier = slave_modifier_1 }
 		}
 		modifier = {
-			factor = 0.85
+			factor = 1.176
 			107 = { has_province_modifier = slave_modifier_2 }
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.25
 			107 = { has_province_modifier = slave_modifier_3 }
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.333
 			107 = { has_province_modifier = slave_modifier_4 }
 		}
 		modifier = {
-			factor = 0.7
+			factor = 1.429
 			107 = { has_province_modifier = slave_modifier_5 }
 		}
 
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			107 = { has_province_modifier = goodstuff1 }
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.25
 			107 = { has_province_modifier = goodstuff2 }
 		}
 		modifier = {
-			factor = 0.7
+			factor = 1.429
 			107 = { has_province_modifier = goodstuff3 }
 		}
 		modifier = {
-			factor = 0.6
+			factor = 1.667
 			107 = { has_province_modifier = goodstuff4 }
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2.0
 			107 = { has_province_modifier = goodstuff5 }
 		}
 		modifier = {
-			factor = 0.4
+			factor = 2.5
 			107 = { has_province_modifier = goodstuff6 }
 		}
 		modifier = {
-			factor = 1.2
+			factor = 0.833
 			107 = { has_province_modifier = badstuff1 }
 		}
 		modifier = {
-			factor = 1.4
+			factor = 0.714
 			107 = { has_province_modifier = badstuff2 }
 		}
 		modifier = {
-			factor = 1.3
+			factor = 0.769
 			107 = { has_province_modifier = badstuff3 }
 		}
 		modifier = {
-			factor = 1.4
+			factor = 0.714
 			107 = { has_province_modifier = badstuff4 }
 		}
 		modifier = {
-			factor = 1.5
+			factor = 0.667
 			107 = { has_province_modifier = badstuff5 }
 		}
 		modifier = {
-			factor = 1.6
+			factor = 0.625
 			107 = { has_province_modifier = badstuff6 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 14
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 16
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 20
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 22
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 24
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 26
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			stewardship = 28
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			trait = diligent
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			trait = ambitious
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			trait = ruthless
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = { trait = diligent }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = { trait = ruthless }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 14
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 16
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 18
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 20
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 22
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 24
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 26
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 28
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.111
 			job_treasurer = {
 				has_job_action = action_oversee_construction
 				stewardship = 30
 			}
 		}
-	}#end mtth
-
-	option = {
-		name = "EVTOPTAharrenhal.9"
-		trigger = {
-			107 = { has_province_modifier = debris3 }
-		}
-		wealth = -250
-		107 = {
-			hidden_tooltip = {
-				remove_province_modifier = goodstuff1
-				remove_province_modifier = goodstuff2
-				remove_province_modifier = goodstuff3
-				remove_province_modifier = goodstuff4
-				remove_province_modifier = goodstuff5
-				remove_province_modifier = goodstuff6
-				remove_province_modifier = badstuff1
-				remove_province_modifier = badstuff2
-				remove_province_modifier = badstuff3
-				remove_province_modifier = badstuff4
-				remove_province_modifier = badstuff5
-				remove_province_modifier = badstuff6
-			}
-			remove_province_modifier = debris3
-			add_province_modifier = { name = debris2 duration = -1 }
-			set_province_flag = important
-			clr_province_flag = important
-		}
 	}
 
 	option = {
-		name = "EVTOPTBharrenhal.9"
-		trigger = {
-			107 = { has_province_modifier = debris2 }
-		}
-		wealth = -250
-		107 = {
-			hidden_tooltip = {
-				remove_province_modifier = goodstuff1
-				remove_province_modifier = goodstuff2
-				remove_province_modifier = goodstuff3
-				remove_province_modifier = goodstuff4
-				remove_province_modifier = goodstuff5
-				remove_province_modifier = goodstuff6
-				remove_province_modifier = badstuff1
-				remove_province_modifier = badstuff2
-				remove_province_modifier = badstuff3
-				remove_province_modifier = badstuff4
-				remove_province_modifier = badstuff5
-				remove_province_modifier = badstuff6
+		name = {
+			text = "EVTOPTAharrenhal.9"
+			trigger = {
+				107 = {
+					OR = {
+						has_province_modifier = debris3
+						has_province_modifier = debris2
+						has_province_modifier = debris1
+					}
+				}
 			}
-			add_province_modifier = { name = debris1 duration = -1 }
-			remove_province_modifier = debris2
-			set_province_flag = important
-			clr_province_flag = important
 		}
-	}
+		name = {
+			text = "EVTOPTAharrenhal.13"
+			trigger = {
+				107 = { has_province_modifier = debris0 }
+			}
+		}
+		name = {
+			text = "EVTOPTBharrenhal.13"
+			trigger = {
+				107 = { has_province_modifier = hbuild1 }
+			}
+		}
+		name = {
+			text = "EVTOPTCharrenhal.13"
+			trigger = {
+				107 = { has_province_modifier = hbuild2 }
+			}
+		}
 
-	option = {
-		name = "EVTOPTCharrenhal.9"
-		trigger = {
-			107 = { has_province_modifier = debris1 }
+		if = {
+			limit = {
+				107 = {
+					OR = {
+						has_province_modifier = debris3
+						has_province_modifier = debris2
+						has_province_modifier = debris1
+					}
+				}
+			}
+
+			wealth = -250
 		}
-		wealth = -250
+		else = {
+			wealth = -300
+		}
+
 		107 = {
-			hidden_tooltip = {
+			trigger_switch = {
+				on_trigger = has_province_modifier
+
+				debris3 = {
+					remove_province_modifier = debris3
+					add_province_modifier = { name = debris2 duration = -1 }
+				}
+
+				debris2 = {
+					add_province_modifier = { name = debris1 duration = -1 }
+					remove_province_modifier = debris2
+				}
+
+				debris1 = {
+					add_province_modifier = { name = debris0 duration = -1 }
+					remove_province_modifier = debris1
+				}
+
+				debris0 = {
+					remove_province_modifier = debris0
+					add_province_modifier = { name = hbuild1 duration = -1 }
+				}
+
+				hbuild1 = {
+					remove_province_modifier = hbuild1
+					add_province_modifier = { name = hbuild2 duration = -1 }
+				}
+
+				hbuild2 = {
+					remove_province_modifier = hbuild2
+					add_province_modifier = { name = hbuild3 duration = -1 }
+					ROOT = { character_event = { id = harrenhal.14 } }
+				}
+			}
+
+			hidden_effect = {
 				remove_province_modifier = goodstuff1
 				remove_province_modifier = goodstuff2
 				remove_province_modifier = goodstuff3
@@ -1119,13 +1150,10 @@ character_event = {
 				remove_province_modifier = badstuff5
 				remove_province_modifier = badstuff6
 			}
-			add_province_modifier = { name = debris0 duration = -1 }
-			remove_province_modifier = debris1
-			set_province_flag = important
-			clr_province_flag = important
 		}
 	}
 }
+
 #Mix blood into the mortar?
 character_event = {
 	id = harrenhal.10
@@ -1177,44 +1205,37 @@ character_event = {
 		piety = -50
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = goodstuff5 }
-					remove_province_modifier = goodstuff5
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff4 }
-					remove_province_modifier = goodstuff4
-					add_province_modifier = { name = goodstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff3 }
-					remove_province_modifier = goodstuff3
-					add_province_modifier = { name = goodstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff2 }
-					remove_province_modifier = goodstuff2
-					add_province_modifier = { name = goodstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff1 }
-					remove_province_modifier = goodstuff1
-					add_province_modifier = { name = goodstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = goodstuff6
-								has_province_modifier = goodstuff5
-								has_province_modifier = goodstuff4
-								has_province_modifier = goodstuff3
-								has_province_modifier = goodstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					goodstuff5 = {
+						remove_province_modifier = goodstuff5
+						add_province_modifier = { name = goodstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = goodstuff1 duration = -1 }
+
+					goodstuff4 = {
+						remove_province_modifier = goodstuff4
+						add_province_modifier = { name = goodstuff5 duration = -1 }
+					}
+
+					goodstuff3 = {
+						remove_province_modifier = goodstuff3
+						add_province_modifier = { name = goodstuff4 duration = -1 }
+					}
+
+					goodstuff2 = {
+						remove_province_modifier = goodstuff2
+						add_province_modifier = { name = goodstuff3 duration = -1 }
+					}
+
+					goodstuff1 = {
+						remove_province_modifier = goodstuff1
+						add_province_modifier = { name = goodstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = goodstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1286,44 +1307,37 @@ character_event = {
 		}
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = goodstuff5 }
-					remove_province_modifier = goodstuff5
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff4 }
-					remove_province_modifier = goodstuff4
-					add_province_modifier = { name = goodstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff3 }
-					remove_province_modifier = goodstuff3
-					add_province_modifier = { name = goodstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff2 }
-					remove_province_modifier = goodstuff2
-					add_province_modifier = { name = goodstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff1 }
-					remove_province_modifier = goodstuff1
-					add_province_modifier = { name = goodstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = goodstuff6
-								has_province_modifier = goodstuff5
-								has_province_modifier = goodstuff4
-								has_province_modifier = goodstuff3
-								has_province_modifier = goodstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					goodstuff5 = {
+						remove_province_modifier = goodstuff5
+						add_province_modifier = { name = goodstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = goodstuff1 duration = -1 }
+
+					goodstuff4 = {
+						remove_province_modifier = goodstuff4
+						add_province_modifier = { name = goodstuff5 duration = -1 }
+					}
+
+					goodstuff3 = {
+						remove_province_modifier = goodstuff3
+						add_province_modifier = { name = goodstuff4 duration = -1 }
+					}
+
+					goodstuff2 = {
+						remove_province_modifier = goodstuff2
+						add_province_modifier = { name = goodstuff3 duration = -1 }
+					}
+
+					goodstuff1 = {
+						remove_province_modifier = goodstuff1
+						add_province_modifier = { name = goodstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = goodstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1389,44 +1403,37 @@ character_event = {
 		}
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = goodstuff5 }
-					remove_province_modifier = goodstuff5
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff4 }
-					remove_province_modifier = goodstuff4
-					add_province_modifier = { name = goodstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff3 }
-					remove_province_modifier = goodstuff3
-					add_province_modifier = { name = goodstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff2 }
-					remove_province_modifier = goodstuff2
-					add_province_modifier = { name = goodstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff1 }
-					remove_province_modifier = goodstuff1
-					add_province_modifier = { name = goodstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = goodstuff6
-								has_province_modifier = goodstuff5
-								has_province_modifier = goodstuff4
-								has_province_modifier = goodstuff3
-								has_province_modifier = goodstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					goodstuff5 = {
+						remove_province_modifier = goodstuff5
+						add_province_modifier = { name = goodstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = goodstuff1 duration = -1 }
+
+					goodstuff4 = {
+						remove_province_modifier = goodstuff4
+						add_province_modifier = { name = goodstuff5 duration = -1 }
+					}
+
+					goodstuff3 = {
+						remove_province_modifier = goodstuff3
+						add_province_modifier = { name = goodstuff4 duration = -1 }
+					}
+
+					goodstuff2 = {
+						remove_province_modifier = goodstuff2
+						add_province_modifier = { name = goodstuff3 duration = -1 }
+					}
+
+					goodstuff1 = {
+						remove_province_modifier = goodstuff1
+						add_province_modifier = { name = goodstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = goodstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1480,44 +1487,37 @@ character_event = {
 		}
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = goodstuff5 }
-					remove_province_modifier = goodstuff5
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff4 }
-					remove_province_modifier = goodstuff4
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff3 }
-					remove_province_modifier = goodstuff3
-					add_province_modifier = { name = goodstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff2 }
-					remove_province_modifier = goodstuff2
-					add_province_modifier = { name = goodstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff1 }
-					remove_province_modifier = goodstuff1
-					add_province_modifier = { name = goodstuff3 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = goodstuff6
-								has_province_modifier = goodstuff5
-								has_province_modifier = goodstuff4
-								has_province_modifier = goodstuff3
-								has_province_modifier = goodstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					goodstuff5 = {
+						remove_province_modifier = goodstuff5
+						add_province_modifier = { name = goodstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = goodstuff2 duration = -1 }
+
+					goodstuff4 = {
+						remove_province_modifier = goodstuff4
+						add_province_modifier = { name = goodstuff5 duration = -1 }
+					}
+
+					goodstuff3 = {
+						remove_province_modifier = goodstuff3
+						add_province_modifier = { name = goodstuff4 duration = -1 }
+					}
+
+					goodstuff2 = {
+						remove_province_modifier = goodstuff2
+						add_province_modifier = { name = goodstuff3 duration = -1 }
+					}
+
+					goodstuff1 = {
+						remove_province_modifier = goodstuff1
+						add_province_modifier = { name = goodstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = goodstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1576,44 +1576,37 @@ character_event = {
 		custom_tooltip = { text = HARRENHALNOMONEY }
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = badstuff5 }
-					remove_province_modifier = badstuff5
-					add_province_modifier = { name = badstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff4 }
-					remove_province_modifier = badstuff4
-					add_province_modifier = { name = badstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff3 }
-					remove_province_modifier = badstuff3
-					add_province_modifier = { name = badstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff2 }
-					remove_province_modifier = badstuff2
-					add_province_modifier = { name = badstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff1 }
-					remove_province_modifier = badstuff1
-					add_province_modifier = { name = badstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = badstuff6
-								has_province_modifier = badstuff5
-								has_province_modifier = badstuff4
-								has_province_modifier = badstuff3
-								has_province_modifier = badstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					badstuff5 = {
+						remove_province_modifier = badstuff5
+						add_province_modifier = { name = badstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = badstuff1 duration = -1 }
+
+					badstuff4 = {
+						remove_province_modifier = badstuff4
+						add_province_modifier = { name = badstuff5 duration = -1 }
+					}
+
+					badstuff3 = {
+						remove_province_modifier = badstuff3
+						add_province_modifier = { name = badstuff4 duration = -1 }
+					}
+
+					badstuff2 = {
+						remove_province_modifier = badstuff2
+						add_province_modifier = { name = badstuff3 duration = -1 }
+					}
+
+					badstuff1 = {
+						remove_province_modifier = badstuff1
+						add_province_modifier = { name = badstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = badstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1718,44 +1711,37 @@ character_event = {
 		}
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = goodstuff5 }
-					remove_province_modifier = goodstuff5
-					add_province_modifier = { name = goodstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff4 }
-					remove_province_modifier = goodstuff4
-					add_province_modifier = { name = goodstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff3 }
-					remove_province_modifier = goodstuff3
-					add_province_modifier = { name = goodstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff2 }
-					remove_province_modifier = goodstuff2
-					add_province_modifier = { name = goodstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = goodstuff1 }
-					remove_province_modifier = goodstuff1
-					add_province_modifier = { name = goodstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = goodstuff6
-								has_province_modifier = goodstuff5
-								has_province_modifier = goodstuff4
-								has_province_modifier = goodstuff3
-								has_province_modifier = goodstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					goodstuff5 = {
+						remove_province_modifier = goodstuff5
+						add_province_modifier = { name = goodstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = goodstuff1 duration = -1 }
+
+					goodstuff4 = {
+						remove_province_modifier = goodstuff4
+						add_province_modifier = { name = goodstuff5 duration = -1 }
+					}
+
+					goodstuff3 = {
+						remove_province_modifier = goodstuff3
+						add_province_modifier = { name = goodstuff4 duration = -1 }
+					}
+
+					goodstuff2 = {
+						remove_province_modifier = goodstuff2
+						add_province_modifier = { name = goodstuff3 duration = -1 }
+					}
+
+					goodstuff1 = {
+						remove_province_modifier = goodstuff1
+						add_province_modifier = { name = goodstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = goodstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1781,44 +1767,37 @@ character_event = {
 		custom_tooltip = { text = HARRENHALNOMONEY }
 		hidden_tooltip = {
 			107 = {
-				if = {
-					limit = { has_province_modifier = badstuff5 }
-					remove_province_modifier = badstuff5
-					add_province_modifier = { name = badstuff6 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff4 }
-					remove_province_modifier = badstuff4
-					add_province_modifier = { name = badstuff5 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff3 }
-					remove_province_modifier = badstuff3
-					add_province_modifier = { name = badstuff4 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff2 }
-					remove_province_modifier = badstuff2
-					add_province_modifier = { name = badstuff3 duration = -1 }
-				}
-				if = {
-					limit = { has_province_modifier = badstuff1 }
-					remove_province_modifier = badstuff1
-					add_province_modifier = { name = badstuff2 duration = -1 }
-				}
-				if = {
-					limit = {
-						NOT = {
-							OR = {
-								has_province_modifier = badstuff6
-								has_province_modifier = badstuff5
-								has_province_modifier = badstuff4
-								has_province_modifier = badstuff3
-								has_province_modifier = badstuff2
-							}
-						}
+				trigger_switch = {
+					on_trigger = has_province_modifier
+
+					badstuff5 = {
+						remove_province_modifier = badstuff5
+						add_province_modifier = { name = badstuff6 duration = -1 }
 					}
-					add_province_modifier = { name = badstuff1 duration = -1 }
+
+					badstuff4 = {
+						remove_province_modifier = badstuff4
+						add_province_modifier = { name = badstuff5 duration = -1 }
+					}
+
+					badstuff3 = {
+						remove_province_modifier = badstuff3
+						add_province_modifier = { name = badstuff4 duration = -1 }
+					}
+
+					badstuff2 = {
+						remove_province_modifier = badstuff2
+						add_province_modifier = { name = badstuff3 duration = -1 }
+					}
+
+					badstuff1 = {
+						remove_province_modifier = badstuff1
+						add_province_modifier = { name = badstuff2 duration = -1 }
+					}
+
+					fallback = {
+						add_province_modifier = { name = badstuff1 duration = -1 }
+					}
 				}
 			}
 		}
@@ -1847,297 +1826,7 @@ character_event = { #prisoner put to work
 		}
 	}
 }
-#Part of the castle has been restored
-character_event = {
-	id = harrenhal.13
-	desc = "EVTDESCharrenhal.13"
-	picture = "GFX_evt_castle_construction"
 
-	only_playable = yes
-
-	trigger = {
-		has_landed_title = c_harrenhal
-		107 = {
-			has_province_modifier = rebuilding_harrenhal
-			OR = {
-				has_province_modifier = debris0
-				has_province_modifier = hbuild1
-				has_province_modifier = hbuild2
-			}
-		}
-	}
-
-	mean_time_to_happen = {
-		years = 50
-
-		#Slavery helps
-		modifier = {
-			factor = 0.9
-			107 = { has_province_modifier = slave_modifier_1 }
-		}
-		modifier = {
-			factor = 0.85
-			107 = { has_province_modifier = slave_modifier_2 }
-		}
-		modifier = {
-			factor = 0.8
-			107 = { has_province_modifier = slave_modifier_3 }
-		}
-		modifier = {
-			factor = 0.75
-			107 = { has_province_modifier = slave_modifier_4 }
-		}
-		modifier = {
-			factor = 0.7
-			107 = { has_province_modifier = slave_modifier_5 }
-		}
-
-		modifier = {
-			factor = 0.9
-			107 = { has_province_modifier = goodstuff1 }
-		}
-		modifier = {
-			factor = 0.8
-			107 = { has_province_modifier = goodstuff2 }
-		}
-		modifier = {
-			factor = 0.7
-			107 = { has_province_modifier = goodstuff3 }
-		}
-		modifier = {
-			factor = 0.6
-			107 = { has_province_modifier = goodstuff4 }
-		}
-		modifier = {
-			factor = 0.5
-			107 = { has_province_modifier = goodstuff5 }
-		}
-		modifier = {
-			factor = 0.4
-			107 = { has_province_modifier = goodstuff6 }
-		}
-		modifier = {
-			factor = 1.2
-			107 = { has_province_modifier = badstuff1 }
-		}
-		modifier = {
-			factor = 1.4
-			107 = { has_province_modifier = badstuff2 }
-		}
-		modifier = {
-			factor = 1.3
-			107 = { has_province_modifier = badstuff3 }
-		}
-		modifier = {
-			factor = 1.4
-			107 = { has_province_modifier = badstuff4 }
-		}
-		modifier = {
-			factor = 1.5
-			107 = { has_province_modifier = badstuff5 }
-		}
-		modifier = {
-			factor = 1.6
-			107 = { has_province_modifier = badstuff6 }
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 14
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 16
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 20
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 22
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 24
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 26
-		}
-		modifier = {
-			factor = 0.9
-			stewardship = 28
-		}
-		modifier = {
-			factor = 0.9
-			trait = diligent
-		}
-		modifier = {
-			factor = 0.9
-			trait = ambitious
-		}
-		modifier = {
-			factor = 0.9
-			trait = ruthless
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = { trait = diligent }
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = { trait = ruthless }
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 14
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 16
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 18
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 20
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 22
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 24
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 26
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 28
-			}
-		}
-		modifier = {
-			factor = 0.9
-			job_treasurer = {
-				has_job_action = action_oversee_construction
-				stewardship = 30
-			}
-		}
-	}
-
-	option = {
-		name = "EVTOPTAharrenhal.13"
-		trigger = {
-			107 = { has_province_modifier = debris0 }
-		}
-		wealth = -300
-		107 = {
-			hidden_tooltip = {
-				remove_province_modifier = debris0
-				remove_province_modifier = goodstuff1
-				remove_province_modifier = goodstuff2
-				remove_province_modifier = goodstuff3
-				remove_province_modifier = goodstuff4
-				remove_province_modifier = goodstuff5
-				remove_province_modifier = goodstuff6
-				remove_province_modifier = badstuff1
-				remove_province_modifier = badstuff2
-				remove_province_modifier = badstuff3
-				remove_province_modifier = badstuff4
-				remove_province_modifier = badstuff5
-				remove_province_modifier = badstuff6
-			}
-			add_province_modifier = { name = hbuild1 duration = -1 }
-			set_province_flag = important
-			clr_province_flag = important
-		}
-	}
-
-	option = {
-		name = "EVTOPTBharrenhal.13"
-		trigger = {
-			107 = { has_province_modifier = hbuild1 }
-		}
-		wealth = -300
-		107 = {
-			hidden_tooltip = {
-				remove_province_modifier = hbuild1
-				remove_province_modifier = goodstuff1
-				remove_province_modifier = goodstuff2
-				remove_province_modifier = goodstuff3
-				remove_province_modifier = goodstuff4
-				remove_province_modifier = goodstuff5
-				remove_province_modifier = goodstuff6
-				remove_province_modifier = badstuff1
-				remove_province_modifier = badstuff2
-				remove_province_modifier = badstuff3
-				remove_province_modifier = badstuff4
-				remove_province_modifier = badstuff5
-				remove_province_modifier = badstuff6
-			}
-			add_province_modifier = { name = hbuild2 duration = -1 }
-			set_province_flag = important
-			clr_province_flag = important
-		}
-	}
-
-	option = {
-		name = "EVTOPTCharrenhal.13"
-		trigger = {
-			107 = { has_province_modifier = hbuild2 }
-		}
-		wealth = -300
-		107 = {
-			hidden_tooltip = {
-				remove_province_modifier = hbuild2
-				remove_province_modifier = goodstuff1
-				remove_province_modifier = goodstuff2
-				remove_province_modifier = goodstuff3
-				remove_province_modifier = goodstuff4
-				remove_province_modifier = goodstuff5
-				remove_province_modifier = goodstuff6
-				remove_province_modifier = badstuff1
-				remove_province_modifier = badstuff2
-				remove_province_modifier = badstuff3
-				remove_province_modifier = badstuff4
-				remove_province_modifier = badstuff5
-				remove_province_modifier = badstuff6
-			}
-			add_province_modifier = { name = hbuild3 duration = -1 }
-			set_province_flag = important
-			clr_province_flag = important
-		}
-		hidden_tooltip = { ROOT = { character_event = { id = harrenhal.14 } } }
-	}
-}
 #Harrenhal finished
 character_event = {
 	id = harrenhal.14
@@ -2160,6 +1849,130 @@ character_event = {
 				remove_province_modifier = completeharren1
 				add_province_modifier = { name = completeharren3 duration = -1 }
 				b_kingharren3 = { remove_building = ca_harrenhal_ruins }
+
+				random_list = {
+					40 = {
+						modifier = {
+							factor = 10
+							trait = charitable
+						}
+						modifier = {
+							factor = 25
+							trait = just
+						}
+						modifier = {
+							factor = 20
+							trait = honorable
+						}
+						modifier = {
+							factor = 0.1
+							trait = lunatic
+						}
+						modifier = {
+							factor = 0.5
+							trait = wroth
+						}
+						modifier = {
+							factor = 0.25
+							trait = possessed
+						}
+						modifier = {
+							factor = 0.1
+							trait = impaler
+						}
+						modifier = {
+							factor = 0.1
+							trait = envious
+						}
+						modifier = {
+							factor = 0.3
+							trait = arbitrary
+						}
+
+						create_bloodline = {
+							type = harrenhal1
+						}
+
+						add_trait = mystic
+						add_trait = bat
+					}
+
+					45 = {
+						modifier = {
+							factor = 0.3
+							trait = content
+						}
+						modifier = {
+							factor = 0.1
+							trait = familyperson
+						}
+						modifier = {
+							factor = 0.1
+							trait = charitable
+						}
+						modifier = {
+							factor = 0.1
+							trait = just
+						}
+						modifier = {
+							factor = 0.2
+							trait = honorable
+						}
+						modifier = {
+							factor = 15
+							trait = wroth
+						}
+						modifier = {
+							factor = 15
+							trait = cruel
+						}
+						modifier = {
+							factor = 25
+							trait = lunatic
+						}
+						modifier = {
+							factor = 25
+							trait = impaler
+						}
+						modifier = {
+							factor = 25
+							trait = possessed
+						}
+						modifier = {
+							factor = 5
+							trait = envious
+						}
+						modifier = {
+							factor = 5
+							trait = arbitrary
+						}
+						modifier = {
+							factor = 5
+							trait = paranoid
+						}
+						modifier = {
+							factor = 5
+							trait = deceitful
+						}
+						modifier = {
+							factor = 2
+							trait = drunkard
+						}
+						modifier = {
+							factor = 25
+							trait = cannibal_trait
+						}
+
+						create_bloodline = {
+							type = harrenhal2
+						}
+
+						add_trait = possessed
+						add_trait = cruel
+						add_trait = mystic
+						add_trait = great_bat
+					}
+				}
 			}
 			if = {
 				limit = {
@@ -2186,6 +1999,7 @@ character_event = {
 			}
 		}
 		prestige = 250
+		clr_global_flag = harrenhal_rebuilt
 		hidden_tooltip = { #remove curse
 			any_character = {
 				limit = { has_character_modifier = curse_of_harrenhal }
@@ -2201,7 +2015,9 @@ character_event = {
 	desc = "EVTDESCharrenhal.21"
 	picture = "GFX_evt_castle_construction"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_holding_building_start
+
+	has_global_flag = harrenhal_rebuilt
 
 	trigger = {
 		has_landed_title = c_harrenhal

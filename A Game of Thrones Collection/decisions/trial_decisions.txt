@@ -19,7 +19,7 @@ decisions = {
 			}
 			# OR = {
 				# any_courtier = {
-					# age = 16
+					# is_adult = yes
 					# is_female = no
 					# OR = {
 						# trait = poor_warrior
@@ -63,7 +63,7 @@ decisions = {
 		}
 		allow = {
 			prisoner = yes
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			NOT = { diplomatic_immunity = yes }
 			host = {
@@ -91,8 +91,7 @@ decisions = {
 					set_character_flag = select_champion
 					character_event = { id = trial_by_combat.999 }
 				}
-				if = {
-					limit = { ai = yes } #Ai select via event
+				else = { #Ai select via event
 					character_event = { id = trial_by_combat.27  days = 10 random = 5 }
 				}
 			}
@@ -144,10 +143,10 @@ decisions = {
 			has_character_flag = demmanded_first_trial_by_combat
 			has_character_flag = select_champion
 			prisoner = yes
-			age = 16
+			is_adult = yes
 		}
 		allow = {
-			age = 16
+			is_adult = yes
 			prisoner = yes
 			host = {
 				custom_tooltip = {
@@ -432,7 +431,7 @@ targeted_decisions = {
 				NOT = { is_inaccessible_trigger = yes }
 				NOT = { has_character_modifier = giving_justice } ###must not be in a court proceeding
 			}
-			age = 16
+			is_adult = yes
 			NOT = { trait = salt_wife }
 			NOT = { trait = slave }
 			NOT = { diplomatic_immunity = yes }
@@ -728,7 +727,7 @@ targeted_decisions = {
 		# }
 		# allow = {
 			# prisoner = yes
-			# age = 16
+			# is_adult = yes
 			# is_incapable = no
 			# wealth = 100
 		# }
@@ -824,7 +823,7 @@ targeted_decisions = {
 		# allow = {
 			# # General stuff
 			# prisoner = yes
-			# age = 16
+			# is_adult = yes
 			# is_incapable = no
 			# host = { NOT = { is_inaccessible_trigger = yes } }
 			# OR = {
@@ -839,7 +838,7 @@ targeted_decisions = {
 			# # any_courtier = {
 				# # # Can do it
 				# # NOT = { has_character_flag = trial_by_seven_fighter }
-				# # age = 16
+				# # is_adult = yes
 				# # is_female = no
 				# # NOT = { is_inaccessible_trigger = yes }
 				# # # Is a fighter

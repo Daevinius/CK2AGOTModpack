@@ -4,7 +4,7 @@ decisions = {
 		only_playable = yes
 		potential = {
 			is_playable = yes
-			age = 16
+			is_adult = yes
 			demesne_size = 1
 			is_incapable = no
 			NOT = { is_inaccessible_trigger = yes }
@@ -151,7 +151,7 @@ decisions = {
 		only_playable = yes
 		potential = {
 			is_playable = yes
-			age = 16
+			is_adult = yes
 			NOT = { is_drowned_god_religion_trigger = yes }
 			NOT = { wildling_culture_trigger = yes }
 			NOT = { culture = moon_clansman }
@@ -285,7 +285,7 @@ decisions = {
 		only_playable = yes
 		potential = {
 			is_playable = yes
-			age = 16
+			is_adult = yes
 			OR = {
 				NOT = { has_dlc = "Way of Life" }
 				has_focus = focus_hunting
@@ -982,7 +982,7 @@ decisions = {
 		potential = {
 			has_dlc = "The Old Gods"
 			is_ruler = yes
-			age = 16
+			is_adult = yes
 			prisoner = no
 			is_old_gods_religion_trigger = yes
 			NOT = {	has_character_flag = commissioned_runestone }
@@ -1049,7 +1049,7 @@ decisions = {
 		potential = {
 			has_dlc = "The Old Gods"
 			is_ruler = yes
-			age = 16
+			is_adult = yes
 			culture_group = free_folk
 			demesne_size = 1
 			NOT = { has_character_modifier = held_ukon_juhla_timer }
@@ -1156,7 +1156,7 @@ decisions = {
 		only_playable = yes
 		potential = {
 			has_dlc = "Rajas of India"
-			age = 16
+			is_adult = yes
 			is_ruler = yes
 			OR = {
 				is_feudal = yes
@@ -1208,7 +1208,7 @@ decisions = {
 		potential = {
 			has_dlc = "Rajas of India"
 			is_ruler = yes
-			age = 16
+			is_adult = yes
 			prisoner = no
 			num_of_vassals = 1
 			demesne_size = 1
@@ -1318,15 +1318,18 @@ decisions = {
 				owner = {
 					character = ROOT
 				}
+
+				NOR = {
+					artifact_type = glass_candle
+					artifact_type = royce_bronze_armor
+					artifact_type = rainbow_armor
+					artifact_type = staff_stareyes
+					artifact_type = mirror_shield
+					has_artifact_flag = book
+					has_artifact_flag = canon_sword
+					has_artifact_flag = curse
+				}
 			}
-			NOT = { artifact_type = glass_candle }
-			NOT = { artifact_type = royce_bronze_armor }
-			NOT = { artifact_type = rainbow_armor }
-			NOT = { artifact_type = staff_stareyes }
-			NOT = { artifact_type = mirror_shield }
-			NOT = { has_artifact_flag = book }
-			NOT = { has_artifact_flag = canon_sword }
-			NOT = { has_artifact_flag = curse }
 		}
 		allow = {
 		}
@@ -1825,13 +1828,14 @@ decisions = {
 		ai_will_do = {
 			factor = 0.06
 
+			trigger = {
+				monthly_income >= 5
+				war = no
+			}
+
 			modifier = {
 				factor = 0.1
 				wealth < 400
-			}
-			modifier = {
-				factor = 0
-				war = yes
 			}
 			modifier = {
 				factor = 2

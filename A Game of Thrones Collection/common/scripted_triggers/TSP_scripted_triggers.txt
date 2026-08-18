@@ -1,0 +1,96 @@
+is_clergyman = {
+		is_theocracy = yes
+		trait = love_priest
+		trait = bearded_priest
+		trait = shadowbinder
+		trait = warlock
+		trait = grace
+		trait = drowned
+		trait = red_priest
+		trait = septa
+		trait = septon
+		trait = fishy
+}
+
+qualifies_as_shoreline = { # Would a Fish Gods worshipper find a body of water big enough to erect an idol here?
+	OR = {
+		port = yes # Canon states they were only built on the shore
+		borders_major_river = yes
+		borders_lake = yes
+		terrain = coastal_desert
+		terrain = oceanroad
+		terrain = marsh
+		province_id = 834
+		title = c_thousand_islands
+		title = b_thousand_islands_castle
+		title = b_thousand_islands_temple
+		title = b_thousand_islands_nemo_zone
+		title = b_thousand_islands_dory_zone
+		title = b_thousand_islands_marlin_zone
+		is_holy_site = fish_gods
+		NOT = {
+			terrain = arctic
+			terrain = mountain
+			terrain = impassable_mountains
+			terrain = steppe
+			terrain = desert
+			terrain = highroad
+			terrain = mountainpass
+			terrain = wasteland
+			terrain = plains
+			terrain = pti
+			terrain = forest
+		}
+	}
+}
+
+cannot_get_canonical_illegitimate_child_nickname = {
+	location = {
+		NOT = {
+			region = world_north
+			duchy = { title = d_the_wall }
+			region = world_riverlands
+			region = world_vale
+			region = world_westerlands
+			region = world_reach
+			region = world_stormlands
+			region = world_crownlands
+			region = world_dorne
+			region = world_iron_isles
+		}
+	}
+}
+
+has_called_cthulhu = {
+	OR = {
+		religion = fish_gods
+		religion_group = sothoryos_rel_group
+		religion = starry_wisdom
+		religion = old_ones
+#		has_religion_feature = religion_feature_TSP_innsmouth
+	}
+}
+
+has_leng_clay = {
+	OR = {
+		has_landed_title = c_leng_yi
+		has_landed_title = c_leng_xotli
+		has_landed_title = c_leng_ma
+		has_landed_title = c_sedmelluqi
+		has_landed_title = c_turrani
+		has_landed_title = c_dendrrah
+	}
+}
+
+vassal_has_leng_clay = {
+	any_realm_lord = {
+		OR = {
+			has_landed_title = c_leng_yi
+			has_landed_title = c_leng_xotli
+			has_landed_title = c_leng_ma
+			has_landed_title = c_sedmelluqi
+			has_landed_title = c_turrani
+			has_landed_title = c_dendrrah
+		}
+	}
+}

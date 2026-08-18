@@ -211,7 +211,7 @@ namespace = mega_wars
 character_event = { #If triggered from on_actions, makes sure King is FROMFROM scope
 	id = mega_wars.1
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -419,7 +419,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -464,17 +464,17 @@ character_event = {
 							reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_commander }
 						}
 					}
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_castellan }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_marshal }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_learned }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_priest }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_ships }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_advisor }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_admiral }
-					reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_commander }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_castellan }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_marshal }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_learned }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_priest }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_ships }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_advisor }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_admiral }
+					reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_commander }
 				}
 				job_castellan = {
 					if = {
@@ -2221,47 +2221,47 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  100 }
+				opinion = { who = FROM value = 100 }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -99 } }
+				NOT = { opinion = { who = FROM value = -99 } }
 			}
 			modifier = { #Don't want to support foreign pretender
 				factor = 5
@@ -2662,71 +2662,71 @@ letter_event = {
 			}
 			modifier = {
 				factor = 2.5
-				NOT = { opinion = { who = FROM value =  -75 } }
+				NOT = { opinion = { who = FROM value = -75 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  -100 }
-					NOT = { reverse_opinion = { who = ROOT value =  -75 } }
+					reverse_opinion = { who = ROOT value = -100 }
+					NOT = { reverse_opinion = { who = ROOT value = -75 } }
 				}
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  -75 }
-				NOT = { opinion = { who = FROM value =  -50 } }
+				opinion = { who = FROM value = -75 }
+				NOT = { opinion = { who = FROM value = -50 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  -75 }
-					NOT = { reverse_opinion = { who = ROOT value =  -50 } }
+					reverse_opinion = { who = ROOT value = -75 }
+					NOT = { reverse_opinion = { who = ROOT value = -50 } }
 				}
 			}
 			modifier = {
 				factor = 1.75
-				opinion = { who = FROM value =  -50 }
-				NOT = { opinion = { who = FROM value =  -25 } }
+				opinion = { who = FROM value = -50 }
+				NOT = { opinion = { who = FROM value = -25 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  -50 }
-					NOT = { reverse_opinion = { who = ROOT value =  -25 } }
+					reverse_opinion = { who = ROOT value = -50 }
+					NOT = { reverse_opinion = { who = ROOT value = -25 } }
 				}
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  -25 }
-				NOT = { opinion = { who = FROM value =  -0 } }
+				opinion = { who = FROM value = -25 }
+				NOT = { opinion = { who = FROM value = -0 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  -25 }
-					NOT = { reverse_opinion = { who = ROOT value =  -0 } }
+					reverse_opinion = { who = ROOT value = -25 }
+					NOT = { reverse_opinion = { who = ROOT value = -0 } }
 				}
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  0 }
-				NOT = { opinion = { who = FROM value =  25 } }
+				opinion = { who = FROM value = 0 }
+				NOT = { opinion = { who = FROM value = 25 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  0 }
-					NOT = { reverse_opinion = { who = ROOT value =  25 } }
+					reverse_opinion = { who = ROOT value = 0 }
+					NOT = { reverse_opinion = { who = ROOT value = 25 } }
 				}
 			}
 			modifier = {
 				factor = 1.75
-				opinion = { who = FROM value =  25 }
-				NOT = { opinion = { who = FROM value =  50 } }
+				opinion = { who = FROM value = 25 }
+				NOT = { opinion = { who = FROM value = 50 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  25 }
-					NOT = { reverse_opinion = { who = ROOT value =  50 } }
+					reverse_opinion = { who = ROOT value = 25 }
+					NOT = { reverse_opinion = { who = ROOT value = 50 } }
 				}
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
-				NOT = { opinion = { who = FROM value =  75 } }
+				opinion = { who = FROM value = 50 }
+				NOT = { opinion = { who = FROM value = 75 } }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  50 }
-					NOT = { reverse_opinion = { who = ROOT value =  75 } }
+					reverse_opinion = { who = ROOT value = 50 }
+					NOT = { reverse_opinion = { who = ROOT value = 75 } }
 				}
 			}
 			modifier = {
 				factor = 2.5
-				opinion = { who = FROM value =  75 }
+				opinion = { who = FROM value = 75 }
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  75 }
+					reverse_opinion = { who = ROOT value = 75 }
 				}
 			}
 
@@ -2935,28 +2935,28 @@ letter_event = {
 													has_landed_title = k_iron_isles
 													ROOT = {
 														OR = {
-															has_landed_title =  k_north
-															has_landed_title =  k_riverlands
-															has_landed_title =  k_westerlands
-															has_landed_title =  k_reach
-															has_landed_title =  e_north
-															has_landed_title =  e_riverlands
-															has_landed_title =  e_westerlands
-															has_landed_title =  e_reach
+															has_landed_title = k_north
+															has_landed_title = k_riverlands
+															has_landed_title = k_westerlands
+															has_landed_title = k_reach
+															has_landed_title = e_north
+															has_landed_title = e_riverlands
+															has_landed_title = e_westerlands
+															has_landed_title = e_reach
 														}
 													}
 												}
 												AND = {
 													ROOT = { has_landed_title = k_iron_isles }
 													OR = {
-														has_landed_title =  k_north
-														has_landed_title =  k_riverlands
-														has_landed_title =  k_westerlands
-														has_landed_title =  k_reach
-														has_landed_title =  e_north
-														has_landed_title =  e_riverlands
-														has_landed_title =  e_westerlands
-														has_landed_title =  e_reach
+														has_landed_title = k_north
+														has_landed_title = k_riverlands
+														has_landed_title = k_westerlands
+														has_landed_title = k_reach
+														has_landed_title = e_north
+														has_landed_title = e_riverlands
+														has_landed_title = e_westerlands
+														has_landed_title = e_reach
 													}
 												}
 											}
@@ -3171,68 +3171,68 @@ letter_event = {
 			modifier = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  20 }
+					reverse_opinion = { who = ROOT value = 20 }
 				}
 			}
 			modifier = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
 				factor = 1.3
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  60 }
+					reverse_opinion = { who = ROOT value = 60 }
 				}
 			}
 			modifier = {
 				factor = 1.3
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  80 }
+					reverse_opinion = { who = ROOT value = 80 }
 				}
 			}
 			modifier = {
 				factor = 1.3
 				event_target:new_rebel_leader = {
-					reverse_opinion = { who = ROOT value =  100 }
+					reverse_opinion = { who = ROOT value = 100 }
 				}
 			}
 
 			modifier = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
-					NOT = { reverse_opinion = { who = ROOT value =  -20 } }
+					NOT = { reverse_opinion = { who = ROOT value = -20 } }
 				}
 			}
 			modifier = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 0.7
 				event_target:new_rebel_leader = {
-					NOT = { reverse_opinion = { who = ROOT value =  -60 } }
+					NOT = { reverse_opinion = { who = ROOT value = -60 } }
 				}
 			}
 			modifier = {
 				factor = 0.7
 				event_target:new_rebel_leader = {
-					NOT = { reverse_opinion = { who = ROOT value =  -80 } }
+					NOT = { reverse_opinion = { who = ROOT value = -80 } }
 				}
 			}
 			modifier = {
 				factor = 0.7
 				event_target:new_rebel_leader = {
-					NOT = { reverse_opinion = { who = ROOT value =  -99 } }
+					NOT = { reverse_opinion = { who = ROOT value = -99 } }
 				}
 			}
 			modifier = {
@@ -3667,7 +3667,7 @@ letter_event = {
 			modifier = {
 				factor = 0
 				NOT = { in_faction = faction_independence }
-				FROM = { reverse_opinion = { who = ROOT value =  0 } }
+				FROM = { reverse_opinion = { who = ROOT value = 0 } }
 			}
 
 			modifier = {
@@ -3813,37 +3813,37 @@ letter_event = {
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -20 } }
+					NOT = { reverse_opinion = { who = ROOT value = -20 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -60 } }
+					NOT = { reverse_opinion = { who = ROOT value = -60 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -80 } }
+					NOT = { reverse_opinion = { who = ROOT value = -80 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -99 } }
+					NOT = { reverse_opinion = { who = ROOT value = -99 } }
 				}
 			}
 		}
@@ -4419,7 +4419,7 @@ character_event = { #continiously check all king tier character
 		NOT = { has_character_flag = post_civil_war_wars }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -4786,7 +4786,7 @@ character_event = { #triggered from both MTTH event above and emperor's war endi
 character_event = { #check lower tier characters at peace every year
 	id = mega_wars.903
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_independent = yes
 	hide_window = yes
 	war = no
@@ -5336,7 +5336,7 @@ character_event = {
 		# }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -5580,7 +5580,7 @@ character_event = { #Flag clean up
 	war = no
 	has_character_flag = liege_called_to_arms
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -6140,7 +6140,7 @@ character_event = {
 	id = mega_wars.21
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	ai = yes
 
@@ -6386,7 +6386,7 @@ character_event = {
 	id = mega_wars.2191
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	prisoner = no
 	only_capable = yes
 	ai = yes
@@ -7265,47 +7265,47 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  100 }
+				opinion = { who = FROM value = 100 }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -99 } }
+				NOT = { opinion = { who = FROM value = -99 } }
 			}
 			#Mid war trait modifiers
 			modifier = {
@@ -7697,55 +7697,55 @@ character_event = {
 			}
 			modifier = {
 				factor = 2.5
-				NOT = { opinion = { who = FROM value =  -75 } }
-				NOT = { opinion = { who = FROMFROM value =  -75 } }
+				NOT = { opinion = { who = FROM value = -75 } }
+				NOT = { opinion = { who = FROMFROM value = -75 } }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  -75 }
-				NOT = { opinion = { who = FROM value =  -50 } }
-				opinion = { who = FROMFROM value =  -75 }
-				NOT = { opinion = { who = FROMFROM value =  -50 } }
+				opinion = { who = FROM value = -75 }
+				NOT = { opinion = { who = FROM value = -50 } }
+				opinion = { who = FROMFROM value = -75 }
+				NOT = { opinion = { who = FROMFROM value = -50 } }
 			}
 			modifier = {
 				factor = 1.75
-				opinion = { who = FROM value =  -50 }
-				NOT = { opinion = { who = FROM value =  -25 } }
-				opinion = { who = FROMFROM value =  -50 }
-				NOT = { opinion = { who = FROMFROM value =  -25 } }
+				opinion = { who = FROM value = -50 }
+				NOT = { opinion = { who = FROM value = -25 } }
+				opinion = { who = FROMFROM value = -50 }
+				NOT = { opinion = { who = FROMFROM value = -25 } }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  -25 }
-				NOT = { opinion = { who = FROM value =  0 } }
-				opinion = { who = FROMFROM value =  -25 }
-				NOT = { opinion = { who = FROMFROM value =  0 } }
+				opinion = { who = FROM value = -25 }
+				NOT = { opinion = { who = FROM value = 0 } }
+				opinion = { who = FROMFROM value = -25 }
+				NOT = { opinion = { who = FROMFROM value = 0 } }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  0 }
-				NOT = { opinion = { who = FROM value =  25 } }
-				opinion = { who = FROMFROM value =  0 }
-				NOT = { opinion = { who = FROMFROM value =  25 } }
+				opinion = { who = FROM value = 0 }
+				NOT = { opinion = { who = FROM value = 25 } }
+				opinion = { who = FROMFROM value = 0 }
+				NOT = { opinion = { who = FROMFROM value = 25 } }
 			}
 			modifier = {
 				factor = 1.75
-				opinion = { who = FROM value =  25 }
-				NOT = { opinion = { who = FROM value =  50 } }
-				opinion = { who = FROMFROM value =  25 }
-				NOT = { opinion = { who = FROMFROM value =  50 } }
+				opinion = { who = FROM value = 25 }
+				NOT = { opinion = { who = FROM value = 50 } }
+				opinion = { who = FROMFROM value = 25 }
+				NOT = { opinion = { who = FROMFROM value = 50 } }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
-				NOT = { opinion = { who = FROM value =  75 } }
-				opinion = { who = FROMFROM value =  50 }
-				NOT = { opinion = { who = FROMFROM value =  75 } }
+				opinion = { who = FROM value = 50 }
+				NOT = { opinion = { who = FROM value = 75 } }
+				opinion = { who = FROMFROM value = 50 }
+				NOT = { opinion = { who = FROMFROM value = 75 } }
 			}
 			modifier = {
 				factor = 2.5
-				opinion = { who = FROM value =  75 }
-				opinion = { who = FROMFROM value =  75 }
+				opinion = { who = FROM value = 75 }
+				opinion = { who = FROMFROM value = 75 }
 			}
 		}
 		if = { #If involved in inherited war, cancel it by momentarily by swearing fealty to emperor
@@ -7896,28 +7896,28 @@ character_event = {
 													# has_landed_title = k_iron_isles
 													# ROOT = {
 														# OR = {
-															# has_landed_title =  k_north
-															# has_landed_title =  k_riverlands
-															# has_landed_title =  k_westerlands
-															# has_landed_title =  k_reach
-															# has_landed_title =  e_north
-															# has_landed_title =  e_riverlands
-															# has_landed_title =  e_westerlands
-															# has_landed_title =  e_reach
+															# has_landed_title = k_north
+															# has_landed_title = k_riverlands
+															# has_landed_title = k_westerlands
+															# has_landed_title = k_reach
+															# has_landed_title = e_north
+															# has_landed_title = e_riverlands
+															# has_landed_title = e_westerlands
+															# has_landed_title = e_reach
 														# }
 													# }
 												# }
 												# AND = {
 													# ROOT = { has_landed_title = k_iron_isles }
 													# OR = {
-														# has_landed_title =  k_north
-														# has_landed_title =  k_riverlands
-														# has_landed_title =  k_westerlands
-														# has_landed_title =  k_reach
-														# has_landed_title =  e_north
-														# has_landed_title =  e_riverlands
-														# has_landed_title =  e_westerlands
-														# has_landed_title =  e_reach
+														# has_landed_title = k_north
+														# has_landed_title = k_riverlands
+														# has_landed_title = k_westerlands
+														# has_landed_title = k_reach
+														# has_landed_title = e_north
+														# has_landed_title = e_riverlands
+														# has_landed_title = e_westerlands
+														# has_landed_title = e_reach
 													# }
 												# }
 											# }
@@ -8226,7 +8226,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROMFROM value =  20 }
+				opinion = { who = FROMFROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
@@ -8668,7 +8668,7 @@ character_event = {
 			modifier = {
 				factor = 0
 				NOT = { in_faction = faction_independence }
-				FROM = { reverse_opinion = { who = ROOT value =  0 } }
+				FROM = { reverse_opinion = { who = ROOT value = 0 } }
 			}
 
 			modifier = {
@@ -8767,37 +8767,37 @@ character_event = {
 			modifier = {
 				factor = 1.2
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
 				factor = 1.2
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -20 } }
+					NOT = { reverse_opinion = { who = ROOT value = -20 } }
 				}
 			}
 			modifier = {
 				factor = 1.2
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 1.2
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -60 } }
+					NOT = { reverse_opinion = { who = ROOT value = -60 } }
 				}
 			}
 			modifier = {
 				factor = 1.2
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -80 } }
+					NOT = { reverse_opinion = { who = ROOT value = -80 } }
 				}
 			}
 			modifier = {
 				factor = 1.2
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -99 } }
+					NOT = { reverse_opinion = { who = ROOT value = -99 } }
 				}
 			}
 		}
@@ -9414,7 +9414,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							opinion = { who = PREV value =  20 }
+							opinion = { who = PREV value = 20 }
 						}
 					}
 				}
@@ -9424,7 +9424,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							opinion = { who = PREV value =  40 }
+							opinion = { who = PREV value = 40 }
 						}
 					}
 				}
@@ -9434,7 +9434,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							opinion = { who = PREV value =  60 }
+							opinion = { who = PREV value = 60 }
 						}
 					}
 				}
@@ -9444,7 +9444,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							opinion = { who = PREV value =  80 }
+							opinion = { who = PREV value = 80 }
 						}
 					}
 				}
@@ -9454,7 +9454,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							opinion = { who = PREV value =  100 }
+							opinion = { who = PREV value = 100 }
 						}
 					}
 				}
@@ -9464,7 +9464,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							NOT = { opinion = { who = PREV value =  0 } }
+							NOT = { opinion = { who = PREV value = 0 } }
 						}
 					}
 				}
@@ -9474,7 +9474,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							NOT = { opinion = { who = PREV value =  -20 } }
+							NOT = { opinion = { who = PREV value = -20 } }
 						}
 					}
 				}
@@ -9484,7 +9484,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							NOT = { opinion = { who = PREV value =  -40 } }
+							NOT = { opinion = { who = PREV value = -40 } }
 						}
 					}
 				}
@@ -9494,7 +9494,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							NOT = { opinion = { who = PREV value =  -60 } }
+							NOT = { opinion = { who = PREV value = -60 } }
 						}
 					}
 				}
@@ -9504,7 +9504,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							NOT = { opinion = { who = PREV value =  -80 } }
+							NOT = { opinion = { who = PREV value = -80 } }
 						}
 					}
 				}
@@ -9514,7 +9514,7 @@ letter_event = {
 				FROM = {
 					FROM = {
 						ROOT = {
-							NOT = { opinion = { who = PREV value =  -99 } }
+							NOT = { opinion = { who = PREV value = -99 } }
 						}
 					}
 				}
@@ -9522,42 +9522,42 @@ letter_event = {
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = supporting_king }
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = supporting_king }
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = supporting_king }
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = supporting_king }
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = supporting_king }
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = supporting_king }
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = supporting_king }
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = supporting_king }
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.8
@@ -9681,7 +9681,7 @@ letter_event = {
 					has_character_flag = warden_called_to_arms
 				}
 			}
-			if  = {
+			if = {
 				limit = { is_ruler = yes }
 				liege = {
 					if = {
@@ -10077,42 +10077,42 @@ letter_event = {
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = neutral }
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = neutral }
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = neutral }
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = neutral }
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = neutral }
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = neutral }
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = neutral }
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = neutral }
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.8
@@ -10510,7 +10510,7 @@ letter_event = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
 					ROOT = {
-						opinion = { who = PREV value =  20 }
+						opinion = { who = PREV value = 20 }
 					}
 				}
 			}
@@ -10518,7 +10518,7 @@ letter_event = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
 					ROOT = {
-						opinion = { who = PREV value =  40 }
+						opinion = { who = PREV value = 40 }
 					}
 				}
 			}
@@ -10526,7 +10526,7 @@ letter_event = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
 					ROOT = {
-						opinion = { who = PREV value =  60 }
+						opinion = { who = PREV value = 60 }
 					}
 				}
 			}
@@ -10534,7 +10534,7 @@ letter_event = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
 					ROOT = {
-						opinion = { who = PREV value =  80 }
+						opinion = { who = PREV value = 80 }
 					}
 				}
 			}
@@ -10542,7 +10542,7 @@ letter_event = {
 				factor = 1.2
 				event_target:new_rebel_leader = {
 					ROOT = {
-						opinion = { who = PREV value =  100 }
+						opinion = { who = PREV value = 100 }
 					}
 				}
 			}
@@ -10550,7 +10550,7 @@ letter_event = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
 					ROOT = {
-						NOT = { opinion = { who = PREV value =  0 } }
+						NOT = { opinion = { who = PREV value = 0 } }
 					}
 				}
 			}
@@ -10558,7 +10558,7 @@ letter_event = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
 					ROOT = {
-						NOT = { opinion = { who = PREV value =  -20 } }
+						NOT = { opinion = { who = PREV value = -20 } }
 					}
 				}
 			}
@@ -10566,7 +10566,7 @@ letter_event = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
 					ROOT = {
-						NOT = { opinion = { who = PREV value =  -40 } }
+						NOT = { opinion = { who = PREV value = -40 } }
 					}
 				}
 			}
@@ -10574,7 +10574,7 @@ letter_event = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
 					ROOT = {
-						NOT = { opinion = { who = PREV value =  -60 } }
+						NOT = { opinion = { who = PREV value = -60 } }
 					}
 				}
 			}
@@ -10582,7 +10582,7 @@ letter_event = {
 				factor = 0.8
 				event_target:new_rebel_leader = {
 					ROOT = {
-						NOT = { opinion = { who = PREV value =  -80 } }
+						NOT = { opinion = { who = PREV value = -80 } }
 					}
 				}
 			}
@@ -10590,7 +10590,7 @@ letter_event = {
 				factor = 0.7
 				event_target:new_rebel_leader = {
 					ROOT = {
-						NOT = { opinion = { who = PREV value =  -99 } }
+						NOT = { opinion = { who = PREV value = -99 } }
 					}
 				}
 			}
@@ -10598,42 +10598,42 @@ letter_event = {
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = against_king }
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = against_king }
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = against_king }
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.2
 				FROM = { has_character_flag = against_king }
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = against_king }
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = against_king }
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = against_king }
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.8
 				FROM = { has_character_flag = against_king }
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.8
@@ -11662,54 +11662,54 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  100 }
+				opinion = { who = FROM value = 100 }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -99 } }
+				NOT = { opinion = { who = FROM value = -99 } }
 			}
 			modifier = {
 				factor = 1.2
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  20 }
+					reverse_opinion = { who = ROOT value = 20 }
 				}
 			}
 			modifier = {
@@ -11717,7 +11717,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
@@ -11725,7 +11725,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  60 }
+					reverse_opinion = { who = ROOT value = 60 }
 				}
 			}
 			modifier = {
@@ -11733,7 +11733,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  80 }
+					reverse_opinion = { who = ROOT value = 80 }
 				}
 			}
 			modifier = {
@@ -11741,7 +11741,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  100 }
+					reverse_opinion = { who = ROOT value = 100 }
 				}
 			}
 			modifier = {
@@ -11749,7 +11749,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
@@ -11757,7 +11757,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  -20 }
+					reverse_opinion = { who = ROOT value = -20 }
 				}
 			}
 			modifier = {
@@ -11765,7 +11765,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  -40 }
+					reverse_opinion = { who = ROOT value = -40 }
 				}
 			}
 			modifier = {
@@ -11773,7 +11773,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = supporting_king
-					reverse_opinion = { who = ROOT value =  -60 }
+					reverse_opinion = { who = ROOT value = -60 }
 				}
 			}
 			modifier = {
@@ -12340,7 +12340,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  20 }
+					reverse_opinion = { who = ROOT value = 20 }
 				}
 			}
 			modifier = {
@@ -12348,7 +12348,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
@@ -12356,7 +12356,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  60 }
+					reverse_opinion = { who = ROOT value = 60 }
 				}
 			}
 			modifier = {
@@ -12364,7 +12364,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  80 }
+					reverse_opinion = { who = ROOT value = 80 }
 				}
 			}
 			modifier = {
@@ -12372,7 +12372,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  100 }
+					reverse_opinion = { who = ROOT value = 100 }
 				}
 			}
 			modifier = {
@@ -12380,7 +12380,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
@@ -12388,7 +12388,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  -20 }
+					reverse_opinion = { who = ROOT value = -20 }
 				}
 			}
 			modifier = {
@@ -12396,7 +12396,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  -40 }
+					reverse_opinion = { who = ROOT value = -40 }
 				}
 			}
 			modifier = {
@@ -12404,7 +12404,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = neutral
-					reverse_opinion = { who = ROOT value =  -60 }
+					reverse_opinion = { who = ROOT value = -60 }
 				}
 			}
 			modifier = {
@@ -12917,23 +12917,23 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROMFROM value =  20 }
+				opinion = { who = FROMFROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROMFROM value =  40 }
+				opinion = { who = FROMFROM value = 40 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROMFROM value =  60 }
+				opinion = { who = FROMFROM value = 60 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROMFROM value =  80 }
+				opinion = { who = FROMFROM value = 80 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROMFROM value =  100 }
+				opinion = { who = FROMFROM value = 100 }
 			}
 			modifier = {
 				factor = 0.8
@@ -12965,7 +12965,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  20 }
+					reverse_opinion = { who = ROOT value = 20 }
 				}
 			}
 			modifier = {
@@ -12973,7 +12973,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
@@ -12981,7 +12981,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  60 }
+					reverse_opinion = { who = ROOT value = 60 }
 				}
 			}
 			modifier = {
@@ -12989,7 +12989,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  80 }
+					reverse_opinion = { who = ROOT value = 80 }
 				}
 			}
 			modifier = {
@@ -12997,7 +12997,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  100 }
+					reverse_opinion = { who = ROOT value = 100 }
 				}
 			}
 			modifier = {
@@ -13005,7 +13005,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
@@ -13013,7 +13013,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  -20 }
+					reverse_opinion = { who = ROOT value = -20 }
 				}
 			}
 			modifier = {
@@ -13021,7 +13021,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  -40 }
+					reverse_opinion = { who = ROOT value = -40 }
 				}
 			}
 			modifier = {
@@ -13029,7 +13029,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  -60 }
+					reverse_opinion = { who = ROOT value = -60 }
 				}
 			}
 			modifier = {
@@ -13839,23 +13839,23 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = event_target:current_rebel_leader value =  20 }
+				opinion = { who = event_target:current_rebel_leader value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = event_target:current_rebel_leader value =  40 }
+				opinion = { who = event_target:current_rebel_leader value = 40 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = event_target:current_rebel_leader value =  60 }
+				opinion = { who = event_target:current_rebel_leader value = 60 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = event_target:current_rebel_leader value =  80 }
+				opinion = { who = event_target:current_rebel_leader value = 80 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = event_target:current_rebel_leader value =  100 }
+				opinion = { who = event_target:current_rebel_leader value = 100 }
 			}
 			modifier = {
 				factor = 0.8
@@ -13887,7 +13887,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  20 }
+					reverse_opinion = { who = ROOT value = 20 }
 				}
 			}
 			modifier = {
@@ -13895,7 +13895,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  40 }
+					reverse_opinion = { who = ROOT value = 40 }
 				}
 			}
 			modifier = {
@@ -13903,7 +13903,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  60 }
+					reverse_opinion = { who = ROOT value = 60 }
 				}
 			}
 			modifier = {
@@ -13911,7 +13911,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  80 }
+					reverse_opinion = { who = ROOT value = 80 }
 				}
 			}
 			modifier = {
@@ -13919,7 +13919,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  100 }
+					reverse_opinion = { who = ROOT value = 100 }
 				}
 			}
 			modifier = {
@@ -13927,7 +13927,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
@@ -13935,7 +13935,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  -20 }
+					reverse_opinion = { who = ROOT value = -20 }
 				}
 			}
 			modifier = {
@@ -13943,7 +13943,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  -40 }
+					reverse_opinion = { who = ROOT value = -40 }
 				}
 			}
 			modifier = {
@@ -13951,7 +13951,7 @@ character_event = {
 				liege = {
 					NOT = { character = ROOT }
 					has_character_flag = against_king
-					reverse_opinion = { who = ROOT value =  -60 }
+					reverse_opinion = { who = ROOT value = -60 }
 				}
 			}
 			modifier = {
@@ -14539,7 +14539,7 @@ character_event = {
 	id = mega_wars.42
 	desc = "EVTDESCmega_wars.42"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_usurpation, on_war_started
 	hide_window = yes  ###FLAG### temp for testing
 	only_independent = yes
 
@@ -14609,7 +14609,7 @@ character_event = {
 	id = mega_wars.4299
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	only_independent = yes
 
 	trigger = {
@@ -14750,7 +14750,7 @@ character_event = {
 	id = mega_wars.44
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_create_title
 
 	trigger = {
 		FROM = { NOT = { tier = EMPEROR } }
@@ -14902,8 +14902,7 @@ character_event = {
 				limit = { war = no }
 				ROOT = { set_defacto_liege = PREV }
 			}
-			if = {
-				limit = { war = yes }
+			else = {
 				ROOT = {
 					set_character_flag = supporting_king
 					clr_character_flag = neutral
@@ -15047,38 +15046,38 @@ character_event = {
 						AND = {
 							ROOT = { has_landed_title = k_riverlands }
 							OR = {
-								has_landed_title =  k_north
-								has_landed_title =  k_vale
-								has_landed_title =  e_north
-								has_landed_title =  e_vale
+								has_landed_title = k_north
+								has_landed_title = k_vale
+								has_landed_title = e_north
+								has_landed_title = e_vale
 							}
 						}
 						AND = {
 							has_landed_title = e_iron_isles
 							ROOT = {
 								OR = {
-									has_landed_title =  k_north
-									has_landed_title =  k_riverlands
-									has_landed_title =  k_westerlands
-									has_landed_title =  k_reach
-									has_landed_title =  e_north
-									has_landed_title =  e_riverlands
-									has_landed_title =  e_westerlands
-									has_landed_title =  e_reach
+									has_landed_title = k_north
+									has_landed_title = k_riverlands
+									has_landed_title = k_westerlands
+									has_landed_title = k_reach
+									has_landed_title = e_north
+									has_landed_title = e_riverlands
+									has_landed_title = e_westerlands
+									has_landed_title = e_reach
 								}
 							}
 						}
 						AND = {
 							ROOT = { has_landed_title = k_iron_isles }
 							OR = {
-								has_landed_title =  k_north
-								has_landed_title =  k_riverlands
-								has_landed_title =  k_westerlands
-								has_landed_title =  k_reach
-								has_landed_title =  e_north
-								has_landed_title =  e_riverlands
-								has_landed_title =  e_westerlands
-								has_landed_title =  e_reach
+								has_landed_title = k_north
+								has_landed_title = k_riverlands
+								has_landed_title = k_westerlands
+								has_landed_title = k_reach
+								has_landed_title = e_north
+								has_landed_title = e_riverlands
+								has_landed_title = e_westerlands
+								has_landed_title = e_reach
 							}
 						}
 					}
@@ -15651,7 +15650,7 @@ character_event = {
 	desc = "EVTDESCmega_wars.60"
 	picture = GFX_evt_war_planning
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	hide_window = yes
 	war = yes
@@ -15967,15 +15966,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  25 }
+				opinion = { who = FROM value = 25 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
+				opinion = { who = FROM value = 50 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  75 }
+				opinion = { who = FROM value = 75 }
 			}
 			modifier = {
 				factor = 1.2
@@ -16042,15 +16041,15 @@ character_event = {
 			factor = 30
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -25 } }
+				NOT = { opinion = { who = FROM value = -25 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -50 } }
+				NOT = { opinion = { who = FROM value = -50 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -75 } }
+				NOT = { opinion = { who = FROM value = -75 } }
 			}
 			modifier = {
 				factor = 1.2
@@ -16112,15 +16111,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -25 } }
+				NOT = { opinion = { who = FROM value = -25 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -50 } }
+				NOT = { opinion = { who = FROM value = -50 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -75 } }
+				NOT = { opinion = { who = FROM value = -75 } }
 			}
 			modifier = {
 				factor = 1.2
@@ -16210,15 +16209,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -25 } }
+				NOT = { opinion = { who = FROM value = -25 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -50 } }
+				NOT = { opinion = { who = FROM value = -50 } }
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -75 } }
+				NOT = { opinion = { who = FROM value = -75 } }
 			}
 			modifier = {
 				factor = 2
@@ -16513,7 +16512,9 @@ character_event = {
 
 	is_triggered_only = yes
 
-	immediate = { set_character_flag = alive }
+	immediate = {
+		set_character_flag = alive
+	}
 
 	option = {
 		name = "EVTOPTAmega_wars.71"
@@ -16742,10 +16743,7 @@ character_event = {
 			}
 			change_variable = { which = fear_actions value = 5 }
 		}
-		if = {
-			limit = {
-				FROM = { is_ruler = no }
-			}
+		else = {
 			change_variable = { which = fear_actions value = 3 }
 		}
 	}
@@ -16757,6 +16755,8 @@ character_event = {
 	picture = GFX_evt_judged_by_ruler
 
 	is_triggered_only = yes
+
+	only_playable = yes
 
 	trigger = {
 		demesne_size = 1
@@ -17244,8 +17244,7 @@ character_event = {
 				limit = { prisoner = yes }
 				custom_tooltip = { text = TOOLTIPmega_wars.77LIEGE }
 			}
-			if = {
-				limit = { prisoner = no }
+			else = {
 				if = {
 					limit = { higher_tier_than = BARON }
 					custom_tooltip = { text = TOOLTIPmega_wars.77LIEGEREBEL }
@@ -17416,8 +17415,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.78LIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.78LIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.78 days = 1 } }
@@ -17441,8 +17439,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.78NONLIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.78NONLIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.78 days = 1 } }
@@ -17636,8 +17633,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.79LIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.79LIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.79 days = 1 } }
@@ -17661,8 +17657,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.79NONLIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.79NONLIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.79 days = 1 } }
@@ -17917,8 +17912,7 @@ character_event = {
 				limit = { prisoner = yes }
 				custom_tooltip = { text = TOOLTIPmega_wars.78HS }
 			}
-			if = {
-				limit = { prisoner = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPmega_wars.78HSREBEL }
 			}
 			hidden_tooltip = { letter_event = { id = mega_wars.78 days = 1 } }
@@ -18084,8 +18078,7 @@ character_event = {
 				limit = { prisoner = yes }
 				custom_tooltip = { text = TOOLTIPmega_wars.79HSKG }
 			}
-			if = {
-				limit = { prisoner = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPmega_wars.79HSKGREBEL }
 			}
 			hidden_tooltip = { letter_event = { id = mega_wars.79 days = 1 } }
@@ -18115,10 +18108,7 @@ character_event = {
 			}
 			change_variable = { which = fear_actions value = 10 }
 		}
-		if = {
-			limit = {
-				FROM = { is_ruler = no }
-			}
+		else = {
 			change_variable = { which = fear_actions value = 5 }
 		}
 		hidden_tooltip = { character_event = { id = faction_event_new.90 } }
@@ -18653,8 +18643,7 @@ letter_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -18678,7 +18667,7 @@ letter_event = {
 	id = mega_wars.78
 	desc = "EVTDESCmega_wars.78"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	option = {
 		name = "EVTOPTAmega_wars.78" #fair enough
@@ -18898,8 +18887,7 @@ letter_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -19067,7 +19055,7 @@ letter_event = {
 	id = mega_wars.79
 	desc = "EVTDESCmega_wars.79"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		clear_event_target = mega_war_hostage
@@ -19518,8 +19506,7 @@ letter_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -19980,7 +19967,7 @@ character_event = {
 
 	show_from_from = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_executed
 
 	immediate = {
 		clear_event_target = mega_war_hostage
@@ -21431,8 +21418,7 @@ character_event = {
 				limit = { prisoner = yes }
 				custom_tooltip = { text = TOOLTIPmega_wars.77LIEGE }
 			}
-			if = {
-				limit = { prisoner = no }
+			else = {
 				if = {
 					limit = { higher_tier_than = BARON }
 					custom_tooltip = { text = TOOLTIPmega_wars.77LIEGEREBEL }
@@ -21604,8 +21590,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.78LIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.78LIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.78 days = 1 } }
@@ -21629,8 +21614,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.78NONLIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.78NONLIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.78 days = 1 } }
@@ -21828,8 +21812,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.79LIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.79LIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.79 days = 1 } }
@@ -21853,8 +21836,7 @@ character_event = {
 					limit = { prisoner = yes }
 					custom_tooltip = { text = TOOLTIPmega_wars.79NONLIEGE }
 				}
-				if = {
-					limit = { prisoner = no }
+				else = {
 					custom_tooltip = { text = TOOLTIPmega_wars.79NONLIEGEREBEL }
 				}
 				hidden_tooltip = { letter_event = { id = mega_wars.79 days = 1 } }
@@ -22120,8 +22102,7 @@ character_event = {
 				limit = { prisoner = yes }
 				custom_tooltip = { text = TOOLTIPmega_wars.78HS }
 			}
-			if = {
-				limit = { prisoner = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPmega_wars.78HSREBEL }
 			}
 			hidden_tooltip = { letter_event = { id = mega_wars.78 days = 1 } }
@@ -22287,8 +22268,7 @@ character_event = {
 				limit = { prisoner = yes }
 				custom_tooltip = { text = TOOLTIPmega_wars.79HSKG }
 			}
-			if = {
-				limit = { prisoner = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPmega_wars.79HSKGREBEL }
 			}
 			hidden_tooltip = { letter_event = { id = mega_wars.79 days = 1 } }
@@ -22344,7 +22324,7 @@ character_event = {
 	}
 }
 #Rebel leader decides fate
-character_event  = {
+character_event = {
 	id = mega_wars.89
 	desc = "EVTDESCmega_wars.89"
 	picture = GFX_evt_judged_by_ruler
@@ -23158,7 +23138,7 @@ character_event  = {
 	}
 }
 #Inform spared
-letter_event  = {
+letter_event = {
 	id = mega_wars.90
 	desc = "EVTDESCmega_wars.90"
 
@@ -23172,7 +23152,7 @@ letter_event  = {
 	after = { hidden_tooltip = { diplomatic_immunity = no } }
 }
 #Inform imprisoned
-letter_event  = {
+letter_event = {
 	id = mega_wars.91
 	desc = "EVTDESCmega_wars.91"
 
@@ -23191,7 +23171,7 @@ letter_event  = {
 	after = { hidden_tooltip = { diplomatic_immunity = no } }
 }
 #Inform taken hostage
-letter_event  = {
+letter_event = {
 	id = mega_wars.92
 	desc = "EVTDESCmega_wars.92"
 
@@ -23210,7 +23190,7 @@ letter_event  = {
 	after = { hidden_tooltip = { diplomatic_immunity = no } }
 }
 #Inform executed
-letter_event  = {
+letter_event = {
 	id = mega_wars.93
 	desc = "EVTDESCmega_wars.93"
 
@@ -23245,7 +23225,7 @@ letter_event  = {
 	after = { hidden_tooltip = { diplomatic_immunity = no } }
 }
 #Inform rebel leader royal family flees
-character_event  = {
+character_event = {
 	id = mega_wars.94
 
 	is_triggered_only = yes
@@ -23528,7 +23508,7 @@ character_event  = {
 	}
 }
 #Inform realm
-letter_event  = {
+letter_event = {
 	id = mega_wars.95
 	desc = "EVTDESCmega_wars.95"
 
@@ -23545,12 +23525,12 @@ letter_event  = {
 	}
 }
 #Vassal is harbouring exiled pretender
-character_event  = {
+character_event = {
 	id = mega_wars.96
 	desc = "EVTDESCmega_wars.96"
 
 	only_independent = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		tier = EMPEROR
@@ -23660,7 +23640,7 @@ character_event  = {
 	}
 }
 #Inform lord of demand to hand over exile
-letter_event  = {
+letter_event = {
 	id = mega_wars.97
 	desc = "EVTDESCmega_wars.97"
 
@@ -23890,7 +23870,7 @@ letter_event  = {
 	}
 }
 #Inform King lord accepts
-letter_event  = {
+letter_event = {
 	id = mega_wars.98
 	desc = "EVTDESCmega_wars.98"
 
@@ -23906,7 +23886,7 @@ letter_event  = {
 	}
 }
 #Inform King lord rejects
-letter_event  = {
+letter_event = {
 	id = mega_wars.99
 	desc = "EVTDESCmega_wars.99"
 
@@ -23917,7 +23897,7 @@ letter_event  = {
 	}
 }
 #Claimant delcares war
-character_event  = {
+character_event = {
 	id = mega_wars.100
 	desc = "EVTDESCmega_wars.100"
 
@@ -24038,10 +24018,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_castellan
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_castellan } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_castellan } }
 			}
 		}
 		random_opinion_modifier_target = {
@@ -24054,10 +24033,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_chancellor
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_chancellor } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_chancellor } }
 			}
 		}
 		random_opinion_modifier_target = {
@@ -24070,10 +24048,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_marshal
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_marshal } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_marshal } }
 			}
 		}
 		random_opinion_modifier_target = {
@@ -24086,10 +24063,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_treasurer
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_treasurer } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_treasurer } }
 			}
 		}
 		random_opinion_modifier_target = {
@@ -24102,10 +24078,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_spymaster
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_spymaster } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_spymaster } }
 			}
 		}
 		random_opinion_modifier_target = {
@@ -24118,10 +24093,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_physician
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_learned } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_learned } }
 			}
 		}
 		random_opinion_modifier_target = {
@@ -24134,10 +24108,9 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				give_job_title = job_spiritual
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_priest } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_priest } }
 			}
 		}
 		# random_opinion_modifier_target = {
@@ -24192,7 +24165,7 @@ character_event = {
 					# }
 					# give_minor_title = title_master_of_ships_B
 				# }
-				# hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_ships } }
+				# hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_ships } }
 			# }
 		# }
 		random_opinion_modifier_target = {
@@ -24214,8 +24187,7 @@ character_event = {
 				limit = { ai = no }
 				letter_event = { id = mega_wars.102 tooltip = TOOLTIPmega_wars.101 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				if = {
 					limit = { has_dlc = "Zeus" }
 					hidden_tooltip = {
@@ -24240,7 +24212,7 @@ character_event = {
 					}
 					give_minor_title = title_high_admiral_B
 				}
-				hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_admiral } }
+				hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_admiral } }
 			}
 		}
 		#Advisors
@@ -24280,7 +24252,7 @@ character_event = {
 							PREV = { give_minor_title = title_councilmember_king }
 						}
 					}
-					hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_advisor } }
+					hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_advisor } }
 				}
 				random_opinion_modifier_target = {
 					limit = {
@@ -24307,7 +24279,7 @@ character_event = {
 							PREV = { give_minor_title = title_councilmember_emperor }
 						}
 					}
-					hidden_tooltip = { reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_advisor } }
+					hidden_tooltip = { reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_advisor } }
 				}
 			}
 		}
@@ -24495,17 +24467,17 @@ character_event = {
 						reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_commander }
 					}
 				}
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_castellan }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_marshal }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_learned }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_priest }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_ships }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_admiral }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_advisor }
-				reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_commander }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_castellan }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_marshal }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_learned }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_priest }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_ships }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_admiral }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_advisor }
+				reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_commander }
 			}
 		}
 	}
@@ -24526,49 +24498,49 @@ letter_event = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_castellan }
 			}
 			give_job_title = job_castellan
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_castellan } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_castellan } }
 		}
 		if = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_chancellor }
 			}
 			give_job_title = job_chancellor
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_chancellor } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_chancellor } }
 		}
 		if = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_marshal }
 			}
 			give_job_title = job_marshal
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_marshal } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_marshal } }
 		}
 		if = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_treasurer }
 			}
 			give_job_title = job_treasurer
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_treasurer } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_treasurer } }
 		}
 		if = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_spymaster }
 			}
 			give_job_title = job_spymaster
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_spymaster } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_spymaster } }
 		}
 		if = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_learned }
 			}
 			give_job_title = job_physician
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_learned } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_learned } }
 		}
 		if = {
 			limit = {
 				reverse_has_opinion_modifier = { who = FROM modifier = opinion_pre_mega_war_priest }
 			}
 			give_job_title = job_spiritual
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_priest } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_priest } }
 		}
 		# if = {
 			# limit = {
@@ -24606,7 +24578,7 @@ letter_event = {
 				# }
 				# give_minor_title = title_master_of_ships_B
 			# }
-			# hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_ships } }
+			# hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_ships } }
 		# }
 		if = {
 			limit = {
@@ -24644,7 +24616,7 @@ letter_event = {
 				}
 				give_minor_title = title_high_admiral_B
 			}
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_admiral } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_admiral } }
 		}
 		if = {
 			limit = {
@@ -24772,7 +24744,7 @@ letter_event = {
 					}
 				}
 			}
-			hidden_tooltip = { reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_advisor } }
+			hidden_tooltip = { reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_advisor } }
 		}
 		FROM = { letter_event = { id = mega_wars.103 tooltip = TOOLTIPmega_wars.102 } }
 	}
@@ -24782,16 +24754,16 @@ letter_event = {
 			letter_event = { id = mega_wars.103 tooltip = TOOLTIPBmega_wars.102 }
 		}
 		hidden_tooltip = {
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_castellan }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_chancellor }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_marshal }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_treasurer }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_spymaster }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_learned }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_priest }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_ships }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_admiral }
-			reverse_remove_opinion  = { who = FROM modifier = opinion_pre_mega_war_advisor }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_castellan }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_chancellor }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_marshal }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_treasurer }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_spymaster }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_learned }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_priest }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_ships }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_admiral }
+			reverse_remove_opinion = { who = FROM modifier = opinion_pre_mega_war_advisor }
 		}
 	}
 }
@@ -24827,7 +24799,7 @@ character_event = {
 	desc = EVTDESACmega_wars.105
 	picture = GFX_evt_war_planning
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	ai = no
 	only_independent = yes
 	war = yes
@@ -24903,7 +24875,7 @@ character_event = {
 				10 = {
 					modifier = {
 						factor = 0
-						OR =  {
+						OR = {
 							is_female = yes
 							is_feudal = no
 						}
@@ -25226,7 +25198,7 @@ character_event = {
 			}
 			modifier = {
 				factor = 2
-				NOT = { opinion = { who = FROM value =  -75 } }
+				NOT = { opinion = { who = FROM value = -75 } }
 			}
 		}
 		FROM = {

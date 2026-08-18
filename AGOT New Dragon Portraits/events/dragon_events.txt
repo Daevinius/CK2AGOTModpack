@@ -1787,7 +1787,7 @@ character_event = {
 		if = {
 			limit = { character = 77041 }
 			create_character = {
-				name = Дрогон
+				name = "Дрогон"
 				age = 0
 				culture = dragon_culture
 				religion = dragon_rel
@@ -1820,7 +1820,7 @@ character_event = {
 		if = {
 			limit = { character = 77041 }
 			create_character = {
-				name = Рейгаль
+				name = "Рейгаль"
 				age = 0
 				culture = dragon_culture
 				religion = dragon_rel
@@ -1850,7 +1850,7 @@ character_event = {
 		if = {
 			limit = { character = 77041 }
 			create_character = {
-				name = Визерион
+				name = "Визерион"
 				age = 0
 				culture = dragon_culture
 				religion = dragon_rel
@@ -1972,8 +1972,7 @@ character_event = {
 						dynasty = PREV
 					}
 				}
-				if = {
-					limit = { is_female = no }
+				else = {
 					ROOT = {
 						set_father = PREV
 						dynasty = PREV
@@ -1992,8 +1991,7 @@ character_event = {
 						set_mother = PREV
 					}
 				}
-				if = {
-					limit = { is_female = no }
+				else = {
 					ROOT = {
 						set_father = PREV
 						dynasty = PREV
@@ -3278,7 +3276,7 @@ character_event = {
 		random_friend = {
 			limit = {
 				can_use_dragon_abilities_trigger = yes
-				age = 16
+				is_adult = yes
 				is_ruler = no
 			}
 			character_event = { id = dragon.190 days = 2 }
@@ -3287,7 +3285,7 @@ character_event = {
 		random_friend = {
 			limit = {
 				can_use_dragon_abilities_trigger = yes
-				age = 16
+				is_adult = yes
 				is_playable = yes
 				OR = {
 					is_patrician = yes
@@ -3356,7 +3354,7 @@ character_event = {
 			random_friend = {
 				limit = {
 					can_use_dragon_abilities_trigger = yes
-					age = 16
+					is_adult = yes
 					independent = yes
 					ai = yes
 					war = no
@@ -8525,7 +8523,7 @@ character_event = {
 
 			modifier = {
 				factor = 0.5
-				NOT = { FROMFROM = { age = 16 } }
+				NOT = { FROMFROM = { is_adult = yes } }
 			}
 			modifier = {
 				factor = 0.5
@@ -9050,7 +9048,7 @@ character_event = {
 
 			modifier = {
 				factor = 1.33
-				NOT = { event_target:enemy_dragon_rider = { age = 16 } }
+				NOT = { event_target:enemy_dragon_rider = { is_adult = yes } }
 			}
 			modifier = {
 				factor = 1.33
@@ -13098,7 +13096,7 @@ character_event = {
 			# }
 
 		# }
-		#any_playable_ruler  = {
+		#any_playable_ruler = {
 		#	limit = {
 		#		ai = no
 		#	}
@@ -13149,7 +13147,7 @@ character_event = {
 			# }
 			# #dontescape
 			# 50 = {
-				# #any_playable_ruler  = {
+				# #any_playable_ruler = {
 				# #	limit = {
 				# #		ai = no
 				# #	}
@@ -16088,7 +16086,7 @@ character_event = {
 				tier = EMPEROR
 				is_feudal = yes
 				has_nickname = no
-				age = 16
+				is_adult = yes
 				is_female = no
 				NOT = {
 					any_playable_ruler = { has_nickname = the_king_who_knelt }
@@ -16585,8 +16583,7 @@ character_event = {
 			limit = { ai = no }
 			current_heir = { set_character_flag = banish_me }
 		}
-		if = {
-			limit = { ai = yes }
+		else = {
 			any_war = {
 				if = {
 					limit = {
@@ -17099,7 +17096,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -17760,7 +17757,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -23127,7 +23124,7 @@ character_event = {
 		else = {
 			random_playable_ruler = {
 				limit = {
-					age = 16
+					is_adult = yes
 					prisoner = no
 					is_incapable = no
 					demesne_size = 1

@@ -14,7 +14,7 @@ character_event = {
 	picture = GFX_evt_greatsept
 	#border = "GFX_event_normal_frame_religion"
 
-	is_triggered_only = yes # decision coronation
+	is_triggered_only = yes
 
 	desc = {
 		text = EVTDESCcoronation.1
@@ -484,7 +484,7 @@ letter_event = {
 		hidden_tooltip = {
 			any_realm_lord = {
 				limit = {
-					age = 16
+					is_adult = yes
 					NOT = { character = FROM }
 					NOT = { character = ROOT }
 					OR = {
@@ -659,37 +659,37 @@ letter_event = {
 		ai_chance = {
 			factor = 0.8
 
-			modifier  = {
+			modifier = {
 				factor = 3
 				dynasty = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 3
 				is_close_relative = FROM
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				opinion = { who = FROM value = 15 }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				opinion = { who = FROM value = 30 }
 			}
 
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = gregarious
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = hedonist
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = just
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = honorable
 			}
@@ -710,7 +710,7 @@ letter_event = {
 		ai_chance = {
 			factor = 0.2
 
-			modifier  = {
+			modifier = {
 				factor = 0
 				OR = {
 					opinion = { who = FROM value = 50 }
@@ -731,33 +731,33 @@ letter_event = {
 					}
 				}
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -15 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -30 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -45 } }
 			}
-			modifier  = {
+			modifier = {
 				factor = 2
 				NOT = { opinion = { who = FROM value = -60 } }
 			}
 
 
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = shy
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = arbitrary
 			}
-			modifier  = {
+			modifier = {
 				factor = 1.5
 				trait = ruthless
 			}

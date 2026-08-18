@@ -512,7 +512,7 @@ character_event = { #elijo champion
 				trait = skilled_warrior
 				trait = master_warrior
 			}
-			age = 16
+			is_adult = yes
 			is_ill = no
 			NOT = { has_severe_disability_trigger = yes }
 			OR = {
@@ -876,8 +876,7 @@ character_event = { #elijo champion
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -2058,8 +2057,7 @@ character_event = { #select champion
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -2872,7 +2870,7 @@ character_event = {
 	desc = "EVTDESCtrial_by_combat.120"
 	picture = "GFX_trial_by_combat"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_exiled
 
 	option = {
 		name = "EVTOPTAtrial_by_combat.120" #Death
@@ -3460,7 +3458,7 @@ character_event = {
    desc = "EVTDESCtrial_by_combat.125"
    picture = GFX_evt_lunatic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		clear_delayed_event = { id = trial.500 }
@@ -3513,8 +3511,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -3538,7 +3535,7 @@ character_event = {
 	desc = "EVTDESCtrial_by_combat.126"
 	picture = GFX_evt_judged_by_ruler
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		clr_character_flag = demmanded_trial_by_combat
@@ -3568,8 +3565,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -4038,7 +4034,7 @@ character_event = {
 	option = { # I will fight
 		name = "EVTOPTDtrial_by_combat.6"
 		trigger = {
-			age = 16
+			is_adult = yes
 			is_ill = no
 			NOT = { has_severe_disability_trigger = yes }
 			combat_rating = 10
@@ -4129,7 +4125,7 @@ character_event = {
 					}
 					host = {
 						any_courtier = {
-							age = 16
+							is_adult = yes
 							OR = {
 								is_female = no
 								female_get_masculine_event_trigger = yes
@@ -4170,7 +4166,7 @@ character_event = {
 					}
 					host = {
 						any_courtier = {
-							age = 16
+							is_adult = yes
 							OR = {
 								is_female = no
 								female_get_masculine_event_trigger = yes

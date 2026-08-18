@@ -1,0 +1,491 @@
+castle = {
+
+	ca_yiti_wall_q_6 = {
+		desc = ca_yiti_wall_q_6_desc
+		potential = {
+			region = world_yi_ti
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		upgrades_from = ca_wall_q_5
+		prerequisites = { ca_asoiaf_yiti_basevalue_6 }
+		gold_cost = 2000
+		build_time = 1460
+		fort_level = 2
+		levy_size = 0.2
+		garrison_size = 0.3
+		ai_creation_factor = 5
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_elephant_1 = {
+		desc = ca_culture_yiti_elephant_1_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_wall_5 }
+		upgrades_from = ca_culture_indian_4
+		gold_cost = 200
+		build_time = 365
+		war_elephants = -60
+		tax_income = 3
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_elephant_2 = {
+		desc = ca_culture_yiti_elephant_2_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_wall_5 }
+		upgrades_from = ca_culture_yiti_elephant_1
+		gold_cost = 400
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_crossbow_1 = {
+		desc = ca_culture_yiti_crossbow_1_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_wall_2 }
+		gold_cost = 200
+		build_time = 365
+		archers_offensive = 0.15
+		archers = 80
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_crossbow_2 = {
+		desc = ca_culture_yiti_crossbow_2_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_wall_3 }
+		upgrades_from = ca_culture_yiti_crossbow_1
+		gold_cost = 300
+		build_time = 365
+		archers_offensive = 0.15
+		archers = 100
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_crossbow_3 = {
+		desc = ca_culture_yiti_crossbow_3_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_wall_4 }
+		upgrades_from = ca_culture_yiti_crossbow_2
+		gold_cost = 500
+		build_time = 730
+		archers_offensive = 0.15
+		archers = 120
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_crossbow_4 = {
+		desc = ca_culture_yiti_crossbow_4_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_wall_5 }
+		upgrades_from = ca_culture_yiti_crossbow_3
+		gold_cost = 750
+		build_time = 730
+		archers_offensive = 0.15
+		archers = 150
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_fire_powder_1 = {
+		desc = ca_culture_yiti_fire_powder_1_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ca_asoiaf_slavepit_1 }
+			NOT = { has_building = ca_asoiaf_slavepit_2 }
+			NOT = { has_building = ca_asoiaf_slavepit_3 }
+			NOT = { has_building = ca_asoiaf_slavepit_4 }
+			NOT = { has_building = ca_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_culture_yiti_elephant_2 }
+		gold_cost = 750
+		build_time = 365
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 250
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_fire_powder_2 = {
+		desc = ca_culture_yiti_fire_powder_2_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ca_asoiaf_slavepit_1 }
+			NOT = { has_building = ca_asoiaf_slavepit_2 }
+			NOT = { has_building = ca_asoiaf_slavepit_3 }
+			NOT = { has_building = ca_asoiaf_slavepit_4 }
+			NOT = { has_building = ca_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_culture_yiti_elephant_2 }
+		upgrades_from = ca_culture_yiti_fire_powder_1
+		gold_cost = 1000
+		build_time = 365
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 500
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_fire_powder_3 = {
+		desc = ca_culture_yiti_fire_powder_3_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ca_asoiaf_slavepit_1 }
+			NOT = { has_building = ca_asoiaf_slavepit_2 }
+			NOT = { has_building = ca_asoiaf_slavepit_3 }
+			NOT = { has_building = ca_asoiaf_slavepit_4 }
+			NOT = { has_building = ca_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_culture_yiti_elephant_2 }
+		upgrades_from = ca_culture_yiti_fire_powder_2
+		gold_cost = 1500
+		build_time = 730
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 750
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_culture_yiti_fire_powder_4 = {
+		desc = ca_culture_yiti_fire_powder_4_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ca_asoiaf_slavepit_1 }
+			NOT = { has_building = ca_asoiaf_slavepit_2 }
+			NOT = { has_building = ca_asoiaf_slavepit_3 }
+			NOT = { has_building = ca_asoiaf_slavepit_4 }
+			NOT = { has_building = ca_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ca_culture_yiti_elephant_2 }
+		upgrades_from = ca_culture_yiti_fire_powder_3
+		gold_cost = 2000
+		build_time = 730
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 1000
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_shengan_castle = {
+		desc = ca_shengan_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_shengan_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 8
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+	ca_wudong_castle = {
+		desc = ca_wudong_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_wudong_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 4
+		knights = 50
+		light_cavalry = 200
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+	ca_furong_castle = {
+		desc = ca_furong_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_furong_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 5
+		levy_reinforce_rate = 0.2
+		tax_income = 3
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+	ca_changlu_castle = {
+		desc = ca_changlu_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_changlu_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 3.0
+		knights = 30
+		tax_income = 8
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+	ca_wangtian_castle = {
+		desc = ca_wangtian_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_wangtian_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 4
+		liege_prestige = 0.25
+		build_time_modifier = -0.2
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+	ca_mingqiu_castle = {
+		desc = ca_mingqiu_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_mingqiu_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 5.0
+		garrison_size = 0.3
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+	ca_anyang_castle = {
+		desc = ca_anyang_castle_desc
+		potential = {
+			FROMFROM = {
+				title = b_anyang_castle
+			}
+		}
+		#trigger = { always = no }
+		fort_level = 9
+		tax_income = 12
+		gold_cost = 400
+		build_time = 3650
+		ai_creation_factor = 110
+	}
+}
+
+city = {
+
+	ct_yiti_wall_q_6 = {
+		desc = ca_yiti_wall_q_6_desc
+		potential = {
+			region = world_yi_ti
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		upgrades_from = ct_wall_q_5
+		prerequisites = { ct_asoiaf_yiti_basevalue_6 }
+		gold_cost = 2000
+		build_time = 1460
+		fort_level = 2
+		tax_income = 6
+		garrison_size = 0.3
+		ai_creation_factor = 5
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_elephant_1 = {
+		desc = ca_culture_yiti_elephant_1_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_wall_5 }
+		upgrades_from = ct_culture_indian_4
+		gold_cost = 200
+		build_time = 365
+		war_elephants = -60
+		tax_income = 3
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_elephant_2 = {
+		desc = ca_culture_yiti_elephant_2_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_wall_5 }
+		upgrades_from = ct_culture_yiti_elephant_1
+		gold_cost = 400
+		build_time = 730
+		tax_income = 3
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_crossbow_1 = {
+		desc = ca_culture_yiti_crossbow_1_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_wall_2 }
+		gold_cost = 200
+		build_time = 365
+		archers_offensive = 0.15
+		archers = 80
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_crossbow_2 = {
+		desc = ca_culture_yiti_crossbow_2_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_wall_3 }
+		upgrades_from = ct_culture_yiti_crossbow_1
+		gold_cost = 300
+		build_time = 365
+		archers_offensive = 0.15
+		archers = 100
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_crossbow_3 = {
+		desc = ca_culture_yiti_crossbow_3_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_wall_4 }
+		upgrades_from = ct_culture_yiti_crossbow_2
+		gold_cost = 500
+		build_time = 730
+		archers_offensive = 0.15
+		archers = 120
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_crossbow_4 = {
+		desc = ca_culture_yiti_crossbow_4_desc
+		potential = {
+			culture_group = yi_ti_group
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_wall_5 }
+		upgrades_from = ct_culture_yiti_crossbow_3
+		gold_cost = 750
+		build_time = 730
+		archers_offensive = 0.15
+		archers = 150
+		ai_creation_factor = 100
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_fire_powder_1 = {
+		desc = ca_culture_yiti_fire_powder_1_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ct_asoiaf_slavepit_1 }
+			NOT = { has_building = ct_asoiaf_slavepit_2 }
+			NOT = { has_building = ct_asoiaf_slavepit_3 }
+			NOT = { has_building = ct_asoiaf_slavepit_4 }
+			NOT = { has_building = ct_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_culture_yiti_elephant_2 }
+		gold_cost = 1000
+		build_time = 365
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 250
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_fire_powder_2 = {
+		desc = ca_culture_yiti_fire_powder_2_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ct_asoiaf_slavepit_1 }
+			NOT = { has_building = ct_asoiaf_slavepit_2 }
+			NOT = { has_building = ct_asoiaf_slavepit_3 }
+			NOT = { has_building = ct_asoiaf_slavepit_4 }
+			NOT = { has_building = ct_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_culture_yiti_elephant_2 }
+		upgrades_from = ct_culture_yiti_fire_powder_1
+		gold_cost = 1500
+		build_time = 365
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 500
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_fire_powder_3 = {
+		desc = ca_culture_yiti_fire_powder_3_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ct_asoiaf_slavepit_1 }
+			NOT = { has_building = ct_asoiaf_slavepit_2 }
+			NOT = { has_building = ct_asoiaf_slavepit_3 }
+			NOT = { has_building = ct_asoiaf_slavepit_4 }
+			NOT = { has_building = ct_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_culture_yiti_elephant_2 }
+		upgrades_from = ct_culture_yiti_fire_powder_2
+		gold_cost = 2000
+		build_time = 730
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 750
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_culture_yiti_fire_powder_4 = {
+		desc = ca_culture_yiti_fire_powder_4_desc
+		potential = {
+			culture_group = yi_ti_group
+			FROM = { has_law = slavery_0 }
+			NOT = { has_building = ct_asoiaf_slavepit_1 }
+			NOT = { has_building = ct_asoiaf_slavepit_2 }
+			NOT = { has_building = ct_asoiaf_slavepit_3 }
+			NOT = { has_building = ct_asoiaf_slavepit_4 }
+			NOT = { has_building = ct_asoiaf_slavepit_5 }
+		}
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+		prerequisites = { ct_culture_yiti_elephant_2 }
+		upgrades_from = ct_culture_yiti_fire_powder_3
+		gold_cost = 2500
+		build_time = 730
+		light_infantry_morale = 0.125
+		light_infantry_offensive = 0.5
+		light_infantry = 1000
+		ai_creation_factor = 50
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+}

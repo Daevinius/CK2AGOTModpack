@@ -35,7 +35,7 @@ character_event = {
 	min_age = 5
 	max_age = 12
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	lacks_dlc = "Zeus"
 
@@ -400,7 +400,7 @@ character_event = {
 			limit = {
 				is_close_relative = ROOT
 				is_female = no
-				age = 16
+				is_adult = yes
 				is_alive = yes
 				is_incapable = no
 				NOT = { trait = bastard }
@@ -421,7 +421,7 @@ character_event = {
 			limit = {
 				NOT = { tier = BARON }
 				liege = {
-					age = 16
+					is_adult = yes
 					is_alive = yes
 					is_incapable = no
 				}
@@ -1264,7 +1264,7 @@ character_event = {
 	desc = "EVTDESCreeducation.7" #Getting Educated as a Courtier.
 	picture = "GFX_sansa"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 15
 	max_age = 17
 	lacks_dlc = "Zeus"
@@ -1418,7 +1418,7 @@ character_event = {
 	desc = "EVTDESCreeducation.8" #Getting Educated as a Steward.
 	picture = "GFX_crassen"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 15
 	max_age = 17
 	lacks_dlc = "Zeus"
@@ -1531,7 +1531,7 @@ character_event = {
 	desc = "EVTDESCreeducation.9" #Getting a Martial Education.
 	picture = "GFX_smith"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 15
 	max_age = 17
 	lacks_dlc = "Zeus"
@@ -1735,7 +1735,7 @@ character_event = {
 	desc = "EVTDESCreeducation.10" #Getting no education.
 	picture = "GFX_evt_noble_in_castle"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 15
 	max_age = 17
 	lacks_dlc = "Zeus"
@@ -1968,7 +1968,7 @@ character_event = {
 	desc = "EVTDESCreeducation.11"
 	picture = "GFX_oil_rik"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_childhood_pulse, on_adolescence_pulse
 	min_age = 9
 	max_age = 15
 	only_capable = yes
@@ -3019,7 +3019,7 @@ character_event = {
 character_event = {
 	id = reeducation.20
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adolescence
 	hide_window = yes
 	has_dlc = "Zeus"
 
@@ -3195,7 +3195,7 @@ character_event = {
 character_event = {
 	id = reeducation.23
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adolescence
 	hide_window = yes
 
 	trigger = {
@@ -3285,7 +3285,7 @@ character_event = {
 character_event = {
 	id = reeducation.25
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_childhood_pulse, on_adolescence_pulse
 	hide_window = yes
 	max_age = 13
 
@@ -3323,8 +3323,7 @@ character_event = {
 			limit = { is_ruler = yes }
 			save_event_target_as = liege
 		}
-		if = {
-			limit = { is_ruler = no }
+		else = {
 			liege = { save_event_target_as = liege }
 		}
 		event_target:liege = {

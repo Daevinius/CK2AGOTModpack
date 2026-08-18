@@ -414,7 +414,9 @@ character_event = {
 #		}
 #	}
 #
-#	mean_time_to_happen = { days = 1 }
+#	mean_time_to_happen = {
+#		days = 1
+#	}
 #
 #	option = {
 #		name = "Just so."
@@ -915,7 +917,7 @@ character_event = {
 					has_knighthood_religion_trigger = yes
 					NOT = { trait = knight }
 					NOT = { trait = squire }
-					age = 16
+					is_adult = yes
 				}
 				add_trait = knight
 				if = {
@@ -930,8 +932,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -967,7 +968,7 @@ character_event = {
 			}
 			if = {
 				limit = {
-					age = 16
+					is_adult = yes
 					age < 32
 				}
 				character_event = { id = combat_trait.9 days = 1 }
@@ -1023,7 +1024,7 @@ character_event = {
 			}
 			if = {
 				limit = {
-					age = 16
+					is_adult = yes
 					age < 32
 				}
 				character_event = { id = combat_trait.9 days = 1 }
@@ -1067,7 +1068,7 @@ character_event = {
 				has_knighthood_religion_trigger = yes
 				NOT = { trait = knight }
 				NOT = { trait = squire }
-				age = 16
+				is_adult = yes
 			}
 			random = {
 				chance = 20
@@ -1088,8 +1089,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -1105,7 +1105,7 @@ character_event = {
 				has_knighthood_religion_trigger = yes
 				NOT = { trait = knight }
 				NOT = { trait = squire }
-				age = 16
+				is_adult = yes
 			}
 			random = {
 				chance = 25
@@ -1126,8 +1126,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -1143,7 +1142,7 @@ character_event = {
 				has_knighthood_religion_trigger = yes
 				NOT = { trait = knight }
 				NOT = { trait = squire }
-				age = 16
+				is_adult = yes
 			}
 			random = {
 				chance = 50
@@ -1164,8 +1163,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -1181,7 +1179,7 @@ character_event = {
 				has_knighthood_religion_trigger = yes
 				NOT = { trait = knight }
 				NOT = { trait = squire }
-				age = 16
+				is_adult = yes
 			}
 			random = {
 				chance = 80
@@ -1202,8 +1200,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}

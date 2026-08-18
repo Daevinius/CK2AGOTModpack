@@ -89,7 +89,7 @@ character_event = {
 	desc = EVTDESC24502
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	only_men = yes
 	min_age = 15
@@ -189,7 +189,7 @@ character_event = {
 	desc = EVTDESC24505
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		death_murder_unknown_trigger = yes
@@ -316,7 +316,7 @@ character_event = {
 				NOT = { character = ROOT }
 				NOT = { character = FROM }
 				prisoner = no
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				NOT = { trait = dragon }
 				NOT = { trait = white_walker }
@@ -349,7 +349,7 @@ character_event = {
 				NOT = { character = ROOT }
 				NOT = { character = FROM }
 				prisoner = no
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				NOT = { trait = dragon }
 				NOT = { trait = white_walker }
@@ -382,7 +382,7 @@ character_event = {
 				NOT = { character = ROOT }
 				NOT = { character = FROM }
 				prisoner = no
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				NOT = { trait = dragon }
 				NOT = { trait = white_walker }
@@ -535,7 +535,7 @@ character_event = {
 	desc = EVTDESC24510
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		OR = {
@@ -654,7 +654,7 @@ character_event = {
 	picture = GFX_evt_ironthrone
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	major = yes
 
 	only_independent = yes
@@ -708,7 +708,7 @@ character_event = {
 	desc = EVTDESCmourning.20
 	picture = GFX_evt_death
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	min_age = 50
 	prisoner = no
@@ -839,7 +839,7 @@ character_event = {
 		tooltip_info = lustful
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				ai = yes
 
 				root_attraction_trigger = yes

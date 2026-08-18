@@ -9,7 +9,7 @@ character_event = {
 	id = 250277
 	picture = "GFX_evt_valyrian_steel"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	desc = {
 		text = EVTDESC250277
@@ -75,7 +75,7 @@ character_event = {
 	desc = "EVTDESC250278"
 	picture = "GFX_evt_valyrian_steel"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_won
 	only_playable = yes
 
 	trigger = {
@@ -468,7 +468,7 @@ character_event = {
 	desc = "EVTDESC250279"
 	picture = "GFX_evt_valyrian_steel"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_lost
 
 	trigger = {
 		any_artifact = {
@@ -644,7 +644,7 @@ character_event = {
 			}
 			random_dynasty_member = {
 				limit = {
-					age = 16
+					is_adult = yes
 					is_close_relative = ROOT
 					is_female = no
 					prisoner = no
@@ -939,8 +939,7 @@ character_event = {
 						limit = { is_female = no }
 						add_trait = seducer
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						add_trait = seductress
 					}
 				}
@@ -4923,7 +4922,7 @@ character_event = {
 character_event = {
 	id = valyrian_steel.998
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	hide_window = yes
 
 	trigger = {
@@ -5517,6 +5516,56 @@ character_event = {
 			limit = { trait = oblivion }
 			add_artifact = oblivion
 			remove_trait = oblivion
+		}
+		if = {
+			limit = { trait = mercy }
+			add_artifact = mercy
+			remove_trait = mercy
+		}
+		if = {
+			limit = { trait = loyalty }
+			add_artifact = loyalty
+			remove_trait = loyalty
+		}
+		if = {
+			limit = { trait = grey_wanderer }
+			add_artifact = grey_wanderer
+			remove_trait = grey_wanderer
+		}
+		if = {
+			limit = { trait = swiftend }
+			add_artifact = swiftend
+			remove_trait = swiftend
+		}
+		if = {
+			limit = { trait = sundown }
+			add_artifact = sundown
+			remove_trait = sundown
+		}
+		if = {
+			limit = { trait = moons_kiss }
+			add_artifact = moons_kiss
+			remove_trait = moons_kiss
+		}
+		if = {
+			limit = { trait = wavecarver }
+			add_artifact = wavecarver
+			remove_trait = wavecarver
+		}
+		if = {
+			limit = { trait = curtail }
+			add_artifact = curtail
+			remove_trait = curtail
+		}
+		if = {
+			limit = { trait = righteousness }
+			add_artifact = righteousness
+			remove_trait = righteousness
+		}
+		if = {
+			limit = { trait = scorpion }
+			add_artifact = scorpion
+			remove_trait = scorpion
 		}
 		new_artifact = {
 			set_artifact_flag = heirloom_@PREV

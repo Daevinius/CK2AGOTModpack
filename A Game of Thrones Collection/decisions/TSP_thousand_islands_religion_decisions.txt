@@ -1,0 +1,129 @@
+decisions = {
+	create_fish_gods_church = {
+#		only_playable = yes
+		is_high_prio = yes
+
+		potential = {
+			religion = fish_gods
+			OR = {
+				tier = COUNT
+				tier = DUKE
+				tier = KING
+				tier = EMPEROR
+			}
+			NOT = { is_title_active = d_thousand_islands_rel_head }
+			prisoner = no
+			is_incapable = no
+		}
+
+		allow = {
+			OR = {
+				has_landed_title = k_great_fish_dominion
+				has_landed_title = e_dagonos
+				AND = {
+					tier = EMPEROR
+					num_of_holy_sites = 3
+				}
+				realm_size = 100
+				num_of_holy_sites = 5
+				AND = {
+					tier = KING
+					religion_authority = 1
+				}
+			}
+			OR = {
+				owns = 834 # The Thousand Islands
+				any_realm_lord = {
+					owns = 834 # The Thousand Islands
+				}
+			}
+			religion = fish_gods
+			age = 16
+			prisoner = no
+			NOT = { trait = cynical }
+			piety = 1000
+		}
+
+		effect = {
+			activate_title = {
+				title = d_thousand_islands_rel_head
+				status = yes
+			}
+			hidden_tooltip = {
+				create_random_priest = {
+					culture = islander
+					religion = fish_gods
+					dynasty = none
+					random_traits = yes
+				}
+				new_character = {
+					remove_trait = cynical
+					remove_trait = weak
+					add_trait = fishy
+					add_trait = celibate
+					add_trait = strong
+					add_trait = shrewd
+					add_trait = erudite
+					add_trait = ruthless
+					add_trait = zealous
+					d_thousand_islands_rel_head = {
+						grant_title = PREV
+						set_government_type = theocracy_government
+					}
+					wealth = 1000
+					opinion = {
+						who = ROOT
+						modifier = opinion_creator_of_rel_heal
+					}
+				}
+
+				religion_authority = {
+					modifier = authority_strengthened
+					years = 20
+				}
+			}
+			hidden_tooltip = {
+				d_thousand_islands_rel_head = {
+					set_government_type = theocracy_government
+					succession = open_elective
+				}
+			}
+			narrative_event = { id = TSP_1KI.1 }
+			piety = 1000
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	fish_gods_religion_head_make_theocracy = {
+		potential = {
+			OR = {
+				has_landed_title = d_thousand_islands_rel_head
+				controls_religion = fish_gods
+			}
+			religion = fish_gods
+			is_title_active = d_thousand_islands_rel_head
+			ai = yes
+		}
+		allow = {
+			age = 14
+			controls_religion = fish_gods
+			has_landed_title = d_thousand_islands_rel_head
+			NOT = { government = theocracy_government }
+			NOT = { trait = fishy }
+		}
+		effect = {
+			set_government_type = theocracy_government
+			set_character_flag = has_forced_fish_gods_theocracy
+			set_character_flag = taken_fishy_rel_head_set
+			add_trait = fishy
+			religion = fish_gods
+			succession = succ_open_elective
+			prestige = 15
+			remove_spouse = spouse
+			recalc_succession = yes
+			character_event = { id = TSP_1K_island_fix.4 }
+		}
+	}
+}

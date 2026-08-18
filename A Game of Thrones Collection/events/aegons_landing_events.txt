@@ -293,7 +293,7 @@ narrative_event = {
 							}
 							random_realm_character = {
 								limit = {
-									age = 16
+									is_adult = yes
 									age < 30
 									is_female = no
 									is_ruler = no
@@ -1614,7 +1614,7 @@ narrative_event = {
 				if = {
 					limit = {
 						is_female = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = maester }
 					}
 					knight_character_effect = yes
@@ -1625,7 +1625,7 @@ narrative_event = {
 					if = {
 						limit = {
 							is_female = no
-							age = 16
+							is_adult = yes
 							NOT = { trait = maester }
 						}
 						knight_character_effect = yes
@@ -1638,7 +1638,7 @@ narrative_event = {
 				if = {
 					limit = {
 						is_female = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = maester }
 					}
 					knight_character_effect = yes
@@ -1839,6 +1839,8 @@ character_event = {
 	desc = "EVTDESCaegons_landing.7"
 	picture = "GFX_evt_greatsept"
 
+	is_triggered_only = yes # on_five_year_pulse
+
 	only_independent = yes
 	religion = the_seven
 
@@ -1870,10 +1872,6 @@ character_event = {
 	}
 
 	immediate = { set_character_flag = great_sept_decision }
-
-	mean_time_to_happen = {
-		years = 5
-	}
 
 	option = {
 		name = "EVTOPTAaegons_landing.7" #Yes!
@@ -2540,7 +2538,7 @@ narrative_event = {
 			limit = { ai = yes }
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					is_female = no
 					NOT = { dynasty = ROOT }
 					can_press_claims_trigger = yes
@@ -2885,7 +2883,7 @@ narrative_event = {
 			limit = { ai = yes }
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					is_female = no
 					NOT = { dynasty = ROOT }
 					can_press_claims_trigger = yes
@@ -3058,9 +3056,9 @@ narrative_event = {
 					c_bywater = {
 						holder_scope = { set_defacto_liege = PREVPREV }
 					}
-					c_wendwater = {
-						holder_scope = { set_defacto_liege = PREVPREV }
-					}
+				#	c_wendwater = {
+				#		holder_scope = { set_defacto_liege = PREVPREV }
+				#	}
 					d_masseys_hook = {
 						holder_scope = { set_defacto_liege = PREVPREV }
 					}
@@ -3119,7 +3117,7 @@ narrative_event = {
 			limit = { ai = yes }
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					is_female = no
 					NOT = { dynasty = ROOT }
 					can_press_claims_trigger = yes
@@ -4693,7 +4691,13 @@ character_event = {
 	desc = "EVTDESCaegons_landing.10"
 	picture = GFX_KINGS_LANDING
 
+	is_triggered_only = yes
+
 	only_independent = yes
+	only_capable = yes
+	in_command = no
+	prisoner = no
+	war = no
 
 	trigger = {
 		has_landed_title = e_iron_throne
@@ -4706,11 +4710,11 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 15
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 0.15
+			factor = 6.67
 			OR = {
 				had_global_flag = { flag = KL_red_keep_1 days = 10000 }
 				had_global_flag = { flag = KL_red_keep_2 days = 10000 }
@@ -4719,7 +4723,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2
 			OR = {
 				had_global_flag = { flag = KL_red_keep_1 days = 6500 }
 				had_global_flag = { flag = KL_red_keep_2 days = 6500 }
@@ -4728,7 +4732,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.33
 			OR = {
 				had_global_flag = { flag = KL_red_keep_1 days = 5475 }
 				had_global_flag = { flag = KL_red_keep_2 days = 5475 }
@@ -4737,55 +4741,55 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.25
 			trait = dragon_rider
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			stewardship < 4
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			stewardship < 7
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 12
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 18
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 21
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			job_treasurer = { stewardship < 9 }
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			job_treasurer = { stewardship < 12 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 16 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 18 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 20 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 22 }
 		}
 	}
@@ -4870,7 +4874,13 @@ character_event = {
 	desc = "EVTDESCaegons_landing.11"
 	picture = GFX_KINGS_LANDING
 
+	is_triggered_only = yes
+
 	only_independent = yes
+	only_capable = yes
+	in_command = no
+	prisoner = no
+	war = no
 
 	trigger = {
 		has_landed_title = e_iron_throne
@@ -4883,11 +4893,11 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 15
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 0.15
+			factor = 6.67
 			OR = {
 				had_global_flag = { flag = KL_fortifications_1 days = 10000 }
 				had_global_flag = { flag = KL_fortifications_2 days = 10000 }
@@ -4896,7 +4906,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2
 			OR = {
 				had_global_flag = { flag = KL_fortifications_1 days = 6500 }
 				had_global_flag = { flag = KL_fortifications_2 days = 6500 }
@@ -4905,7 +4915,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.33
 			OR = {
 				had_global_flag = { flag = KL_fortifications_1 days = 5475 }
 				had_global_flag = { flag = KL_fortifications_2 days = 5475 }
@@ -4914,55 +4924,55 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.25
 			trait = dragon_rider
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			stewardship < 4
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			stewardship < 7
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 12
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 18
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 21
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			job_treasurer = { stewardship < 9 }
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			job_treasurer = { stewardship < 12 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 16 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 18 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 20 }
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			job_treasurer = { stewardship = 22 }
 		}
 	}
@@ -5112,7 +5122,13 @@ character_event = {
 	desc = "EVTDESCaegons_landing.12"
 	picture = GFX_KINGS_LANDING
 
+	is_triggered_only = yes
+
 	only_independent = yes
+	only_capable = yes
+	in_command = no
+	prisoner = no
+	war = no
 
 	trigger = {
 		has_landed_title = e_iron_throne
@@ -5124,11 +5140,11 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = {
-		years = 15
+	weight_multiplier = {
+		days = 1
 
 		modifier = {
-			factor = 0.15
+			factor = 6.67
 			OR = {
 				had_global_flag = { flag = KL_expand_navy_1 days = 10000 }
 				had_global_flag = { flag = KL_expand_navy_2 days = 10000 }
@@ -5137,7 +5153,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.5
+			factor = 2
 			OR = {
 				had_global_flag = { flag = KL_expand_navy_1 days = 6500 }
 				had_global_flag = { flag = KL_expand_navy_2 days = 6500 }
@@ -5146,7 +5162,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.75
+			factor = 1.33
 			OR = {
 				had_global_flag = { flag = KL_expand_navy_1 days = 5475 }
 				had_global_flag = { flag = KL_expand_navy_2 days = 5475 }
@@ -5155,35 +5171,35 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.25
 			trait = dragon_rider
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			stewardship < 4
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			stewardship < 7
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 12
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 15
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 18
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			stewardship = 21
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			any_courtier_or_vassal = {
 				OR = {
 					has_minor_title = title_high_admiral
@@ -5193,7 +5209,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 1.1
+			factor = 0.9
 			any_courtier_or_vassal = {
 				OR = {
 					has_minor_title = title_high_admiral
@@ -5203,7 +5219,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			any_courtier_or_vassal = {
 				OR = {
 					has_minor_title = title_high_admiral
@@ -5213,7 +5229,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			any_courtier_or_vassal = {
 				OR = {
 					has_minor_title = title_high_admiral
@@ -5223,7 +5239,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			any_courtier_or_vassal = {
 				OR = {
 					has_minor_title = title_high_admiral
@@ -5233,7 +5249,7 @@ character_event = {
 			}
 		}
 		modifier = {
-			factor = 0.9
+			factor = 1.11
 			any_courtier_or_vassal = {
 				OR = {
 					has_minor_title = title_high_admiral
@@ -5725,15 +5741,15 @@ character_event = {
 				add_building = ca_asoiaf_crown_basevalue_2
 				set_name = B_AEGONFORT
 			}
-			c_kings_landing = {
+			c_kl_city = {
 				location = {
 					build_holding = {
-					   title = b_kings_landing
+					   title = b_kl_flea_bottom
 					   type = city
 					   holder = FROM
 					}
 					hidden_tooltip = {
-						b_kings_landing = {
+						b_kl_flea_bottom = {
 							add_building = ct_asoiaf_crown_basevalue_1
 							add_building = ct_asoiaf_crown_basevalue_2
 						}

@@ -1,0 +1,257 @@
+decisions = {
+
+	create_k_the_grey_wastes = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			is_ruler = yes
+			trait = grey_lander
+			k_the_grey_wastes = { has_holder = no }
+			NOT = { higher_tier_than = DUKE }
+		}
+
+		allow = {
+			custom_tooltip = {
+				text = TOOLTIPINDEPENDENTCONDITION
+				hidden_tooltip = {
+					independent = yes
+					primary_title = { NOT = { check_variable = { which = "de_facto_empire" value = 1 } } }
+				}
+			}
+			prestige = 750
+			trait = grey_lander
+			custom_tooltip = {
+				text = TOOLTIPISHIGHLORDTIER
+				tier = DUKE
+			}
+			war = no
+			demesne_size = 1
+			num_of_count_titles_in_realm = 10
+			prisoner = no
+			is_incapable = no
+			capital_scope = { region = world_wastes }
+			NOT = { is_inaccessible_trigger = yes }
+		}
+
+		effect = {
+			hidden_tooltip = { activate_title = { status = yes title = k_the_grey_wastes } }
+			prestige = -100
+			create_bloodline = {
+				type = waste_king
+				}
+			primary_title = {
+				show_scope_change = no
+				k_the_grey_wastes = {
+					hidden_tooltip = {
+						copy_title_laws = PREV
+					}
+					gain_title = ROOT
+					ROOT = {
+						recalc_succession = yes
+						if = {
+							limit = { ai = no }
+							chronicle = {
+								entry = CHRONICLE_CREATE_KINGDOM
+								picture = GFX_evt_coronation
+							}
+						}
+					}
+					e_rebels = {
+						persistent_event_target:chronicle_player = {
+							if = {
+								limit = {
+									NOT = { character = ROOT }
+									OR = {
+										dynasty = ROOT
+										is_liege_or_above = ROOT
+										capital_scope = { region = world_yi_ti }
+									}
+								}
+								chronicle = {
+									entry = CHRONICLE_CREATE_KINGDOM
+									portrait = [Root.GetID]
+								}
+							}
+						}
+					}
+				}
+			}
+			hidden_tooltip = { character_event = { id = dynamic_coa.1 days = 1 } } #check coas
+		}
+
+		ai_will_do = {
+			factor = 100000
+		}
+	}
+
+	claim_lion_avatar = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			trait = grey_lander
+			religion = lion_night
+			is_ruler = yes
+			tier = KING
+			independent = yes
+			NOT = { has_character_flag = lion_avatar1 }
+			is_nomadic = no
+		}
+		allow = {
+			prestige = 5000
+			piety = 1000
+			war = no
+			prisoner = no
+			has_regent = no
+			NOT = { is_inaccessible_trigger = yes }
+			NOT = { trait = craven }
+			NOT = { trait = content }
+			capital_scope = { province_id = 818 }
+			}
+		effect = {
+			create_bloodline = {
+				type = avatar_lion
+				}
+			set_character_flag = lion_avatar1
+			character_event = { id = greywaste.10 tooltip = TOOLTIPgreywaste.10 }
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	lion_avatar_army = {
+		is_high_prio = yes
+		only_independent = yes
+		potential = {
+			trait = lion_avatar
+			is_ruler = yes
+			tier = KING
+			independent = yes
+			NOT = { has_character_modifier = called_warriors1 }
+			is_nomadic = no
+		}
+		allow = {
+			OR = {
+				NOT = { has_character_flag = 6_month_lion_cooldown }
+				had_character_flag = { flag = 6_month_lion_cooldown days = 182 }
+			}
+			trait = lion_avatar
+			prestige = 500
+				}
+		effect = {
+			prestige = -500
+			character_event = { id = greywaste.11 tooltip = TOOLTIPgreywaste.11 }
+			clr_character_flag = 6_month_lion_cooldown
+			set_character_flag = 6_month_lion_cooldown
+		}
+		ai_check_interval = 3
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	power_of_avatar = {
+		is_high_prio = yes
+		only_playable = yes
+		potential = {
+			trait = lion_avatar
+			trait = grey_lander
+			NOT = {
+				has_global_flag = forts_destroyed
+			}
+		}
+		allow = {
+		}
+		effect = {
+			prestige = 5000
+			hidden_tooltip = {
+			set_global_flag = forts_destroyed
+			narrative_event = { id = greywaste.22 }
+			}
+		 820 = {
+				b_golden_fort = {
+					remove_building = ca_five_forts
+					remove_building = ca_asoiaf_yiti_basevalue_1
+					remove_building = ca_asoiaf_yiti_basevalue_2
+					remove_building = ca_asoiaf_yiti_basevalue_3
+					remove_building = ca_asoiaf_yiti_basevalue_4
+					remove_building = ca_asoiaf_yiti_basevalue_5
+					remove_building = ca_asoiaf_yiti_basevalue_6
+				}
+			}
+		 1625 = {
+				b_black_fort = {
+					remove_building = ca_five_forts
+					remove_building = ca_asoiaf_yiti_basevalue_1
+					remove_building = ca_asoiaf_yiti_basevalue_2
+					remove_building = ca_asoiaf_yiti_basevalue_3
+					remove_building = ca_asoiaf_yiti_basevalue_4
+					remove_building = ca_asoiaf_yiti_basevalue_5
+					remove_building = ca_asoiaf_yiti_basevalue_6
+				}
+			}
+		 1626 = {
+				b_lion_fort = {
+					remove_building = ca_five_forts
+					remove_building = ca_asoiaf_yiti_basevalue_1
+					remove_building = ca_asoiaf_yiti_basevalue_2
+					remove_building = ca_asoiaf_yiti_basevalue_3
+					remove_building = ca_asoiaf_yiti_basevalue_4
+					remove_building = ca_asoiaf_yiti_basevalue_5
+					remove_building = ca_asoiaf_yiti_basevalue_6
+				}
+			}
+		 1627 = {
+				b_east_fort = {
+					remove_building = ca_five_forts
+					remove_building = ca_asoiaf_yiti_basevalue_1
+					remove_building = ca_asoiaf_yiti_basevalue_2
+					remove_building = ca_asoiaf_yiti_basevalue_3
+					remove_building = ca_asoiaf_yiti_basevalue_4
+					remove_building = ca_asoiaf_yiti_basevalue_5
+					remove_building = ca_asoiaf_yiti_basevalue_6
+				}
+			}
+		 1628 = {
+				b_bleeding_fort = {
+					remove_building = ca_five_forts
+					remove_building = ca_asoiaf_yiti_basevalue_1
+					remove_building = ca_asoiaf_yiti_basevalue_2
+					remove_building = ca_asoiaf_yiti_basevalue_3
+					remove_building = ca_asoiaf_yiti_basevalue_4
+					remove_building = ca_asoiaf_yiti_basevalue_5
+					remove_building = ca_asoiaf_yiti_basevalue_6
+				}
+			}
+			if = {
+				limit = { ai = no }
+				chronicle = {
+					entry = CHRONICLE_FORTS_DESTROYED
+					picture = "GFX_evt_wildlings"
+				}
+			}
+			e_rebels = {
+				persistent_event_target:chronicle_player = {
+					if = {
+						limit = {
+							NOT = { character = ROOT }
+							OR = {
+								dynasty = ROOT
+								is_liege_or_above = ROOT
+								waste_culture_trigger = yes
+								trait = grey_lander
+								culture_group = yi_ti_group
+							}
+						}
+						chronicle = {
+							entry = CHRONICLE_FORTS_DESTROYED
+							portrait = [Root.GetID]
+						}
+					}
+				}
+			}
+		}
+		ai_check_interval = 4
+	}
+}

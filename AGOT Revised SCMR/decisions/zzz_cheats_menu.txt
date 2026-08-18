@@ -364,7 +364,7 @@ targeted_decisions = {
 		    NOR = {
 				same_sex = FROM
 				is_consort = FROM
-				#any_spouse = { character = from }
+				#any_spouse = { character = FROM }
 			}
 		}
 		allow = {
@@ -628,15 +628,20 @@ targeted_decisions = {
 			has_character_flag = show_self_relation
 		}
 		potential = {
-		    NOT = { graphical_culture = FROM }
+			gfx_culture_scope = {
+				NOT = { graphical_culture = FROM }
+			}
 		}
 		allow = {
 			always = yes
 		}
 		effect = {
-			set_graphical_culture = FROM
+			FROM = {
+				gfx_culture_scope = {
+					ROOT = { set_graphical_culture = PREV }
+				}
+			}
 		}
-
 	}
 
 	scmr_convert_religion_1 = {
@@ -733,8 +738,8 @@ targeted_decisions = {
 		potential = {
 		    ai = yes
 			FROM = {
-				NOT = {
-					graphical_culture = ROOT
+				gfx_culture_scope = {
+					NOT = { graphical_culture = ROOT }
 				}
 			}
 		}
@@ -742,8 +747,8 @@ targeted_decisions = {
 			always = yes
 		}
 		effect = {
-			FROM = {
-				set_graphical_culture = ROOT
+			gfx_culture_scope = {
+				FROM = { set_graphical_culture = PREV }
 			}
 		}
 
@@ -771,17 +776,12 @@ targeted_decisions = {
 			if = {
                 limit = {
                     is_female = no
-                    has_dlc = "Holy Fury"
                 }
                 create_bloodline = {
 					type = immortal_bloodline_01
                 }
             }
-            if = {
-                limit = {
-                    is_female = yes
-                    has_dlc = "Holy Fury"
-                }
+            else = {
                 create_bloodline = {
                     type = immortal_bloodline_01
                     inheritance = matrilineal
@@ -1525,7 +1525,7 @@ targeted_decisions = {
 				}
 				prisoner = no
 			}
-			imprison = from
+			imprison = FROM
 		}
 
 	}
@@ -1561,14 +1561,14 @@ targeted_decisions = {
 			has_character_flag = show_politic_relation
 		}
 		potential = {
-            NOT = { is_allied_with = from }
+            NOT = { is_allied_with = FROM }
 			is_ruler = yes
 		}
 		allow = {
 			always = yes
 		}
 		effect = {
-			add_alliance = { who = from years = 10 }
+			add_alliance = { who = FROM years = 10 }
 		}
 
 	}
@@ -1583,13 +1583,13 @@ targeted_decisions = {
 			has_character_flag = show_politic_relation
 		}
 		potential = {
-            is_allied_with = from
+            is_allied_with = FROM
 		}
 		allow = {
 			always = yes
 		}
 		effect = {
-			break_alliance = from
+			break_alliance = FROM
 		}
 
 	}
@@ -1649,7 +1649,7 @@ targeted_decisions = {
 		    ai = yes
 		}
 		allow = {
-			NOT = { any_spouse = { character = from } }
+			NOT = { any_spouse = { character = FROM } }
 		}
 		effect = {
 			FROM = {
@@ -1917,16 +1917,14 @@ targeted_decisions = {
 			if = {
 				limit = {
 					FROM = {
-						NOT = {
-							is_female = yes
-						}
+						is_female = no
 					}
 				}
 				if = {
 					limit = {
 						real_father = { character = FROM }
 					}
-					father_even_if_dead = { ROOT = { set_real_father = prev } }
+					father_even_if_dead = { ROOT = { set_real_father = PREV } }
 					set_mother = 0
 				}
 				set_father = FROM
@@ -2294,9 +2292,7 @@ targeted_decisions = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = {
-							is_female = yes
-						}
+						is_female = no
 					}
 				}
 				FROM = {
@@ -2462,21 +2458,21 @@ targeted_decisions = {
 					clr_character_flag = cheats_enabled
 					clear_wealth = PREV
 					any_artifact = {
-						transfer_artifact = { from = FROM to = root }
+						transfer_artifact = { from = FROM to = ROOT }
 					}
-					abdicate_to = root
+					abdicate_to = ROOT
 				}
 				if = {
 					limit = {
 						is_father_real_father = yes
 					}
-					father_even_if_dead = { ROOT = { dynasty = prev } }
+					father_even_if_dead = { ROOT = { dynasty = PREV } }
 				}
 				if = {
 					limit = {
 						was_conceived_a_bastard = yes
 					}
-					mother_even_if_dead = { ROOT = { dynasty = prev } }
+					mother_even_if_dead = { ROOT = { dynasty = PREV } }
 				}
 				if = {
 					limit = {
@@ -2571,7 +2567,7 @@ targeted_decisions = {
 		}
 		effect = {
 			any_owned_bloodline = {
-				add_bloodline_member = from
+				add_bloodline_member = FROM
 			}
 		}
 	}
@@ -2619,7 +2615,7 @@ targeted_decisions = {
 			}
 			current_heir = {
 				any_artifact = {
-					transfer_artifact = { from = root to = prev }
+					transfer_artifact = { from = ROOT to = PREV }
 				}
 			}
 			death = {
@@ -2792,7 +2788,7 @@ targeted_decisions = {
 			any_character = {
 				has_character_flag = mind_controlled
 				NOT = {
-					religion = root
+					religion = ROOT
 				}
 			}
 		}
@@ -2801,7 +2797,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				unsafe_religion = root
+				unsafe_religion = ROOT
 			}
 		}
 
@@ -2823,7 +2819,7 @@ targeted_decisions = {
 			any_character = {
 				has_character_flag = mind_controlled
 				has_secret_religion = yes
-				NOT = { religion = { target = root target_type = secret } }
+				NOT = { religion = { target = ROOT target_type = secret } }
 			}
 		}
 		effect = {
@@ -2831,7 +2827,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				set_secret_religion = root
+				set_secret_religion = ROOT
 			}
 		}
 
@@ -2853,7 +2849,7 @@ targeted_decisions = {
 			any_character = {
 				has_character_flag = mind_controlled
 				NOT = {
-					culture = root
+					culture = ROOT
 				}
 			}
 		}
@@ -2862,7 +2858,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				culture = root
+				culture = ROOT
 			}
 		}
 
@@ -2884,7 +2880,7 @@ targeted_decisions = {
 			any_character = {
 				has_character_flag = mind_controlled
 				NOT = {
-					graphical_culture = root
+					graphical_culture = ROOT
 				}
 			}
 		}
@@ -2893,7 +2889,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				set_graphical_culture = root
+				set_graphical_culture = ROOT
 			}
 		}
 
@@ -2910,13 +2906,13 @@ targeted_decisions = {
 		}
 		potential = {
             ai = yes
-			age = 16
+			is_adult = yes
 		}
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-				age = 16
-				NOT = { is_lover = root }
+				is_adult = yes
+				NOT = { is_lover = ROOT }
 				OR = {
 					AND = {
 						is_female = no
@@ -2938,7 +2934,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				add_lover = root
+				add_lover = ROOT
 			}
 		}
 
@@ -2960,7 +2956,7 @@ targeted_decisions = {
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-				is_lover = root
+				is_lover = ROOT
 			}
 		}
 		effect = {
@@ -2968,7 +2964,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				remove_lover = root
+				remove_lover = ROOT
 			}
 		}
 
@@ -2990,7 +2986,7 @@ targeted_decisions = {
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-				NOT = { is_friend = root }
+				NOT = { is_friend = ROOT }
 			}
 		}
 		effect = {
@@ -2998,7 +2994,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				add_friend = root
+				add_friend = ROOT
 			}
 		}
 
@@ -3020,7 +3016,7 @@ targeted_decisions = {
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-				is_friend = root
+				is_friend = ROOT
 			}
 		}
 		effect = {
@@ -3028,7 +3024,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				remove_friend = root
+				remove_friend = ROOT
 			}
 		}
 
@@ -3050,7 +3046,7 @@ targeted_decisions = {
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-				NOT = { is_rival = root }
+				NOT = { is_rival = ROOT }
 			}
 		}
 		effect = {
@@ -3058,7 +3054,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				add_rival = root
+				add_rival = ROOT
 			}
 		}
 
@@ -3080,7 +3076,7 @@ targeted_decisions = {
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-				is_rival = root
+				is_rival = ROOT
 			}
 		}
 		effect = {
@@ -3088,7 +3084,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				remove_rival = root
+				remove_rival = ROOT
 			}
 		}
 
@@ -3111,9 +3107,9 @@ targeted_decisions = {
 		allow = {
 			any_character = {
 				has_character_flag = mind_controlled
-                higher_tier_than = root
+                higher_tier_than = ROOT
                 NOT = {
-					is_liege_of = root
+					is_liege_of = ROOT
 				}
 			}
 		}
@@ -3157,7 +3153,7 @@ targeted_decisions = {
 				ROOT = {
 					abdicate_to = PREV
 					any_artifact = {
-						transfer_artifact = { from = root to = prevprev }
+						transfer_artifact = { from = ROOT to = PREVPREV }
 					}
 				}
 			}
@@ -3189,9 +3185,9 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				abdicate_to = root
+				abdicate_to = ROOT
 				any_artifact = {
-					transfer_artifact = { from = prev to = root }
+					transfer_artifact = { from = PREV to = ROOT }
 				}
 			}
 		}
@@ -3215,7 +3211,7 @@ targeted_decisions = {
 				has_character_flag = mind_controlled
 				is_ruler = yes
 				NOT = {
-					is_allied_with = from
+					is_allied_with = FROM
 				}
 			}
 		}
@@ -3224,7 +3220,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				add_alliance = { who = root years = 10 }
+				add_alliance = { who = ROOT years = 10 }
 			}
 		}
 	}
@@ -3241,7 +3237,7 @@ targeted_decisions = {
 		potential = {
             any_character = {
 				has_character_flag = mind_controlled
-				is_allied_with = from
+				is_allied_with = FROM
 			}
 		}
 		allow = {
@@ -3252,7 +3248,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				break_alliance = root
+				break_alliance = ROOT
 			}
 		}
 
@@ -3287,10 +3283,10 @@ targeted_decisions = {
 					limit = {
 						is_female = yes
 					}
-					add_spouse_matrilineal = root
+					add_spouse_matrilineal = ROOT
 				}
 				else = {
-					add_spouse = root
+					add_spouse = ROOT
 				}
 			}
 		}
@@ -3313,7 +3309,7 @@ targeted_decisions = {
 			any_character = {
 				has_character_flag = mind_controlled
 				NOT = {
-					same_society_as = root
+					same_society_as = ROOT
 				}
 			}
 		}
@@ -3362,7 +3358,7 @@ targeted_decisions = {
 				has_character_flag = mind_controlled
 				has_concubinage = yes
 				NOT = {
-					same_sex = root
+					same_sex = ROOT
 					#is_consort = yes
 				}
 			}
@@ -3373,7 +3369,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				add_consort = root
+				add_consort = ROOT
 			}
 		}
 
@@ -3408,7 +3404,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				join_attacker_wars = root
+				join_attacker_wars = ROOT
 			}
 		}
 
@@ -3443,7 +3439,7 @@ targeted_decisions = {
 				limit = {
 					has_character_flag = mind_controlled
 				}
-				join_defender_wars = root
+				join_defender_wars = ROOT
 			}
 		}
 
@@ -3464,7 +3460,7 @@ targeted_decisions = {
 		allow = {
 		    any_character = {
 				has_character_flag = mind_controlled
-				NOT = { character = root }
+				NOT = { character = ROOT }
 				ROOT = {
 					NAND = {
 						is_child_of = PREV
@@ -3478,9 +3474,7 @@ targeted_decisions = {
 				limit = {
 					any_character = {
 						has_character_flag = mind_controlled
-						NOT = {
-							is_female = yes
-						}
+						is_female = no
 					}
 				}
 				if = {
@@ -3489,12 +3483,12 @@ targeted_decisions = {
 							has_character_flag = mind_controlled
 							ROOT = {
 								NOT = {
-									real_father = { character = prev }
+									real_father = { character = PREV }
 								}
 							}
 						}
 					}
-					father_even_if_dead = { ROOT = { set_real_father = prev } }
+					father_even_if_dead = { ROOT = { set_real_father = PREV } }
 					set_mother = 0
 				}
 				any_character = {

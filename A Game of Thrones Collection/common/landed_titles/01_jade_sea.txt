@@ -1,0 +1,1099 @@
+e_qarth = {
+	color = { 49 18 131 }
+	color2 = { 6 128 0 }
+
+	capital = 663 #Qarth
+
+	culture = qartheen
+
+	dignity = 25
+
+	allow = {
+		num_of_king_titles = 3
+		capital_scope = { province_id = 663 }
+		hidden_tooltip = {
+			war = no
+			NOT = { has_character_flag = joined_independance_war }
+			NOT = { has_character_flag = post_civil_war_wars }
+			NOT = { has_character_flag = supporting_king }
+			NOT = { has_character_flag = neutral }
+			NOT = { has_character_flag = against_king }
+			NOT = { trait = rebel_leader }
+			NOT = { has_character_flag = no_kingship }
+			NOT = { culture_group = winter_group }
+		}
+	}
+
+	k_qarth = {
+		color = { 127 18 131 }
+		color2 = { 6 128 0 }
+
+		capital = 663 #Qarth
+
+		culture = qartheen
+
+		allow = { hidden_tooltip = { NOT = { culture_group = winter_group } } }
+
+		title_prefix = "ANCIENT_CITY_OF"
+
+		d_thirteen = {
+			color = { 90 29 92 }
+			color2 = { 255 255 255 }
+
+			capital = 663
+			creation_requires_capital = no
+
+			dignity = 200 # Never want the to change primary title
+
+			title_prefix = "GUILD_OF"
+
+			allow = {
+				is_republic = yes
+				culture = qartheen
+				tier = COUNT
+				liege = {
+					has_landed_title = k_qarth
+					is_feudal = yes
+				}
+			}
+		}
+		d_tourmaline = {
+			color = { 223 66 229 }
+			color2 = { 255 255 255 }
+
+			capital = 663
+			creation_requires_capital = no
+
+			dignity = 200 # Never want the to change primary title
+
+			title_prefix = "GUILD_OF"
+
+			allow = {
+				is_republic = yes
+				culture = qartheen
+				tier = COUNT
+				liege = {
+					has_landed_title = k_qarth
+					is_feudal = yes
+				}
+			}
+		}
+		d_spicers = {
+			color = { 192 105 195 }
+			color2 = { 255 255 255 }
+
+			capital = 663
+			creation_requires_capital = no
+
+			dignity = 200 # Never want the to change primary title
+
+			title_prefix = "ANCIENT_GUILD_OF"
+
+			allow = {
+				is_republic = yes
+				culture = qartheen
+				tier = COUNT
+				liege = {
+					has_landed_title = k_qarth
+					is_feudal = yes
+				}
+			}
+		}
+		d_warlocks = {
+			color = { 0 0 200 } #blue
+			color2 = { 0 0 200 }
+
+			capital = 663
+
+			title = "WARLOCK"
+			foa = "WARLOCK_FOA"
+			short_name = yes
+			location_ruler_title = yes
+
+			# Controls a religion
+			controls_religion = qarth_warlocks
+
+			religion = qarth_warlocks
+
+			# Cannot be held as a secondary title
+			primary = yes
+
+			# Always exists
+			landless = yes
+
+			can_be_claimed = no
+			can_be_usurped = no
+		}
+		d_sorrowful_men = {
+			color = { 230 230 230 }
+			color2 = { 255 255 255 }
+
+			capital = 663 #Qarth
+
+			title = "SORROWFUL_MAN"
+			foa = "SORROWFUL_MAN_FOA"
+
+			dignity = 200 # Never want the to change primary title
+			title_prefix = "GUILD_OF"
+
+			# Always exists
+			landless = yes
+
+			# Cannot be held as a secondary title
+			primary = yes
+
+			# Extra income due to misc contracts
+			monthly_income = 5 # (Must be an integer between 1 and 512)
+
+			can_be_claimed = no
+			can_be_usurped = no
+		}
+
+		d_qarth = {
+			color = { 127 18 131 }
+			color2 = { 6 128 0 }
+
+			capital = 663 #Qarth
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_qarth = {
+				color = { 127 18 131 }
+				color2 = { 6 128 0 }
+
+				holy_site = qarth_warlocks
+				holy_site = corsair
+				holy_site = pagan
+				holy_site = ruin_rel
+
+				b_hall_thrones = {
+				}
+				b_port_qarth = {
+				}
+				b_house_undying = {
+				}
+				b_port_thirteen = {
+				}
+				b_tourmaline_harbour = {
+				}
+				b_spicer_port = {
+				}
+				b_jade_palace = {
+				}
+			}
+			c_lehqron = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_lehqron = {
+				}
+				b_lehqrontown = {
+				}
+				b_lehqrontemple = {
+				}
+			}
+			c_saaleq = {
+				color = { 175 58 179 }
+				color2 = { 6 128 0 }
+
+				b_saaleq = {
+				}
+				b_saaleq_castle = {
+				}
+				b_saaleq_temple = {
+				}
+			}
+			c_matsar = {
+				color = { 104 52 106 }
+				color2 = { 6 128 0 }
+
+				b_matsar = {
+				}
+				b_matsartown = {
+				}
+				b_matsartemple = {
+				}
+			}
+			c_mbs_outer_wall = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_mbs_outerwalls = {
+				}
+				b_mbs_outerwalls_1 = {
+				}
+				b_mbs_outerwalls_2 = {
+				}
+				b_mbs_outerwalls_3 = {
+				}
+				b_mbs_outerwalls_4 = {
+				}
+				b_mbs_outerwalls_5 = {
+				}
+				b_mbs_outerwalls_6 = {
+				}
+			}
+			c_mbs_middle_wall = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_mbs_middlewalls = {
+				}
+				b_mbs_middlewalls_1 = {
+				}
+				b_mbs_middlewalls_2 = {
+				}
+				b_mbs_middlewalls_3 = {
+				}
+				b_mbs_middlewalls_4 = {
+				}
+				b_mbs_middlewalls_5 = {
+				}
+				b_mbs_middlewalls_6 = {
+				}
+			}
+			c_mbs_innermost_wall = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_mbs_innermostwalls = {
+				}
+				b_mbs_innermostwalls_1 = {
+				}
+				b_mbs_innermostwalls_2 = {
+				}
+				b_mbs_innermostwalls_3 = {
+				}
+				b_mbs_innermostwalls_4 = {
+				}
+				b_mbs_innermostwalls_5 = {
+				}
+				b_mbs_innermostwalls_6 = {
+				}
+			}
+		}
+
+		d_jade_gate = {
+			color = { 176 48 181 }
+			color2 = { 6 128 0 }
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_jadegate = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_jadegate_castle = {
+				}
+				b_jadegate = {
+				}
+				b_jadegate_temple = {
+				}
+			}
+
+			c_bawrashar = {
+				color = { 175 58 179 }
+				color2 = { 6 128 0 }
+
+				b_bawrashar_castle = {
+				}
+				b_bawrashar = {
+				}
+				b_bawrashar_temple = {
+				}
+			}
+
+			c_jadeshore = {
+				color={ 145 88 89 }
+				color2={ 6 128 0 }
+						
+				b_jadeshore_castle = {
+				}
+				b_jadeshore = {
+				}
+				b_jadeshore_temple = {
+				}
+			}
+		}
+
+		#d_matsar = {
+		d_qal = {
+			color = { 175 117 117 }
+			color2 = { 6 128 0 }
+
+			capital = 667 #Qal
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_qal = {
+				color = { 176 48 181 }
+				color2 = { 6 128 0 }
+
+				b_fort_qal = {
+				}
+				b_west_qal = {
+				}
+				b_east_qal = {
+				}
+				b_qal_temple = {
+				}
+			}
+			c_jadepoint = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_jadepoint = {
+				}
+				b_jadepoint_castle = {
+				}
+				b_jadepoint_temple = {
+				}
+			}
+		}
+
+		d_qarkash = {
+			color = { 229 14 237 }
+			color2 = { 6 128 0 }
+
+			capital = 654 #Qarkash
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_qarkash = {
+				color = { 229 14 237 }
+				color2 = { 6 128 0 }
+
+				holy_site = qarth_warlocks
+
+				b_qarkash = {
+				}
+				b_qarkash_city = {
+				}
+				b_qarkash_temple = {
+				}
+			}
+			c_cape_of_skulls = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				b_cape_of_skulls_castle = {
+				}
+				b_cape_of_skulls = {
+				}
+				b_cape_of_skulls_temple = {
+				}
+			}
+			c_qolahn = {
+				color = { 195 85 117 }
+				color2 = { 6 128 0 }
+
+				ruin = "Ваэс Косар"
+				dothraki = "Ваэс Косар"
+				#dothraki_domain_culture = "Vaes Qosar"
+
+				b_qolahn = {
+					ruin = "Ваэс Косар"
+					dothraki = "Ваэс Косар"
+					#dothraki_domain_culture = "Vaes Qosar"
+				}
+				b_qolahn_city = {
+					ruin = "Ваэс Косар"
+					dothraki = "Ваэс Косар"
+					#dothraki_domain_culture = "Vaes Qosar"
+				}
+				b_qolahn_temple = {
+					ruin = "Ваэс Косар"
+					dothraki = "Ваэс Косар"
+					#dothraki_domain_culture = "Vaes Qosar"
+				}
+			}
+		}
+
+		d_port_yhos = {
+			color = { 104 52 106 }
+			color2 = { 6 128 0 }
+
+			capital = 642 #Port Yhos
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_port_yhos = {
+				color = { 104 52 106 }
+				color2 = { 6 128 0 }
+
+				holy_site = qarth_warlocks
+
+				b_port_yhos = {
+				}
+				b_port_yhos_city = {
+				}
+				b_port_yhos_temple = {
+				}
+			}
+			c_makhrosh = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				ruin = "Ваэс Орвик"
+				dothraki = "Ваэс Орвик"
+				#dothraki_domain_culture = "Vaes Orvik"
+
+				b_makhrosh = {
+					ruin = "Ваэс Орвик"
+					dothraki = "Ваэс Орвик"
+					#dothraki_domain_culture = "Vaes Orvik"
+				}
+				b_makhrosh_city = {
+					ruin = "Ваэс Орвик"
+					dothraki = "Ваэс Орвик"
+					#dothraki_domain_culture = "Vaes Orvik"
+				}
+				b_makhrosh_temple = {
+					ruin = "Ваэс Орвик"
+					dothraki = "Ваэс Орвик"
+					#dothraki_domain_culture = "Vaes Orvik"
+				}
+			}
+		}
+
+		d_toqolarth = {
+			color = { 175 117 117 }
+			color2 = { 6 128 0 }
+
+			ruin = "Ваэс Толорро"
+			dothraki = "Ваэс Толорро"
+			#dothraki_domain_culture = "Vaes Tolorro"
+
+			allow = {
+				OR = {
+					custom_tooltip = {
+						text = TOOLTIPhl_creation_requirement
+						any_demesne_province = { duchy = { title = FROM } }
+
+						trigger_if = {
+							limit = {
+								ai = yes
+								real_tier = duke
+							}
+
+							num_of_duke_titles < 1
+						}
+					}
+					has_game_rule = { name = hl_creation_requirement value = off }
+				}
+			}
+
+			c_toqolarth = {
+				color = { 175 117 117 }
+				color2 = { 6 128 0 }
+
+				holy_site = qarth_warlocks
+
+				ruin = "Ваэс Толорро"
+				dothraki = "Ваэс Толорро"
+				#dothraki_domain_culture = "Vaes Tolorro"
+
+				b_toqolarth = {
+					ruin = "Ваэс Толорро"
+					dothraki = "Ваэс Толорро"
+					#dothraki_domain_culture = "Vaes Tolorro"
+				}
+				b_toqolarth_city = {
+					ruin = "Ваэс Толорро"
+					dothraki = "Ваэс Толорро"
+					#dothraki_domain_culture = "Vaes Tolorro"
+				}
+				b_toqolarth_temple = {
+					ruin = "Ваэс Толорро"
+					dothraki = "Ваэс Толорро"
+					#dothraki_domain_culture = "Vaes Tolorro"
+				}
+			}
+
+			c_nechos = {
+				color = { 176 48 181 }
+				color2 = { 6 128 0 }
+
+				ruin = "Ваэс Широси"
+				dothraki = "Ваэс Широси"
+				#dothraki_domain_culture = "Vaes Shirosi"
+
+				b_nechos = {
+					ruin = "Ваэс Широси"
+					dothraki = "Ваэс Широси"
+					#dothraki_domain_culture = "Vaes Shirosi"
+				}
+				b_nechos_city = {
+					ruin = "Ваэс Широси"
+					dothraki = "Ваэс Широси"
+					#dothraki_domain_culture = "Vaes Shirosi"
+				}
+				b_nechos_temple = {
+					ruin = "Ваэс Широси"
+					dothraki = "Ваэс Широси"
+					#dothraki_domain_culture = "Vaes Shirosi"
+				}
+			}
+
+			c_old_waste_road = {
+				color = { 104 52 106 }
+				color2 = { 6 128 0 }
+
+				b_old_waste_road = {
+				}
+			}
+		}
+	}
+}
+
+k_moraq = {
+	color = { 0 64 0 }
+	color2 = { 0 64 0 }
+
+	culture = moraqi
+
+	allow = { hidden_tooltip = { NOT = { culture_group = winter_group } } }
+
+	d_faros = {
+		color = { 128 251 4 }
+		color2 = { 128 251 4 }
+
+		capital = 719 #Faros
+		culture = farosi
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_faros = {
+			color = { 40 65 15 }
+			color2 = { 128 251 4 }
+
+			holy_site = stone_cow
+			holy_site = stone_cow_reformed
+			holy_site = qarth_warlocks
+
+			b_faros = {
+			}
+			b_faros_city = {
+			}
+			b_walls_faros = {
+			}
+			b_faros_harbour = {
+			}
+			b_faros_temple = {
+			}
+		}
+
+		c_alvahos = {
+			color = { 162 189 135 }
+			color2 = { 128 251 4 }
+
+			b_alvahos = {
+			}
+			b_alvahos_city = {
+			}
+			b_alvahos_temple = {
+			}
+		}
+
+		c_varous = {
+			color = { 103 168 10 }
+			color2 = { 128 251 4 }
+
+			b_varous = {
+			}
+			b_varous_city = {
+			}
+			b_varous_temple = {
+			}
+		}
+
+		c_sielekar = {
+			color = { 132 159 105 }
+			color2 = { 128 251 4 }
+
+			b_sielekar = {
+			}
+			b_sielekar_city = {
+			}
+			b_sielekar_temple = {
+			}
+		}
+
+		c_elsavar = {
+			color = { 43 118 0 }
+			color2 = { 128 251 4 }
+
+			b_elsavar = {
+			}
+			b_elsavar_city = {
+			}
+			b_elsavar_temple = {
+			}
+		}
+	}
+
+	d_hekkon = {
+		color = { 78 211 4 }
+		color2 = { 128 251 4 }
+
+		capital = 723 #Hekkon
+		culture = moraqi
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					hidden_tooltip = { any_demesne_province = { duchy = { title = FROM } } }
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+		c_hekkon = {
+			color = { 122 237 9 }
+			color2 = { 128 251 4 }
+
+			b_hekkon = {
+			}
+			b_hekkon_city = {
+			}
+			b_hekkon_temple = {
+			}
+			b_hekkon_city2 = {
+			}
+		}
+
+		c_shikal = {
+			color = { 103 168 10 }
+			color2 = { 128 251 4 }
+
+			b_shikal = {
+			}
+			b_shikal_city = {
+			}
+			b_shikal_temple = {
+			}
+		}
+
+		c_fallon = {
+			color = { 73 148 0 }
+			color2 = { 128 251 4 }
+
+			b_fallon = {
+			}
+			b_fallon_city = {
+			}
+			b_fallon_temple = {
+			}
+		}
+	}
+
+	d_jahos = {
+		color = { 48 181 4 }
+		color2 = { 128 251 4 }
+
+		capital = 1393 #Jahos Harbour
+		culture = moraqi
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					hidden_tooltip = { any_demesne_province = { duchy = { title = FROM } } }
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_jahos = {
+			color = { 98 221 4 }
+			color2 = { 128 251 4 }
+
+			b_jahos = {
+			}
+			b_jahos_city = {
+			}
+			b_jahos_temple = {
+			}
+			b_jahos_city2 = {
+			}
+		}
+
+		c_nahos = {
+			color = { 73 148 0 }
+			color2 = { 128 251 4 }
+
+			b_nahos = {
+			}
+			b_nahos_city = {
+			}
+			b_nahos_temple = {
+			}
+		}
+
+		c_zaffalor = {
+			color = { 40 65 15 }
+			color2 = { 13 128 0 }
+
+			b_zaffalor = {
+			}
+			b_zaffalor_city = {
+			}
+			b_zaffalor_temple = {
+			}
+		}
+
+		c_isle_of_whips = {
+			color = { 100 167 58 }
+			color2 = { 6 128 0 }
+
+			b_isle_of_whips = {
+			}
+			b_isle_of_whips_city = {
+			}
+			b_isle_of_whips_temple = {
+			}
+		}
+	}
+
+	d_port_moraq = {
+		color = { 13 128 0 }
+		color2 = { 13 128 0 }
+
+		capital = 727 #Port Moraq
+		culture = moraqi
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_port_moraq = {
+			color = { 176 241 112 }
+			color2 = { 13 128 0 }
+
+			holy_site = stone_cow
+			holy_site = stone_cow_reformed
+
+			b_port_moraq = {
+			}
+			b_port_moraq_city = {
+			}
+			b_port_moraq_harbour = {
+			}
+			b_port_moraq_temple = {
+			}
+		}
+
+		c_nuranji = {
+			color = { 77 97 58 }
+			color2 = { 13 128 0 }
+
+			b_nuranji = {
+			}
+			b_nuranji_city = {
+			}
+			b_nuranji_temple = {
+			}
+		}
+
+		c_aknural = {
+			color = { 117 127 98 }
+			color2 = { 13 128 0 }
+
+			b_aknural = {
+			}
+			b_aknural_city = {
+			}
+			b_aknural_temple = {
+			}
+		}
+
+		c_talcar = {
+			color = { 57 77 38 }
+			color2 = { 13 128 0 }
+
+			b_talcar = {
+			}
+			b_talcar_city = {
+			}
+			b_talcar_temple = {
+			}
+		}
+
+		c_moraq = {
+			color = { 147 177 118 }
+			color2 = { 13 128 0 }
+
+			b_moraq = {
+			}
+			b_moraq_city = {
+			}
+			b_moraq_temple = {
+			}
+		}
+	}
+
+	d_vahar = {
+		color = { 40 65 15 }
+		color2 = { 127 232 18 }
+
+		capital = 729 #Vahar
+		culture = vahari
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_vahar = {
+			color = { 132 159 105 }
+			color2 = { 127 232 18 }
+
+			holy_site = stone_cow
+			holy_site = stone_cow_reformed
+
+			b_vahar = {
+			}
+			b_vahar_city = {
+			}
+			b_vahar_harbour = {
+			}
+			b_vahar_temple = {
+			}
+		}
+
+		c_pongar = {
+			color = { 122 237 9 }
+			color2 = { 127 232 18 }
+
+			b_pongar = {
+			}
+			b_pongar_city = {
+			}
+			b_pongar_temple = {
+			}
+		}
+
+		c_draccar = {
+			color = { 73 148 0 }
+			color2 = { 127 232 18 }
+
+			b_draccar = {
+			}
+			b_draccar_city = {
+			}
+			b_draccar_temple = {
+			}
+		}
+
+		c_galcar = {
+			color = { 103 178 30 }
+			color2 = { 127 232 18 }
+
+			b_galcar = {
+			}
+			b_galcar_city = {
+			}
+			b_galcar_temple = {
+			}
+		}
+	}
+
+	d_zabhad = {
+		color = { 132 159 105 }
+		color2 = { 210 214 105 }
+
+		capital = 728 #Zabhad
+		culture = zabhadi
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_zabhad = { #The Isle of Elephants
+			color = { 176 241 112 }
+			color2 = { 210 214 105 }
+
+			holy_site = stone_cow
+			holy_site = stone_cow_reformed
+
+			b_zabhad = { #The Ivory Palace
+			}
+			b_zabhad_city = {
+			}
+			b_zabhad_harbour = {
+			}
+			b_zabhad_temple = {
+			}
+		}
+
+		c_cinnamon_isles = {
+			color = { 77 97 58 }
+			color2 = { 210 214 105 }
+
+			b_cinnamon_isles = {
+			}
+			b_cinnamon_isles_city = {
+			}
+			b_cinnamon_isles_temple = {
+			}
+		}
+
+		c_lower_cinnamon_isles = {
+			color = { 57 77 38 }
+			color2 = { 210 214 105 }
+
+			b_lower_cinnamon_isles = {
+			}
+			b_lower_cinnamon_isles_city = {
+			}
+			b_lower_cinnamon_isles_temple = {
+			}
+		}
+	}
+}

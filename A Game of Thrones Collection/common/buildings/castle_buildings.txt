@@ -1,0 +1,695 @@
+ # Triggers are in Province scope. The From Scope contains the settlement holder (character)
+ # start trigger is in title scope.
+
+ #<tag> = {
+ #	desc = description used in the tooltip of the building
+ #	trigger = used for tech requirement of the building, set to 0 if no requirement so it can be build automatically on new games
+ #	gold_cost = cost to build the building
+ #	piety_cost = piety cost to build the building
+ #	prestige_cost = prestige cost to build the building
+ #	Be aware that you can only use one of gold, piety, and prestige cost
+ #	build_time = time to build, in days
+ #
+ #	ai_creation_factor = weight that the AI uses to determine what building to build
+ #	extra_tech_building_start = when starting a new game this building will be pre-built if the province has higher tech than the requirement + this + random 0-1
+ #}
+
+
+ # Castle
+castle = {
+	###unique buildings###
+	ca_kdath = {
+		desc = ca_kdath_desc
+		potential = {
+			province_id = 818
+			FROMFROM = { title = b_kdath }
+		}
+		fort_level = 4
+
+		gold_cost = 180
+		build_time = 1825
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_bloodless_keep = {
+		desc = ca_bloodless_keep_desc
+		potential = {
+			province_id = 1567
+			FROMFROM = { title = b_bloodless_city }
+		}
+		fort_level = 3
+
+		gold_cost = 150
+		build_time = 1825
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_ksov = {
+		desc = ca_ksov_desc
+		potential = {
+			province_id = 1594
+			FROMFROM = { title = b_ksov }
+		}
+		fort_level = 2
+		tax_income = 3
+
+		gold_cost = 120
+		build_time = 1825
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_veltor = {
+		desc = ca_veltor_desc
+		potential = {
+			province_id = 872
+			FROMFROM = { title = b_veltor_castle }
+		}
+		fort_level = 4
+
+		archers = 300
+		light_infantry = 150
+
+		gold_cost = 250
+		build_time = 1825
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_liaozui = {
+		desc = ca_liaozui_desc
+		potential = {
+			province_id = 791
+			FROMFROM = { title = b_leng_ma }
+		}
+		fort_level = 6
+		tax_income = 8
+
+		gold_cost = 400
+		build_time = 3650
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_jinsan = {
+		desc = ca_jinsan_desc
+		potential = {
+			province_id = 792
+			FROMFROM = { title = b_leng_yi }
+		}
+		fort_level = 4
+		garrison_size = 0.1
+
+		gold_cost = 400
+		build_time = 3650
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_carcosa = {
+		desc = ca_carcosa_desc
+		potential = {
+			province_id = 808
+			FROMFROM = { title = b_carcosa }
+		}
+		fort_level = 6
+		garrison_size = 0.3
+		plot_discovery_chance = 0.2
+
+		gold_cost = 400
+		build_time = 3650
+
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ca_yiti_throne = {
+		desc = ca_yiti_throne_desc
+		potential = {
+			province_id = 765
+			FROMFROM = { title = b_anyang_castle }
+		}
+		monthly_character_prestige = 0.50
+		vassal_opinion = 5
+
+		gold_cost = 250
+		build_time = 1825
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_waste_barracks = {
+		desc = ca_waste_barracks_desc
+		potential = {
+			FROM = {
+				OR = {
+					waste_culture_trigger = yes
+					trait = grey_lander
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		archers = 50
+		light_infantry = 150
+		tax_income = 1
+		levy_reinforce_rate = 0.15
+		prestige_cost = 60
+		build_time = 180
+		ai_creation_factor = 200
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_waste_barracks2 = {
+		desc = ca_waste_barracks2_desc
+		potential = {
+			FROM = {
+				OR = {
+					waste_culture_trigger = yes
+					trait = grey_lander
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		upgrades_from = ca_waste_barracks
+		archers = 100
+		light_infantry = 300
+		tax_income = 1.5
+		levy_reinforce_rate = 0.15
+		prestige_cost = 125
+		build_time = 180
+		ai_creation_factor = 200
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_waste_barracks3 = {
+		desc = ca_waste_barracks3_desc
+		potential = {
+			FROM = {
+				OR = {
+					waste_culture_trigger = yes
+					trait = grey_lander
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		upgrades_from = ca_waste_barracks2
+		archers = 200
+		light_infantry = 600
+		tax_income = 2.5
+		levy_reinforce_rate = 0.15
+		prestige_cost = 250
+		build_time = 365
+		ai_creation_factor = 200
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_waste_barracks4 = {
+		desc = ca_waste_barracks4_desc
+		potential = {
+			FROM = {
+				OR = {
+					waste_culture_trigger = yes
+					trait = grey_lander
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		upgrades_from = ca_waste_barracks3
+		archers = 400
+		light_infantry = 800
+		tax_income = 4
+		levy_reinforce_rate = 0.15
+		prestige_cost = 500
+		build_time = 365
+		ai_creation_factor = 200
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_brindle_barracks = {
+		desc = ca_brindle_barracks_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = brindlemen
+					trait = brindle
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		light_infantry = 100
+		heavy_infantry = 80
+		tax_income = 1
+		levy_reinforce_rate = 0.15
+		prestige_cost = 60
+		build_time = 180
+		ai_creation_factor = 200
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_brindle_barracks2 = {
+		desc = ca_brindle_barracks2_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = brindlemen
+					trait = brindle
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		upgrades_from = ca_brindle_barracks
+		light_infantry = 200
+		heavy_infantry = 160
+		tax_income = 1.5
+		levy_reinforce_rate = 0.15
+		prestige_cost = 125
+		build_time = 180
+		ai_creation_factor = 200
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_brindle_barracks3 = {
+		desc = ca_brindle_barracks3_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = brindlemen
+					trait = brindle
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		upgrades_from = ca_brindle_barracks2
+		light_infantry = 400
+		heavy_infantry = 320
+		tax_income = 2.5
+		levy_reinforce_rate = 0.15
+		prestige_cost = 250
+		build_time = 365
+		ai_creation_factor = 200
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+	ca_brindle_barracks4 = {
+		desc = ca_brindle_barracks4_desc
+		potential = {
+			FROM = {
+				OR = {
+					culture = brindlemen
+					trait = brindle
+				}
+			}
+		}
+		trigger = {
+			TECH_CASTLE_CONSTRUCTION = 0
+		}
+		upgrades_from = ca_brindle_barracks3
+		light_infantry = 600
+		heavy_infantry = 520
+		tax_income = 4
+		levy_reinforce_rate = 0.15
+		prestige_cost = 500
+		build_time = 365
+		ai_creation_factor = 200
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+}
+
+city = {
+
+	ct_farmland_1 = {
+		desc = ct_farmland_1_desc
+		potential = {
+			terrain = farmlands
+		}
+
+		gold_cost = 150
+		build_time = 105
+		tax_income = 1
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_farmland_2 = {
+		desc = ct_farmland_2_desc
+		potential = {
+			terrain = farmlands
+		}
+
+		gold_cost = 250
+		build_time = 210
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_farmland_1
+	}
+	ct_farmland_3 = {
+		desc = ct_farmland_3_desc
+		potential = {
+			terrain = farmlands
+		}
+
+		gold_cost = 400
+		build_time = 310
+		tax_income = 2
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_farmland_2
+	}
+
+	ct_lumber_yard_1 = {
+		desc = ct_lumber_yard_1_desc
+		potential = {
+			terrain = forest
+		}
+
+		gold_cost = 120
+		build_time = 165
+		tax_income = 1
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_lumber_yard_2 = {
+		desc = ct_lumber_yard_2_desc
+		potential = {
+			terrain = forest
+		}
+
+		gold_cost = 200
+		build_time = 310
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_lumber_yard_1
+	}
+
+	ct_lumber2_yard_1 = {
+		desc = ct_lumber2_yard_1_desc
+		potential = {
+			terrain = woods
+		}
+
+		gold_cost = 100
+		build_time = 165
+		tax_income = 0.8
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_lumber2_yard_2 = {
+		desc = ct_lumber_yard2_2_desc
+		potential = {
+			terrain = woods
+		}
+
+		gold_cost = 160
+		build_time = 310
+		tax_income = 1.2
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_lumber2_yard_1
+	}
+
+	ct_lumber3_yard_1 = {
+		desc = ct_lumber3_yard_1_desc
+		potential = {
+			terrain = jungle
+		}
+
+		gold_cost = 150
+		build_time = 240
+		tax_income = 1.2
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_lumber3_yard_2 = {
+		desc = ct_lumber3_yard_2_desc
+		potential = {
+			terrain = jungle
+		}
+
+		gold_cost = 260
+		build_time = 520
+		tax_income = 1.8
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_lumber3_yard_1
+	}
+
+	ct_quarry_1 = {
+		desc = ct_quarry_1_desc
+		potential = {
+			terrain = mountain
+		}
+
+
+		gold_cost = 150
+		build_time = 245
+		tax_income = 1
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_quarry_2 = {
+		desc = ct_quarry_2_desc
+		potential = {
+			terrain = mountain
+		}
+
+
+		gold_cost = 250
+		build_time = 420
+		tax_income = 1.5
+
+		ai_creation_factor = 100
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_quarry_1
+	}
+	ct_quarry_3 = {
+		desc = ct_quarry_3_desc
+		potential = {
+			terrain = mountain
+		}
+
+		gold_cost = 400
+		build_time = 640
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_quarry_2
+	}
+
+	ct_quarry2_1 = {
+		desc = ct_quarry2_1_desc
+		potential = {
+			terrain = mountainpass
+		}
+
+
+		gold_cost = 150
+		build_time = 245
+		tax_income = 1
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_quarry2_2 = {
+		desc = ct_quarry2_2_desc
+		potential = {
+			terrain = mountainpass
+		}
+
+
+		gold_cost = 250
+		build_time = 420
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_quarry2_1
+	}
+	ct_quarry2_3 = {
+		desc = ct_quarry2_3_desc
+		potential = {
+			terrain = mountainpass
+		}
+
+		gold_cost = 400
+		build_time = 640
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_quarry2_2
+	}
+
+	ct_salt_mine_1 = {
+		desc = ct_salt_mine_1_desc
+		potential = {
+			terrain = desert
+		}
+
+		gold_cost = 150
+		build_time = 245
+		tax_income = 1
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+	}
+	ct_salt_mine_2 = {
+		desc = ct_salt_mine_2_desc
+		potential = {
+			terrain = desert
+		}
+
+		gold_cost = 250
+		build_time = 420
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_salt_mine_1
+	}
+	ct_salt_mine_3 = {
+		desc = ct_salt_mine_3_desc
+		potential = {
+			terrain = desert
+		}
+
+		gold_cost = 400
+		build_time = 640
+		tax_income = 1.5
+
+		ai_creation_factor = 101
+		trigger = { TECH_CASTLE_CONSTRUCTION = 0 }
+
+		add_number_to_name = no
+		extra_tech_building_start = 10.0
+		upgrades_from = ct_salt_mine_2
+	}
+
+	ct_asshai = {
+		desc = ct_asshai_desc
+		potential = {
+			province_id = 795
+			FROMFROM = { title = b_asshai_city }
+		}
+		fort_level = 6
+		tax_income = 9
+
+		garrison_size = 0.3
+		light_infantry = -2000
+		heavy_infantry = 2000
+
+		gold_cost = 300
+		build_time = 1825
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+	ct_asshai_throne = {
+		desc = ct_asshai_throne_desc
+		potential = {
+			province_id = 795
+			FROMFROM = { title = b_asshai_city }
+		}
+		monthly_character_prestige = 0.30
+		vassal_opinion = 5
+
+		gold_cost = 250
+		build_time = 1825
+		ai_creation_factor = 110
+
+		extra_tech_building_start = 10.0 # Never get at start of game
+	}
+
+}
+

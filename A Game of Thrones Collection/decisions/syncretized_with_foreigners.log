@@ -1,0 +1,25 @@
+hidden_tooltip = {
+	random_playable_ruler = {
+		limit = {
+			OR = {
+				religion = gods_nghai_reformed
+				religion = gods_nghai
+				culture = nghai
+			}
+		}
+		add_intermarry = ROOT
+		ROOT = { add_intermarry = PREV }
+	}
+	any_playable_ruler = {
+		limit = {
+			has_religion_feature = religion_feature_the_seven
+			NOT = { religion = FROM }
+		}
+		add_intermarry = ROOT
+		ROOT = { add_intermarry = PREV }
+	}
+	set_character_modifier = {
+		the_seven_opinion = 5
+		key = "the_seven_RELIGION"
+	}
+}

@@ -519,7 +519,7 @@ character_event = {
 				}
 			}
 			modifier = {
-				factor =  0.01
+				factor = 0.01
 				opinion = {
 					who = event_target:decision_taker
 					value = -50
@@ -771,7 +771,7 @@ character_event = {
 	id = dragon_rework.54
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	trigger = {
 		NOT = { has_global_flag = secret_box_given }
@@ -993,7 +993,7 @@ character_event = {
 				trait = trusting
 				AND = {
 					event_target:rider_looking = { is_close_relative = ROOT }
-					trait = family_person
+					trait = familyperson
 				}
 			}
 			event_target:rider_looking = {
@@ -1301,7 +1301,7 @@ character_event = {
 					trait = trusting
 					AND = {
 						event_target:rider_looking = { is_close_relative = ROOT }
-						trait = family_person
+						trait = familyperson
 					}
 				}
 			}
@@ -1990,7 +1990,7 @@ character_event = {
 					set_character_flag = dragon_being_tamed
 					save_event_target_as = dragon_being_tamed
 				}
-				ROOT = { set_character_flag =  dragon_found }
+				ROOT = { set_character_flag = dragon_found }
 				character_event = { id = dragon_rework.7 }
 			}
 		}
@@ -2060,7 +2060,7 @@ character_event = {
 					set_character_flag = dragon_being_tamed
 					save_event_target_as = dragon_being_tamed
 				}
-				ROOT = { set_character_flag =  dragon_found }
+				ROOT = { set_character_flag = dragon_found }
 				character_event = { id = dragon_rework.7 }
 			}
 
@@ -2112,7 +2112,7 @@ character_event = {
 					set_character_flag = dragon_being_tamed
 					save_event_target_as = dragon_being_tamed
 				}
-				ROOT = { set_character_flag =  dragon_found }
+				ROOT = { set_character_flag = dragon_found }
 				character_event = { id = dragon_rework.7 }
 			}
 		}

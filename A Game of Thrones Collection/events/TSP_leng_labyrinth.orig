@@ -1,0 +1,543 @@
+namespace = essos
+
+# Unseal the Labyrinths
+narrative_event = {
+	id = essos.147
+	title = "EVTTITLEessos.147"
+	desc = "EVTDESCessos.147"
+	picture = GFX_dark_corridor
+
+	only_playable = yes
+	capable_only = yes
+
+	has_dlc = "Reapers" #epidemic only works for DLC
+
+	trigger = {
+		OR = {
+			religion = old_gods
+			has_character_flag = unsealed_manually
+		}
+		OR = {
+			religion_group = sothoryos_rel_group
+			has_religion_feature = religion_feature_TSP_innsmouth
+			religion = old_ones
+			religion = starry_wisdom
+			has_called_cthulhu = yes
+			AND = {
+				culture = brindlemen
+				OR = {
+					trait = cruel
+					trait = ruthless
+					trait = lunatic
+				}
+			}
+		}
+		OR = {
+			trait = lunatic
+			AND = {
+				ai = yes
+				religion = old_ones
+			}
+			religion_group = sothoryos_rel_group
+			religion = starry_wisdom
+			is_devil_worshiper_trigger = yes
+		}
+		OR = {
+			has_landed_title = k_leng
+			any_realm_lord = {
+				has_landed_title = k_leng
+			}
+			AND = {
+				custom_tooltip = {
+					text = MUST_OWN_LENG_CLAY
+					hidden_tooltip = {
+						any_demesne_province = {
+							location = { region = world_leng }
+						}
+						has_leng_clay = yes
+					}
+				}
+				higher_tier_than = COUNT
+				independent = yes
+			}
+		}
+		custom_tooltip = {
+			text = VASSAL_MUST_OWN_LENG_CLAY
+			hidden_tooltip = {
+				OR = {
+					any_realm_province = { location = { region = world_leng }	}
+					vassal_has_leng_clay = yes
+				}
+			}
+		}
+
+		NOT = { has_global_flag = old_ones_scourge }
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	option = {
+		name = "EVTOPTAessos.147"
+		tooltip_info = lunatic
+		set_global_flag = old_ones_scourge
+		hidden_tooltip = {
+			unsafe_religion = old_ones
+			add_trait = zealous
+			add_trait = lunatic
+		}
+		any_realm_province = {
+			limit = { region = world_leng }
+			custom_tooltip = {
+				text = TOOLTIPold_ones_scourge
+				spawn_disease = old_ones_scourge
+			}
+		}
+		prestige = 750
+		piety = 750
+		give_nickname = nick_the_hand_of_chaos
+		create_bloodline = {
+			type = blood_of_chaos
+		}
+		hidden_tooltip = {
+			any_playable_ruler = {
+				limit = {
+					NOT = { character = ROOT }
+				}
+				narrative_event = { id = essos.148 }
+			}
+		}
+		sound_effect = he_comes
+	}
+}
+narrative_event = { #Inform World
+	id = essos.148
+	title = "EVTTITLEessos.148"
+	desc = "EVTDESCessos.148"
+	picture = GFX_evt_china_unrest
+	sound = he_comes
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAessos.148"
+		trigger = {
+			OR = {
+				NOT = {	has_called_cthulhu = yes }
+				ai = no
+			}
+		}
+	}
+
+	option = {
+		name = TSP1KI12OPTA
+		trigger = {
+			OR = {
+				ai = no
+				has_called_cthulhu = yes
+				religion = old_ones
+			}
+			NOT = {
+				trait = lunatic
+				trait = possessed
+			}
+		}
+	}
+
+	option = {
+		name = TSP1KI12OPTA
+		trigger = {
+			trait = lunatic
+			NOT = { trait = possessed }
+		}
+		tooltip_info = lunatic
+	}
+
+	option = {
+		name = TSP1KI12OPTA
+		trigger = {
+			trait = possessed
+			NOT = { trait = lunatic }
+		}
+		tooltip_info = possessed
+	}
+}
+
+# Re-seal the Labyrinths
+character_event = { #From decision
+	id = essos.149
+	desc = "EVTDESCessos.149"
+	picture = GFX_dark_corridor
+	sound = leng_is_liberated
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAessos.149" #Yes
+		custom_tooltip = {
+			text = TOOLTIPessos.149
+			hidden_tooltip = {
+				clr_global_flag = old_ones_scourge
+				clr_global_flag = old_ones_scourge_leng
+				clr_global_flag = old_ones_scourge_world
+				clr_global_flag = now_thats_a_PHNGLUIMGLWNAFH_of_damage
+				any_province = {
+					limit = { religion = old_ones }
+					if = {
+						limit = { region = world_beyond_the_wall }
+						if = {
+							limit = { province_id = 2 }
+							religion = thenn_rel
+						}
+						if = {
+							limit = { NOT = { province_id = 2 } }
+							religion = beyond_wall_old_gods
+						}
+					}
+					if = {
+						limit = { region = world_the_wall }
+						religion = old_gods
+					}
+					if = {
+						limit = { region = world_north }
+						religion = old_gods
+					}
+					if = {
+						limit = { region = world_iron_isles }
+						religion = drowned_god
+					}
+					if = {
+						limit = {
+							region = world_westeros
+							religion = old_ones
+						}
+						religion = the_seven
+					}
+					if = {
+						limit = { region = world_braavos }
+						religion = moonsingers
+					}
+					if = {
+						limit = { region = world_lorath }
+						religion = gods_lorath
+					}
+					if = {
+						limit = { region = world_norvos }
+						religion = bearded_priests
+					}
+					if = {
+						limit = { region = world_qohor }
+						religion = black_goat
+					}
+					if = {
+						limit = { region = world_pentos }
+						religion = rhllor
+					}
+					if = {
+						limit = { region = world_rhoynar }
+						religion = rhoynar_pagan
+					}
+					if = {
+						limit = { region = world_myr }
+						religion = rhllor
+					}
+					if = {
+						limit = { region = world_tyrosh }
+						religion = trios
+					}
+					if = {
+						limit = { region = world_lys }
+						religion = weeping_lady
+					}
+					if = {
+						limit = { region = world_volantis }
+						if = {
+							limit = { province_id = 419 }
+							religion = valyrian_rel
+						}
+						if = {
+							limit = { NOT = { province_id = 419 } }
+							religion = rhllor
+						}
+					}
+					if = {
+						limit = { region = world_north_valyria }
+						religion = valyrian_rel
+					}
+					if = {
+						limit = { region = world_ghiscar }
+						religion = harpy
+					}
+					if = {
+						limit = { region = world_lhazar }
+						religion = great_shepherd
+					}
+					if = {
+						limit = { region = world_bone_mountains }
+						religion = gods_bone_mountains
+					}
+					if = {
+						limit = { region = world_qarth }
+						religion = qarth_warlocks
+					}
+					if = {
+						limit = { region = world_moraq }
+						religion = stone_cow
+					}
+					if = {
+						limit = { region = world_asshai }
+						religion = shadowbinders
+					}
+					if = {
+						limit = { region = world_sarnor }
+						religion = gods_sarnor
+					}
+					if = {
+						limit = { region = world_dothraki }
+						religion = dothraki_pagan
+					}
+					if = {
+						limit = { region = world_ibben }
+						religion = gods_ibben
+					}
+					if = {
+						limit = { region = world_yi_ti }
+						religion = yiti_gods
+					}
+					if = {
+						limit = { region = world_jogo_nhai_plains }
+						religion = jogos_pagan
+					}
+					if = {
+						limit = { region = world_nghai }
+						religion = gods_nghai
+					}
+					if = {
+						limit = { region = world_summer_islands }
+						religion = summer_rel
+					}
+					if = {
+						limit = { region = world_basilisk_isles }
+						religion = pirate
+					}
+					if = {
+						limit = { region = world_sothoryos }
+						religion = sothoryos_rel
+					}
+					if = {
+						limit = { region = world_stepstones }
+						religion = pirate
+					}
+					if = {
+						limit = {
+							OR = {
+								culture = islander
+								province_id = 834 # Thousand Islands
+							}
+						}
+						religion = fish_gods
+					}
+				}
+				any_character = {
+					limit = {
+						NOT = { character = ROOT }
+						OR = {
+							is_landed = yes
+							trait = lunatic
+							trait = possessed
+						}
+					}
+					character_event = { id = essos.150 }
+				}
+				any_character = {
+					limit = {
+						NOT = { is_landed = yes }
+						trait = old_ones_scourge
+					}
+					remove_trait = old_ones_scourge
+				}
+				any_character = {
+					limit = {
+						NOT = { is_landed = yes }
+						OR = {
+							trait = lunatic
+							trait = possessed
+						}
+					}
+					remove_trait = lunatic
+					remove_trait = possessed
+					clr_character_flag = scourge_lunatic
+				}
+				any_character = {
+					limit = {
+						religion = old_ones
+					}
+					if = {
+						limit = { religion = old_ones }
+						if = {
+							limit = { is_ruler = yes }
+							capital_scope = { reverse_religion = PREV }
+						}
+						if = {
+							limit = { is_ruler = no }
+							liege = { capital_scope = { reverse_religion = PREV } }
+						}
+					}
+					clr_character_flag = scourge_lunatic
+				}
+			}
+		}
+
+		prestige = 750
+
+		if = {
+			limit = { trait = lunatic }
+			remove_trait = lunatic
+		}
+		if = {
+			limit = { trait = possessed }
+			remove_trait = possessed
+		}
+
+		clr_character_flag = scourge_lunatic
+
+		if = {
+			limit = { religion = old_ones }
+			capital_scope = { reverse_religion = PREV }
+		}
+	}
+}
+character_event = { #Inform World
+	id = essos.150
+	desc = "EVTDESCessos.150"
+	picture = GFX_dark_corridor
+	sound = leng_is_liberated
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EVTOPTAessos.150"
+		remove_trait = old_ones_scourge
+
+		if = {
+			limit = { trait = lunatic }
+			remove_trait = lunatic
+			character_event = { id = 38309 }
+		}
+		if = {
+			limit = { trait = possessed }
+			remove_trait = possessed
+			character_event = { id = trait_notification.20 }
+		}
+
+		clr_character_flag = scourge_lunatic
+
+		if = {
+			limit = { religion = old_ones }
+			capital_scope = { reverse_religion = PREV }
+		}
+	}
+
+	option = {
+		name = ESSOSTSP150OPT
+		trigger = {
+			OR = {
+				has_called_cthulhu = yes
+				religion_group = sothoryos_rel_group
+				religion = starry_wisdom
+				is_devil_worshiper_trigger = yes
+				ai = no
+			}
+			NOT = {
+				trait = lunatic
+				trait = possessed
+			}
+		}
+
+		if = {
+			limit = { trait = lunatic }
+			remove_trait = lunatic
+			character_event = { id = 38309 }
+		}
+		if = {
+			limit = { trait = possessed }
+			remove_trait = possessed
+			character_event = { id = trait_notification.20 }
+		}
+
+		clr_character_flag = scourge_lunatic
+
+		if = {
+			limit = { religion = old_ones }
+			capital_scope = { reverse_religion = PREV }
+		}
+	}
+
+	option = {
+		name = ESSOSTSP150OPT
+		trigger = {
+			OR = {
+				religion_group = sothoryos_rel_group
+				religion = starry_wisdom
+				is_devil_worshiper_trigger = yes
+				has_called_cthulhu = yes
+			}
+			trait = lunatic
+			NOT = { trait = possessed }
+		}
+		tooltip_info = lunatic
+
+		if = {
+			limit = { trait = lunatic }
+			remove_trait = lunatic
+			character_event = { id = 38309 }
+		}
+		if = {
+			limit = { trait = possessed }
+			remove_trait = possessed
+			character_event = { id = trait_notification.20 }
+		}
+
+		clr_character_flag = scourge_lunatic
+
+		if = {
+			limit = { religion = old_ones }
+			capital_scope = { reverse_religion = PREV }
+		}
+	}
+
+	option = {
+		name = ESSOSTSP150OPT
+		trigger = {
+			OR = {
+				religion_group = sothoryos_rel_group
+				religion = starry_wisdom
+				is_devil_worshiper_trigger = yes
+				has_called_cthulhu = yes
+			}
+			trait = possessed
+			NOT = { trait = lunatic }
+		}
+
+		tooltip_info = possessed
+
+		if = {
+			limit = { trait = lunatic }
+			remove_trait = lunatic
+			character_event = { id = 38309 }
+		}
+		if = {
+			limit = { trait = possessed }
+			remove_trait = possessed
+			character_event = { id = trait_notification.20 }
+		}
+
+		clr_character_flag = scourge_lunatic
+
+		if = {
+			limit = { religion = old_ones }
+			capital_scope = { reverse_religion = PREV }
+		}
+	}
+}

@@ -49,7 +49,7 @@ narrative_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 180
+		years = 15
 
 		modifier = {
 			factor = 0.8
@@ -183,7 +183,7 @@ narrative_event = {
 						female = no
 						religion = ROOT
 						culture = PREV
-						name = Фашбиндер
+						name = "Фашбиндер"
 						trait = brave
 						trait = strong
 						historical = yes
@@ -229,8 +229,7 @@ narrative_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -262,7 +261,7 @@ narrative_event = {
 						limit = { ROOT = { ai = no } }
 						random = {
 							chance = 20
-							set_name = Кирикист
+							set_name = "Кирикист"
 						}
 					}
 					random_list = {
@@ -309,7 +308,7 @@ narrative_event = {
 						limit = { ROOT = { ai = no } }
 						random = {
 							chance = 20
-							set_name = Джорда
+							set_name = "Джорда"
 						}
 					}
 					if = {
@@ -414,7 +413,7 @@ narrative_event = {
 						limit = { ROOT = { ai = no } }
 						random = {
 							chance = 20
-							set_name = Умбра
+							set_name = "Умбра"
 						}
 					}
 					random = {
@@ -2074,7 +2073,7 @@ character_event = {
 				prisoner = no
 				war = no
 				combat_rating = 20
-				age = 16
+				is_adult = yes
 				NOT = { has_severe_disability_trigger = yes }
 				ai = yes
 			}
@@ -2088,7 +2087,7 @@ character_event = {
 				prisoner = no
 				war = no
 				combat_rating = 20
-				age = 16
+				is_adult = yes
 				NOT = { has_severe_disability_trigger = yes }
 				is_female = no
 				ai = yes
@@ -3949,6 +3948,86 @@ character_event = {
 				}
 				else_if = {
 					limit = {
+						dynasty = 23
+						NOT = { any_character = { has_artifact = mercy is_alive = yes } }
+					}
+					FROM = { add_artifact = mercy }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 1534
+						NOT = { any_character = { has_artifact = loyalty is_alive = yes } }
+					}
+					FROM = { add_artifact = loyalty }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 322
+						NOT = { any_character = { has_artifact = grey_wanderer is_alive = yes } }
+					}
+					FROM = { add_artifact = grey_wanderer }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 1518
+						NOT = { any_character = { has_artifact = swiftend is_alive = yes } }
+					}
+					FROM = { add_artifact = swiftend }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 65
+						NOT = { any_character = { has_artifact = sundown is_alive = yes } }
+					}
+					FROM = { add_artifact = sundown }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 174831
+						NOT = { any_character = { has_artifact = moons_kiss is_alive = yes } }
+					}
+					FROM = { add_artifact = moons_kiss }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 239
+						NOT = { any_character = { has_artifact = wavecarver is_alive = yes } }
+					}
+					FROM = { add_artifact = wavecarver }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 67787
+						NOT = { any_character = { has_artifact = curtail is_alive = yes } }
+					}
+					FROM = { add_artifact = curtail }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 319
+						NOT = { any_character = { has_artifact = righteousness is_alive = yes } }
+					}
+					FROM = { add_artifact = righteousness }
+
+				}
+				else_if = {
+					limit = {
+						dynasty = 15
+						NOT = { any_character = { has_artifact = scorpion is_alive = yes } }
+					}
+					FROM = { add_artifact = scorpion }
+
+				}
+				else_if = {
+					limit = {
 						dynasty = 496029
 						NOT = { any_character = { has_artifact = behemoth is_alive = yes } }
 					}
@@ -3956,7 +4035,6 @@ character_event = {
 
 				}
 				else = {
-					limit = { NOT = { has_artifact = valyrian_steel } }
 					FROM = { add_artifact = valyrian_steel }
 				}
 				new_artifact = {
@@ -4326,13 +4404,92 @@ character_event = {
 			}
 			else_if = {
 				limit = {
+					dynasty = 23
+					NOT = { any_character = { has_artifact = mercy is_alive = yes } }
+				}
+				FROM = { add_artifact = mercy }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1534
+					NOT = { any_character = { has_artifact = loyalty is_alive = yes } }
+				}
+				FROM = { add_artifact = loyalty }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 322
+					NOT = { any_character = { has_artifact = grey_wanderer is_alive = yes } }
+				}
+				FROM = { add_artifact = grey_wanderer }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1518
+					NOT = { any_character = { has_artifact = swiftend is_alive = yes } }
+				}
+				FROM = { add_artifact = swiftend }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 65
+					NOT = { any_character = { has_artifact = sundown is_alive = yes } }
+				}
+				FROM = { add_artifact = sundown }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 174831
+					NOT = { any_character = { has_artifact = moons_kiss is_alive = yes } }
+				}
+				FROM = { add_artifact = moons_kiss }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 239
+					NOT = { any_character = { has_artifact = wavecarver is_alive = yes } }
+				}
+				FROM = { add_artifact = wavecarver }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 67787
+					NOT = { any_character = { has_artifact = curtail is_alive = yes } }
+				}
+				FROM = { add_artifact = curtail }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 319
+					NOT = { any_character = { has_artifact = righteousness is_alive = yes } }
+				}
+				FROM = { add_artifact = righteousness }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 15
+					NOT = { any_character = { has_artifact = scorpion is_alive = yes } }
+				}
+				FROM = { add_artifact = scorpion }
+
+			}
+			else_if = {
+				limit = {
 					dynasty = 496029
 					NOT = { any_character = { has_artifact = behemoth is_alive = yes } }
 				}
 				FROM = { add_artifact = behemoth }
 			}
 			else = {
-				limit = { NOT = { has_artifact = valyrian_steel } }
 				add_artifact = valyrian_steel
 				new_artifact = { get_random_sword_name_effect = yes }
 				custom_tooltip = {
@@ -4345,7 +4502,6 @@ character_event = {
 			}
 		}
 		else = {
-			limit = { NOT = { has_artifact = valyrian_steel } }
 			add_artifact = valyrian_steel
 			new_artifact = { get_random_sword_name_effect = yes }
 			custom_tooltip = {
@@ -4370,7 +4526,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAwikid.48" # Rise my friend
 		hidden_tooltip = { narrative_event = { id = wikid.50 } }
-		add_friend  = FROM
+		add_friend = FROM
 	}
 }
 
@@ -4699,13 +4855,92 @@ character_event = {
 			}
 			else_if = {
 				limit = {
+					dynasty = 23
+					NOT = { any_character = { has_artifact = mercy is_alive = yes } }
+				}
+				FROM = { add_artifact = mercy }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1534
+					NOT = { any_character = { has_artifact = loyalty is_alive = yes } }
+				}
+				FROM = { add_artifact = loyalty }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 322
+					NOT = { any_character = { has_artifact = grey_wanderer is_alive = yes } }
+				}
+				FROM = { add_artifact = grey_wanderer }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1518
+					NOT = { any_character = { has_artifact = swiftend is_alive = yes } }
+				}
+				FROM = { add_artifact = swiftend }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 65
+					NOT = { any_character = { has_artifact = sundown is_alive = yes } }
+				}
+				FROM = { add_artifact = sundown }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 174831
+					NOT = { any_character = { has_artifact = moons_kiss is_alive = yes } }
+				}
+				FROM = { add_artifact = moons_kiss }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 239
+					NOT = { any_character = { has_artifact = wavecarver is_alive = yes } }
+				}
+				FROM = { add_artifact = wavecarver }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 67787
+					NOT = { any_character = { has_artifact = curtail is_alive = yes } }
+				}
+				FROM = { add_artifact = curtail }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 319
+					NOT = { any_character = { has_artifact = righteousness is_alive = yes } }
+				}
+				FROM = { add_artifact = righteousness }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 15
+					NOT = { any_character = { has_artifact = scorpion is_alive = yes } }
+				}
+				FROM = { add_artifact = scorpion }
+
+			}
+			else_if = {
+				limit = {
 					dynasty = 496029
 					NOT = { any_character = { has_artifact = behemoth is_alive = yes } }
 				}
 				FROM = { add_artifact = behemoth }
 			}
 			else = {
-				limit = { NOT = { has_artifact = valyrian_steel } }
 				add_artifact = valyrian_steel
 				new_artifact = {
 					set_artifact_flag = heirloom_@PREV
@@ -4717,7 +4952,6 @@ character_event = {
 			}
 		}
 		else = {
-			limit = { NOT = { has_artifact = valyrian_steel } }
 			add_artifact = valyrian_steel
 			new_artifact = {
 				set_artifact_flag = heirloom_@PREV
@@ -5049,7 +5283,7 @@ long_character_event = {
 
 narrative_event = {
 	id = wikid.65
-	desc = EVTDESCwikid.65 #On your way up, you hear a familiar voice. "[ROOT.PrimaryTitle.GetFOA]! [ROOT.PrimaryTitle.GetFOA]!"Looking around, you see your companion, coming towards you. "We're lucky to be alive, [root.GetBestName]. I haven't found any of the others. They're most likely dead, or still lost at sea." You nod, and the two of you continue your way up to the castle. It is unfamiliar to you, and there is something about it that unsettles you to the core. As you approach, a hatch swings open on the gate, revealing a maester's face. "Who are you? What do you want?"
+	desc = EVTDESCwikid.65 #On your way up, you hear a familiar voice. "[ROOT.PrimaryTitle.GetFOA]! [ROOT.PrimaryTitle.GetFOA]!"Looking around, you see your companion, coming towards you. "We're lucky to be alive, [Root.GetBestName]. I haven't found any of the others. They're most likely dead, or still lost at sea." You nod, and the two of you continue your way up to the castle. It is unfamiliar to you, and there is something about it that unsettles you to the core. As you approach, a hatch swings open on the gate, revealing a maester's face. "Who are you? What do you want?"
 	title = "EVTTITLEwikid.65" #An Unfamiliar Place
 
 	picture = GFX_evt_theeyrie
@@ -7493,13 +7727,92 @@ character_event = { #dragon tamed! time to return
 			}
 			else_if = {
 				limit = {
+					dynasty = 23
+					NOT = { any_character = { has_artifact = mercy is_alive = yes } }
+				}
+				FROM = { add_artifact = mercy }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1534
+					NOT = { any_character = { has_artifact = loyalty is_alive = yes } }
+				}
+				FROM = { add_artifact = loyalty }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 322
+					NOT = { any_character = { has_artifact = grey_wanderer is_alive = yes } }
+				}
+				FROM = { add_artifact = grey_wanderer }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1518
+					NOT = { any_character = { has_artifact = swiftend is_alive = yes } }
+				}
+				FROM = { add_artifact = swiftend }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 65
+					NOT = { any_character = { has_artifact = sundown is_alive = yes } }
+				}
+				FROM = { add_artifact = sundown }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 174831
+					NOT = { any_character = { has_artifact = moons_kiss is_alive = yes } }
+				}
+				FROM = { add_artifact = moons_kiss }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 239
+					NOT = { any_character = { has_artifact = wavecarver is_alive = yes } }
+				}
+				FROM = { add_artifact = wavecarver }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 67787
+					NOT = { any_character = { has_artifact = curtail is_alive = yes } }
+				}
+				FROM = { add_artifact = curtail }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 319
+					NOT = { any_character = { has_artifact = righteousness is_alive = yes } }
+				}
+				FROM = { add_artifact = righteousness }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 15
+					NOT = { any_character = { has_artifact = scorpion is_alive = yes } }
+				}
+				FROM = { add_artifact = scorpion }
+
+			}
+			else_if = {
+				limit = {
 					dynasty = 496029
 					NOT = { any_character = { has_artifact = behemoth is_alive = yes } }
 				}
 				FROM = { add_artifact = behemoth }
 			}
 			else = {
-				limit = { NOT = { has_artifact = valyrian_steel } }
 				add_artifact = valyrian_steel
 				new_artifact = {
 					set_artifact_flag = heirloom_@PREV
@@ -7511,7 +7824,6 @@ character_event = { #dragon tamed! time to return
 			}
 		}
 		else = {
-			limit = { NOT = { has_artifact = valyrian_steel } }
 			add_artifact = valyrian_steel
 			new_artifact = {
 				set_artifact_flag = heirloom_@PREV
@@ -7915,13 +8227,92 @@ character_event = { #dragon killed! time to return
 			}
 			else_if = {
 				limit = {
+					dynasty = 23
+					NOT = { any_character = { has_artifact = mercy is_alive = yes } }
+				}
+				FROM = { add_artifact = mercy }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1534
+					NOT = { any_character = { has_artifact = loyalty is_alive = yes } }
+				}
+				FROM = { add_artifact = loyalty }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 322
+					NOT = { any_character = { has_artifact = grey_wanderer is_alive = yes } }
+				}
+				FROM = { add_artifact = grey_wanderer }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1518
+					NOT = { any_character = { has_artifact = swiftend is_alive = yes } }
+				}
+				FROM = { add_artifact = swiftend }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 65
+					NOT = { any_character = { has_artifact = sundown is_alive = yes } }
+				}
+				FROM = { add_artifact = sundown }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 174831
+					NOT = { any_character = { has_artifact = moons_kiss is_alive = yes } }
+				}
+				FROM = { add_artifact = moons_kiss }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 239
+					NOT = { any_character = { has_artifact = wavecarver is_alive = yes } }
+				}
+				FROM = { add_artifact = wavecarver }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 67787
+					NOT = { any_character = { has_artifact = curtail is_alive = yes } }
+				}
+				FROM = { add_artifact = curtail }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 319
+					NOT = { any_character = { has_artifact = righteousness is_alive = yes } }
+				}
+				FROM = { add_artifact = righteousness }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 15
+					NOT = { any_character = { has_artifact = scorpion is_alive = yes } }
+				}
+				FROM = { add_artifact = scorpion }
+
+			}
+			else_if = {
+				limit = {
 					dynasty = 496029
 					NOT = { any_character = { has_artifact = behemoth is_alive = yes } }
 				}
 				FROM = { add_artifact = behemoth }
 			}
 			else = {
-				limit = { NOT = { has_artifact = valyrian_steel } }
 				add_artifact = valyrian_steel
 				new_artifact = {
 					set_artifact_flag = heirloom_@PREV
@@ -7933,7 +8324,6 @@ character_event = { #dragon killed! time to return
 			}
 		}
 		else = {
-			limit = { NOT = { has_artifact = valyrian_steel } }
 			add_artifact = valyrian_steel
 			new_artifact = {
 				set_artifact_flag = heirloom_@PREV
@@ -8407,13 +8797,92 @@ character_event = { #dragon/companion killed! time to return
 			}
 			else_if = {
 				limit = {
+					dynasty = 23
+					NOT = { any_character = { has_artifact = mercy is_alive = yes } }
+				}
+				FROM = { add_artifact = mercy }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1534
+					NOT = { any_character = { has_artifact = loyalty is_alive = yes } }
+				}
+				FROM = { add_artifact = loyalty }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 322
+					NOT = { any_character = { has_artifact = grey_wanderer is_alive = yes } }
+				}
+				FROM = { add_artifact = grey_wanderer }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 1518
+					NOT = { any_character = { has_artifact = swiftend is_alive = yes } }
+				}
+				FROM = { add_artifact = swiftend }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 65
+					NOT = { any_character = { has_artifact = sundown is_alive = yes } }
+				}
+				FROM = { add_artifact = sundown }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 174831
+					NOT = { any_character = { has_artifact = moons_kiss is_alive = yes } }
+				}
+				FROM = { add_artifact = moons_kiss }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 239
+					NOT = { any_character = { has_artifact = wavecarver is_alive = yes } }
+				}
+				FROM = { add_artifact = wavecarver }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 67787
+					NOT = { any_character = { has_artifact = curtail is_alive = yes } }
+				}
+				FROM = { add_artifact = curtail }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 319
+					NOT = { any_character = { has_artifact = righteousness is_alive = yes } }
+				}
+				FROM = { add_artifact = righteousness }
+
+			}
+			else_if = {
+				limit = {
+					dynasty = 15
+					NOT = { any_character = { has_artifact = scorpion is_alive = yes } }
+				}
+				FROM = { add_artifact = scorpion }
+
+			}
+			else_if = {
+				limit = {
 					dynasty = 496029
 					NOT = { any_character = { has_artifact = behemoth is_alive = yes } }
 				}
 				FROM = { add_artifact = behemoth }
 			}
 			else = {
-				limit = { NOT = { has_artifact = valyrian_steel } }
 				add_artifact = valyrian_steel
 				new_artifact = {
 					set_artifact_flag = heirloom_@PREV
@@ -8425,7 +8894,6 @@ character_event = { #dragon/companion killed! time to return
 			}
 		}
 		else = {
-			limit = { NOT = { has_artifact = valyrian_steel } }
 			add_artifact = valyrian_steel
 			new_artifact = {
 				set_artifact_flag = heirloom_@PREV
@@ -8525,39 +8993,37 @@ narrative_event = {
 				set_artifact_flag = heirloom_@PREV
 			}
 
-			if = {
-				c_77990106 = {
-					add_artifact = dragon_egg
-					new_artifact = {
-						set_artifact_flag = dragon_egg_mother_@PREV
-						set_name = [Prev.GetDynamicDragonEggName]
-						save_event_target_as = new_dragon_egg_1
+			c_77990106 = {
+				add_artifact = dragon_egg
+				new_artifact = {
+					set_artifact_flag = dragon_egg_mother_@PREV
+					set_name = [Prev.GetDynamicDragonEggName]
+					save_event_target_as = new_dragon_egg_1
+				}
+				add_artifact = dragon_egg
+				new_artifact = {
+					set_artifact_flag = dragon_egg_mother_@PREV
+					set_name = [Prev.GetDynamicDragonEggName]
+					save_event_target_as = new_dragon_egg_2
+				}
+				add_artifact = dragon_egg
+				new_artifact = {
+					set_artifact_flag = dragon_egg_mother_@PREV
+					set_name = [Prev.GetDynamicDragonEggName]
+					save_event_target_as = new_dragon_egg_3
+				}
+				ROOT = {
+					event_target:new_dragon_egg_1 = {
+						transfer_artifact = { from = PREV to = ROOT }
+						set_artifact_flag = heirloom_@ROOT
 					}
-					add_artifact = dragon_egg
-					new_artifact = {
-						set_artifact_flag = dragon_egg_mother_@PREV
-						set_name = [Prev.GetDynamicDragonEggName]
-						save_event_target_as = new_dragon_egg_2
+					event_target:new_dragon_egg_2 = {
+						transfer_artifact = { from = PREV to = ROOT }
+						set_artifact_flag = heirloom_@ROOT
 					}
-					add_artifact = dragon_egg
-					new_artifact = {
-						set_artifact_flag = dragon_egg_mother_@PREV
-						set_name = [Prev.GetDynamicDragonEggName]
-						save_event_target_as = new_dragon_egg_3
-					}
-					ROOT = {
-						event_target:new_dragon_egg_1 = {
-							transfer_artifact = { from = PREV to = ROOT }
-							set_artifact_flag = heirloom_@ROOT
-						}
-						event_target:new_dragon_egg_2 = {
-							transfer_artifact = { from = PREV to = ROOT }
-							set_artifact_flag = heirloom_@ROOT
-						}
-						event_target:new_dragon_egg_3 = {
-							transfer_artifact = { from = PREV to = ROOT }
-							set_artifact_flag = heirloom_@ROOT
-						}
+					event_target:new_dragon_egg_3 = {
+						transfer_artifact = { from = PREV to = ROOT }
+						set_artifact_flag = heirloom_@ROOT
 					}
 				}
 			}
@@ -9553,7 +10019,7 @@ character_event = {
 	option = {
 		name = "EVTOPTAwikid.120" # Rise my friend
 		hidden_tooltip = { narrative_event = { id = wikid.121 } }
-		add_friend  = FROM
+		add_friend = FROM
 	}
 }
 
@@ -9618,7 +10084,7 @@ narrative_event = {
 character_event = {
 	id = wikid.250
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_window = yes
 	min_age = 18
 	max_age = 30
@@ -12452,7 +12918,7 @@ character_event = {
 					has_lover = no
 					is_close_relative = PREV
 					liege = { character = PREVPREV }
-					age = 16
+					is_adult = yes
 					NOT = { age_diff = { who = ROOT years = 11 } }
 					prisoner = no
 					NOT = { trait = celibate }
@@ -12499,7 +12965,7 @@ character_event = {
 				has_lover = no
 				is_close_relative = PREV
 				liege = { character = PREVPREV }
-				age = 16
+				is_adult = yes
 				NOT = { age_diff = { who = FROM years = 11 } }
 				prisoner = no
 				NOT = { trait = celibate }
@@ -12972,7 +13438,7 @@ character_event = {
 		trait = wikid
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -14987,7 +15453,7 @@ character_event = {
 								NOT = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_refused_faction_scheme } }
 								NOT = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_delined_faction_scheme } }
 								NOT = { has_character_flag = faction_member }
-								age = 16
+								is_adult = yes
 								prisoner = no
 								higher_tier_than = BARON
 								NOT = { in_faction = faction_liege_loyalist }
@@ -15136,7 +15602,7 @@ character_event = {
 							NOT = { is_inaccessible_trigger = yes }
 							prisoner = no
 							is_incapable = no
-							age = 16
+							is_adult = yes
 
 							has_lover = no
 							NOR = {
@@ -15187,7 +15653,7 @@ character_event = {
 							NOT = { is_inaccessible_trigger = yes }
 							prisoner = no
 							is_incapable = no
-							age = 16
+							is_adult = yes
 
 							combat_rating = 20
 							NOR = {
@@ -16990,6 +17456,7 @@ character_event = {
 								remove_trait = ugly
 								remove_trait = ugly_1
 								remove_trait = ugly_2
+								add_trait = prostitute
 								random = {
 									chance = 25
 									add_trait = fair
@@ -17776,8 +18243,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -17825,8 +18291,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -17917,7 +18382,7 @@ character_event = {
 						is_married = no
 						is_close_relative = PREV
 						liege = { character = PREVPREV }
-						age = 16
+						is_adult = yes
 						NOT = { age_diff = { who = ROOT years = 11 } }
 						prisoner = no
 						NOT = { trait = celibate }
@@ -17958,7 +18423,7 @@ character_event = {
 						has_lover = no
 						is_married = no
 						liege = { character = PREVPREV }
-						age = 16
+						is_adult = yes
 						NOT = { age_diff = { who = ROOT years = 11 } }
 						prisoner = no
 						NOT = { trait = celibate }
@@ -19038,7 +19503,7 @@ character_event = {
 					war = no
 					in_command = no
 					prisoner = no
-					age = 16
+					is_adult = yes
 					is_abroad = no
 					location = { province_id = event_target:tour_destination }
 					NOT = { trait = slave }
@@ -19065,7 +19530,7 @@ character_event = {
 						war = no
 						in_command = no
 						prisoner = no
-						age = 16
+						is_adult = yes
 						is_abroad = no
 						location = { province_id = event_target:tour_destination }
 						NOT = { trait = slave }
@@ -19131,7 +19596,7 @@ character_event = {
 				NOT = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_refused_faction_scheme } }
 				NOT = { reverse_has_opinion_modifier = { who = ROOT modifier = opinion_delined_faction_scheme } }
 				NOT = { has_character_flag = faction_member }
-				age = 16
+				is_adult = yes
 				prisoner = no
 				higher_tier_than = BARON
 				NOT = { in_faction = faction_liege_loyalist }
@@ -19157,7 +19622,7 @@ character_event = {
 		name = EVTOPTAwikid.390
 		tooltip_info = diplomacy
 		event_target:faction_member = {
-			character_event = { id = wikid.391 tooltip =  EVTTOOLTIPwikid.391 }
+			character_event = { id = wikid.391 tooltip = EVTTOOLTIPwikid.391 }
 			opinion = {
 				modifier = opinion_coerced_into_leaving_faction
 				who = ROOT
@@ -19222,7 +19687,7 @@ character_event = {
 				NOT = { is_inaccessible_trigger = yes }
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 
 				age < 40
 				OR = {
@@ -19251,7 +19716,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAwikid.395 #Oh well
-		show_portrait =  event_target:ringleader
+		show_portrait = event_target:ringleader
 		event_target:faction_member = {
 			character_event = { id = wikid.396 }
 			opinion = {
@@ -19265,7 +19730,7 @@ character_event = {
 		name = EVTOPTBwikid.395 #Buy off
 		tooltip = { transfer_scaled_wealth = { from = ROOT to = event_target:faction_member value = 0.25 min = 25 max = 100 } }
 		event_target:faction_member = {
-			character_event = { id = wikid.397 tooltip =  EVTTOOLTIPwikid.397 }
+			character_event = { id = wikid.397 tooltip = EVTTOOLTIPwikid.397 }
 		}
 	}
 	option = {
@@ -19287,7 +19752,7 @@ character_event = { #Inform
 
 	option = {
 		name = EVTOPTAwikid.396
-		show_portrait =  event_target:ringleader
+		show_portrait = event_target:ringleader
 		FROM = {
 			opinion = {
 				modifier = opinion_angry
@@ -19306,7 +19771,7 @@ character_event = { #Inform
 
 	option = {
 		name = EVTOPTAwikid.397
-		show_portrait =  event_target:ringleader
+		show_portrait = event_target:ringleader
 		FROM = {
 			transfer_scaled_wealth = { to = ROOT value = 0.25 min = 25 max = 100 }
 		}
@@ -19321,7 +19786,7 @@ character_event = { #Inform
 
 	option = {
 		name = EVTOPTAwikid.398
-		show_portrait =  event_target:ringleader
+		show_portrait = event_target:ringleader
 		prestige = 50
 	}
 }
@@ -19584,7 +20049,7 @@ character_event = {
 					NOT = { is_inaccessible_trigger = yes }
 					prisoner = no
 					is_incapable = no
-					age = 16
+					is_adult = yes
 				}
 				imprison = FROM
 				clr_character_flag = captured_in_battle
@@ -19611,7 +20076,7 @@ character_event = {
 					NOT = { is_inaccessible_trigger = yes }
 					prisoner = no
 					is_incapable = no
-					age = 16
+					is_adult = yes
 				}
 				count = 2
 				imprison = FROM
@@ -19779,7 +20244,7 @@ character_event = {
 				NOT = { is_inaccessible_trigger = yes }
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 
 				has_lover = no
 				NOT = { is_married = ROOT }
@@ -19849,7 +20314,7 @@ character_event = {
 						has_lover = no
 						is_married = no
 						liege = { character = PREVPREV }
-						age = 16
+						is_adult = yes
 						NOT = { age_diff = { who = event_target:entourage_lover_maker years = 11 } }
 						prisoner = no
 						NOT = { trait = celibate }
@@ -19969,7 +20434,7 @@ character_event = {
 				NOT = { is_inaccessible_trigger = yes }
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 
 				combat_rating = 20
 				NOR = {
@@ -20013,7 +20478,7 @@ character_event = {
 						has_lover = no
 						is_married = no
 						liege = { character = PREVPREV }
-						age = 16
+						is_adult = yes
 						prisoner = no
 						is_incapable = no
 						NOT = { opinion = { who = event_target:entourage_conflict_maker value = 0 } }
@@ -20074,8 +20539,7 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}

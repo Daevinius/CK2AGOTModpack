@@ -5,7 +5,7 @@
 character_event = { #courtier wants to teach me civasse
 	id = 250910
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	ai = no
@@ -24,7 +24,7 @@ character_event = { #courtier wants to teach me civasse
 			is_incapable = no
 			at_location = ROOT
 			prisoner = no
-			age = 16
+			is_adult = yes
 			NOT = { trait = dragon }
 		}
 		is_nomadic = no
@@ -71,7 +71,7 @@ character_event = { #courtier wants to teach me civasse
 				is_incapable = no
 				at_location = ROOT
 				prisoner = no
-				age = 16
+				is_adult = yes
 				NOT = { trait = dragon }
 			}
 			character_event = { id = 250909 }
@@ -425,7 +425,7 @@ character_event = { #we play civasse
 						FROM = { NOT = { trait = homosexual } }
 					}
 				}
-				age = 16
+				is_adult = yes
 				age < 22
 				NOT = { is_close_relative = ROOT }
 				NOT = { trait = dragon }
@@ -450,7 +450,7 @@ character_event = { #we play civasse
 						FROM = { NOT = { trait = homosexual } }
 					}
 				}
-				age = 16
+				is_adult = yes
 				age < 22
 				NOT = { is_close_relative = ROOT }
 				NOT = { trait = dragon }

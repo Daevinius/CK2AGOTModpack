@@ -10,7 +10,7 @@ namespace = tdp_dragon_maintenance
 character_event = {
 	id = tdp_dragon_maintenance.1
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 	hide_window = yes
 
 	religion = dragon_rel
@@ -346,7 +346,7 @@ character_event = {
 character_event = {
 	id = tdp_dragon_maintenance.2
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_bi_yearly_pulse
 	hide_window = yes
 
 	trigger = {
@@ -491,7 +491,7 @@ character_event = {
 				has_landed_title = c_dragonstone
 			}
 			set_global_flag = dragon_egg_colors
-			any_character = {
+			any_artifact = {
 				limit = {
 					has_artifact = dragon_egg
 					NOR = {
@@ -647,7 +647,7 @@ character_event = {
 character_event = {
 	id = tdp_dragon_maintenance.3
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	hide_window = yes
 
 	trigger = {
@@ -688,7 +688,7 @@ character_event = {
 character_event = {
 	id = tdp_dragon_maintenance.4
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage
 	hide_window = yes
 
 	trigger = {
@@ -701,7 +701,7 @@ character_event = {
 						has_character_modifier = cannot_tame_dragon
 					}
 				}
-				new_character  = {
+				new_character = {
 					is_female = yes
 					NOT = { has_character_modifier = granted_dragon_access }
 					dynasty = FROM
@@ -723,7 +723,7 @@ character_event = {
 character_event = {
 	id = tdp_dragon_maintenance.5
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_birth
 	hide_window = yes
 
 	trigger = {

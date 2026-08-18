@@ -2291,13 +2291,12 @@ targeted_decisions = {
 			}
 			hidden_tooltip = {
 				if = {
-					limit = { age = 16 }
+					limit = { is_adult = yes }
 					FROM = {
 						character_event = { id = LoR.832 }
 					}
 				}
-				if = {
-					limit = { age < 16 }
+				else = {
 					FROM = {
 						character_event = { id = LoR.834 }
 					}

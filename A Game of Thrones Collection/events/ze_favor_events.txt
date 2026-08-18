@@ -19,7 +19,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	in_command = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	has_dlc = "Zeus"
 
@@ -251,7 +251,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_dlc = "Zeus"
 
 	trigger = {
@@ -535,7 +535,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	has_dlc = "Zeus"
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_voter = yes
@@ -714,7 +714,7 @@ long_character_event = {
 	only_capable = yes
 	prisoner = no
 	has_dlc = "Zeus"
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	war = no
 
 	trigger = {
@@ -935,7 +935,7 @@ character_event = {
 	has_dlc = "Zeus"
 	only_playable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_nomadic = no
@@ -980,8 +980,7 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -1035,7 +1034,7 @@ character_event = {
 
 	only_playable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_dlc = "Zeus"
@@ -1185,7 +1184,7 @@ character_event = {
 
 	only_playable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_dlc = "Zeus"
@@ -1381,7 +1380,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	war = no
 	has_dlc = "Zeus"
@@ -1921,7 +1920,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_dlc = "Zeus"
 	war = no
 	friends = yes
@@ -2206,7 +2205,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	war = no
 	has_dlc = "Zeus"
@@ -2802,7 +2801,7 @@ letter_event = {
 # Liege accepted!
 letter_event = {
 	id = ZE.22802
-	desc =  EVTDESC_ZE_22802
+	desc = EVTDESC_ZE_22802
 
 	is_triggered_only = yes
 
@@ -2825,7 +2824,7 @@ letter_event = {
 # Liege denied
 letter_event = {
 	id = ZE.22803
-	desc =  EVTDESC_ZE_22803
+	desc = EVTDESC_ZE_22803
 
 	is_triggered_only = yes
 
@@ -2855,7 +2854,7 @@ character_event = {
 	prisoner = no
 	only_playable = yes
 	only_women = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	has_dlc = "Zeus"
 
 	trigger = {
@@ -2875,7 +2874,7 @@ character_event = {
 					trait = eunuch
 					is_rival = ROOT
 				}
-				age = 16
+				is_adult = yes
 				prisoner = no
 				ROOT_possibly_romantically_interested_trigger = yes
 				opinion = { who = ROOT value = -25 }
@@ -2934,7 +2933,7 @@ character_event = {
 						trait = eunuch
 						is_rival = ROOT
 					}
-					age = 16
+					is_adult = yes
 					prisoner = no
 					ROOT_possibly_romantically_interested_trigger = yes
 					opinion = { who = ROOT value = -25 }
@@ -3308,7 +3307,7 @@ character_event = {
 character_event = {
 	id = ZE.8160
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	ai = yes
 	only_capable = yes
 	prisoner = no
@@ -3386,6 +3385,7 @@ character_event = {
 			random_courtier_or_vassal = {
 				limit = {
 					ai = yes
+					NOT = { character = ROOT }
 					NOT = { owes_favor_to = ROOT }
 					NOT = { ROOT = { owes_favor_to = PREV } }
 					is_adult = yes
@@ -3413,6 +3413,7 @@ character_event = {
 					}
 				}
 				reverse_add_favor = ROOT
+
 				if = {
 					limit = {
 						is_ruler = no

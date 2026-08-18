@@ -70,11 +70,9 @@ decisions = {
 							}
 							#Not traditional title
 							OR = {
-								NOT = {
-									OR = {
-										title = c_dragonstone
-										title = c_summerhall
-									}
+								NOR = {
+									title = c_dragonstone
+									title = c_summerhall
 								}
 								holder_scope = { NOT = { dynasty = 496 } }
 							}
@@ -103,37 +101,31 @@ decisions = {
 								holder_scope = { NOT = { dynasty = 190 } }
 							}
 							OR = {
-								NOT = { title =  c_storms_end }
+								NOT = { title = c_storms_end }
 								holder_scope = {
-									NOT = {
-										OR = {
+									NOR = {
 										dynasty = 317
 										dynasty = 1544
 									}
 								}
 							}
-							}
 							OR = {
 								NOT = { title = c_highgarden }
 								holder_scope = {
-									NOT = {
-										OR = {
+									NOR = {
 										dynasty = 253
 										dynasty = 1254
 									}
 								}
-							}
 							}
 							OR = {
 								NOT = { title = c_sunspear  }
 								holder_scope = { NOT = { dynasty = 1 } }
 							}
 							OR = {
-								NOT = {
-									OR = {
+								NOR = {
 									title = c_brightwater
 									title = c_highgarden
-								}
 								}
 								holder_scope = { NOT = { dynasty = 281 } }
 							}
@@ -290,7 +282,7 @@ decisions = {
 							holder_scope = { NOT = { dynasty = 190 } }
 						}
 						OR = {
-							NOT = { title =  c_storms_end }
+							NOT = { title = c_storms_end }
 							holder_scope = {
 								NOT = {
 									OR = {
@@ -362,8 +354,7 @@ decisions = {
 						character_event = { id = 108005 tooltip = TOOLTIP108005 }
 					}
 				}
-				if = {
-					limit = { has_regent = no }
+				else = {
 					if = {
 						limit = { job_castellan = { always = yes } }
 						job_castellan = {

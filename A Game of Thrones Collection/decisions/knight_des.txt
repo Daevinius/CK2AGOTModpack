@@ -100,14 +100,12 @@ targeted_decisions = {
 			}
 			if = {
 				limit = {
-					NOT = { trait = squire }
-					NOT = {
-						OR = {
-							trait = master_warrior
-							trait = skilled_warrior
-							trait = trained_warrior
-							trait = poor_warrior
-						}
+					NOR = {
+						trait = squire
+						trait = master_warrior
+						trait = skilled_warrior
+						trait = trained_warrior
+						trait = poor_warrior
 					}
 				}
 				tooltip = { prestige = -150 }
@@ -161,13 +159,11 @@ targeted_decisions = {
 			}
 			modifier = {
 				factor = 0
-				NOT = { trait = squire }
-				NOT = {
-					OR = {
-						trait = trained_warrior
-						trait = skilled_warrior
-						trait = master_warrior
-					}
+				NOR = {
+					trait = squire
+					trait = trained_warrior
+					trait = skilled_warrior
+					trait = master_warrior
 				}
 				FROM = {
 					OR = {
@@ -264,13 +260,11 @@ targeted_decisions = {
 			}
 			if = {
 				limit = {
-					NOT = {
-						OR = {
-							trait = poor_warrior
-							trait = trained_warrior
-							trait = skilled_warrior
-							trait = master_warrior
-						}
+					NOR = {
+						trait = poor_warrior
+						trait = trained_warrior
+						trait = skilled_warrior
+						trait = master_warrior
 					}
 				}
 				prestige = -150
@@ -384,12 +378,10 @@ targeted_decisions = {
 			if = {
 				limit = {
 					FROM = {
-						NOT = {
-							OR = {
-								trait = master_warrior
-								trait = skilled_warrior
-								trait = trained_warrior
-							}
+						NOR = {
+							trait = master_warrior
+							trait = skilled_warrior
+							trait = trained_warrior
 						}
 					}
 				}
@@ -468,14 +460,12 @@ decisions = {
 			}
 			if = {
 				limit = {
-					NOT = { trait = squire }
-					NOT = {
-						OR = {
-							trait = poor_warrior
-							trait = trained_warrior
-							trait = skilled_warrior
-							trait = master_warrior
-						}
+					NOR = {
+						trait = squire
+						trait = poor_warrior
+						trait = trained_warrior
+						trait = skilled_warrior
+						trait = master_warrior
 					}
 				}
 				prestige = -150

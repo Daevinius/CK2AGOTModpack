@@ -5,8 +5,6 @@ EVTDESCmaintenance.19B;§RВНИМАНИЕ:§! Похоже, вы использ
 RULE_CK2_VERSION_WARNING;Предупреждение о версии СК2;x
 RULE_CK2_VERSION_WARNING_ON_DESC;Вы получите оповещение, если контрольная сумма неверна. Отключите эту настройку, если вы используете какой-либо сабмод или внесли преднамеренные изменения в основной мод.;x
 RULE_CK2_VERSION_WARNING_OFF_DESC;Вы §RНЕ§! получите предупреждение, если контрольная сумма неверна. Включите этот параметр, если вы используете какой-либо сабмод или внесли преднамеренные изменения в основной мод. Мод версии:§G2.2§!, совместим с CK2 §G3.3.3§;x
-k_trident;Трезубец;x
-k_trident_adj;Трезубец;x
 EVTOPTG100110;Я никогда не буду лучше, чем [Root.Liege.GetMyCastellanName] [Root.Liege.job_castellan.GetTitledFirstName].;x
 title_concubine;Наложница;x
 title_concubine_desc;Многие культуры пользуются традицией иметь наложницу, а также жену.;x
@@ -149,6 +147,7 @@ high_road;Горная дорога;x
 marshroad;Перешеек;x
 moatcailin;Ров Кейлин;x
 mountainpass;Горный перевал;x
+wasteland;Пустошь;x
 EVTDESCroberts_rebellion.13;В кровавой борьбе, мы одолели Безумного короля. Да будет царствование дома Баратеонов над Семью Королевствами долгим и благополучным.;x
 EVTOPTAroberts_rebellion.13;Слава!;x
 EVTDESCroberts_rebellion.14;Все Таргариены мертвы или в изгнании, но это слабое утешение за смерть Лианны, Брандона и отца. По крайней мере, теперь северяне смогут жить в мире.;x
@@ -213,7 +212,7 @@ EVTDESC63181;[Root.PrimaryTitle.GetFOA], [From.GetFirstNameWithDynasty] полу
 EVTOPTA63181;Они мои новые лорды, и лучше бы им быть справедливым...;x
 EVTOPTB63181;Как интересно...;x
 EVTDESC63182;[Root.GetFirstNameWithDynasty], Я тщательно рассмотрел[From.GetEndA] ваш запрос и уверен[From.GetEndA], что вы были бы прекрасным правителем этих земель, но все-таки я решил[From.GetEndA], что владение останется у Дома [FromFrom.GetOnlyDynastyName]. Поэтому я назвал[From.GetEndA] отпрыска Дома [FromFrom.GetOnlyDynastyName] вашим сюзереном.\n\n С наилучшими пожеланиями,\n[From.GetTitledFirstNameWithDynastyAndTitleNoRegnal];x
-EVTDESCvassal_request.462;Мой Регент, [FromFromFrom.GetTitledFirstNameWithDynastyNoRegnal] получил[FromFromFrom.GetEndA] отказ в праве владеть титулом [FromFromFrom.PrimaryTitle.Kingdom.GetFullName] именоваться Лордом. Так решил[From.GetEndA] [From.GetFirstNameWithDynasty }.;x
+EVTDESCvassal_request.462;Мой Регент, [FromFromFrom.GetTitledFirstNameWithDynastyNoRegnal] получил[FromFromFrom.GetEndA] отказ в праве владеть титулом [FromFromFrom.PrimaryTitle.Kingdom.GetFullName] именоваться Лордом. Так решил[From.GetEndA] [From.GetFirstNameWithDynasty].;x
 plot_weaken_lord_paramount_title;[This.GetTitle] [This.GetFirstNameWithDynasty] - ослабить;x
 plot_weaken_lord_paramount_desc;[From.GetTitledFirstNameWithDynastyAndTitleNoRegnal] считает, что [This.GetTitledFirstNameWithDynastyAndTitleNoRegnal] имеет слишком много власти в землях. Они пытаются отобрать один из многочисленных титулов.;x
 EVTTOOLTIPIRONTHRONEPLOT3;отреагирует на ваше требование передачи титула вам;x
@@ -511,7 +510,6 @@ EVTOPTA71051;Я открою своё имя и поблагодарю [From.Get
 EVTOPTB71051;Держать рот на замке;x
 EVTDESC71052;Рыцари собрались в путь, как вдруг тихий мальчик подошёл к вам. Он представился как [From.GetTitledFirstNameWithDynasty], [Root.TopLiege.GetTitledFirstName] - его родственник! Он и его наставник [From.Guardian.GetTitledFirstName] поблагодарили вас за теплый прием и продолжили путь.;x
 EVTOPTA71052;Для меня это честь;x
-d_unsullied_1;Безупречный;x
 faction_depose_liege_short;Свергнуть сюзерена;x
 faction_depose_liege_title;Свергнуть правителя [This.Liege.GetTitledFirstName];x
 faction_depose_liege_desc;Члены фракции пытаются заставить персонажа [This.Liege.GetTitledName] отречься от титула в пользу своего наследника ([This.Liege.Heir.GetTitledName]). Если фракция станет достаточно сильной, §Y[From.GetTitledFirstNameWithDynastyAndTitleNoRegnal]§! сможет выдвинуть ультиматум.;x
@@ -1361,7 +1359,7 @@ faction_republic_ultimatum_desc;Отправить ультиматум перс
 TOOLTIPfaction_republic_ultimatumA;[This.GetTitledFirstName] НЕ подчиняется законам короны, и [This.TopLiege.GetTitledFirstName] имеет минимальный или низкий авторитет короны.\n;x
 TOOLTIPfaction_republicCHANGE;Монархия в земле [This.GetName] упразднена, создаётся новая республика под управлением человека, известного как [From.GetTitledFirstName]\n;x
 EVTDESCfaction_event_new.60;[Root.GetFirstNameWithDynasty], ваше бездарное правление должно закончиться, я и мои союзники настаивают на том, чтобы монархия была упразднена, и вместо нее будет провозглашена Республика. Давайте будем разумны и не станем прибегать к кровопролитию.\n\nПодпись,\n[From.GetTitledName];x
-EVTDESCfaction_event_new.62;Ваш недостаток веры в мой долг и обязанности как вашего сюзерена огорчает меня, но я признаю факт, что [From.PrimaryTitle.GetName] может управляться эффективнее как республика. С сожалением, я вынужден[From.GetEndA] отречься от престола и упразднить монархию, Мой последний акт - передать власть Совету лордов.\n\nПодпись,\n[[From.GetFirstNameWithDynasty];x
+EVTDESCfaction_event_new.62;Ваш недостаток веры в мой долг и обязанности как вашего сюзерена огорчает меня, но я признаю факт, что [From.PrimaryTitle.GetName] может управляться эффективнее как республика. С сожалением, я вынужден[From.GetEndA] отречься от престола и упразднить монархию, Мой последний акт - передать власть Совету лордов.\n\nПодпись,\n[From.GetFirstNameWithDynasty];x
 EVTDESCfaction_event_new.63;Чтобы избежать бесполезной гражданской войны, [From.GetTitledFirstName] мудро согласи[From.GetLasLsya] отречься от престола и ликвидировать монархию, своим последним актом в [From.GetSheHe] передаёт власть Совету лордов. Ваша поддержка в этих событиях не будет забыта.\n\nИскренне ваш,\n[FromFrom.GetTitledName];x
 EVTDESCfaction_event_new.64;Всем моим подданным. Выслушав советы человека, известного как [FromFrom.GetTitledFirstName], я понял[From.GetEndA], что моё королевство будет эффективнее управляться не как монархия, а как республика. Настоящим отрекаюсь власти в пользу Совета лордов, во главе встанет [FromFrom.GetTitledFirstNameWithDynasty].\n\nПодпись,\n[From.GetFirstNameWithDynasty];x
 EVTDESCfaction_event_new.66;Вам удалось свергнуть монархию, и теперь Вы должны решить, какое государство создать на его месте.;x

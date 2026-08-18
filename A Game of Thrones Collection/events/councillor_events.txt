@@ -539,7 +539,7 @@ character_event = {
 										NOT = { trait = envious }
 									}
 								}
-								age = 16
+								is_adult = yes
 								prisoner = no
 								is_incapable = no
 								NOT = { has_opinion_modifier = { who = PREV modifier = opinion_revoked_my_title } }
@@ -592,7 +592,7 @@ character_event = {
 										NOT = { trait = envious }
 									}
 								}
-								age = 16
+								is_adult = yes
 								prisoner = no
 								is_incapable = no
 								NOT = { has_opinion_modifier = { who = PREV modifier = opinion_revoked_my_title } }
@@ -662,7 +662,7 @@ character_event = {
 								culture_group = PREV
 								event_target:liege_title = { location = { culture_group = PREVPREV } }
 							}
-							age = 16
+							is_adult = yes
 							prisoner = no
 							is_incapable = no
 							NOT = { has_opinion_modifier = { who = PREV modifier = opinion_revoked_my_title } }
@@ -733,7 +733,7 @@ character_event = {
 								culture_group = PREV
 								event_target:liege_title = { location = { culture_group = PREVPREV } }
 							}
-							age = 16
+							is_adult = yes
 							prisoner = no
 							is_incapable = no
 							NOT = { has_opinion_modifier = { who = PREV modifier = opinion_revoked_my_title } }
@@ -804,7 +804,7 @@ character_event = {
 								culture_group = PREV
 								event_target:liege_title = { location = { culture_group = PREVPREV } }
 							}
-							age = 16
+							is_adult = yes
 							prisoner = no
 							is_incapable = no
 							NOT = { has_opinion_modifier = { who = PREV modifier = opinion_revoked_my_title } }
@@ -1013,7 +1013,7 @@ character_event = {
 							higher_tier_than = COUNT
 							is_patrician = yes
 						}
-						age = 16
+						is_adult = yes
 						is_incapable = no
 						OR = {
 							trait = just
@@ -1166,7 +1166,7 @@ character_event = {
 							higher_tier_than = COUNT
 							is_patrician = yes
 						}
-						age = 16
+						is_adult = yes
 						is_incapable = no
 						OR = {
 							trait = just
@@ -1355,8 +1355,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -1508,8 +1507,7 @@ character_event = {
 											limit = { is_female = no }
 											set_special_character_title = title_ser
 										}
-										if = {
-											limit = { is_female = yes }
+										else = {
 											set_special_character_title = title_lady
 										}
 									}
@@ -2375,7 +2373,7 @@ character_event = { #Liege vetos vote against
 character_event = {
 	id = 77777
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -2536,10 +2534,7 @@ character_event = {
 							10 = { add_trait = master_warrior }
 						}
 					}
-					if = {
-						limit = {
-							NOT = { female_warrior_culture_trigger = yes }
-						}
+					else = {
 						random_list = {
 							65 = { add_trait = trained_warrior }
 							30 = { add_trait = skilled_warrior }
@@ -3176,7 +3171,7 @@ character_event = {
 ### Councillor reassigned ###
 character_event = {
 	id = councillor.50
-	desc =  EVTDESCcouncillor.50
+	desc = EVTDESCcouncillor.50
 	picture = GFX_evt_council
 	border = GFX_event_normal_frame_diplomacy
 
@@ -3196,11 +3191,11 @@ character_event = {
 			#record previous opinions
 			if = {
 				limit = { has_opinion_modifier = { who = ROOT modifier = opinion_job_security_concerns } }
-				set_character_flag =  opinion_job_security_concerns
+				set_character_flag = opinion_job_security_concerns
 			}
 			if = {
 				limit = { has_opinion_modifier = { who = ROOT modifier = opinion_fired_from_council } }
-				set_character_flag =  opinion_fired_from_council
+				set_character_flag = opinion_fired_from_council
 				remove_opinion = { who = ROOT modifier = opinion_fired_from_council }
 			}
 			hidden_tooltip = {

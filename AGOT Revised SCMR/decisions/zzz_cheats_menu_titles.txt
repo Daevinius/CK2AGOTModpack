@@ -13,7 +13,7 @@ title_decisions = {
             higher_tier_than = BARON
 			NOT = {
 				holder_scope = {
-					character = from
+					character = FROM
 				}
 			}
 		}
@@ -88,7 +88,7 @@ title_decisions = {
             temporary = no
 			NOT = {
 				holder_scope = {
-					character = from
+					character = FROM
 				}
 			}
 		}
@@ -96,7 +96,7 @@ title_decisions = {
 			always = yes
 		}
 		effect = {
-			gain_title = from
+			gain_title = FROM
 		}
 		ai_will_do = {
 			factor = 0
@@ -156,7 +156,7 @@ title_decisions = {
             is_titular = no
             temporary = no
 			any_de_jure_vassal_title = {
-				NOT = { holder_scope = { character = from } }
+				NOT = { holder_scope = { character = FROM } }
 			}
 		}
 		allow = {
@@ -165,9 +165,9 @@ title_decisions = {
 		effect = {
 			hidden_tooltip = {
 				any_de_jure_vassal_title = {
-					gain_title = from
+					gain_title = FROM
 				}
-				gain_title = from
+				gain_title = FROM
 			}
 		}
 		ai_will_do = {
@@ -189,7 +189,7 @@ title_decisions = {
 				any_character = {
 					has_character_flag = mind_controlled
 					ROOT = {
-						any_de_jure_vassal_title = { NOT = { holder_scope = { character = prevprev } } }
+						any_de_jure_vassal_title = { NOT = { holder_scope = { character = PREVPREV } } }
 					}
 				}
 			}
@@ -230,8 +230,8 @@ title_decisions = {
             temporary = no
 			any_de_jure_vassal_title = {
 				NOR = {
-					holder_scope = { character = from }
-					holder_scope = { is_liege_or_above = from }
+					holder_scope = { character = FROM }
+					holder_scope = { is_liege_or_above = FROM }
 				}
 			}
 		}
@@ -244,21 +244,21 @@ title_decisions = {
 					limit = {
 						has_holder = yes
 						NOR = {
-							holder_scope = { character = from }
-							holder_scope = { is_liege_or_above = from }
+							holder_scope = { character = FROM }
+							holder_scope = { is_liege_or_above = FROM }
 						}
 					}
-					gain_title = from
+					gain_title = FROM
 				}
 				if = {
 					limit = {
 						has_holder = yes
 						NOR = {
-							holder_scope = { character = from }
-							holder_scope = { is_liege_or_above = from }
+							holder_scope = { character = FROM }
+							holder_scope = { is_liege_or_above = FROM }
 						}
 					}
-					gain_title = from
+					gain_title = FROM
 				}
 			}
 		}
@@ -283,8 +283,8 @@ title_decisions = {
 					ROOT = {
 						any_de_jure_vassal_title = {
 							NOR = {
-								holder_scope = { character = prevprev }
-								holder_scope = { is_liege_or_above = prevprev }
+								holder_scope = { character = PREVPREV }
+								holder_scope = { is_liege_or_above = PREVPREV }
 							}
 						}
 					}
@@ -305,8 +305,8 @@ title_decisions = {
 						any_de_jure_vassal_title = {
 							limit = {
 								NOR = {
-									holder_scope = { character = prevprev }
-									holder_scope = { is_liege_or_above = prevprev }
+									holder_scope = { character = PREVPREV }
+									holder_scope = { is_liege_or_above = PREVPREV }
 								}
 							}
 							gain_title = PREVPREV
@@ -314,8 +314,8 @@ title_decisions = {
 						if = {
 							limit = {
 								NOR = {
-									holder_scope = { character = prev }
-									holder_scope = { is_liege_or_above = prev }
+									holder_scope = { character = PREV }
+									holder_scope = { is_liege_or_above = PREV }
 								}
 							}
 							gain_title = PREV

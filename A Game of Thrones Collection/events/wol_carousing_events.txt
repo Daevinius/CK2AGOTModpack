@@ -1319,7 +1319,7 @@ character_event = {
 # Fight starts - you can't control your rage
 character_event = {
 	id = WoL.4131
-	desc =  EVTDESC_WoL_4131
+	desc = EVTDESC_WoL_4131
 	picture = GFX_evt_feast
 	border = GFX_event_normal_frame_diplomacy
 
@@ -2130,8 +2130,7 @@ character_event = {
 				duration = 400
 			}
 		}
-		if = {
-			limit = { ai = yes }
+		else = {
 			add_character_modifier = {
 				name = party_timer
 				duration = 700
@@ -2281,7 +2280,7 @@ character_event = {
 	id = WoL.4801
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		has_character_modifier = organizing_party

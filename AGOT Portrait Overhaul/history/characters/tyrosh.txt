@@ -610,21 +610,31 @@
 	name = "Алекво"	# Canon, Ninepenny King
 	dynasty = 300543
 
+	diplomacy = 7
+	martial = 2
+	stewardship = 5
+	intrigue = 5
+	learning = 6
+
 	religion = "trios"
 	culture = "tyroshi"
-
-	martial = 2
-	diplomacy = 7
-	intrigue = 5
-	stewardship = 5
-	add_trait = "scholar"
-	add_trait = "ambitious"
-	add_trait = "charismatic_negotiator"
 
 	father = 120300543
 	mother = 220300543
 
-	8229.1.1 = { birth = yes }
+	8229.1.1 = {
+		birth = yes
+	}
+	8245.1.1 = {
+		add_trait = "charismatic_negotiator"
+		add_trait = "proud"
+		add_trait = "greedy"
+		add_trait = "gregarious"
+		add_trait = "ruthless"
+		add_trait = "ambitious"
+		add_trait = "socializer"
+		add_trait = "scholar"
+	}
 	8255.1.1 = {
 		give_nickname = nick_silvertounge
 		add_spouse = 126300533
@@ -643,6 +653,7 @@
 					modifier = opinion_forced_marriage
 				}
 			}
+			add_claim = k_tyrosh
 		}
 	}
 	8259.1.1 = {
@@ -1031,29 +1042,32 @@
 	name = "Роро"	# Canon, a pirate
 	dynasty = 300542
 
+	diplomacy = 4
 	martial = 3
 	stewardship = 2
-	diplomacy = 4
 	learning = 2
 	intrigue = 4
 
 	religion = "trios"
 	culture = "tyroshi"
 
-	add_trait = skilled_tactician
-	add_trait = greedy
-	add_trait = gregarious
-	add_trait = erudite
-	add_trait = brave
-	add_trait = ambitious
-
 	father = 128300542
 	mother = 228300542
 
-	8227.1.1 = { birth = yes }
-	8243.1.1 = { add_trait = trained_warrior }
+	8227.1.1 = {
+		birth = yes
+	}
+	8243.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "trained_warrior"
+		add_trait = "brave"
+		add_trait = "greedy"
+		add_trait = "gregarious"
+		add_trait = "ambitious"
+	}
 	8250.1.1 = {
-		add_trait = pirate
+		give_nickname = nick_the_blind_bastard
+		add_trait = "pirate"
 		effect = {
 			religion = pirate
 			add_artifact = small_flagship
@@ -1062,8 +1076,8 @@
 	}
 	8270.1.1 = {
 		death = {
-			death_reason = death_execution
-			killer = 121404 #Nightswatch
+			death_reason = death_execution # Executed by the Night's Watch
+			killer = 1013868
 		}
 	}
 }
@@ -1944,6 +1958,9 @@
 			create_bloodline = {
 				type = blood_of_the_dragon
 			}
+		}
+		create_bloodline = {
+			type = dragon_rider_tracker
 		}
 	}
 	7858.1.1 = { add_spouse = 101570282 }

@@ -730,13 +730,13 @@ title_decisions = {
 				FROM = {
 					any_realm_lord = {
 						limit = { culture_group = unoccupied_group }
-						clear_wealth = THIS
+						clear_wealth = yes
 						any_demesne_title = { gain_title = ROOT_FROM }
 						death = yes
 					}
 					any_realm_character = {
 						limit = { culture_group = unoccupied_group }
-						clear_wealth = THIS
+						clear_wealth = yes
 						death = yes
 					}
 					if = { #maintain patrician status
@@ -849,7 +849,7 @@ title_decisions = {
 			custom_tooltip = {
 				text = TOOLTIPconvert_kingdom_tierInterregnum
 				hidden_tooltip = {
-					NOT =  { #Interregnum
+					NOT = { #Interregnum
 						is_variable_equal = { which = "lord_paramount_status" value = 2 }
 					}
 				}

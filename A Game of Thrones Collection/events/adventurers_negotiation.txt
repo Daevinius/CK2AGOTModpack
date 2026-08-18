@@ -13,7 +13,7 @@ namespace = ADV
 character_event = {
 	id = ADV.1
 
-	is_triggered_only = yes
+	is_triggered_only = yes # HL.111, HL.198 (hl_raiding_adventurers_events.txt)
 	hide_window = yes
 
 	immediate = {
@@ -288,7 +288,7 @@ character_event = {
 character_event = {
 	id = ADV.2
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.1 (adventurers_negotation.txt)
 	immediate = { FROM = { letter_event = { id = ADV.3 } } }
 }
 
@@ -319,7 +319,7 @@ letter_event = {
 		text = EVTDESC_ADV_3_C
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.2 (adventurers_negotation.txt)
 
 
 	#Sell your province
@@ -520,7 +520,7 @@ letter_event = {
 character_event = {
 	id = ADV.10
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.3 (adventurers_negotation.txt)
 	immediate = {
 		#If they can afford the price, see if they haggle or not
 		export_to_variable = { which = adventurer_treasury value = wealth }
@@ -596,7 +596,7 @@ letter_event = {
 	desc = EVTDESC_ADV_4
 	border = GFX_event_letter_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.10 (adventurers_negotation.txt)
 
 	immediate = {
 		hidden_effect = {
@@ -757,7 +757,7 @@ letter_event = {
 	}
 	border = GFX_event_letter_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.10 (adventurers_negotation.txt)
 
 	immediate = {
 		#Calculates your gain before option so tooltips are correct
@@ -987,7 +987,7 @@ letter_event = {
 character_event = {
 	id = ADV.20
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.4, ADV.5 (adventurers_negotation.txt)
 	trigger = {
 		NOT = { liege = { religion = ROOT } }
 	}
@@ -1019,57 +1019,9 @@ letter_event = { # Religion flip notification event
 	id = ADV.21
 	desc = EVTDESC_ADV_21
 
-	is_triggered_only = yes
+	is_triggered_only = yes # ADV.20 (adventurers_negotation.txt)
 
 	option = {
 		name = EXCELLENT
 	}
 }
-
-
-#Testing event for adventurer negotiation
-#character_event = {
-#    id = ADV.30
-#    hide_window = yes
-#    is_triggered_only = yes
-
-#    immediate = {
-#    	random_list = {
-#    		10 = {
-#    			wealth = 300
-#    		}
-#    		10 = {
-#    			wealth = 400
-#    		}
-#    		10 = {
-#    			wealth = 500
-#    		}
-#    		10 = {
-#    			wealth = 60
-#    		}
-#    		10 = {
-#    			wealth = 70
-#    		}
-#    		10 = {
-#    			wealth = 250
-#    		}
-#    		10 = {
-#    			wealth = 300
-#    		}
-#    		10 = {
-#    			wealth = 150
-#    		}
-#    	}
-
-#    	random_independent_ruler = {
-#    		limit = {
-#	    		NOT = { has_character_flag = negotiating_with_adventurer }
-#	    		ai = no
-#
-#    		}
-#    		character_event = {
-#    			id = ADV.1
-#    		}
-#    	}
-#    }
-#}

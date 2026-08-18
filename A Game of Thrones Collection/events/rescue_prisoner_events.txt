@@ -431,7 +431,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 2400
+		years = 200
 
 		modifier = {
 			factor = 0.5
@@ -811,7 +811,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 2400
+		years = 200
 
 		modifier = {
 			factor = 0.5
@@ -1588,8 +1588,7 @@ character_event = {
 			limit = { prisoner = no }
 			liege = { character_event = { id = rescue_prisoner.1399 days = 1 } }
 		}
-		if = {
-			limit = { prisoner = yes }
+		else = {
 			host = { character_event = { id = rescue_prisoner.1399 days = 1  } }
 		}
 	}
@@ -1949,8 +1948,7 @@ character_event = {
 			limit = { prisoner = no }
 			liege = { character_event = { id = rescue_prisoner.1499 days = 1 } }
 		}
-		if = {
-			limit = { prisoner = yes }
+		else = {
 			host = { character_event = { id = rescue_prisoner.1499 days = 1  } }
 		}
 	}
@@ -2344,8 +2342,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				FROM = { move_character = ROOT }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { FROM = { move_character = PREV } }
 			}
 		}

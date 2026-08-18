@@ -3,7 +3,7 @@
 namespace = HF
 
 
-#############################################Г№
+#############################################
 
 ## Alone ##
 #Dice throwing (hellenics and bon)
@@ -31,7 +31,7 @@ character_event = {
 	border = GFX_event_normal_frame_diplomacy
 	hide_new = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_society_bi_yearly_pulse
 	has_dlc = "Holy Fury"
 	in_command = no
 	prisoner = no
@@ -1926,12 +1926,12 @@ character_event = {
 	picture = GFX_evt_camaraderie
 	border = GFX_event_normal_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_society_bi_yearly_pulse
 	ai = no
 	in_command = no
 	prisoner = no
 	min_age = 16
-	only_capable =  yes
+	only_capable = yes
 
 	trigger = {
 		NOT = { is_inaccessible_trigger = yes }
@@ -3772,7 +3772,7 @@ character_event = {
 	border = GFX_event_normal_frame_diplomacy
 	hide_new = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_society_bi_yearly_pulse
 	in_command = no
 	prisoner = no
 	has_dlc = "Holy Fury"
@@ -4132,13 +4132,13 @@ character_event = {
 		name = EVTOPTBHF25289
 		custom_tooltip = { text = TT_EVTOPTBHF25289 }
 		tooltip = {
-			FROM =  {
+			FROM = {
 				tiered_prestige_negative_effect = yes
 				detract_society_currency_medium_effect = yes
 			}
 		}
 		hidden_tooltip = {
-			FROM =  { character_event = { id = HF.25290 } } #Inform the guy.
+			FROM = { character_event = { id = HF.25290 } } #Inform the guy.
 		}
 		ai_chance = { factor = 100 }
 	}

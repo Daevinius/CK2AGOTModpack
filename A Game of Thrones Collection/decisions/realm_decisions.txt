@@ -229,7 +229,7 @@ decisions = {
 #	buy_indulgence_for_sins = {
 #		potential = {
 #			religion = the_seven
-#			age = 16
+#			is_adult = yes
 #			demesne_size = 1
 #			NOT = { has_character_flag = ask_for_indulgence }
 #		}
@@ -259,7 +259,7 @@ decisions = {
 		ai_check_interval = 80
 		is_high_prio = yes
 		potential = {
-			age = 16
+			is_adult = yes
 			is_landed = yes
 			higher_tier_than = BARON #Low nobility requires somebody else to ask the Papacy to Lift the Excommunication on their behalf.
 			#religion = catholic #Fraticelli, Reformed Pagans, etc.
@@ -324,7 +324,7 @@ decisions = {
 		ai = no
 
 		potential = {
-			age = 16
+			is_adult = yes
 			prisoner = no
 			is_playable = yes
 			tier = COUNT
@@ -561,7 +561,7 @@ decisions = {
 					war = yes
 				}
 			}
-			age = 16
+			is_adult = yes
 			conditional_tooltip = {
 				trigger = { lower_tier_than = DUKE }
 				wealth = 75
@@ -847,7 +847,9 @@ decisions = {
 			NOT = { culture_group = unoccupied_group }
 			NAND = {
 				trait = wildling
+				trait = grey_lander
 				capital_scope = { region = world_beyond_the_wall }
+				capital_scope = { region = world_wastes }
 			}
 			# NOT = {
 				# has_game_rule = {
@@ -858,12 +860,12 @@ decisions = {
 		}
 		allow = {
 			OR = {
-				realm_size = 20
+				realm_size = 30
 				custom_tooltip = {
 					text = form_new_kingdom_requirement_tooltip
 					hidden_tooltip = {
 						any_demesne_title = {
-							count = 2
+							count = 3
 							tier = DUKE
 						}
 					}
@@ -883,8 +885,8 @@ decisions = {
 						has_game_rule = { name = shattered_realms value = counties }
 					}
 				}
-				prestige = 250
-				wealth = 50
+				prestige = 500
+				wealth = 200
 			}
 
 			conditional_tooltip = {
@@ -901,7 +903,7 @@ decisions = {
 						has_game_rule = { name = shattered_realms value = counties }
 					}
 				}
-				wealth = 200
+				wealth = 500
 			}
 			custom_tooltip = {
 				text = TOOLTIPINDEPENDENTCONDITION
@@ -1058,10 +1060,10 @@ decisions = {
 						has_game_rule = { name = shattered_realms value = counties }
 					}
 				}
-				wealth = -50
+				wealth = -200
 			}
 			else = {
-				wealth = -200
+				wealth = -500
 				prestige = 400
 			}
 			custom_tooltip = { text = form_new_kingdom_tooltip }
@@ -1191,12 +1193,12 @@ decisions = {
 			}
 			conditional_tooltip = {
 				trigger = { ai = no }
-				wealth = 400
+				wealth = 1200
 			}
 			conditional_tooltip = {
 				trigger = { ai = yes }
 				OR = {
-					wealth = 400
+					wealth = 1200
 					AND = { #AI may take loan
 						ai = yes
 						monthly_income = 10
@@ -1207,7 +1209,7 @@ decisions = {
 					}
 				}
 			}
-			prestige = 3000
+			prestige = 5000
 			custom_tooltip = {
 				text = TOOLTIPINDEPENDENTCONDITION
 				hidden_tooltip = {
@@ -1226,7 +1228,7 @@ decisions = {
 			if = {
 				limit = {
 					ai = yes
-					wealth < 400
+					wealth < 1200
 				}
 				add_character_modifier = {
 					name = "loan_timer"
@@ -1284,7 +1286,7 @@ decisions = {
 					}
 				}
 			}
-			wealth = -400
+			wealth = -1200
 			custom_tooltip = { text = form_new_empire_tooltip }
 			e_rebels = {
 				persistent_event_target:chronicle_player = {
@@ -1648,7 +1650,7 @@ decisions = {
 							}
 						}
 						is_female = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = imbecile }
 						NOT = { trait = inbred }
 						is_incapable = no
@@ -1956,7 +1958,7 @@ decisions = {
 			has_game_rule = { name = abdication value = on }
 		}
 		allow = {
-			age = 16
+			is_adult = yes
 			NOT = { is_incapable = yes }
 			prisoner = no
 			war = no
@@ -1985,8 +1987,7 @@ decisions = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }

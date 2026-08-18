@@ -1,0 +1,18 @@
+20.1.1 = {
+	liege = "c_thousand_islands"
+}
+
+20.1.2 = {
+	law = succ_appointment
+
+	effect = {
+		holder_scope = {
+			if = {
+				limit = { primary_title = { title = PREVPREV } }
+				set_government_type = theocracy_government
+				PREV = { succession = appointment }
+				recalc_succession = yes
+			}
+		}
+	}
+}

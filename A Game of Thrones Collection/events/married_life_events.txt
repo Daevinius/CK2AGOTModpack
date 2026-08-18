@@ -19,7 +19,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_pregnant = no
@@ -134,7 +134,7 @@ character_event = {
 	prisoner = no
 	religion = the_seven
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		num_of_children = 1
@@ -244,7 +244,7 @@ character_event = {
 character_event = {
 	id = 30004
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	prisoner = no
@@ -1098,7 +1098,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_rulers = yes
 	only_men = yes
 	is_married = yes
@@ -1108,9 +1108,7 @@ character_event = {
 		any_child = {
 			is_primary_heir = yes
 			is_female = no
-			NOT = {
-				age = 16
-			}
+			is_adult = no
 			OR = {
 				is_ill = yes
 				is_maimed_trigger = yes
@@ -1205,7 +1203,7 @@ character_event = {
 	min_age = 20
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	is_married = yes
 
 	trigger = {
@@ -1298,7 +1296,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -1530,7 +1528,7 @@ character_event = {
 	only_capable = yes
 	prisoner = yes
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -1890,7 +1888,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = { demesne_size = 1 }
@@ -2120,7 +2118,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		spouse = {
@@ -2343,7 +2341,7 @@ character_event = {
 	desc = "EVTDESC30050"
 	picture = "GFX_evt_quarrel"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_capable = yes
 	only_men = yes
@@ -2438,7 +2436,7 @@ character_event = {
 	prisoner = no
 	min_age = 20
 	war = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	in_command = no
 	portrait = event_target:my_spouse
 
@@ -2576,7 +2574,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	portrait = event_target:my_spouse
 
@@ -2704,7 +2702,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_councillor = no
@@ -2827,7 +2825,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_councillor = no
@@ -2949,7 +2947,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_councillor = no
@@ -3070,7 +3068,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_councillor = no
@@ -3197,7 +3195,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_councillor = no
@@ -3320,7 +3318,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		independent = no
@@ -3332,7 +3330,7 @@ character_event = {
 			is_councillor = no
 			NOT = { is_voter = yes }
 			diplomacy = 10
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			is_incapable = no
@@ -3393,7 +3391,7 @@ character_event = {
 				is_councillor = no
 				NOT = { is_voter = yes }
 				diplomacy = 10
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				is_incapable = no
@@ -3510,7 +3508,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -3522,7 +3520,7 @@ character_event = {
 			is_councillor = no
 			NOT = { is_voter = yes }
 			martial = 10
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			is_incapable = no
@@ -3581,7 +3579,7 @@ character_event = {
 				is_councillor = no
 				NOT = { is_voter = yes }
 				martial = 10
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				is_incapable = no
@@ -3698,7 +3696,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -3710,7 +3708,7 @@ character_event = {
 			is_councillor = no
 			NOT = { is_voter = yes }
 			stewardship = 10
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			is_incapable = no
@@ -3771,7 +3769,7 @@ character_event = {
 				is_councillor = no
 				NOT = { is_voter = yes }
 				stewardship = 10
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				is_incapable = no
@@ -3886,7 +3884,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -3898,7 +3896,7 @@ character_event = {
 			is_councillor = no
 			NOT = { is_voter = yes }
 			intrigue = 10
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			is_incapable = no
@@ -3959,7 +3957,7 @@ character_event = {
 				is_councillor = no
 				NOT = { is_voter = yes }
 				intrigue = 10
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				is_incapable = no
@@ -4076,7 +4074,7 @@ character_event = {
 	prisoner = no
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -4089,7 +4087,7 @@ character_event = {
 			is_councillor = no
 			NOT = { is_voter = yes }
 			learning = 10
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			is_incapable = no
@@ -4151,7 +4149,7 @@ character_event = {
 				is_councillor = no
 				NOT = { is_voter = yes }
 				learning = 10
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				is_incapable = no
@@ -4269,7 +4267,7 @@ character_event = {
 	prisoner = no
 	is_married = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		is_ruler = no
@@ -4673,7 +4671,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 	war = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	in_command = no
 
 	trigger = {
@@ -4686,9 +4684,7 @@ character_event = {
 				age = 30
 			}
 			is_smart_incl_genius_trigger = no
-			NOT = {
-				is_inaccessible_trigger = yes
-			}
+			is_inaccessible_trigger = no
 			is_incapable = no
 		}
 		NOT = {
@@ -4699,7 +4695,7 @@ character_event = {
 		}
 		spouse = {
 			any_courtier = {
-				age = 16
+				is_adult = yes
 				is_councillor = no
 				ai = yes
 				spouse = {
@@ -4731,7 +4727,7 @@ character_event = {
 		spouse = {
 			random_courtier = {
 				limit = {
-					age = 16
+					is_adult = yes
 					is_councillor = no
 					ai = yes
 					spouse = {
@@ -4898,7 +4894,7 @@ character_event = {
 			event_target:target_courtier = { always = yes }
 		}
 		event_target:target_courtier = {
-			add_friend  = ROOT
+			add_friend = ROOT
 		}
 		clr_character_flag = best_friends_forever
 		clr_character_flag = perfect_activity
@@ -5296,7 +5292,7 @@ character_event = {
 		name = "EVTOPTA30096"
 		clr_character_flag = best_friends_forever
 		FROM = {
-			add_friend  = ROOT
+			add_friend = ROOT
 		}
 		clr_character_flag = perfect_lake
 		clr_character_flag = perfect_picnic
@@ -5320,7 +5316,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		fertility = 0.65
@@ -5812,7 +5808,7 @@ character_event = {
 	max_age = 40
 	min_age = 20
 	is_married = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		has_lover = no

@@ -31,7 +31,7 @@ character_event = {
 	id = religious.1
 	desc = "EVTDESCreligious.1"
 
-	only_rulers = yes
+	only_playable = yes
 
 	trigger = {
 		demesne_size = 1
@@ -67,7 +67,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -93,7 +93,7 @@ character_event = {
 	id = religious.111
 	desc = "EVTDESCreligious.1.1"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 	hide_window = yes
 
 	trigger = {
@@ -1014,13 +1014,13 @@ character_event = {
 				trait = suspected_kinslayer
 			}
 			piety = 200
-			reverse_opinion  = { who = ROOT value = 0 }
+			reverse_opinion = { who = ROOT value = 0 }
 			NOT = { has_character_flag = kinslaying_offered }
 		}
 	}
 
 	mean_time_to_happen = {
-		months = 24
+		years = 2
 	}
 
 	option = {
@@ -1036,7 +1036,7 @@ character_event = {
 					trait = suspected_kinslayer
 				}
 				piety = 200
-				reverse_opinion  = { who = ROOT value = 0 }
+				reverse_opinion = { who = ROOT value = 0 }
 			}
 			set_character_flag = kinslaying_offered
 			character_event = { id = 39211 tooltip = EVTTOOLTIP39211 }
@@ -1132,7 +1132,7 @@ character_event = {
 	desc = "EVTDESCreligious.6"
 	picture = GFX_evt_library
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	lacks_dlc = "Sons of Abraham"
 
@@ -1179,8 +1179,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					reverse_banish = PREV
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { reverse_banish = PREVPREV }
 				}
 			}
@@ -1407,7 +1406,7 @@ character_event = {
 	desc = "EVTDESCreligious.10"
 	picture = GFX_evt_pope
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		has_landed_title = k_the_most_devout
@@ -1910,7 +1909,7 @@ character_event = {
 
 				transfer_scaled_wealth = { to = ROOT value = all }
 				abdicate_to = ROOT
-				clear_wealth = THIS
+				clear_wealth = yes
 				wealth = -2000
 				death = yes
 			}
@@ -2189,7 +2188,7 @@ character_event = {
 	id = religious.22
 	desc = "EVTDESCreligious.22"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = { FROMFROM = { save_event_target_as = deposed_liege } }
 
@@ -2227,8 +2226,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -2586,8 +2584,7 @@ character_event = {
 					limit = { is_merchant_republic = no }
 					current_heir = { save_event_target_as = wealth_heir }
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = { current_heir = { save_event_target_as = wealth_heir } }
 				}
 				transfer_scaled_wealth = { to = event_target:wealth_heir value = all }
@@ -2736,7 +2733,7 @@ narrative_event = {
 			religion = the_seven
 			religion = old_gods_reformed
 			religion = old_gods
-			capital_scope =  { region = world_westeros }
+			capital_scope = { region = world_westeros }
 			has_landed_title = k_the_most_devout
 			has_knighthood_religion_trigger = yes
 		}
@@ -2844,7 +2841,7 @@ character_event = {
 			religion = the_seven
 			religion = old_gods_reformed
 			religion = old_gods
-			capital_scope =  { region = world_westeros }
+			capital_scope = { region = world_westeros }
 			has_landed_title = k_the_most_devout
 			has_knighthood_religion_trigger = yes
 		}
@@ -2879,7 +2876,7 @@ character_event = {
 	prisoner = no
 
 	trigger = {
-		age = 16
+		is_adult = yes
 		OR = {
 			AND = {
 				is_ruler = no
@@ -3252,7 +3249,7 @@ character_event = {
 	is_triggered_only = yes
 	only_rulers = yes
 
-	trigger = { FROM = { age = 16 } }
+	trigger = { FROM = { is_adult = yes } }
 
 	option = {
 		name = "EVTOPTAreligious.205" #Submit them
@@ -3425,7 +3422,7 @@ character_event = {
 		NOT = { has_character_flag = nickname_event }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -4599,7 +4596,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 180
+		months = 6
 		modifier = {
 			factor = 0.90
 			trait = ambitious
@@ -4869,7 +4866,7 @@ character_event = {
 character_event = { #trigger event
 	id = 39299
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	prisoner = no
 	min_age = 16
@@ -5326,7 +5323,7 @@ character_event = {
 	desc = "EVTDESC39230"	#rhllor & We got a bishop in jail.
 	picture = GFX_evt_heretic
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	religion = rhllor
 
 	trigger = {
@@ -5752,7 +5749,7 @@ character_event = {
 
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	religion = the_seven
 
@@ -5830,7 +5827,7 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				NOT = { trait = zealous }
 				is_incapable = no
@@ -5887,7 +5884,7 @@ character_event = {
 		NOT = { has_character_flag = legalise_prostitution_reject }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -5938,7 +5935,7 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				NOT = { trait = zealous }
 				is_incapable = no
@@ -5970,7 +5967,7 @@ character_event = {
 
 	only_playable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	religion = the_seven
 
@@ -6070,7 +6067,7 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { trait = zealous }
 				NOT = { trait = charitable }
 				is_incapable = no
@@ -6103,7 +6100,7 @@ character_event = {
 
 	only_independent = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	religion = the_seven
 
@@ -6187,8 +6184,7 @@ character_event = {
 			limit = { is_female = no }
 			add_trait = septon
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			add_trait = septa
 		}
 		any_spouse = {
@@ -6273,7 +6269,7 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_ruler = no
 				NOT = { trait = zealous }
 				is_incapable = no
@@ -6288,7 +6284,7 @@ character_event = {
 		}
 		any_vassal = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { trait = zealous }
 				is_incapable = no
 				OR = {
@@ -6351,7 +6347,7 @@ character_event = {
 
 	only_independent = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	religion = the_seven
 
@@ -6409,7 +6405,7 @@ character_event = {
 
 	only_independent = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	religion = the_seven
 
@@ -6532,7 +6528,7 @@ character_event = {
 
 	only_independent = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	religion = the_seven
 
@@ -6605,7 +6601,7 @@ character_event = {
 		}
 		any_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_ruler = no
 				NOT = { trait = zealous }
 				is_incapable = no
@@ -6620,7 +6616,7 @@ character_event = {
 		}
 		any_vassal = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { trait = zealous }
 				is_incapable = no
 				OR = {
@@ -6674,7 +6670,7 @@ character_event = { #inform realm
 character_event = {
 	id = religious.63
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 	hide_window = yes
 	only_rulers = yes
 
@@ -7482,7 +7478,7 @@ character_event = {
 character_event = { #remove syncretic faith on conversion
 	id = religious.66
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 	hide_window = yes
 
 	trigger = {
@@ -7690,7 +7686,7 @@ character_event = {
 character_event = {
 	id = religious.95
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	hide_window = yes
 	only_playable = yes
 
@@ -7922,7 +7918,7 @@ character_event = {
 character_event = { #FROM is the winner
 	id = religious.100
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 	hide_window = yes
 
 	trigger = {
@@ -7952,7 +7948,7 @@ character_event = { #FROM is the winner
 character_event = { #ROOT is the winner
 	id = religious.101
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_defeat
 	hide_window = yes
 
 	trigger = {
@@ -7982,7 +7978,7 @@ character_event = { #ROOT is the winner
 character_event = {
 	id = religious.102
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 	hide_window = yes
 	only_independent = yes
 

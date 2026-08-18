@@ -118,8 +118,7 @@ character_event = {
 				limit = { is_female = no }
 				set_special_character_title = LORD_PROTECTOR
 			}
-			if = {
-				limit = { is_female = yes }
+			else = {
 				set_special_character_title = LADY_PROTECTOR
 			}
 		}
@@ -3619,7 +3618,7 @@ letter_event = {
 character_event = {
 	id = interregnum.12
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = { FROM = { is_variable_equal = { which = "lord_paramount_status" value = 2 } } }

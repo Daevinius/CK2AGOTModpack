@@ -13,36 +13,6 @@ character_event = {
 
 	option = {
 		name = "EVTOPTAcbb_cadet.1"
-		any_character = {
-			limit = {
-				has_character_flag = de_facto_liege_cbb
-			}
-			ROOT = {
-				set_defacto_liege = PREV
-			}
-		}
+		set_defacto_liege = event_target:cbb_liege
 	}
 }
-
-character_event = {
-	id = cbb_cadet.2
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	immediate = {
-		any_character = {
-				limit = {
-					has_character_flag = de_facto_liege_cbb
-				}
-				ROOT = {
-					clr_character_flag = de_facto_liege_cbb
-				}
-		}
-	}
-	option = {
-		name = "OK"
-	}
-
-}
-

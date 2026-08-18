@@ -987,7 +987,7 @@ character_event = {
 	picture = GFX_evt_scandal
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_siege_pulse, on_adolescence, on_loot_settlement, on_new_holder, on_startup, on_chronicle_start, on_birth, on_decade_pulse, on_war_ended_victory
 
 	immediate = {
 		save_event_target_as = target_adulterer
@@ -1134,8 +1134,7 @@ character_event = {
 				limit = { is_married = no }
 				piety = -50
 			}
-			if = {
-				limit = { is_married = yes }
+			else = {
 				piety = -100
 			}
 		}
@@ -1617,7 +1616,7 @@ character_event = {
 					FROM = { trait = eunuch }
 				}
 			}
-			break  = yes
+			break = yes
 		}
 
 		if = {
@@ -10060,7 +10059,7 @@ character_event = {
 character_event = {
 	id = WoL.509
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_playable = yes
 	hide_window = yes
 	min_age = 16
@@ -10252,7 +10251,7 @@ character_event = {
 	picture = GFX_evt_lovers
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_playable = yes
 	prisoner = no
 	only_capable = yes
@@ -10503,8 +10502,7 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -10577,7 +10575,7 @@ character_event = {
 	picture = GFX_evt_lovers
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_playable = yes
 	prisoner = no
 	only_capable = yes
@@ -10767,7 +10765,7 @@ character_event = {
 	picture = GFX_evt_garden
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_playable = yes
 	only_capable = yes
 
@@ -10999,7 +10997,7 @@ character_event = {
 	picture = GFX_evt_lovers
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -11142,10 +11140,11 @@ character_event = {
 	picture = GFX_evt_into_the_dungeon
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_playable = yes
 	max_age = 45
 	only_capable = yes
+	only_women = yes
 
 	trigger = {
 		OR = {
@@ -11537,7 +11536,7 @@ character_event = {
 	picture = GFX_evt_sultan
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	only_men = yes
 	only_playable = yes
 	only_capable = yes

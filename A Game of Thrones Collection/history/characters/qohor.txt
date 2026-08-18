@@ -44,6 +44,9 @@
 		add_trait = trained_warrior
 		add_trait = dragon_rider
 		effect = { set_dynasty_flag = dragon_riding_dynasty }
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
 	}
 	7898.1.1 = {
 		create_bloodline = {
@@ -59,8 +62,7 @@
 				limit = { ai = no }
 				narrative_event = { id = century_of_blood.1 }
 			}
-			if = {
-				limit = { ai = yes }
+			else = {
 				narrative_event = { id = century_of_blood.1 days = 2 }
 			}
 			any_playable_ruler = {

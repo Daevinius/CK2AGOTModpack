@@ -40,6 +40,35 @@ k_golden_company = {
 	# Always exists
 	landless = yes
 }
+d_black_company = {
+	color = { 249 249 249 }
+	color2 = { 255 215 0 }
+
+	#capital = volantis
+
+	mercenary = yes
+
+	# Hire Trigger
+	allow = {
+		NOT = { capital_scope = { region = world_beyond_the_wall } } #Not a tribe beyond the wall
+		is_nomadic = no
+		NOT = { culture_group = winter_group }
+		NOT = { culture_group = unoccupied_group }
+	}
+
+	title = "CAPTAINGENERAL"
+	foa = "CAPTAIN_FOA"
+
+	# Always exists
+	landless = yes
+	primary = yes
+
+	culture = western_valyrian
+	religion = the_seven
+
+	mercenary_type = d_merc_golden_company
+	hire_range = 9999 #can be hired by anyone
+}
 d_brave_companions = {
 	color = { 249 249 249 }
 	color2 = { 255 215 0 }
@@ -692,6 +721,34 @@ d_mbs_bloodless = {
 	religion = old_gods
 
 	mercenary_type = d_small_free_city_merc
+}
+d_mbs_freeriders = {
+	color = { 249 249 249 }
+	color2 = { 255 215 0 }
+
+	capital = 367 #Tyrosh
+
+	mercenary = yes
+
+	# Hire Trigger
+	allow = {
+		NOT = { capital_scope = { region = world_beyond_the_wall } } #Not a tribe beyond the wall
+		is_nomadic = no
+		NOT = { culture_group = winter_group }
+		NOT = { culture_group = unoccupied_group }
+	}
+
+	title = "CAPTAIN"
+	foa = "CAPTAIN_FOA"
+
+	# Always exists
+	landless = yes
+	primary = yes
+
+	culture = tyroshi
+	religion = trios
+
+	mercenary_type = d_merc_hedgeknight
 }
 d_merc_inf_1 = {
 	color = { 100 50 30 }
@@ -2184,7 +2241,7 @@ d_giants = {
 	primary = yes
 
 	culture = giant
-	religion = beyond_wall_old_gods
+	religion = giants_old_gods
 
 	mercenary_type = d_giants
 }
@@ -2193,7 +2250,7 @@ c_giants = {
 	color2 = { 255 215 0 }
 
 	culture = giant
-	religion = beyond_wall_old_gods
+	religion = giants_old_gods
 
 	# Always exists
 	landless = yes

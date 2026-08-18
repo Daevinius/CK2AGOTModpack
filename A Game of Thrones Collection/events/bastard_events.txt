@@ -25,7 +25,7 @@ character_event = {
 	only_men = yes
 	only_capable = yes
 	is_married = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOR = {
@@ -99,7 +99,7 @@ character_event = {
 	only_playable = yes
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		any_child = {
@@ -107,7 +107,7 @@ character_event = {
 			NOT = { is_voter = yes }
 			is_female = yes
 			is_alive = yes
-			age = 16
+			is_adult = yes
 			age < 45
 			is_abroad = no
 			is_married = no
@@ -142,7 +142,7 @@ character_event = {
 				NOT = { is_voter = yes }
 				is_female = yes
 				is_alive = yes
-				age = 16
+				is_adult = yes
 				age < 45
 				is_abroad = no
 				is_married = no
@@ -668,7 +668,7 @@ character_event = {
 
 	only_playable = yes
 	only_capable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	prisoner = no
 
 	trigger = {
@@ -861,7 +861,7 @@ character_event = {
 			# NOT = { trait = red_priest }
 			# is_female = no
 			# is_ruler = no
-			# age = 16
+			# is_adult = yes
 			# is_abroad = no
 			# NOT = { trait = depressed }
 		# }
@@ -885,7 +885,7 @@ character_event = {
 				# NOT = { trait = red_priest }
 				# is_female = no
 				# is_ruler = no
-				# age = 16
+				# is_adult = yes
 				# is_abroad = no
 			# }
 			# opinion = {
@@ -925,7 +925,7 @@ character_event = {
 				# NOT = { trait = red_priest }
 				# is_female = no
 				# is_ruler = no
-				# age = 16
+				# is_adult = yes
 				# is_abroad = no
 				# NOT = { trait = depressed }
 			# }
@@ -960,7 +960,7 @@ character_event = {
 				# NOT = { trait = red_priest }
 				# is_female = no
 				# is_ruler = no
-				# age = 16
+				# is_adult = yes
 				# is_abroad = no
 			# }
 			# remove_trait = bastard
@@ -1005,7 +1005,7 @@ character_event = {
 	}
 
 	min_age = 16
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_capable = yes
 	prisoner = no
 
@@ -1406,14 +1406,14 @@ character_event = {
 		trigger = {
 			has_character_flag = father_didnt_legitimise
 		}
-		clr_character_flag =  father_didnt_legitimise
+		clr_character_flag = father_didnt_legitimise
 	}
 	option = {
 		name = "EVTOPTB76022"
 		trigger = {
-			has_character_flag =  father_legitimise
+			has_character_flag = father_legitimise
 		}
-		clr_character_flag =  father_legitimise
+		clr_character_flag = father_legitimise
 		e_rebels = {
 			persistent_event_target:chronicle_player = {
 				if = {
@@ -1442,7 +1442,7 @@ character_event = {
 
 	min_age = 16
 	only_women = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		NOT = {
@@ -1458,7 +1458,7 @@ character_event = {
 		any_child = {
 			age = 5
 			NOT = {
-				age = 16
+				is_adult = yes
 			}
 			trait = bastard
 			can_press_claims_trigger = yes
@@ -1641,7 +1641,7 @@ character_event = {
 	picture = GFX_evt_child_sword
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_capable = yes
 	prisoner = no
 	min_age = 16
@@ -1709,7 +1709,7 @@ character_event = {
 	max_age = 16
 	lacks_dlc = Conclave
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = bastard
@@ -1718,9 +1718,7 @@ character_event = {
 			is_liege_of = ROOT
 			any_child = {
 				age = 6
-				NOT = {
-					age = 16
-				}
+				is_adult = no
 				NOT = {
 					trait = bastard
 				}
@@ -1737,9 +1735,7 @@ character_event = {
 		any_courtier = {
 			limit = {
 				age = 6
-				NOT = {
-					age = 16
-				}
+				is_adult = no
 			}
 			opinion = {
 				modifier = opinion_despised_fighting_bastard
@@ -1782,9 +1778,7 @@ character_event = {
 				any_courtier = {
 					limit = {
 						age = 6
-						NOT = {
-							age = 16
-						}
+						is_adult = no
 					}
 					opinion = {
 						modifier = opinion_despised_hiding_bastard
@@ -1813,9 +1807,7 @@ character_event = {
 				any_courtier = {
 					limit = {
 						age = 6
-						NOT = {
-							age = 16
-						}
+						is_adult = no
 					}
 					opinion = {
 						modifier = despised_bastard
@@ -1836,9 +1828,7 @@ character_event = {
 				any_courtier = {
 					limit = {
 						age = 6
-						NOT = {
-							age = 16
-						}
+						is_adult = no
 					}
 					opinion = {
 						modifier = despised_bastard
@@ -1874,7 +1864,7 @@ character_event = {
 
 	min_age = 11
 	lacks_dlc = Conclave
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		trait = bastard
@@ -2016,7 +2006,7 @@ character_event = {
 	desc = "EVTDESC76100"
 	picture = GFX_evt_lovers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	min_age = 16
 	#only_men = yes
 	#only_rulers = yes
@@ -2079,49 +2069,175 @@ character_event = {
 			duration = 365
 			hidden = yes
 		}
+
+		gfx_culture_scope = {
+			save_event_target_as = parent_gfx_culture
+		}
+
 		hidden_tooltip = {
 			location = {
 				owner = {
-					random_list = {
-						50 = {
-							create_character = {
-								age = 0
-								culture = PREV
-								religion = PREV
-								dynasty = none
-								female = no
-								historical = yes
-								genetic_father = ROOT
-							}
-						}
-						50 = {
-							create_character = {
-								age = 0
-								culture = PREV
-								religion = PREV
-								dynasty = none
-								female = yes
-								historical = yes
-								genetic_father = ROOT
-							}
-						}
+					create_character = {
+						age = 0
+						culture = PREV
+						religion = PREV
+						race = event_target:parent_gfx_culture
+						dynasty = none
+						female = 50
+						historical = yes
+						genetic_father = ROOT
 					}
 					new_character = {
 						set_character_flag = lonely_bastard
 						culture = ROOT
 						add_trait = bastard
+
 						if = {
 							limit = { ROOT = { is_female = no } }
 							set_father = ROOT
 						}
-						if = {
-							limit = { ROOT = { is_female = yes } }
+						else = {
 							set_mother = ROOT
 						}
+
 						if = {
 							limit = { culture = high_valyrian }
 							set_character_flag = high_valyrian
 						}
+
+						if = {
+							limit = { ROOT = { trait = fair_2 } }
+							random = { chance = 15 add_trait = fair_2 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = fair_1 } }
+							random = { chance = 15 add_trait = fair_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = fair } }
+							random = { chance = 15 add_trait = fair }
+						}
+						else_if = {
+							limit = { ROOT = { trait = ugly  } }
+							random = { chance = 10 add_trait = ugly }
+						}
+						else_if = {
+							limit = { ROOT = { trait = ugly_1  } }
+							random = { chance = 10 add_trait = ugly_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = ugly_2  } }
+							random = { chance = 10 add_trait = ugly_2 }
+						}
+
+						if = {
+							limit = { ROOT = { trait = strong_2 } }
+							random = { chance = 15 add_trait = strong_2 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = strong_1 } }
+							random = { chance = 15 add_trait = strong_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = strong } }
+							random = { chance = 15 add_trait = strong }
+						}
+						else_if = {
+							limit = { ROOT = { trait = weak } }
+							random = { chance = 15 add_trait = weak }
+						}
+						else_if = {
+							limit = { ROOT = { trait = weak_1 } }
+							random = { chance = 15 add_trait = weak_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = weak_2 } }
+							random = { chance = 15 add_trait = weak_2 }
+						}
+
+						if = {
+							limit = { ROOT = { trait = tall_2 } }
+							random = { chance = 15 add_trait = tall_2 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = tall_1 } }
+							random = { chance = 15 add_trait = tall_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = tall } }
+							random = { chance = 15 add_trait = tall }
+						}
+						else_if = {
+							limit = { ROOT = { trait = dwarf } }
+							random = { chance = 50 add_trait = dwarf }
+						}
+						else_if = {
+							limit = { ROOT = { trait = dwarf_1 } }
+							random = { chance = 50 add_trait = dwarf_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = dwarf_2 } }
+							random = { chance = 50 add_trait = dwarf_2 }
+						}
+
+						if = {
+							limit = { ROOT = { trait = genius_1 } }
+							random = { chance = 15 add_trait = genius_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = genius } }
+							random = { chance = 15 add_trait = genius }
+						}
+						else_if = {
+							limit = { ROOT = { trait = quick_1 } }
+							random = { chance = 15 add_trait = quick_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = quick } }
+							random = { chance = 15 add_trait = quick }
+						}
+						else_if = {
+							limit = { ROOT = { trait = slow } }
+							random = { chance = 15 add_trait = slow }
+						}
+						else_if = {
+							limit = { ROOT = { trait = slow_1 } }
+							random = { chance = 15 add_trait = slow_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = imbecile } }
+							random = { chance = 15 add_trait = imbecile }
+						}
+						else_if = {
+							limit = { ROOT = { trait = imbecile_1 } }
+							random = { chance = 15 add_trait = imbecile_1 }
+						}
+
+						if = {
+							limit = { ROOT = { trait = agile_2 } }
+							random = { chance = 15 add_trait = agile_2 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = agile_1 } }
+							random = { chance = 15 add_trait = agile_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = agile } }
+							random = { chance = 15 add_trait = agile }
+						}
+						else_if = {
+							limit = { ROOT = { trait = lazy  } }
+							random = { chance = 10 add_trait = lazy }
+						}
+						else_if = {
+							limit = { ROOT = { trait = lazy_1  } }
+							random = { chance = 10 add_trait = lazy_1 }
+						}
+						else_if = {
+							limit = { ROOT = { trait = lazy_2  } }
+							random = { chance = 10 add_trait = lazy_2 }
+						}
+
 						if = {
 							limit = { ROOT = { trait = clubfooted } }
 							random = { chance = 15 add_trait = clubfooted }
@@ -2135,136 +2251,8 @@ character_event = {
 							random = { chance = 15 add_trait = hunchback }
 						}
 						if = {
-						limit = { ROOT = { trait = agile } }
-							random = { chance = 15 add_trait = agile }
-						}
-						if = {
-							limit = { ROOT = { trait = agile_1 } }
-							random = { chance = 15 add_trait = agile_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = agile_2 } }
-							random = { chance = 15 add_trait = agile_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = lazy  } }
-							random = { chance = 10 add_trait = lazy }
-						}
-						if = {
-							limit = { ROOT = { trait = lazy_1  } }
-							random = { chance = 10 add_trait = lazy_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = lazy_2  } }
-							random = { chance = 10 add_trait = lazy_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = fair } }
-							random = { chance = 15 add_trait = fair }
-						}
-						if = {
-							limit = { ROOT = { trait = fair_1 } }
-							random = { chance = 15 add_trait = fair_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = fair_2 } }
-							random = { chance = 15 add_trait = fair_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = ugly  } }
-							random = { chance = 10 add_trait = ugly }
-						}
-						if = {
-							limit = { ROOT = { trait = ugly_1  } }
-							random = { chance = 10 add_trait = ugly_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = ugly_2  } }
-							random = { chance = 10 add_trait = ugly_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = dwarf } }
-							random = { chance = 50 add_trait = dwarf }
-						}
-						if = {
-							limit = { ROOT = { trait = dwarf_1 } }
-							random = { chance = 50 add_trait = dwarf_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = dwarf_2 } }
-							random = { chance = 50 add_trait = dwarf_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = genius } }
-							random = { chance = 15 add_trait = genius }
-						}
-						if = {
-							limit = { ROOT = { trait = genius_1 } }
-							random = { chance = 15 add_trait = genius_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = quick } }
-							random = { chance = 15 add_trait = quick }
-						}
-						if = {
-							limit = { ROOT = { trait = quick_1 } }
-							random = { chance = 15 add_trait = quick_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = slow } }
-							random = { chance = 15 add_trait = slow }
-						}
-						if = {
-							limit = { ROOT = { trait = slow_1 } }
-							random = { chance = 15 add_trait = slow_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = imbecile } }
-							random = { chance = 15 add_trait = imbecile }
-						}
-						if = {
-							limit = { ROOT = { trait = imbecile_1 } }
-							random = { chance = 15 add_trait = imbecile_1 }
-						}
-						if = {
 							limit = { ROOT = { trait = inbred } }
 							random = { chance = 25 add_trait = inbred }
-						}
-						if = {
-							limit = { ROOT = { trait = strong } }
-							random = { chance = 15 add_trait = strong }
-						}
-						if = {
-							limit = { ROOT = { trait = strong_1 } }
-							random = { chance = 15 add_trait = strong_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = strong_2 } }
-							random = { chance = 15 add_trait = strong_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = weak } }
-							random = { chance = 15 add_trait = weak }
-						}
-						if = {
-							limit = { ROOT = { trait = weak_1 } }
-							random = { chance = 15 add_trait = weak_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = weak_2 } }
-							random = { chance = 15 add_trait = weak_2 }
-						}
-						if = {
-							limit = { ROOT = { trait = tall } }
-							random = { chance = 15 add_trait = tall }
-						}
-						if = {
-							limit = { ROOT = { trait = tall_1 } }
-							random = { chance = 15 add_trait = tall_1 }
-						}
-						if = {
-							limit = { ROOT = { trait = tall_2 } }
-							random = { chance = 15 add_trait = tall_2 }
 						}
 					}
 				}
@@ -2314,8 +2302,7 @@ character_event = {
 				hidden_tooltip = { set_real_father = ROOT }
 			}
 		}
-		if = {
-			limit = { NOT = { has_character_flag = keep_bastard_alive } }
+		else = {
 			random_child = {
 				limit = { has_character_flag = lonely_bastard }
 				set_father = 0
@@ -2358,8 +2345,7 @@ character_event = {
 				hidden_tooltip = { set_real_father = ROOT }
 			}
 		}
-		if = {
-			limit = { NOT = { has_character_flag = keep_bastard_alive } }
+		else = {
 			random_child = {
 				limit = { has_character_flag = lonely_bastard }
 				set_father = 0
@@ -2407,8 +2393,7 @@ character_event = {
 				hidden_tooltip = { set_real_father = ROOT }
 			}
 		}
-		if = {
-			limit = { NOT = { has_character_flag = keep_bastard_alive } }
+		else = {
 			random_child = {
 				limit = { has_character_flag = lonely_bastard }
 				set_father = 0
@@ -2462,8 +2447,7 @@ character_event = {
 				clr_character_flag = lonely_bastard
 			}
 		}
-		if = {
-			limit = { NOT = { has_character_flag = keep_bastard_alive } }
+		else = {
 			random_child = {
 				limit = { has_character_flag = lonely_bastard }
 				set_mother = 0
@@ -2515,8 +2499,7 @@ character_event = {
 				limit = { ROOT = { is_female = no } }
 				set_father = ROOT
 			}
-			if = {
-				limit = { ROOT = { is_female = yes } }
+			else = {
 				set_mother = ROOT
 			}
 			dynasty = ROOT
@@ -2539,8 +2522,7 @@ character_event = {
 					limit = { is_ruler = yes }
 					reverse_banish = PREV
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { reverse_banish = PREVPREV }
 				}
 			}
@@ -2588,7 +2570,7 @@ character_event = {
 	only_men = yes
 	only_capable = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -4042,7 +4024,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -5156,7 +5138,7 @@ character_event = { #Discovered
 character_event = { #Bastard murdered
 	id = bastard.4
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_bi_yearly_pulse, on_failed_assassination, on_failed_assassination_disc, on_birth, on_death, on_chronicle_start, on_blood_brother_death, on_unit_entering_province, on_startup, on_new_holder, on_decade_pulse, on_war_ended_victory
 	hide_window = yes
 
 	option = {
@@ -5254,7 +5236,7 @@ character_event = { #bastard escapes
 	desc = "EVTDESCbastard.5"
 	picture = GFX_evt_quarrel
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	option = {
 		name = EVTOPTAbastard.5

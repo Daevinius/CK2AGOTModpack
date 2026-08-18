@@ -10,7 +10,7 @@ character_event = {  ## Give trait to Giants (just in case any randomly spawn)
 		NOT = { trait = giant }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -38,7 +38,7 @@ character_event = {
 	culture_group = free_folk
 
 	mean_time_to_happen = {
-		days = 1820
+		years = 5
 	}
 
 	option = {
@@ -175,7 +175,7 @@ character_event = {
 	desc = "EVTDESCold_races.3" 	#child has green dreams and the trees have eyes
 	picture = "GFX_evt_cotf"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	min_age = 6
 	max_age = 16
@@ -343,7 +343,7 @@ character_event = {
 		random_list = {
 			70 = {}
 			30 = {
-				FROM =  {
+				FROM = {
 					add_trait = mystic
 				}
 			}
@@ -382,7 +382,7 @@ character_event = {
 	option = {
 		name = "Ok"
 		if = {
-			limit  = { FROM = { is_ruler = no } }
+			limit = { FROM = { is_ruler = no } }
 			scaled_wealth = { value = -0.2 min = -5 max = -75 }
 		}
 		random_courtier = {
@@ -407,7 +407,7 @@ character_event = {  ## Give trait to Children of the Forest (just in case any r
 		NOT = { trait = cotf }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -436,7 +436,7 @@ character_event = {
 	desc = EVTDESCold_races.9
 	picture = GFX_evt_unicorn
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	prisoner = no
 	only_capable = yes
 	only_playable = yes
@@ -579,7 +579,7 @@ character_event = {
 	desc = EVTDESCold_races.12
 	picture = GFX_evt_unicorn
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	prisoner = no
 	only_capable = yes
 	only_playable = yes
@@ -1034,7 +1034,7 @@ character_event = {
 	desc = "EVTDESCold_races.600"
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		had_character_flag = { flag = giants_hired days = 200 }

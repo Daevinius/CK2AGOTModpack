@@ -630,6 +630,8 @@ long_character_event = {
 	desc = EVTDESCdragon_rework.41
 	picture = GFX_hugh_hammer
 
+	has_character_flag = hugh_hammer
+
 	trigger = {
 		NOT = { has_character_flag = hammer_son_of_saera }
 		character = 30509002
@@ -706,6 +708,8 @@ long_character_event = {
 	id = tdp_scenario_events.310
 	desc = EVTDESCdragon_rework.410
 	picture = GFX_ulf_white
+
+	has_character_flag = ulf_white
 
 	trigger = {
 		NOT = { has_character_flag = white_son_of_baelon }
@@ -784,7 +788,7 @@ character_event = {
 	desc = EVTDESCtdp_scenario_events.4
 	picture = GFX_dragon_war_victorious
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		culture_group = valyrian
@@ -813,7 +817,7 @@ character_event = {
 					trait = authoritative
 					is_smart_incl_genius_trigger = yes
 				}
-				
+
 				NOR = {
 					has_unpleasant_trait_trigger = yes
 					has_evil_trait_trigger = yes
@@ -1159,7 +1163,7 @@ character_event = {
 			}
 
 			create_bloodline = {
-				type  = tdp_malevolent_bloodline
+				type = tdp_malevolent_bloodline
 			}
 
 			new_bloodline = {
@@ -1248,7 +1252,7 @@ character_event = {
 	id = tdp_scenario_events.51
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_birth
 
 	trigger = {
 		NOT = { has_character_flag = ambitious_bastard }
@@ -1266,7 +1270,7 @@ character_event = {
 	id = tdp_scenario_events.510
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_childhood_pulse
 
 	has_character_flag = ambitious_bastard
 	ai = yes
@@ -1314,7 +1318,7 @@ character_event = {
 	id = tdp_scenario_events.511
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_childhood_pulse, on_adolescence_pulse
 
 	has_character_flag = ambitious_bastard
 
@@ -1363,7 +1367,7 @@ character_event = {
 	id = tdp_scenario_events.512
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adolescence_pulse
 
 	has_character_flag = ambitious_bastard
 
@@ -1460,7 +1464,6 @@ character_event = {
 				set_graphical_culture = summer_valyrian
 				create_bloodline = {
 					type = bloodline_nettles
-					has_dlc = "Holy Fury"
 				}
 				#Change Age depending on year
 				if = {

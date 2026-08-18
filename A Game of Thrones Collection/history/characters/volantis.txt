@@ -1,35 +1,4 @@
 #Historic Characters
-100367823 = {
-	name = "Вхаласо"	# Triarch, ordered construction of the Long Bridge
-	dynasty = 174603
-	diplomacy = 8
-	stewardship = 9
-	intrigue = 5
-	martial = 4
-	learning = 9
-
-	religion = valyrian_rel
-	culture = "eastern_valyrian"
-
-	add_trait = triarch_statue
-	add_trait = diligent
-	add_trait = just
-	add_trait = charitable
-	add_trait = midas_touched
-
-	give_nickname = nick_the_munificent
-
-	7400.1.1 = { birth = yes }
-	7416.1.1 = { add_trait = trained_warrior }
-	7468.1.1 = {
-		create_bloodline = {
-			type = bloodline_vhalaso_the_munificent
-			has_dlc = "Holy Fury"
-		}
-		effect_even_if_dead = { set_government_type = triarch_merchant_republic_government }
-		death = yes
-	}
-}
 100467823 = {
 	name = "Беличо"	# Triarch, renowned Volantene patriot
 	dynasty = 5700103
@@ -222,7 +191,7 @@
 	8086.1.1 = { death = yes }
 }
 115174371 = {
-	name = "Бенерро"	# a lord
+	name = "Эйнар"	# a lord
 	dynasty = 174371
 
 	religion = valyrian_rel
@@ -235,7 +204,7 @@
 	8109.1.1 = { death = yes }
 }
 116174371 = {
-	name = "Эйнар"	# a lord
+	name = "Эйрион"	# a lord
 	dynasty = 174371
 
 	religion = valyrian_rel
@@ -247,6 +216,7 @@
 	8074.1.1 = { add_trait = trained_warrior }
 	8123.1.1 = { death = yes }
 }
+### Issue of Aenar ###
 119174371 = {
 	name = "Мокорро"	# a lord
 	dynasty = 174371
@@ -254,7 +224,7 @@
 	religion = valyrian_rel
 	culture = "eastern_valyrian"
 
-	father = 116174371
+	father = 115174371
 
 	8078.1.1 = { birth = yes }
 	8094.1.1 = { add_trait = trained_warrior }
@@ -267,12 +237,13 @@
 	religion = valyrian_rel
 	culture = "eastern_valyrian"
 
-	father = 116174371
+	father = 115174371
 
 	8081.1.1 = { birth = yes }
 	8097.1.1 = { add_trait = trained_warrior }
 	8148.1.1 = { death = yes }
 }
+### Issue of Moqorro ###
 122174371 = {
 	name = "Донифос"	# a lord
 	dynasty = 174371
@@ -299,6 +270,7 @@
 	8120.1.1 = { add_trait = trained_warrior }
 	8152.1.1 = { death = yes }
 }
+### Issue of Doniphos ###
 130174371 = {
 	name = "Хоронно"	# a lord
 	dynasty = 174371
@@ -306,7 +278,7 @@
 	religion = valyrian_rel
 	culture = "eastern_valyrian"
 
-	father = 128174371
+	father = 122174371
 
 	8124.1.1 = { birth = yes }
 	8140.1.1 = { add_trait = skilled_warrior }
@@ -405,21 +377,16 @@
 	name = "Малакво"	# Canon, Malaquo Maegyr, a Triarch
 	dynasty = 174371
 
-	martial = 8 #Tiger
 	diplomacy = 6
-	intrigue = 6
+	martial = 8
 	stewardship = 8
+	intrigue = 6
 	learning = 4
 
 	religion = valyrian_rel
 	culture = "eastern_valyrian"
 
-	add_trait = "diligent"
-	add_trait = "proud"
-	add_trait = "deceitful"
-	add_trait = "gregarious"
-	add_trait = "ambitious"
-	add_trait = "skilled_tactician"
+
 
 	father = 146174371
 	mother = 446174371
@@ -428,9 +395,21 @@
 		birth = yes
 		effect = { health = 2 }
 	}
-	8251.1.1 = { add_trait = trained_warrior }
-	8253.1.1 = { add_spouse = 447174371 }
-	8257.1.1 = { add_trait = tiger }
+	8251.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = trained_warrior
+		add_trait = "diligent"
+		add_trait = "proud"
+		add_trait = "deceitful"
+		add_trait = "gregarious"
+		add_trait = "ambitious"
+	}
+	8253.1.1 = {
+		add_spouse = 447174371
+	}
+	8257.1.1 = {
+		add_trait = tiger
+	}
 }
 447174371 = {
 	name = "Трианна"
@@ -2343,8 +2322,7 @@
 					limit = { ai = no }
 					character_event = { id = bleeding_years.1 }
 				}
-				if = {
-					limit = { ai = yes }
+				else = {
 					character_event = { id = bleeding_years.1 days = 1 }
 				}
 			}
@@ -4038,6 +4016,37 @@
 }
 
 ###House Tagaros of Volaena###
+100367823 = {
+	name = "Вхаласо"	# Triarch, ordered construction of the Long Bridge
+	dynasty = 174603
+	diplomacy = 8
+	stewardship = 9
+	intrigue = 5
+	martial = 4
+	learning = 9
+
+	religion = valyrian_rel
+	culture = "eastern_valyrian"
+
+	add_trait = triarch_statue
+	add_trait = diligent
+	add_trait = just
+	add_trait = charitable
+	add_trait = midas_touched
+
+	give_nickname = nick_the_munificent
+
+	7400.1.1 = { birth = yes }
+	7416.1.1 = { add_trait = trained_warrior }
+	7468.1.1 = {
+		create_bloodline = {
+			type = bloodline_vhalaso_the_munificent
+			has_dlc = "Holy Fury"
+		}
+		effect_even_if_dead = { set_government_type = triarch_merchant_republic_government }
+		death = yes
+	}
+}
 85654121 = {
 	name = "Линия Вхаласо"
 	dynasty = 174603

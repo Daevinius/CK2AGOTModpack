@@ -1,0 +1,531 @@
+namespace = TSP_1KI
+
+narrative_event = { # The Fish Gods Church is now organized
+	id = TSP_1KI.1
+	title = TSP1KI_TITLE_1
+	desc = TSP_1KI_DESC_1
+
+	picture = GFX_evt_kraken
+	border = GFX_event_narrative_frame_war
+	major = yes
+
+	is_triggered_only = yes
+
+	option = { # Fish Gods disciples, rejoice!
+		trigger = { religion = fish_gods }
+		name = TSP1KI_OPTION_1
+	}
+
+	option = { # The Evil God Name will not prevail!
+		trigger = {
+			NOT = { religion = fish_gods }
+			trait = zealous
+		}
+		tooltip_info = zealous
+
+		name = TSP1KI_OPTION_2
+	}
+
+	option = {
+		trigger = {
+			NOT = { religion = fish_gods }
+			NOT = {
+				religion = nath_pagan
+				religion = nath_pagan_reformed
+				pacifist = yes
+				has_religion_feature = religion_peaceful
+				has_religion_feature = religion_feature_nath_pagan
+			}
+		}
+
+		name = TSP1KI_OPTION_3
+	}
+
+	option = {
+		trigger = {
+			NOT = { religion = fish_gods }
+		}
+
+		name = TSP1KI_OPTION_4
+	}
+}
+
+character_event = {
+	id = TSP_1KI.2 # Punish an immoral Fish God Dagonos
+
+	desc = EVTDESC_SoA_5302
+	picture = GFX_evt_TSP_deep_ones_at_work
+	border = GFX_event_normal_frame_religion
+
+	is_triggered_only = yes
+	religion = fish_gods
+	has_dlc = "Sons of Abraham"
+	capable_only = yes
+
+	trigger = {
+		trait = fishy
+		NOT = { trait = bad_priest_fish_gods }
+		NOT = { intrigue = 14 }
+		NOT = { diplomacy = 12 }
+		NOT = { trait = impaler } # Fish Gods consider human sacrifice the priority here, this is the closest representation
+		OR = {
+			trait = cynical
+			trait = greedy
+			trait = slothful
+			trait = envious
+			trait = lunatic
+			trait = possessed
+			trait = craven
+			trait = hedonist
+			trait = lustful
+			trait = proud
+		}
+	}
+
+	option = {
+		add_trait = bad_priest_fish_gods
+		if = {
+			limit = {
+				is_ruler = yes
+				has_nickname = no
+				NOT = { trait = possessed }
+				NOT = { trait = lunatic }
+			}
+			give_nickname = nick_the_wicked
+		}
+		if = {
+			limit = {
+				has_nickname = no
+				trait = possessed
+			}
+			give_nickname = nick_the_bewitched
+		}
+		if = {
+			limit = {
+				has_nickname = no
+				trait = lunatic
+			}
+			give_nickname = nick_the_mad
+		}
+		liege = {
+			letter_event = {
+				id = TSP_1KI.10
+			}
+		}
+	}
+}
+
+# The Pontifex of the Deep has been corrupted!
+character_event = {
+	id = TSP_1KI.3
+
+	is_triggered_only = yes
+	hide_window = yes
+	has_dlc = "Sons of Abraham"
+
+	trigger = {
+		trait = bad_priest_fish_gods
+		NOT = { has_character_modifier = bad_rel_head }
+	}
+
+	immediate = {
+		add_character_modifier = {
+			name = bad_rel_head
+			duration = -1
+			hidden = yes
+		}
+		any_playable_ruler = {
+			limit = {
+				OR = {
+					religion = fish_gods
+					religion_head = {
+						religion = fish_gods # To factor in Autocephaly
+					}
+				}
+			}
+			character_event = { id = TSP_1KI.4 days = 8 random = 7 } # Notify player
+		}
+	}
+}
+
+# Immoral Pontifex of the Deep notification
+character_event = {
+	id = TSP_1KI.4
+	desc = EVTDESC_SoA_5320
+	picture = GFX_evt_TSP_deep_ones_at_work
+	border = GFX_event_normal_frame_religion
+
+	is_triggered_only = yes
+
+	option = {
+		name = EVTOPTA_SoA_5320
+	}
+}
+
+character_event = { # Present a Fish Gods clergyman with the proper Trait
+	id = TSP_1KI.5
+#	desc = "EVTDESCreligious.1"
+	hide_window = yes
+
+	min_age = 16
+	only_playable = yes
+	religion = fish_gods
+
+	trigger = {
+		OR = {
+			is_theocracy = yes
+			government = theocratic_feudal_government
+		}
+		NOT = {
+			trait = fishy
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		add_trait = fishy
+		set_character_flag = theocratic_dagonos_set
+		remove_spouse = spouse
+		recalc_succession = yes
+	}
+}
+
+character_event = { # Courtier in theocracy becomes clergyman
+	id = TSP_1KI.6
+	desc = "EVTDESCreligious.4"
+	picture = GFX_evt_kraken
+	border = GFX_event_normal_frame_religion
+
+	min_age = 16
+	only_men = yes
+	capable_only = yes
+	prisoner = no
+	religion = fish_gods
+
+	trigger = {
+		liege = {
+			is_theocracy = yes
+			religion = fish_gods
+		}
+
+		is_ruler = no
+
+		NOT = { trait = fishy }
+
+		NOT = { trait = kingsguard }
+		NOT = { trait = maester }
+		NOT = { trait = archmaester }
+		NOT = { is_ill = yes }
+		NOT = { trait = pneumonic }
+	}
+
+	mean_time_to_happen = {
+		months = 100
+
+		modifier = {
+			factor = 8
+			trait = cynical
+		}
+		modifier = {
+			factor = 0.5
+			trait = zealous
+		}
+		modifier = {
+			factor = 0.5
+			trait = celibate
+		}
+		modifier = {
+			factor = 0.9
+			piety = 50
+		}
+		modifier = {
+			factor = 0.9
+			piety = 75
+		}
+		modifier = {
+			factor = 0.9
+			piety = 100
+		}
+		modifier = {
+			factor = 0.8
+			piety = 150
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				trait = stressed
+				trait = depressed
+			}
+		}
+		modifier = {
+			factor = 0.75
+			trait = genius
+		}
+		modifier = {
+			factor = 0.9
+			is_smart_trigger = yes
+		}
+		modifier = {
+			factor = 1.1
+			is_dumb_trigger = yes
+		}
+		modifier = {
+			factor = 0.9
+			trait = scholar
+		}
+		modifier = {
+			factor = 0.5
+			trait = mystic
+		}
+		modifier = {
+			factor = 1.5
+			trait = slothful
+		}
+		modifier = {
+			factor = 0.66
+			trait = diligent
+		}
+		modifier = {
+			factor = 0.66
+			trait = ambitious
+		}
+		modifier = {
+			factor = 1.5
+			trait = content
+		}
+	}
+
+
+	option = {
+		name = "OK" #Yes
+
+		piety = 25
+		if = {
+			limit = {
+				OR = {
+					trait = slave
+					trait = zealous
+					trait = content
+					trait = celibate
+				}
+			}
+			set_character_flag = no_court_invites
+		}
+
+		add_trait = fishy
+#		remove_trait = knight
+#		remove_trait = squire
+		remove_spouse = spouse
+		recalc_succession = yes
+
+		set_character_flag = junior_fishy
+
+		# Inform close relatives
+		any_player = {
+			limit = {
+				OR = {
+					is_close_relative = ROOT
+					is_liege_of = ROOT
+					is_friend = ROOT
+					is_foe = ROOT
+				}
+			}
+			character_event = { id = TSP_1KI.7 days = 1 }
+		}
+	}
+}
+
+# The character's relatives are informed
+character_event = {
+	id = TSP_1KI.7
+	picture = GFX_evt_TSP_deep_ones_at_work
+	desc = "EVTDESCreligious.5"
+
+	is_triggered_only = yes
+
+	option = {
+		name = {
+			text = "EVTOPTAreligious.5"
+			trigger = { opinion = { who = FROM value = -30 } }
+		}
+		name = {
+			text = "EVTOPTBreligious.5"
+			trigger = { NOT = { opinion = { who = FROM value = -30 } } }
+		}
+		prestige = 15
+		recalc_succession = yes
+	}
+}
+
+character_event = { # Keeps a Fish Gods clergyman from marrying or staying married
+	id = TSP_1KI.8
+
+	hide_window = yes
+
+	religion = fish_gods
+
+	trigger = {
+		OR = {
+			AND = {
+				controls_religion = fish_gods
+				OR = {
+					is_theocracy = yes
+					has_landed_title = d_thousand_islands_rel_head
+				}
+			}
+			has_landed_title = d_thousand_islands_rel_head
+			trait = fishy
+		}
+		OR = {
+			AND = {
+				liege = {
+					OR = {
+						trait = fishy
+						is_theocracy = yes
+					}
+				}
+				NOT = { is_landed = yes }
+				ai = yes
+			}
+			AND = {
+				trait = fishy
+				ai = yes
+			}
+			has_landed_title = d_thousand_islands_rel_head
+		}
+		trait = fishy
+		religion = fish_gods
+		is_married = yes
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		spouse = {
+			banish = yes # BE GONE, THOT!
+		}
+		remove_spouse = spouse
+	}
+}
+
+character_event = {
+	id = TSP_1KI.9
+	desc = EVTDESC_WoL_7042
+	picture = GFX_evt_TSP_testament_of_cthulhu
+	border = GFX_event_normal_frame_religion
+
+	is_triggered_only = yes # On Action
+
+	trigger = {
+		has_focus = focus_theology
+		is_priest = no
+		NOT = {
+			religion = fish_gods
+			trait = fishy
+		}
+		OR = {
+			any_realm_character = {
+				religion_group = islands_rel
+			}
+			any_realm_character = {
+				OR = {
+					graphical_culture = islandergfx
+					culture = islander
+					religion = fish_gods
+
+				}
+			}
+#			religion = fish_gods
+			has_landed_title = c_thousand_islands
+			has_landed_title = d_thousand_islands
+			has_landed_title = k_great_fish_dominion
+			has_landed_title = e_dagonos
+		}
+	}
+
+	option = {
+		name = EVTOPTA_WoL_7042  # Accept
+		add_trait = sympathy_islands_rel
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 5.0
+				trait = cynical
+			}
+			modifier = {
+				factor = 0
+				trait = zealous
+				NOT = {
+					race = islander
+					graphical_culture = islandergfx
+					culture = islander
+				}
+			}
+			modifier = {
+				factor = 0.2
+				trait = zealous
+			}
+			modifier = {
+				factor = 1.2
+				OR = {
+					has_landed_title = c_thousand_islands
+					has_landed_title = d_thousand_islands
+					has_landed_title = k_great_fish_dominion
+					has_landed_title = e_dagonos
+				}
+			}
+			modifier = {
+				factor = 100
+				OR = {
+					religion = old_ones
+					trait = old_ones_scourge
+				}
+			}
+		}
+	}
+	option = {
+		name = EVTOPTB_WoL_7042  # Condemn
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.2
+				culture = islander
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					religion = old_ones
+					trait = old_ones_scourge
+				}
+			}
+		}
+		piety = 50
+	}
+}
+
+letter_event = {
+	id = TSP_1KI.10
+	desc = TSP1KI10DESC
+#	picture = GFX_evt_pope_feast
+	border = GFX_event_letter_frame_religion
+
+	is_triggered_only = yes
+
+	option = {
+		name = TSP1KI10OPTA
+		trigger = { NOT = { trait = cynical } }
+	}
+
+	option = {
+		name = TSP1KI10OPTB
+		trigger = {
+			trait = cynical
+		}
+		tooltip_info = cynical
+	}
+}

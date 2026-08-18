@@ -1,0 +1,2160 @@
+770654 = { # Ruler of the Thousand Islands
+	name = "Вердеос"
+	dynasty = "7706541"
+
+	religion = "fish_gods"
+	culture = "islander"
+
+	father = 770653
+
+	martial = 7
+	diplomacy = 1
+	intrigue = 7
+	stewardship = 6
+	learning = 9
+
+	add_trait = strong
+	add_trait = quick
+	add_trait = erudite
+	add_trait = mystic
+	add_trait = ambitious
+	add_trait = gluttonous
+	add_trait = ruthless
+	add_trait = zealous
+	add_trait = ugly
+	add_trait = hunchback
+	add_trait = familyperson
+
+	disallow_random_traits = yes
+
+	fertility = 1 # To prevent a Game Over
+
+	7960.1.1 = { birth = yes }
+
+	7980.1.1 = {
+		add_spouse = 770655
+	}
+
+	7984.1.1 = {
+		effect = {
+			add_lover = 770655 # To prevent the ruthless Verdeos from killing his wife
+			add_friend = 770655 # They love each other despite Verdeos being butt-ugly
+		}
+	}
+
+	8068.6.27 = {
+		death = yes
+	}
+}
+
+770655 = { # Verdeos' wife, lowborn
+	name = "Сью"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = kind
+	add_trait = chaste
+	add_trait = familyperson
+	add_trait = ambitious
+	add_trait = strong
+	add_trait = shrewd
+
+	fertility = 1 # To stop a Game Over
+
+	disallow_random_traits = yes
+
+	7966.6.1 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	7980.1.1 = {
+		add_spouse = 770654
+	}
+
+	7984.1.1 = { # This should be mutual
+		effect = {
+			add_lover = 770654 # To prevent Sue from killing Verdeos
+			add_friend = 770654 # They love each other despite Verdeos being butt-ugly
+		}
+	}
+
+	8068.6.27 = {
+		add_trait = widowed
+		add_trait = depressed
+	}
+
+	8069.1.3 = {
+		remove_trait = depressed
+	}
+
+	8071.6.27 = {
+		death = yes # 1KI Crown passes to Skugg
+	}
+}
+
+770656 = { # Verdeos' firstborn
+	name = "Грини"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	female = yes
+
+	religion = "fish_gods"
+	culture = "islander"
+
+	add_trait = quick
+	add_trait = strong
+	add_trait = ugly
+	add_trait = gluttonous
+	add_trait = is_fat
+	add_trait = kind
+	add_trait = erudite
+
+	7986.6.1 = {
+		birth = yes
+	}
+
+	8065.2.14 = {
+		death = yes
+	}
+}
+
+770657 = {
+	name = "Сью"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	religion = "fish_gods"
+	culture = "islander"
+
+	add_trait = erudite
+	add_trait = shy
+	add_trait = humble
+	add_trait = just
+	add_trait = wroth
+	add_trait = hunchback
+
+	7989.6.27 = {
+		birth = yes
+	}
+
+	8090.6.6 = {
+		death = yes
+	}
+}
+
+770658 = { # Has an identical twin
+	name = "Депп"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	religion = "fish_gods"
+	culture = "islander"
+
+	disallow_random_traits = yes
+
+	add_trait = humble
+	add_trait = shy
+	add_trait = content
+	add_trait = strong
+	add_trait = brave
+	add_trait = erudite
+	add_trait = twin
+	add_trait = hunchback
+	add_trait = familyperson
+
+	health = 15
+
+	7995.2.19 = {
+		birth = yes
+		effect = {
+			set_interested_society = alchemists_guild
+			add_friend = 770659
+		}
+	}
+
+	8000.1.1 = {
+		add_trait = fire_obsessed
+	}
+
+	8010.12.20 = {
+		add_trait = fishy # He persues a Church career
+		add_trait = celibate
+#		add_trait = fire_obsessed
+	}
+
+	8014.5.13 = {
+		add_trait = time_keeper
+	}
+
+	8090.4.20 = {
+		add_trait = envious # His brother became immortal!
+	}
+
+	8099.3.13 = {
+		death = yes
+	}
+}
+
+770659 = { # Has an identical twin
+	name = "Дули"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	religion = "fish_gods"
+	culture = "islander"
+
+	disallow_random_traits = yes
+
+	add_trait = twin
+	add_trait = proud
+	add_trait = ambitious
+	add_trait = genius
+	add_trait = craven
+	add_trait = erudite
+	add_trait = gluttonous
+	add_trait = strong
+	add_trait = shy
+
+	health = 50 # To make sure he lives long enough to become immortal by Event, if the player starts earlier (and he isn't murdered)
+
+	7995.2.19 = {
+		birth = yes
+		effect = {
+			add_friend = 770658
+			set_character_flag = is_strange_green_archmaester
+			set_character_flag = special_archmaester_courtier
+			set_character_flag = no_court_invites
+			set_interested_society = hermetics
+			set_immune_to_pruning = yes
+		}
+	}
+
+	8020.12.21 = { # He goes to the Citadel because of reasons
+		effect = {
+			c_the_citadel = {
+				holder_scope = {
+					ROOT = {
+						move_character = PREV
+					}
+				}
+			}
+			join_society = hermetics
+			add_trait = celibate # The player should NEVER be allowed a go at someone this OP
+			set_character_flag = maester_education
+#			add_character_modifier = {
+#				name = maester_education
+#				duration = -1
+#			}
+			give_nickname = nick_blackfish # He's a fish-like Thousand Islander
+		}
+	}
+
+	8021.1.17 = {
+		add_trait = maester
+		effect = {
+			society_rank_up = 1
+			society_rank_up = 1
+		}
+	}
+
+	8021.2.14 = {
+		effect = { add_artifact = valyrian_steel_link }
+	}
+
+	8021.10.31 = {
+		add_trait = mastermind_theologian
+		remove_trait = shy # He starts to open up
+		effect = { add_artifact = valyrian_steel_link }
+	}
+
+	8022.2.14 = {
+		effect = { add_artifact = silver_link }
+	}
+
+	8022.10.31 = {
+		effect = { add_artifact = valyrian_steel_link }
+	}
+
+	8024.4.20 = { # I am a simple man with a simple sense of humor
+		add_trait = deceitful
+		add_trait = drunkard # Closest to blazing it
+		effect = {
+			add_artifact = tin_link
+			add_artifact = tin_link
+			add_artifact = tin_link
+			add_artifact = tin_link
+		}
+
+	}
+
+	8025.4.20 = {
+		remove_trait = deceitful
+		add_trait = mystic
+		effect = {
+			set_character_flag = choosing_hermetic_art
+			set_character_flag = specialisation_mysteries
+			clr_character_flag = specialisation_ravenry
+			clr_character_flag = specialisation_history
+			clr_character_flag = specialisation_astronomy
+			clr_character_flag = specialisation_seasons
+			clr_character_flag = specialisation_geography
+			clr_character_flag = specialisation_math
+			clr_character_flag = specialisation_warcraft
+			clr_character_flag = specialisation_castles
+			clr_character_flag = specialisation_culture
+			clr_character_flag = specialisation_languages
+			clr_character_flag = specialisation_law
+			clr_character_flag = specialisation_medicine
+			clr_character_flag = specialisation_metallurgy
+			clr_character_flag = specialisation_herblore
+			add_artifact = valyrian_steel_link
+			add_artifact = valyrian_steel_link
+			add_artifact = valyrian_steel_link
+		}
+	}
+
+	8030.4.20 = {
+#		remove_trait = maester
+#		add_trait = archmaester
+		add_trait = fire_obsessed
+		remove_trait = craven
+		remove_trait = drunkard
+		effect = {
+			add_artifact = valyrian_steel_link
+			character_event = { id = maester.12 } # Congratulations!
+		}
+	}
+
+	8051.6.6 = {
+		# First attempt to be immortal, loses eye
+		add_trait = severely_injured
+		add_trait = one_eyed
+	}
+
+	8052.12.25 = {
+		remove_trait = severely_injured
+		add_trait = scarred
+		add_trait = brave
+		effect = { add_artifact = valyrian_steel_link }
+	}
+
+	8060.4.21 = {
+		# Second attempt to be immortal, walks with a permanent limp
+		add_trait = maimed
+		add_trait = crippled
+		effect = { add_artifact = silver_link }
+	}
+
+	8061.10.31 = {
+		remove_trait = maimed
+		add_trait = scarred_mid
+		effect = { add_artifact = silver_link }
+	}
+
+	8068.6.27 = { # Loses his father
+		add_trait = depressed
+		add_trait = kind
+		add_trait = familyperson
+	}
+
+	8073.7.7 = {
+		remove_trait = depressed # Gets out of that funk
+	}
+
+	8090.4.20 = {
+		remove_trait = humble
+		add_trait = proud
+		add_trait = scholar
+
+		effect = {
+			set_global_flag = dooley_is_immortal
+			add_artifact = valyrian_steel_link
+			# immortal_age = 95 # Still decently healthy
+			health = 3
+			cure_illness = yes
+		}
+
+		add_trait = immortal # "I HAVE DONE IT!!"
+	}
+
+	8090.4.21 = {
+		effect = { add_artifact = valyrian_steel_link }
+	}
+
+	8090.6.6 = {
+		add_trait = depressed # Loses his momma
+	}
+
+	8091.6.6 = { # He has everything he's ever dreamed of, but he hasn't found peace
+		add_trait = stressed
+	}
+
+	8101.6.27 = { # He finally finds peace
+		effect = {
+			c_the_citadel = {
+				holder_scope = {
+					ROOT = {
+						add_friend = PREV
+					}
+				}
+			}
+
+			add_artifact = pewter_link
+			add_artifact = platinum_link
+			add_artifact = bronze_link
+		}
+
+		add_trait = socializer
+		add_trait = gregarious
+		remove_trait = stressed
+		remove_trait = ambitious
+		add_trait = content
+		remove_trait = proud
+		add_trait = humble # He rediscovers his humility as he makes peace with the reality of death and consequences of immortality
+	}
+
+	8105.5.24 = {
+		effect = {
+			add_artifact = black_iron_link
+			add_artifact = valyrian_steel_link
+		}
+	}
+
+	9999.12.31 = {
+		death = {
+			death_reason = death_vanished
+		}
+	}
+}
+
+770660 = {
+	name = "Сларри"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	religion = "fish_gods"
+	culture = "islander"
+
+	female = yes
+
+	add_trait = dull
+	add_trait = strong
+	add_trait = slothful
+	add_trait = gregarious
+	add_trait = zealous
+
+	8000.12.12 = {
+		birth = yes
+	}
+
+	8019.6.6 = {
+		add_trait = lustful
+	}
+
+	8071.3.15 = {
+		death = yes
+	}
+}
+
+770661 = {
+	name = "Тэмми"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	female = yes
+
+	8005.8.9 = {
+		birth = yes
+	}
+
+	8060.3.15 = {
+		death = yes
+	}
+}
+
+770662 = { # Ruler of the Thousand Islands
+	name = "Скугг"
+	dynasty = "7706541"
+	mother = 770655
+	father = 770654
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	add_trait = familyperson
+	add_trait = honorable
+	add_trait = slothful
+	add_trait = gluttonous
+	add_trait = patient
+	add_trait = proud
+
+	8010.1.3 = {
+		birth = yes
+	}
+
+	8026.6.1 = {
+		add_spouse = 770663
+	}
+
+	8068.6.27 = {
+		add_trait = stressed # He assumes his father's throne
+	}
+
+	8089.3.15 = {
+		death = yes # 1KI throne passes to Green
+	}
+}
+
+770663 = { # Skugg's wife
+	name = "Индраватти"
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	add_trait = chaste
+	add_trait = authoritative
+	add_trait = familyperson
+	add_trait = erudite
+
+	female = yes
+
+	8012.3.3 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8026.6.1 = {
+		add_spouse = 770662
+	}
+
+	8089.3.15 = {
+		add_trait = widowed
+	}
+
+	8090.11.11 = {
+		death = yes
+	}
+}
+
+770664 = { # Skugg's firstborn
+	name = "Вердеос"
+	mother = 770663
+	father = 770662
+	dynasty = "7706541"
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	add_trait = zealous
+	add_trait = familyperson
+
+	8027.11.5 = {
+		birth = yes
+	}
+
+	8090.11.10 = {
+		death = yes
+	}
+}
+
+770665 = { # Ruler of the Thousand Islands
+	name = "Грин"
+	mother = 770663
+	father = 770662
+	dynasty = "7706541"
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	add_trait = selfish
+	add_trait = content
+	add_trait = ruthless
+	add_trait = erudite
+
+	8035.3.6 = {
+		birth = yes
+	}
+
+	8092.3.4 = {
+		death = yes # 1KI throne passes to Ethel
+	}
+}
+
+770667 = { # Ruler of the Thousand Islands
+	name = "Этель"
+	mother = 770663
+	father = 770662
+	dynasty = "7706541"
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	add_trait = familyperson
+	add_trait = just
+	add_trait = ruthless
+	add_trait = ambitious
+	add_trait = erudite
+
+	female = yes
+
+	8044.6.27 = {
+		birth = yes
+	}
+
+	8060.7.14 = {
+		add_matrilineal_spouse = 770668 # Ugg
+	}
+
+	8062.9.21 = {
+		effect = {
+			add_lover = 770668
+		}
+	}
+
+	8133.3.15 = {
+		death = yes # 1KI throne passes to Ethelene
+	}
+}
+
+770668 = { # Ethel's husband, matrilineal
+	name = "Угг"
+
+	culture = "islander"
+	religion = "fish_gods"
+
+	add_trait = humble
+	add_trait = ruthless
+	add_trait = ambitious
+	add_trait = familyperson
+	add_trait = zealous
+
+	8041.1.13 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8060.7.14 = {
+		add_matrilineal_spouse = 770667 # Ethel
+	}
+
+	8062.9.21 = {
+		effect = {
+			add_lover = 770667
+		}
+	}
+
+	8082.2.7 = {
+		add_trait = proud
+		remove_trait = familyperson
+		effect = { add_rival = 770670 } # Ugg requested to disinherit him
+	}
+
+	8133.3.15 = {
+		death = yes # What are the odds?
+	}
+}
+
+770669 = { # Ruler of the Thousand Islands
+	name = "Этелин"
+	mother = 770667
+	father = 770668
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = ambitious
+	add_trait = familyperson
+	add_trait = erudite
+
+	female = yes
+
+	health = 7
+
+	8060.9.6 = {
+		birth = yes
+	}
+
+	8080.9.17 = {
+		add_matrilineal_spouse = 770671 # Skoodge
+	}
+
+	8080.9.19 = {
+		effect = {
+			add_lover = 770671
+			add_friend = 770671
+		}
+	}
+
+	8133.3.15 = {
+		add_trait = depressed # Loses mother, who she was especially fond of
+	}
+
+	8134.7.7 = {
+		remove_trait = depressed
+	}
+
+	8141.3.15 = {
+		death = yes # 1KI crown passes to Howard
+	}
+}
+
+770670 = {
+	name = "Гругг"
+	mother = 770667
+	father = 770668
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	disallow_random_traits = yes
+
+	add_trait = lunatic
+	add_trait = strong
+	add_trait = quick
+	add_trait = humble
+	add_trait = greedy
+
+	health = 30
+
+	8060.9.7 = { # Technically fraternal twins, but he had a slow time getting out
+		birth = yes
+	}
+
+	8076.6.6 = {
+		add_trait = chaste
+		add_trait = cruel
+		add_trait = ruthless
+	}
+
+	8081.9.11 = {
+		add_trait = cancer # OOF
+	}
+
+	8082.2.7 = {
+		add_trait = disinherited # DOUBLE OOF
+		effect = { add_rival = 770668 } # This was Ugg's idea
+	}
+
+	8082.2.8 = {
+		add_trait = nightswatch # He takes the black in order to prove something of himself
+		add_trait = ambitious
+		add_trait = brave
+		effect = {
+			d_nightswatch = {
+				holder_scope = {
+					ROOT = {
+						move_character = PREV
+					}
+				}
+			}
+		}
+	}
+
+	8084.6.27 = {
+		remove_trait = cancer
+		add_trait = zealous
+		add_trait = eunuch # Those Physicians are geniuses
+		remove_trait = lunatic
+		add_trait = wroth
+		add_trait = scarred
+		effect = { cure_illness = yes }
+	}
+
+	8095.4.1 = {
+		add_trait = just # The Night's Watch makes him a better man
+	}
+
+	8155.3.15 = {
+		death = yes
+	}
+}
+
+770671 = { # Ethelene's husband, matrilineal
+	name = "Скудж"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = dwarf
+	add_trait = brave
+	add_trait = humble
+	add_trait = brilliant_strategist
+
+#	If you can guess the reference, I will name a minor 1KI character after you and make it to your specifications
+
+	8060.12.24 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8080.9.17 = {
+		add_matrilineal_spouse = 770669 # Ethelene
+	}
+
+	8080.9.18 = {
+		add_trait = strategist
+		effect = {
+			add_lover = 770669
+			add_friend = 770669
+		}
+	}
+
+	8141.3.15 = {
+		death = yes # WHAT ARE THE ODDS
+	}
+}
+
+770672 = {
+	name = "Скрогг"
+	mother = 770667
+	father = 770668
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	8062.3.6 = {
+		birth = yes
+	}
+
+	8149.6.7 = {
+		death = yes
+	}
+}
+
+770673 = {
+	name = "Галф"
+	mother = 770667
+	father = 770668
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	8066.9.8 = {
+		birth = yes
+	}
+
+	8111.5.30 = {
+		add_trait = has_measles
+		effect = {
+			add_character_modifier = {
+				name = bedridden_illness
+				duration = -1
+			}
+		}
+	}
+
+	8111.6.6 = {
+		death = yes # Died young
+	}
+}
+
+770674 = {
+	name = "Зои"
+	mother = 770667
+	father = 770668
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = erudite
+
+	8067.10.10 = {
+		birth = yes
+	}
+
+	8167.10.31 = {
+		death = yes
+	}
+}
+
+770675 = { # Ruler of the Thousand Islands
+	name = "Говард"
+	mother = 770669
+	father = 770671
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	disallow_random_traits = yes
+
+	add_trait = twin
+	add_trait = just
+	add_trait = kind
+	add_trait = familyperson
+	add_trait = patient
+	add_trait = erudite
+	add_trait = quick
+	add_trait = chaste
+
+	health = 20
+
+	8081.7.20 = {
+		birth = yes
+		effect = {
+			add_friend = 770669
+			add_friend = 770670
+		}
+	}
+
+	8141.3.15 = {
+		add_trait = lunatic # Went mad after losing both his parents at once
+		add_trait = wroth
+		add_trait = stressed
+		add_trait = depressed
+		remove_trait = patient
+	}
+
+	8145.1.1 = {
+		remove_trait = stressed
+		remove_trait = depressed
+	}
+
+	8168.3.3 = {
+		add_trait = ambitious
+		remove_trait = kind
+		add_trait = ruthless # He remains Just all his life, however
+		add_trait = mystic
+		add_trait = fire_obsessed
+	}
+
+	8171.11.19 = {
+		add_trait = dragon_egg # HOT DOG
+		effect = { add_artifact = dragon_egg }
+	}
+
+	8172.1.6 = {
+		add_trait = burned
+		effect = { unsafe_destroy_artifact = dragon_egg } # OOF
+		death = {
+			death_reason = death_accident_dragon_hatching # DOUBLE OOF
+		}
+		# Crown passes to his ancient twin, Phillips
+	}
+}
+
+770676 = { # Ruler of the Thousand Islands
+	name = "Филлипс"
+	mother = 770669
+	father = 770671
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = twin
+	add_trait = familyperson
+	add_trait = just
+	add_trait = strong
+
+	disallow_random_traits = yes
+
+	health = 20
+
+	8081.7.20 = {
+		birth = yes
+		effect = {
+			add_friend = 770669
+			add_friend = 770670
+		}
+	}
+
+	8087.6.6 = {
+		add_trait = rabies # Oh he dead
+	}
+
+	8087.6.27 = {
+		remove_trait = rabies # PSYCH
+		effect = {
+			cure_illness = yes
+			give_nickname = nick_the_headstrong_fish # Puns are the finest form of comedy
+		}
+		add_trait = lunatic # Brain inflammation has a great cost
+		add_trait = dull
+		add_trait = cruel
+		add_trait = crippled # Massive brain damage
+		add_trait = wroth
+	}
+
+	8172.1.6 = {
+		add_trait = ambitious
+	}
+
+	8180.3.15 = {
+		death = yes # Crown passes to Verdeos
+	}
+}
+
+770677 = { # Ruler of the Thousand Islands
+	name = "Вердеос"
+	mother = 770669
+	father = 770671
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = familyperson
+	add_trait = kind
+	add_trait = arbitrary
+
+	8099.6.27 = {
+		birth = yes
+	}
+
+	8117.6.20 = {
+		add_spouse = 770678 # Glucka
+	}
+
+	8168.6.6 = {
+		add_trait = widowed
+	}
+
+	8180.3.15 = {
+		add_trait = ambitious
+		effect = { give_nickname = nick_the_unlikley }
+	}
+
+	8180.3.19 = {
+		death = yes # Crown passes to Verdeos
+	}
+}
+
+770678 = { # Verdeos' wife
+	name = "Глука"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = kind
+	add_trait = trusting
+	add_trait = content
+	add_trait = patient
+	add_trait = gluttonous
+
+	female = yes
+
+	8097.1.1 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8117.6.20 = {
+		add_spouse = 770677 # Verdeos
+		add_trait = chaste
+	}
+
+	8168.6.6 = {
+		death = yes
+	}
+}
+
+770679 = {
+	name = "Коралос"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = hunchback
+	add_trait = erudite
+	add_trait = shy
+
+	8120.6.1 = {
+		birth = yes
+	}
+
+	8200.3.15 = {
+		death = yes
+	}
+}
+
+770680 = {
+	name = "Бесс"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = hunchback
+	add_trait = erudite
+	add_trait = humble
+	add_trait = genius
+
+	8122.1.7 = {
+		birth = yes
+	}
+
+	8200.12.31 = {
+		death = yes
+	}
+}
+
+770681 = { # Ruler of the Thousand Islands
+	name = "Вердеос"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = just
+	add_trait = ambitious
+	add_trait = content
+	add_trait = familyperson
+	add_trait = greedy
+	add_trait = kind
+
+	8118.6.27 = {
+		birth = yes
+	}
+
+	8131.9.19 = {
+		add_spouse = 770682 # Nyalhotep
+		effect = {
+			add_lover = 770682
+			add_friend = 770682
+		}
+	}
+
+	8212.3.15 = {
+		death = yes # 1KI crown passes to Oog
+	}
+}
+
+770682 = { # Verdeos' wife
+	name = "Ньялхотеп"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = lunatic
+	add_trait = ugly
+	add_trait = hunchback
+	add_trait = stutter
+	add_trait = shy
+	add_trait = mystic
+	add_trait = ambitious
+	add_trait = familyperson
+	add_trait = kind
+
+	female = yes
+
+	disallow_random_traits = yes
+
+	8116.6.28 = {
+		birth = yes
+	}
+
+	8131.9.19 = {
+		add_trait = chaste
+		add_spouse = 770681 # Verdeos
+		effect = {
+			add_lover = 770682
+			add_friend = 770682
+		}
+	}
+
+	8212.3.15 = {
+		add_trait = widowed
+	}
+
+	8212.10.15 = {
+		death = yes
+	}
+}
+
+770683 = {
+	name = "Грин"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	8134.8.3 = {
+		birth = yes
+	}
+
+	8220.3.15 = {
+		death = yes
+	}
+}
+
+770684 = {
+	name = "Этель"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	8137.6.27 = {
+		birth = yes
+	}
+
+	8200.3.15 = {
+		death = yes
+	}
+}
+
+770685 = {
+	name = "Грини"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = twin
+
+	8138.12.30 = {
+		birth = yes
+	}
+
+	8201.3.15 = {
+		death = yes
+	}
+}
+
+770686 = {
+	name = "Этелин"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = twin
+
+	8138.12.30 = {
+		birth = yes
+	}
+
+	8217.3.15 = {
+		death = yes
+	}
+}
+
+770687 = { # Ruler of the Thousand Islands
+	name = "Оог"
+	mother = 770678
+	father = 770677
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = twin
+
+	health = 10
+
+	8138.12.30 = {
+		birth = yes
+	}
+
+	8157.2.14 = {
+		add_spouse = 770688 # Glucka
+		effect = {
+			add_lover = 770688
+		}
+	}
+
+	8213.4.1 = {
+		death = yes # 1KI throne passes to Green
+	}
+}
+
+770688 = { # Oog's wife
+	name = "Глука"
+
+	father = 770697
+	mother = 770698
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = twin
+
+	female = yes
+
+	health = 8
+
+	8140.12.30 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			add_friend = 770689
+		}
+	}
+
+	8157.2.14 = {
+		add_spouse = 770687 # Oog
+		effect = {
+			add_lover = 770687
+		}
+	}
+
+	8213.3.15 = {
+		add_trait = widowed
+	}
+
+	8224.6.30 = {
+		death = yes
+	}
+}
+
+770689 = { # Oog's wife's sister
+	name = "Коралос"
+
+	father = 770697
+	mother = 770698
+
+	culture = islander
+	religion = old_ones
+
+	add_trait = twin
+	add_trait = lunatic
+	add_trait = cruel
+	add_trait = ruthless
+	add_trait = ambitious
+	add_trait = mystic
+	add_trait = greensight
+	add_trait = paranoid
+
+	disallow_random_traits = yes
+	easter_egg = yes
+
+	intrigue = 16
+
+	health = 20
+
+	8140.12.30 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			add_friend = 770688
+			set_character_flag = fish_witch
+		}
+	}
+
+	8146.6.27 = {
+		add_trait = whale
+	}
+
+	8155.6.6 = {
+		effect = { join_society = the_trollcrafters }
+		health = 50
+		add_trait = zealous
+	}
+
+	8168.3.15 = {
+		add_trait = possessed
+		add_trait = ugly
+		effect = {
+			society_rank_up = 1
+			add_artifact = glass_candle
+		}
+	}
+
+	8168.6.6 = {
+		effect = {
+			add_friend = 770691 # She saves Green's life
+			society_rank_down = 1
+		}
+		add_trait = just
+		add_trait = physician
+	}
+
+	8200.6.6 = {
+		health = 60
+		add_trait = hunchback
+		add_trait = impaler
+		effect = {
+			# immortal_age = 60
+			give_nickname = nick_the_abomination
+			society_rank_up = 2
+		}
+		add_trait = immortal # The power of EEEEEEEEEEEEEEEEEVIL
+	}
+
+	8282.6.6 = {
+		effect = { set_society_grandmaster = yes }
+	}
+
+	8302.12.25 = {
+		effect = {
+			k_the_most_devout = { # The famous witch is captured by the High Sparrow himself!
+				holder_scope = {
+					ROOT = {
+						move_character = PREV
+						imprison = PREV
+					}
+				}
+			}
+		}
+	}
+
+	8303.1.12 = {
+		death = {
+			death_reason = death_execution_burning
+			killer = 77904 # The High Sparrow
+		}
+	}
+}
+
+770690 = {
+	name = "Вердеос"
+	father = 770687
+	mother = 770688
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	8160.6.27 = {
+		birth = yes
+	}
+
+	8260.3.15 = {
+		death = yes
+	}
+}
+
+770691 = { # Ruler of the Thousand Islands
+	name = "Грин" # Of the Seventeen Illegitimate Children
+	father = 770687
+	mother = 770688
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = ugly
+	add_trait = hunchback
+	add_trait = strong
+	add_trait = ruthless
+
+	disallow_random_traits = yes
+
+	intrigue = 12
+	health = 40
+
+	fertility = 1
+
+	8166.3.15 = {
+		birth = yes
+		add_trait = sickly
+		add_trait = incapable
+		effect = {
+			add_character_modifier = {
+				name = bedridden_illness
+				duration = -1
+			}
+			set_character_flag = green_green_seventeen
+		}
+	}
+
+	8166.7.6 = {
+		remove_trait = sickly
+		remove_trait = incapable
+		effect = {
+			remove_character_modifier = bedridden_illness
+#			set_secret_religion = old_ones
+		}
+		add_trait = lunatic # "The fever broke", but at what cost?
+		add_trait = paranoid
+		add_trait = greensight
+	}
+
+	8170.8.8 = {
+		add_trait = fashionable
+		add_trait = authoritative
+	}
+
+	8184.9.6 = {
+		add_trait = seducer
+		add_trait = sympathy_summer_rel_group
+	}
+
+	8184.9.10 = {
+		add_spouse = 770699 # That's a cocktail waitress in a Dolly Parton wig.......
+	}
+
+	8184.9.12 = {
+		effect = {
+			add_lover = 770699
+			add_friend = 770699
+		}
+	}
+
+	8185.6.3 = {
+		add_trait = lustful
+		effect = { add_ambition = obj_make_the_eight }
+	}
+
+	8186.3.15 = {
+		add_trait = lovers_pox
+		effect = {
+			add_lover = 770017 # ONE FOR THE MONEY
+		}
+	}
+
+	8186.3.16 = {
+		add_trait = hedonist
+		add_trait = sympathy_far_east_group
+		effect = {
+			add_lover = 770018 # TWO FOR THE SHOW
+			add_rival = 41969207
+			add_rival = 11969207
+		}
+	}
+
+	8187.1.1 = {
+		effect = {
+			add_lover = 770022
+		} # THREE TO GET READY
+	}
+
+	8192.3.15 = {
+		effect = {
+			add_lover = 770023 # -AND FOUR TO GO
+			add_rival = 42069207
+		}
+	}
+
+	8195.2.14 = {
+		remove_trait = ugly
+		add_trait = uncouth
+		effect = {
+			add_lover = 770020
+		} # I LITERALLY MEANT THERE ARE FOUR TO GO
+	}
+
+	8200.2.14 = {
+		effect = {
+			add_lover = 770021
+		}
+	}
+
+	8203.6.6 = {
+		effect = {
+			add_rival = 12069207
+			add_rival = 42069207
+		}
+	}
+
+	8212.4.1 = {
+		effect = { set_focus = focus_seduction } # Inherits the 1KI crown
+	}
+
+	8220.9.11 = {
+		effect = {
+			add_lover = 770023
+		}
+	}
+
+	8232.9.6 = {
+		effect = {
+			add_lover = 770024
+		}
+	}
+
+	8234.6.6 = {
+		effect = {
+			add_lover = 770025
+		}
+	}
+
+	8240.2.27 = {
+		add_trait = familyperson
+	}
+
+	8249.6.6 = {
+		add_trait = depressed # He loses Chatana, is wife
+	}
+
+	8251.8.28 = {
+		add_trait = drunkard # BUT WHEN HIS DRINKING, AND LUSTING
+		add_trait = gluttonous
+		add_trait = is_fat
+	}
+
+	8255.8.28 = {
+		add_trait = ambitious # AND HIS HUNGER FOR POWER
+		remove_trait = depressed
+	}
+
+	8256.8.28 = {
+		add_trait = gregarious # BECAME KNOWN TO MORE AND MORE PEOPLE
+		add_trait = socializer
+	}
+
+	8260.8.28 = {
+		add_trait = possessed # THE DEMANDS TO DO SOMETHING ABOUT THIS OUTRAGEOUS MAN GREW LOUDER AND LOUDER
+	}
+
+	8260.12.30 = {
+		death = { death_reason = death_murder_unknown_slayed }
+	}
+}
+
+770692 = {
+	name = "Чатана"
+
+	father = 770691 # Green
+	mother = 770699 # His actual wife
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = twin
+
+	add_trait = sympathy_summer_rel_group
+
+	8187.9.9 = {
+		birth = yes
+		effect = { set_graphical_culture = summer_islander }
+	}
+
+	8204.1.9 = {
+		add_trait = lustful
+		add_trait = hedonist
+	}
+
+	8257.2.14 = {
+		death = yes
+	}
+}
+
+770693 = {
+	name = "Этель"
+
+	father = 770691
+	mother = 770699 # His actual wife
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = twin
+	add_trait = sympathy_summer_rel_group
+
+	health = 9
+
+	8187.9.9 = {
+		birth = yes
+	}
+
+	8270.2.14 = {
+		death = yes
+		effect = { set_graphical_culture = summer_islander }
+	}
+}
+
+770694 = {
+	name = "Грин"
+	father = 770691
+	mother = 770699 # His actual wife
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = twin # FRATERNAL TWIN
+
+	add_trait = kind
+	add_trait = just
+	add_trait = strong
+	add_trait = hunchback
+	add_trait = zealous
+	add_trait = honorable
+	add_trait = dull
+
+	health = 9
+
+	8187.1.1 = {
+		birth = yes
+		effect = { set_graphical_culture = summer_islander }
+	}
+
+	8281.1.1 = {
+		death = yes
+	}
+}
+
+770695 = { # Ruler of the Thousand Islands
+	name = "Вердеос"
+	father = 770691
+	mother = 770699 # His actual wife
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = twin # FRATERNAL TWIN
+
+	add_trait = kind
+	add_trait = just
+	add_trait = hunchback
+	add_trait = honorable
+	add_trait = erudite
+
+	health = 10
+
+	8187.1.1 = {
+		birth = yes
+	}
+
+	8246.6.6 = { # The adoption commences
+		effect = {
+			add_friend = 770700
+		}
+	}
+
+	8284.6.27 = {
+		death = yes # Crown passes to the adopted Oba
+	}
+}
+
+770696 = {
+	name = "Этелин"
+	father = 770691
+	mother = 770699 # His actual wife
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	add_trait = chaste
+	add_trait = kind
+	add_trait = honorable
+	add_trait = ugly
+
+	health = 12
+
+	8190.6.27 = {
+		birth = yes
+	}
+
+	8300.1.1 = {
+		death = yes
+	}
+}
+
+770697 = { # Father of the creepy twins
+	name = "Огг"
+
+	culture = islander
+	religion = old_ones
+
+	add_trait = mystic
+	add_trait = sympathy_islands_rel
+
+	8120.6.27 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8139.1.1 = {
+		add_spouse = 770698
+	}
+
+	8141.3.15 = {
+		death = {
+			death_reason = death_sold_slave
+		}
+	}
+}
+
+770698 = { # Mother of the creepy twins
+	name = "Гуг"
+
+	culture = islander
+	religion = old_ones
+
+	female = yes
+
+	add_trait = mystic
+	add_trait = erudite
+	add_trait = sympathy_islands_rel
+
+	8121.1.1 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8139.1.1 = {
+		add_spouse = 770697
+	}
+
+	8141.1.8 = {
+		death = {
+			death_reason = death_childbirth
+		}
+	}
+}
+
+770699 = { # Green needs a wife as trashy as him, so why not go big?
+	name = "Чатана"
+	father = 117304000
+#	Mother is unknown
+	dynasty = "304000" # Legitimatized in
+
+	female = yes
+
+	religion = "summer_rel"
+	culture = "summer_islander"
+
+	add_trait = fair
+	add_trait = kind
+	add_trait = strong
+	add_trait = quick
+	add_trait = honest
+	add_trait = tall
+
+	martial = 10
+
+	8168.6.9 = {
+		birth = yes
+		add_trait = legit_bastard
+		add_trait = uncouth
+	}
+
+	8184.9.6 = {
+		add_trait = strategist
+		add_trait = lustful
+		add_trait = hedonist
+		add_trait = seductress
+		add_trait = sympathy_islands_rel
+#		employer = 770691 # Oh, she's "employed" all right
+		effect = {
+			c_thousand_islands = {
+				holder_scope = {
+					ROOT = {
+						move_character = PREV
+					}
+				}
+			}
+		}
+	}
+
+	8184.9.10 = {
+		add_spouse = 770691
+	}
+
+	8184.9.12 = {
+		effect = {
+			add_friend = 770699
+			add_lover = 770699
+		}
+	}
+
+	8249.6.6 = {
+		death = yes
+	}
+}
+
+770700 = { # Adopted into the Swiggity Dynasty
+	name = "Оба"
+	father = 770039
+	mother = 770040
+	dynasty = "7706542"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = tall
+	add_trait = feeble
+	add_trait = quick
+	add_trait = proud
+	add_trait = fashionable
+	add_trait = groomed
+	add_trait = gregarious
+	add_trait = cynical
+	add_trait = ruthless
+	add_trait = arbitrary
+	add_trait = familyperson
+	add_trait = stutter
+	add_trait = deceitful
+	add_trait = erudite
+	add_trait = bastard
+
+	disallow_random_traits = yes
+
+	8245.9.11 = {
+		birth = yes
+		add_trait = the_mark_of_the_deep_ones
+		effect = {
+			set_father = 770039
+			set_mother = 770040
+			give_nickname = nick_fish
+			add_friend = 770039
+			add_friend = 770040
+			set_graphical_culture = summer_islander
+		}
+	}
+
+	8246.6.6 = { # The adoption commences
+		add_trait = adopted
+		remove_trait = bastard
+		add_trait = legit_bastard
+		dynasty = 7706541
+		effect = {
+#			set_father = 770695 # Now set it to Verdeos
+#			set_mother = 770040 # Now add back Big Mike
+			set_real_father = 770039 # Barakk
+			dynasty = 7706541
+			remove_nickname = nick_fish
+		}
+	}
+
+	8259.1.1 = {
+		add_trait = charismatic_negotiator
+		add_trait = schemer
+		add_trait = chaste
+	}
+
+	8260.12.7 = {
+		add_spouse = 770701
+	}
+
+	8284.6.27 = {
+		add_trait = ambitious
+	}
+
+	8300.12.31 = {
+		death = {
+			death_reason = death_execution_hanging # Crown passes to Depp
+		}
+	}
+}
+
+770701 = { # Oba's wife
+	name = "Гух"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	8244.12.29 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8260.12.7 = {
+		add_spouse = 770700
+	}
+
+	8309.12.31 = {
+		death = yes
+	}
+}
+
+770702 = { # Ruler of the Thousand Islands
+	name = "Депп"
+	mother = 770701
+	father = 770700
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = erudite
+	add_trait = familyperson
+
+	8268.1.1 = {
+		birth = yes
+	}
+
+	8284.1.1 = {
+		add_spouse = 770703
+	}
+
+	8320.9.1 = {
+		death = yes # Crown passes to Verdeos
+	}
+}
+
+770703 = { # Depp's wife
+	name = "Уотерс"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	8268.12.31 = {
+		birth = yes
+		effect = { dynasty = none }
+	}
+
+	8284.1.1 = {
+		add_spouse = 770702
+	}
+
+	8320.9.1 = {
+		death = yes # WHAT ARE THE ODDS
+	}
+}
+
+770704 = {
+	name = "Гу"
+	father = 770700
+	mother = 770701
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = humble
+	add_trait = familyperson
+
+	female = yes
+
+	8270.2.14 = {
+		birth = yes
+		effect = { set_graphical_culture = summer_islander }
+	}
+
+	8340.5.6 = {
+		death = yes
+	}
+}
+
+770705 = {
+	name = "Ват"
+	father = 770700
+	mother = 770701
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	8272.9.9 = {
+		birth = yes
+		effect = { set_graphical_culture = summer_islander }
+	}
+
+	8300.1.1 = {
+		death = yes
+	}
+}
+
+770706 = {
+	name = "Миккель"
+	father = 770700
+	mother = 770701
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	add_trait = zealous
+	add_trait = tall
+	add_trait = strong
+	add_trait = authoritative
+	add_trait = stutter # When he DOES speak successfully, it is POWERFUL
+
+	8273.12.31 = {
+		birth = yes
+		effect = { set_graphical_culture = summer_islander }
+	}
+
+	8280.6.27 = {
+		effect = { give_nickname = nick_big_mike }
+	}
+
+	8299.12.31 = {
+		death = {
+			death_reason = death_sold_slave
+		}
+	}
+}
+
+770707 = { # Ruler of the Thousand Islands
+	name = "Вердеос"
+	father = 770702
+	mother = 770703
+	dynasty = "7706541"
+
+	culture = islander
+	religion = fish_gods
+
+	8290.3.15 = {
+		birth = yes
+	}
+
+	8316.1.1 = {
+		add_spouse = 770708
+	}
+
+	8342.11.11 = {
+		death = yes
+	}
+}
+
+770708 = { # Verdeos' wife
+	name = "Вадда"
+
+	culture = islander
+	religion = fish_gods
+
+	female = yes
+
+	8291.3.15 = {
+		birth = yes
+	}
+
+	8316.1.1 = {
+		add_spouse = 770707
+	}
+
+	8342.11.11 = {
+		death = yes # WHAT ARE THE ODDS
+	}
+}

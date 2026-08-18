@@ -11,6 +11,7 @@ on_startup = {
 		dynamic_coa.6
 		maintenance.32 #Traditional honourary titles assigned
 		maintenance.59 #Find active player regions for cull
+		mbs_maintenance.1
 		more_bloodlines.60 #
 		more_bloodlines.80 #
 		more_bloodlines.89 #
@@ -33,8 +34,7 @@ on_startup = {
 		more_bloodlines.118 #
 		more_bloodlines.120 #
 		more_bloodlines.121 #
-		more_bloodlines.130 #
-		more_bloodlines.131 #
+#		more_bloodlines.131 #
 		more_bloodlines.132 #
 		more_bloodlines.200 #
 		more_bloodlines.201 #
@@ -61,21 +61,16 @@ on_startup = {
 		more_bloodlines.402 #
 		more_bloodlines.403 #
 		more_bloodlines.440 #
-		more_bloodlines.450 #
-		more_bloodlines.460 #
 		more_bloodlines.600 #
 		more_bloodlines.605 #
 		more_bloodlines.620 #
 		more_bloodlines.625 #
 		more_bloodlines.635 #
 		more_bloodlines.700 #
-		more_bloodlines.714 #
-		more_bloodlines.715 #
-		more_bloodlines.716 #
 		mbs_valyrian_quest.5
 		mbs_valyrian_quest.6
-		mbs_artifacts.1
-		mbs_artifacts.2
+		mbs_artifacts.001
+		mbs_artifacts.101
 		mbs_titles.6
 		mbs_titles.7
 		mbs_titles.8
@@ -179,7 +174,6 @@ on_yearly_pulse = {
 	events = {
 		#More Bloodlines inevitable
 		cbb_bloodline_traits.1 #
-		more_bloodlines.4101 #
 		more_bloodlines.43 #
 		more_bloodlines.53 #
 		more_bloodlines.60 #
@@ -226,12 +220,10 @@ on_yearly_pulse = {
 		mbs_personal_sigil_events.2 #
 		mbs_personal_sigil_events.30 #
 		mbs_personal_sigil_events.40 #
-		mbs_personal_sigil_events.41 #
-		mbs_personal_sigil_events.42 #
 		mbs_personal_sigil_events.43 #
 		mbs_personal_sigil_events.44 #
-		mbs_artifacts.1
-		mbs_artifacts.2
+		mbs_artifacts.001
+		mbs_artifacts.101
 		mbs_patron.1
 		mbs_patron.5
 		mbs_patron.10
@@ -321,6 +313,7 @@ on_yearly_pulse = {
 		council_plot.52 #You Support A Friend On Your Liege's Council
 		SoA.30399 #Demon child event generator
 		harrenhal.199 #Harrenhal rebuilding event generator
+		mbs_castamere_rebuild.199
 		faction_event_new.96 #Yearly fear calculator
 		ransom.298 #unlanded prisoner ransom check
 		vassal_request.20 #request vassal transfer from fellow vassal
@@ -981,7 +974,7 @@ on_yearly_pulse = {
 			#10 = 94185
 			#10 = 94186
 			#10 = 94187
- 		}
+		}
 
 		yearly_child_of_destiny_chance = {
 			9999 = 0
@@ -1141,14 +1134,10 @@ on_yearly_pulse = {
 		25 = 		more_bloodlines.28 #
 		850 = 		more_bloodlines.29 #
 		125 = 		more_bloodlines.30 #
-		525 = 		more_bloodlines.31 #
-		250 = 		more_bloodlines.830 #
+		250 = 		more_bloodlines.31 #
 		25 = 		more_bloodlines.32 #
 		100 = 		more_bloodlines.33 #
 		25 = 		more_bloodlines.34 #
-		25 = 		more_bloodlines.35 #
-		25 = 		more_bloodlines.36 #
-		25 = 		more_bloodlines.37 #
 		100 = 		more_bloodlines.38 #
 		100 = 		more_bloodlines.39 #
 		525 = 		more_bloodlines.40 #
@@ -1249,27 +1238,7 @@ on_yearly_pulse = {
 		5 = 		mbs_rahloo.2 #
 
 		215 = 		mbs_nickname_events.1 #
-		15 = 		mbs_bastard.1 #
-		15 = 		mbs_bastard.2 #
-		15 = 		mbs_bastard.3 #
-		15 = 		mbs_bastard.4 #
-		15 = 		mbs_bastard.5 #
-		15 = 		mbs_bastard.6 #
-		15 = 		mbs_bastard.7 #
-		15 = 		mbs_bastard.8 #
-		15 = 		mbs_bastard.9 #
-		15 = 		mbs_bastard.10 #
-		15 = 		mbs_bastard.11 #
-		15 = 		mbs_bastard.12 #
-		15 = 		mbs_bastard.13 #
-		15 = 		mbs_bastard.14 #
-		15 = 		mbs_bastard.15 #
-		15 = 		mbs_bastard.16 #
-		5 = 		mbs_bastard.40 #
-		5 = 		mbs_bastard.41 #
-		5 = 		mbs_bastard.42 #
-		5 = 		mbs_bastard.43 #
-		5 = 		mbs_bastard.44 #
+		15 = 		mbs_bastard.21 #
 		225 = 		mbs_smallfolk.1
 
 
@@ -1282,6 +1251,67 @@ on_yearly_pulse = {
 			6000 = 0
 			6000 = 50005 #request better accomadations
 		}
+
+		kl_red_keep_expansion = {
+			delay = 5
+			14 = 0
+
+			1 = aegons_landing.10
+		}
+		kl_fortifications_expansion = {
+			delay = 10
+			14 = 0
+
+			1 = aegons_landing.11
+		}
+		kl_navy_expansion = {
+			delay = 15
+			14 = 0
+
+			1 = aegons_landing.12
+		}
+
+		rebels_kill_duke = {
+			50 = 0
+
+			1 = better_rebels.5
+		}
+
+		rebels_kill_count = {
+			40 = 0
+
+			1 = better_rebels.6
+		}
+
+		rebels_kill_baron = {
+			30 = 0
+
+			1 = better_rebels.7
+		}
+
+		rebels_kill_other = {
+			100 = 0
+
+			1 = better_rebels.8
+		}
+
+		rebels_suppressed_by_marshal = {
+			100 = 0
+
+			65 = better_rebels.15
+		}
+
+        harrenhal_progress = {
+            9 = 0
+
+            1 = harrenhal.9
+        }
+
+        castamere_progress = {
+            4 = 0
+
+            1 = mbs_castamere_rebuild.2
+        }
 	}
 }
 
@@ -1688,6 +1718,7 @@ on_five_year_pulse = {
 		religious.95 #God King opinion effects
 		religious.102 #authority for controlling a large empire
 		TOG.1390  #Strong claimant to title becomes ambitious
+		aegons_landing.7 #Build a Great Sept for the Faith
 	}
 	random_events = {
 		#----  misc traits needing revision below...
@@ -1781,7 +1812,6 @@ on_five_year_pulse = {
 		#1 = ZP.1
 
 		#Crown events.
-		10 = HF.20399
 		10 = HF.20400
 
 		#Physical shape events.
@@ -2294,12 +2324,12 @@ on_siege_over_winner_trade_post = {
 # Fires for all characters presumed to be in the Holding at the time. Siege winner unit owner in the 'new_character' scope, lost holding title in FROM, local character in ROOT.
 on_siege_over_loc_chars = {
 	random_events = {
- 		1000 = 0 # Nothing happens
- 		400 = SSI.61 # Aztec sacrifice
- 		#100 = 62100 # Character imprisoned
+		1000 = 0 # Nothing happens
+		400 = SSI.61 # Aztec sacrifice
+		#100 = 62100 # Character imprisoned
 		200 = TOG.1190 # Rebels kill character
 		400 = MNM.99729 #Artifact lost after siege
- 	}
+	}
 }
 
 # Fires for all characters presumed to be in the province at the time for forts. Siege winner unit owner in the 'new_character' scope, province in FROM, local character in ROOT.
@@ -2317,34 +2347,34 @@ on_siege_over_loc_chars_trade_post = {
 #character
 on_failed_assassination = {
 	random_events = {
- 		85 = 156 # No harm done
- 		10 = 157 # Wounded
- 		5 = 158 # Maimed
- 	}
+		85 = 156 # No harm done
+		10 = 157 # Wounded
+		5 = 158 # Maimed
+	}
 }
 
 #character
 on_failed_assassination_disc = {
 	random_events = {
- 		85 = 159 # No harm done
- 		10 = 160 # Wounded
- 		5 = 161 # Maimed
- 	}
+		85 = 159 # No harm done
+		10 = 160 # Wounded
+		5 = 161 # Maimed
+	}
 }
 
 #character
 on_assassination = {
 	events = {
- 		162
- 	}
+		162
+	}
 }
 
 #character
 on_assassination_disc = {
 	events = {
 		#vengeance.2
- 		163
- 	}
+		163
+	}
 }
 
 # character
@@ -2355,6 +2385,7 @@ on_birth = {
 		MNM.7508 # DW Demon child
 		#MNM.1206 # A Child is born, Hermetic Scrying vision fulfilled
 		#HFP.30030 # Apply freckles trait properly.
+		mbs_maintenance.1
 		more_bloodlines.120 #
 		more_bloodlines.121 #
 		new_traits_events.1
@@ -2474,31 +2505,31 @@ on_pregnancy = {
 		}
 	}
 	events = {
- 		400 # Pregnancy in matrimony
- 		401 # Pregnancy out of wedlock
- 		402 # Pregnancy in matrimony, with another father!
- 		410 # Pregnancy as consort
- 		412 # Pregnancy as consort, with another father!
-	 	HFP.20401 # Hidden event to set clock for regency during final months.
- 		HFP.20556 # Umbrella event for positive pregnancy flavor.
+		400 # Pregnancy in matrimony
+		401 # Pregnancy out of wedlock
+		402 # Pregnancy in matrimony, with another father!
+		410 # Pregnancy as consort
+		412 # Pregnancy as consort, with another father!
+		HFP.20401 # Hidden event to set clock for regency during final months.
+		HFP.20556 # Umbrella event for positive pregnancy flavor.
 		40299 # pregnancy after forced interaction
 
 		dothraki.806	#Dothraki stallion heart ceremony
 		dothraki.808	#Dothraki stallion heart ceremony
- 	}
+	}
 }
 
 #character
 on_crusade_creation = {
 	events = {
- 	}
+	}
 }
 
 # Sent to employers of both spouses - ROOT is employer. FROM is employers "employee". new_character is the other spouse.
 on_marriage = {
 	events = {
- 		500 # Royal Marriage Aid Duty
- 		#HF.23777 # Doctrine close kin marriage
+		500 # Royal Marriage Aid Duty
+		#HF.23777 # Doctrine close kin marriage
 		CM.10023  # Chronicle entry
 		#CM.10036 # Chronicle entry - primary heir
 		#ZE.1015 # Disobedient daughter is unhappy with marriage
@@ -2569,51 +2600,51 @@ on_become_imprisoned_any_reason = {
 #character. Triggers if someone tries to imprison someone landed and fails. This leads to an automatic war declaration(independece)
 on_avoided_imprison_started_war = {
 	events = {
- 		150 # Avoided imprison, declared independece
- 	}
+		150 # Avoided imprison, declared independece
+	}
 }
 
 #character. Triggers if someone becomes imprisoned by the diplo-action - ROOT is prisoner, FROM is imprisoner
 on_became_imprisoned = {
 	events = {
- 		151 # Was imprisoned
+		151 # Was imprisoned
 		CM.10024  # Chronicle entry
- 	}
+	}
 }
 
 #character. Triggers if someone tries to imprison someone unlanded and fails. Character is exiled to another country
 on_avoided_imprison_fled_country = {
 	events = {
 		kingsguard.1
- 		152
- 	}
+		152
+	}
 }
 
 #character. Triggers if someone is released from prison - ROOT is prisoner, FROM is imprisoner
 on_released_from_prison = {
 	events = {
- 		153
+		153
 		#CM.10025  # Chronicle entry
 		#CM.15002  # Free anyone thrown into the desert
 		ZE.12219  # Released from dungeon must choose whether to leave pet rat behind
 		#HF.23446  # Prisoner about to be put through blood games is released before the games start. His jailer has no champion left.
- 	}
+	}
 }
 
 #character. Triggers if someone is executed, character not dead yet
 on_executed = {
 	events = {
 		#vengeance.3
- 		154
- 	}
+		154
+	}
 }
 
 #character. Triggers if someone is exiled
 on_exiled = {
 	events = {
 		kingsguard.1
- 		155
- 	}
+		155
+	}
 }
 
 #character. Fires every month for characters who are preparing an invasion.
@@ -2741,32 +2772,32 @@ on_death = {
 
 on_merc_rampage = {
 	events = {
- 		38050
- 	}
+		38050
+	}
 }
 
 on_merc_leave = {
 	events = {
- 		38051
- 	}
+		38051
+	}
 }
 
 on_merc_turn_coat_from = {
 	events = {
- 		38052
- 	}
+		38052
+	}
 }
 
 on_merc_turn_coat_to = {
 	events = {
- 		38053
- 	}
+		38053
+	}
 }
 
 on_holy_order_leave = {
 	events = {
- 		38054
- 	}
+		38054
+	}
 }
 
 #Note: Unsynchronised, this message should not execute an event which changes the gamestate to prevent out of sync
@@ -3893,6 +3924,8 @@ on_character_convert_culture = {
 	events = {
 		CM.10027
 		wildling.2 #check wildling trait
+		greywaste.2
+		islander_thousand.2
 		55020 #Ruler converts culture, also convert courtiers if same culture group
 	}
 }
@@ -4494,7 +4527,7 @@ on_tyranny_gained_tyrant_only = {
 on_revoke_attempted_started_war = {
 	events = {
 		681
- 	}
+	}
 }
 
 # Triggers if someone tries to retract someone's vassal, and the person refuses and starts a war in response
@@ -4504,7 +4537,7 @@ on_revoke_attempted_started_war = {
 on_retract_vassal_attempted_started_war = {
 	events = {
 		682
- 	}
+	}
 }
 
 # Triggers if someone tries to absorb a clan, and the person refuses and starts a war in response
@@ -4513,7 +4546,7 @@ on_retract_vassal_attempted_started_war = {
 on_absorb_clan_attempted_started_war = {
 	events = {
 		683
- 	}
+	}
 }
 
 # Triggers if someone tries to split a clan, and the person refuses and starts a war in response
@@ -4522,7 +4555,7 @@ on_absorb_clan_attempted_started_war = {
 on_split_clan_attempted_started_war = {
 	events = {
 		684
- 	}
+	}
 }
 
 # Triggers if the game is started with Random/Shattered World. Fires at the very end of game setup (just before the Welcome screen is shown)

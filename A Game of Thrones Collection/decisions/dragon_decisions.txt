@@ -607,10 +607,10 @@ decisions = {
 				}
 				NOT = { has_ambition = obj_tame_a_dragon }
 			}
-			modifier = {
-				factor = 0
-				NOT = {	has_character_modifier = granted_dragonpit_access }
-			}
+			# modifier = {
+				# factor = 0
+				# NOT = {	has_character_modifier = granted_dragonpit_access }
+			# }
 			modifier = {
 				factor = 0
 				disallowed_from_dragon_trigger = no
@@ -836,17 +836,15 @@ decisions = {
 						ROOT = { ai = no }
 						AND = {
 							age = 14
-							NOT = {
-								OR = {
-									trait = craven
-									is_weak_trigger = yes
-									is_lazy_trigger = yes
-									is_dumb_trigger = yes
-									is_imbecile_trigger = yes
-									trait = infirm
-									has_severe_disability_trigger = yes
-									NOT = { reverse_opinion = { who = ROOT value = 25 } }
-								}
+							NOR = {
+								trait = craven
+								is_weak_trigger = yes
+								is_lazy_trigger = yes
+								is_dumb_trigger = yes
+								is_imbecile_trigger = yes
+								trait = infirm
+								has_severe_disability_trigger = yes
+								NOT = { reverse_opinion = { who = ROOT value = 25 } }
 							}
 						}
 					}
@@ -900,17 +898,15 @@ decisions = {
 				NOT = {
 					any_child = {
 						age = 14
-						NOT = {
-							OR = {
-								trait = craven
-								is_weak_trigger = yes
-								is_lazy_trigger = yes
-								is_dumb_trigger = yes
-								is_imbecile_trigger = yes
-								trait = infirm
-								has_severe_disability_trigger = yes
-								NOT = { reverse_opinion = { who = ROOT value = 25 } }
-							}
+						NOR = {
+							trait = craven
+							is_weak_trigger = yes
+							is_lazy_trigger = yes
+							is_dumb_trigger = yes
+							is_imbecile_trigger = yes
+							trait = infirm
+							has_severe_disability_trigger = yes
+							NOT = { reverse_opinion = { who = ROOT value = 25 } }
 						}
 					}
 				}
@@ -1280,7 +1276,7 @@ targeted_decisions = {
 					age < 2
 					NOT = { any_friend = { trait = dragon } }
 					NOT = { trait = dragon_rider }
-					NOT = { has_character_modifier = dragon_bonded }
+					# NOT = { has_character_modifier = dragon_bonded }
 					NOT = { has_artifact = dragon_egg }
 					NOT = { disallowed_from_dragon_trigger = yes }
 				}

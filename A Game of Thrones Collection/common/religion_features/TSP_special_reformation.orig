@@ -1,0 +1,354 @@
+religion_doctrine = {
+#	buttons = { doctrine1 doctrine2 }
+	religion_feature_TSP_innsmouth = {
+		picture = GFX_religion_cthulhu
+		potential = {
+			OR = {
+				has_game_started = yes
+				FROM = {
+					character = yes
+					ai = no
+				}
+			}
+			NOT = {
+				has_alternate_start_parameter = { key = religion_names value = random }
+			}
+			FROM = {
+				character = yes
+				NOT = {
+					has_character_flag = daenerys_targaryen
+					religion = fish_gods
+					religion = old_ones
+					religion = lion_night # Leng and Yi Ti have a special hatred for the Old Ones
+					religion = lion_night_reformed
+					religion = yiti_gods # Leng and Yi Ti have a special hatred for the Old Ones
+					religion = yiti_gods_reformed
+					religion = nath_pagan # Pacifists
+					religion = shadowbinders # Their blood magic is infringed by Cthulhu
+					religion = shadowbinders_reformed
+					religion_group = westerosi_religion # The Drowned God is too closely related to the Old Ones
+					religion_group = wildling_religion
+					religion = moonsingers # Too nice
+					religion = moonsingers_reformed
+					religion = rhoynar_pagan # Too nice
+					religion = rhoynar_pagan_reformed
+					religion = great_shepherd # Too nice
+					religion = great_shepherd_reformed
+					religion = gods_lorath # The Maze Makers literally fought off the Deep Ones!
+					religion = gods_lorath_reformed
+					religion = boash # Too nice
+					religion = boash_reformed
+					religion = summer_rel # While sexually obscene, they nonetheless worship love and goodwill, which Cthulhu opposes
+					religion = summer_rel_reformed
+					AND = {
+						culture = lengi # The Old Ones portal is on the islands of Leng and they sealed that away for a reason
+						NOT = {
+							trait = lunatic
+							trait = old_ones_scourge
+						}
+					}
+					pacifist = yes # Obvious
+				}
+			}
+		}
+		trigger = {
+			NOT = { has_selected_religion_feature = religion_dogmatic }
+			NOT = { has_selected_religion_feature = religion_feature_norse } # Drowned God does not associate with Deep Ones
+			NOT = { has_selected_religion_feature = religion_feature_the_seven } # You can only syncretize with one
+			NOT = { has_selected_religion_feature = religion_feature_nath_pagan } # Obvious
+			NOT = { has_selected_religion_feature = religion_peaceful } # Obvious
+			NOT = { has_selected_religion_feature = religion_syncretic } # The Old Ones, like the Seven, accept only their syncretism
+			NOT = { has_selected_religion_feature = religion_god_king_head }
+			NOT = { has_selected_religion_feature = religion_temporal_head }
+			NOT = { has_selected_religion_feature = religion_feature_anti_slavery } # Cthulhu is a slaver
+			FROM = {
+				character = yes
+				NOT = {
+					trait = just
+					trait = honorable
+					trait = kind
+				}
+			}
+			OR = {
+				FROM = {
+					character = yes
+					OR = {
+						trait = sympathy_islands_rel
+						trait = old_ones_scourge
+					}
+				}
+				custom_tooltip = {
+					text = TOOLTIPreligion_feature_innsmouth_recquisite
+					hidden_tooltip = {
+						FROM = {
+							character = yes
+							OR = {
+								ai = no
+								FROM = {
+									character = yes
+									ai = no
+								}
+								FROM = {
+									character = yes
+									religion = gods_nghai # I intended for the Nghai peoples to be the most likely to take this Doctrine because of their supersition and proximity to the Thousand Islands
+								}
+								FROM = {
+									character = yes
+									religion_group = sothoryos_rel_group
+								}
+								FROM = {
+									character = yes
+									culture = nghai
+								}
+								FROM = {
+									character = yes
+									trait = old_ones_scourge # If you have this, you WILL take the Old Ones doctrine
+								}
+								FROM = {
+									character = yes
+									OR = {
+										any_liege = { religion = fish_gods }
+										any_vassal = { religion = fish_gods }
+										any_liege = { religion = old_ones }
+										any_vassal = { religion = old_ones }
+										any_realm_province = {
+											OR = {
+												religion = fish_gods
+												religion = old_ones
+												religion = starry_wisdom
+												religion_group = sothoryos_rel_group
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = { text = tooltip_religion_feature_innsmouth }
+			custom_tooltip = { text = tooltip_religion_feature_pro_slavery }
+			hidden_tooltip = {
+				FROM = {
+					any_demesne_title = {
+						limit = {
+#							tier = PREV
+							NOT = { has_law = slavery_2 }
+							higher_tier_than = DUKE
+						}
+						add_law_w_cooldown = slavery_2
+					}
+				}
+			}
+			hidden_tooltip = {
+				random_playable_ruler = {
+					limit = {
+						OR = {
+							religion = fish_gods
+							religion = old_ones
+							religion = starry_wisdom
+							religion = sothoryos_rel
+							religion = many_faced_god
+						}
+					}
+					add_intermarry = ROOT
+					ROOT = { add_intermarry = PREV }
+				}
+				any_playable_ruler = {
+					limit = {
+						OR = {
+							religion = fish_gods
+							religion = old_ones
+							religion = starry_wisdom
+							religion = sothoryos_rel
+							religion = many_faced_god
+						}
+					}
+					add_intermarry = ROOT
+					ROOT = { add_intermarry = PREV }
+				}
+				any_playable_ruler = {
+					limit = {
+						has_religion_feature = religion_feature_TSP_innsmouth
+						NOT = { religion = FROM }
+					}
+					add_intermarry = ROOT
+					ROOT = { add_intermarry = PREV }
+				}
+				any_playable_ruler = {
+					limit = {
+						OR = {
+							culture = brindlemen
+							religion_group = sothoryos_rel_group
+						}
+					}
+					add_intermarry = ROOT
+					ROOT = { add_intermarry = PREV }
+				}
+			}
+			dynamite_devils_reef = yes # Adds the Lovecraft cast to your religion
+			narrative_event = { id = TSP_1KI_story_mode.12 }
+		}
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 10
+				FROM = {
+					character = yes
+					OR = {
+						religion = gods_nghai
+						religion_group = sothoryos_rel_group
+						religion = starry_wisdom
+						culture = brindlemen
+						AND = {
+							OR = {
+								trait = lunatic
+								trait = impaler
+							}
+							OR = {
+								trait = cruel
+								trait = ruthless
+							}
+							culture = islander
+						}
+						AND = {
+							trait = cruel
+							trait = lunatic
+							OR = {
+								trait = ruthless
+								trait = impaler
+							}
+						}
+					}
+					OR = {
+						trait = lunatic
+						trait = sympathy_islands_rel
+						religion_group = sothoryos_rel_group
+						trait = sympathy_sothoryos_rel_group
+						trait = old_ones_scourge
+						trait = cruel
+						trait = ruthless
+						trait = impaler
+						culture = brindlemen
+						any_friend = { religion = old_ones }
+						any_lover = { religion_group = sothoryos_rel_group }
+						any_lover = { religion = fish_gods }
+						any_lover = { religion = old_ones }
+						any_lover = { religion_group = sothoryos_rel_group }
+						any_lover = { culture = brindlemen }
+						any_close_relative = { religion = fish_gods }
+						any_close_relative = { religion = old_ones }
+						any_close_relative = { religion_group = sothoryos_rel_group }
+					}
+				}
+			}
+			modifier = {
+				factor = 100
+				FROM = {
+					character = yes
+					trait = old_ones_scourge
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					character = yes
+					any_lover = { religion = old_ones }
+				}
+			}
+			modifier = {
+				factor = 3
+				FROM = {
+					character = yes
+					any_lover = { culture = brindlemen }
+				}
+			}
+			modifier = {
+				factor = 2
+				FROM = {
+					character = yes
+					trait = sympathy_sothoryos_rel_group
+				}
+			}
+			modifier = {
+				factor = 0.25
+				FROM = {
+					character = yes
+					NOT = {
+						trait = lunatic
+						trait = old_ones_scourge
+						trait = sympathy_sothoryos_rel_group
+						religion_group = sothoryos_rel_group
+						religion = starry_wisdom
+						culture = brindlemen
+						religion = gods_nghai
+						culture = nghai
+						any_friend = { religion = old_ones }
+						any_lover = { religion = old_ones }
+						any_close_relative = { religion = old_ones }
+						any_lover = { culture = brindlemen }
+						any_close_relative = { religion_group = sothoryos_rel_group }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					character = yes
+					OR = {
+						trait = honorable
+						trait = zealous
+					}
+					NOT = {
+						trait = old_ones_scourge
+						culture = brindlemen
+						religion_group = sothoryos_rel_group
+						any_friend = { religion = old_ones }
+						any_lover = { religion = old_ones }
+						any_lover = { religion_group = sothoryos_rel_group }
+						any_lover = { culture = brindlemen }
+						culture = nghai
+						religion = gods_nghai
+					}
+				}
+			}
+			modifier = {
+				factor = 4
+				FROM = {
+					character = yes
+					culture = brindlemen
+				}
+			}
+			modifier = {
+				factor = 0.8
+				FROM = {
+					character = yes
+					religion_group = drowned_god_group
+					NOT = {
+						trait = lunatic
+						trait = old_ones_scourge
+						trait = sympathy_sothoryos_rel_group
+						culture = brindlemen
+						any_lover = { religion = old_ones }
+						any_friend = { religion = old_ones }
+						any_lover = { culture = brindlemen }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					character = yes
+					culture_group = yi_ti_group
+					NOT = {
+						trait = old_ones_scourge
+						trait = zealous
+					}
+				}
+			}
+		}
+	}
+}

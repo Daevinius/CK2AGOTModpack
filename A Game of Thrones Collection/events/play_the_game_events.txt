@@ -10,7 +10,7 @@ character_event = {
 	id = play_the_game.0
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup, on_yearly_pulse
 
 	only_independent = yes
 
@@ -42,7 +42,7 @@ character_event = {
 	id = play_the_game.1
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage
 
 	has_global_flag = play_the_game_on
 
@@ -185,7 +185,7 @@ character_event = {
 	id = play_the_game.11
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	has_global_flag = play_the_game_on
 	only_women = yes
@@ -254,7 +254,7 @@ character_event = {
 			set_dynasty_flag = has_royal_favor
 			any_dynasty_member = {
 				limit = {
-					age = 16
+					is_adult = yes
 					NOR = {
 						trait = incapable
 						trait = infirm
@@ -348,7 +348,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	has_character_flag = ambitious_father
 	has_global_flag = play_the_game_on
@@ -391,7 +391,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	has_character_flag = ambitious_father
 	has_global_flag = play_the_game_on
@@ -495,7 +495,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Сделай это."
+		name = "EVTOPTplay_the_game.112"
 		set_global_flag = ice_stolen_and_reforged
 		hidden_tooltip = {
 			random_artifact = {
@@ -589,7 +589,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Отправьте предложение!"
+		name = "EVTOPTAplay_the_game.2"
 		any_independent_ruler = {
 			limit = { has_landed_title = e_iron_throne }
 			character_event = { id = play_the_game.20 days = 1 }
@@ -597,7 +597,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Мы будем искать подходящего кандидата в другом месте."
+		name = "EVTOPTBplay_the_game.2"
 
 	}
 }
@@ -647,7 +647,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "Отличная пара!"
+		name = "EVTOPTAplay_the_game.21"
 		event_target:foreign_bride = {
 			move_character = ROOT
 		}
@@ -661,7 +661,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Мы найдем другую невесту."
+		name = "EVTOPTBplay_the_game.21"
 		event_target:ambitious_essos_father = {
 			character_event = { id = play_the_game.22 days = 1 }
 		}
@@ -676,10 +676,10 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "Пошлите людей с моей дочерью."
+		name = "EVTOPTAplay_the_game.210"
 		trigger = {
 			any_dynasty_member = {
-				age = 16
+				is_adult = yes
 				NOR = {
 					trait = incapable
 					trait = infirm
@@ -702,7 +702,7 @@ character_event = {
 		}
 		any_dynasty_member = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOR = {
 					trait = incapable
 					trait = infirm
@@ -728,7 +728,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Это принесёт нам пользу."
+		name = "EVTOPTBplay_the_game.210"
 		set_character_flag = attempted_iron_throne_marriage
 	}
 }
@@ -742,7 +742,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "К сожалению."
+		name = "EVTOPTAplay_the_game.22"
 		set_character_flag = attempted_iron_throne_marriage
 	}
 }
@@ -757,7 +757,7 @@ character_event = {
 	has_character_flag = marked_for_council
 
 	trigger = {
-		NOT = { is_voter  = yes }
+		NOT = { is_voter = yes }
 		liege = {
 			tier = EMPEROR
 		}

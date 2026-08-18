@@ -7,7 +7,7 @@ character_event = { # Great warrior character chance
 	id = HF.99
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -324,7 +324,7 @@ character_event = { # Sympathy for founder group
 	picture = GFX_placeholder
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -483,7 +483,7 @@ character_event = { # Chance of gaining a personality trait of Founder
 	picture = GFX_placeholder
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -785,7 +785,7 @@ character_event = {
 	id = HF.24013
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 
 	war = yes
 
@@ -793,7 +793,7 @@ character_event = {
 		has_dlc = "Holy Fury"
 		OR = {
 			FROM = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				any_owned_bloodline = {
 					has_bloodline_flag = bloodline_spawned_ships
@@ -803,7 +803,7 @@ character_event = {
 				}
 			}
 			ROOT = {
-				age = 16
+				is_adult = yes
 				is_incapable = no
 				any_owned_bloodline = {
 					has_bloodline_flag = bloodline_spawned_ships
@@ -819,7 +819,7 @@ character_event = {
 		if = {
 			limit = {
 				FROM = {
-					age = 16
+					is_adult = yes
 					is_incapable = no
 					any_owned_bloodline = {
 						has_bloodline_flag = bloodline_spawned_ships
@@ -894,7 +894,7 @@ character_event = {
 		if = {
 			limit = {
 				ROOT = {
-					age = 16
+					is_adult = yes
 					is_incapable = no
 					any_owned_bloodline = {
 						has_bloodline_flag = bloodline_spawned_ships
@@ -1138,7 +1138,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	immediate = {
 		killer = {
@@ -1171,7 +1171,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 
 	immediate = {
 		FROM = {
@@ -1221,7 +1221,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_defeat
 
 	immediate = {
 		ROOT = {
@@ -1315,7 +1315,7 @@ character_event = {
 		has_ambition = obj_forge_bloodline
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 
 	immediate = {
 		if = {
@@ -1345,7 +1345,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_settlement_construction_completed
 
 	immediate = {
 		change_variable = { which = bloodline_built_cities value = 1 }
@@ -1395,13 +1395,13 @@ character_event = {
 	hide_window = yes
 	trigger = {
 		has_dlc = "Holy Fury"
-		FROM = { holding_type = CASTLE }
+		FROM = { holding_type = castle }
 		NOT = {
 			has_character_flag = flag_about_to_builder_bloodline
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_settlement_construction_completed
 
 	immediate = {
 		change_variable = { which = bloodline_built_castles value = 1 }
@@ -1451,13 +1451,13 @@ character_event = {
 	hide_window = yes
 	trigger = {
 		has_dlc = "Holy Fury"
-		FROM = { holding_type = TEMPLE }
+		FROM = { holding_type = temple }
 		NOT = {
 			has_character_flag = flag_about_to_builder_bloodline
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_settlement_construction_completed
 
 	immediate = {
 		change_variable = { which = bloodline_built_temples value = 1 }
@@ -1607,8 +1607,7 @@ narrative_event = {
 				type = pure_murder_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_murder_bloodline_01
 				inheritance = matrilineal
@@ -1823,8 +1822,7 @@ narrative_event = {
 				type = pure_murder_bloodline_05
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_murder_bloodline_05
 				inheritance = matrilineal
@@ -1866,8 +1864,7 @@ narrative_event = {
 				type = pure_murder_bloodline_02
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_murder_bloodline_02
 				inheritance = matrilineal
@@ -1910,8 +1907,7 @@ narrative_event = {
 				type = pure_murder_bloodline_03
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_murder_bloodline_03
 				inheritance = matrilineal
@@ -1969,8 +1965,7 @@ narrative_event = {
 				type = pure_murder_bloodline_04
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_murder_bloodline_04
 				inheritance = matrilineal
@@ -2086,8 +2081,7 @@ narrative_event = {
 				type = pure_war_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_war_bloodline_01
 				inheritance = matrilineal
@@ -2261,21 +2255,14 @@ narrative_event = {
 
 	option = { #Gain War bloodline.
 		name = EVTOPTAHF24034
-		hidden_tooltip = {
-		add_artifact = crown_winged_helmet
-			new_artifact = {
-				set_description = crown_winged_helmet_bloodline_desc_1
-				set_name = crown_winged_helmet_bloodline_name_1
-			}
-		}
+
 		if = {
 			limit = { is_female = no }
 			create_bloodline = {
 				type = pure_war_bloodline_02
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_war_bloodline_02
 				inheritance = matrilineal
@@ -2318,8 +2305,7 @@ narrative_event = {
 				type = pure_war_bloodline_03
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_war_bloodline_03
 				inheritance = matrilineal
@@ -2373,8 +2359,7 @@ narrative_event = {
 				type = pure_war_bloodline_04
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_war_bloodline_04
 				inheritance = matrilineal
@@ -2482,8 +2467,7 @@ narrative_event = {
 				type = pure_peace_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_peace_bloodline_01
 				inheritance = matrilineal
@@ -2600,8 +2584,7 @@ narrative_event = {
 				type = pure_peace_bloodline_02
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_peace_bloodline_02
 				inheritance = matrilineal
@@ -2642,8 +2625,7 @@ narrative_event = {
 				type = pure_peace_bloodline_03
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_peace_bloodline_03
 				inheritance = matrilineal
@@ -2690,8 +2672,7 @@ narrative_event = {
 				type = pure_architect_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_architect_bloodline_01
 				inheritance = matrilineal
@@ -2738,8 +2719,7 @@ narrative_event = {
 				type = pure_castellan_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_castellan_bloodline_01
 				inheritance = matrilineal
@@ -2794,8 +2774,7 @@ narrative_event = {
 				type = pure_monumental_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = pure_monumental_bloodline_01
 				inheritance = matrilineal
@@ -2842,8 +2821,7 @@ narrative_event = {
 				type = hybrid_murder_war_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_murder_war_bloodline_01
 				inheritance = matrilineal
@@ -2890,8 +2868,7 @@ narrative_event = {
 				type = hybrid_murder_peace_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_murder_peace_bloodline_01
 				inheritance = matrilineal
@@ -2938,8 +2915,7 @@ narrative_event = {
 				type = hybrid_builder_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_builder_bloodline_01
 				inheritance = matrilineal
@@ -2986,8 +2962,7 @@ narrative_event = {
 				type = hybrid_murder_builder_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_murder_builder_bloodline_01
 				inheritance = matrilineal
@@ -3034,8 +3009,7 @@ narrative_event = {
 				type = hybrid_peace_architect_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_peace_architect_bloodline_01
 				inheritance = matrilineal
@@ -3082,8 +3056,7 @@ narrative_event = {
 				type = hybrid_peace_castellan_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_peace_castellan_bloodline_01
 				inheritance = matrilineal
@@ -3130,8 +3103,7 @@ narrative_event = {
 				type = hybrid_peace_monumental_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = hybrid_peace_monumental_bloodline_01
 				inheritance = matrilineal
@@ -3792,8 +3764,7 @@ narrative_event = {
 				type = event_benevolent_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_benevolent_bloodline_01
 				inheritance = matrilineal
@@ -4186,8 +4157,7 @@ narrative_event = {
 				type = event_family_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_family_bloodline_01
 				inheritance = matrilineal
@@ -4204,7 +4174,7 @@ narrative_event = {
 character_event = {
 	id = HF.24062
 	title = EVTTITLEHF24062
-	desc  = EVTDESCAHF24062
+	desc = EVTDESCAHF24062
 	picture = GFX_evt_library
 	border = GFX_event_normal_frame_religion
 
@@ -4311,7 +4281,7 @@ character_event = {
 character_event = {
 	id = HF.24063
 	title = EVTTITLEHF24062
-	desc  = EVTDESCAHF24063
+	desc = EVTDESCAHF24063
 	picture = GFX_evt_church_council
 	border = GFX_event_normal_frame_religion
 
@@ -4457,8 +4427,7 @@ narrative_event = {
 				type = event_religion_peaceful_bloodline_04
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_religion_peaceful_bloodline_04
 				inheritance = matrilineal
@@ -4476,7 +4445,7 @@ narrative_event = {
 character_event = {
 	id = HF.24065
 	title = EVTTITLEHF24065
-	desc  = EVTDESCAHF24065
+	desc = EVTDESCAHF24065
 	picture = GFX_evt_library
 	border = GFX_event_normal_frame_economy
 
@@ -4595,7 +4564,7 @@ character_event = {
 character_event = {
 	id = HF.24066
 	title = EVTTITLEHF24065
-	desc  = EVTDESCAHF24066
+	desc = EVTDESCAHF24066
 	picture = GFX_evt_busy_trading_dock_republic
 	border = GFX_event_normal_frame_economy
 
@@ -4740,8 +4709,7 @@ narrative_event = {
 				type = event_technology_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_technology_bloodline_01
 				inheritance = matrilineal
@@ -4759,7 +4727,7 @@ narrative_event = {
 character_event = {
 	id = HF.24068
 	title = EVTTITLEHF24068
-	desc  = EVTDESCAHF24068
+	desc = EVTDESCAHF24068
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
 
@@ -4874,7 +4842,7 @@ character_event = {
 character_event = {
 	id = HF.24069
 	title = EVTTITLEHF24068
-	desc  = EVTDESCBHF24069
+	desc = EVTDESCBHF24069
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
 
@@ -5041,8 +5009,7 @@ narrative_event = {
 				type = event_religion_aggressive_bloodline_04
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_religion_aggressive_bloodline_04
 				inheritance = matrilineal
@@ -5425,8 +5392,7 @@ narrative_event = {
 				type = event_ruthless_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_ruthless_bloodline_01
 				inheritance = matrilineal
@@ -5449,7 +5415,7 @@ character_event = {
 	picture = GFX_evt_child_reading
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	min_age = 12
 	max_age = 16
@@ -6076,7 +6042,7 @@ character_event = {
 		combat_rating = -20
 		is_inaccessible_trigger = no
 		plot_target_char = {
-			age = 16
+			is_adult = yes
 			NOR = {
 				is_inaccessible_trigger = yes
 				trait = incapable
@@ -6087,7 +6053,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 3000
+		years = 250
 
 		modifier = {
 			factor = 0.9
@@ -6207,7 +6173,7 @@ character_event = {
 	}
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 	hide_from = yes
 
 	immediate = {
@@ -6928,7 +6894,7 @@ character_event = {
 	id = HF.24129
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -7031,8 +6997,7 @@ character_event = { # Knight character arrives
 					limit = { is_female = no }
 					set_special_character_title = title_ser
 				}
-				if = {
-					limit = { is_female = yes }
+				else = {
 					set_special_character_title = title_lady
 				}
 			}
@@ -7297,7 +7262,7 @@ character_event = {
 	id = HF.24132
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	only_women = yes
 	min_age = 16
@@ -7332,7 +7297,7 @@ character_event = {
 			liege = {
 				random_neighbor_independent_ruler = {
 					limit = {
-						age = 16
+						is_adult = yes
 						is_incapable = no
 						any_owned_bloodline = {
 							has_bloodline_flag = bloodline_knights
@@ -11102,7 +11067,7 @@ character_event = {
 	id = HF.24232
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		any_owned_bloodline = {
@@ -11111,12 +11076,12 @@ character_event = {
 				character = ROOT
 			}
 		}
-		NOT = {
-			has_game_rule = {
-				name = supernatural_events
-				value = off
-			}
-		}
+		# NOT = {
+			# has_game_rule = {
+				# name = supernatural_events
+				# value = off
+			# }
+		# }
 	}
 
 	immediate = {
@@ -11216,7 +11181,7 @@ character_event = {
 	id = HF.24236
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	only_playable = yes
 	only_capable = yes
@@ -11449,7 +11414,7 @@ character_event = {
 	id = HF.24250
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 
 	trigger = {
 		has_dlc = "Holy Fury"

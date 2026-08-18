@@ -1,22 +1,16 @@
-##Fire and Blood Update and later maintenance by Paxter Redwyne and Alex "Kuczaja" Kwiatek##
-##########################
-####Crownland Ancestors###
-##########################
-
-
-###
-### HOUSE TARGARYEN (id = 496)
-###
-###
-#Prehistory#
-
+#######################
+### House Targaryen ###
+### Fire and Blood  ###
+#######################
 77001 = {
 	name = "Эйнар" #The Exile
 	dynasty = 496
-	martial = 2
+
 	diplomacy = 2
-	intrigue = 5
+	martial = 2
 	stewardship = 2
+	intrigue = 5
+	learning = 4
 
 	dna = "bddvwezmpft"
 	properties = "xr0alk"
@@ -24,22 +18,33 @@
 	religion = valyrian_rel
 	culture = "high_valyrian"
 
-	add_trait = "blackfyre"
-	add_trait = "dragon_rider" # Terrax (nc)
-	add_trait = "fortune_builder"
-	add_trait = "familyperson"
-	add_trait = "patient"
-	add_trait = "diligent"
-	add_trait = "paranoid"
-	add_trait = "craven"
-
-	give_nickname = nick_the_exile
-
 	7846.1.1 = {
 		birth = yes
+		effect = {
+			set_character_flag = blessed_targ_hardnosed
+		}
 	}
-	7866.1.1 = {
-		add_spouse = 77050
+	7862.1.1 = {
+		add_trait = "fortune_builder"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "temperate"
+		add_trait = "proud"
+		add_trait = "lustful"
+		add_trait = "gregarious"
+		add_trait = "paranoid"
+		add_trait = "familyperson"
+		add_trait = "blackfyre"
+		add_trait = "dragon_rider" # Terrax
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
+	}
+	7867.1.1 = {
+		add_spouse = 77050 # Rhaella
+	}
+	7886.1.1 = {
+		give_nickname = nick_the_exile
 	}
 	7900.1.1 = {
 		death = yes
@@ -49,87 +54,168 @@
 	name = "Рейлла"
 	female = yes
 
-	religion = valyrian_rel
+	diplomacy = 7
+	martial = 1
+	stewardship = 4
+	intrigue = 5
+	learning = 6
+
+	religion = "valyrian_rel"
 	culture = "high_valyrian"
 
-	add_trait = "darksister"
+	add_trait = "fair_2"
 
-	7846.1.1 = { birth = yes }
-	7900.1.1 = { death = yes }
+	7846.1.1 = {
+		birth = yes
 }
-
+	7862.1.1 = {
+		add_trait = "charismatic_negotiator"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "temperate"
+		add_trait = "proud"
+		add_trait = "gregarious"
+		add_trait = "familyperson"
+		add_trait = "darksister"
+	}
+	7900.1.1 = {
+		death = yes
+	}
+}
+### Issue of Aenar Targaryen the Exile ###
 77052 = {
 	name = "Геймон"
 	dynasty = 496
 
-	religion = valyrian_rel
+	diplomacy = 7
+	martial = 7
+	stewardship = 4
+	intrigue = 5
+	learning = 6
+
+	religion = "valyrian_rel"
 	culture = "high_valyrian"
 
-	give_nickname = nick_the_glorious
-
-	add_trait = "dragon_rider" # Urrax (nc)
-	add_trait = "skilled_tactician"
-	add_trait = "skilled_warrior"
 	add_trait = "quick_1"
-	add_trait = "ambitious"
-	add_trait = "diligent"
-	add_trait = "proud"
 
-	father = 77001
-	mother = 77050
+	disallow_random_traits = yes
+
+	father = 77001 # Aenar Targaryen the Exile
+	mother = 77050 # Rhaella
 
 	7868.1.1 = {
 		birth = yes
+		effect = {
+			set_character_flag = blessed_targ_goldenchild
+		}
+	}
+	7884.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "organizer"
+		add_trait = "inspiring_leader"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "proud"
+		add_trait = "gregarious"
+		add_trait = "authoritative"
+		add_trait = "ambitious"
+		add_trait = "duelist"
+		add_trait = "dragon_rider" # Urrax
+		give_nickname = nick_the_glorious
 		create_bloodline = {
 			type = drop_of_the_dragon
 			has_dlc = "Holy Fury"
 		}
 	}
-	7888.1.1 = { add_spouse = 77051 } #after 7886
+	7886.1.1 = {
+		add_spouse = 77051 # Daenys Targaryen
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
+	}
 	7900.1.1 = {
 		add_trait = "blackfyre"
 	}
-	7930.1.1 = { death = yes }
+	7930.1.1 = {
+		death = yes
+	}
 }
 77051 = {
 	name = "Дейнис" #Predicted Doom of Valyria in her dreams
 	dynasty = 496
 	female = yes
 
-	religion = valyrian_rel
+	diplomacy = 7
+	martial = 1
+	stewardship = 5
+	intrigue = 6
+	learning = 7
+
+	religion = "valyrian_rel"
 	culture = "high_valyrian"
 
-	give_nickname = nick_the_dreamer
+	add_trait = "fair_2"
 
-	add_trait = "dragon_rider" # Nessarion (nc)
+	father = 77001 # Aenar Targaryen the Exile
+	mother = 77050 # Rhaella
+
+	7870.1.1 = {
+		birth = yes
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
+		effect = {
+			set_character_flag = blessed_targ_poet
+		}
+	}
+	7886.1.1 = {
+		add_trait = "intricate_webweaver"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "proud"
+		add_trait = "gregarious"
+		add_trait = "authoritative"
+		add_trait = "familyperson"
+		add_trait = "erudite"
 	add_trait = "mystic"
 	add_trait = "dragon_dreams"
-
-	father = 77001
-	mother = 77050
-
-	7870.1.1 = { birth = yes }
-	7900.1.1 = {
-		add_trait = "darksister"
+		give_nickname = nick_the_dreamer
 	}
-	7930.1.1 = { death = yes }
+	7898.1.1 = {
+		add_trait = "dragon_rider" # Balerion the Black Dread
+		create_bloodline = {
+			type = dragon_rider_tracker
 }
-
+	}
+	7930.1.1 = {
+		death = yes
+	}
+}
+### Issue of Gaemon Targaryen the Glorious ###
 77053 = {
 	name = "Эйгон"
 	dynasty = 496
 
-	religion = valyrian_rel
+	religion = "valyrian_rel"
 	culture = "high_valyrian"
 
-	father = 77052
-	mother = 77051
+	father = 77052 # Gaemon Targaryen the Glorious
+	mother = 77051 # Daenys Targaryen the Dreamer
 
-	7890.1.1 = { birth = yes }
-	7898.1.1 = {
-		add_trait = "dragon_rider" # Morghon (nc)
+	7887.1.1 = {
+		birth = yes
 	}
-	7916.1.1 = { add_spouse = 77054 }
+	7897.1.1 = {
+		add_trait = "dragon_rider" # Morghon
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
+	}
+	7905.1.1 = {
+		add_spouse = 77054 # Elaena Targaryen
+	}
 	7930.1.1 = {
 		add_trait = "blackfyre"
 	}
@@ -139,26 +225,31 @@
 }
 
 77054 = {
-	name = "Элейна"
+	name = "Элейна" # Elaena Targaryen, wife of Aegon Targaryen.
 	female = yes
 	dynasty = 496
 
-	religion = valyrian_rel
+	religion = "valyrian_rel"
 	culture = "high_valyrian"
 
-	father = 77052
-	mother = 77051
+	father = 77052 # Gaemon Targaryen the Glorious
+	mother = 77051 # Daenys Targaryen the Dreamer
 
-	7891.1.1 = {
+	7889.1.1 = {
 		birth = yes
 	}
 	7898.1.1 = {
 		add_trait = "dragon_rider" # Balerion (C)
 	}
-	7930.1.1 = {
+
+	7900.1.1 = {
 		add_trait = "darksister"
+		add_trait = "dragon_rider" # Nessarion
+		create_bloodline = {
+			type = dragon_rider_tracker
+		}
 	}
-	7950.1.1 = {
+	7925.1.1 = {
 		death = yes
 	}
 }
@@ -461,8 +552,7 @@
 					limit = { ai = no }
 					character_event = { id = aegons_landing.1 }
 				}
-				if = {
-					limit = { ai = yes }
+				else = {
 					character_event = { id = aegons_landing.1 days = 1 }
 				}
 				b_stone_drum = { ROOT = { capital = PREV } }
@@ -526,8 +616,7 @@
 					limit = { ai = no }
 					character_event = { id = aegons_landing.4 }
 				}
-				if = {
-					limit = { ai = yes }
+				else = {
 					character_event = { id = aegons_landing.4 days = 1 }
 				}
 				b_stone_drum = { ROOT = { capital = PREV } }
@@ -5691,7 +5780,7 @@
 #Issue by Rhaenyra is below
 
 ###Issue of Aegon II###
-77138  = { # married Aegon III
+77138 = { # married Aegon III
 	name = "Джейхейра"
 	female = yes
 	dynasty = 496
@@ -5739,7 +5828,7 @@
 		}
 	}
 }
-60500496  = { # eldest son of Aegon II
+60500496 = { # eldest son of Aegon II
 	name = "Джейхейрис"
 
 	dynasty = 496
@@ -5764,7 +5853,7 @@
 	}
 	8129.7.2 = { death = { death_reason = death_murder killer = 779496 } } # Murdered on the orders of Daemon Targaryen after Lucerys is killed "a Son for a Son."
 }
-60510496  = { # youngest son of Aegon II
+60510496 = { # youngest son of Aegon II
 	name = "Мейлор"
 
 	dynasty = 496
@@ -5801,7 +5890,7 @@
 	}
 }
 ###Issue of Aemond###
-60550496  = {
+60550496 = {
 	name = "Эймон" # acclaimed rightful king of Westeros by his mother
 	dynasty = 496
 
@@ -8749,7 +8838,7 @@
 	8174.1.1 = {
 		birth = yes
 		effect = {
-			set_character_flag = targaryen_fourth
+			set_character_flag = sigil_dyn_fourth
 			add_character_modifier = {
 				name = "grandchild_of_incest"
 				duration = -1
@@ -9038,7 +9127,6 @@
 		birth = yes
 
 		effect = {
-			set_character_flag = daeron_coa
 			culture = high_valyrian
 			set_character_flag = potential_targ_lunatic
 			if = {
@@ -9663,7 +9751,7 @@
 		}
 	}
 }
-77036  = {
+77036 = {
 	name = "Джейхейрис"
 	# AKA: Jaehaerys II
 	dna = "acjhdkljabo"
@@ -9788,7 +9876,7 @@
 	}
 }
 
-77137  = { #
+77137 = { #
 	name = "Дейрон" # Third son of Aegon V
 	dna = "aiccjubaaca"
 	properties = "ao0dok"
@@ -11507,6 +11595,7 @@
 			culture = western_valyrian
 			dynasty = none
 			set_immune_to_pruning = yes
+			set_character_flag = hugh_hammer
 		}
 	}
 	8129.4.1 = {
@@ -11577,6 +11666,7 @@
 			culture = western_valyrian
 			dynasty = none
 			set_immune_to_pruning = yes
+			set_character_flag = ulf_white
 		}
 	}
 	8129.4.1 = {
@@ -22700,7 +22790,11 @@
 	culture = "stormlander"
 
 	7821.1.1 = { birth = yes }
-	7837.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7837.1.1 = {
+		add_trait = knight
+		add_trait = poor_warrior
+		add_trait = mercy
+	}
 	7838.1.1 = {
 		create_bloodline = {
 			type = Gaunt_Blood
@@ -22719,6 +22813,7 @@
 	father = 344023
 
 	7848.1.1 = { birth = yes }
+	7862.1.1 = { add_trait = mercy }
 	7864.1.1 = { add_trait = knight add_trait = poor_warrior }
 	7887.1.1 = { death = yes }
 }
@@ -22732,6 +22827,7 @@
 	father = 343023
 
 	7883.1.1 = { birth = yes }
+	7887.1.1 = { add_trait = mercy }
 	7899.1.1 = { add_trait = knight add_trait = poor_warrior }
 	7936.1.1 = { death = yes }
 }
@@ -22746,6 +22842,7 @@
 
 	7912.1.1 = { birth = yes }
 	7928.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7936.1.1 = { add_trait = mercy }
 	7981.1.1 = { death = yes }
 }
 340023 = {
@@ -22759,6 +22856,7 @@
 
 	7940.1.1 = { birth = yes }
 	7956.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7981.1.1 = { add_trait = mercy }
 	7985.1.1 = { death = yes }
 }
 6000023 = {
@@ -22772,6 +22870,7 @@
 
 	7956.1.1 = { birth = yes }
 	7977.1.1 = { add_trait = knight add_trait = poor_warrior }
+	7985.1.1 = { add_trait = mercy }
 	8001.1.1 = { death = { death_reason = death_battle } }
 }
 6100123 = {
@@ -22784,7 +22883,11 @@
 	father = 6000023
 
 	7982.1.1 = { birth = yes }
-	8000.1.1 = { add_trait = knight add_trait = skilled_warrior }
+	8000.1.1 = {
+		add_trait = knight
+		add_trait = skilled_warrior
+		add_trait = mercy
+	}
 	8027.1.1 = { effect = { culture = "crownlander" } }
 	8050.1.1 = { death = yes }
 }
@@ -22800,6 +22903,7 @@
 	8007.1.1 = { birth = yes }
 	8023.1.1 = { add_trait = knight add_trait = trained_warrior }
 	8027.1.1 = { effect = { culture = "crownlander" } }
+	8050.1.1 = { add_trait = mercy }
 	8067.1.1 = { death = { death_reason = death_murder } }
 }
 6000823 = {
@@ -22813,6 +22917,7 @@
 
 	8030.1.1 = { birth = yes }
 	8046.1.1 = { add_trait = knight add_trait = skilled_warrior }
+	8067.1.1 = { add_trait = mercy }
 	8085.1.1 = { death = yes }
 }
 6001023 = {
@@ -22826,6 +22931,7 @@
 
 	8055.1.1 = { birth = yes }
 	8071.1.1 = { add_trait = poor_warrior }
+	8085.1.1 = { add_trait = mercy }
 	8099.1.1 = { death = yes }
 }
 6001423 = {
@@ -22838,6 +22944,7 @@
 	father = 6001023
 
 	8086.1.1 = { birth = yes }
+	8099.1.1 = { add_trait = mercy }
 	8102.1.1 = { add_trait = knight add_trait = poor_warrior }
 	8132.1.1 = { death = yes }
 }
@@ -22852,6 +22959,7 @@
 
 	8107.1.1 = { birth = yes }
 	8123.1.1 = { add_trait = knight }
+	8132.1.1 = { add_trait = mercy }
 	8144.1.1 = { death = yes }
 }
 6001723 = {
@@ -22864,6 +22972,7 @@
 	father = 6001623
 
 	8132.1.1 = { birth = yes }
+	8144.1.1 = { add_trait = mercy }
 	8148.1.1 = { add_trait = knight add_trait = trained_warrior }
 	8186.1.1 = { death = yes }
 }
@@ -22891,6 +23000,7 @@
 
 	8167.1.1 = { birth = yes }
 	8183.1.1 = { add_trait = poor_warrior }
+	8186.1.1 = { add_trait = mercy }
 	8224.1.1 = { death = yes }
 }
 6002323 = {
@@ -22904,6 +23014,7 @@
 
 	8201.1.1 = { birth = yes }
 	8217.1.1 = { add_trait = knight add_trait = poor_warrior }
+	8224.1.1 = { add_trait = mercy }
 	8232.1.1 = { death = yes }
 }
 

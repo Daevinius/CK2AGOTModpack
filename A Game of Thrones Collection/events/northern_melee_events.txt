@@ -417,19 +417,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 		if = {
@@ -503,19 +503,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2
@@ -598,19 +598,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2
@@ -1428,7 +1428,9 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen = { days = 7 }
+	mean_time_to_happen = {
+		days = 7
+	}
 
 	immediate = {
 		random_opinion_modifier_target = {
@@ -1547,7 +1549,7 @@ character_event = {
 			if = {
 				limit = {
 					NOT = {
-						any_opinion_modifier_target  = {
+						any_opinion_modifier_target = {
 							has_character_flag = attending_melee
 							has_opinion_modifier = { who = PREV modifier = opinion_attending_melee }
 							NOT = { has_character_flag = lost_melee }
@@ -1560,7 +1562,7 @@ character_event = {
 				hidden_tooltip = {
 					ROOT = { character_event = { id = northern_melee.22 days = 1 } }
 					FROMFROM = { character_event = { id = northern_melee.23 days = 1 } }
-					any_opinion_modifier_target  = { #Inform rest of tourny
+					any_opinion_modifier_target = { #Inform rest of tourny
 						limit = {
 							has_character_flag = attending_melee
 							OR = {
@@ -1585,7 +1587,7 @@ character_event = {
 				limit = {
 					NOT = { has_character_flag = melee_winner_found }
 					NOT = {
-						any_opinion_modifier_target  = {
+						any_opinion_modifier_target = {
 							has_character_flag = attending_melee
 							has_opinion_modifier = { who = PREV modifier = opinion_attending_melee }
 							NOT = { has_character_flag = lost_melee }
@@ -1597,7 +1599,7 @@ character_event = {
 					set_character_flag = melee_winner_found
 					character_event = { id = northern_melee.18 }
 					FROMFROM = { character_event = { id = northern_melee.24 } }
-					any_opinion_modifier_target  = { #Inform rest of tourny
+					any_opinion_modifier_target = { #Inform rest of tourny
 						limit = {
 							has_character_flag = attending_melee
 							OR = {
@@ -1629,7 +1631,7 @@ character_event = {
 				hidden_tooltip = {
 					set_character_flag = melee_winner_found
 					character_event = { id = northern_melee.18 }
-					any_opinion_modifier_target  = { #Inform rest of tourny
+					any_opinion_modifier_target = { #Inform rest of tourny
 						limit = {
 							has_character_flag = attending_melee
 							OR = {
@@ -2595,19 +2597,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.4
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 		set_character_flag = attending_melee
@@ -2650,19 +2652,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2
@@ -2711,19 +2713,19 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.4
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2

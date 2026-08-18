@@ -43,14 +43,14 @@ targeted_decisions = {
 				}
 			}
 			custom_tooltip = {
-				NOT = { has_character_flag = attempting_suicide }
 				text = attempting_suicide_tooltip
+				NOT = { has_character_flag = attempting_suicide }
 			}
 			prisoner = no
 			custom_tooltip = {
 				text = is_not_busy_trigger_tooltip
 				hidden_tooltip = {
-					# NOR  = { has_character_flag = do_not_disturb is_inaccessible_trigger = yes }
+					# NOR = { has_character_flag = do_not_disturb is_inaccessible_trigger = yes }
 					# Line above outcommented to account for Seclusion (below)
 					OR = {
 						in_seclusion = yes
@@ -1111,7 +1111,7 @@ targeted_decisions = {
 				has_dlc = "The Old Gods"
 				ai = yes
 			}
-			age = 16
+			is_adult = yes
 			has_concubinage = yes
 			OR = { #Some women can do this
 				is_female = no
@@ -1287,13 +1287,12 @@ targeted_decisions = {
 		effect = {
 			hidden_tooltip = {
 				if = {
-					limit = { age = 16 }
+					limit = { is_adult = yes }
 					FROM = {
 						character_event = { id = LoR.832 }
 					}
 				}
-				if = {
-					limit = { age < 16 }
+				else = {
 					FROM = {
 						character_event = { id = LoR.834 }
 					}
@@ -2872,7 +2871,7 @@ targeted_decisions = {
 		filter = court
 		third_party_filter = home_court_including_me
 		ai_third_party_filter = home_court_including_me
-		third_party = from
+		third_party = FROM
 		show_third_party_score = no
 		only_rulers = yes
 		diplomacy_icon = GFX_OFFER_MARRIGE_INTERACTION_icon
@@ -3160,8 +3159,7 @@ targeted_decisions = {
 				prisoner = no
 				move_character = FROM
 			}
-			if = {
-				limit = { is_ruler = yes }
+			else = {
 				hidden_tooltip = {
 					remove_character_modifier = house_arrest
 					remove_character_modifier = the_oubliette
@@ -3770,7 +3768,7 @@ targeted_decisions = {
 					regent = { opinion = { who = ROOT value = 0 } }
 				}
 			}
-			age = 16
+			is_adult = yes
 			trigger_if = {
 				limit = { FROM = { culture_group = hyrkoon_group } }
 				culture_group = hyrkoon_group
@@ -4740,7 +4738,7 @@ targeted_decisions = {
 			}
 
 			prisoner = no
-			age = 16
+			is_adult = yes
 			is_incapable = no
 			can_press_claims_trigger = yes
 		}
@@ -5488,7 +5486,7 @@ targeted_decisions = {
 			religion = the_seven
 			culture = high_valyrian
 			is_female = no
-			age = 16
+			is_adult = yes
 			is_married = yes
 			NOT = { trait = chaste }
 			NOT = { trait = celibate }
@@ -5910,7 +5908,7 @@ targeted_decisions = {
 			is_feudal = yes
 			OR = {
 				culture = lengi
-				culture = yi_ti
+				culture_group = yi_ti_group
 			}
 		}
 		potential = {
@@ -5934,7 +5932,7 @@ targeted_decisions = {
 			}
 			OR = {
 				culture = lengi
-				culture = yi_ti
+				culture_group = yi_ti_group
 			}
 			trigger_if = {
 				limit = { culture = lengi }
@@ -5953,8 +5951,8 @@ targeted_decisions = {
 					text = TOOLTIPtake_consort_leng_empressYI_TI
 					FROM = {
 						NOR = {
-							any_spouse = { culture = yi_ti is_alive = yes }
-							any_consort = { culture = yi_ti is_senior_consort_party = no }
+							any_spouse = { culture_group = yi_ti_group is_alive = yes }
+							any_consort = { culture_group = yi_ti_group is_senior_consort_party = no }
 						}
 					}
 				}
@@ -6040,7 +6038,7 @@ targeted_decisions = {
 									}
 									OR = {
 										culture = lengi
-										culture = yi_ti
+										culture_group = yi_ti_group
 									}
 									OR = {
 										is_married = PREV
@@ -6130,7 +6128,7 @@ targeted_decisions = {
 					random_traits = no
 					name = ""
 					dynasty = none
-					religion = ruin
+					religion = ruin_rel
 					culture = ruin
 					female = no
 					age = 100
@@ -6272,8 +6270,7 @@ targeted_decisions = {
 					}
 				}
 				liege = {
-					set_character_flag = de_facto_liege_cbb
-					character_event = { id = cbb_cadet.2 days = 2 }
+					save_event_target_as = cbb_liege
 				}
 				hidden_tooltip = { character_event = { id = cbb_cadet.1 days = 1 } }
 			}

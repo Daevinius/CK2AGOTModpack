@@ -1,0 +1,50 @@
+namespace = colonise_zeta
+
+character_event = {
+	id = colonise_zeta.1
+	desc = "EVTDESCunoccupied.1"
+
+	is_triggered_only = yes #Triggered from on_startup
+	only_rulers = yes
+	hide_window = yes
+
+	trigger = {
+		has_landed_title = e_rebels
+		NOT = { had_global_flag = { flag = scenario_initialised  days = 5 } }
+	}
+
+	option = {
+		name = "EVTOPTAunoccupied.1" #Yes
+
+		#Colonizable stuff
+		if = { # Alt Start
+			limit = {
+				OR = {
+					is_alternate_start = yes
+					year = 1
+				}
+			}
+			685 = { make_province_ruin_effect = yes }
+			686 = { make_province_ruin_effect = yes }
+			733 = { make_province_ruin_effect = yes }
+			734 = { make_province_ruin_effect = yes }
+			737 = { make_province_ruin_effect = yes }
+			745 = { make_province_ruin_effect = yes }
+			# 825 = { make_province_ruin_effect = yes }
+			# 826 = { make_province_ruin_effect = yes }
+			# 827 = { make_province_ruin_effect = yes }
+			828 = { make_province_ruin_effect = yes }
+			830 = { make_province_ruin_effect = yes }
+			1569 = { make_province_ruin_effect = yes }
+			1579 = { make_province_ruin_effect = yes }
+			# 1485 = { make_province_ruin_effect = yes }
+			# 1487 = { make_province_ruin_effect = yes }
+			# 1488 = { make_province_ruin_effect = yes }
+			1583 = { make_province_ruin_effect = yes }
+			1584 = { make_province_ruin_effect = yes }
+			1585 = { make_province_ruin_effect = yes }
+			1586 = { make_province_ruin_effect = yes }
+			1599 = { make_province_ruin_effect = yes }
+		}
+	}
+}

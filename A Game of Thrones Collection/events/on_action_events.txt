@@ -32,17 +32,17 @@ namespace = diploresponse
 letter_event = {
 	id = 1
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage, on_letter_event_message
 
-	#desc = "A"
+	desc = "A"
 }
 
 character_event = {
 	id = 2
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_event_message
 
-	#desc = "B"
+	desc = "B"
 }
 
 # Killer discovered after murder - consequences.
@@ -52,7 +52,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse, on_unit_entering_province
 
 	trigger = {
 		OR = {
@@ -334,7 +334,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_birth, on_chronicle_start, on_startup, on_decade_pulse
 
 	trigger = {
 		OR = {
@@ -518,7 +518,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse, on_siege_pulse, on_adolescence, on_loot_settlement, on_new_holder, on_startup, on_chronicle_start, on_birth, on_decade_pulse, on_war_ended_victory
 
 	trigger = { NOT = { has_character_modifier = adultery_discovered } }
 
@@ -527,7 +527,7 @@ character_event = {
 		if = {
 			limit = {
 				OR = {
-					is_married =  event_target:target_adulterer
+					is_married = event_target:target_adulterer
 					is_consort = event_target:target_adulterer
 				}
 			}
@@ -918,7 +918,7 @@ character_event = {
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_avoided_imprison_started_war
 
 	immediate = {
 		clr_character_flag = captured_in_battle
@@ -1259,7 +1259,7 @@ character_event = { #inform rebellion
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death, on_offmap_yearly_pulse
 	only_rulers = yes
 
 	option = {
@@ -1384,7 +1384,7 @@ character_event = {
 	picture = "GFX_evt_into_the_dungeon"
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_became_imprisoned
 
 
 	immediate = {
@@ -1500,7 +1500,7 @@ character_event = {
 	picture = GFX_evt_burning_house
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_avoided_imprison_fled_country
 
 	immediate = {
 		# if = { #Lower nobles flee, higher nobles fight
@@ -1838,6 +1838,7 @@ character_event = {
 							title = d_company_of_the_rose
 							title = d_wolf_pack
 							title = d_mbs_bloodless
+							title = d_mbs_freeriders
 						}
 					}
 					ROOT = { is_lowborn = yes }
@@ -1891,30 +1892,28 @@ character_event = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 			}
-			break = yes
 		}
-		if = {
+		else_if = {
 			limit = { mother = { is_alive = yes } }
 			mother = {
 				if = {
 					limit = { is_ruler = yes }
 					ROOT = { move_character = PREV }
 				}
-				if = {
-					limit = { is_ruler = no }
+				else = {
 					liege = { ROOT = { move_character = PREV } }
 				}
 			}
-			break = yes
 		}
-		c_dragonstone = {
-			holder_scope = {
-				ROOT = { move_character = PREV }
+		else = {
+			c_dragonstone = {
+				holder_scope = {
+					ROOT = { move_character = PREV }
+				}
 			}
 		}
 	}
@@ -2232,33 +2231,25 @@ character_event = { #inform rebellion against lower vassal
 			min = 30
 			value = 0.5
 		}
-		if = {
-			limit = { tier = EMPEROR }
-			prestige = -50
-		}
-		if = {
-			limit = { tier = KING }
-			prestige = -35
-		}
-		if = {
-			limit = { tier = DUKE }
-			prestige = -25
+
+		trigger_switch = {
+			on_trigger = real_tier
+
+			EMPEROR = { prestige = -50 }
+			KING    = { prestige = -35 }
+			DUKE    = { prestige = -25 }
 		}
 	}
 	option = {
 		name = "EVTOPTB40030"
 		ai_chance = { factor = 0 }
-		if = {
-			limit = { tier = EMPEROR }
-			prestige = -100
-		}
-		if = {
-			limit = { tier = KING }
-			prestige = -75
-		}
-		if = {
-			limit = { tier = DUKE }
-			prestige = -50
+
+		trigger_switch = {
+			on_trigger = real_tier
+
+			EMPEROR = { prestige = -100 }
+			KING    = { prestige = -75 }
+			DUKE    = { prestige = -50 }
 		}
 	}
 }
@@ -2274,17 +2265,14 @@ letter_event = { #inform rebel's liege
 		if = {
 			limit = { liege = { character = FROM } }
 			set_character_flag = enforce_justice_liege_1
-			break = yes
 		}
-		if = {
+		else_if = {
 			limit = { liege = { liege = { character = FROM } } }
 			set_character_flag = enforce_justice_liege_2
-			break = yes
 		}
-		if = {
+		else_if = {
 			limit = { liege = { liege = { liege = { character = FROM } } } }
 			set_character_flag = enforce_justice_liege_3
-			break = yes
 		}
 	}
 
@@ -2304,8 +2292,7 @@ letter_event = { #inform rebel's liege
 				casus_belli = overthrow_ruler
 			}
 		}
-		if = {
-			limit = { NOT = { is_liege_of = FROMFROM } }
+		else = {
 			war = {
 				target = FROMFROM
 				casus_belli = enforce_justice
@@ -2382,7 +2369,7 @@ character_event = {
 	desc = "EVTDESC153"
 	picture = GFX_evt_recovery
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_released_from_prison
 
 	immediate = {
 		#reduce fear for landed vassals
@@ -2427,7 +2414,7 @@ character_event = {
 	desc = "EVTDESC154"
 	picture = "GFX_evt_beheading"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_executed
 
 	immediate = {
 		# ###Check for tyranny###
@@ -2558,7 +2545,7 @@ character_event = {
 	desc = "EVTDESC155"
 	picture = GFX_evt_carriage
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_exiled
 
 	immediate = {
 		set_character_flag = exiled
@@ -2702,7 +2689,7 @@ character_event = {
 				NOT = { trait = wildling }
 				NOT = { trait = nightswatch }
 				is_incapable = no
-				age = 16
+				is_adult = yes
 				FROM = {
 					nightswatch_culture_trigger = yes
 				}
@@ -2879,6 +2866,7 @@ character_event = {
 							title = d_company_of_the_rose
 							title = d_wolf_pack
 							title = d_mbs_bloodless
+							title = d_mbs_freeriders
 						}
 					}
 					ROOT = { is_lowborn = yes }
@@ -3031,7 +3019,7 @@ character_event = {
 	picture = "GFX_evt_shadow"
 
 	hide_FROM = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_failed_assassination
 
 	immediate = {
 		FROM = { character_event = { id = 40003 } }
@@ -3065,7 +3053,7 @@ character_event = {
 
 	hide_FROM = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_failed_assassination
 
 	trigger = {
 		NOT = { trait = wounded }
@@ -3104,7 +3092,7 @@ character_event = {
 
 	hide_FROM = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_failed_assassination
 
 	trigger = {
 		can_be_maimed_trigger = yes
@@ -3148,7 +3136,7 @@ character_event = {
 	desc = EVTDESC159
 	picture = GFX_evt_shadow
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_failed_assassination_disc
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -3197,7 +3185,7 @@ character_event = {
 	desc = "EVTDESC160"
 	picture = "GFX_evt_shadow"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_failed_assassination_disc
 
 	trigger = {
 		NOT = { trait = wounded }
@@ -3250,7 +3238,7 @@ character_event = {
 	desc = "EVTDESC161"
 	picture = "GFX_evt_shadow"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_failed_assassination_disc
 
 	trigger = {
 		NOT = { trait = maimed }
@@ -3279,13 +3267,6 @@ character_event = {
 		name = "EVTOPTA161"
 		if = {
 			limit = {
-				NOT = { has_dlc = "Reapers" }
-			}
-			add_trait = maimed
-			character_event = { id = 38281 }
-		}
-		if = {
-			limit = {
 				has_dlc = "Reapers"
 			}
 			add_trait = one_eyed
@@ -3294,6 +3275,10 @@ character_event = {
 				character_event = { id = RIP.11501 } #Notify one-eyed
 				resolve_severely_injured_effect = yes
 			}
+		}
+		else = {
+			add_trait = maimed
+			character_event = { id = 38281 }
 		}
 		if = {
 			limit = {
@@ -3327,7 +3312,7 @@ character_event = {
 	desc = EVTDESC162
 
 	hide_FROM = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_assassination
 
 	option = {
 		name = "EVTOPTA162"
@@ -3361,7 +3346,7 @@ character_event = {
 	desc = "EVTDESC163"
 	picture = "GFX_evt_shadow"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_assassination_disc
 
 	immediate = {
 		save_event_target_as = target_victim
@@ -3547,8 +3532,7 @@ character_event = {
 						banish = yes
 						character_event = { id = 152 }
 					}
-					if = { #Rebel?
-						limit = { is_ruler = yes }
+					else = { #Rebel?
 						character_event = { id = 150 }
 					}
 				}
@@ -3753,8 +3737,7 @@ character_event = {
 						banish = yes
 						character_event = { id = 152 }
 					}
-					if = { #Rebel?
-						limit = { is_ruler = yes }
+					else = { #Rebel?
 						character_event = { id = 150 }
 					}
 				}
@@ -4438,7 +4421,7 @@ diploresponse_event = {
 				}
 				FROM = { NOT = { trait = kingsguard } }
 			}
-			ROOT = { age = 16 }
+			ROOT = { is_adult = yes }
 			AND = { #kingsguard always ask for payment, except from king or family
 				OR = {
 					has_landed_title = e_iron_throne
@@ -4545,7 +4528,7 @@ diploresponse_event = {
 				}
 				FROM = { NOT = { trait = kingsguard } }
 			}
-			ROOT = { age = 16 }
+			ROOT = { is_adult = yes }
 			AND = { #kingsguard always ask for payment, except from king or family
 				OR = {
 					has_landed_title = e_iron_throne
@@ -4613,9 +4596,8 @@ diploresponse_event = {
 			limit = { yearly_income = 150 }
 			wealth = -50
 			FROM = { wealth = 50 }
-			break = yes
 		}
-		if = {
+		else_if = {
 			limit = {
 				OR = {
 					yearly_income = 120
@@ -4626,9 +4608,8 @@ diploresponse_event = {
 			}
 			wealth = -40
 			FROM = { wealth = 40 }
-			break = yes
 		}
-		if = {
+		else_if = {
 			limit = {
 				OR = {
 					yearly_income = 90
@@ -4638,9 +4619,8 @@ diploresponse_event = {
 			}
 			wealth = -30
 			FROM = { wealth = 30 }
-			break = yes
 		}
-		if = {
+		else_if = {
 			limit = {
 				OR = {
 					yearly_income = 60
@@ -4650,10 +4630,11 @@ diploresponse_event = {
 			}
 			wealth = -20
 			FROM = { wealth = 20 }
-			break = yes
 		}
-		wealth = -10
-		FROM = { wealth = 10 }
+		else = {
+			wealth = -10
+			FROM = { wealth = 10 }
+		}
 	}
 
 	option = {
@@ -5366,8 +5347,7 @@ diploresponse_event = { #player cheating workaround
 							limit = { is_ruler = yes }
 							ROOT_FROM = { move_character = PREV break = yes }
 						}
-						if = {
-							limit = { is_ruler = no }
+						else = {
 							liege = { ROOT_FROM = { move_character = PREV break = yes } }
 						}
 					}
@@ -5655,7 +5635,7 @@ character_event = {
 	#desc = "EVTDESC500"
 	#picture = "GFX_evt_marriage"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage
 	only_rulers = yes
 	hide_window = yes
 
@@ -5842,7 +5822,7 @@ character_event = { #find dowry target
 character_event = { #on marriage and betrothal
 	id = 500992
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage, on_betrothal
 	hide_window = yes
 
 	trigger = {
@@ -5910,7 +5890,10 @@ character_event = { #on marriage and betrothal
 				}
 			}
 			ROOT = { save_event_target_as = old_liege }
-			FROM = { character_event = { id = 500996 days = 3 } } #AI marriage evaluation
+			FROM = {
+				save_event_target_as = marrying_character
+				character_event = { id = 500996 days = 3 } #AI marriage evaluation
+			}
 		}
 	}
 
@@ -5927,7 +5910,7 @@ character_event = {
 	#hide_window = yes
 
 	trigger = {
-		FROMFROM = {
+		event_target:marrying_character = {
 			OR = {
 				is_married = yes
 				is_betrothed = yes
@@ -5948,8 +5931,8 @@ character_event = {
 				NOT = { religion = gods_sarnor }
 				NOT = { religion = gods_sarnor_reformed }
 				OR = {
-					is_close_relative = FROMFROM
-					current_heir = { character = FROMFROM }
+					is_close_relative = event_target:marrying_character
+					current_heir = { character = event_target:marrying_character }
 				}
 				event_target:spouse_to_evaluate = {
 					NOT = { culture_group = ROOT }
@@ -6037,7 +6020,7 @@ character_event = {
 				NOT = { event_target:savage = { always = yes } }
 				event_target:spouse_to_evaluate = {
 					cannot_outbreed_trigger = yes
-					NOT = { graphical_culture = ROOT_FROMFROM }
+					NOT = { graphical_culture = event_target:marrying_character }
 				}
 			}
 			event_target:spouse_to_evaluate = {
@@ -6051,10 +6034,10 @@ character_event = {
 		trigger = {
 			higher_tier_than = COUNT
 			OR = {
-				is_close_relative = ROOT_FROM
-				current_heir = { character = ROOT_FROMFROM }
+				is_close_relative = event_target:old_liege
+				current_heir = { character = event_target:marrying_character }
 			}
-			FROMFROM = {
+			event_target:marrying_character = {
 				age < 30
 				is_lowborn = no
 				NOT = { trait = bastard }
@@ -6074,7 +6057,7 @@ character_event = {
 			}
 		}
 		ai_chance = { factor = 9999 }
-		FROMFROM = {
+		event_target:marrying_character = {
 			set_character_flag = no_wedding_event #stop event triggering twice
 			if = {
 				limit = { is_female = yes }
@@ -6114,21 +6097,21 @@ character_event = {
 							any_courtier = {
 								age < 30
 								is_ruler = no
-								NOT = { same_sex = ROOT_FROMFROM }
+								NOT = { same_sex = event_target:marrying_character }
 								dynasty = PREV
 								is_close_relative = PREV
 								can_marry_trigger = yes
 								NAND = {
 									cannot_outbreed_trigger = yes
-									NOT = { graphical_culture = ROOT_FROMFROM }
+									NOT = { graphical_culture = event_target:marrying_character }
 								}
 								is_pregnant = no
 								NOT = { trait = celibate }
 								NOT = { trait = inbred }
 								OR = {
-									NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+									NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 									AND = {
-										ROOT_FROMFROM = { age = 18 }
+										event_target:marrying_character = { age = 18 }
 										age = 18
 									}
 								}
@@ -6138,59 +6121,59 @@ character_event = {
 							limit = {
 								age < 30
 								is_ruler = no
-								NOT = { same_sex = ROOT_FROMFROM }
+								NOT = { same_sex = event_target:marrying_character }
 								dynasty = PREV
 								is_close_relative = PREV
 								can_marry_trigger = yes
 								NAND = {
 									cannot_outbreed_trigger = yes
-									NOT = { graphical_culture = ROOT_FROMFROM }
+									NOT = { graphical_culture = event_target:marrying_character }
 								}
 								is_pregnant = no
 								NOT = { trait = celibate }
 								NOT = { trait = inbred }
 								OR = {
-									NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+									NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 									AND = {
-										ROOT_FROMFROM = { age = 18 }
+										event_target:marrying_character = { age = 18 }
 										age = 18
 									}
 								}
 							}
-							ROOT_FROMFROM = {
+							event_target:marrying_character = {
 								event_target:spouse_to_evaluate = {
 									remove_spouse = PREV
 									break_betrothal = PREV
 								}
 							}
 
-							add_spouse = ROOT_FROMFROM
+							add_spouse = event_target:marrying_character
 							PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
 							child_fertility_debuff = yes
-							ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+							event_target:marrying_character = { clr_character_flag = no_wedding_event }
 
 							# ###old block, betrothal command is broken NOW WORKS...or maybe not
 							# if = {
 								# limit = {
 									# age = 14
-									# ROOT_FROMFROM = { age = 14 }
+									# event_target:marrying_character = { age = 14 }
 								# }
-								# add_spouse = ROOT_FROMFROM
+								# add_spouse = event_target:marrying_character
 								# PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
-								# ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+								# event_target:marrying_character = { clr_character_flag = no_wedding_event }
 							# }
 							# if = {
 								# limit = {
 									# OR = {
 										# age < 14
-										# ROOT_FROMFROM = { age < 14 }
+										# event_target:marrying_character = { age < 14 }
 									# }
 								# }
-								# ROOT_FROMFROM = {
+								# event_target:marrying_character = {
 									# remove_character_modifier = wedding
 									# add_betrothal = PREV
 								# }
-								# add_betrothal = ROOT_FROMFROM
+								# add_betrothal = event_target:marrying_character
 							# }
 							break = yes
 						}
@@ -6210,21 +6193,21 @@ character_event = {
 								any_courtier = {
 									age < 30
 									is_ruler = no
-									NOT = { same_sex = ROOT_FROMFROM }
+									NOT = { same_sex = event_target:marrying_character }
 									dynasty = PREV
 									is_close_relative = PREV
 									can_marry_trigger = yes
 									NAND = {
 										cannot_outbreed_trigger = yes
-										NOT = { graphical_culture = ROOT_FROMFROM }
+										NOT = { graphical_culture = event_target:marrying_character }
 									}
 									is_pregnant = no
 									NOT = { trait = celibate }
 									NOT = { trait = inbred }
 									OR = {
-										NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+										NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 										AND = {
-											ROOT_FROMFROM = { age = 18 }
+											event_target:marrying_character = { age = 18 }
 											age = 18
 										}
 									}
@@ -6234,58 +6217,58 @@ character_event = {
 								limit = {
 									age < 30
 									is_ruler = no
-									NOT = { same_sex = ROOT_FROMFROM }
+									NOT = { same_sex = event_target:marrying_character }
 									dynasty = PREV
 									is_close_relative = PREV
 									can_marry_trigger = yes
 									NAND = {
 										cannot_outbreed_trigger = yes
-										NOT = { graphical_culture = ROOT_FROMFROM }
+										NOT = { graphical_culture = event_target:marrying_character }
 									}
 									is_pregnant = no
 									NOT = { trait = celibate }
 									NOT = { trait = inbred }
 									OR = {
-										NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+										NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 										AND = {
-											ROOT_FROMFROM = { age = 18 }
+											event_target:marrying_character = { age = 18 }
 											age = 18
 										}
 									}
 								}
-								ROOT_FROMFROM = {
+								event_target:marrying_character = {
 									event_target:spouse_to_evaluate = {
 										remove_spouse = PREV
 										break_betrothal = PREV
 									}
 								}
-								add_spouse = ROOT_FROMFROM
+								add_spouse = event_target:marrying_character
 								PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
 								child_fertility_debuff = yes
-								ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+								event_target:marrying_character = { clr_character_flag = no_wedding_event }
 
 								# ###old block, betrothal command is broken NOW WORKS...or maybe not
 								# if = {
 									# limit = {
 										# age = 14
-										# ROOT_FROMFROM = { age = 14 }
+										# event_target:marrying_character = { age = 14 }
 									# }
-									# add_spouse = ROOT_FROMFROM
+									# add_spouse = event_target:marrying_character
 									# PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
-									# ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+									# event_target:marrying_character = { clr_character_flag = no_wedding_event }
 								# }
 								# if = {
 									# limit = {
 										# OR = {
 											# age < 14
-											# ROOT_FROMFROM = { age < 14 }
+											# event_target:marrying_character = { age < 14 }
 										# }
 									# }
-									# ROOT_FROMFROM = {
+									# event_target:marrying_character = {
 										# remove_character_modifier = wedding
 										# add_betrothal = PREV
 									# }
-									# add_betrothal = ROOT_FROMFROM
+									# add_betrothal = event_target:marrying_character
 								# }
 								break = yes
 							}
@@ -6333,8 +6316,7 @@ character_event = {
 											limit = { is_female = no }
 											set_special_character_title = title_ser
 										}
-										if = {
-											limit = { is_female = yes }
+										else = {
 											set_special_character_title = title_lady
 										}
 									}
@@ -6377,10 +6359,10 @@ character_event = {
 			NOT = { has_global_flag = ai_marriage_correction_FEMALE_OFF }
 			is_ruler = yes
 			OR = {
-				character = FROMFROM #evaluate own marriage
-				current_heir = { character = FROMFROM }
+				character = event_target:marrying_character #evaluate own marriage
+				current_heir = { character = event_target:marrying_character }
 				AND = {
-					is_close_relative = ROOT_FROM
+					is_close_relative = event_target:old_liege
 					primary_title = {
 						OR = {
 							has_law = true_cognatic_succession
@@ -6390,7 +6372,7 @@ character_event = {
 					}
 				}
 			}
-			FROMFROM = {
+			event_target:marrying_character = {
 				is_female = yes
 				NOT = { is_betrothed = event_target:spouse_to_evaluate } #cant distinguish between matrilineal or not
 				NOT = { is_married_matrilineally = yes }
@@ -6401,10 +6383,10 @@ character_event = {
 					ROOT = { has_character_flag = matri_inheritance_check }
 				}
 			}
-			event_target:spouse_to_evaluate = { NOT = { dynasty = FROMFROM } }
+			event_target:spouse_to_evaluate = { NOT = { dynasty = event_target:marrying_character } }
 		}
 		ai_chance = { factor = 9999 }
-		FROMFROM = {
+		event_target:marrying_character = {
 			set_character_flag = no_wedding_event
 			if = { #If married to some bozo change to matrilineal immediately
 				limit = {
@@ -6653,9 +6635,9 @@ character_event = {
 			ROOT = {
 				random_realm_character = {
 					limit = {
-						age = 16
+						is_adult = yes
 						age < 30
-						NOT = { same_sex = ROOT_FROMFROM }
+						NOT = { same_sex = event_target:marrying_character }
 						prisoner = no
 						liege = {
 							ai = yes
@@ -6664,9 +6646,9 @@ character_event = {
 						can_marry_trigger = yes
 						NAND = {
 							cannot_outbreed_trigger = yes
-							NOT = { graphical_culture = ROOT_FROMFROM }
+							NOT = { graphical_culture = event_target:marrying_character }
 						}
-						NOT = { is_close_relative = ROOT_FROMFROM }
+						NOT = { is_close_relative = event_target:marrying_character }
 						is_lowborn = no
 						father_even_if_dead = { always = yes }
 						NOR = {
@@ -6696,8 +6678,8 @@ character_event = {
 						opinion = { who = ROOT modifier = opinion_recent_marriage }
 						reverse_opinion = { who = ROOT modifier = opinion_recent_marriage }
 					}
-					add_spouse_matrilineal = ROOT_FROMFROM
-					ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+					add_spouse_matrilineal = event_target:marrying_character
+					event_target:marrying_character = { clr_character_flag = no_wedding_event }
 					break = yes
 				}
 			}
@@ -6715,7 +6697,7 @@ character_event = {
 						}
 						new_character = {
 							set_character_flag = no_wedding_event
-							add_spouse_matrilineal = ROOT_FROMFROM
+							add_spouse_matrilineal = event_target:marrying_character
 							if = {
 								limit = { religion = the_seven }
 								add_trait = knight
@@ -6731,8 +6713,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -6768,7 +6749,7 @@ character_event = {
 			NOT = { has_global_flag = ai_marriage_correction_DIVINE_OFF }
 			is_divine_blood_dynasty_trigger = yes
 			higher_tier_than = COUNT
-			FROMFROM = {
+			event_target:marrying_character = {
 				dynasty = ROOT
 				event_target:spouse_to_evaluate = {
 					dynasty = ROOT
@@ -6828,7 +6809,7 @@ character_event = {
 			}
 			modifier = { #Avoid parent-child marriages
 				factor = 6
-				FROMFROM = {
+				event_target:marrying_character = {
 					OR = {
 						is_child_of = event_target:spouse_to_evaluate
 						is_grandchild_of = event_target:spouse_to_evaluate
@@ -6840,7 +6821,7 @@ character_event = {
 			modifier = { #Female heir
 				factor = 0.25
 				OR = {
-					FROMFROM = {
+					event_target:marrying_character = {
 						is_female = yes
 						any_heir_title = { holder_scope = { character = ROOT } }
 					}
@@ -6884,7 +6865,7 @@ character_event = {
 				trait = honorable
 			}
 		}
-		FROMFROM = { set_character_flag = no_wedding_event }
+		event_target:marrying_character = { set_character_flag = no_wedding_event }
 		random_realm_lord = {
 			limit = {
 				OR = {
@@ -6914,21 +6895,21 @@ character_event = {
 				any_courtier = {
 					age < 30
 					is_ruler = no
-					NOT = { same_sex = ROOT_FROMFROM }
+					NOT = { same_sex = event_target:marrying_character }
 					dynasty = PREV
 					is_close_relative = PREV
 					can_marry_trigger = yes
 					NAND = {
 						cannot_outbreed_trigger = yes
-						NOT = { graphical_culture = ROOT_FROMFROM }
+						NOT = { graphical_culture = event_target:marrying_character }
 					}
 					is_pregnant = no
 					NOT = { trait = celibate }
 					NOT = { trait = inbred }
 					OR = {
-						NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+						NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 						AND = {
-							ROOT_FROMFROM = { age = 18 }
+							event_target:marrying_character = { age = 18 }
 							age = 18
 						}
 					}
@@ -6938,26 +6919,26 @@ character_event = {
 				limit = {
 					age < 30
 					is_ruler = no
-					NOT = { same_sex = ROOT_FROMFROM }
+					NOT = { same_sex = event_target:marrying_character }
 					dynasty = PREV
 					is_close_relative = PREV
 					can_marry_trigger = yes
 					NAND = {
 						cannot_outbreed_trigger = yes
-						NOT = { graphical_culture = ROOT_FROMFROM }
+						NOT = { graphical_culture = event_target:marrying_character }
 					}
 					is_pregnant = no
 					NOT = { trait = celibate }
 					NOT = { trait = inbred }
 					OR = {
-						NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+						NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 						AND = {
-							ROOT_FROMFROM = { age = 18 }
+							event_target:marrying_character = { age = 18 }
 							age = 18
 						}
 					}
 				}
-				FROMFROM = {
+				event_target:marrying_character = {
 					event_target:spouse_to_evaluate = {
 						remove_character_modifier = wedding
 						remove_spouse = PREV
@@ -6968,13 +6949,13 @@ character_event = {
 					opinion = { who = ROOT modifier = opinion_recent_marriage }
 					reverse_opinion = { who = ROOT modifier = opinion_recent_marriage }
 				}
-				add_spouse = ROOT_FROMFROM
+				add_spouse = event_target:marrying_character
 				if = {
 					limit = {
 						age = 14
-						ROOT_FROMFROM = { age = 14 }
+						event_target:marrying_character = { age = 14 }
 					}
-					ROOT_FROMFROM = {
+					event_target:marrying_character = {
 						if = {
 							limit = {
 								NOT = { any_spouse = { is_main_spouse = no } }
@@ -6988,7 +6969,7 @@ character_event = {
 					}
 				}
 				child_fertility_debuff = yes
-				ROOT_FROMFROM = {
+				event_target:marrying_character = {
 					child_fertility_debuff = yes
 				}
 
@@ -6996,10 +6977,10 @@ character_event = {
 				# if = {
 					# limit = {
 						# age = 14
-						# FROMFROM = { age = 14 }
+						# event_target:marrying_character = { age = 14 }
 					# }
-					# add_spouse = FROMFROM
-					# FROMFROM = {
+					# add_spouse = event_target:marrying_character
+					# event_target:marrying_character = {
 						# if = {
 							# limit = {
 								# NOT = { any_spouse = { is_main_spouse = no } }
@@ -7016,18 +6997,18 @@ character_event = {
 					# limit = {
 						# OR = {
 							# age < 14
-							# FROMFROM = { age < 14 }
+							# event_target:marrying_character = { age < 14 }
 						# }
 					# }
-					# FROMFROM = {
+					# event_target:marrying_character = {
 						# remove_character_modifier = wedding
 						# add_betrothal = PREV
 					# }
-					# add_betrothal = FROMFROM
+					# add_betrothal = event_target:marrying_character
 				# }
 			}
 		}
-		FROMFROM = { clr_character_flag = no_wedding_event }
+		event_target:marrying_character = { clr_character_flag = no_wedding_event }
 	}
 
 	option = {
@@ -7041,7 +7022,7 @@ character_event = {
 				high_valyrian_dynasty_trigger = yes
 			}
 			NOT = { trait = humble }
-			FROMFROM = {
+			event_target:marrying_character = {
 				dynasty = ROOT
 				NOT = { #Dont remove marriages from children/grandchildren of the player
 					any_player = {
@@ -7103,7 +7084,7 @@ character_event = {
 				trait = lunatic
 			}
 		}
-		FROMFROM = { set_character_flag = no_wedding_event }
+		event_target:marrying_character = { set_character_flag = no_wedding_event }
 		random_realm_lord = {
 			limit = {
 				ai = yes
@@ -7116,21 +7097,21 @@ character_event = {
 					has_silver_hair_ethnicity_trigger = yes
 					age < 30
 					is_ruler = no
-					NOT = { same_sex = ROOT_FROMFROM }
+					NOT = { same_sex = event_target:marrying_character }
 					dynasty = PREV
 					is_close_relative = PREV
 					can_marry_trigger = yes
 					NAND = {
 						cannot_outbreed_trigger = yes
-						NOT = { graphical_culture = ROOT_FROMFROM }
+						NOT = { graphical_culture = event_target:marrying_character }
 					}
 					is_pregnant = no
 					NOT = { trait = celibate }
 					NOT = { trait = inbred }
 					OR = {
-						NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+						NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 						AND = {
-							ROOT_FROMFROM = { age = 18 }
+							event_target:marrying_character = { age = 18 }
 							age = 18
 						}
 					}
@@ -7141,26 +7122,26 @@ character_event = {
 					has_silver_hair_ethnicity_trigger = yes
 					age < 30
 					is_ruler = no
-					NOT = { same_sex = ROOT_FROMFROM }
+					NOT = { same_sex = event_target:marrying_character }
 					dynasty = PREV
 					is_close_relative = PREV
 					can_marry_trigger = yes
 					NAND = {
 						cannot_outbreed_trigger = yes
-						NOT = { graphical_culture = ROOT_FROMFROM }
+						NOT = { graphical_culture = event_target:marrying_character }
 					}
 					is_pregnant = no
 					NOT = { trait = celibate }
 					NOT = { trait = inbred }
 					OR = {
-						NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+						NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 						AND = {
-							ROOT_FROMFROM = { age = 18 }
+							event_target:marrying_character = { age = 18 }
 							age = 18
 						}
 					}
 				}
-				FROMFROM = {
+				event_target:marrying_character = {
 					event_target:spouse_to_evaluate = {
 						remove_character_modifier = wedding
 						remove_spouse = PREV
@@ -7171,13 +7152,13 @@ character_event = {
 					opinion = { who = ROOT modifier = opinion_recent_marriage }
 					reverse_opinion = { who = ROOT modifier = opinion_recent_marriage }
 				}
-				add_spouse = ROOT_FROMFROM
+				add_spouse = event_target:marrying_character
 				if = {
 					limit = {
 						age = 14
-						ROOT_FROMFROM = { age = 14 }
+						event_target:marrying_character = { age = 14 }
 					}
-					ROOT_FROMFROM = {
+					event_target:marrying_character = {
 						if = {
 							limit = {
 								NOT = { any_spouse = { is_main_spouse = no } }
@@ -7191,7 +7172,7 @@ character_event = {
 					}
 				}
 				child_fertility_debuff = yes
-				ROOT_FROMFROM = {
+				event_target:marrying_character = {
 					child_fertility_debuff = yes
 				}
 
@@ -7199,10 +7180,10 @@ character_event = {
 				# if = {
 					# limit = {
 						# age = 14
-						# FROMFROM = { age = 14 }
+						# event_target:marrying_character = { age = 14 }
 					# }
-					# add_spouse = FROMFROM
-					# FROMFROM = {
+					# add_spouse = event_target:marrying_character
+					# event_target:marrying_character = {
 						# if = {
 							# limit = {
 								# NOT = { any_spouse = { is_main_spouse = no } }
@@ -7219,18 +7200,18 @@ character_event = {
 					# limit = {
 						# OR = {
 							# age < 14
-							# FROMFROM = { age < 14 }
+							# event_target:marrying_character = { age < 14 }
 						# }
 					# }
-					# FROMFROM = {
+					# event_target:marrying_character = {
 						# remove_character_modifier = wedding
 						# add_betrothal = PREV
 					# }
-					# add_betrothal = FROMFROM
+					# add_betrothal = event_target:marrying_character
 				# }
 			}
 		}
-		FROMFROM = { clr_character_flag = no_wedding_event }
+		event_target:marrying_character = { clr_character_flag = no_wedding_event }
 	}
 
 	option = {
@@ -7285,7 +7266,7 @@ character_event = {
 		event_target:savage = {
 			letter_event = { id = 500994 }
 		}
-		FROMFROM = {
+		event_target:marrying_character = {
 			set_character_flag = no_wedding_event #stop event triggering twice
 			#Remove the nomadic spouse
 			event_target:spouse_to_evaluate = {
@@ -7294,7 +7275,7 @@ character_event = {
 				if = {
 					limit = {
 						cannot_outbreed_trigger = yes
-						NOT = { graphical_culture = ROOT_FROMFROM }
+						NOT = { graphical_culture = event_target:marrying_character }
 						is_ruler = no
 						liege = { NOT = { is_close_relative = PREV } }
 					}
@@ -7335,21 +7316,21 @@ character_event = {
 						any_courtier = {
 							age < 30
 							is_ruler = no
-							NOT = { same_sex = ROOT_FROMFROM }
+							NOT = { same_sex = event_target:marrying_character }
 							dynasty = PREV
 							is_close_relative = PREV
 							can_marry_trigger = yes
 							NAND = {
 								cannot_outbreed_trigger = yes
-								NOT = { graphical_culture = ROOT_FROMFROM }
+								NOT = { graphical_culture = event_target:marrying_character }
 							}
 							is_pregnant = no
 							NOT = { trait = celibate }
 							NOT = { trait = inbred }
 							OR = {
-								NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+								NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 								AND = {
-									ROOT_FROMFROM = { age = 18 }
+									event_target:marrying_character = { age = 18 }
 									age = 18
 								}
 							}
@@ -7359,52 +7340,52 @@ character_event = {
 						limit = {
 							age < 30
 							is_ruler = no
-							NOT = { same_sex = ROOT_FROMFROM }
+							NOT = { same_sex = event_target:marrying_character }
 							dynasty = PREV
 							is_close_relative = PREV
 							can_marry_trigger = yes
 							NAND = {
 								cannot_outbreed_trigger = yes
-								NOT = { graphical_culture = ROOT_FROMFROM }
+								NOT = { graphical_culture = event_target:marrying_character }
 							}
 							is_pregnant = no
 							NOT = { trait = celibate }
 							NOT = { trait = inbred }
 							OR = {
-								NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+								NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 								AND = {
-									ROOT_FROMFROM = { age = 18 }
+									event_target:marrying_character = { age = 18 }
 									age = 18
 								}
 							}
 						}
-						add_spouse = ROOT_FROMFROM
+						add_spouse = event_target:marrying_character
 						PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
 						child_fertility_debuff = yes
-						ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+						event_target:marrying_character = { clr_character_flag = no_wedding_event }
 
 						# ###old block, betrothal command is broken NOW WORKS...or maybe not
 						# if = {
 							# limit = {
 								# age = 14
-								# ROOT_FROMFROM = { age = 14 }
+								# event_target:marrying_character = { age = 14 }
 							# }
-							# add_spouse = ROOT_FROMFROM
+							# add_spouse = event_target:marrying_character
 							# PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
-							# ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+							# event_target:marrying_character = { clr_character_flag = no_wedding_event }
 						# }
 						# if = {
 							# limit = {
 								# OR = {
 									# age < 14
-									# ROOT_FROMFROM = { age < 14 }
+									# event_target:marrying_character = { age < 14 }
 								# }
 							# }
-							# ROOT_FROMFROM = {
+							# event_target:marrying_character = {
 								# remove_character_modifier = wedding
 								# add_betrothal = PREV
 							# }
-							# add_betrothal = ROOT_FROMFROM
+							# add_betrothal = event_target:marrying_character
 						# }
 						break = yes
 					}
@@ -7425,21 +7406,21 @@ character_event = {
 							any_courtier = {
 								age < 30
 								is_ruler = no
-								NOT = { same_sex = ROOT_FROMFROM }
+								NOT = { same_sex = event_target:marrying_character }
 								dynasty = PREV
 								is_close_relative = PREV
 								can_marry_trigger = yes
 								NAND = {
 									cannot_outbreed_trigger = yes
-									NOT = { graphical_culture = ROOT_FROMFROM }
+									NOT = { graphical_culture = event_target:marrying_character }
 								}
 								is_pregnant = no
 								NOT = { trait = celibate }
 								NOT = { trait = inbred }
 								OR = {
-									NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+									NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 									AND = {
-										ROOT_FROMFROM = { age = 18 }
+										event_target:marrying_character = { age = 18 }
 										age = 18
 									}
 								}
@@ -7449,52 +7430,52 @@ character_event = {
 							limit = {
 								age < 30
 								is_ruler = no
-								NOT = { same_sex = ROOT_FROMFROM }
+								NOT = { same_sex = event_target:marrying_character }
 								dynasty = PREV
 								is_close_relative = PREV
 								can_marry_trigger = yes
 								NAND = {
 									cannot_outbreed_trigger = yes
-									NOT = { graphical_culture = ROOT_FROMFROM }
+									NOT = { graphical_culture = event_target:marrying_character }
 								}
 								is_pregnant = no
 								NOT = { trait = celibate }
 								NOT = { trait = inbred }
 								OR = {
-									NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+									NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 									AND = {
-										ROOT_FROMFROM = { age = 18 }
+										event_target:marrying_character = { age = 18 }
 										age = 18
 									}
 								}
 							}
-							add_spouse = ROOT_FROMFROM
+							add_spouse = event_target:marrying_character
 							PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
 							child_fertility_debuff = yes
-							ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+							event_target:marrying_character = { clr_character_flag = no_wedding_event }
 
 							# ###old block, betrothal command is broken NOW WORKS...or maybe not
 							# if = {
 								# limit = {
 									# age = 14
-									# ROOT_FROMFROM = { age = 14 }
+									# event_target:marrying_character = { age = 14 }
 								# }
-								# add_spouse = ROOT_FROMFROM
+								# add_spouse = event_target:marrying_character
 								# PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
-								# ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+								# event_target:marrying_character = { clr_character_flag = no_wedding_event }
 							# }
 							# if = {
 								# limit = {
 									# OR = {
 										# age < 14
-										# ROOT_FROMFROM = { age < 14 }
+										# event_target:marrying_character = { age < 14 }
 									# }
 								# }
-								# ROOT_FROMFROM = {
+								# event_target:marrying_character = {
 									# remove_character_modifier = wedding
 									# add_betrothal = PREV
 								# }
-								# add_betrothal = ROOT_FROMFROM
+								# add_betrothal = event_target:marrying_character
 							# }
 							break = yes
 						}
@@ -7528,21 +7509,21 @@ character_event = {
 							any_courtier = {
 								age < 30
 								is_ruler = no
-								NOT = { same_sex = ROOT_FROMFROM }
+								NOT = { same_sex = event_target:marrying_character }
 								dynasty = PREV
 								is_close_relative = PREV
 								can_marry_trigger = yes
 								NAND = {
 									cannot_outbreed_trigger = yes
-									NOT = { graphical_culture = ROOT_FROMFROM }
+									NOT = { graphical_culture = event_target:marrying_character }
 								}
 								is_pregnant = no
 								NOT = { trait = celibate }
 								NOT = { trait = inbred }
 								OR = {
-									NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+									NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 									AND = {
-										ROOT_FROMFROM = { age = 18 }
+										event_target:marrying_character = { age = 18 }
 										age = 18
 									}
 								}
@@ -7552,52 +7533,52 @@ character_event = {
 							limit = {
 								age < 30
 								is_ruler = no
-								NOT = { same_sex = ROOT_FROMFROM }
+								NOT = { same_sex = event_target:marrying_character }
 								dynasty = PREV
 								is_close_relative = PREV
 								can_marry_trigger = yes
 								NAND = {
 									cannot_outbreed_trigger = yes
-									NOT = { graphical_culture = ROOT_FROMFROM }
+									NOT = { graphical_culture = event_target:marrying_character }
 								}
 								is_pregnant = no
 								NOT = { trait = celibate }
 								NOT = { trait = inbred }
 								OR = {
-									NOT = { age_diff = { who = ROOT_FROMFROM years = 10 } }
+									NOT = { age_diff = { who = event_target:marrying_character years = 10 } }
 									AND = {
-										ROOT_FROMFROM = { age = 18 }
+										event_target:marrying_character = { age = 18 }
 										age = 18
 									}
 								}
 							}
-							add_spouse = ROOT_FROMFROM
+							add_spouse = event_target:marrying_character
 							PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
 							child_fertility_debuff = yes
-							ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+							event_target:marrying_character = { clr_character_flag = no_wedding_event }
 
 							# ###old block, betrothal command is broken NOW WORKS...or maybe not
 							# if = {
 								# limit = {
 									# age = 14
-									# ROOT_FROMFROM = { age = 14 }
+									# event_target:marrying_character = { age = 14 }
 								# }
-								# add_spouse = ROOT_FROMFROM
+								# add_spouse = event_target:marrying_character
 								# PREV = { opinion = { who = ROOT modifier = opinion_recent_marriage } }
-								# ROOT_FROMFROM = { clr_character_flag = no_wedding_event }
+								# event_target:marrying_character = { clr_character_flag = no_wedding_event }
 							# }
 							# if = {
 								# limit = {
 									# OR = {
 										# age < 14
-										# ROOT_FROMFROM = { age < 14 }
+										# event_target:marrying_character = { age < 14 }
 									# }
 								# }
-								# ROOT_FROMFROM = {
+								# event_target:marrying_character = {
 									# remove_character_modifier = wedding
 									# add_betrothal = PREV
 								# }
-								# add_betrothal = ROOT_FROMFROM
+								# add_betrothal = event_target:marrying_character
 							# }
 							break = yes
 						}
@@ -7618,7 +7599,7 @@ character_event = {
 		name = "WHY WOULD I MARRY THIS PERSON?"
 		trigger = { #AI marrying off non-relative important heirs matrilineally
 			NOT = { has_global_flag = ai_marriage_correction_LANDLESS_OFF }
-			FROMFROM = {
+			event_target:marrying_character = {
 				OR = {
 					any_heir_title = {
 						higher_tier_than = BARON
@@ -7644,7 +7625,7 @@ character_event = {
 						#females only if higher ranking primary heir
 						any_heir_title = {
 							higher_tier_than = BARON
-							ROOT_FROMFROM = {
+							event_target:marrying_character = {
 								event_target:spouse_to_evaluate = {
 									NOR = {
 										NOT = { lower_tier_than = PREVPREV }
@@ -7656,8 +7637,8 @@ character_event = {
 											}
 										}
 										AND = {
-											is_close_relative = ROOT_FROM
-											ROOT_FROM = { higher_tier_than = DUKE }
+											is_close_relative = event_target:old_liege
+											event_target:old_liege = { higher_tier_than = DUKE }
 										}
 									}
 								}
@@ -7677,19 +7658,19 @@ character_event = {
 								higher_tier_than = DUKE
 							}
 							AND = {
-								is_close_relative = ROOT_FROM
-								ROOT_FROM = { higher_tier_than = DUKE }
+								is_close_relative = event_target:old_liege
+								event_target:old_liege = { higher_tier_than = DUKE }
 							}
 						}
 					}
 				}
-				NOT = { is_close_relative = ROOT_FROM }
+				NOT = { is_close_relative = event_target:old_liege }
 			}
 		}
 		ai_chance = {
 			factor = 9999
 		}
-		FROMFROM = {
+		event_target:marrying_character = {
 			event_target:spouse_to_evaluate = {
 				save_event_target_as = old_spouse
 				if = {
@@ -7707,7 +7688,7 @@ character_event = {
 		name = "I AM A DRAGON RIDER!"
 		trigger = { #AI marrying off non-relative dragon riders against their will
 			NOT = { has_global_flag = ai_marriage_correction_LANDLESS_OFF }
-			FROMFROM = {
+			event_target:marrying_character = {
 				can_use_dragon_abilities_trigger = yes
 				is_ruler = no
 				NOT = { #Acceptable if a good marriage
@@ -7715,12 +7696,12 @@ character_event = {
 						OR = {
 							AND = {
 								is_ruler = yes
-								ROOT_FROM = { NOT = { higher_tier_than = PREV } }
+								event_target:old_liege = { NOT = { higher_tier_than = PREV } }
 							}
-							any_heir_title = { ROOT_FROM = { NOT = { higher_tier_than = PREV } } }
-							any_claim = { ROOT_FROM = { lower_tier_than = PREV } }
+							any_heir_title = { event_target:old_liege = { NOT = { higher_tier_than = PREV } } }
+							any_claim = { event_target:old_liege = { lower_tier_than = PREV } }
 							any_close_relative = {
-								ROOT_FROM = { NOT = { higher_tier_than = PREV } }
+								event_target:old_liege = { NOT = { higher_tier_than = PREV } }
 								OR = {
 									is_ancestor_of = PREV
 									is_descendant_of = PREV
@@ -7761,13 +7742,13 @@ character_event = {
 						}
 					}
 				}
-				NOT = { is_close_relative = ROOT_FROM }
+				NOT = { is_close_relative = event_target:old_liege }
 			}
 		}
 		ai_chance = {
 			factor = 9999
 		}
-		FROMFROM = {
+		event_target:marrying_character = {
 			event_target:spouse_to_evaluate = {
 				save_event_target_as = old_spouse
 				if = {
@@ -7998,7 +7979,7 @@ letter_event = {
 		text = "EVTDESC50099"
 		trigger = {
 			NOT = { event_target:invalid_bride = { character = FROM } }
-			FROM = {
+			event_target:marrying_character = {
 				primary_title = {
 					OR = {
 						has_law = true_cognatic_succession
@@ -8014,7 +7995,7 @@ letter_event = {
 		trigger = {
 			NOT = { event_target:invalid_bride = { character = FROM } }
 			NOT = {
-				FROM = {
+				event_target:marrying_character = {
 					primary_title = {
 						OR = {
 							has_law = true_cognatic_succession
@@ -8036,24 +8017,24 @@ letter_event = {
 	immediate = {
 		if = {
 			limit = { ai = no }
-			FROMFROMFROM = { save_event_target_as = invalid_bride } #for loc
+			event_target:marrying_character = { save_event_target_as = invalid_bride } #for loc
 		}
 	}
 
 	option = {
 		name = OK
-		tooltip = { remove_spouse = FROMFROMFROM }
+		tooltip = { remove_spouse = event_target:marrying_character }
 		remove_character_modifier = wedding
 		random_dynasty_member = {
 			limit = {
 				is_close_relative = ROOT
 				NOT = { character = ROOT }
 				OR = {
-					has_opinion_modifier = { who = FROM modifier = opinion_recent_marriage }
+					has_opinion_modifier = { who = event_target:marrying_character modifier = opinion_recent_marriage }
 					is_liege_of = ROOT
 				}
 			}
-			remove_opinion = { who = FROM modifier = opinion_recent_marriage }
+			remove_opinion = { who = event_target:marrying_character modifier = opinion_recent_marriage }
 			letter_event = { id = 500997 }
 		}
 	}
@@ -8167,28 +8148,28 @@ letter_event = {
 	desc = {
 		text = "EVTDESC500993"
 		trigger = {
-			FROMFROMFROM = { NOT = { can_use_dragon_abilities_trigger = yes } }
+			event_target:marrying_character = { NOT = { can_use_dragon_abilities_trigger = yes } }
 			NOT = { event_target:old_liege = { character = ROOT } }
 		}
 	}
 	desc = {
 		text = "EVTDESC500993B"
 		trigger = {
-			FROMFROMFROM = { can_use_dragon_abilities_trigger = yes }
+			event_target:marrying_character = { can_use_dragon_abilities_trigger = yes }
 			NOT = { event_target:old_liege = { character = ROOT } }
 		}
 	}
 	desc = {
 		text = "EVTDESC500993C"
 		trigger = {
-			FROMFROMFROM = { NOT = { can_use_dragon_abilities_trigger = yes } }
+			event_target:marrying_character = { NOT = { can_use_dragon_abilities_trigger = yes } }
 			event_target:old_liege = { character = ROOT }
 		}
 	}
 	desc = {
 		text = "EVTDESC500993D"
 		trigger = {
-			FROMFROMFROM = { can_use_dragon_abilities_trigger = yes }
+			event_target:marrying_character = { can_use_dragon_abilities_trigger = yes }
 			event_target:old_liege = { character = ROOT }
 		}
 	}
@@ -8197,7 +8178,7 @@ letter_event = {
 	show_from_from_from = yes
 
 	immediate = {
-		FROMFROMFROM = { diplomatic_immunity = yes }
+		event_target:marrying_character = { diplomatic_immunity = yes }
 	}
 
 	option = {
@@ -8207,16 +8188,16 @@ letter_event = {
 		}
 		event_target:spouse_to_evaluate = {
 			if = {
-				limit = { is_married = FROMFROMFROM }
-				remove_spouse = FROMFROMFROM
+				limit = { is_married = event_target:marrying_character }
+				remove_spouse = event_target:marrying_character
 			}
 			if = {
-				limit = { is_betrothed = FROMFROMFROM }
-				break_betrothal = FROMFROMFROM
+				limit = { is_betrothed = event_target:marrying_character }
+				break_betrothal = event_target:marrying_character
 			}
 		}
 		hidden_tooltip = {
-			FROMFROMFROM = { #move the character
+			event_target:marrying_character = { #move the character
 				character_event = { id = maintenance.6 days = 2 } #find another marriage?
 				event_target:old_liege = { #if old liege was a player, can keep at that court
 					if = {
@@ -8286,21 +8267,21 @@ letter_event = {
 		name = EVTOPTB500993 #Change to normal marriage
 		trigger = {
 			ai = no
-			event_target:spouse_to_evaluate = { is_married = FROMFROMFROM }
+			event_target:spouse_to_evaluate = { is_married = event_target:marrying_character }
 		}
-		FROMFROMFROM = {
+		event_target:marrying_character = {
 			set_character_flag = no_wedding_event #stop event triggering twice
 		}
 		event_target:spouse_to_evaluate = {
 			set_character_flag = no_wedding_event
 		}
 		if = {
-			limit = { FROMFROMFROM = { is_female = no } }
+			limit = { event_target:marrying_character = { is_female = no } }
 			custom_tooltip = {
 				text = TOOLTIP500993A
 				event_target:spouse_to_evaluate = {
-					remove_spouse = FROMFROMFROM
-					add_spouse = FROMFROMFROM
+					remove_spouse = event_target:marrying_character
+					add_spouse = event_target:marrying_character
 				}
 			}
 		}
@@ -8308,12 +8289,12 @@ letter_event = {
 			custom_tooltip = {
 				text = TOOLTIP500993B
 				event_target:spouse_to_evaluate = {
-					remove_spouse = FROMFROMFROM
-					add_spouse_matrilineal = FROMFROMFROM
+					remove_spouse = event_target:marrying_character
+					add_spouse_matrilineal = event_target:marrying_character
 				}
 			}
 		}
-		FROMFROMFROM = {
+		event_target:marrying_character = {
 			clr_character_flag = no_wedding_event
 		}
 		event_target:spouse_to_evaluate = {
@@ -8329,7 +8310,7 @@ letter_event = {
 			is_incapable = no
 			prisoner = no
 			is_adult = yes
-			FROMFROMFROM = {
+			event_target:marrying_character = {
 				is_ruler = no
 				#Can't be forced if they are strong
 				NAND = {
@@ -8359,7 +8340,7 @@ letter_event = {
 
 			modifier = { #Ai motives
 				factor = 0
-				FROMFROMFROM = {
+				event_target:marrying_character = {
 					#Target has a title or claim that is equal or higher to ROOT's rank
 					lower_tier_than = ROOT
 					NOT = { any_heir_title = { NOT = { lower_tier_than = ROOT } } }
@@ -8375,7 +8356,7 @@ letter_event = {
 			}
 			modifier = {
 				factor = 0
-				FROMFROMFROM = {
+				event_target:marrying_character = {
 					is_female = yes
 					age = 35
 				}
@@ -8386,7 +8367,7 @@ letter_event = {
 			}
 			modifier = {
 				factor = 0
-				reverse_opinion = { who = FROMFROMFROM value = 20 }
+				reverse_opinion = { who = event_target:marrying_character value = 20 }
 				NOR = {
 					trait = cruel
 					trait = ruthless
@@ -8395,14 +8376,14 @@ letter_event = {
 			}
 			modifier = {
 				factor = 0
-				FROMFROMFROM = {
+				event_target:marrying_character = {
 					cannot_outbreed_trigger = yes
 					NOT = { graphical_culture = event_target:spouse_to_evaluate }
 				}
 			}
 			modifier = {
 				factor = 4
-				FROMFROMFROM = {
+				event_target:marrying_character = {
 					has_fair_trait_trigger = yes
 				}
 				event_target:spouse_to_evaluate = {
@@ -8430,7 +8411,7 @@ letter_event = {
 		custom_tooltip = {
 			text = TOOLTIP500993C
 		}
-		FROMFROMFROM = {
+		event_target:marrying_character = {
 			opinion = {
 				who = ROOT
 				modifier = opinion_forced_marriage
@@ -8498,7 +8479,7 @@ letter_event = {
 		piety = -50
 	}
 	after = {
-		hidden_tooltip = { FROMFROMFROM = { diplomatic_immunity = no } }
+		hidden_tooltip = { event_target:marrying_character = { diplomatic_immunity = no } }
 	}
 }
 # Approve or disapprove of de facto Law Change
@@ -8506,7 +8487,7 @@ letter_event = {
 	id = 290
 	desc = "EVTDESC290"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_approve_law
 	lacks_dlc = "Zeus"
 	ai = no
 
@@ -8628,7 +8609,7 @@ letter_event = {
 letter_event = {
 	id = 291
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_approve_de_jure_law
 	ai = no
 	lacks_dlc = "Zeus"
 
@@ -8655,7 +8636,7 @@ letter_event = {
 letter_event = {
 	id = 676
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_approve_de_jure_law
 	ai = no
 	has_dlc = "Zeus"
 
@@ -8689,7 +8670,7 @@ letter_event = {
 	id = 292
 	desc = "EVTDESC292"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_approve_de_jure_law
 	lacks_dlc = "Zeus"
 	ai = no
 
@@ -8903,7 +8884,7 @@ character_event = {
 	desc = "EVTDESC610"
 	picture = "GFX_evt_peasants"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_defect_to_rebels
 
 	option = {
 		name = "EVTOPTA610"
@@ -8919,7 +8900,7 @@ character_event = {
 	desc = "EVTDESC615"
 	picture = "GFX_evt_peasants"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_defect_from_rebels
 
 	option = {
 		name = "EXCELLENT"
@@ -9152,7 +9133,7 @@ character_event = {
 	}
 	picture = GFX_evt_scandal
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_forced_consort
 
 	# immediate = {
 		# hidden_tooltip = {
@@ -9367,7 +9348,7 @@ narrative_event = {
 	picture = GFX_evt_pagan_reformation
 	border = "GFX_event_narrative_frame_religion"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_reform_religion
 	major = yes
 	show_ROOT = yes
 	hide_new = yes
@@ -10101,7 +10082,7 @@ character_event = {
 	prisoner = no
 	min_age = 16
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_elective_gavelkind_succession
 	has_dlc = "Charlemagne"
 
 	trigger = {
@@ -10238,7 +10219,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	has_character_flag = do_not_disturb
 
 	trigger = { # Clears if flag has stayed on for 5 years approx
@@ -10611,7 +10592,7 @@ diploresponse_event = {
 character_event = {
 	id = 680
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	ai = no
 	trigger = {
 		is_nomadic = no
@@ -10642,7 +10623,7 @@ character_event = {
 	picture = "GFX_evt_burning_house"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_revoke_attempted_started_war
 
 	option = {
 		name = "EVTOPTA150"
@@ -10690,7 +10671,7 @@ character_event = {
 	picture = "GFX_evt_burning_house"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_retract_vassal_attempted_started_war
 
 	option = {
 		name = "EVTOPTA150"
@@ -10738,7 +10719,7 @@ character_event = {
 	picture = "GFX_evt_burning_house"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_absorb_clan_attempted_started_war
 
 	option = {
 		name = "EVTOPTA150"
@@ -10752,7 +10733,7 @@ character_event = {
 	picture = "GFX_evt_burning_house"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_split_clan_attempted_started_war
 
 	option = {
 		name = "EVTOPTA150"
@@ -10764,7 +10745,7 @@ character_event = {
 	id = 685
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_become_imprisoned_any_reason
 
 	trigger = {
 		trait = in_hiding
@@ -10867,7 +10848,7 @@ character_event = {
 	id = 689
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	only_rulers = yes
 
@@ -10912,7 +10893,7 @@ character_event = {
 	desc = "EVTDESC45340"
 	picture = "GFX_evt_death"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	hide_window = yes
 
@@ -12037,6 +12018,66 @@ character_event = {
 						limit = { artifact_type = judgment }
 						ROOT = {
 							add_trait = judgment
+						}
+					}
+					else_if = {
+						limit = { artifact_type = mercy }
+						ROOT = {
+							add_trait = mercy
+						}
+					}
+					else_if = {
+						limit = { artifact_type = loyalty }
+						ROOT = {
+							add_trait = loyalty
+						}
+					}
+					else_if = {
+						limit = { artifact_type = grey_wanderer }
+						ROOT = {
+							add_trait = grey_wanderer
+						}
+					}
+					else_if = {
+						limit = { artifact_type = swiftend }
+						ROOT = {
+							add_trait = swiftend
+						}
+					}
+					else_if = {
+						limit = { artifact_type = sundown }
+						ROOT = {
+							add_trait = sundown
+						}
+					}
+					else_if = {
+						limit = { artifact_type = moons_kiss }
+						ROOT = {
+							add_trait = moons_kiss
+						}
+					}
+					else_if = {
+						limit = { artifact_type = wavecarver }
+						ROOT = {
+							add_trait = wavecarver
+						}
+					}
+					else_if = {
+						limit = { artifact_type = curtail }
+						ROOT = {
+							add_trait = curtail
+						}
+					}
+					else_if = {
+						limit = { artifact_type = righteousness }
+						ROOT = {
+							add_trait = righteousness
+						}
+					}
+					else_if = {
+						limit = { artifact_type = scorpion }
+						ROOT = {
+							add_trait = scorpion
 						}
 					}
 					else_if = {
@@ -13236,8 +13277,7 @@ character_event = {
 					character_event = { id = funeral.1 days = 1 }
 				}
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = {
 					set_character_flag = funeral_for_courtier
 					character_event = { id = funeral.1 }
@@ -13451,7 +13491,7 @@ character_event = {
 	desc = "EVTDESC45340"
 	picture = "GFX_evt_death"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	only_rulers = yes
 
 	hide_window = yes
@@ -13994,9 +14034,9 @@ character_event = {
 			}
 			if = {
 				limit = { ROOT = { num_of_count_titles < 2 } }
-				current_heir = { PREV = { grant_kingdom_w_adjudication = PREV } }
+				grant_kingdom_w_adjudication = current_heir
 			}
-			if = {
+			else_if = {
 				limit = { ROOT = { num_of_count_titles = 2 } }
 				ROOT = {
 					random_demesne_title = {
@@ -14201,71 +14241,71 @@ character_event = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_castellan }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_castellan }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_castellan }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_castellan }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_castellan }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_chancellor }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_chancellor }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_chancellor }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_marshal }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_marshal }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_marshal }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_marshal }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_marshal }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_treasurer }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_treasurer }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_treasurer }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_spymaster }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_spymaster }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_spymaster }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_learned }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_learned }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_learned }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_learned }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_learned }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_priest }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_priest }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_priest }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_priest }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_priest }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_ships }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_ships }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_ships }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_ships }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_ships }
 						}
 						random_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_admiral }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_admiral }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_admiral }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_admiral }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_admiral }
 						}
 						any_opinion_modifier_target = {
 							limit = {
 								reverse_has_opinion_modifier = { who = ROOT modifier = opinion_pre_mega_war_advisor }
 							}
-							reverse_remove_opinion  = { who = ROOT modifier = opinion_pre_mega_war_advisor }
-							reverse_opinion  = { who = PREVPREV modifier = opinion_pre_mega_war_advisor }
+							reverse_remove_opinion = { who = ROOT modifier = opinion_pre_mega_war_advisor }
+							reverse_opinion = { who = PREVPREV modifier = opinion_pre_mega_war_advisor }
 						}
 					}
 				}
@@ -14352,8 +14392,8 @@ character_event = {
 		if = {
 			limit = {
 				OR = {
-					c_5317  = { character = ROOT } #Renly
-					c_4317  = { character = ROOT } #Stannis
+					c_5317 = { character = ROOT } #Renly
+					c_4317 = { character = ROOT } #Stannis
 				}
 				e_iron_throne = { holder_scope = { trait = civil_war } }
 				any_sibling = {
@@ -14907,8 +14947,7 @@ character_event = {
 						character_event = { id = slavery.12 days = 1 }
 					}
 				}
-				if = {
-					limit = { is_merchant_republic = yes }
+				else = {
 					family_palace = {
 						current_heir = {
 							ROOT = {
@@ -14931,58 +14970,55 @@ character_event = {
 				limit = {
 					capital_scope = { culture = astapori }
 				}
-				if = {
-					limit = { has_character_flag =  training_unsullied_1000 }
-					if = {
-						limit = { is_patrician = yes }
-						family_palace = { current_heir = { set_character_flag =  training_unsullied_1000 } }
+
+				trigger_switch = {
+					on_trigger = has_character_flag
+
+					training_unsullied_1000 = {
+						if = {
+							limit = { is_patrician = yes }
+							family_palace = { current_heir = { set_character_flag = training_unsullied_1000 } }
+						}
+						else = {
+							current_heir = { set_character_flag = training_unsullied_1000 }
+						}
 					}
-					if = {
-						limit = { is_patrician = no }
-						current_heir = { set_character_flag =  training_unsullied_1000 }
+					training_unsullied_2000 = {
+						if = {
+							limit = { is_patrician = yes }
+							family_palace = { current_heir = { set_character_flag = training_unsullied_2000 } }
+						}
+						else = {
+							current_heir = { set_character_flag = training_unsullied_2000 }
+						}
 					}
-				}
-				if = {
-					limit = { has_character_flag =  training_unsullied_2000 }
-					if = {
-						limit = { is_patrician = yes }
-						family_palace = { current_heir = { set_character_flag =  training_unsullied_2000 } }
+					training_unsullied_3000 = {
+						if = {
+							limit = { is_patrician = yes }
+							family_palace = { current_heir = { set_character_flag = training_unsullied_3000 } }
+						}
+						else = {
+							current_heir = { set_character_flag = training_unsullied_3000 }
+						}
 					}
-					if = {
-						limit = { is_patrician = no }
-						current_heir = { set_character_flag =  training_unsullied_2000 }
-					}
-				}
-				if = {
-					limit = { has_character_flag =  training_unsullied_3000 }
-					if = {
-						limit = { is_patrician = yes }
-						family_palace = { current_heir = { set_character_flag =  training_unsullied_3000 } }
-					}
-					if = {
-						limit = { is_patrician = no }
-						current_heir = { set_character_flag =  training_unsullied_3000 }
-					}
-				}
-				if = {
-					limit = { has_character_flag =  training_unsullied_4000 }
-					if = {
-						limit = { is_patrician = yes }
-						family_palace = { current_heir = { set_character_flag =  training_unsullied_4000 } }
-					}
-					if = {
-						limit = { is_patrician = no }
-						current_heir = { set_character_flag =  training_unsullied_4000 }
+					training_unsullied_4000 = {
+						if = {
+							limit = { is_patrician = yes }
+							family_palace = { current_heir = { set_character_flag = training_unsullied_4000 } }
+						}
+						else = {
+							current_heir = { set_character_flag = training_unsullied_4000 }
+						}
 					}
 				}
+
 				if = {
-					limit = { has_character_modifier =  training_unsullied }
+					limit = { has_character_modifier = training_unsullied }
 					if = {
 						limit = { is_patrician = yes }
 						family_palace = { current_heir = { add_character_modifier = { name = training_unsullied duration = 3650 } } }
 					}
-					if = {
-						limit = { is_patrician = no }
+					else = {
 						current_heir = { add_character_modifier = { name = training_unsullied duration = 3650 } }
 					}
 				}
@@ -15057,15 +15093,15 @@ character_event = {
 								limit = { has_law = cognatic_succession }
 								set_title_flag = cognatic_succession
 							}
-							if = {
+							else_if = {
 								limit = { has_law = true_cognatic_succession }
 								set_title_flag = true_cognatic_succession
 							}
-							if = {
+							else_if = {
 								limit = { has_law = enatic_cognatic_succession }
 								set_title_flag = enatic_cognatic_succession
 							}
-							if = {
+							else_if = {
 								limit = { has_law = enatic_succession }
 								set_title_flag = enatic_succession
 							}
@@ -15107,17 +15143,17 @@ character_event = {
 									clr_title_flag = cognatic_succession
 									gender_succ = cognatic
 								}
-								if = {
+								else_if = {
 									limit = { has_title_flag = true_cognatic_succession }
 									clr_title_flag = true_cognatic_succession
 									gender_succ = true_cognatic
 								}
-								if = {
+								else_if = {
 									limit = { has_title_flag = enatic_cognatic_succession }
 									clr_title_flag = enatic_cognatic_succession
 									gender_succ = enatic_cognatic
 								}
-								if = {
+								else_if = {
 									limit = { has_title_flag = enatic_succession }
 									clr_title_flag = enatic_succession
 									gender_succ = enatic
@@ -15367,8 +15403,7 @@ character_event = {
 					}
 				}
 			}
-			if = {
-				limit = { is_patrician = yes }
+			else = {
 				family_palace = {
 					current_heir = {
 						if = {
@@ -15389,8 +15424,7 @@ character_event = {
 				limit = { is_patrician = no }
 				current_heir = { set_character_flag = inform_available_unsullied }
 			}
-			if = {
-				limit = { is_patrician = yes }
+			else = {
 				family_palace = { current_heir = { set_character_flag = inform_available_unsullied } }
 			}
 		}
@@ -19302,7 +19336,7 @@ character_event = { #inform liege
 character_event = {
 	id = 45360
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_tyranny_gained_tyrant_only
 	hide_window = yes
 
 	option = {
@@ -20400,7 +20434,7 @@ letter_event = {
 character_event = {
 	id = 45400
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_become_imprisoned_any_reason
 	hide_window = yes
 	only_playable = yes
 
@@ -20446,7 +20480,7 @@ character_event = {
 character_event = {
 	id = 45410
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
 	hide_window = yes
 
 	trigger = {
@@ -20515,7 +20549,7 @@ character_event = { #check for opinions only works 1 day after on_new_holder
 character_event = {
 	id = 45415
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 	hide_window = yes
 
 	immediate = {
@@ -20811,7 +20845,7 @@ character_event = {
 	picture = GFX_evt_relic_box
     border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder_usurpation
 
 	trigger = {
 		FROMFROM = {
@@ -21215,7 +21249,7 @@ character_event = {
 character_event = {
 	id = 45426
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_become_imprisoned_any_reason
 	only_rulers = yes
 	hide_window = yes
 
@@ -21281,7 +21315,7 @@ character_event = {
 character_event = {
 	id = 45428
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -21440,47 +21474,47 @@ letter_event = {
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.2
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  100 }
+				opinion = { who = FROM value = 100 }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  0 } }
+				NOT = { opinion = { who = FROM value = 0 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 0.8
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 0.7
-				NOT = { opinion = { who = FROM value =  -99 } }
+				NOT = { opinion = { who = FROM value = -99 } }
 			}
 			modifier = { #Never join if like rebel and have no relation to king
 				factor = 0
@@ -21732,95 +21766,95 @@ letter_event = {
 			# }
 			# modifier = {
 				# factor = 2.5
-				# NOT = { opinion = { who = FROMFROM value =  -75 } }
+				# NOT = { opinion = { who = FROMFROM value = -75 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  -100 }
-					# NOT = { reverse_opinion = { who = ROOT value =  -75 } }
+					# reverse_opinion = { who = ROOT value = -100 }
+					# NOT = { reverse_opinion = { who = ROOT value = -75 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 2
-				# opinion = { who = FROMFROM value =  -75 }
-				# NOT = { opinion = { who = FROMFROM value =  -50 } }
+				# opinion = { who = FROMFROM value = -75 }
+				# NOT = { opinion = { who = FROMFROM value = -50 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  -75 }
-					# NOT = { reverse_opinion = { who = ROOT value =  -50 } }
+					# reverse_opinion = { who = ROOT value = -75 }
+					# NOT = { reverse_opinion = { who = ROOT value = -50 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 1.75
-				# opinion = { who = FROMFROM value =  -50 }
-				# NOT = { opinion = { who = FROMFROM value =  -25 } }
+				# opinion = { who = FROMFROM value = -50 }
+				# NOT = { opinion = { who = FROMFROM value = -25 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  -50 }
-					# NOT = { reverse_opinion = { who = ROOT value =  -25 } }
+					# reverse_opinion = { who = ROOT value = -50 }
+					# NOT = { reverse_opinion = { who = ROOT value = -25 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 1.5
-				# opinion = { who = FROMFROM value =  -25 }
-				# NOT = { opinion = { who = FROMFROM value =  -0 } }
+				# opinion = { who = FROMFROM value = -25 }
+				# NOT = { opinion = { who = FROMFROM value = -0 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  -25 }
-					# NOT = { reverse_opinion = { who = ROOT value =  -0 } }
+					# reverse_opinion = { who = ROOT value = -25 }
+					# NOT = { reverse_opinion = { who = ROOT value = -0 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 1.5
-				# opinion = { who = FROMFROM value =  0 }
-				# NOT = { opinion = { who = FROMFROM value =  25 } }
+				# opinion = { who = FROMFROM value = 0 }
+				# NOT = { opinion = { who = FROMFROM value = 25 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  0 }
-					# NOT = { reverse_opinion = { who = ROOT value =  25 } }
+					# reverse_opinion = { who = ROOT value = 0 }
+					# NOT = { reverse_opinion = { who = ROOT value = 25 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 1.75
-				# opinion = { who = FROMFROM value =  25 }
-				# NOT = { opinion = { who = FROMFROM value =  50 } }
+				# opinion = { who = FROMFROM value = 25 }
+				# NOT = { opinion = { who = FROMFROM value = 50 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  25 }
-					# NOT = { reverse_opinion = { who = ROOT value =  50 } }
+					# reverse_opinion = { who = ROOT value = 25 }
+					# NOT = { reverse_opinion = { who = ROOT value = 50 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 2
-				# opinion = { who = FROMFROM value =  50 }
-				# NOT = { opinion = { who = FROMFROM value =  75 } }
+				# opinion = { who = FROMFROM value = 50 }
+				# NOT = { opinion = { who = FROMFROM value = 75 } }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  50 }
-					# NOT = { reverse_opinion = { who = ROOT value =  75 } }
+					# reverse_opinion = { who = ROOT value = 50 }
+					# NOT = { reverse_opinion = { who = ROOT value = 75 } }
 				# }
 			# }
 			# modifier = {
 				# factor = 2.5
-				# opinion = { who = FROMFROM value =  75 }
+				# opinion = { who = FROMFROM value = 75 }
 				# rebel_leader = {
 					# is_alive = yes
 					# has_character_modifier = new_rebel_leader
 					# war_with = FROMFROM
-					# reverse_opinion = { who = ROOT value =  75 }
+					# reverse_opinion = { who = ROOT value = 75 }
 				# }
 			# }
 
@@ -22078,7 +22112,7 @@ letter_event = {
 					}
 					FROM = {
 						is_female = no
-						age = 16
+						is_adult = yes
 						NOT = { is_weak_khal_trigger = yes }
 						OR = {
 							is_nomadic = no
@@ -22456,7 +22490,7 @@ letter_event = {
 			modifier = {
 				factor = 0
 				NOT = { in_faction = faction_independence }
-				FROM = { reverse_opinion = { who = ROOT value =  0 } }
+				FROM = { reverse_opinion = { who = ROOT value = 0 } }
 			}
 
 			modifier = {
@@ -22514,37 +22548,37 @@ letter_event = {
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  0 } }
+					NOT = { reverse_opinion = { who = ROOT value = 0 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -20 } }
+					NOT = { reverse_opinion = { who = ROOT value = -20 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -40 } }
+					NOT = { reverse_opinion = { who = ROOT value = -40 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -60 } }
+					NOT = { reverse_opinion = { who = ROOT value = -60 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -80 } }
+					NOT = { reverse_opinion = { who = ROOT value = -80 } }
 				}
 			}
 			modifier = {
 				factor = 1.25
 				FROM = {
-					NOT = { reverse_opinion = { who = ROOT value =  -99 } }
+					NOT = { reverse_opinion = { who = ROOT value = -99 } }
 				}
 			}
 		}
@@ -22596,7 +22630,7 @@ letter_event = {
 character_event = { #on_marriage so the Ai does not have magical ability to sense infertility
 	id = 45432
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_marriage
 	hide_window = yes
 
 	trigger = {
@@ -22623,7 +22657,7 @@ character_event = { #on_marriage so the Ai does not have magical ability to sens
 character_event = {
 	id = 45433
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -22649,7 +22683,7 @@ character_event = {
 character_event = {
 	id = 45435
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_create_title
 	hide_window = yes
 
 	trigger = {
@@ -22692,7 +22726,7 @@ character_event = {
 character_event = {
 	id = 45436
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_create_title
 	hide_window = yes
 
 	trigger = {

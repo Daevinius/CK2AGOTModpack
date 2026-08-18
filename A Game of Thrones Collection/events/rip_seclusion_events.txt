@@ -466,7 +466,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 60
+		months = 2
 
 	}
 
@@ -524,7 +524,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 90
+		months = 3
 	}
 
 	option = {
@@ -589,7 +589,7 @@ character_event = {
 
 
 	mean_time_to_happen = {
-		days = 60
+		months = 2
 	}
 
 	option = {
@@ -834,7 +834,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 180
+		months = 6
 		#
 	}
 
@@ -951,7 +951,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 90
+		months = 3
 	}
 
 	option = {
@@ -996,7 +996,7 @@ character_event = {
 	desc = RIP.11557.d #recovery
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes #triggered by "Open the gates"
+	is_triggered_only = yes
 
 	notification = yes
 
@@ -2150,7 +2150,7 @@ character_event = {
 		save_event_target_as = seclusion_parent
 		random_child = {
 			limit = {
-				age = 16
+				is_adult = yes
 				NOT = { trait = craven }
 				NOT = { trait = celibate }
 				at_location = ROOT
@@ -2169,7 +2169,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		FROM = { character_event =  { id = RIP.12032 } }
+		FROM = { character_event = { id = RIP.12032 } }
 	}
 }
 
@@ -2313,11 +2313,11 @@ character_event = {
 			limit = { event_target:seclusion_childs_lover = { always = yes } }
 			if = {
 				limit = { NOT = { has_character_flag = seclusion_child_kicked_out } }
-				FROM = { character_event =  { id = RIP.12034 days = 12 } }
+				FROM = { character_event = { id = RIP.12034 days = 12 } }
 			}
 			if = {
 				limit = { has_character_flag = seclusion_child_kicked_out }
-				character_event =  { id = RIP.12035 days = 7 }
+				character_event = { id = RIP.12035 days = 7 }
 				character_event = { id = RIP.12037 }
 			}
 		}
@@ -2351,7 +2351,7 @@ character_event = {
 
 
 	immediate = {
-		event_target:seclusion_childs_lover = { add_character_modifier =  { name = in_seclusion duration = -1 } }
+		event_target:seclusion_childs_lover = { add_character_modifier = { name = in_seclusion duration = -1 } }
 	}
 
 	#Stay and get married
@@ -2371,8 +2371,7 @@ character_event = {
 				limit = { is_female = yes }
 				add_spouse_matrilineal = event_target:seclusion_childs_lover
 			}
-			if = {
-				limit = { is_female = no }
+			else = {
 				add_spouse = event_target:seclusion_childs_lover
 			}
 		}
@@ -2505,8 +2504,7 @@ character_event = {
 				limit = { is_female = yes }
 				add_spouse_matrilineal = event_target:seclusion_childs_lover
 			}
-			if = {
-				limit = { is_female = no }
+			else = {
 				add_spouse = event_target:seclusion_childs_lover
 			}
 		}
@@ -2539,7 +2537,7 @@ character_event = {
 	is_triggered_only = yes
 
 	option = {
-		FROM = { character_event =  { id = RIP.12039 } }
+		FROM = { character_event = { id = RIP.12039 } }
 	}
 }
 
@@ -5696,7 +5694,7 @@ character_event = {
 					NAND = {
 						NOT = { has_character_flag = seclusion_child_has_lover }
 						any_child = {
-							age = 16
+							is_adult = yes
 							NOT = { trait = craven }
 							NOT = { trait = celibate }
 							at_location = ROOT
@@ -5725,7 +5723,7 @@ character_event = {
 				modifier = {
 					factor = 0
 					NAND = {
-						age = 16
+						is_adult = yes
 						host = { character = ROOT }
 						job_treasurer = {
 							always = yes
@@ -5785,7 +5783,7 @@ character_event = { # Fires from on_become_imprisoned_any_reason (if you are In 
 	id = RIP.12097
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_become_imprisoned_any_reason
 
 	trigger = {
 		has_character_modifier = in_seclusion

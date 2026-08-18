@@ -1,0 +1,126 @@
+targetted_decisions = {
+	TSP_fish_gods_human_sacrifice = {
+		filter = court
+		ai_target_filter = court
+
+		from_potential = {
+			religion = fish_gods
+		}
+
+		potential = {
+			prisoner = yes
+			host = { character = FROM }
+		}
+		allow = {
+			prisoner = yes
+			NOT = { religion = fish_gods }
+			NOT = { religion = old_ones }
+		}
+		effect = {
+			any_liege = {
+				character_event = { id = TSP_fishsacrifice.1 }
+			}
+			hidden_tooltip = {
+				FROM = {
+					character_event = { id = TSP_fishsacrifice.2 }
+				}
+			}
+			death = {
+				death_reason = death_sacrificed
+				killer = FROM
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	TSP_human_sacrifice_cthulhu_asleep = {
+		filter = court
+		ai_target_filter = court
+
+		from_potential = {
+			OR = {
+				religion = old_ones
+				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+			NOT = { religion = fish_gods }
+			NOT = { has_global_flag = old_ones_scourge }
+		}
+
+		potential = {
+			prisoner = yes
+			host = { character = FROM }
+		}
+		allow = {
+			prisoner = yes
+			NOT = {
+				religion = old_ones
+				religion = fish_gods
+			}
+		}
+		effect = {
+			any_liege = {
+				character_event = { id = TSP_fishsacrifice.3 }
+			}
+			hidden_tooltip = {
+				FROM = {
+					character_event = { id = TSP_fishsacrifice.4 }
+				}
+			}
+			death = {
+				death_reason = death_sacrificed
+				killer = FROM
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	TSP_human_sacrifice_cthulhu_awake = {
+		filter = court
+		ai_target_filter = court
+
+		from_potential = {
+			OR = {
+				religion = old_ones
+				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+			NOT = { religion = fish_gods }
+			has_global_flag = old_ones_scourge
+		}
+
+		potential = {
+			prisoner = yes
+			host = { character = FROM }
+		}
+		allow = {
+			prisoner = yes
+			NOT = {
+				religion = old_ones
+				religion = fish_gods
+				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		effect = {
+			any_liege = {
+				character_event = { id = TSP_fishsacrifice.3 }
+			}
+			hidden_tooltip = {
+				FROM = {
+					character_event = { id = TSP_fishsacrifice.4 }
+				}
+			}
+			death = {
+				death_reason = death_sacrificed
+				killer = FROM
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

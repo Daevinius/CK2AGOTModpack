@@ -1,0 +1,714 @@
+# Landed Titles Nightswatch and Beyond The Wall
+
+k_nightswatch = {
+	color = { 40 40 40 }
+	color2 = { 100 100 100 }
+
+	title = "NIGHTS_KING"
+	title_female = "NIGHTS_KING_female"
+	foa = "NIGHTS_KING_FOA"
+
+	capital = 17 #Castle Black
+
+	allow = { always = no }
+
+	d_the_wall = {
+		color = { 40 40 40 }
+		color2 = { 100 100 100 }
+
+		c_castle_black = {
+			color = { 50 50 50 }
+			color2 = { 100 100 100 }
+
+			holy_site = beyond_wall_old_gods
+			holy_site = beyond_wall_old_gods_reformed
+			holy_site = cold_gods
+			holy_site = thenn_rel
+			holy_site = mountain_old_gods
+			holy_site = pagan
+			holy_site = aztec_reformed
+			holy_site = aztec
+			holy_site = ruin_rel
+
+			b_castle_black = {
+			}
+
+			b_ironmark = {
+			}
+
+			b_the_nightfort = {
+			}
+
+			b_deep_lake = {
+			}
+
+			b_queensgate = {
+			}
+
+			b_oakenshield = {
+			}
+
+			b_woodswatch = {
+			}
+		}
+		c_shadow_tower = {
+			color = { 20 20 20 }
+			color2 = { 100 100 100 }
+
+			b_shadow_tower = {
+			}
+			b_sentinel_stand = {
+			}
+			b_greyguard = {
+			}
+			b_stonedoor = {
+			}
+			b_hoarfrost_hill = {
+			}
+		}
+		c_westwatch_mbs = {
+			color = { 20 20 20 }
+			color2 = { 100 100 100 }
+
+			b_westwatch_mbs = {
+			}
+		}
+		c_eastwatch = {
+			color = { 70 70 70 }
+			color2 = { 100 100 100 }
+
+			b_eastwatch = {
+			}
+			b_sable_hall = {
+			}
+			b_rimegate = {
+			}
+			b_the_long_barrow = {
+			}
+			b_the_torches = {
+			}
+			b_greenguard = {
+			}
+
+		}
+	}
+	d_the_gifts = {
+		color = { 35 35 35 }
+		color2 = { 100 100 100 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_west_gift = {
+			color = { 40 40 40 }
+			color2 = { 100 100 100 }
+
+			b_west_gift = {}
+		}
+		c_brandons_gift = {
+			color = { 35 35 35 }
+			color2 = { 100 100 100 }
+
+			b_moles_town = {
+			}
+			b_brandoncastle = {
+			}
+			b_north_town = {
+			}
+		}
+	}
+}
+
+k_beyond_wall = {
+	color = { 155 155 155 }
+	color2 = { 220 220 20 }
+
+	allow = {
+		NOT = { trait = wildling }
+		hidden_tooltip = { NOT = { culture_group = winter_group } }
+	}
+
+	name_tier = king
+
+	dignity = 20
+
+	culture = wildling
+	religion = beyond_wall_old_gods
+
+	d_milkwater = {
+		color = { 92 145 210 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_fot_first_men = {
+			color = { 122 175 255 }
+			color2 = { 255 255 255 }
+
+			holy_site = old_gods
+			holy_site = old_gods_reformed
+			holy_site = beyond_wall_old_gods
+			holy_site = beyond_wall_old_gods_reformed
+			holy_site = cold_gods
+			holy_site = thenn_rel
+
+			b_the_fist = {
+			}
+			b_the_fist_temple = {
+			}
+		}
+		c_crasters_keep = {
+			color = { 153 0 255 }
+			color2 = { 255 255 255 }
+
+			holy_site = cold_gods
+
+			b_crasters_keep = {
+			}
+		}
+		c_whitetree = {
+			color = { 153 0 255 }
+			color2 = { 255 255 255 }
+
+			holy_site = cold_gods
+
+			b_whitewatch = {
+			}
+			b_whitetree = {
+			}
+			b_first_hearth = {
+			}
+
+		}
+	}
+	d_hardhome = {
+		color = { 133 0 200 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_hardhome = {
+			color = { 153 0 255 }
+			color2 = { 255 255 255 }
+
+			holy_site = beyond_wall_old_gods
+			holy_site = beyond_wall_old_gods_reformed
+
+			b_storrolds_point = {
+			}
+			b_hardhome = {
+			}
+			b_wightward = {
+			}
+			b_storrolds_keep = {
+			}
+			b_hardhome_city = {
+			}
+		}
+		c_first_forest = {
+			color = { 113 0 215 }
+			color2 = { 255 255 255 }
+
+			b_firsthill = {
+			}
+			b_firsthome = {
+			}
+		}
+	}
+	d_shivering_shore = {
+		color = { 202 122 255 }
+		color2 = { 255 255 255 }
+
+		#capital = 6 # Shivering Forest
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+		c_shivering_forest = {
+			color = { 202 122 255 }
+			color2 = { 255 255 255 }
+
+			b_shivering_grove = {
+			}
+			b_shivering_thatch = {
+			}
+		}
+		c_free_vale = {
+			color = { 152 72 205 }
+			color2 = { 255 255 255 }
+
+			b_free_grove = {
+			}
+			b_borderhold = {
+			}
+		}
+	}
+	d_haunted_forest = {
+		color = { 153 0 255 }
+		color2 = { 255 255 255 }
+
+		#capital = 14 # Hardhome
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+
+		c_haunted_forest = {
+			color = { 153 0 255 }
+			color2 = { 255 255 255 }
+
+			b_haunted_keep = {
+			}
+			b_old_weirgrove = {
+			}
+		}
+		c_antler_vale = {
+			color = { 202 122 255 }
+			color2 = { 255 255 255 }
+
+			b_antler_fork = {
+			}
+			b_wightgrove = {
+			}
+		}
+		c_night_valleys = {
+			color = { 100 0 200 }
+			color2 = { 255 255 255 }
+
+			b_nighthold = {
+			}
+			b_nightwatch = {
+			}
+		}
+	}
+	d_lower_frostfangs = {
+		color = { 122 175 255 }
+		color2 = { 255 255 255 }
+
+		#capital = 9 # Fist of the First Men
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_c_frostfangs = {
+			color = { 122 175 255 }
+			color2 = { 255 255 255 }
+
+			b_giants_stair = {
+			}
+			b_forktop_rest = {
+			}
+		}
+		c_the_gorge = {
+			color = { 122 175 255 }
+			color2 = { 255 255 255 }
+
+			b_ruddy_hall = {
+			}
+
+			b_bearview = {
+			}
+		}
+		c_spring_caves = {
+			color = { 108 133 171 }
+			color2 = { 255 255 255 }
+
+			b_warm_water = {
+			}
+			b_rockhome = {
+			}
+		}
+	}
+	d_upper_frostfangs = {
+		color = { 81 61 255 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_n_frostfangs = {
+			color = { 81 61 255 }
+			color2 = { 255 255 255 }
+
+			holy_site = cold_gods
+
+			b_forktop_point = {
+			}
+		}
+		c_the_giants_stairs = {
+			color = { 111 97 255 }
+			color2 = { 255 255 255 }
+
+			b_gianthold = {
+			}
+		}
+		c_skirling_pass = {
+			color = { 81 61 255 }
+			color2 = { 255 255 255 }
+
+			b_skirling_watch = {
+			}
+			b_keening_arch = {
+			}
+			b_deepvalley = {
+			}
+		}
+		c_giants_refuge = {
+			color = { 81 67 225 }
+			color2 = { 255 255 255 }
+
+			b_giants_refuge = {
+			}
+		}
+	}
+	d_thenn = {
+		color = { 184 151 108 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+		c_thenn = {
+			color = { 81 61 255 }
+			color2 = { 255 255 255 }
+
+			holy_site = thenn_rel
+
+			b_thenn = {
+			}
+			b_northdown = {
+			}
+		}
+	}
+	d_lakelands = {
+		color = { 125 147 184 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_ice_bones = {
+			color = { 127 177 227 }
+			color2 = { 255 255 255 }
+
+			b_snowtop = {}
+			b_frozenlakes = {}
+		}
+		c_coldgraves = {
+			color = { 78 121 163 }
+			color2 = { 255 255 255 }
+
+			b_lastmanskeep = {}
+			b_smallice = {}
+		}
+		c_snowblood = {
+			color = { 67 154 240 }
+			color2 = { 255 255 255 }
+
+			b_icepoint = {}
+			b_forestedge = {}
+		}
+		c_winters_hold = {
+			color = { 42 103 163 }
+			color2 = { 255 255 255 }
+
+			b_ends_water = {}
+			b_icebay = {}
+		}
+	}
+	d_frozen_shore = {
+		color = { 136 122 255 }
+		color2 = { 255 255 255 }
+
+		#capital = 4 # The Frozen Shore
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_frozen_shore = {
+			color = { 136 122 255 }
+			color2 = { 255 255 255 }
+
+			b_icehome = {
+			}
+
+		}
+		c_ice_bay_shore = {
+			color = { 136 122 255 }
+			color2 = { 255 255 255 }
+
+			b_iceguard = {
+			}
+			b_baypoint = {
+			}
+		}
+	}
+	d_ice_rivers = {
+		color = { 176 162 255 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+						}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_great_ice_river = {
+			color = { 176 162 255 }
+			color2 = { 255 255 255 }
+
+			b_ice_camp = {
+			}
+			b_icecross = {
+			}
+		}
+		c_the_west_shelf = {
+			color = { 101 41 255 }
+			color2 = { 255 255 255 }
+
+			b_west_camp = {
+			}
+		}
+		c_snow_slope = {
+			color = { 100 76 237 }
+			color2 = { 255 255 255 }
+
+			b_snow_slope = {
+			}
+		}
+	}
+	d_giantlands = {
+		color = { 92 145 210 }
+		color2 = { 255 255 255 }
+
+		allow = {
+			OR = {
+				custom_tooltip = {
+					text = TOOLTIPhl_creation_requirement
+					any_demesne_province = { duchy = { title = FROM } }
+
+					trigger_if = {
+						limit = {
+							ai = yes
+							real_tier = duke
+						}
+
+						num_of_duke_titles < 1
+					}
+				}
+				has_game_rule = { name = hl_creation_requirement value = off }
+			}
+		}
+
+		c_mammoth_tundra = {
+			color = { 122 52 205 }
+			color2 = { 255 255 255 }
+
+			b_mammoth_tundra_1 = {
+			}
+			b_mammoth_tundra_2 = {
+			}
+		}
+		c_endless_waste = {
+			color = { 102 62 205 }
+			color2 = { 255 255 255 }
+
+			b_endless_waste_1 = {
+			}
+			b_endless_waste_2 = {
+			}
+		}
+	}
+}
+
+d_giants_isle = {
+	color = { 227 223 211 }
+	color2 = { 255 255 255 }
+
+	allow = {
+		OR = {
+			custom_tooltip = {
+				text = TOOLTIPhl_creation_requirement
+				hidden_tooltip = { any_demesne_province = { duchy = { title = FROM } } }
+			}
+			has_game_rule = { name = hl_creation_requirement value = off }
+		}
+	}
+
+	c_giants_isle = {
+		color = { 212 205 184 }
+		color2 = { 255 255 255 }
+
+		b_giants_den = {
+		}
+	}
+}

@@ -159,7 +159,7 @@ character_event = {
 		if = {
 			limit = {
 				NOT = { trait = honorable }
-				NOT =  { trait = ruthless }
+				NOT = { trait = ruthless }
 				personality_traits < 6
 			}
 			add_trait = ruthless
@@ -1049,7 +1049,7 @@ character_event = {
 		if = {
 			limit = {
 				NOT = { trait = zealous }
-				NOT =  { trait = cynical }
+				NOT = { trait = cynical }
 				personality_traits < 6
 			}
 			random = {
@@ -1110,7 +1110,7 @@ character_event = {
 		if = {
 			limit = {
 				NOT = { trait = zealous }
-				NOT =  { trait = cynical }
+				NOT = { trait = cynical }
 				personality_traits < 6
 			}
 			random = {
@@ -1566,7 +1566,7 @@ character_event = {
 		if = {
 			limit = {
 				NOT = { trait = charitable }
-				NOT =  { trait = greedy }
+				NOT = { trait = greedy }
 				personality_traits < 6
 			}
 			random = {
@@ -3801,7 +3801,7 @@ character_event = {
 	hide_window = yes
 
 	only_playable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_focus_pulse
 	prisoner = no
 	only_capable = yes
 
@@ -4221,7 +4221,7 @@ character_event = {
 		if = {
 			limit = {
 				NOT = { trait = honest }
-				NOT =  { trait = deceitful }
+				NOT = { trait = deceitful }
 				NOT = { trait = honorable }
 				personality_traits < 6
 			}
@@ -4456,7 +4456,7 @@ character_event = {
 character_event = { #trigger for non way of life users
 	id = WoL.10649
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	min_age = 18
@@ -5090,7 +5090,7 @@ character_event = {
 #Courtier kills prostitute
 character_event = {
 	id = WoL.10654
-	desc =  EVTDESC_WOL_10654
+	desc = EVTDESC_WOL_10654
 
 	is_triggered_only = yes
 	picture = GFX_evt_bad_news
@@ -5098,7 +5098,7 @@ character_event = {
 
 	trigger = {
 		any_courtier = {
-			age = 16
+			is_adult = yes
 			is_female = no
 			prisoner = no
 			is_ruler = no
@@ -5128,7 +5128,7 @@ character_event = {
 	immediate = {
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				is_female = no
 				prisoner = no
 				is_ruler = no

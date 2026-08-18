@@ -20,7 +20,7 @@ character_event = {
 	desc = EVTDESC4000
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -100,7 +100,7 @@ character_event = {
 	desc = EVTDESC4040
 	picture = GFX_evt_bishop
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -185,7 +185,7 @@ character_event = {
 	desc = EVTDESC4085
 	picture = GFX_evt_hunt
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -275,7 +275,7 @@ character_event = {
 			limit = {
 				war = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				OR = {
 					trait = slothful
 					trait = content
@@ -383,7 +383,7 @@ character_event = {
 	desc = EVTDESC4036
 	picture = GFX_evt_scandal
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -478,7 +478,7 @@ character_event = {
 	desc = EVTDESC4035
 	picture = GFX_evt_bandits
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -570,7 +570,7 @@ character_event = {
 	desc = EVTDESC4010
 	picture = GFX_evt_bandits
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 16
@@ -707,7 +707,7 @@ character_event = {
 	desc = EVTDESC4045
 	picture = GFX_evt_bandits
 	border = GFX_event_normal_frame_intrigue
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	max_age = 60
@@ -974,7 +974,7 @@ character_event = {
 	picture = GFX_evt_shadowy_cabal
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -1094,7 +1094,7 @@ character_event = {
 	picture = GFX_evt_heretic
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -1182,7 +1182,7 @@ character_event = {
 			limit = {
 				war = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				OR = {
 					trait = ambitious
 					trait = brave
@@ -1208,7 +1208,7 @@ character_event = {
 	desc = EVTDESC4020
 	picture = GFX_evt_bandits
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -1516,7 +1516,7 @@ character_event = {
 	desc = EVTDESC4024
 	picture = GFX_evt_holy_emperor
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_settlement_construction_completed
 
 	option = {
 		name = EVTOPTA4024
@@ -1560,7 +1560,7 @@ character_event = {
 	desc = EVTDESC4005
 	picture = GFX_evt_bandits
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_capable = yes
@@ -1844,7 +1844,7 @@ character_event = {
 	is_married = yes
 	only_capable = yes
 	prisoner = no
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	war = no
 	only_rulers = no
 	in_command = no
@@ -2120,8 +2120,7 @@ character_event = {
 				years = 2
 			}
 		}
-		if = {
-			limit = { is_female = no }
+		else = {
 			add_character_modifier = {
 				modifier = adulterer
 				years = 2
@@ -2146,7 +2145,7 @@ character_event = {
 	desc = EVTDESC4060
 	picture = GFX_evt_falconing
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 20
@@ -2208,7 +2207,7 @@ character_event = {
 			limit = {
 				war = no
 				prisoner = no
-				age = 16
+				is_adult = yes
 				OR = {
 					trait = falconer
 					trait = hunter
@@ -2237,7 +2236,7 @@ character_event = {
 						trait = craven
 					}
 				}
-				age = 16
+				is_adult = yes
 			}
 			opinion = {
 				modifier = opinion_oblivious
@@ -2261,7 +2260,7 @@ character_event = {
 	picture = GFX_evt_market
 	border = GFX_event_normal_frame_economy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -2422,7 +2421,7 @@ character_event = {
 	desc = EVTDESC4120
 	picture = GFX_evt_joust
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -2602,7 +2601,7 @@ character_event = {
 	desc = EVTDESC4125
 	picture = GFX_evt_joust
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -2701,7 +2700,7 @@ character_event = {
 	desc = EVTDESC4130
 	picture = GFX_evt_jugglers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -2810,7 +2809,7 @@ character_event = {
 	desc = EVTDESC4135
 	picture = GFX_evt_marriage
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -2911,7 +2910,7 @@ character_event = {
 	desc = EVTDESC4145
 	picture = GFX_evt_jugglers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -3135,7 +3134,7 @@ character_event = {
 	desc = EVTDESC4150
 	picture = GFX_evt_jugglers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -3270,7 +3269,7 @@ character_event = {
 	desc = EVTDESC4155
 	picture = GFX_evt_jugglers
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 20
 	only_playable = yes
@@ -3448,7 +3447,7 @@ character_event = {
 	desc = EVTDESC4175
 	picture = GFX_evt_feast
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes

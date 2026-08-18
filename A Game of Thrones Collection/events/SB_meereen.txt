@@ -24,43 +24,43 @@ narrative_event = {
 		custom_tooltip = { text = EVTTOOLTIP_cupbearers }
 		set_character_flag = has_cupbearers
 		c_130360004 = { #Grazhar zo Galare
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_131360004 = { #Qezza co Galare
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_108360010 = { #Jezhene zo Quazzar
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_132360007 = { #Kezmya zo Pahl
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_106360005 = { #Mezzara zo Merreq
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_103360014 = { #Miklaz zo Rhazdar
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_107360016 = { #Draqaz zo Zhak
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_104360012 = { #Dhazzar zo Dhazak
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_137360003 = { #Bhakaz co Loraq
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		c_103360030 = { #Azzak zo Ghazeen
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			set_character_flag = daenerys_cupbearer
 		}
 		ROOT = {
@@ -114,7 +114,7 @@ narrative_event = {
 			}
 		}
 		c_151360004 = { #Galazza the Green Grace
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			opinion = {
 				modifier = strengthened_loyalty
 				who = ROOT
@@ -122,7 +122,7 @@ narrative_event = {
 			}
 		}
 		c_130360004 = { #Grazhar zo Galare
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			add_trait = brave
 			set_character_flag = support_daenerys
 			opinion = {
@@ -132,7 +132,7 @@ narrative_event = {
 			}
 		}
 		c_131360004 = { #Qezza co Galare
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			add_trait = poet
 			set_character_flag = support_daenerys
 			opinion = {
@@ -161,7 +161,7 @@ narrative_event = {
 			}
 		}
 		c_16571015 = {  #Lord Galare
-			custom_tooltip = { show_portrait = yes }
+			show_portrait = yes
 			opinion = {
 				modifier = strengthened_loyalty
 				who = ROOT
@@ -614,7 +614,7 @@ character_event = {
 			}
 		}
 		c_106360005 = { #Mezzara zo Merreq
-			c_sandstone_valley  = {
+			c_sandstone_valley = {
 				grant_title = PREV
 				set_defacto_liege = ROOT
 			}
@@ -949,6 +949,8 @@ character_event = {
 	picture = GFX_shavepates
 	hide_window = yes
 
+	only_playable = yes
+	has_character_flag = daenerys_targaryen
 	has_global_flag = dany_stormborn_events
 
 	trigger = {
@@ -988,7 +990,8 @@ narrative_event = {
 	title = "EVTTITLEsb_shavepate.1"
 	picture = GFX_shavepates
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
+	has_character_flag = daenerys_targaryen
 	has_global_flag = dany_stormborn_events
 
 	trigger = {
@@ -1080,7 +1083,7 @@ narrative_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 12
+		years = 1
 	}
 
 	option = {
@@ -1133,7 +1136,7 @@ narrative_event = {
 				factor = 1.2
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  20 }
+						opinion = { who = ROOT value = 20 }
 					}
 				}
 			}
@@ -1141,7 +1144,7 @@ narrative_event = {
 				factor = 1.2
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  40 }
+						opinion = { who = ROOT value = 40 }
 					}
 				}
 			}
@@ -1149,7 +1152,7 @@ narrative_event = {
 				factor = 1.3
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  60 }
+						opinion = { who = ROOT value = 60 }
 					}
 				}
 			}
@@ -1157,7 +1160,7 @@ narrative_event = {
 				factor = 1.4
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  80 }
+						opinion = { who = ROOT value = 80 }
 					}
 				}
 			}
@@ -1165,7 +1168,7 @@ narrative_event = {
 				factor = 1.5
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  100 }
+						opinion = { who = ROOT value = 100 }
 					}
 				}
 			}
@@ -1173,7 +1176,7 @@ narrative_event = {
 				factor = 1
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  0 }
+						opinion = { who = ROOT value = 0 }
 					}
 				}
 			}
@@ -1181,7 +1184,7 @@ narrative_event = {
 				factor = 0.8
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -20 }
+						opinion = { who = ROOT value = -20 }
 					}
 				}
 			}
@@ -1189,7 +1192,7 @@ narrative_event = {
 				factor = 0.7
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -40 }
+						opinion = { who = ROOT value = -40 }
 					}
 				}
 			}
@@ -1197,7 +1200,7 @@ narrative_event = {
 				factor = 0.6
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -60 }
+						opinion = { who = ROOT value = -60 }
 					}
 				}
 			}
@@ -1205,7 +1208,7 @@ narrative_event = {
 				factor = 0.6
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -80 }
+						opinion = { who = ROOT value = -80 }
 					}
 				}
 			}
@@ -1213,7 +1216,7 @@ narrative_event = {
 				factor = 0.5
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -100 }
+						opinion = { who = ROOT value = -100 }
 					}
 				}
 			}
@@ -1265,7 +1268,7 @@ narrative_event = {
 				factor = -0.8
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  20 }
+						opinion = { who = ROOT value = 20 }
 					}
 				}
 			}
@@ -1273,7 +1276,7 @@ narrative_event = {
 				factor = -0.8
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  40 }
+						opinion = { who = ROOT value = 40 }
 					}
 				}
 			}
@@ -1281,7 +1284,7 @@ narrative_event = {
 				factor = -0.7
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  60 }
+						opinion = { who = ROOT value = 60 }
 					}
 				}
 			}
@@ -1289,7 +1292,7 @@ narrative_event = {
 				factor = -0.6
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  80 }
+						opinion = { who = ROOT value = 80 }
 					}
 				}
 			}
@@ -1297,7 +1300,7 @@ narrative_event = {
 				factor = -0.5
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  100 }
+						opinion = { who = ROOT value = 100 }
 					}
 				}
 			}
@@ -1305,7 +1308,7 @@ narrative_event = {
 				factor = 1
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  0 }
+						opinion = { who = ROOT value = 0 }
 					}
 				}
 			}
@@ -1313,7 +1316,7 @@ narrative_event = {
 				factor = 1.1
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -20 }
+						opinion = { who = ROOT value = -20 }
 					}
 				}
 			}
@@ -1321,7 +1324,7 @@ narrative_event = {
 				factor = 1.2
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -40 }
+						opinion = { who = ROOT value = -40 }
 					}
 				}
 			}
@@ -1329,7 +1332,7 @@ narrative_event = {
 				factor = 1.3
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -60 }
+						opinion = { who = ROOT value = -60 }
 					}
 				}
 			}
@@ -1337,7 +1340,7 @@ narrative_event = {
 				factor = 1.4
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -80 }
+						opinion = { who = ROOT value = -80 }
 					}
 				}
 			}
@@ -1345,7 +1348,7 @@ narrative_event = {
 				factor = 1.5
 				k_meereen = {
 					holder_scope = {
-						opinion = { who = ROOT value =  -100 }
+						opinion = { who = ROOT value = -100 }
 					}
 				}
 			}

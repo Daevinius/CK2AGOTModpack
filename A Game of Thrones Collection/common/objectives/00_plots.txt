@@ -47,7 +47,7 @@ plot_gain_liege_title = {
 	potential = {
 		is_ruler = yes
 		prisoner = no
-		age = 16
+		is_adult = yes
 		independent = no
 		mercenary = no
 		is_theocracy = no
@@ -579,7 +579,7 @@ plot_weaken_lord_paramount = {
 
 	potential = {
 		prisoner = no
-		age = 16
+		is_adult = yes
 		is_incapable = no
 		tier = EMPEROR
 		is_nomadic = no
@@ -925,7 +925,7 @@ plot_gain_fellow_vassal_title = {
 	potential = {
 		is_playable = yes
 		prisoner = no
-		age = 16
+		is_adult = yes
 		OR = {
 			is_feudal = yes
 			is_tribal = yes
@@ -1254,7 +1254,7 @@ plot_gain_vassal_title = {
 		prisoner = no
 		is_patrician = no
 		is_merchant_republic = no
-		age = 16
+		is_adult = yes
 		primary_title = {
 			higher_tier_than = COUNT
 			temporary = no
@@ -1936,7 +1936,7 @@ plot_gain_vassal_title = {
 	# potential = {
 		# has_landed_title = e_iron_throne
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# is_incapable = no
 		# NOT = { is_imbecile_trigger = yes }
 		# OR = {
@@ -2612,7 +2612,7 @@ plot_kill_character = {
 									FROM = { has_claim = PREV }
 								}
 								is_incapable = no
-								age = 16
+								is_adult = yes
 								NOT = { trait = bastard }
 								NOT = { trait = lunatic }
 								NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -3038,7 +3038,7 @@ plot_kill_character = {
 							FROM = { has_claim = PREV }
 						}
 						is_incapable = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = bastard }
 						NOT = { trait = lunatic }
 						NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -3074,7 +3074,7 @@ plot_kill_character = {
 							FROM = { has_claim = PREV }
 						}
 						is_incapable = no
-						age = 16
+						is_adult = yes
 						NOT = { trait = bastard }
 						NOT = { trait = lunatic }
 						NOT = { check_variable = { which = "tyrant" value = 9.9 } }
@@ -4592,7 +4592,7 @@ plot_rescue_prisoner = {
 
 	# potential = {
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# is_ruler = yes
 		# demesne_size = 1
 		# OR = {
@@ -4930,13 +4930,13 @@ plot_rescue_prisoner = {
 			# prisoner = yes
 			# liege = { character = FROM }
 			# has_character_flag = loyalty_bought
-			# FROM  = { has_character_flag = buy_loyalty_ploy_fail }
+			# FROM = { has_character_flag = buy_loyalty_ploy_fail }
 			# FROM = { has_character_flag = abort_plot }
 		# }
 	# }
 
 	# abort_effect = { #FROM is plotter scope
-		# FROM  = {
+		# FROM = {
 			# clr_character_flag = buy_loyalty_ploy_fail
 			# clr_character_flag = plot_buy_loyalty_decision_taken
 			# clr_character_flag = abort_plot
@@ -6646,7 +6646,7 @@ plot_kidnap_liege = {
 	}
 
 	target_potential = {
-		is_vassal_or_below  = FROM
+		is_vassal_or_below = FROM
 	}
 
 	# Target scope
@@ -7077,7 +7077,7 @@ plot_instigate_revolt = {
 	# Plotter scope
 	potential = {
 		prisoner = no
-		age = 16
+		is_adult = yes
 		is_ruler = yes
 		is_incapable = no
 		OR = {
@@ -7106,7 +7106,7 @@ plot_instigate_revolt = {
 	# Target allow trigger for when players target a specific character in the GUI
 	player_allow = {
 		#NOT = { has_opinion_modifier = { who = FROM modifier = opinion_recent_plot } }
-		age = 16
+		is_adult = yes
 		prisoner = no
 		NOT = { opinion = { who = liege value = 0 } }
 	}
@@ -7114,7 +7114,7 @@ plot_instigate_revolt = {
 	# Target scope
 	allow = {
 		#NOT = { has_opinion_modifier = { who = FROM modifier = opinion_recent_plot } }
-		age = 16
+		is_adult = yes
 		FROM = { independent = no }
 		same_liege = FROM
 		independent = no
@@ -7485,7 +7485,7 @@ plot_fabricate_treason = {
 	# Plotter scope
 	potential = {
 		prisoner = no
-		age = 16
+		is_adult = yes
 		is_ruler = yes
 		is_incapable = no
 		OR = {
@@ -7546,7 +7546,7 @@ plot_fabricate_treason = {
 	# Target allow trigger for when players target a specific character in the GUI
 	player_allow = {
 		#NOT = { has_opinion_modifier = { who = FROM modifier = opinion_recent_plot } }
-		age = 16
+		is_adult = yes
 		prisoner = no
 		same_liege = FROM
 		NOT = { FROM = { is_liege_of = ROOT } }
@@ -7563,7 +7563,7 @@ plot_fabricate_treason = {
 	# Target scope
 	allow = {
 		#NOT = { has_opinion_modifier = { who = FROM modifier = opinion_recent_plot } }
-		age = 16
+		is_adult = yes
 		is_ruler = yes
 		prisoner = no
 		independent = no
@@ -7946,7 +7946,7 @@ plot_fabricate_treason_liege = {
 	# Plotter scope
 	potential = {
 		prisoner = no
-		age = 16
+		is_adult = yes
 		is_ruler = yes
 		is_incapable = no
 		OR = {
@@ -8009,14 +8009,14 @@ plot_fabricate_treason_liege = {
 	# Target allow trigger for when players target a specific character in the GUI
 	player_allow = {
 		#NOT = { has_opinion_modifier = { who = FROM modifier = opinion_recent_plot } }
-		age = 16
+		is_adult = yes
 		prisoner = no
 	}
 
 	# Target scope
 	allow = {
 		#NOT = { has_opinion_modifier = { who = FROM modifier = opinion_recent_plot } }
-		age = 16
+		is_adult = yes
 		is_ruler = yes
 		prisoner = no
 		independent = no
@@ -8359,7 +8359,7 @@ plot_seize_trade_post = {
 		is_patrician = yes
 		is_merchant_republic = no
 		prisoner = no
-		age = 16
+		is_adult = yes
 		is_incapable = no
 		NOT = { is_imbecile_trigger = yes }
 		NOT_mythical_creature_trigger = yes
@@ -8725,7 +8725,7 @@ plot_seize_trade_post = {
 			# trait = archmaester
 		# }
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# mercenary = no
 		# is_incapable = no
 		# NOT = { is_imbecile_trigger = yes }
@@ -8968,7 +8968,7 @@ plot_seize_trade_post = {
 	# # Plotter scope
 	# potential = {
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# has_ambition = obj_obtain_valyrian_sword
 		# is_incapable = no
 		# NOT = { is_imbecile_trigger = yes }
@@ -9178,7 +9178,7 @@ plot_seize_trade_post = {
 
 	# potential = {
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# is_incapable = no
 		# liege = { has_landed_title = e_iron_throne }
 
@@ -9542,7 +9542,7 @@ plot_seize_trade_post = {
 
 	# potential = {
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# demesne_size = 1
 		# is_incapable = no
 		# liege = { has_landed_title = e_iron_throne }
@@ -9945,7 +9945,7 @@ plot_seize_trade_post = {
 		# always = no # Disabled for being too similar to the factions
 
 		# prisoner = no
-		# age = 16
+		# is_adult = yes
 		# is_ruler = yes
 		# independent = no
 		# is_landed = yes
@@ -10321,7 +10321,7 @@ plot_investigate_legitimacy = {
 	intrigue_plot = yes
 
 	potential = {
-		age = 16
+		is_adult = yes
 		prisoner = no
 		is_incapable = no
 		NOT = { trait = nightswatch }
@@ -11137,7 +11137,7 @@ plot_investigate_legitimacy = {
 			# is_merchant_republic = no
 			# is_patrician = no
 		# }
-		# age = 16
+		# is_adult = yes
 		# is_ruler = yes
 		# is_landed = yes
 		# higher_tier_than = BARON

@@ -505,7 +505,7 @@ character_event = {
 	picture = GFX_evt_battle
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		is_alive = yes
@@ -793,7 +793,7 @@ character_event = {
 	id = 260
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_won
 
 	trigger = {
 		is_alive = yes
@@ -904,7 +904,7 @@ character_event = {
 
 	hide_from = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_won
 
 	desc = {
 		text = EVTDESC261
@@ -1050,8 +1050,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -1415,7 +1414,7 @@ character_event = {
 	picture = GFX_evt_into_the_dungeon
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_lost
 
 	trigger = {
 		is_alive = yes
@@ -1500,7 +1499,7 @@ character_event = {
 # Leading attacker dies, will never trigger from code
 letter_event = {
 	id = 251
-	is_triggered_only = yes
+	is_triggered_only = yes # on_warleader_death
 	border = GFX_event_letter_frame_war
 
 	ai = no
@@ -1518,7 +1517,7 @@ letter_event = {
 	desc = EVTDESC251
 	border = GFX_event_letter_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_warleader_death
 
 	ai = no
 
@@ -4137,7 +4136,7 @@ character_event = {
 	picture = GFX_evt_battle
 	border = "GFX_event_normal_frame_war"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_offmap_policy_changed
 
 	immediate = {
 		hidden_tooltip = {
@@ -5024,7 +5023,7 @@ character_event = { #won battle
 	picture = "GFX_evt_battle"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_won
 	notification = yes
 	ai = no
 
@@ -5056,7 +5055,7 @@ character_event = { #lost battle
 	picture = "GFX_evt_battle"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_battle_lost
 	notification = yes
 	ai = no
 

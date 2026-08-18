@@ -1,0 +1,86 @@
+temple = {
+	tp_tsp_fish_gods_fish_tower = { # Based on canonical Thousand Islands description, that creepy fish idols found on the shores received human sacrifices by the green, toothy men of the sea
+		desc = fish_gods_fish_tower_desc
+		potential = {
+			FROM = {
+				OR = {
+					religion = fish_gods
+					religion = old_ones
+#					has_religion_feature = religion_feature_TSP_innsmouth
+				}
+			}
+			custom_tooltip = {
+				text = qualifies_as_shoreline
+				hidden_tooltip = {
+					OR = {
+						location = {
+							OR = {
+								qualifies_as_shoreline = yes
+								port = yes
+							}
+						}
+						ROOT = {
+							OR = {
+								qualifies_as_shoreline = yes
+								port = yes
+							}
+						}
+						AND = {
+							FROM = { religion = old_ones }
+							NOT = {
+								terrain = steppe
+								terrain = desert
+								terrain = pti
+								terrain = wasteland
+								terrain = arctic
+							}
+						}
+					}
+				}
+			}
+		}
+
+		is_active_trigger = {
+			custom_tooltip = {
+				name = is_fish_gods_worshipper
+				hidden_tooltip = {
+					OR = {
+						FROM = { religion = fish_gods }
+						FROM = { religion = old_ones }
+						FROM = { religion = sothoryos_rel }
+#						FROM = { has_religion_feature = religion_feature_TSP_innsmouth }
+					}
+				}
+			}
+			custom_tooltip = {
+				text = qualifies_as_shoreline
+				hidden_tooltip = {
+					OR = {
+						location = {
+							OR = {
+								qualifies_as_shoreline = yes
+								port = yes
+							}
+						}
+						ROOT = {
+							OR = {
+								qualifies_as_shoreline = yes
+								port = yes
+							}
+						}
+						FROM = { religion = old_ones }
+					}
+				}
+			}
+		}
+
+		piety_cost = 400
+		build_time = 180
+		ai_creation_factor = 200
+		add_number_to_name = no
+
+		liege_piety = 0.1
+
+		extra_tech_building_start = 10.0 # Never get at start of game (outside of the Thousand Islands province)
+	}
+}

@@ -1,0 +1,763 @@
+set_he_comes_somewhat = {
+	old_ones = {
+		add_god_name = GOD_FISH_GODS
+		add_god_name = THE_DEEP_ONES
+		set_looting = yes
+		set_can_toggle_looting = yes
+		allow_looting = yes
+		seafarer = yes
+		add_intermarry = fish_gods
+		add_intermarry = sothoryos_rel
+		add_intermarry = starry_wisdom
+	}
+
+	fish_gods = {
+		add_intermarry = old_ones
+		add_intermarry = sothoryos_rel
+		add_intermarry = starry_wisdom
+	}
+
+	sothoryos_rel = {
+		remove_god_names = yes
+		remove_evil_god_names = yes
+		set_high_god_name = GOD_OLD_ONES
+		add_god_name = GOD_THE_DEMONS
+		add_god_name = GOD_DARK_SPIRITS
+		add_god_name = GOD_OLD_ONES
+		add_god_name = GOD_FISH_GODS
+		add_evil_god_name = GOD_THE_OTHERS
+		set_looting = yes
+		set_can_toggle_looting = yes
+		allow_looting = yes
+		looting = yes
+		seafarer = yes
+		add_intermarry = fish_gods
+		add_intermarry = old_ones
+		add_intermarry = starry_wisdom
+	}
+
+	starry_wisdom = {
+		add_god_name = GOD_THE_OTHERS
+		set_high_god_name = GOD_Nyarlathotep
+		add_god_name = GOD_OLD_ONES
+		set_looting = yes
+		set_can_toggle_looting = yes
+		allow_looting = yes
+		add_intermarry = fish_gods
+		add_intermarry = old_ones
+		add_intermarry = sothoryos_rel
+	}
+
+	old_ones = {
+		remove_evil_god_names = yes
+		add_evil_god_name = GOD_THE_OTHERS
+		add_god_name = THE_DEEP_ONES
+		add_god_name = GOD_FISH_GODS
+		add_god_name = GOD_DARK_SPIRITS
+		set_looting = yes
+		set_can_toggle_looting = yes
+		allow_looting = yes
+		seafarer = yes
+		add_intermarry = fish_gods
+		add_intermarry = starry_wisdom
+		add_intermarry = sothoryos_rel
+	}
+#	random_playable_ruler = {
+#		limit = {
+#			OR = {
+#				religion = fish_gods
+#				religion = old_ones
+#				religion = sothoryos_rel
+#				has_religion_feature = religion_feature_TSP_innsmouth
+#			}
+#		}
+#		add_intermarry = ROOT
+#		ROOT = { add_intermarry = PREV }
+#	}
+#
+#	any_playable_ruler = {
+#		limit = {
+#			OR = {
+#				religion = fish_gods
+#				religion = old_ones
+#				religion = sothoryos_rel
+#				has_religion_feature = religion_feature_TSP_innsmouth
+#			}
+#		}
+#		add_intermarry = ROOT
+#		ROOT = { add_intermarry = PREV }
+#	}
+
+	set_global_flag = he_comes_to_the_old_ones
+	set_global_flag = he_comes_to_the_fish_gods
+	set_global_flag = he_comes_to_the_brindlemen
+	set_global_flag = he_comes_to_the_starry_wisdom
+	set_global_flag = he_comes_to_himself
+}
+
+dynamite_devils_reef = { # If one religion goes full Lovecraft, all of the other Lovecraft religions also upgrade
+	if = {
+		limit = {
+			NOT = {
+				religion = black_goat
+				religion = black_goat_reformed
+			}
+		}
+		remove_evil_god_names = yes
+	}
+	if = {
+		limit = {
+			NOT = {
+				religion = black_goat
+				religion = black_goat_reformed
+				religion = trios
+				religion = trios_reformed
+				religion = father_of_waters
+				religion = father_of_waters_reformed
+			}
+		}
+		set_high_god_name = GOD_OLD_ONES
+	}
+
+	add_god_name = GOD_Nyarlathotep
+	add_god_name = GOD_Azathoth
+	add_god_name = GOD_Yog-Sothoth
+	add_god_name = GOD_CTHULHU
+	add_god_name = GOD_OLD_ONES
+	add_evil_god_name = GOD_THE_OTHERS
+
+	set_looting = yes
+	set_can_toggle_looting = yes
+	allow_looting = yes
+	seafarer = yes
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = black_goat
+					religion = black_goat_reformed
+				}
+			}
+		}
+		black_goat = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		black_goat_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = black_goat
+			add_intermarry = black_goat_reformed
+		}
+		fish_gods = {
+			add_intermarry = black_goat
+			add_intermarry = black_goat_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = black_goat
+			add_intermarry = black_goat_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = black_goat
+			add_intermarry = black_goat_reformed
+		}
+		set_global_flag = black_goat_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = trios
+					religion = trios_reformed
+				}
+			}
+		}
+		trios = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		trios_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = trios
+			add_intermarry = trios_reformed
+		}
+		fish_gods = {
+			add_intermarry = trios
+			add_intermarry = trios_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = trios
+			add_intermarry = trios_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = trios
+			add_intermarry = trios_reformed
+		}
+		set_global_flag = trios_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = father_of_waters
+					religion = father_of_waters_reformed
+				}
+			}
+		}
+		father_of_waters = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		father_of_waters_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = father_of_waters
+			add_intermarry = father_of_waters_reformed
+		}
+		fish_gods = {
+			add_intermarry = father_of_waters
+			add_intermarry = father_of_waters_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = father_of_waters
+			add_intermarry = father_of_waters_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = father_of_waters
+			add_intermarry = father_of_waters_reformed
+		}
+		set_global_flag = father_of_waters_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = weeping_lady
+					religion = weeping_lady_reformed
+				}
+			}
+		}
+		weeping_lady = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		weeping_lady_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = weeping_lady
+			add_intermarry = weeping_lady_reformed
+		}
+		fish_gods = {
+			add_intermarry = weeping_lady
+			add_intermarry = weeping_lady_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = weeping_lady
+			add_intermarry = weeping_lady_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = weeping_lady
+			add_intermarry = weeping_lady_reformed
+		}
+		set_global_flag = weeping_lady_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = valyrian_rel
+					religion = valyrian_rel_reformed
+				}
+			}
+		}
+		valyrian_rel = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		valyrian_rel_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = valyrian_rel
+			add_intermarry = valyrian_rel_reformed
+		}
+		fish_gods = {
+			add_intermarry = valyrian_rel
+			add_intermarry = valyrian_rel_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = valyrian_rel
+			add_intermarry = valyrian_rel_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = valyrian_rel
+			add_intermarry = valyrian_rel_reformed
+		}
+		set_global_flag = valyrian_rel_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = gods_sarnor
+					religion = gods_sarnor_reformed
+				}
+			}
+		}
+		gods_sarnor = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		gods_sarnor_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = gods_sarnor
+			add_intermarry = gods_sarnor_reformed
+		}
+		fish_gods = {
+			add_intermarry = gods_sarnor
+			add_intermarry = gods_sarnor_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = gods_sarnor
+			add_intermarry = gods_sarnor_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = gods_sarnor
+			add_intermarry = gods_sarnor_reformed
+		}
+		set_global_flag = gods_sarnor_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = harpy
+					religion = harpy_reformed
+				}
+			}
+		}
+		harpy = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		harpy_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = harpy
+			add_intermarry = harpy_reformed
+		}
+		fish_gods = {
+			add_intermarry = harpy
+			add_intermarry = harpy_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = harpy
+			add_intermarry = harpy_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = harpy
+			add_intermarry = harpy_reformed
+		}
+		set_global_flag = harpy_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = shadowbinders
+					religion = shadowbinders_reformed
+				}
+			}
+		}
+		shadowbinders = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		shadowbinders_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = shadowbinders
+			add_intermarry = shadowbinders_reformed
+		}
+		fish_gods = {
+			add_intermarry = shadowbinders
+			add_intermarry = shadowbinders_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = shadowbinders
+			add_intermarry = shadowbinders_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = shadowbinders
+			add_intermarry = shadowbinders_reformed
+		}
+		set_global_flag = shadowbinders_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = gods_bone_mountains
+					religion = gods_bone_mountains_reformed
+				}
+			}
+		}
+		gods_bone_mountains = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		gods_bone_mountains_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = gods_bone_mountains
+			add_intermarry = gods_bone_mountains_reformed
+		}
+		fish_gods = {
+			add_intermarry = gods_bone_mountains
+			add_intermarry = gods_bone_mountains_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = gods_bone_mountains
+			add_intermarry = gods_bone_mountains_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = gods_bone_mountains
+			add_intermarry = gods_bone_mountains_reformed
+		}
+		set_global_flag = gods_bone_mountains_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = gods_nghai
+					religion = gods_nghai_reformed
+				}
+			}
+		}
+		gods_nghai = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		gods_nghai_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = gods_nghai
+			add_intermarry = gods_nghai_reformed
+		}
+		fish_gods = {
+			add_intermarry = gods_nghai
+			add_intermarry = gods_nghai_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = gods_nghai
+			add_intermarry = gods_nghai_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = gods_nghai
+			add_intermarry = gods_nghai_reformed
+		}
+		set_global_flag = gods_nghai_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = stone_cow
+					religion = stone_cow_reformed
+				}
+			}
+		}
+		stone_cow = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		stone_cow_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = stone_cow
+			add_intermarry = stone_cow_reformed
+		}
+		fish_gods = {
+			add_intermarry = stone_cow
+			add_intermarry = stone_cow_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = stone_cow
+			add_intermarry = stone_cow_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = stone_cow
+			add_intermarry = stone_cow_reformed
+		}
+		set_global_flag = stone_cow_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = jogos_pagan
+					religion = jogos_pagan_reformed
+				}
+			}
+		}
+		jogos_pagan = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		jogos_pagan_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = jogos_pagan
+			add_intermarry = jogos_pagan_reformed
+		}
+		fish_gods = {
+			add_intermarry = jogos_pagan
+			add_intermarry = jogos_pagan_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = jogos_pagan
+			add_intermarry = jogos_pagan_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = jogos_pagan
+			add_intermarry = jogos_pagan_reformed
+		}
+		set_global_flag = jogos_pagan_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = aztec
+					religion = aztec_reformed
+				}
+			}
+		}
+		aztec = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		aztec_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = aztec
+			add_intermarry = aztec_reformed
+		}
+		fish_gods = {
+			add_intermarry = aztec
+			add_intermarry = aztec_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = aztec
+			add_intermarry = aztec_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = aztec
+			add_intermarry = aztec_reformed
+		}
+		set_global_flag = aztec_awoken
+	}
+
+	if = {
+		limit = {
+			ROOT = {
+				OR = {
+					religion = lady_of_the_waves
+					religion = lady_of_the_waves_reformed
+				}
+			}
+		}
+		lady_of_the_waves = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		lady_of_the_waves_reformed = {
+			add_intermarry = old_ones
+			add_intermarry = fish_gods
+			add_intermarry = sothoryos_rel
+			add_intermarry = starry_wisdom
+		}
+		old_ones = {
+			add_intermarry = lady_of_the_waves
+			add_intermarry = lady_of_the_waves_reformed
+		}
+		fish_gods = {
+			add_intermarry = lady_of_the_waves
+			add_intermarry = lady_of_the_waves_reformed
+		}
+		sothoryos_rel = {
+			add_intermarry = lady_of_the_waves
+			add_intermarry = lady_of_the_waves_reformed
+		}
+		starry_wisdom = {
+			add_intermarry = lady_of_the_waves
+			add_intermarry = lady_of_the_waves_reformed
+		}
+		set_global_flag = lady_of_the_waves_awoken
+	}
+
+	add_intermarry = old_ones
+	add_intermarry = fish_gods
+	add_intermarry = sothoryos_rel
+	add_intermarry = starry_wisdom
+
+#	hidden_tooltip = {
+		if = {
+			limit = { NOT = { has_global_flag = fish_gods_awoken } }
+			fish_gods = {
+				remove_evil_god_names = yes
+				add_god_name = GOD_Nyarlathotep
+				add_god_name = GOD_Azathoth
+				add_god_name = GOD_Yog-Sothoth
+				add_god_name = GOD_CTHULHU
+				add_god_name = GOD_DARK_SPIRITS
+				add_evil_god_name = GOD_THE_OTHERS
+			}
+		}
+		if = {
+			limit = { NOT = { has_global_flag = brindlemen_awoken } }
+			sothoryos_rel = {
+				remove_evil_god_names = yes
+				add_god_name = GOD_Nyarlathotep
+				add_god_name = GOD_Azathoth
+				add_god_name = GOD_Yog-Sothoth
+				add_god_name = GOD_CTHULHU
+				add_god_name = GOD_FISH_GODS
+				add_god_name = THE_DEEP_ONES
+				add_evil_god_name = GOD_THE_OTHERS
+			}
+		}
+#	}
+
+	random_playable_ruler = {
+		limit = {
+			OR = {
+				religion = fish_gods
+				religion = old_ones
+				religion = sothoryos_rel
+				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		add_intermarry = ROOT
+		ROOT = { add_intermarry = PREV }
+	}
+
+	any_playable_ruler = {
+		limit = {
+			OR = {
+				religion = fish_gods
+				religion = old_ones
+				religion = sothoryos_rel
+				has_religion_feature = religion_feature_TSP_innsmouth
+			}
+		}
+		add_intermarry = ROOT
+		ROOT = { add_intermarry = PREV }
+	}
+
+	any_playable_character = {
+		limit = { has_religion_feature = religion_feature_TSP_innsmouth }
+		add_intermarry = ROOT
+		ROOT = { add_intermarry = PREV }
+	}
+
+	narrative_event = { id = TSP_1KI_story_mode.12 }
+
+	set_global_flag = fish_gods_awoken
+	set_global_flag = brindlemen_awoken
+}

@@ -197,12 +197,12 @@ targeted_decisions = {
 			NOT = { any_consort = { character = FROM } }
 			NOT = { is_married = FROM }
 			NOT = { is_former_lover = FROM }
-			age = 16
+			is_adult = yes
 		}
 		allow = {
 			show_only_failed_conditions = yes
 			FROM = {
-				age = 16
+				is_adult = yes
 				NOT = { trait = infirm }
 				is_incapable = no
 				NOT = { trait = celibate }
@@ -443,7 +443,7 @@ targeted_decisions = {
 		}
 		allow = {
 			FROM = {
-				age = 16
+				is_adult = yes
 				prisoner = no
 				NOT = { is_incapable = yes }
 				NOT = { has_opinion_modifier = { modifier = opinion_refused_kingsguard who = ROOT } }
@@ -461,7 +461,7 @@ targeted_decisions = {
 			}
 			age = 14
 			OR = {
-				age = 16
+				is_adult = yes
 				combat_rating = 60
 			}
 			is_married = no
@@ -493,7 +493,7 @@ targeted_decisions = {
 						}
 					}
 				}
-				# FROM = { liege = { character_event = { id = kingsguard.85 tooltip = TOOLTIPinteraction.85 } } }
+				FROM = { liege = { character_event = { id = kingsguard.85 tooltip = TOOLTIPinteraction.85 } } }
 			}
 			else = {
 				character_event = { id = kingsguard.8 tooltip = TOOLTIPinteraction.7 }
@@ -628,7 +628,7 @@ targeted_decisions = {
 			FROM = {
 				prisoner = no
 				is_incapable = no
-				age = 16
+				is_adult = yes
 			}
 		}
 		effect = {

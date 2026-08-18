@@ -46,9 +46,9 @@ NDiplomacy = {
 	GAME_RULE_DEMESNE_SIZE_UNLIMITED = 10500,	-- Demesne size when using "demesne size: unlimited" game rule
 
 	VASSAL_BASE_LIMIT = 1.0,					-- Base Vassal Limit
-	VASSAL_LIMIT_DUKE_MULT = 15.0, 				-- Extra Vassal Limit from the ruler's rank
-	VASSAL_LIMIT_KING_MULT = 30.0, 				-- Extra Vassal Limit from the ruler's rank
-	VASSAL_LIMIT_EMPEROR_MULT = 40.0, 			-- Extra Vassal Limit from the ruler's rank
+	VASSAL_LIMIT_DUKE_MULT = 30.0, 				-- Extra Vassal Limit from the ruler's rank
+	VASSAL_LIMIT_KING_MULT = 50.0, 				-- Extra Vassal Limit from the ruler's rank
+	VASSAL_LIMIT_EMPEROR_MULT = 60.0, 			-- Extra Vassal Limit from the ruler's rank
 	VASSAL_LIMIT_GREAT_DUKE_BONUS = 5.0, 		-- Extra Vassal Limit for Dukes with more than one Duchy
 	VASSAL_LIMIT_DIPLOMACY_MULT = 0.6,			-- Extra Vassal Limit from ruler and spouse diplomacy
 	VASSAL_LIMIT_DECADENCE_MULTIPLIER = 0.25,	-- Negative modifier, multiplied with the current decadence.

@@ -13,7 +13,7 @@ character_event = {
 	id = 71000
 	desc = EVTDESC71000
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	prisoner = no
@@ -261,7 +261,7 @@ character_event = { #hedge knights random events
 		if = { #Male courtier insulted by hedge knights
 			limit = {
 				any_courtier = {
-					age = 16
+					is_adult = yes
 					is_female = no
 					is_lowborn = no
 					NOT = { character = ROOT }
@@ -285,7 +285,7 @@ character_event = { #hedge knights random events
 		if = { #A young woman has been seduced by a hedge knight
 			limit = {
 				any_courtier = {
-					age = 16
+					is_adult = yes
 					age < 22
 					is_ruler = no
 					is_female = yes
@@ -468,8 +468,7 @@ character_event = {
 							limit = { is_female = no }
 							set_special_character_title = title_ser
 						}
-						if = {
-							limit = { is_female = yes }
+						else = {
 							set_special_character_title = title_lady
 						}
 					}
@@ -528,7 +527,7 @@ character_event = {
 		name = EVTOPTB71003 #Ignore the complaints
 	 	random_courtier = {
 	 		limit = {
-	 			age = 16
+	 			is_adult = yes
 				is_female = no
 				is_lowborn = no
 				NOT = { character = ROOT }
@@ -563,7 +562,7 @@ character_event = {
 	immediate = {
 		random_courtier = {
 			limit = {
-				age = 16
+				is_adult = yes
 				age < 22
 				is_ruler = no
 				is_female = yes
@@ -604,8 +603,7 @@ character_event = {
 							limit = { is_female = no }
 							set_special_character_title = title_ser
 						}
-						if = {
-							limit = { is_female = yes }
+						else = {
 							set_special_character_title = title_lady
 						}
 					}

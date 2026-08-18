@@ -6,7 +6,7 @@ character_event = {
 	desc = "EVTDESCevil.1"
 	picture = "GFX_valyria_dragon"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	ai = no #to prevent too much abuse
 
 	trigger = {
@@ -425,7 +425,7 @@ province_event = {
 character_event = { #on_new_holder
 	id = evil.2
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = {
@@ -465,7 +465,7 @@ character_event = {
 	desc = "EVTDESCevil.3"
 	picture = "GFX_sorrows"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unit_entering_province
 	ai = no #Not fair on the AI
 	in_command = yes
 
@@ -506,7 +506,7 @@ character_event = {
 # Written by Johan Andersson
 # Adjusted by Henrik Fеhraeus
 
-#If in the red  => increase revolt risk in a province.
+#If in the red => increase revolt risk in a province.
 province_event = {
 	id = 68000
 	desc = "EVTDESC68000"
@@ -537,7 +537,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		#lower if really bad demesne efficiency
 		modifier = {
@@ -685,7 +685,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			owner = { realm_stewardship = 20 }
@@ -778,7 +778,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		#lower if really bad demesne efficiency
 		modifier = {
@@ -920,7 +920,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			owner = { realm_stewardship = 20 }
@@ -1014,7 +1014,7 @@ province_event = {
 	picture = "GFX_evt_bandits"
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		#lower if really bad demesne efficiency
 		modifier = {
@@ -1284,7 +1284,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			owner = { realm_diplomacy = 20 }
@@ -1472,7 +1472,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		modifier = {
 			factor = 0.9
@@ -1704,7 +1704,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			owner = { realm_martial = 20 }
@@ -1887,7 +1887,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 
 		#lower if really bad demesne efficiency
 		modifier = {
@@ -2034,7 +2034,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 240
+		years = 20
 		modifier = {
 			factor = 0.5
 			owner = { realm_stewardship = 20 }

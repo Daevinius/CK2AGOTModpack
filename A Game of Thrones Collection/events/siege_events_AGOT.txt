@@ -17,7 +17,7 @@ character_event = {
 	picture = "GFX_evt_siege"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	hide_window = yes
 
 	trigger = {
@@ -234,7 +234,7 @@ character_event = {
 character_event = {
 	id = siege_agot.299
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	hide_window = yes
 
 	trigger = {
@@ -742,7 +742,7 @@ character_event = {
 				random_courtier = {
 					limit = {
 						is_female = yes
-						age = 16
+						is_adult = yes
 						NOT = { in_command = yes }
 						NOT = { character = ROOT }
 						NOT = { is_liege_or_above = ROOT }
@@ -973,7 +973,7 @@ character_event = {
 				random_courtier = {
 					limit = {
 						is_female = yes
-						age = 16
+						is_adult = yes
 						NOT = { in_command = yes }
 						NOT = { character = ROOT }
 						NOT = { is_liege_or_above = ROOT }
@@ -1373,7 +1373,7 @@ character_event = {
 						random_courtier = {
 							limit = {
 								is_female = yes
-								age = 16
+								is_adult = yes
 								NOT = { in_command = yes }
 								NOT = { character = ROOT }
 								NOT = { is_liege_or_above = ROOT }
@@ -1506,7 +1506,7 @@ character_event = {
 	picture = "GFX_evt_siege"
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 
 	trigger = {
 		NOT = { culture_group = winter_group }
@@ -2447,7 +2447,7 @@ province_event = { #repair base values
 character_event = { #Trigger from owner
 	id = siege_agot.20
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	hide_window = yes
 	only_rulers = yes
 	min_age = 14
@@ -2508,7 +2508,7 @@ character_event = { #Trigger from owner
 character_event = { #Trigger from courtier
 	id = siege_agot.21
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	hide_window = yes
 
 	trigger = {
@@ -3277,7 +3277,7 @@ character_event = {
 	picture = "GFX_evt_siege"
 	border = "GFX_event_normal_frame_war"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	only_rulers = yes
 	min_age = 13
 	max_age = 65 #Glover/I'm gettin' too old for this shit
@@ -3912,7 +3912,8 @@ character_event = {
 	# picture = "GFX_evt_siege"
 	# border = "GFX_event_normal_frame_war"
 
-	# #is_triggered_only = yes #need a lesson about "on actions"
+	# # need a lesson about "on actions"
+	# #is_triggered_only = yes
 
 	# trigger = {
 
@@ -3930,7 +3931,6 @@ character_event = {
 
 	# }
 	# mean_time_to_happen = {
-
 		# days = 70
 
 		# modifier = { #every 12 days, no flag to mark cooldown, storm end wotu is like 6 months.
@@ -4113,7 +4113,7 @@ character_event = { #won siege
 	picture = GFX_evt_siege
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_won_leader
 	notification = yes
 	ai = no
 

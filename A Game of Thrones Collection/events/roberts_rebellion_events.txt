@@ -11,7 +11,7 @@ character_event = {
 	id = roberts_rebellion.1
 	desc = "EVTDESCroberts_rebellion.1"
 
-	is_triggered_only = yes #Triggered from on_startup
+	is_triggered_only = yes # on_startup
 	only_rulers = yes
 	hide_window = yes
 
@@ -466,24 +466,20 @@ character_event = {
 			d_harpy_reformed = { set_preferred_capital = 619 }
 			d_gods_bone_mountains_reformed = { set_preferred_capital = 844 }
 		}
+
 		#Set Seasons
 		if = { #Preceding Summer
 			limit = {
-				year = 8124
+				year >= 8124
 				year < 8130
 			}
 			set_global_flag = normal_summer
-			set_character_flag = season_set
 		}
-		if = { #Post Dance Hard Winter
-			limit = {
-				year = 8130
-				year < 8136
-			}
+		else_if = { #Post Dance Hard Winter
+			limit = { year < 8136 }
 			set_global_flag = asoiaf_harsh_winter
-			set_character_flag = season_set
 			if = { #End
-				limit = { year = 8135 }
+				limit = { year >= 8135 }
 				character_event = {
 					id = seasons.6
 					days = 150
@@ -491,23 +487,18 @@ character_event = {
 				}
 			}
 		}
-		if = { #Following Summer
-			limit = {
-				year = 8136
-				year < 8140
-			}
+		else_if = { #Following Summer
+			limit = { year < 8140 }
 			set_global_flag = normal_summer
-			set_character_flag = season_set
 		}
-		if = { #Great Spring
+		else_if = { #Great Spring
 			limit = {
-				year = 8206
+				year >= 8206
 				year < 8210
 			}
 			set_global_flag = asoiaf_normal_winter
-			set_character_flag = season_set
 			if = { #End
-				limit = { year = 8209 }
+				limit = { year >= 8209 }
 				character_event = {
 					id = seasons.6
 					days = 150
@@ -515,31 +506,19 @@ character_event = {
 				}
 			}
 		}
-		if = { #Following Summer
-			limit = {
-				year = 8210
-				year < 8215
-			}
+		else_if = { #Following Summer
+			limit = { year < 8215 }
 			set_global_flag = normal_summer
-			set_character_flag = season_set
 		}
-		if = { #Following Winter
-			limit = {
-				year = 8215
-				year < 8221
-			}
+		else_if = { #Following Winter
+			limit = { year < 8221 }
 			set_global_flag = asoiaf_normal_winter
-			set_character_flag = season_set
 		}
-		if = { #Maekar's Summer
-			limit = {
-				year = 8221
-				year < 8228
-			}
+		else_if = { #Maekar's Summer
+			limit = { year < 8228 }
 			set_global_flag = long_summer
-			set_character_flag = season_set
 			if = { #End
-				limit = { year = 8226 }
+				limit = { year >= 8226 }
 				character_event = {
 					id = seasons.5
 					days = 600
@@ -547,15 +526,11 @@ character_event = {
 				}
 			}
 		}
-		if = { #Followed by terrible winter
-			limit = {
-				year = 8228
-				year < 8238
-			}
+		else_if = { #Followed by terrible winter
+			limit = { year < 8238 }
 			set_global_flag = asoiaf_harsh_winter
-			set_character_flag = season_set
 			if = { #End
-				limit = { year = 8235 }
+				limit = { year >= 8235 }
 				character_event = {
 					id = seasons.6
 					days = 600
@@ -563,61 +538,39 @@ character_event = {
 				}
 			}
 		}
-		if = { #254
+		else_if = { #254
 			limit = {
-				year = 8252
+				year >= 8252
 				year < 8256
 			}
 			set_global_flag = asoiaf_normal_winter
-			set_character_flag = season_set
 		}
-		if = { #Three year Winter
+		else_if = { #Three year Winter
 			limit = {
-				year = 8273
+				year >= 8273
 				year < 8276
 			}
 			set_global_flag = asoiaf_normal_winter
-			set_character_flag = season_set
 		}
-		if = { #Following Summer
-			limit = {
-				year = 8276
-				year < 8279
-			}
+		else_if = { #Following Summer
+			limit = { year < 8279 }
 			set_global_flag = normal_summer
-			set_character_flag = season_set
 		}
-		if = { #Year of the False Spring
-			limit = {
-				year = 8279
-				year < 8282
-			}
+		else_if = { #Year of the False Spring
+			limit = { year < 8282 }
 			set_global_flag = asoiaf_normal_winter
-			set_character_flag = season_set
 		}
-		if = { #Following Summer
-			limit = {
-				year = 8282
-				year < 8285
-			}
+		else_if = { #Following Summer
+			limit = { year < 8285 }
 			set_global_flag = normal_summer
-			set_character_flag = season_set
 		}
-		if = { #Following Winter
-			limit = {
-				year = 8285
-				year < 8288
-			}
+		else_if = { #Following Winter
+			limit = { year < 8288 }
 			set_global_flag = asoiaf_normal_winter
-			set_character_flag = season_set
 		}
-		if = { #The Long Summer
-			limit = {
-				year = 8288
-				year < 8300
-			}
+		else_if = { #The Long Summer
+			limit = { year < 8300 }
 			set_global_flag = long_summer
-			set_character_flag = season_set
 			if = { #End durin AFFC
 				limit = { year = 8298 }
 				character_event = {
@@ -627,13 +580,11 @@ character_event = {
 				}
 			}
 		}
-		if = { #AFFC
-			limit = { year = 8300 }
+		else_if = { #AFFC
+			limit = { year >= 8300 }
 			set_global_flag = asoiaf_harsh_winter
-			set_character_flag = season_set
 		}
-		if = { #If not set, set random season
-			limit = { NOT = { has_character_flag = season_set } }
+		else = { #If not set, set random season
 			random_list = {
 				50 = {
 					random_list = {
@@ -663,7 +614,7 @@ character_event = {
 				}
 			}
 		}
-		clr_character_flag = season_set
+
 		#Robert's Rebellion, effects moved to history files
 		# if = {
 			# limit = {
@@ -704,29 +655,14 @@ character_event = {
 		c_casterly_rock = {
 			holder_scope = {
 				character_event = { id = more_bloodlines.113 }
-			}
-		}
-		c_casterly_rock = {
-			holder_scope = {
 				character_event = { id = more_bloodlines.133 }
 			}
 		}
 		c_darry = {
 			if = {
-				limit = {
-					start_date = 8299.11.12
-				}
+				limit = { start_date = 8299.11.12 }
 				holder_scope = {
 					character_event = { id = more_bloodlines.113 }
-				}
-			}
-		}
-		c_darry = {
-			if = {
-				limit = {
-					start_date = 8299.11.12
-				}
-				holder_scope = {
 					character_event = { id = more_bloodlines.133 }
 				}
 			}
@@ -831,12 +767,11 @@ character_event = {
 				character_event = { id = more_bloodlines.129 }
 			}
 		}
-		any_character = {
-			limit = {
-				is_ruler = no
-				dynasty = 35
+		c_77105 = {
+			if = {
+				limit = { start_date = 8300.3.1 }
+				character_event = { id = more_bloodlines.130 }
 			}
-			character_event = { id = more_bloodlines.130 }
 		}
 		b_maris_motherhouse = {
 			holder_scope = {
@@ -867,20 +802,6 @@ character_event = {
 			holder_scope = {
 				character_event = { id = mbs_lords_declarant.1  }
 			}
-		}
-		any_character = {
-			limit = {
-				is_ruler = no
-				dynasty = 18872
-			}
-			character_event = { id = more_bloodlines.150  }
-		}
-		any_character = {
-			limit = {
-				is_ruler = no
-				dynasty = 18873
-			}
-			character_event = { id = more_bloodlines.151  }
 		}
 		d_brotherhood = {
 			holder_scope = {
@@ -914,7 +835,13 @@ character_event = {
 		c_the_citadel = {
 			holder_scope = {
 				save_event_target_as = citadel_holder
-				join_society = hermetics
+				if = {
+					limit = {
+						NOT = { society_member_of = hermetics }
+					}
+					leave_society = yes
+					join_society = hermetics
+				}
 				society_rank_up = 3
 				set_society_grandmaster = yes
 
@@ -1316,7 +1243,7 @@ character_event = {
 			random_character = {
 				limit = {
 					is_female = no
-					age = 16
+					is_adult = yes
 					nightswatch_culture_trigger = yes
 					is_primary_heir = no
 					is_ruler = no
@@ -1657,9 +1584,9 @@ character_event = {
 		k_yin = { set_variable = { which = "de_facto_kingdom" value = 34 } }
 		k_jinqi = { set_variable = { which = "de_facto_kingdom" value = 35 } }
 		k_tiqui = { set_variable = { which = "de_facto_kingdom" value = 36 } }
-		k_linqi = { set_variable = { which = "de_facto_kingdom" value = 37 } }
-		k_piqui = { set_variable = { which = "de_facto_kingdom" value = 38 } }
-		k_xin = { set_variable = { which = "de_facto_kingdom" value = 39 } }
+		# k_linqi = { set_variable = { which = "de_facto_kingdom" value = 37 } }
+		# k_piqui = { set_variable = { which = "de_facto_kingdom" value = 38 } }
+		# k_xin = { set_variable = { which = "de_facto_kingdom" value = 39 } }
 		k_trader_town = { set_variable = { which = "de_facto_kingdom" value = 40 } }
 		k_nghai = { set_variable = { which = "de_facto_kingdom" value = 41 } }
 		k_dothraki = { set_variable = { which = "de_facto_kingdom" value = 42 } }
@@ -2533,7 +2460,7 @@ character_event = {
 					}
 					culture_group = dornish
 					AND = { #God Empresses
-						culture = yi_ti
+						culture_group = yi_ti_group
 						higher_tier_than = DUKE
 						capital_scope = { kingdom = { title = k_leng } }
 					}
@@ -2880,14 +2807,14 @@ character_event = {
 				226 = { #king's landing
 					#set_province_flag = goldroad
 				}
-				1203 = { #king's landing
+				1202 = { #king's landing
 					#set_province_flag = goldroad
 				}
 				#roseroad
 				226 = { #king's landing
 					#set_province_flag = roseroad
 				}
-				1203 = { #king's landing
+				1202 = { #king's landing
 					#set_province_flag = roseroad
 				}
 				228 = { #greensward
@@ -3073,8 +3000,7 @@ character_event = {
 				limit = { is_female = no }
 				set_special_character_title = title_ser
 			}
-			if = {
-				limit = { is_female = yes }
+			else = {
 				set_special_character_title = title_lady
 			}
 		}
@@ -3162,7 +3088,7 @@ character_event = {
 			}
 			if = {
 				limit = {
-					age = 16
+					is_adult = yes
 					age < 32
 					ai = yes
 				}
@@ -4707,6 +4633,14 @@ character_event = {
 					}
 				}
 				random_character = {
+					limit = { dynasty = 80 NOT = { trait = bastard } } #Rowan
+					add_to_bloodline = PREV
+					any_dynasty_member_even_if_dead = {
+						limit = { NOT = { trait = bastard } }
+						add_to_bloodline = PREVPREV
+					}
+				}
+				random_character = {
 					limit = { dynasty = 253 NOT = { trait = bastard } } #Tyrell
 					add_to_bloodline = PREV
 					any_dynasty_member_even_if_dead = {
@@ -5336,6 +5270,20 @@ character_event = {
 					any_dynasty_member_even_if_dead = {
 						limit = { NOT = { trait = strong_seed_block } }
 						set_graphical_culture = Rowan_dyn
+					}
+				}
+				any_bloodline_member = {
+					character_event = { id = traditional_claims.199 days = 5 } #check for traditional dynastic claims
+				}
+			}
+		}
+		c_6000282 = { #Beesbury
+			set_graphical_culture = Beesbury_dyn
+			random_owned_bloodline = {
+				c_6000282 = {
+					any_dynasty_member_even_if_dead = {
+						limit = { NOT = { trait = strong_seed_block } }
+						set_graphical_culture = Beesbury_dyn
 					}
 				}
 				any_bloodline_member = {
@@ -6421,7 +6369,7 @@ character_event = {
 						}
 					}
 				}
-				c_mbs_pynes = { #Pyne
+				c_pynes = { #Pyne
 					holder_scope = {
 						opinion = {
 							modifier = opinion_dynasty_loyalist
@@ -6433,7 +6381,7 @@ character_event = {
 						}
 					}
 				}
-				c_mbs_strongcliff = { #Cave
+				c_strongcliff = { #Cave
 					holder_scope = {
 						opinion = {
 							modifier = opinion_dynasty_loyalist
@@ -7747,7 +7695,7 @@ character_event = {
 		#CHILDREN
 		if = {
 			limit = {
-				age = 16
+				is_adult = yes
 				fertility = 0.1
 				is_married = yes
 				spouse = {
@@ -7961,7 +7909,7 @@ character_event = {
 
 					if = {
 						limit = {
-							age = 16
+							is_adult = yes
 							is_female = no
 						}
 						if = {
@@ -7987,8 +7935,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -8042,7 +7989,7 @@ character_event = {
 					}
 					if = { # Fix for children not getting any traits
 						limit = {
-							age = 16
+							is_adult = yes
 							NOR = {
 								has_education_diplomacy_trigger = yes
 								has_education_martial_trigger = yes
@@ -8464,7 +8411,7 @@ character_event = {
 						}
 						if = {
 							limit = {
-								age = 16
+								is_adult = yes
 								is_female = no
 							}
 							if = {
@@ -8490,8 +8437,7 @@ character_event = {
 											limit = { is_female = no }
 											set_special_character_title = title_ser
 										}
-										if = {
-											limit = { is_female = yes }
+										else = {
 											set_special_character_title = title_lady
 										}
 									}
@@ -8545,7 +8491,7 @@ character_event = {
 						}
 						if = { # Fix for children not getting any traits
 							limit = {
-								age = 16
+								is_adult = yes
 								NOR = {
 									has_education_diplomacy_trigger = yes
 									has_education_martial_trigger = yes
@@ -9198,8 +9144,7 @@ character_event = {
 			limit = { is_female = no }
 			set_special_character_title = LORD_PROTECTOR
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			set_special_character_title = LADY_PROTECTOR
 		}
 		# Law maintenance
@@ -9343,8 +9288,7 @@ character_event = { # Cause it really pisses me off it does not work from the cb
 			limit = { is_female = no }
 			set_special_character_title = LORD_PROTECTOR
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			set_special_character_title = LADY_PROTECTOR
 		}
 	}
@@ -9407,7 +9351,7 @@ character_event = {
 					}
 				}
 				create_character = {
-					name = Освин
+					name = "Освин"
 					random_traits = yes
 					dynasty = none
 					religion = THIS

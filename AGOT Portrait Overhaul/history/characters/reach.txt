@@ -504,7 +504,7 @@
 		birth = yes
 		effect = { health = 2 }
 		effect = {
-			set_character_flag = tyrell_second
+			set_character_flag = sigil_dyn_second
 			if = {
 				limit = { is_ruler = no }
 				c_highgarden = { holder_scope = { ROOT = { move_character = PREV } } }
@@ -546,7 +546,7 @@
 		add_spouse = 3261 #Leonette Fossoway
 		remove_trait = "squire"
 		add_trait = "knight"
-		effect = { set_character_flag = garlan_tyrell }
+		effect = { set_character_flag = sigil_dyn_second }
 	}
 	8299.3.3 = {	#Renly dies
 		effect = { add_artifact = renly_armor }
@@ -583,7 +583,7 @@
 	mother = 2285
 	8282.1.1 = {
 		birth = yes
-		effect = { set_character_flag = tyrell_third }
+		effect = { set_character_flag = sigil_dyn_third }
 	}
 	8285.1.1 = {
 		add_trait = "brave"
@@ -618,7 +618,7 @@
 				}
 			}
 			add_artifact = loras_armor
-			set_character_flag = loras_tyrell
+			set_character_flag = sigil_dyn_third
 			add_character_modifier = {
 				name = grand_tourny_1st #Joffrey's Nameday Tourney
 				duration = -1
@@ -6373,8 +6373,10 @@
 	}
 	8268.1.1 = {
 		add_spouse = 88264
-		add_trait = "knight"
+		add_trait = knight
+		add_trait = trained_warrior
 	}
+	8283.1.1 = { add_trait = wavecarver }
 }
 88264 = {
 	name = "Леона"
@@ -6412,7 +6414,7 @@
 	}
 	8291.1.1 = {
 		add_trait = "knight"
-		add_trait = "poor_warrior"
+		add_trait = "trained_warrior"
 		employer = 1253
 	}
 }
@@ -6429,7 +6431,7 @@
 	}
 	8293.1.1 = {
 		add_trait = "knight"
-		add_trait = "poor_warrior"
+		add_trait = "trained_warrior"
 		employer = 1253
 	}
 }

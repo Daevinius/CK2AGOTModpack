@@ -850,7 +850,7 @@ character_event = {
 #	trigger = {
 #		dynasty = 496
 #		is_betrothed = yes
-#		age = 16
+#		is_adult = yes
 #		NOT = { trait = bastard }
 #		is_female = no
 #		is_married = no
@@ -858,7 +858,7 @@ character_event = {
 #		any_sibling = {
 #			has_opinion_modifier = { who = ROOT modifier = opinion_targ_betrothal }
 #			is_betrothed = yes
-#			age = 16
+#			is_adult = yes
 #			is_female = yes
 #			NOT = { has_character_flag = no_incest_parent }
 #		}
@@ -873,7 +873,7 @@ character_event = {
 #		random_sibling = {
 #			limit = {
 #				has_opinion_modifier = { who = ROOT modifier = opinion_targ_betrothal }
-#				age = 16
+#				is_adult = yes
 #				is_female = yes
 #				NOT = { has_character_flag = no_incest_parent }
 #			}
@@ -1157,7 +1157,7 @@ character_event = {
 				personality_traits < 6
 			}
 			change_learning = -2
-			random  = {
+			random = {
 				chance = 20
 				add_trait = diligent
 				hidden_tooltip = {
@@ -1705,19 +1705,19 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  20 }
+				opinion = { who = FROM value = 20 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  40 }
+				opinion = { who = FROM value = 40 }
 			}
 			modifier = {
 				factor = 1.3
-				opinion = { who = FROM value =  60 }
+				opinion = { who = FROM value = 60 }
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 		prestige = 20
@@ -1774,19 +1774,19 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -20 } }
+				NOT = { opinion = { who = FROM value = -20 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -40 } }
+				NOT = { opinion = { who = FROM value = -40 } }
 			}
 			modifier = {
 				factor = 1.3
-				NOT = { opinion = { who = FROM value =  -60 } }
+				NOT = { opinion = { who = FROM value = -60 } }
 			}
 			modifier = {
 				factor = 1.5
-				NOT = { opinion = { who = FROM value =  -80 } }
+				NOT = { opinion = { who = FROM value = -80 } }
 			}
 			modifier = {
 				factor = 2
@@ -2013,7 +2013,7 @@ character_event = {
 			# chance = 50
 			# random_child = {
 				# limit = { 	is_female = no
-							# age = 16
+							# is_adult = yes
 				# }
 				# death = { death_reason = death_accident }
 			# }
@@ -2022,7 +2022,7 @@ character_event = {
 			# chance = 50
 			# random_child = {
 				# limit = { 	is_female = yes
-							# age = 16
+							# is_adult = yes
 				# }
 				# death = { death_reason = death_accident }
 			# }
@@ -2066,7 +2066,7 @@ character_event = {
 			# chance = 50
 			# random_child = {
 				# limit = { 	is_female = no
-							# age = 16
+							# is_adult = yes
 				# }
 				# death = { death_reason = death_accident }
 			# }
@@ -2075,7 +2075,7 @@ character_event = {
 			# chance = 50
 			# random_child = {
 				# limit = { 	is_female = yes
-							# age = 16
+							# is_adult = yes
 				# }
 				# death = { death_reason = death_accident }
 			# }
@@ -2511,7 +2511,7 @@ character_event = {
 	desc = EVT_DESC_high_valyrian_19
 	picture = GFX_targaryen_balerion
 
-	only_rulers = yes
+	only_playable = yes
 	min_age = 16
 	only_capable = yes
 	prisoner = no
@@ -2802,7 +2802,7 @@ character_event = {
 	desc = EVTDESChigh_valyrian.25
 	picture = GFX_fire_obsessed
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	min_age = 6
 	max_age = 16
@@ -3661,7 +3661,7 @@ character_event = { #Inform victim
 character_event = { #AI yearly pulse for glass candle victim
 	id = high_valyrian.57
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	min_age = 16
 	only_capable = yes

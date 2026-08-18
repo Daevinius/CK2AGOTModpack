@@ -559,7 +559,7 @@ character_event = { #Assign archons to colonies
 		liege = {
 			random_realm_character = {
 				limit = {
-					age = 16
+					is_adult = yes
 					#is_female = no
 					NOT = { has_landed_title = e_new_valyria }
 					OR = {
@@ -2059,7 +2059,7 @@ character_event = {
 character_event = {
 	id = valyria.199
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory, on_war_ended_whitepeace, on_war_ended_defeat
 	hide_window = yes
 	only_playable = yes
 
@@ -2102,7 +2102,7 @@ character_event = {
 	picture = GFX_evt_valyria_2
 
 	only_rulers = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 
 	trigger = {
 		is_valyrian_freehold_trigger = yes
@@ -4373,23 +4373,23 @@ character_event = {
 			character_event = { id = valyria.7 tooltip = TOOLTIPjob_treasurer_elect }
 			show_portrait = yes
 		}
-		event_target:job_spymaster_elect  = {
+		event_target:job_spymaster_elect = {
 			character_event = { id = valyria.8 tooltip = TOOLTIPjob_spymaster_elect }
 			show_portrait = yes
 		}
-		event_target:job_admiral_elect  = {
+		event_target:job_admiral_elect = {
 			character_event = { id = valyria.891 tooltip = TOOLTIPjob_admiral_elect }
 			show_portrait = yes
 		}
-		event_target:job_advisor_elect  = {
+		event_target:job_advisor_elect = {
 			character_event = { id = valyria.893 tooltip = TOOLTIPjob_advisor_elect }
 			show_portrait = yes
 		}
-		event_target:job_advisor_elect_2  = {
+		event_target:job_advisor_elect_2 = {
 			character_event = { id = valyria.893 tooltip = TOOLTIPjob_advisor_elect }
 			show_portrait = yes
 		}
-		event_target:lord_freeholder_elect  = {
+		event_target:lord_freeholder_elect = {
 			character_event = { id = valyria.10 tooltip = TOOLTIPvalyria.10 }
 			show_portrait = yes
 		}
@@ -4945,7 +4945,7 @@ character_event = {
 			set_character_flag = elected_valyrian_councillor
 			show_portrait = yes
 		}
-		event_target:job_spymaster_elect  = {
+		event_target:job_spymaster_elect = {
 			hidden_tooltip = {
 				if = {
 					limit = {
@@ -4972,7 +4972,7 @@ character_event = {
 			set_character_flag = elected_valyrian_councillor
 			show_portrait = yes
 		}
-		event_target:job_admiral_elect  = {
+		event_target:job_admiral_elect = {
 			if = {
 				limit = { has_character_flag = job_admiral_elect }
 				hidden_tooltip = {
@@ -5003,7 +5003,7 @@ character_event = {
 				show_portrait = yes
 			}
 		}
-		event_target:job_advisor_elect  = {
+		event_target:job_advisor_elect = {
 			hidden_tooltip = {
 				if = {
 					limit = {
@@ -5031,7 +5031,7 @@ character_event = {
 			set_character_flag = elected_valyrian_councillor
 			show_portrait = yes
 		}
-		event_target:job_advisor_elect_2  = {
+		event_target:job_advisor_elect_2 = {
 			hidden_tooltip = {
 				if = {
 					limit = {
@@ -7964,7 +7964,7 @@ character_event = {
 		}
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -7999,7 +7999,7 @@ character_event = {
 character_event = {
 	id = valyria.47
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 	only_independent = yes
 
@@ -8028,7 +8028,7 @@ character_event = {
 character_event = {
 	id = valyria.4799
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = {
@@ -8062,7 +8062,7 @@ character_event = {
 	picture = GFX_evt_emissary
 	border = GFX_event_normal_frame_diplomacy
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	prisoner = no
@@ -8580,7 +8580,7 @@ character_event = {
 	desc = EVTDESCvalyria.58
 	picture = GFX_evt_council
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	only_playable = yes
 	war = no
 
@@ -8915,7 +8915,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 120
+		years = 10
 
 		modifier = {
 			factor = 0.25
@@ -9317,7 +9317,7 @@ province_event = {
 character_event = {
 	id = valyria.66
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_bi_yearly_pulse
 	hide_window = yes
 	only_independent = yes
 
@@ -10208,7 +10208,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 480
+		years = 40
 
 		modifier = {
 			factor = 1.5
@@ -10737,7 +10737,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 2400 #200 years
+		years = 200
 
 		modifier = {
 			factor = 2
@@ -11228,6 +11228,8 @@ character_event = { #Inform rejected
 		ai_chance = {
 			factor = 25
 			modifier = {
+				factor = 0.4
+
 				OR = {
 					trait = proud
 					trait = lunatic
@@ -11477,14 +11479,14 @@ character_event = { #Ghiscar attacks Valyria
 	desc = "EVTDESCvalyria.100"
 
 	only_independent = yes
-	prisoner =  no
+	prisoner = no
+	war = no
+	culture_group = ghiscari
 	has_global_flag = freehold_submod_initialised
 
 	trigger = {
-		tier = EMPEROR
+		real_tier = EMPEROR
 		has_landed_title = e_ghiscar
-		culture_group = ghiscari
-		war = no
 		e_new_valyria = {
 			has_holder = yes
 			holder_scope = {
@@ -11499,7 +11501,7 @@ character_event = { #Ghiscar attacks Valyria
 	}
 
 	mean_time_to_happen = {
-		months = 480
+		years = 40
 
 		modifier = {
 			factor = 0.33
@@ -12967,7 +12969,7 @@ province_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 120
+		years = 10
 
 		modifier = {
 			factor = 0.25
@@ -13765,8 +13767,8 @@ province_event = {
 		set_province_flag = valyria_primary_colony
 		county = {
 			gain_title = event_target:braavos_holder
-			location = { set_name = "Braavos" }
-			set_name = "Braavos"
+			location = { set_name = "Браавос" }
+			set_name = "Браавос"
 			de_jure_liege = d_braavos
 			hidden_tooltip = {
 				any_de_jure_vassal_title = {
@@ -14152,7 +14154,7 @@ province_event = {
 					}
 
 					activate_title = { status = yes title = d_faceless_men  }
-					d_faceless_men  = { gain_title = PREV }
+					d_faceless_men = { gain_title = PREV }
 					set_defacto_liege = event_target:braavos_holder
 				}
 			}

@@ -48,8 +48,7 @@ plot_decisions = {
 					limit = { has_regent = no }
 					custom_tooltip = { text = "EVTTOOLTIPCOUNCILPLOT1" }
 				}
-				if = {
-					limit = { has_regent = yes }
+				else = {
 					regent = { custom_tooltip = { text = "EVTTOOLTIPCOUNCILPLOT1B" } }
 				}
 			}
@@ -254,11 +253,9 @@ plot_decisions = {
 			}
 			if = { #Ask Triarch to appeal to his fellow Triarch
 				limit = {
-					NOT = {
-						OR = {
-							has_minor_title = title_triarch
-							has_character_flag = triarch
-						}
+					NOR = {
+						has_minor_title = title_triarch
+						has_character_flag = triarch
 					}
 				}
 				any_plot_backer = {
@@ -269,13 +266,11 @@ plot_decisions = {
 			}
 			if = { #If no triarchs support can ask a human Triarch
 				limit = {
-					NOT = {
-						OR = {
-							has_minor_title = title_triarch
-							has_character_flag = triarch
-						}
+					NOR = {
+						has_minor_title = title_triarch
+						has_character_flag = triarch
+						any_plot_backer = { has_minor_title = title_triarch }
 					}
-					NOT = { any_plot_backer = { has_minor_title = title_triarch } }
 				}
 				plot_target_char = {
 					liege = {

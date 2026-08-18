@@ -1,4 +1,6 @@
-##Nightswatch characters
+#####################
+### Night's Watch ###
+#####################
 ##ids 121000-121499
 
 121000 = {
@@ -46,26 +48,46 @@
 	}
 }
 121002 = {
-	name = "Коттер" #
+	name = "Коттер" # Cotter Pyke, commander of Eastwatch-by-the-Sea.
+	dynasty = 64
+
+	diplomacy = 4
 	martial = 6
 	stewardship = 10
+	intrigue = 4
+	learning = 1
+
 	religion = "drowned_god"
 	culture = "ironborn"
-	add_trait = "tough_soldier"
-	add_trait = "strong_1"
+
+	father = 9164
+
 	add_trait = "bastard"
 	give_nickname = nick_pyke
+
+	disallow_random_traits = yes
+
 	8256.1.1 = {
 		birth = yes
 		effect = {
-			dynasty = none
 			set_immune_to_pruning = yes
 		}
+	}
+	8272.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "organizer"
+		add_trait = "defensive_leader"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "wroth"
+		add_trait = "proud"
+		add_trait = "rude"
 	}
 	8275.1.1 = {
 		add_trait = "nightswatch"
 		effect = {
 			dynasty = 554228
+			add_rival = 2128 # Denys Mallister
 		}
 	}
 }
@@ -99,12 +121,14 @@
 88000520 = {
 	name = "Маллин"
 
+	diplomacy = 1
+	martial = 1
+	stewardship = 1
+	intrigue = 1
 	learning = 5
 
-	religion = the_seven
+	religion = "the_seven"
 	culture = "reachman"
-
-	add_trait = "martial_cleric"
 
 	8255.1.1 = {
 		birth = yes
@@ -114,40 +138,76 @@
 		}
 	}
 	8275.1.1 = {
+		add_trait = "martial_cleric"
+		add_trait = "trained_warrior"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "honorable"
 		add_trait = "maester"
+		add_trait = "physician"
 		add_trait = "nightswatch"
-		add_trait = trained_warrior #more of a fighter than a true maester
-		employer = 2128
+		employer = 2128 # Denys Mallister
 		effect = {
 			set_character_flag = serving_with_lord
 		}
 	}
 }
 121003 = {
-	name = "Донал"
-	dynasty = 999346
-	father = 100000820
-	martial = 4
+	name = "Донал" # Donal Noye, blacksmith at Castle Black.
+	dynasty = 174844
+
+	dna = "ccagd0ce0f0"
+	properties = "gj0a0k"
+
+	diplomacy = 3
+	martial = 2
+	stewardship = 4
+	intrigue = 2
+	learning = 1
+
 	religion = "the_seven"
 	culture = "stormlander"
-	add_trait = "tough_soldier"
-	add_trait = "strong_1"
-	add_trait = "honest"
-	add_trait = "trusting"
 
-	8258.1.1 = {
+	add_trait = "strong_1"
+
+	father = 788706
+	mother = 788707
+
+	disallow_random_traits = yes
+
+	8252.1.1 = {
 		birth = yes
+		employer = 60010317 # Ormund Baratheon
 		effect = {
 			set_immune_to_pruning = yes
 		}
 	}
-	8282.1.1 = {
-		employer = 317
-		add_trait = skilled_warrior
-		effect = { set_character_flag = flag_knew_robert }
+	8259.11.10 = {
+		employer = 3317 # Steffon Baratheon
 	}
-	8290.1.1 = {
-		add_trait = "nightswatch"
+	8268.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "defensive_leader"
+		add_trait = "inspiring_leader"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "honorable"
+		add_trait = "gregarious"
+		add_trait = "authoritative"
+		add_trait = "honest"
+		add_trait = "trusting"
+	}
+	8282.1.1 = {
+		employer = 317 # Robert Baratheon
+		effect = {
+			set_character_flag = flag_knew_robert
+		}
+	}
+	8284.1.1 = {
+		add_trait = "nightswatch" # Joins NW after the rebellion
 		effect = {
 			if = {
 				limit = { has_dlc = "Reapers" }
@@ -162,34 +222,52 @@
 			}
 		}
 	}
-	8299.11.11 = {
+	8299.11.12 = {
+		add_trait = "one_handed"
 		death = {
 			death_reason = death_duel
-			killer = 157013
+			killer = 157013 # Mag the Mighty.
 		}
 	}
 
 }
 121005 = {
-	name = "Куорен" #	Halfhand
-	martial = 8
-	religion = "the_seven"
-	culture = "westerman"
+	name = "Куорен" # Qhorin Halfhand, ranger of the Night's Watch.
 
-	add_trait = "skilled_tactician"
-	add_trait = "just"
-	add_trait = "brave"
-	add_trait = "patient"
+	diplomacy = 4
+	martial = 5
+	stewardship = 4
+	intrigue = 4
+	learning = 6
+
+	religion = "old_gods"
+	culture = "northman"
+
+	disallow_random_traits = yes
+
 	8252.1.1 = {
 		birth = yes
-		effect = { set_immune_to_pruning = yes }
+		effect = {
+			set_immune_to_pruning = yes
+		}
 	}
 	8268.1.1 = {
+		add_trait = "skilled_tactician"
+		add_trait = "organizer"
+		add_trait = "inspiring_leader"
 		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "temperate"
+		add_trait = "honorable"
+		add_trait = "authoritative"
+		add_trait = "duelist"
 	}
 	8272.1.1 = {
 		add_trait = "nightswatch"
 		effect = {
+			add_friend = 174347 # Mance Rayder
 			add_character_modifier = {
 				name = nw_ranger
 				duration = -1
@@ -197,6 +275,7 @@
 		}
 	}
 	8278.1.1 = {
+		give_nickname = nick_half_hand
 		effect = {
 			if = {
 				limit = { has_dlc = "Reapers" }
@@ -206,23 +285,28 @@
 				add_trait = "disfigured_AGOT"
 			}
 		}
-		give_nickname = nick_half_hand
 	}
 	8279.1.1 = {
 		effect = {
 			if = {
 				limit = { has_dlc = "Reapers" }
-				add_character_modifier = {		#Learned how to fight his left hand. Only in Reapers Due DLC to avoid overpowering
+				add_character_modifier = {
 					name = martially_ambidextrous
 					duration = -1
 				}
 			}
 		}
 	}
+	8292.1.1 = {
+		effect = {
+			remove_friend = 174347 # Mance Rayder
+		}
+	}
 	8299.7.1 = {
+		add_trait = "one_handed"
 		death = {
 			death_reason = death_duel
-			killer = 1002059
+			killer = 1002059 # Jon Snow Lord Snow.
 		}
 	}
 
@@ -240,12 +324,13 @@
 	religion = "the_seven"
 	culture = "riverlander"
 
-	add_trait = "strong_2"
 	add_trait = "tall_2"
-	add_trait = "misguided_warrior"
+	add_trait = "strong_2"
 	add_trait = "slow_1"
 
 	disallow_random_traits = yes
+
+	father = 788714
 
 	8277.1.1 = {
 		birth = yes
@@ -265,6 +350,7 @@
 	}
 	8293.1.1 = {
 		add_trait = "poor_warrior"
+		add_trait = "misguided_warrior"
 	}
 	8295.1.1 = {
 		add_trait = "nightswatch"
@@ -486,10 +572,10 @@
 	intrigue = 2
 	diplomacy = 4
 
+	add_trait = "ugly"
+
 	religion = "the_seven"
 	culture = "stormlander"
-
-	add_trait = "thrifty_clerk"
 
 	disallow_random_traits = yes
 
@@ -501,6 +587,7 @@
 		}
 	}
 	8246.8.1 = {
+		add_trait = "thrifty_clerk"
 		add_trait = "shy"
 	}
 	8248.8.1 = {
@@ -524,16 +611,14 @@
 121420 = {
 	name = "Пип"
 
-	martial = 2
-	intrigue = 2
 	diplomacy = 2
+	martial = 2
 	stewardship = 1
+	intrigue = 2
 	learning = 1
 
 	religion = "the_seven"
 	culture = "crownlander"
-
-	disallow_random_traits = yes
 
 	8283.1.1 = {
 		birth = yes
@@ -561,6 +646,7 @@
 			add_friend = 121421 #Grenn
 			add_friend = 1296 #Sam
 			add_friend = 121419 #Toad
+			add_friend = 121484 # Halder
 			add_character_modifier = {
 				name = nw_ranger
 				duration = -1
@@ -575,16 +661,19 @@
 121421 = {
 	name = "Гренн"
 
-	martial = 4
-	intrigue = 1
 	diplomacy = 3
+	martial = 4
 	stewardship = 1
+	intrigue = 1
 	learning = 1
 
 	religion = "the_seven"
 	culture = "riverlander"
 
-	add_trait = strong_1
+	add_trait = "tall_1"
+	add_trait = "strong_1"
+
+	father = 788717
 
 	disallow_random_traits = yes
 
@@ -612,6 +701,7 @@
 			add_friend = 121420 #Pyp
 			add_friend = 1296 #Sam
 			add_friend = 121419 #Toad
+			add_friend = 121484 # Halder
 			add_character_modifier = {
 				name = nw_ranger
 				duration = -1
@@ -843,6 +933,10 @@
 
 
 	6173.1.1 = { birth = yes }
+	6189.1.1 = {
+		add_trait = ambitious
+		add_trait = proud
+	}
 	6195.1.1 = { add_trait = nightswatch }
 	6218.1.1 = { death = yes }
 }
@@ -858,13 +952,19 @@
 	culture = "old_first_man"
 
 	6324.1.1 = { birth = yes }
-	6340.1.1 = { add_trait = skilled_warrior add_trait = tough_soldier }
+	6340.1.1 = {
+		add_trait = skilled_warrior
+		add_trait = tough_soldier
+		add_trait = ambitious
+		add_trait = proud
+	}
 	6361.1.1 = { add_trait = nightswatch }
 	6377.1.1 = { give_nickname = nick_the_mad }
 	6378.1.1 = { death = yes }
 }
 121404 = {
 	name = "Робин"
+	dynasty = 786025 #
 
 	martial = 12
 	stewardship = 12
@@ -878,7 +978,12 @@
 	give_nickname = nick_hill
 
 	6384.1.1 = { birth = yes }
-	6400.1.1 = { add_trait = skilled_warrior add_trait = tough_soldier }
+	6400.1.1 = {
+		add_trait = skilled_warrior
+		add_trait = tough_soldier
+		add_trait = ambitious
+		add_trait = proud
+	}
 	6405.6.1 = { add_trait = nightswatch }
 	6428.1.1 = { death = yes }
 }
@@ -898,7 +1003,11 @@
 	father = 62300285
 
 	7749.1.1 = { birth = yes }
-	7765.1.1 = { add_trait = knight }
+	7765.1.1 = {
+		add_trait = knight
+		add_trait = ambitious
+		add_trait = proud
+	}
 	7780.1.1 = { add_trait = nightswatch }
 	7808.1.1 = { death = { death_reason = death_execution } }
 }
@@ -919,6 +1028,10 @@
 
 	7779.1.1 = { birth = yes }
 	7780.1.1 = { add_trait = nightswatch }
+	7795.1.1 = {
+		add_trait = ambitious
+		add_trait = proud
+	}
 	7808.1.1 = { death = { death_reason = death_execution } }
 }
 1011868 = {
@@ -1181,7 +1294,6 @@
 		add_trait = "deserter"
 		remove_trait = "nightswatch"
 		dynasty = 559241 #of the Keep, to make him playable
-		add_spouse = 574367 #Crasterling
 	}
 }
 121412 = {
@@ -1443,7 +1555,8 @@
 #####
 
 121417 = {
-	name = "Тим" # canon
+	name = "Тим" # Tim Stone
+	dynasty = 176
 
 	martial = 5
 	stewardship = 3
@@ -1454,20 +1567,21 @@
 	religion = "the_seven"
 	culture = "valeman"
 
-	add_trait = honorable
-	add_trait = diligent
-	add_trait = tough_soldier
+	father = 3029163
+
 	add_trait = bastard
 	give_nickname = nick_stone
 
 	8269.1.1 = {
 		birth = yes
 		effect = {
-			dynasty = none
 			set_immune_to_pruning = yes
 		}
 	}
 	8285.1.1 = {
+		add_trait = honorable
+		add_trait = diligent
+		add_trait = tough_soldier
 		add_trait = nightswatch
 		add_trait = trained_warrior
 		effect = {
@@ -1482,43 +1596,47 @@
 121418 = {
 	name = "Эммет"
 
-	martial = 4
-	stewardship = 2
 	diplomacy = 2
+	martial = 5
+	stewardship = 2
 	intrigue = 3
 	learning = 2
 
 	religion = "old_gods"
 	culture = "northman"
 
-	add_trait = gregarious
-	add_trait = patient
-	add_trait = diligent
-	add_trait = tough_soldier
-	add_trait = just
-	add_trait = strong
+	disallow_random_traits = yes
 
-	8275.1.1 = {
+	add_trait = "strong"
+
+	8277.1.1 = {
 		birth = yes
 		effect = {
 			dynasty = none
 			set_immune_to_pruning = yes
 		}
 	}
-	8290.1.1 = {
-		employer = 121002 #eastwatch
-		add_trait = nightswatch
-		add_trait = master_warrior
+	8293.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "organizer"
+		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "gregarious"
+		add_trait = "duelist"
+		add_trait = "nightswatch"
+		employer = 121002 # Cotter Pyke
+		give_nickname = nick_the_iron
 		effect = {
 			add_character_modifier = {
 				name = nw_ranger
 				duration = -1
 			}
 		}
-		give_nickname = nick_the_iron
 	}
 	8300.3.1 = {
-		employer = 1002059
+		employer = 1002059 # Jon Snow
 	}
 }
 
@@ -1583,6 +1701,7 @@
 		}
 	}
 	8298.1.1 = {
+		add_trait = poor_warrior
 		add_trait = nightswatch
 		effect = {
 			add_character_modifier = {
@@ -1591,26 +1710,24 @@
 			}
 		}
 	}
+	8300.1.1 = {
+		add_trait = indulgent_wastrel
+	}
 }
 
 121475 = {
 	name = "Ульмер"
 
+	diplomacy = 2
 	martial = 3
 	stewardship = 1
-	diplomacy = 2
 	intrigue = 3
 	learning = 1
 
 	religion = "the_seven"
 	culture = "crownlander"
 
-	add_trait = greedy
-	add_trait = tough_soldier
-	add_trait = ruthless
-	add_trait = just
-	add_trait = gregarious
-	add_trait = brave
+	disallow_random_traits = yes
 
 	8248.1.1 = {
 		birth = yes
@@ -1620,10 +1737,21 @@
 		}
 	}
 	8264.1.1 = {
-		add_trait = skilled_warrior
+		add_trait = "tough_soldier"
+		add_trait = "light_foot_leader"
+		add_trait = "master_warrior"
+		add_trait = "brave"
+		add_trait = "proud"
+		add_trait = "greedy"
+		add_trait = "just"
+		add_trait = "ruthless"
+		add_trait = "gregarious"
+		effect = {
+			add_artifact = weirwood_bow
+		}
 	}
 	8281.6.1 = {
-		add_trait = nightswatch
+		add_trait = "nightswatch"
 		effect = {
 			add_character_modifier = {
 				name = nw_ranger
@@ -1741,7 +1869,7 @@
 		add_trait = deserter
 		employer = 59 #Cought near Winterfell
 	}
-	8298.3.1 = {
+	8297.6.13 = {
 		death = {
 			death_reason = death_execution
 			killer = 59 #Ned Stark
@@ -1818,6 +1946,266 @@
 		effect = {
 			remove_all_job_titles = yes
 			give_job_title = job_chancellor
+		}
+	}
+}
+121482 = {
+	name = "Дайвен" # Dywen, old Ranger with wooden teeth
+
+	religion = "the_seven"
+	culture = "riverlander"
+
+	8248.1.1 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			set_immune_to_pruning = yes
+		}
+	}
+	8265.1.1 = {
+		add_trait = skilled_warrior
+		add_trait = tough_soldier
+		add_trait = honorable
+		add_trait = gregarious
+		add_trait = brave
+		add_trait = diligent
+		add_trait = patient
+		add_trait = nightswatch
+		employer = 121000 # Qorgyle
+		effect = {
+			add_character_modifier = {
+				name = nw_ranger
+				duration = -1
+			}
+		}
+	}
+}
+121486 = {
+	name = "Гарет" # Hareth Horse, builder of the Night's Watch.
+
+	diplomacy = 1
+	martial = 3
+	stewardship = 2
+	intrigue = 1
+	learning = 1
+
+	religion = "old_gods"
+	culture = "northman"
+
+	add_trait = "tall"
+	add_trait = "strong"
+
+	8282.1.1 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			set_immune_to_pruning = yes
+		}
+	}
+	8298.1.1 = {
+		add_trait = "misguided_warrior"
+		add_trait = "poor_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "honorable"
+		add_trait = "gregarious"
+	}
+	8300.1.1 = {
+		remove_trait = "poor_warrior"
+		add_trait = "trained_warrior"
+		add_trait = "nightswatch"
+		give_nickname = nick_horse
+		employer = 1002059 # Jon Snow Lord Snow
+		effect = {
+			add_character_modifier = {
+				name = nw_builder
+				duration = -1
+			}
+		}
+	}
+}
+121483 = {
+	name = "Бедвик" # Bedwyck Giant, ranger of the Night's Watch.
+
+	diplomacy = 1
+	martial = 5
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+
+	religion = "old_gods"
+	culture = "northman"
+
+	disallow_random_traits = yes
+
+	8255.1.1 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			set_immune_to_pruning = yes
+		}
+	}
+	8271.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "light_foot_leader"
+		add_trait = "skilled_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "gregarious"
+		add_trait = "hunter"
+	}
+	8275.1.1 = {
+		add_trait = "nightswatch"
+		give_nickname = nick_giant
+		employer = 121000 # Qorgyle
+		effect = {
+			add_character_modifier = {
+				name = nw_ranger
+				duration = -1
+			}
+		}
+	}
+}
+121484 = {
+	name = "Халдер" # Halder Stone Head, builder of the Night's Watch.
+
+	diplomacy = 1
+	martial = 1
+	stewardship = 3
+	intrigue = 1
+	learning = 1
+
+	religion = "the_seven"
+	culture = "valeman"
+
+	add_trait = "tall"
+	add_trait = "strong"
+
+	father = 788722
+
+	8282.1.1 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			set_immune_to_pruning = yes
+		}
+	}
+	8298.1.1 = {
+		add_trait = "indulgent_wastrel"
+		add_trait = "poor_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "honorable"
+		add_trait = "gregarious"
+		add_trait = "nightswatch"
+		give_nickname = nick_stone_head
+		employer = 336 # Jeor Mormont the Old Bear
+		effect = {
+			add_friend = 1002059 # Jon Snow Lord Snow
+			add_friend = 121420 # Pypar Monkey
+			add_friend = 1296 # Samwell Tarly Ser Piggy
+			add_friend = 121419 # Todder Toad
+			add_friend = 121421 # Grenn Aurochs
+			add_character_modifier = {
+				name = nw_builder
+				duration = -1
+			}
+		}
+	}
+	8300.3.1 = {
+		employer = 2128 # Denys Mallister
+	}
+}
+121485 = {
+	name = "Фалк" # Fulk the Flea, ranger of the Night's Watch.
+
+	diplomacy = 1
+	martial = 3
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+
+	religion = "the_seven"
+	culture = "crownlander"
+
+	add_trait = "strong"
+
+	8272.1.1 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			set_immune_to_pruning = yes
+		}
+	}
+	8288.1.1 = {
+		add_trait = "tough_soldier"
+		add_trait = "trained_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "honorable"
+		add_trait = "gregarious"
+		add_trait = "nightswatch"
+		give_nickname = nick_the_flea
+		employer = 336 # Jeor Mormont the Old Bear
+		effect = {
+			add_character_modifier = {
+				name = nw_ranger
+				duration = -1
+			}
+		}
+	}
+}
+564324 = {
+	name = "Басс" # Bass, kennelmaster of Castle Black.
+
+	diplomacy = 1
+	martial = 3
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+
+	religion = "old_gods"
+	culture = "northman"
+
+	8255.1.1 = {
+		birth = yes
+		effect = {
+			dynasty = none
+			set_immune_to_pruning = yes
+		}
+	}
+	8271.1.1 = {
+		add_trait = "misguided_warrior"
+		add_trait = "trained_warrior"
+		add_trait = "brave"
+		add_trait = "diligent"
+		add_trait = "patient"
+		add_trait = "just"
+		add_trait = "honorable"
+		add_trait = "hunter"
+		add_trait = "nightswatch"
+		employer = 121000 # Qorgyle
+		effect = {
+			give_minor_title = title_kennelmaster_mbs
+		}
+	}
+	8299.7.8 = {
+		employer = 200353 # Jeor Mormont the Old Bear
+		effect = {
+			give_minor_title = title_kennelmaster_mbs
+		}
+	}
+	8300.3.1 = {
+		employer = 1002059 # Jon Snow Lord Snow
+		effect = {
+			give_minor_title = title_kennelmaster_mbs
 		}
 	}
 }

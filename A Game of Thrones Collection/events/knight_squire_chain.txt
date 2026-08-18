@@ -35,7 +35,7 @@ character_event = {
 	desc = "EVTDESCknight.1" #Offered to be a knight
 	picture = "GFX_knight"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	min_age = 16
 	only_capable = yes
@@ -277,7 +277,7 @@ character_event = {
 	only_men = yes
 	#has_knighthood_religion_trigger = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_childhood_pulse
 
 	trigger = {
 		has_guardian = yes
@@ -350,7 +350,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Я стану знаменитым рыцарем!"
+		name = "EVTOPTAknight.2"
 		hidden_tooltip = {
 			educator = { character_event = { id = knight.3 } }
 		}
@@ -405,7 +405,7 @@ character_event = {
 		random_list = {
 			20 = { }
 			40 = {
-				FROM =  {
+				FROM = {
 					if = {
 						limit = {
 							NOT = { trait = "shy" }
@@ -426,7 +426,7 @@ character_event = {
 				}
 			}
 			40 = {
-				FROM =  {
+				FROM = {
 					if = {
 						limit = {
 							NOT = { trait = "wroth" }
@@ -447,7 +447,7 @@ character_event = {
 				}
 			}
 			40 = {
-				FROM =  {
+				FROM = {
 					if = {
 						limit = {
 							NOT = { trait = "humble" }
@@ -492,7 +492,7 @@ character_event = {
 
 	min_age = 35
 	only_capable = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = { trait = squire }
 
@@ -565,7 +565,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Мне нет дела"
+		name = "EVTOPTBknight.4"
 		trigger = {
 			OR = {
 				NOT = { has_knighthood_religion_trigger = yes }
@@ -584,7 +584,7 @@ character_event = {
 	desc = "EVTDESCknight.5" #Battlefield Promotion (siege)
 	picture = "GFX_battle_promotion"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	only_capable = yes
 
 	trigger = {
@@ -851,7 +851,7 @@ character_event = {
 	}
 
 	option = {
-		name = "Аргх..."
+		name = "EVTOPTAknight.8"
 		if = {
 			limit = { trait = trained_warrior }
 			random = {
@@ -1075,7 +1075,7 @@ character_event = {
 	desc = "EVTDESCknight.17"
 	picture = "GFX_knight"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 	#only_men = yes
 
@@ -1094,7 +1094,7 @@ character_event = {
 character_event = {
 	id = knight.179
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_unlanded
 	hide_window = yes
 
 	trigger = {
@@ -1107,8 +1107,7 @@ character_event = {
 			limit = { is_female = no }
 			set_special_character_title = title_ser
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			set_special_character_title = title_lady
 		}
 	}
@@ -1118,7 +1117,7 @@ character_event = {
 character_event = {
 	id = knight.18
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	min_age = 15
@@ -2072,7 +2071,7 @@ character_event = {
 character_event = {
 	id = knight.35
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	only_men = yes

@@ -1087,7 +1087,7 @@ character_event = {
 character_event = {
 	id = HF.23012
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 
 	immediate = {
 		character_event = { id = HF.23013 days = 1 }
@@ -1176,7 +1176,7 @@ character_event = {
 			}
 		}
 	}
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_convert_religion
 
 	immediate = {
 		if = {
@@ -1431,7 +1431,7 @@ character_event = {
 			has_religion_feature = religion_matriarchal
 		}
 	}
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	immediate = {
 		if = {
@@ -1511,7 +1511,7 @@ character_event = {
 	id = HF.23205
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	trigger = {
 		is_save_game = no
@@ -1579,7 +1579,7 @@ character_event = {
 
 	has_dlc = "Holy Fury"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 
 	trigger = {
 		this_is_sea_raider_trigger = yes
@@ -1815,7 +1815,7 @@ character_event = {
 
 	has_dlc = "Holy Fury"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 
 	trigger = {
 		this_is_sea_raider_trigger = yes
@@ -1925,7 +1925,7 @@ character_event = {
 
 	has_dlc = "Holy Fury"
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 
 	trigger = {
 		OR = {
@@ -2053,7 +2053,7 @@ character_event = {
 			}
 		}
 		hidden_tooltip = {
-			repair_base_value_buildings_effect = yes		#make sure base value is retained
+			FROM = { repair_base_value_buildings_effect = yes }		#make sure base value is retained
 			change_variable = { which = viking_raids value = 5 } #Exp bump.
 			if = { #chance of ruin
 				limit = {
@@ -2399,7 +2399,7 @@ character_event = {
 	}
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_settlement
 
 	has_dlc = "Holy Fury"
 
@@ -3089,7 +3089,7 @@ character_event = {
 	}
 	border = GFX_event_normal_frame_war
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_loot_province
 
 	has_dlc = "Holy Fury"
 
@@ -3369,7 +3369,7 @@ character_event = {
 	#Steal wealth from temple.
 	#Desecrate temple.
 
-	immediate  = {
+	immediate = {
 		siege = {
 			morale = 0.05
 			enemy = {
@@ -3642,7 +3642,7 @@ narrative_event = {
 	picture = GFX_evt_comet
 	border = GFX_event_narrative_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 	only_capable = yes
 	prisoner = no
 
@@ -4122,7 +4122,7 @@ narrative_event = {
 	picture = GFX_evt_comet
 	border = GFX_event_narrative_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 	has_job_title = yes
 	only_capable = yes
 	prisoner = no
@@ -4373,7 +4373,7 @@ character_event = {
 character_event = {
 	id = HF.23410
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		OR = {
@@ -6643,14 +6643,14 @@ character_event = {
 		name = EVTOPTAHF23445
 		trigger = { trait = mystic }
 		tooltip_info = mystic
-		persistent_event_target:my_blood_contender = { add_character_modifier =  { name = fearless_potion months = 3 } }
+		persistent_event_target:my_blood_contender = { add_character_modifier = { name = fearless_potion months = 3 } }
 		ai_chance = { factor = 60 }
 	}
 	option = {
 		name = EVTOPTBHF23445
 		trigger = { trait = deceitful }
 		tooltip_info = deceitful
-		persistent_event_target:my_blood_contender = { add_character_modifier =  { name = poisoned_weapons months = 3 } }
+		persistent_event_target:my_blood_contender = { add_character_modifier = { name = poisoned_weapons months = 3 } }
 		ai_chance = { factor = 60 }
 	}
 	option = {
@@ -6659,7 +6659,7 @@ character_event = {
 			limit = { ai = no }
 			scaled_wealth = { value = -0.25 min = -25 max = -100 }
 		}
-		persistent_event_target:my_blood_contender = { add_character_modifier =  { name = gladiatorial_equipment months = 3 } }
+		persistent_event_target:my_blood_contender = { add_character_modifier = { name = gladiatorial_equipment months = 3 } }
 		ai_chance = { factor = 20 }
 	}
 
@@ -7341,7 +7341,7 @@ character_event = {
 			limit = { has_blood_magic_religion_trigger = yes }
 			change_variable = { which = "warlock_magic" value = 2 }
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			change_variable = { which = burned_hearts_points value = 10 }
 			bloodthirsty_tiered_traits_effect = yes
 			clear_persistent_event_target = my_blood_contender
@@ -7360,7 +7360,7 @@ character_event = {
 			limit = { has_blood_magic_religion_trigger = yes }
 			change_variable = { which = "warlock_magic" value = 1 }
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			bloodthirsty_tiered_traits_effect = yes #You still get a point.
 			clear_persistent_event_target = my_blood_contender
 		}
@@ -7434,7 +7434,7 @@ character_event = {
 			limit = { has_blood_magic_religion_trigger = yes }
 			change_variable = { which = "warlock_magic" value = 2 }
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			change_variable = { which = burned_hearts_points value = 10 }
 			bloodthirsty_tiered_traits_effect = yes
 			clear_persistent_event_target = my_blood_contender
@@ -7458,7 +7458,7 @@ character_event = {
 			limit = { has_blood_magic_religion_trigger = yes }
 			change_variable = { which = "warlock_magic" value = 1 }
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			bloodthirsty_tiered_traits_effect = yes #You still get a point.
 			clear_persistent_event_target = my_blood_contender
 		}
@@ -7522,7 +7522,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAHF23458
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			clear_persistent_event_target = my_blood_contender
 		}
 	}
@@ -7560,7 +7560,7 @@ character_event = {
 
 	option = {
 		name = EVTOPTAHF23459
-		trigger  = {
+		trigger = {
 			OR = {
 				has_religion_feature = religion_ritual_sacrifice
 				has_religion_feature = religion_feature_bone
@@ -7568,13 +7568,13 @@ character_event = {
 				religion = aztec_reformed
 			}
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			clear_persistent_event_target = my_blood_contender
 		}
 	}
 	option = {
 		name = EVTOPTBHF23459
-		trigger  = {
+		trigger = {
 			NOR = {
 				has_religion_feature = religion_ritual_sacrifice
 				has_religion_feature = religion_feature_bone
@@ -7582,7 +7582,7 @@ character_event = {
 				religion = aztec_reformed
 			}
 		}
-		hidden_tooltip  = {
+		hidden_tooltip = {
 			clear_persistent_event_target = my_blood_contender
 		}
 	}
@@ -7617,14 +7617,14 @@ character_event = {
 		name = EVTOPTAHF23445
 		trigger = { trait = mystic }
 		tooltip_info = mystic
-		persistent_event_target:my_blood_contender = { add_character_modifier =  { name = fearless_potion months = 3 } }
+		persistent_event_target:my_blood_contender = { add_character_modifier = { name = fearless_potion months = 3 } }
 		ai_chance = { factor = 60 }
 	}
 	option = {
 		name = EVTOPTBHF23445
 		trigger = { trait = deceitful }
 		tooltip_info = deceitful
-		persistent_event_target:my_blood_contender = { add_character_modifier =  { name = poisoned_weapons months = 3 } }
+		persistent_event_target:my_blood_contender = { add_character_modifier = { name = poisoned_weapons months = 3 } }
 		ai_chance = { factor = 60 }
 	}
 	option = {
@@ -7633,7 +7633,7 @@ character_event = {
 			limit = { ai = no }
 			scaled_wealth = { value = -0.25 min = -25 max = -100 }
 		}
-		persistent_event_target:my_blood_contender = { add_character_modifier =  { name = gladiatorial_equipment months = 3 } }
+		persistent_event_target:my_blood_contender = { add_character_modifier = { name = gladiatorial_equipment months = 3 } }
 		ai_chance = { factor = 20 }
 	}
 	option = { #Nothing
@@ -7688,8 +7688,7 @@ character_event = {
 			limit = { is_nomadic = yes }
 			population = -2000
 		}
-		if = {
-			limit = { is_nomadic = no }
+		else = {
 			custom_tooltip = { text = TOOLTIP_EVTOPTAHF23462 }
 		}
 		add_blood_splatter_effect = yes
@@ -7794,8 +7793,7 @@ character_event = {
 			limit = { is_nomadic = yes }
 			population = -1000
 		}
-		if = {
-			limit = { is_nomadic = no }
+		else = {
 			custom_tooltip = { text = TOOLTIP_EVTOPTBHF23462 }
 		}
 		add_blood_splatter_effect = yes
@@ -7858,8 +7856,7 @@ character_event = {
 			limit = { is_nomadic = yes }
 			population = -500
 		}
-		if = {
-			limit = { is_nomadic = no }
+		else = {
 			capital_scope = {
 				show_scope_change = no
 				add_province_modifier = { name = bloodthirsty_mass_sacrifice_province_1 years = 10 stacking = yes }
@@ -8106,10 +8103,10 @@ character_event = {
 			}
 		}
 	}
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
 
 	immediate = {
-		ROOT = { character_event = { id  = HF.23701 days  = 1 } }
+		ROOT = { character_event = { id = HF.23701 days = 1 } }
 	}
 }
 
@@ -9474,7 +9471,7 @@ character_event = {
 	}
 	picture = {
 		trigger = {
-			event_target:scoped_improvement_target  = {
+			event_target:scoped_improvement_target = {
 				is_female = yes
 			}
 		}
@@ -9482,7 +9479,7 @@ character_event = {
 	}
 	picture = {
 		trigger = {
-			event_target:scoped_improvement_target  = {
+			event_target:scoped_improvement_target = {
 				is_female = no
 			}
 		}
@@ -9585,7 +9582,7 @@ character_event = {
 			}
 			remove_trait = groomed
 		}
-		else_if = {
+		else = {
 			add_trait = uncouth
 		}
 		ai_chance = {
@@ -9599,7 +9596,7 @@ character_event = {
 	option = { #Eat more.
 		name = EVTOPTCHF23762
 		trigger = {
-			NOR  = {
+			NOR = {
 				trait = is_fat
 				trait = is_malnourished
 			}
@@ -9680,7 +9677,7 @@ character_event = {
 	option = { #Eat less.
 		name = EVTOPTDHF23762
 		trigger = {
-			NOR  = {
+			NOR = {
 				trait = is_fat
 				trait = is_malnourished
 			}
@@ -10195,7 +10192,7 @@ character_event = {
 	desc = EVTDESCAHF23769
 	picture = {
 		trigger = {
-			event_target:scoped_improvement_target  = {
+			event_target:scoped_improvement_target = {
 				is_female = no
 			}
 		}
@@ -10203,7 +10200,7 @@ character_event = {
 	}
 	picture = {
 		trigger = {
-			event_target:scoped_improvement_target  = {
+			event_target:scoped_improvement_target = {
 				is_female = yes
 			}
 		}
@@ -10275,8 +10272,7 @@ narrative_event = {
 				type = event_family_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_family_bloodline_01
 				inheritance = matrilineal
@@ -10343,8 +10339,7 @@ narrative_event = {
 				type = event_benevolent_bloodline_01
 			}
 		}
-		if = {
-			limit = { is_female = yes }
+		else = {
 			create_bloodline = {
 				type = event_benevolent_bloodline_01
 				inheritance = matrilineal
@@ -10844,7 +10839,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_adulthood
 
 	immediate = {
 		character_event = { id = HF.23773 days = 50 random = 50 }
@@ -10862,7 +10857,7 @@ character_event = {
 	id = HF.23778
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 
 	trigger = {
 		OR = {
@@ -10889,7 +10884,7 @@ character_event = {
 	id = HF.23779
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 
 	trigger = {
 		OR = {

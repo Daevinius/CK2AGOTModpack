@@ -114,7 +114,7 @@ character_event = {
 	min_age = 11
 	max_age = 55
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		NOT_mythical_creature_trigger = yes
@@ -1696,7 +1696,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	weight_multiplier = {
 		factor = 1
@@ -3775,7 +3775,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	weight_multiplier = {
 		factor = 1
@@ -5615,7 +5615,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = is_fat
@@ -5847,7 +5847,7 @@ character_event = {
 	only_capable = yes
 	prisoner = no 	#Starvation in prison still handled by vanilla events.
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	trigger = {
 		trait = is_malnourished
@@ -6077,7 +6077,7 @@ character_event = {
 						is_inaccessible_trigger = no
 						is_incapable = no
 						prisoner = no
-						age = 16
+						is_adult = yes
 						OR = {
 							AND = { #Moralizers against fat
 								ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6113,21 +6113,21 @@ character_event = {
 						is_within_diplo_range = ROOT
 						is_incapable = no
 						prisoner = no
-						age = 16
+						is_adult = yes
 					}
 					any_friend = { #Only doing it because he cares
 						is_inaccessible_trigger = no
 						is_within_diplo_range = ROOT
 						is_incapable = no
 						prisoner = no
-						age = 16
+						is_adult = yes
 					}
 					any_close_relative = {
 						is_within_diplo_range = ROOT
 						is_inaccessible_trigger = no
 						is_incapable = no
 						prisoner = no
-						age = 16
+						is_adult = yes
 						OR = {
 							AND = { #Moralizers against fat
 								ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6187,7 +6187,7 @@ character_event = {
 					NOT = { is_lover = ROOT }
 					NOT = { is_friend = ROOT }
 					prisoner = no
-					age = 16
+					is_adult = yes
 					OR = {
 						trait = deceitful
 						trait = envious
@@ -6205,7 +6205,7 @@ character_event = {
 		}
 	}
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_five_year_pulse
 
 	weight_multiplier = {
 		factor = 1
@@ -6267,7 +6267,7 @@ character_event = {
 								is_inaccessible_trigger = no
 								is_incapable = no
 								prisoner = no
-								age = 16
+								is_adult = yes
 								OR = {
 									AND = { #Moralizers against fat
 										ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6300,13 +6300,13 @@ character_event = {
 							}
 							any_lover = { #Only doing it because he cares
 								is_inaccessible_trigger = no
-								age = 16
+								is_adult = yes
 								is_incapable = no
 								prisoner = no
 							}
 							any_friend = { #Only doing it because he cares
 								is_inaccessible_trigger = no
-								age = 16
+								is_adult = yes
 								is_incapable = no
 								prisoner = no
 							}
@@ -6314,7 +6314,7 @@ character_event = {
 								is_within_diplo_range = ROOT
 								is_inaccessible_trigger = no
 								is_incapable = no
-								age = 16
+								is_adult = yes
 								prisoner = no
 								OR = {
 									AND = { #Moralizers against fat
@@ -6359,7 +6359,7 @@ character_event = {
 									is_inaccessible_trigger = no
 									is_incapable = no
 									prisoner = no
-									age = 16
+									is_adult = yes
 									OR = {
 										AND = { #Moralizers against fat
 											ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6398,7 +6398,7 @@ character_event = {
 								is_inaccessible_trigger = no
 								is_incapable = no
 								prisoner = no
-								age = 16
+								is_adult = yes
 								OR = {
 									AND = { #Moralizers against fat
 										ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6441,7 +6441,7 @@ character_event = {
 									is_inaccessible_trigger = no
 									is_incapable = no
 									prisoner = no
-									age = 16
+									is_adult = yes
 									OR = {
 										AND = { #Moralizers against fat
 											ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6480,7 +6480,7 @@ character_event = {
 								is_inaccessible_trigger = no
 								is_incapable = no
 								prisoner = no
-								age = 16
+								is_adult = yes
 								OR = {
 									AND = { #Moralizers against fat
 										ROOT = { check_variable = { which = physique_variable value = 7 } }
@@ -6520,7 +6520,7 @@ character_event = {
 							NOT = {
 								any_lover = {
 									is_inaccessible_trigger = no
-									age = 16
+									is_adult = yes
 									is_incapable = no
 									prisoner = no
 								}
@@ -6529,7 +6529,7 @@ character_event = {
 						random_lover = {
 							limit = {
 								is_inaccessible_trigger = no
-								age = 16
+								is_adult = yes
 								is_incapable = no
 								prisoner = no
 							}
@@ -6542,7 +6542,7 @@ character_event = {
 							NOT = {
 								any_friend = {
 									is_inaccessible_trigger = no
-									age = 16
+									is_adult = yes
 									is_incapable = no
 									prisoner = no
 								}
@@ -6551,7 +6551,7 @@ character_event = {
 						random_friend = {
 							limit = {
 								is_inaccessible_trigger = no
-								age = 16
+								is_adult = yes
 								is_incapable = no
 								prisoner = no
 							}
@@ -6589,7 +6589,7 @@ character_event = {
 								}
 							}
 							prisoner = no
-							age = 16
+							is_adult = yes
 							OR = {
 								trait = deceitful
 								trait = envious
@@ -6613,7 +6613,7 @@ character_event = {
 						NOT = { is_lover = ROOT }
 						NOT = { is_friend = ROOT }
 						prisoner = no
-						age = 16
+						is_adult = yes
 						OR = {
 							AND = {
 								is_female = yes
@@ -7685,7 +7685,7 @@ character_event = {
 	desc = EVTDESCAHFP20661
 	picture = GFX_evt_fancy_feast
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 
 	min_age = 40	#Unlikely to happen earlier.
 	only_capable = yes
@@ -7765,7 +7765,7 @@ character_event = {
 	desc = EVTDESCAHFP20662
 	picture = GFX_evt_bad_news
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_decade_pulse
 
 	min_age = 40	#Unlikely to happen earlier.
 	only_capable = yes

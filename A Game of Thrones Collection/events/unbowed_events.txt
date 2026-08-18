@@ -9,7 +9,7 @@ namespace = unbowed
 character_event = { #Dragon War Ends
 	id = unbowed.0
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 	hide_window = yes
 
 	has_global_flag = age_of_dragons
@@ -35,7 +35,7 @@ character_event = { #Dragon War Ends
 character_event = { #Final Dragon War Ends
 	id = unbowed.9990
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 	hide_window = yes
 
 	has_global_flag = age_of_dragons
@@ -76,7 +76,7 @@ character_event = { #Finally won the war
 			limit = { NOT = { character = c_77000 } }
 			hidden_tooltip = {
 				change_variable = { which = the_warrior value = 1 }
-				character_event = { id = tdp_scenario_events.9999 }
+				character_event = { id = unbowed.9999 }
 			}
 			create_bloodline = {
 				type = conqueror_of_dorne_bloodline
@@ -371,7 +371,7 @@ character_event = { #Non-Dragon War Ends in Defeat for Targaryens
 	desc = EVTDESCunbowed.12
 	picture = GFX_MARTELL
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_defeat
 
 	trigger = {
 		ROOT = { culture_group = dornish }
@@ -398,7 +398,7 @@ character_event = { #Non-Dragon War Ends in Victory for Targaryens
 	id = unbowed.120
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory
 
 	trigger = {
 		ROOT = { culture_group = dornish }
@@ -425,7 +425,7 @@ character_event = { #Non-Dragon War Ends in Victory for Targaryens
 character_event = { #On Siege Pulse
 	id = unbowed.2999
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_siege_pulse
 	hide_window = yes
 
 	trigger = {
@@ -670,7 +670,7 @@ character_event = { #Bolts avoided + go on offensive
 character_event = { #War Started
 	id = unbowed.22
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -740,7 +740,7 @@ character_event = { #War Started
 character_event = { #War Ended - Clear Flags & Modifiers
 	id = unbowed.23
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_ended_victory, on_war_ended_invalid, on_war_ended_whitepeace, on_war_ended_defeat
 	hide_window = yes
 
 	trigger = {
@@ -768,7 +768,7 @@ character_event = { #War Ended - Clear Flags & Modifiers
 character_event = {
 	id = unbowed.24
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder_inheritance
 	hide_window = yes
 
 	trigger = {
@@ -809,7 +809,7 @@ character_event = {
 character_event = {
 	id = unbowed.240
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_startup
 	hide_window = yes
 
 	war = yes
@@ -836,7 +836,7 @@ character_event = {
 character_event = {
 	id = unbowed.3
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_war_started
 	hide_window = yes
 
 	trigger = {
@@ -940,6 +940,8 @@ character_event = {
 	picture = GFX_red_scorpions
 
 	is_triggered_only = yes
+
+	has_character_flag = aegon_targaryen
 
 	trigger = {
 		character = 77000
@@ -1296,24 +1298,6 @@ character_event = { #Decide Peace or War
 			}
 		}
 		else = {
-			limit = {
-				any_dynasty_member = {
-					age = 14
-					age < 20
-					is_female = yes
-					can_marry_trigger = yes
-				}
-				e_dorne = {
-					holder_scope = {
-						any_dynasty_member = {
-							age = 14
-							age < 30
-							is_female = no
-							can_marry_trigger = yes
-						}
-					}
-				}
-			}
 			random_dynasty_member = {
 				limit = {
 					age = 14
@@ -2200,28 +2184,6 @@ character_event = {
 			}
 		}
 		else = {
-			limit = {
-				e_iron_throne = {
-					holder_scope = {
-						any_dynasty_member = {
-							age = 14
-							age < 30
-							is_female = yes
-							can_marry_trigger = yes
-						}
-					}
-				}
-				k_dorne = {
-					holder_scope = {
-						any_dynasty_member = {
-							age = 14
-							age < 30
-							is_female = no
-							can_marry_trigger = yes
-						}
-					}
-				}
-			}
 			e_iron_throne = {
 				holder_scope = {
 					random_dynasty_member = {
@@ -2366,7 +2328,7 @@ character_event = {
 character_event = {
 	id = unbowed.9999
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 
 	trigger = {

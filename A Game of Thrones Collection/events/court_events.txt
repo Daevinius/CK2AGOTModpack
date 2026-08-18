@@ -15,7 +15,7 @@ character_event = {
 	desc = EVTDESC73000
 	picture = GFX_evt_monk
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -109,7 +109,7 @@ character_event = {
 	desc = EVTDESC73001
 	picture = GFX_evt_courtiers_talking
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -208,7 +208,7 @@ character_event = {
 	picture = GFX_evt_bishop
 	border = GFX_event_normal_frame_religion
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -271,7 +271,7 @@ character_event = {
 	desc = EVTDESC73003
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -331,7 +331,7 @@ character_event = {
 	desc = EVTDESC73004
 	picture = GFX_evt_monk
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_capable = yes
 	min_age = 16
@@ -390,7 +390,7 @@ character_event = {
 	desc = EVTDESC73005
 	picture = GFX_evt_courtiers_talking
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -609,7 +609,7 @@ character_event = {
 	picture = GFX_evt_pregnancy
 	border = GFX_event_normal_frame_intrigue
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -619,7 +619,7 @@ character_event = {
 		any_child = {
 			is_married = no
 			is_female = no
-			age = 16
+			is_adult = yes
 			age < 21
 			is_ruler = no
 			NOT = { trait = chaste }
@@ -640,7 +640,7 @@ character_event = {
 			limit = {
 				is_married = no
 				is_female = no
-				age = 16
+				is_adult = yes
 				age < 21
 				is_ruler = no
 				NOT = { trait = chaste }
@@ -781,7 +781,7 @@ character_event = {
 	desc = EVTDESC73007
 	picture = GFX_evt_daughter_asking_father
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -923,7 +923,7 @@ character_event = {
 	desc = EVTDESC73008
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -983,8 +983,7 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
@@ -1045,7 +1044,7 @@ character_event = {
 	desc = EVTDESC73009
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	min_age = 16
 	only_playable = yes
@@ -1119,8 +1118,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -1167,12 +1165,11 @@ character_event = {
 									limit = { is_female = no }
 									set_special_character_title = title_ser
 								}
-								if = {
-									limit = { is_female = yes }
+								else = {
 									set_special_character_title = title_lady
 								}
 							}
-										}
+						}
 					}
 					random_list = {
 						30 = { }
@@ -1266,7 +1263,7 @@ character_event = {
 	only_playable = yes
 	prisoner = no
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		immortal = no
@@ -1596,7 +1593,7 @@ character_event = {
 		# NOT = { liege = { has_character_flag = asked_marshal_petition } }
 		# NOT = { has_character_flag = asked_for_job }
 		# job_marshal = {
-			# NOT = { martial = prev }
+			# NOT = { martial = PREV }
 			# NOT = { liege = { regent = { character = PREVPREV } } }
 		# }
 		# NOT = {
@@ -1660,7 +1657,7 @@ character_event = {
 		# job_marshal = {
 			# letter_event = { id = 73202 tooltip = EVTTOOLTIP73202 }
 		# }
-		# hidden_tooltip = { FROM  = { character_event = { id = 73203 days = 128 random = 63  }	} }
+		# hidden_tooltip = { FROM = { character_event = { id = 73203 days = 128 random = 63  }	} }
 	# }
 	# option = {
 		# name = "EVTOPTC73201"
@@ -1735,7 +1732,7 @@ character_event = {
 	# trigger = {
 		# NOT = { liege = { is_married = ROOT } }
 		# NOT = { has_job_title = job_marshal }
-		# job_marshal = { NOT = { martial = prev } }
+		# job_marshal = { NOT = { martial = PREV } }
 		# prisoner = no
 
 	# }
@@ -1838,7 +1835,7 @@ character_event = {
 		# NOT = { liege = { has_character_flag = asked_spymaster_petition } }
 		# NOT = { has_character_flag = asked_for_job }
 		# job_spymaster = {
-			# NOT = { intrigue = prev }
+			# NOT = { intrigue = PREV }
 			# NOT = {  liege = { regent = { character = PREVPREV } } }
 		# }
 		# NOT = {
@@ -1903,7 +1900,7 @@ character_event = {
 		# job_spymaster = {
 			# letter_event = { id = 73212 tooltip = EVTTOOLTIP73212 }
 		# }
-		# hidden_tooltip = { FROM  = { character_event = { id = 73213 days = 128 random = 63  }	} }
+		# hidden_tooltip = { FROM = { character_event = { id = 73213 days = 128 random = 63  }	} }
 	# }
 	# option = {
 		# name = "EVTOPTC73211"
@@ -1980,7 +1977,7 @@ character_event = {
 	# trigger = {
 		# NOT = { liege = { is_married = ROOT } }
 		# NOT = { has_job_title = job_spymaster }
-		# job_spymaster = { NOT = { intrigue = prev } }
+		# job_spymaster = { NOT = { intrigue = PREV } }
 		# prisoner = no
 	# }
 
@@ -2071,7 +2068,7 @@ character_event = {
 	# prisoner = no
 
 	# trigger = {
-		# age = 16
+		# is_adult = yes
 		# NOT = { liege = { is_married = ROOT } }
 		# stewardship = 10
 		# independent = no
@@ -2083,7 +2080,7 @@ character_event = {
 		# NOT = { liege = { has_character_flag = asked_treasurer_petition } }
 		# NOT = { has_character_flag = asked_for_job }
 		# job_treasurer = {
-			# NOT = { stewardship = prev }
+			# NOT = { stewardship = PREV }
 			# NOT = {  liege = { regent = { character = PREVPREV } } }
 		# }
 		# NOT = {
@@ -2146,7 +2143,7 @@ character_event = {
 		# job_treasurer = {
 			# letter_event = { id = 73222 tooltip = EVTTOOLTIP73222 }
 		# }
-		# hidden_tooltip = { FROM  = { character_event = { id = 73223 days = 128 random = 63  }	} }
+		# hidden_tooltip = { FROM = { character_event = { id = 73223 days = 128 random = 63  }	} }
 	# }
 	# option = {
 		# name = "EVTOPTC73221"
@@ -2220,7 +2217,7 @@ character_event = {
 	# trigger = {
 		# NOT = { liege = { is_married = ROOT } }
 		# NOT = { has_job_title = job_treasurer }
-		# job_treasurer = { NOT = { stewardship = prev } }
+		# job_treasurer = { NOT = { stewardship = PREV } }
 		# prisoner = no
 	# }
 
@@ -2391,7 +2388,7 @@ letter_event = {
 		job_physician = {
 			letter_event = { id = 73232 tooltip = EVTTOOLTIP73232 }
 		}
-		hidden_tooltip = { FROM  = { character_event = { id = 73233 days = 128 random = 63  }	} }
+		hidden_tooltip = { FROM = { character_event = { id = 73233 days = 128 random = 63  }	} }
 	}
 	option = {
 		name = "EVTOPTC73231"
@@ -2571,7 +2568,7 @@ letter_event = {
 		# NOT = { liege = { has_character_flag = asked_chancellor_petition } }
 		# NOT = { has_character_flag = asked_for_job }
 		# job_chancellor = {
-			# NOT = { diplomacy = prev }
+			# NOT = { diplomacy = PREV }
 			# NOT = {  liege = { regent = { character = PREVPREV } } }
 		# }
 		# NOT = {
@@ -2634,7 +2631,7 @@ letter_event = {
 		# job_chancellor = {
 			# letter_event = { id = 73242 tooltip = EVTTOOLTIP73242 }
 		# }
-		# hidden_tooltip = { FROM  = { character_event = { id = 73243 days = 128 random = 63  }	} }
+		# hidden_tooltip = { FROM = { character_event = { id = 73243 days = 128 random = 63  }	} }
 	# }
 	# option = {
 		# name = "EVTOPTC73241"
@@ -2708,7 +2705,7 @@ letter_event = {
 	# trigger = {
 		# NOT = { liege = { is_married = ROOT } }
 		# NOT = { has_job_title = job_chancellor }
-		# job_chancellor = { NOT = { diplomacy = prev } }
+		# job_chancellor = { NOT = { diplomacy = PREV } }
 		# prisoner = no
 	# }
 
@@ -3448,8 +3445,7 @@ character_event = {
 						limit = { is_female = no }
 						set_special_character_title = title_ser
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						set_special_character_title = title_lady
 					}
 				}
@@ -3885,8 +3881,7 @@ character_event = {
 								limit = { is_female = no }
 								set_special_character_title = title_ser
 							}
-							if = {
-								limit = { is_female = yes }
+							else = {
 								set_special_character_title = title_lady
 							}
 						}
@@ -4234,8 +4229,7 @@ character_event = {
 										limit = { is_female = no }
 										set_special_character_title = title_ser
 									}
-									if = {
-										limit = { is_female = yes }
+									else = {
 										set_special_character_title = title_lady
 									}
 								}
@@ -5466,8 +5460,7 @@ character_event = {
 						limit = { is_female = no }
 						add_trait = seducer
 					}
-					if = {
-						limit = { is_female = yes }
+					else = {
 						add_trait = seductress
 					}
 				}
@@ -5604,7 +5597,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 600
+		years = 50
 
 		modifier = {
 			factor = 2
@@ -8110,7 +8103,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		months = 600
+		years = 50
 
 		modifier = {
 			factor = 0.25
@@ -8182,7 +8175,7 @@ character_event = {
 			random_character = { #find potential mormont
 				limit = {
 					is_female = no
-					age = 16
+					is_adult = yes
 					dynasty = 102 #Mormont
 					dynasty_head = { character = PREV }
 					is_ruler = no
@@ -8242,7 +8235,7 @@ character_event = {
 		random_character = { #find potential lost house
 			limit = {
 				is_female = no
-				age = 16
+				is_adult = yes
 				dynasty_head = { character = PREV }
 				is_lowborn = no
 				is_ruler = no
@@ -8576,7 +8569,7 @@ character_event = {
 	id = court.54
 	picture = GFX_evt_family
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	hide_window = yes
 	only_playable = yes
 	only_men = yes
@@ -8838,7 +8831,7 @@ character_event = {
 	desc = EVTDESCcourt.63
 	picture = GFX_evt_family
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	only_men = yes
 	only_capable = yes

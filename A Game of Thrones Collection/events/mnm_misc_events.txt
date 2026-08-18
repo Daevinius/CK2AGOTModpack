@@ -102,7 +102,7 @@ character_event = {
 	id = MNM.10010
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_character_switch_society_interest
 
 	is_in_society = no
 
@@ -251,11 +251,11 @@ character_event = {
 			#limit = {
 				#interested_in_society = secret_religious_cult
 				#NOT = { has_character_modifier = secret_religions_recruitment_timer }
-		    	#any_society_member = {
-		    	 	#is_in_prevs_interesting_society_trigger = yes
-		    	#
+				#any_society_member = {
+					#is_in_prevs_interesting_society_trigger = yes
+				#
 			#
-    		#add_character_modifier = {
+			#add_character_modifier = {
 				#name = secret_religions_recruitment_timer
 				#years = 5
 				#hidden = yes
@@ -356,74 +356,74 @@ character_event = {
 }
 
 character_event = {
-    id = MNM.10019
-    desc = EVTDESC_MNM_10019
-    picture = GFX_evt_society_joining
-    border = GFX_event_normal_frame_religion
+	id = MNM.10019
+	desc = EVTDESC_MNM_10019
+	picture = GFX_evt_society_joining
+	border = GFX_event_normal_frame_religion
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    option = {
-        name = ALAS
-        set_interested_society = none
-    }
+	option = {
+		name = ALAS
+		set_interested_society = none
+	}
 }
 #Becoming stressed about keeping a secret
 character_event = {
-    id = MNM.10020
-    picture = GFX_evt_uncomfortable
-    border = GFX_event_normal_frame_intrigue
+	id = MNM.10020
+	picture = GFX_evt_uncomfortable
+	border = GFX_event_normal_frame_intrigue
 
-    desc = {
-    	trigger = {
-    		has_dlc = "Mystics"
-    		trait = paranoid
-    	}
-    	text = EVTDESC_MNM_10020_A
-    	picture = GFX_evt_uncomfortable
-    }
+	desc = {
+		trigger = {
+			has_dlc = "Mystics"
+			trait = paranoid
+		}
+		text = EVTDESC_MNM_10020_A
+		picture = GFX_evt_uncomfortable
+	}
 
-    desc = {
-    	trigger = {
-    		NOT = { has_dlc = "Mystics" }
-    		trait = paranoid
-    	}
-    	text = EVTDESC_MNM_10020_A
-    	picture = GFX_evt_shadowy_cabal
-    }
+	desc = {
+		trigger = {
+			NOT = { has_dlc = "Mystics" }
+			trait = paranoid
+		}
+		text = EVTDESC_MNM_10020_A
+		picture = GFX_evt_shadowy_cabal
+	}
 
-    desc = {
-    	trigger = {
-    		has_dlc = "Mystics"
-    		NOT = { trait = paranoid }
-    	}
-    	text = EVTDESC_MNM_10020_B
-    	picture = GFX_evt_uncomfortable
-    }
+	desc = {
+		trigger = {
+			has_dlc = "Mystics"
+			NOT = { trait = paranoid }
+		}
+		text = EVTDESC_MNM_10020_B
+		picture = GFX_evt_uncomfortable
+	}
 
-    desc = {
-    	trigger = {
-    		NOT = { has_dlc = "Mystics" }
-    		NOT = { trait = paranoid }
-    	}
-    	text = EVTDESC_MNM_10020_B
-    	picture = GFX_evt_shadowy_cabal
-    }
+	desc = {
+		trigger = {
+			NOT = { has_dlc = "Mystics" }
+			NOT = { trait = paranoid }
+		}
+		text = EVTDESC_MNM_10020_B
+		picture = GFX_evt_shadowy_cabal
+	}
 
 	is_in_society = yes
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    trigger = {
-    	society_is_criminal = yes
-    	NOT = { trait = stressed }
-    }
+	trigger = {
+		society_is_criminal = yes
+		NOT = { trait = stressed }
+	}
 
-    option = {
-        name = EVTOPTA_MNM_10020
+	option = {
+		name = EVTOPTA_MNM_10020
 
-	    add_trait = stressed
-    }
+		add_trait = stressed
+	}
 }
 
 
@@ -477,10 +477,10 @@ character_event = {
 
 
 character_event = {
-    id = MNM.10022
-    hide_window = yes
-    is_triggered_only = yes
-    immediate = { FROM = { letter_event = { id = MNM.10023 } } }
+	id = MNM.10022
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { FROM = { letter_event = { id = MNM.10023 } } }
 }
 
 
@@ -958,20 +958,20 @@ character_event = {
 
 #Making an enemy
 character_event = {
-    id = MNM.10040
-    hide_window = yes
-    is_triggered_only = yes
+	id = MNM.10040
+	hide_window = yes
+	is_triggered_only = yes
 	only_capable = yes
-    trigger = {
+	trigger = {
 		num_of_rivals < 5
-    	society = {
-    		any_society_member = {
-    			NOT = { reverse_opinion = { who = ROOT value = -20 } }
-    			NOT = { opinion = { who = ROOT value = 0 } }
-    			NOT = { is_rival = ROOT }
+		society = {
+			any_society_member = {
+				NOT = { reverse_opinion = { who = ROOT value = -20 } }
+				NOT = { opinion = { who = ROOT value = 0 } }
+				NOT = { is_rival = ROOT }
 				num_of_rivals < 5
-    			NOT = { has_character_flag = ineligible_for_society_rivalry }
-    			ai = yes
+				NOT = { has_character_flag = ineligible_for_society_rivalry }
+				ai = yes
 				#some societies have to be close by
 				NAND = {
 					OR = {
@@ -985,19 +985,19 @@ character_event = {
 						vassal_of = ROOT
 					}
 				}
-    		}
-    	}
-    }
-    immediate = {
-    	society = {
-    		random_society_member = {
-    			limit = {
-    				NOT = { reverse_opinion = { who = ROOT value = -20 } }
-	    			NOT = { opinion = { who = ROOT value = 0 } }
-	    			NOT = { is_rival = ROOT }
+			}
+		}
+	}
+	immediate = {
+		society = {
+			random_society_member = {
+				limit = {
+					NOT = { reverse_opinion = { who = ROOT value = -20 } }
+					NOT = { opinion = { who = ROOT value = 0 } }
+					NOT = { is_rival = ROOT }
 					num_of_rivals < 5
-	    			NOT = { has_character_flag = ineligible_for_society_rivalry }
-	    			ai = yes
+					NOT = { has_character_flag = ineligible_for_society_rivalry }
+					ai = yes
 					#some societies have to be close by
 					NAND = {
 						OR = {
@@ -1011,109 +1011,109 @@ character_event = {
 							vassal_of = ROOT
 						}
 					}
-    			}
-    			character_event = { id = MNM.10041 }
-    		}
-    	}
-    }
+				}
+				character_event = { id = MNM.10041 }
+			}
+		}
+	}
 }
 
 
 character_event = {
-    id = MNM.10041
-    hide_window = yes
-    is_triggered_only = yes
-    immediate = { FROM = { character_event = { id = MNM.10042 } } }
+	id = MNM.10041
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { FROM = { character_event = { id = MNM.10042 } } }
 }
 
 
 character_event = {
-    id = MNM.10042
-    picture = GFX_evt_rival_rulers
-    border = GFX_event_normal_frame_war
+	id = MNM.10042
+	picture = GFX_evt_rival_rulers
+	border = GFX_event_normal_frame_war
 
-    desc = {
-    	trigger = {
-    		NOR = {
-    			is_devil_worshiper_trigger = yes
-    			#society_member_of = hermetics
-    		}
-    	}
-    	text = EVTDESC_MNM_10042
-    	picture = GFX_evt_rival_rulers
-    }
-    desc = {
-    	trigger = { is_devil_worshiper_trigger = yes }
-    	text = EVTDESC_MNM_10042
-    	picture = GFX_evt_shadowy_cabal
-    }
-    # desc = {
-    	# trigger = { society_member_of = hermetics }
-    	# text = EVTDESC_MNM_10042
-    	# picture = GFX_evt_gathering_of_minds
-    # }
+	desc = {
+		trigger = {
+			NOR = {
+				is_devil_worshiper_trigger = yes
+				#society_member_of = hermetics
+			}
+		}
+		text = EVTDESC_MNM_10042
+		picture = GFX_evt_rival_rulers
+	}
+	desc = {
+		trigger = { is_devil_worshiper_trigger = yes }
+		text = EVTDESC_MNM_10042
+		picture = GFX_evt_shadowy_cabal
+	}
+	# desc = {
+		# trigger = { society_member_of = hermetics }
+		# text = EVTDESC_MNM_10042
+		# picture = GFX_evt_gathering_of_minds
+	# }
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    #Make them enemy
-    option = {
-        name = EVTOPTA_MNM_10042
-        add_rival = FROM
+	#Make them enemy
+	option = {
+		name = EVTOPTA_MNM_10042
+		add_rival = FROM
 
-        ai_chance = {
-        	factor = 90
-        	modifier = {
-        		has_evil_trait_trigger = yes
-        		factor = 15
-        	}
-        }
-    }
+		ai_chance = {
+			factor = 90
+			modifier = {
+				has_evil_trait_trigger = yes
+				factor = 15
+			}
+		}
+	}
 
 
-    #Ignore them
-    option = {
-        name = EVTOPTB_MNM_10042
+	#Ignore them
+	option = {
+		name = EVTOPTB_MNM_10042
 
-        detract_society_currency_minor_effect = yes
+		detract_society_currency_minor_effect = yes
 
-        if = {
-        	limit = { ai = no }
-        	FROM = { set_character_flag = ineligible_for_society_rivalry }
-        }
+		if = {
+			limit = { ai = no }
+			FROM = { set_character_flag = ineligible_for_society_rivalry }
+		}
 
-        ai_chance = {
-        	factor = 10
-        	modifier = {
-        		has_benevolent_trait_trigger = yes
-        		factor = 15
-        	}
-        }
-    }
+		ai_chance = {
+			factor = 10
+			modifier = {
+				has_benevolent_trait_trigger = yes
+				factor = 15
+			}
+		}
+	}
 }
 
 
 #Making a friend
 character_event = {
-    id = MNM.10043
-    hide_window = yes
-    is_triggered_only = yes
+	id = MNM.10043
+	hide_window = yes
+	is_triggered_only = yes
 	only_capable = yes
-    trigger = {
+	trigger = {
 		num_of_friends < 6
-    	society = {
-    		any_society_member = {
-    			reverse_opinion = { who = ROOT value = 30 }
-    			opinion = { who = ROOT value = 40 }
-    			NOR = {
-	    			is_lover = ROOT
-    				is_friend = ROOT
-    				is_rival = ROOT
-    				is_close_relative = ROOT
-    			}
+		society = {
+			any_society_member = {
+				reverse_opinion = { who = ROOT value = 30 }
+				opinion = { who = ROOT value = 40 }
+				NOR = {
+					is_lover = ROOT
+					is_friend = ROOT
+					is_rival = ROOT
+					is_close_relative = ROOT
+				}
 				num_of_friends < 6
-    			prisoner = no
-    			NOT = { has_character_flag = ineligible_for_society_friendship }
-    			ai = yes
+				prisoner = no
+				NOT = { has_character_flag = ineligible_for_society_friendship }
+				ai = yes
 				#some societies have to be close by
 				NAND = {
 					OR = {
@@ -1127,25 +1127,25 @@ character_event = {
 						vassal_of = ROOT
 					}
 				}
-    		}
-    	}
-    }
-    immediate = {
-    	society = {
-    		random_society_member = {
-    			limit = {
-    				reverse_opinion = { who = ROOT value = 30 }
-	    			opinion = { who = ROOT value = 40 }
-	    			NOR = {
-	    				is_lover = ROOT
-	    				is_friend = ROOT
-	    				is_rival = ROOT
-	    				is_close_relative = ROOT
-	    			}
+			}
+		}
+	}
+	immediate = {
+		society = {
+			random_society_member = {
+				limit = {
+					reverse_opinion = { who = ROOT value = 30 }
+					opinion = { who = ROOT value = 40 }
+					NOR = {
+						is_lover = ROOT
+						is_friend = ROOT
+						is_rival = ROOT
+						is_close_relative = ROOT
+					}
 					num_of_friends < 6
-    				prisoner = no
-	    			NOT = { has_character_flag = ineligible_for_society_friendship }
-	    			ai = yes
+					prisoner = no
+					NOT = { has_character_flag = ineligible_for_society_friendship }
+					ai = yes
 					#some societies have to be close by
 					NAND = {
 						OR = {
@@ -1159,133 +1159,133 @@ character_event = {
 							vassal_of = ROOT
 						}
 					}
-	    		}
-    			character_event = { id = MNM.10044 }
-    		}
-    	}
-    }
+				}
+				character_event = { id = MNM.10044 }
+			}
+		}
+	}
 }
 
 character_event = {
-    id = MNM.10044
-    hide_window = yes
-    is_triggered_only = yes
-    immediate = { FROM = { character_event = { id = MNM.10045 } } }
+	id = MNM.10044
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = { FROM = { character_event = { id = MNM.10045 } } }
 }
 
 
 character_event = {
-    id = MNM.10045
-    picture = GFX_evt_courtiers_talking
-    border = GFX_event_normal_frame_diplomacy
+	id = MNM.10045
+	picture = GFX_evt_courtiers_talking
+	border = GFX_event_normal_frame_diplomacy
 
-    desc = {
-    	trigger = {
-    		NOR = {
-    			is_devil_worshiper_trigger = yes
-    			#society_member_of = hermetics
-    			#society_member_of = secret_religious_cult
-    			#society_member_of = the_assassins
-    			#is_dharmic_monastic_member_trigger = yes
-    			#is_christian_monastic_member_trigger = yes
-    		}
-    	}
-    	text = EVTDESC_MNM_10045
-    	picture = GFX_evt_rival_rulers
-    }
-    desc = {
-    	trigger = { is_devil_worshiper_trigger = yes }
-    	text = EVTDESC_MNM_10045
-    	picture = GFX_evt_magic_ritual
-    }
-    # desc = {
-    	# trigger = { society_member_of = hermetics }
-    	# text = EVTDESC_MNM_10045
-    	# picture = GFX_evt_experiment
-    # }
-    # desc = {
-    	# trigger = { society_member_of = secret_religious_cult }
-    	# text = EVTDESC_MNM_10045
-    	# picture = GFX_evt_secret_ceremony
-    # }
-    # desc = {
-    	# trigger = { society_member_of = the_assassins }
-    	# text = EVTDESC_MNM_10045
-    	# picture = GFX_evt_council_arabic
-    # }
-    # desc = {
-    	# trigger = { is_dharmic_monastic_member_trigger = yes }
-    	# text = EVTDESC_MNM_10045
-    	# picture = GFX_evt_bishop_hindu
-    # }
-    # desc = {
-    	# trigger = { is_christian_monastic_member_trigger = yes }
-    	# text = EVTDESC_MNM_10045
-    	# picture = GFX_evt_monastery_monks
-    # }
+	desc = {
+		trigger = {
+			NOR = {
+				is_devil_worshiper_trigger = yes
+				#society_member_of = hermetics
+				#society_member_of = secret_religious_cult
+				#society_member_of = the_assassins
+				#is_dharmic_monastic_member_trigger = yes
+				#is_christian_monastic_member_trigger = yes
+			}
+		}
+		text = EVTDESC_MNM_10045
+		picture = GFX_evt_rival_rulers
+	}
+	desc = {
+		trigger = { is_devil_worshiper_trigger = yes }
+		text = EVTDESC_MNM_10045
+		picture = GFX_evt_magic_ritual
+	}
+	# desc = {
+		# trigger = { society_member_of = hermetics }
+		# text = EVTDESC_MNM_10045
+		# picture = GFX_evt_experiment
+	# }
+	# desc = {
+		# trigger = { society_member_of = secret_religious_cult }
+		# text = EVTDESC_MNM_10045
+		# picture = GFX_evt_secret_ceremony
+	# }
+	# desc = {
+		# trigger = { society_member_of = the_assassins }
+		# text = EVTDESC_MNM_10045
+		# picture = GFX_evt_council_arabic
+	# }
+	# desc = {
+		# trigger = { is_dharmic_monastic_member_trigger = yes }
+		# text = EVTDESC_MNM_10045
+		# picture = GFX_evt_bishop_hindu
+	# }
+	# desc = {
+		# trigger = { is_christian_monastic_member_trigger = yes }
+		# text = EVTDESC_MNM_10045
+		# picture = GFX_evt_monastery_monks
+	# }
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    #Make them friend
-    option = {
-        name = EVTOPTA_MNM_10045
-        add_friend = FROM
+	#Make them friend
+	option = {
+		name = EVTOPTA_MNM_10045
+		add_friend = FROM
 
-        ai_chance = {
-        	factor = 75
-        	modifier = {
-        		has_pleasant_trait_trigger = yes
-        		factor = 15
-        	}
-        }
-    }
+		ai_chance = {
+			factor = 75
+			modifier = {
+				has_pleasant_trait_trigger = yes
+				factor = 15
+			}
+		}
+	}
 
-    #Love?
-    option = {
-    	trigger = { FROM = { root_attraction_trigger = yes } }
-        name = EVTOPTC_MNM_10045
-        custom_tooltip = { text = EVTOPTB_MNM_6903_TT }
+	#Love?
+	option = {
+		trigger = { FROM = { root_attraction_trigger = yes } }
+		name = EVTOPTC_MNM_10045
+		custom_tooltip = { text = EVTOPTB_MNM_6903_TT }
 
-        hidden_effect = { FROM = { character_event = { id = MNM.6906 days = 3 } } }
+		hidden_effect = { FROM = { character_event = { id = MNM.6906 days = 3 } } }
 
-        if = {
-        	limit = { ai = no }
-        	FROM = { set_character_flag = ineligible_for_society_friendship }
-        }
+		if = {
+			limit = { ai = no }
+			FROM = { set_character_flag = ineligible_for_society_friendship }
+		}
 
-        ai_chance = {
-        	factor = 25
-        	modifier = {
-        		factor = 0
-        		NOR = {
-        			trait = lustful
-        			AND = {
-        				NOT = { any_lover = { is_alive = yes } }
-        				is_married = yes
-        			}
-        			FROM = { has_attractive_trait_trigger = yes }
-        		}
-        	}
-        }
-    }
+		ai_chance = {
+			factor = 25
+			modifier = {
+				factor = 0
+				NOR = {
+					trait = lustful
+					AND = {
+						NOT = { any_lover = { is_alive = yes } }
+						is_married = yes
+					}
+					FROM = { has_attractive_trait_trigger = yes }
+				}
+			}
+		}
+	}
 
-    #Nah
-    option = {
-        name = EVTOPTB_MNM_10045
+	#Nah
+	option = {
+		name = EVTOPTB_MNM_10045
 
-        if = {
-        	limit = { ai = no }
-        	FROM = { set_character_flag = ineligible_for_society_friendship }
-        }
+		if = {
+			limit = { ai = no }
+			FROM = { set_character_flag = ineligible_for_society_friendship }
+		}
 
-        ai_chance = {
-        	factor = 25
-        	modifier = {
-        		has_unpleasant_trait_trigger = yes
-        		factor = 15
-        	}
-        }
-    }
+		ai_chance = {
+			factor = 25
+			modifier = {
+				has_unpleasant_trait_trigger = yes
+				factor = 15
+			}
+		}
+	}
 }
 
 #clearing secret_societies_interference flag
@@ -1570,15 +1570,15 @@ character_event = {
 
 		hidden_effect = {
 			clr_character_flag = A_FAIL
-	    	clr_character_flag = B_FAIL
-	    	clr_character_flag = C_FAIL
-	    	clr_character_flag = D_FAIL
+			clr_character_flag = B_FAIL
+			clr_character_flag = C_FAIL
+			clr_character_flag = D_FAIL
 			clr_character_flag = A_SUCCESS
-    		clr_character_flag = B_SUCCESS
-    		clr_character_flag = C_SUCCESS
-    		clr_character_flag = D_SUCCESS
-    		clr_character_flag = alexandria
-    		clr_character_flag = conduct_secret_ceremony_timer
+			clr_character_flag = B_SUCCESS
+			clr_character_flag = C_SUCCESS
+			clr_character_flag = D_SUCCESS
+			clr_character_flag = alexandria
+			clr_character_flag = conduct_secret_ceremony_timer
 			clr_character_flag = do_not_disturb
 			clr_character_flag = bribed_guards
 			clr_character_flag = guards_wake_up
@@ -1598,49 +1598,49 @@ character_event = {
 			clr_character_flag = induction_argument_war
 			clr_character_flag = induction_argument_community
 			clr_character_flag = induction_argument_theology
-            clr_character_flag = induction_argument_stewardship
-            clr_character_flag = threaten_personally
-            clr_character_flag = threaten_relation
-            clr_character_flag = threaten_wealth
-            clr_character_flag = collecting_debt
+			clr_character_flag = induction_argument_stewardship
+			clr_character_flag = threaten_personally
+			clr_character_flag = threaten_relation
+			clr_character_flag = threaten_wealth
+			clr_character_flag = collecting_debt
 		}
 	}
 }
 
 character_event = { # Fired from on_character_leave_society (meant to clear any society related flags and effects)
-    id = MNM.10018
-    is_triggered_only = yes
-    hide_window = yes
+	id = MNM.10018
+	is_triggered_only = yes
+	hide_window = yes
 
-    immediate = {
-    	clean_up_after_leaving_society_effect = yes #NOTE: update if more societies are added
-    }
+	immediate = {
+		clean_up_after_leaving_society_effect = yes #NOTE: update if more societies are added
+	}
 }
 
 character_event = {
-    id = MNM.10024
-    desc = EVTDESC_MNM_10024
-    picture = GFX_evt_ritual_scroll
-    border = GFX_event_normal_frame_religion
-    is_triggered_only = yes
+	id = MNM.10024
+	desc = EVTDESC_MNM_10024
+	picture = GFX_evt_ritual_scroll
+	border = GFX_event_normal_frame_religion
+	is_triggered_only = yes
 
-    trigger = {
+	trigger = {
 		NOT = {
 			FROM = {
 				any_society_member = { always = yes }
 			}
 		}
-    }
+	}
 
 	immediate = { set_character_flag = society_join_block }
 
-    option = {
-        name = EVTOPTA_MNM_10024
+	option = {
+		name = EVTOPTA_MNM_10024
 		join_society = FROM
 		set_society_grandmaster = yes # Set character as Grand Master
 		add_society_currency_massive_effect = yes # Give the Grand Master a start-up capital to induct members
 		clr_character_flag = society_join_block
-    }
+	}
 
 	option = {
 		name = EVTOPTB_MNM_10024
@@ -1657,39 +1657,39 @@ character_event = {
 	immediate = {
 
 		random_list = {
-    		50 = { #Not interested
-    			modifier = { is_married = yes factor = 2 }
-    			modifier = { any_lover = { is_alive = yes } factor = 4 }
-    			modifier = { trait = chaste factor = 4 }
-    			modifier = { trait = celibate factor = 10 }
-    			modifier = { has_unpleasant_trait_trigger = yes factor = 2 }
-    			modifier = { NOT = { opinion = { who = FROM value = 20 } } factor = 2 }
-    			modifier = {
+			50 = { #Not interested
+				modifier = { is_married = yes factor = 2 }
+				modifier = { any_lover = { is_alive = yes } factor = 4 }
+				modifier = { trait = chaste factor = 4 }
+				modifier = { trait = celibate factor = 10 }
+				modifier = { has_unpleasant_trait_trigger = yes factor = 2 }
+				modifier = { NOT = { opinion = { who = FROM value = 20 } } factor = 2 }
+				modifier = {
 					root_attraction_trigger = no
 					NOT = { trait = homosexual }
 					factor = 0.5
-    			}
-    			modifier = {
+				}
+				modifier = {
 					root_attraction_trigger = no
 					trait = homosexual
 					factor = 0
-    			}
-    			set_character_flag = not_interested
-    		}
-    		50 = { #Interested
-    			modifier = { trait = lustful factor = 4 }
-    			modifier = { has_pleasant_trait_trigger = yes factor = 2 }
-    			modifier = { opinion = { who = FROM value = 40 } factor = 2 }
-    			modifier = { FROM = { has_attractive_trait_trigger = yes } factor = 3 }
+				}
+				set_character_flag = not_interested
+			}
+			50 = { #Interested
+				modifier = { trait = lustful factor = 4 }
+				modifier = { has_pleasant_trait_trigger = yes factor = 2 }
+				modifier = { opinion = { who = FROM value = 40 } factor = 2 }
+				modifier = { FROM = { has_attractive_trait_trigger = yes } factor = 3 }
 
-    			set_character_flag = interested
+				set_character_flag = interested
 
-    			if = {
-    				limit = { same_sex = FROM }
-    				add_trait = homosexual
-    			}
-    		}
-    	}
+				if = {
+					limit = { same_sex = FROM }
+					add_trait = homosexual
+				}
+			}
+		}
 
 		FROM = { character_event = { id = MNM.6907 } }
 	}
@@ -1697,62 +1697,62 @@ character_event = {
 
 #Love outcome
 character_event = {
-    id = MNM.6907
-    border = GFX_event_normal_frame_diplomacy
-    picture = GFX_evt_lovers
+	id = MNM.6907
+	border = GFX_event_normal_frame_diplomacy
+	picture = GFX_evt_lovers
 
-    desc = {
-    	trigger = { FROM = { has_character_flag = not_interested } }
-    	text = EVTDESC_MNM_6907_A
-    	picture = GFX_evt_courtiers_talking
-    }
-    desc = {
-    	trigger = { FROM = { has_character_flag = interested } }
-    	text = EVTDESC_MNM_6907_B
-    	picture = GFX_evt_lovers
-    }
+	desc = {
+		trigger = { FROM = { has_character_flag = not_interested } }
+		text = EVTDESC_MNM_6907_A
+		picture = GFX_evt_courtiers_talking
+	}
+	desc = {
+		trigger = { FROM = { has_character_flag = interested } }
+		text = EVTDESC_MNM_6907_B
+		picture = GFX_evt_lovers
+	}
 
-    is_triggered_only = yes
+	is_triggered_only = yes
 
-    #Friends instead?
-    option = {
-    	trigger = { FROM = { has_character_flag = not_interested } }
-        name = EVTOPTC_MNM_6907
+	#Friends instead?
+	option = {
+		trigger = { FROM = { has_character_flag = not_interested } }
+		name = EVTOPTC_MNM_6907
 
-        add_friend = FROM
-    }
+		add_friend = FROM
+	}
 
-    #Nah
-    option = {
-    	trigger = { FROM = { has_character_flag = not_interested } }
-        name = EVTOPTA_MNM_6907
+	#Nah
+	option = {
+		trigger = { FROM = { has_character_flag = not_interested } }
+		name = EVTOPTA_MNM_6907
 
-        opinion = {
-        	modifier = opinion_distressing_encounter
-        	who = FROM
-        	years = 5
-        }
-        reverse_opinion = {
-        	modifier = opinion_distressing_encounter
-        	who = FROM
-        	years = 5
-        }
-    }
+		opinion = {
+			modifier = opinion_distressing_encounter
+			who = FROM
+			years = 5
+		}
+		reverse_opinion = {
+			modifier = opinion_distressing_encounter
+			who = FROM
+			years = 5
+		}
+	}
 
-    #Love
-    option = {
-    	trigger = { FROM = { has_character_flag = interested } }
-        name = EVTOPTB_MNM_6907
+	#Love
+	option = {
+		trigger = { FROM = { has_character_flag = interested } }
+		name = EVTOPTB_MNM_6907
 
-        add_lover = FROM
-    }
+		add_lover = FROM
+	}
 
-    after = {
-    	hidden_effect = {
-    		FROM  = {
-    			clr_character_flag = not_interested
-    			clr_character_flag = interested
-    		}
-    	}
-    }
+	after = {
+		hidden_effect = {
+			FROM = {
+				clr_character_flag = not_interested
+				clr_character_flag = interested
+			}
+		}
+	}
 }

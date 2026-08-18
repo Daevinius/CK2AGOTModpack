@@ -67,6 +67,8 @@ westerosi_religion = {
 
 		intermarry = old_gods
 		intermarry = old_gods_reformed
+		intermarry = rhllor
+		intermarry = rahlooism
 	}
 
 	old_gods_reformed = {
@@ -100,7 +102,10 @@ westerosi_religion = {
 		intermarry = old_gods
 		intermarry = beyond_wall_old_gods
 		intermarry = beyond_wall_old_gods_reformed
+		intermarry = mountain_old_gods
 		intermarry = thenn_rel
+		intermarry = rhllor
+		intermarry = rahlooism
 
 		religious_clothing_head = 12
 		religious_clothing_priest = 12
@@ -139,7 +144,10 @@ westerosi_religion = {
 		intermarry = old_gods_reformed
 		intermarry = beyond_wall_old_gods
 		intermarry = beyond_wall_old_gods_reformed
+		intermarry = mountain_old_gods
 		intermarry = thenn_rel
+		intermarry = rhllor
+		intermarry = rahlooism
 
 		religious_clothing_head = 12
 		religious_clothing_priest = 12
@@ -149,8 +157,8 @@ westerosi_religion = {
 
 		interface_skin = { rhllor_interface indian_interface muslim_interface }
 
-		icon = 3
-		heresy_icon = 3
+		icon = 70
+		heresy_icon = 70
 		color = { 0.8 0 0 } #red
 
 
@@ -179,14 +187,6 @@ westerosi_religion = {
 		female_temple_holders = yes # Speculation, but we know at least one red priestess
 
 		priests_can_inherit = no
-
-
-		character_modifier = {
-			global_revolt_risk = -0.01
-			westerosi_religion_opinion = 10
-			essos_group_opinion = 10
-			valyrian_rel_group_opinion = 5
-		}
 
 		intermarry = rhllor
 		intermarry = old_gods
@@ -325,6 +325,38 @@ wildling_religion = {
 		dislike_tribal_organization = yes
 
 		max_consorts = 7
+	}
+
+	giants_old_gods = {
+		graphical_culture = oldgodsgfx
+
+		icon = 7
+		heresy_icon = 7
+		color = { 0.8 0.6 0.1 }
+
+		high_god_name = GOD_THE_GODS
+		priest_title = PRIEST
+		scripture_name = THE_LEGENDS
+
+		god_names = {
+			GOD_THE_GODS GOD_THE_OLD_GODS
+		}
+		evil_god_names = {
+			GOD_THE_OTHERS
+		}
+		allow_looting = yes
+		defensive_attrition = yes
+		raised_vassal_opinion_loss = no
+
+
+		priests_can_marry = yes
+		priests_can_inherit = yes
+		female_temple_holders = yes
+
+		independence_war_score_bonus = 30
+		aggression = 4.0
+
+		dislike_tribal_organization = yes
 	}
 
 	thenn_rel = {
@@ -554,6 +586,9 @@ essos_group = { #red, yellow, orange
 		intermarry = rahlooism
 		intermarry = valyrian_rel
 		intermarry = valyrian_rel_reformed
+		intermarry = the_seven
+		intermarry = old_gods
+		intermarry = old_gods_reformed
 		intermarry = valyrian_bas
 		intermarry = winged_stallion
 		intermarry = dothraki_rhllor
@@ -704,11 +739,11 @@ essos_group = { #red, yellow, orange
 		intermarry = gods_lorath_reformed
 		intermarry = boash_reformed
 		intermarry = boash
+		intermarry = valyrian_bas
 		intermarry = pentoshi_religion
 		intermarry = myrish_religion
 		intermarry = trios
 		intermarry = trios_reformed
-		intermarry = valyrian_bas
 	}
 
 	moonsingers_reformed = {
@@ -896,9 +931,9 @@ essos_group = { #red, yellow, orange
 		intermarry = valyrian_rel
 		intermarry = valyrian_rel_reformed
 		intermarry = trios_reformed
+		intermarry = valyrian_bas
 		intermarry = pentoshi_religion
 		intermarry = myrish_religion
-		intermarry = valyrian_bas
 	}
 
 	bearded_priests = {
@@ -1534,6 +1569,33 @@ dragon_rel_group = { #red, yellow, orange
 	dragon_rel = {
 		graphical_culture = norsegfx
 
+		interface_skin = { valyrian_interface }
+
+		icon = 8
+		heresy_icon = 8
+		color = { 1 1 1 } #white
+
+		high_god_name = GOD_THE_GODS
+
+		god_names = {
+			GOD_BALERION GOD_MERAXES GOD_VHAGAR GOD_URRAX GOD_SYRAX
+		}
+		evil_god_names = {
+			GOD_THE_OTHERS GOD_THE_DEMONS GOD_DARK_SPIRITS
+		}
+
+		crusade_name = "HOLY_WAR"
+		scripture_name = THE_LEGENDS
+		priest_title = PRIEST
+
+		allow_in_ruler_designer = no
+		dynamic_cult = no
+		secret_religion = no
+		alternate_start = { always = no }
+	}
+	cadet_dummy = {
+		graphical_culture = westerngfx
+
 		icon = 8
 		heresy_icon = 8
 		color = { 1 1 1 } #white
@@ -1859,6 +1921,44 @@ far_east_group = {
 
 		intermarry = qarth_rel
 		intermarry = yiti_gods_reformed
+		intermarry = lengi_gods
+		intermarry = valyrian_bas
+	}
+
+	lengi_gods = {
+		graphical_culture = hindugfx
+
+		icon = 69
+		color = { 0.2 0.3 0 } #Dark Green
+
+		high_god_name = GOD_THE_GODS
+
+		god_names = {
+			GOD_THE_GODS GOD_MAIDEN_LIGHT GOD_THE_EMPRESS
+		}
+		evil_god_names = {
+			GOD_LION_NIGHT GOD_THE_EMPEROR
+		}
+		parent = yiti_gods
+		crusade_name = "HOLY_WAR"
+		scripture_name = THE_GOLDEN_BOOKS
+		priest_title = PRIEST
+
+		allow_rivermovement = yes
+		seafarer = yes
+
+		max_consorts = 20
+		feminist = yes # Nullifies the negative opinion modifier that vassals normally get if ruler is female or has female heir
+		women_can_take_consorts = yes
+		female_temple_holders = yes
+
+		#religious_clothing_head = 5
+		religious_clothing_priest = 5
+
+		intermarry = qarth_rel
+		intermarry = yiti_gods_reformed
+		intermarry = yiti_gods
+		intermarry = old_ones
 		intermarry = valyrian_bas
 	}
 
@@ -1986,6 +2086,7 @@ far_east_group = {
 		women_can_take_consorts = yes
 
 		intermarry = qarth_rel
+		intermarry = lengi_gods
 
 		religious_clothing_head = 13
 		religious_clothing_priest = 13
@@ -2167,6 +2268,44 @@ far_east_group = {
 
 		reformed = gods_nghai_reformed
 		intermarry = gods_nghai_reformed
+	}
+	mossovy_gods = {
+		graphical_culture = muslimgfx
+
+
+		icon = 41
+		heresy_icon = 41
+		color = { 0.8 0.6 0.1 }
+
+		high_god_name = GOD_THE_GODS
+
+		crusade_name = "HOLY_WAR"
+		scripture_name = THE_LEGENDS
+		priest_title = job_spiritual_mossovy_gods
+
+		god_names = {
+			GOD_THE_GODS GOD_THE_OLD_GODS
+		}
+		evil_god_names = {
+			GOD_THE_OTHERS GOD_THE_DEMONS GOD_DARK_SPIRITS
+		}
+
+		can_excommunicate = yes
+		can_grant_divorce = yes
+		can_grant_claim = no
+		can_call_crusade = no
+		priests_can_marry = yes
+		priests_can_inherit = no
+
+
+		intermarry = qarth_rel
+		intermarry = gods_bone_mountains
+		intermarry = gods_bone_mountains_reformed
+		intermarry = yiti_gods
+		intermarry = yiti_gods_reformed
+
+		religious_clothing_head = 12
+		religious_clothing_priest = 12
 	}
 	stone_cow_reformed = {
 		graphical_culture = muslimgfx
@@ -3154,29 +3293,77 @@ winter_religion = {
 
 islands_rel = {
 	has_coa_on_barony_only = yes
-	graphical_culture = westerngfx
+	graphical_culture = drownedgodgfx
 	playable = yes
+#	interface_skin = { pagan_interface }
+	ai_peaceful = no
 
 	color = { 0.0 0.6 0.0 } #Green
 
+	male_names = { Дип Говард Филлипс Гух Лум Крафф Сквам Даг Фиш }
+	female_names = { Лув Вог Ньялхотеп Ньярлахотеп Фиш }
+
 	fish_gods = {
-		graphical_culture = muslimgfx
+		graphical_culture = drownedgodgfx
+		interface_skin = { pagan_interface }
 
 		icon = 35
 		heresy_icon = 35
-		color = { 0.0 0.6 0.0 } #Green
+		color = { 150 255 150 } #Green
 
-		high_god_name = GOD_THE_GODS
+		high_god_name = GOD_OLD_ONES
 
 		god_names = {
-			GOD_THE_GODS GOD_FISH_GODS
+			GOD_FISH_GODS THE_DEEP_ONES GOD_THE_SQUAMOS GOD_Nyarlathotep GOD_OLD_ONES GOD_DARK_SPIRITS
 		}
 		evil_god_names = {
-			GOD_THE_DEMONS GOD_DARK_SPIRITS
+			GOD_LION_NIGHT GOD_THE_OTHERS
+	}
+
+		character_modifier = {
+			general_opinion = -20 # Canon says the Thousand Islander worshippers of the Fish Gods were xenophobic
+			same_religion_opinion = 35
 		}
-		crusade_name = "HOLY_WAR"
-		scripture_name = THE_SOLDIER
-		priest_title = PRIEST
+
+		crusade_name = FISH_RECKONING
+		scripture_name = TALES_OF_THE_DEEP
+		priest_title = DAGONOS
+
+		max_wives = 3
+		independence_war_score_bonus = 60
+
+		can_excommunicate = yes
+		can_grant_divorce = yes
+		can_grant_claim = yes
+
+		priests_can_marry = no
+		priests_can_inherit = no
+		can_call_crusade = no
+		has_heir_designation = yes
+		raised_vassal_opinion_loss = no
+		rel_head_defense = yes
+		seafarer = yes
+		allow_looting = yes
+		allow_rivermovement = no
+		autocephaly = yes
+		defensive_attrition = yes
+#		male_temple_holders = yes
+		female_temple_holders = no
+
+		aggression = 2.5
+
+		hard_to_convert = yes
+
+		religious_clothing_head = 11
+		religious_clothing_priest = 13
+
+		intermarry = sothoryos_rel
+		intermarry = starry_wisdom
+		intermarry = old_ones
+		intermarry = lady_of_the_waves_reformed
+		intermarry = lady_of_the_waves
+
+#		Religious head and empire flag courtesty of: https://society6.com/product/queen-of-the-deep-ones_print
 	}
 }
 

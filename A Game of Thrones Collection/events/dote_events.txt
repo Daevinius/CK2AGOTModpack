@@ -23,7 +23,7 @@ character_event = {
 		NOT = { has_character_flag = dragonlord_valyria }
 	}
 
-	mean_time_to_happen  = {
+	mean_time_to_happen = {
 		days = 1
 	}
 
@@ -86,7 +86,7 @@ narrative_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "Да здравствует Повелитель Драконов!"
+		name = dote_empire_events.4_option
 	}
 }
 
@@ -97,8 +97,11 @@ character_event = {
 	picture = GFX_dote_events_claimant
 	desc = dote_empire_events.1_desc
 
+	only_playable = yes
+	only_men = yes
+	only_capable = yes
+
 	trigger = {
-		is_female = no
 		has_regent = no
 		is_patrician = no
 		is_theocracy = no
@@ -272,7 +275,7 @@ character_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 1093
+		years = 3
 	}
 
 	immediate = {
@@ -464,7 +467,7 @@ narrative_event = {
 	option = {
 		name = dote_imperial_palace_events.1_option
 		capital_scope = {
-			add_province_modifier =  {
+			add_province_modifier = {
 				modifier = imperial_palace_modifier
 				duration = -1
 			}
@@ -521,7 +524,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder
 
 	trigger = {
 	    AND = {
@@ -565,7 +568,7 @@ character_event = {
 	hide_window = yes
 	only_rulers = yes
 
-	is_triggered_only = yes #On Death event
+	is_triggered_only = yes # on_death
 
 	trigger = {
 		is_theocracy = no

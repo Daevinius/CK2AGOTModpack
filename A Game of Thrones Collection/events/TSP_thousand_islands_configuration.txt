@@ -1,0 +1,233 @@
+namespace = TSP_1K_island_fix
+
+#character_event = {
+#    id = TSP_1K_island_fix.1
+#    hide_window = yes
+#    is_triggered_only = yes # On Action
+#
+#}
+#
+#character_event = {
+#	id = TSP_1K_island_fix.2
+#	hide_window = yes
+#	is_triggered_only = yes # On Action
+#
+#	trigger = {
+#		NOT = {
+#			has_global_flag = thousand_islands_holy_site_restored
+#		}
+#	}
+#
+#	option = {
+#		name = OK
+#
+#		c_thousand_islands = {
+#			set_holy_site = fish_gods
+#		}
+#
+#		set_global_flag = thousand_islands_holy_site_restored
+#	}
+#}
+
+
+character_event = { # Ensures Fish Gods religious head is a theocracy
+	id = TSP_1K_island_fix.4
+	picture = GFX_evt_bishop
+	desc = "EVTDESCreligious.5"
+
+	religion = fish_gods
+
+	trigger = {
+		is_title_active = d_thousand_islands_rel_head
+		has_landed_title = d_thousand_islands_rel_head
+		controls_religion = fish_gods
+		religion = fish_gods
+		OR = {
+			NOT = { has_law = succ_open_elective }
+			NOT = { government = theocracy_government }
+			NOT = { trait = fishy }
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	option = {
+		name = "EVTOPTBreligious.5"
+		set_government_type = theocracy_government
+		set_character_flag = has_forced_fish_gods_theocracy
+		set_character_flag = fishy_religious_head_set
+		add_trait = fishy
+		succession = succ_open_elective
+		prestige = 15
+		recalc_succession = yes
+	}
+}
+
+# character_event = { # Thousand Islanders are implied to have partially webbed hands and/or feet
+# 	id = TSP_1K_island_fix.10
+# 	hide_window = yes
+
+# 	trigger = {
+# 		OR = {
+# 			ROOT = { graphical_culture = islandergfx }
+# 			graphical_culture = islandergfx
+# 			race = islander
+# #			religion = old_ones
+# 		}
+# 		NOT = {
+# 			trait = the_mark
+# 			trait = the_mark_of_the_deep_ones
+# 		}
+# 	}
+
+# 	mean_time_to_happen = {
+# 		days = 1
+# 	}
+
+# 	immediate = {
+# 		add_trait = the_mark_of_the_deep_ones
+# 		add_trait = deep_ones_easter_egg
+# 		if = {
+# 			limit = {
+# 				OR = {
+# 					trait = the_mark
+# 					trait = has_sisterman_mark
+# 				}
+# 			}
+# 			remove_trait = the_mark
+# 			remove_trait = has_sisterman_mark
+# 		}
+# 	}
+# }
+
+
+character_event = { # Illegitimate child gets the nickname "Fish"
+	id = TSP_1K_island_fix.11
+	hide_window = yes
+#	is_triggered_only = yes
+
+	trigger = {
+		trait = bastard
+		cannot_get_canonical_illegitimate_child_nickname = yes
+#		NOT = { trait = legit_bastard }
+		NOT = { has_bastard_nickname_trigger = yes }
+		OR = {
+			culture = islander
+			religion = fish_gods
+#			has_religion_feature = religion_feature_TSP_innsmouth
+			AND = {
+				OR = {
+					location = { region = world_nghai }
+					location = { region = world_jogos_nhai }
+				}
+				NOT = {
+					culture = jogos_nhai
+					culture = nghai
+				}
+			}
+			any_liege = {
+				OR = {
+					has_landed_title = c_thousand_islands
+					has_landed_title = e_dagonos
+
+					primary_title = {
+						OR = {
+							title = d_thousand_islands
+							title = k_great_fish_dominion
+						}
+					}
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 14 # A full fortnight to prevent against overriding the Mod's Westoros nickname system
+	}
+
+	immediate = {
+		give_nickname = nick_fish
+	}
+}
+
+character_event = { # If an illegitimate child is legitimatized, he loses his nickname
+	id = TSP_1K_island_fix.12
+	hide_window = yes
+
+	religion = fish_gods
+
+	trigger = {
+		OR = {
+			trait = legit_bastard
+			NOT = { trait = bastard }
+		}
+		has_nickname = nick_fish
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	immediate = {
+		remove_nickname = nick_fish
+		remove_trait = bastard
+	}
+}
+
+character_event = { # Applies Mod alterations to the Old Ones Religion and interactions with the Fish Gods
+	id = TSP_1K_island_fix.13
+	picture = GFX_evt_TSP_testament_of_cthulhu
+#	hide_window = yes
+
+	desc = EVTOPTAessos.147
+
+	trigger = {
+		always = no
+#		OR = {
+#			religion = old_ones
+#			religion = fish_gods
+#			religion = sothoryos_rel
+#			has_religion_feature = religion_feature_TSP_innsmouth
+#			ai = no
+#		}
+		NOT = { has_global_flag = he_comes_somewhat }
+	}
+
+	mean_time_to_happen = {
+		days = 7
+	}
+
+	option = {
+		name = TSP1KI12OPTA
+		set_he_comes_somewhat = yes
+		set_global_flag = he_comes_somewhat
+	}
+}
+
+character_event = { # Applies the special Thousand Islander mechanics from the Main Mod to the Thousand Island Mod
+	id = TSP_1K_island_fix.14
+	hide_window = yes
+
+	culture = islander
+	religion = fish_gods
+
+	trigger = {
+		NOT = { has_character_flag = thousand_islander }
+		culture = islander
+		religion = fish_gods
+		OR = {
+			race = islander
+			graphical_culture = islandergfx
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 3
+	}
+
+	immediate = {
+		set_character_flag = thousand_islander # This allows non-1KI characters to execute, banish, or punish (etc.) all Thousand Islanders if they get the Mod's normal 1KI Event
+	}
+}

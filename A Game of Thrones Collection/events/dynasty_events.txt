@@ -15,7 +15,7 @@ character_event = {
 	desc = EVTDESC66000
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	min_age = 16
 	only_capable = yes
 	prisoner = no
@@ -217,15 +217,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  25 }
+				opinion = { who = FROM value = 25 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
+				opinion = { who = FROM value = 50 }
 			}
 			modifier = {
 				factor = 3
-				opinion = { who = FROM value =  75 }
+				opinion = { who = FROM value = 75 }
 			}
 		}
 		name = EVTOPTA66010 #accept demand for claim
@@ -264,7 +264,7 @@ character_event = {
 			factor = 2
 			modifier = {
 				factor = 0
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 		name = EVTOPTB66010 #refuse outrageous demands.
@@ -313,15 +313,15 @@ character_event = {
 			}
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  25 }
+				opinion = { who = FROM value = 25 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
+				opinion = { who = FROM value = 50 }
 			}
 			modifier = {
 				factor = 3
-				opinion = { who = FROM value =  75 }
+				opinion = { who = FROM value = 75 }
 			}
 		}
 		prestige = -5
@@ -395,7 +395,7 @@ character_event = {
 
 	hide_window = yes
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 	only_playable = yes
 	war = no
 	only_capable = yes
@@ -855,15 +855,15 @@ character_event = {
 
 			modifier = {
 				factor = 1.5
-				opinion = { who = FROM value =  25 }
+				opinion = { who = FROM value = 25 }
 			}
 			modifier = {
 				factor = 2
-				opinion = { who = FROM value =  50 }
+				opinion = { who = FROM value = 50 }
 			}
 			modifier = {
 				factor = 3
-				opinion = { who = FROM value =  75 }
+				opinion = { who = FROM value = 75 }
 			}
 		}
 		event_target:dynast_claim_target = {
@@ -888,7 +888,7 @@ character_event = {
 			factor = 2
 			modifier = {
 				factor = 0.01
-				opinion = { who = FROM value =  80 }
+				opinion = { who = FROM value = 80 }
 			}
 		}
 
@@ -991,7 +991,7 @@ character_event = { #on_birth
 character_event = { #on_new_holder
 	id = 66114
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_new_holder, on_new_holder_inheritance, on_new_holder_usurpation
 	hide_window = yes
 
 	trigger = {
@@ -1591,7 +1591,7 @@ letter_event = {
 character_event = {
 	id = dynasty.3
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_death
 	only_independent = yes
 	hide_window = yes
 
@@ -3208,7 +3208,7 @@ character_event = {
 				event_target:gc_senior_candidate = { character = ROOT }
 				event_target:gc_2nd_candidate = { character = ROOT }
 			}
-			prisoner =  no
+			prisoner = no
 			is_incapable = no
 			age = 14
 			OR = {
@@ -6195,7 +6195,7 @@ character_event = {
 					age < 10
 				}
 			}
-			FROMFROM = { age = 16 }
+			FROMFROM = { is_adult = yes }
 		}
 	}
 
@@ -6452,7 +6452,7 @@ character_event = {
 					age < 10
 				}
 			}
-			FROMFROM = { age = 16 }
+			FROMFROM = { is_adult = yes }
 		}
 	}
 
@@ -6875,7 +6875,7 @@ character_event = {
 				}
 			}
 			FROMFROMFROM = {
-				age = 16
+				is_adult = yes
 				NOT = { character = FROM }
 			}
 		}
@@ -7118,7 +7118,7 @@ character_event = {
 				}
 			}
 			FROMFROMFROM = {
-				age = 16
+				is_adult = yes
 				NOT = { character = FROM }
 			}
 		}
@@ -7334,7 +7334,7 @@ character_event = {
 	desc = "EVTDESCdynasty.100"
 
 	hide_window = yes
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	trigger = {
 		OR = {
@@ -7814,7 +7814,7 @@ character_event = {
 	id = dynasty.47
 	picture = GFX_evt_emissary
 
-	is_triggered_only = yes
+	is_triggered_only = yes # on_yearly_pulse
 
 	only_playable = yes
 	min_age = 14
@@ -7945,8 +7945,8 @@ character_event = {
 								OR = {
 									NOT = { age_diff = { who = ROOT years = 10 } }
 									AND = {
-										ROOT = { age = 16 }
-										age = 16
+										ROOT = { is_adult = yes }
+										is_adult = yes
 									}
 								}
 							}
@@ -7965,8 +7965,8 @@ character_event = {
 								OR = {
 									NOT = { age_diff = { who = ROOT years = 10 } }
 									AND = {
-										ROOT = { age = 16 }
-										age = 16
+										ROOT = { is_adult = yes }
+										is_adult = yes
 									}
 								}
 								NOT = { any_heir_title = { always = yes } }
@@ -7994,8 +7994,8 @@ character_event = {
 							OR = {
 								NOT = { age_diff = { who = ROOT years = 10 } }
 								AND = {
-									ROOT = { age = 16 }
-									age = 16
+									ROOT = { is_adult = yes }
+									is_adult = yes
 								}
 							}
 						}
@@ -8020,8 +8020,8 @@ character_event = {
 							OR = {
 								NOT = { age_diff = { who = ROOT years = 10 } }
 								AND = {
-									ROOT = { age = 16 }
-									age = 16
+									ROOT = { is_adult = yes }
+									is_adult = yes
 								}
 							}
 							NOT = { any_heir_title = { always = yes } }
@@ -8580,65 +8580,65 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					250 = { }
-					10 = { set_name = Герольд }
-					10 = { set_name = Джейме }
-					10 = { set_name = Джоффри }
-					10 = { set_name = Джейсон }
-					10 = { set_name = Лансель }
-					10 = { set_name = Лорен }
-					10 = { set_name = Томмен }
-					10 = { set_name = Тион }
-					10 = { set_name = Тибольт }
-					10 = { set_name = Тигетт }
-					10 = { set_name = Тиланд }
-					10 = { set_name = Таймонд }
-					10 = { set_name = Тирек }
-					10 = { set_name = Тирион }
-					10 = { set_name = Титос }
-					10 = { set_name = Тайвальд }
-					10 = { set_name = Тайвелл }
-					10 = { set_name = Тайвин }
-					5 = { set_name = Сирион }
-					5 = { set_name = Дамон }
-					5 = { set_name = Норвин }
-					5 = { set_name = Тайран }
-					5 = { set_name = Тайрос }
-					5 = { set_name = Таймос }
-					5 = { set_name = Киван }
-					5 = { set_name = Виллем }
-					5 = { set_name = Мартин }
-					5 = { set_name = Герион }
-					5 = { set_name = Стаффорд }
-					5 = { set_name = Давен }
-					5 = { set_name = Дамион }
-					5 = { set_name = Эрвин }
-					5 = { set_name = Люцион }
-					5 = { set_name = Лиман }
-					5 = { set_name = Тайлер }
-					2 = { set_name = Лореон } #fell out of favour
+					10 = { set_name = "Герольд" }
+					10 = { set_name = "Джейме" }
+					10 = { set_name = "Джоффри" }
+					10 = { set_name = "Джейсон" }
+					10 = { set_name = "Лансель" }
+					10 = { set_name = "Лорен" }
+					10 = { set_name = "Томмен" }
+					10 = { set_name = "Тион" }
+					10 = { set_name = "Тибольт" }
+					10 = { set_name = "Тигетт" }
+					10 = { set_name = "Тиланд" }
+					10 = { set_name = "Таймонд" }
+					10 = { set_name = "Тирек" }
+					10 = { set_name = "Тирион" }
+					10 = { set_name = "Титос" }
+					10 = { set_name = "Тайвальд" }
+					10 = { set_name = "Тайвелл" }
+					10 = { set_name = "Тайвин" }
+					5 = { set_name = "Сирион" }
+					5 = { set_name = "Дамон" }
+					5 = { set_name = "Норвин" }
+					5 = { set_name = "Тайран" }
+					5 = { set_name = "Тайрос" }
+					5 = { set_name = "Таймос" }
+					5 = { set_name = "Киван" }
+					5 = { set_name = "Виллем" }
+					5 = { set_name = "Мартин" }
+					5 = { set_name = "Герион" }
+					5 = { set_name = "Стаффорд" }
+					5 = { set_name = "Давен" }
+					5 = { set_name = "Дамион" }
+					5 = { set_name = "Эрвин" }
+					5 = { set_name = "Люцион" }
+					5 = { set_name = "Лиман" }
+					5 = { set_name = "Тайлер" }
+					2 = { set_name = "Лореон" } #fell out of favour
 				}
 			}
 			else = {
 				random_list = {
 					200 = { }
-					10 = { set_name = Серенна }
-					10 = { set_name = Серсея }
-					10 = { set_name = Дженна }
-					10 = { set_name = Джоанна }
-					10 = { set_name = Лелия }
-					10 = { set_name = Ланна }
-					10 = { set_name = Сирелла }
-					10 = { set_name = Мирцелла }
-					10 = { set_name = Мириэль }
-					10 = { set_name = Тия }
-					5 = { set_name = Тиресса }
-					5 = { set_name = Тисана }
-					5 = { set_name = Тита }
-					5 = { set_name = Жанея }
-					5 = { set_name = Элла }
-					5 = { set_name = Марго }
-					5 = { set_name = Линора }
-					5 = { set_name = Тишара }
+					10 = { set_name = "Серенна" }
+					10 = { set_name = "Серсея" }
+					10 = { set_name = "Дженна" }
+					10 = { set_name = "Джоанна" }
+					10 = { set_name = "Лелия" }
+					10 = { set_name = "Ланна" }
+					10 = { set_name = "Сирелла" }
+					10 = { set_name = "Мирцелла" }
+					10 = { set_name = "Мириэль" }
+					10 = { set_name = "Тия" }
+					5 = { set_name = "Тиресса" }
+					5 = { set_name = "Тисана" }
+					5 = { set_name = "Тита" }
+					5 = { set_name = "Жанея" }
+					5 = { set_name = "Элла" }
+					5 = { set_name = "Марго" }
+					5 = { set_name = "Линора" }
+					5 = { set_name = "Тишара" }
 				}
 			}
 		}
@@ -8648,18 +8648,18 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					300 = { }
-					50 = { set_name = Дюрран }
-					10 = { set_name = Арлан }
-					10 = { set_name = Ормунд }
-					10 = { set_name = Малдон }
-					10 = { set_name = Монфрид }
-					10 = { set_name = Кварлтон }
-					10 = { set_name = Эрих }
-					5 = { set_name = Клеоден }
-					5 = { set_name = Балдрик }
-					5 = { set_name = Ронард }
-					5 = { set_name = Морден }
-					5 = { set_name = Дюрвальд }
+					50 = { set_name = "Дюрран" }
+					10 = { set_name = "Арлан" }
+					10 = { set_name = "Ормунд" }
+					10 = { set_name = "Малдон" }
+					10 = { set_name = "Монфрид" }
+					10 = { set_name = "Кварлтон" }
+					10 = { set_name = "Эрих" }
+					5 = { set_name = "Клеоден" }
+					5 = { set_name = "Балдрик" }
+					5 = { set_name = "Ронард" }
+					5 = { set_name = "Морден" }
+					5 = { set_name = "Дюрвальд" }
 				}
 			}
 		}
@@ -8669,34 +8669,34 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					400 = { }
-					50 = { set_name = Джекейрис }
-					10 = { set_name = Корлис }
-					10 = { set_name = Деймон }
-					10 = { set_name = Лейнор }
-					10 = { set_name = Эйтан }
-					10 = { set_name = Люцерис }
-					10 = { set_name = Веймонд }
-					10 = { set_name = Дейрон }
-					10 = { set_name = Монфорд }
-					10 = { set_name = Монтерис }
-					10 = { set_name = Ауран }
-					10 = { set_name = Виктор }
-					10 = { set_name = Йорген }
-					10 = { set_name = Корвин }
-					10 = { set_name = Рогар }
-					10 = { set_name = Малентин }
-					10 = { set_name = Деймион }
+					50 = { set_name = "Джекейрис" }
+					10 = { set_name = "Корлис" }
+					10 = { set_name = "Деймон" }
+					10 = { set_name = "Лейнор" }
+					10 = { set_name = "Эйтан" }
+					10 = { set_name = "Люцерис" }
+					10 = { set_name = "Веймонд" }
+					10 = { set_name = "Дейрон" }
+					10 = { set_name = "Монфорд" }
+					10 = { set_name = "Монтерис" }
+					10 = { set_name = "Ауран" }
+					10 = { set_name = "Виктор" }
+					10 = { set_name = "Йорген" }
+					10 = { set_name = "Корвин" }
+					10 = { set_name = "Рогар" }
+					10 = { set_name = "Малентин" }
+					10 = { set_name = "Деймион" }
 				}
 			}
 			else = {
 				random_list = {
 					300 = { }
-					10 = { set_name = Валейна }
-					10 = { set_name = Алисса }
-					10 = { set_name = Лейна }
-					10 = { set_name = Дейнейра }
-					10 = { set_name = Ларисса }
-					10 = { set_name = Лианна }
+					10 = { set_name = "Валейна" }
+					10 = { set_name = "Алисса" }
+					10 = { set_name = "Лейна" }
+					10 = { set_name = "Дейнейра" }
+					10 = { set_name = "Ларисса" }
+					10 = { set_name = "Лианна" }
 				}
 			}
 		}
@@ -8706,18 +8706,18 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					400 = { }
-					75 = { set_name = Деймон }
-					20 = { set_name = Хейгон }
-					20 = { set_name = Эйгон }
-					10 = { set_name = Эймон }
-					10 = { set_name = Эйнис }
-					10 = { set_name = Мейлис }
+					75 = { set_name = "Деймон" }
+					20 = { set_name = "Хейгон" }
+					20 = { set_name = "Эйгон" }
+					10 = { set_name = "Эймон" }
+					10 = { set_name = "Эйнис" }
+					10 = { set_name = "Мейлис" }
 				}
 			}
 			else = {
 				random_list = {
 					200 = { }
-					10 = { set_name = Калла }
+					10 = { set_name = "Калла" }
 				}
 			}
 		}
@@ -8727,64 +8727,64 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					500 = { }
-					50 = { set_name = Брандон }
-					10 = { set_name = Эддард }
-					10 = { set_name = Джон }
-					10 = { set_name = Рикард  }
-					10 = { set_name = Теон }
-					10 = { set_name = Эдрик }
-					10 = { set_name = Торрхен }
-					10 = { set_name = Родрик }
-					10 = { set_name = Харлон }
-					10 = { set_name = Бенджен }
-					10 = { set_name = Эддерион }
-					10 = { set_name = Эдвин }
-					10 = { set_name = Робб }
-					10 = { set_name = Рикон }
-					10 = { set_name = Озрик }
-					10 = { set_name = Эллард }
-					10 = { set_name = Криган }
-					10 = { set_name = Элрик }
-					10 = { set_name = Джоннел }
-					10 = { set_name = Родвелл }
-					10 = { set_name = Берон }
-					10 = { set_name = Эдвил }
-					10 = { set_name = Артос }
-					5 = { set_name = Доррен }
-					5 = { set_name = Эйрон }
-					5 = { set_name = Уолтон }
-					5 = { set_name = Джорах }
-					5 = { set_name = Джонос }
-					5 = { set_name = Беннард }
-					5 = { set_name = Крегард }
-					5 = { set_name = Бартоган }
-					5 = { set_name = Лоннел }
-					5 = { set_name = Доннор }
-					5 = { set_name = Виллам }
-					5 = { set_name = Эррольд }
-					5 = { set_name = Аларик }
+					50 = { set_name = "Брандон" }
+					10 = { set_name = "Эддард" }
+					10 = { set_name = "Джон" }
+					10 = { set_name = "Рикард"  }
+					10 = { set_name = "Теон" }
+					10 = { set_name = "Эдрик" }
+					10 = { set_name = "Торрхен" }
+					10 = { set_name = "Родрик" }
+					10 = { set_name = "Харлон" }
+					10 = { set_name = "Бенджен" }
+					10 = { set_name = "Эддерион" }
+					10 = { set_name = "Эдвин" }
+					10 = { set_name = "Робб" }
+					10 = { set_name = "Рикон" }
+					10 = { set_name = "Озрик" }
+					10 = { set_name = "Эллард" }
+					10 = { set_name = "Криган" }
+					10 = { set_name = "Элрик" }
+					10 = { set_name = "Джоннел" }
+					10 = { set_name = "Родвелл" }
+					10 = { set_name = "Берон" }
+					10 = { set_name = "Эдвил" }
+					10 = { set_name = "Артос" }
+					5 = { set_name = "Доррен" }
+					5 = { set_name = "Эйрон" }
+					5 = { set_name = "Уолтон" }
+					5 = { set_name = "Джорах" }
+					5 = { set_name = "Джонос" }
+					5 = { set_name = "Беннард" }
+					5 = { set_name = "Крегард" }
+					5 = { set_name = "Бартоган" }
+					5 = { set_name = "Лоннел" }
+					5 = { set_name = "Доннор" }
+					5 = { set_name = "Виллам" }
+					5 = { set_name = "Эррольд" }
+					5 = { set_name = "Аларик" }
 				}
 			}
 			else = {
 				random_list = {
 					250 = { }
-					10 = { set_name = Санса }
-					10 = { set_name = Арья }
-					10 = { set_name = Лианна }
-					10 = { set_name = Сарра }
-					10 = { set_name = Алис }
-					10 = { set_name = Линара }
-					10 = { set_name = Арса }
-					10 = { set_name = Лиарра }
-					5 = { set_name = Серена }
-					5 = { set_name = Райя }
-					5 = { set_name = Марайя }
-					5 = { set_name = Аригель }
-					5 = { set_name = Аррана }
-					5 = { set_name = Джоселин }
-					5 = { set_name = Алисанна }
-					5 = { set_name = Аларра }
-					5 = { set_name =  Сара }
+					10 = { set_name = "Санса" }
+					10 = { set_name = "Арья" }
+					10 = { set_name = "Лианна" }
+					10 = { set_name = "Сарра" }
+					10 = { set_name = "Алис" }
+					10 = { set_name = "Линара" }
+					10 = { set_name = "Арса" }
+					10 = { set_name = "Лиарра" }
+					5 = { set_name = "Серена" }
+					5 = { set_name = "Райя" }
+					5 = { set_name = "Марайя" }
+					5 = { set_name = "Аригель" }
+					5 = { set_name = "Аррана" }
+					5 = { set_name = "Джоселин" }
+					5 = { set_name = "Алисанна" }
+					5 = { set_name = "Аларра" }
+					5 = { set_name = "Сара" }
 				}
 			}
 		}
@@ -8799,36 +8799,36 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					500 = { }
-					10 = { set_name = Роберт }
-					10 = { set_name = Станнис }
-					10 = { set_name = Ренли }
-					10 = { set_name = Орис }
-					10 = { set_name = Эдрик }
-					10 = { set_name = Стеффон }
-					10 = { set_name = Давос }
-					10 = { set_name = Реймонт }
-					10 = { set_name = Боррос }
-					10 = { set_name = Гоуэн }
-					10 = { set_name = Лионель }
-					10 = { set_name = Ормунд }
-					10 = { set_name = Робар }
-					10 = { set_name = Боремунд }
-					10 = { set_name = Борис }
-					10 = { set_name = Гарон }
-					10 = { set_name = Роннал }
-					10 = { set_name = Оррин }
-					10 = { set_name = Оливер }
+					10 = { set_name = "Роберт" }
+					10 = { set_name = "Станнис" }
+					10 = { set_name = "Ренли" }
+					10 = { set_name = "Орис" }
+					10 = { set_name = "Эдрик" }
+					10 = { set_name = "Стеффон" }
+					10 = { set_name = "Давос" }
+					10 = { set_name = "Реймонт" }
+					10 = { set_name = "Боррос" }
+					10 = { set_name = "Гоуэн" }
+					10 = { set_name = "Лионель" }
+					10 = { set_name = "Ормунд" }
+					10 = { set_name = "Робар" }
+					10 = { set_name = "Боремунд" }
+					10 = { set_name = "Борис" }
+					10 = { set_name = "Гарон" }
+					10 = { set_name = "Роннал" }
+					10 = { set_name = "Оррин" }
+					10 = { set_name = "Оливер" }
 				}
 			}
 			else = {
 				random_list = {
 					300 = { }
-					10 = { set_name = Ширен }
-					10 = { set_name = Джоселин }
-					10 = { set_name = Кассандра }
-					10 = { set_name = Марис }
-					10 = { set_name = Флорис }
-					10 = { set_name = Эллин }
+					10 = { set_name = "Ширен" }
+					10 = { set_name = "Джоселин" }
+					10 = { set_name = "Кассандра" }
+					10 = { set_name = "Марис" }
+					10 = { set_name = "Флорис" }
+					10 = { set_name = "Эллин" }
 				}
 			}
 		}
@@ -8838,45 +8838,45 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					450 = { }
-					20 = { set_name = Роннел }
-					20 = { set_name = Артис }
-					20 = { set_name = Озрик }
-					10 = { set_name = Джон }
-					10 = { set_name = Роберт }
-					10 = { set_name = Элберт }
-					10 = { set_name = Денис }
-					10 = { set_name = Джаспер }
-					10 = { set_name = Роланд }
-					10 = { set_name = Робин }
-					10 = { set_name = Хью }
-					10 = { set_name = Хьюго }
-					10 = { set_name = Алестер }
-					10 = { set_name = Матос }
-					10 = { set_name = Осгуд }
-					10 = { set_name = Освин }
-					10 = { set_name = Освелл }
-					10 = { set_name = Джонос }
-					10 = { set_name = Хуберт }
-					10 = { set_name = Доннел }
-					10 = { set_name = Дарнольд }
-					10 = { set_name = Раймонд }
-					10 = { set_name = Джоффри }
-					10 = { set_name = Изембард }
-					10 = { set_name = Арнольд }
-					10 = { set_name = Элдрик }
+					20 = { set_name = "Роннел" }
+					20 = { set_name = "Артис" }
+					20 = { set_name = "Озрик" }
+					10 = { set_name = "Джон" }
+					10 = { set_name = "Роберт" }
+					10 = { set_name = "Элберт" }
+					10 = { set_name = "Денис" }
+					10 = { set_name = "Джаспер" }
+					10 = { set_name = "Роланд" }
+					10 = { set_name = "Робин" }
+					10 = { set_name = "Хью" }
+					10 = { set_name = "Хьюго" }
+					10 = { set_name = "Алестер" }
+					10 = { set_name = "Матос" }
+					10 = { set_name = "Осгуд" }
+					10 = { set_name = "Освин" }
+					10 = { set_name = "Освелл" }
+					10 = { set_name = "Джонос" }
+					10 = { set_name = "Хуберт" }
+					10 = { set_name = "Доннел" }
+					10 = { set_name = "Дарнольд" }
+					10 = { set_name = "Раймонд" }
+					10 = { set_name = "Джоффри" }
+					10 = { set_name = "Изембард" }
+					10 = { set_name = "Арнольд" }
+					10 = { set_name = "Элдрик" }
 				}
 			}
 			else = {
 				random_list = {
 					300 = { }
-					10 = { set_name = Ровенна }
-					10 = { set_name = Алис }
-					10 = { set_name = Теора }
-					10 = { set_name = Аманда }
-					10 = { set_name = Алисса }
-					10 = { set_name = Шарра }
-					10 = { set_name = Эймма }
-					10 = { set_name = Джейн }
+					10 = { set_name = "Ровенна" }
+					10 = { set_name = "Алис" }
+					10 = { set_name = "Теора" }
+					10 = { set_name = "Аманда" }
+					10 = { set_name = "Алисса" }
+					10 = { set_name = "Шарра" }
+					10 = { set_name = "Эймма" }
+					10 = { set_name = "Джейн" }
 				}
 			}
 		}
@@ -8886,29 +8886,29 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					450 = { }
-					40 = { set_name = Бейлон }
-					20 = { set_name = Лорон }
-					20 = { set_name = Теон }
-					20 = { set_name = Эурон }
-					20 = { set_name = Дагон }
-					10 = { set_name = Викон }
-					10 = { set_name = Горен }
-					10 = { set_name = Дальтон }
-					10 = { set_name = Верон }
-					10 = { set_name = Алтон }
-					10 = { set_name = Торвин }
-					10 = { set_name = Квеллон }
-					10 = { set_name = Харлон }
-					10 = { set_name = Донел }
-					10 = { set_name = Урригон }
-					10 = { set_name = Робин }
-					10 = { set_name = Освин }
-					10 = { set_name = Освелл }
-					10 = { set_name = Родрик }
-					10 = { set_name = Марон }
-					10 = { set_name = Виктарион }
-					10 = { set_name = Эйрон }
-					10 = { set_name = Торон }
+					40 = { set_name = "Бейлон" }
+					20 = { set_name = "Лорон" }
+					20 = { set_name = "Теон" }
+					20 = { set_name = "Эурон" }
+					20 = { set_name = "Дагон" }
+					10 = { set_name = "Викон" }
+					10 = { set_name = "Горен" }
+					10 = { set_name = "Дальтон" }
+					10 = { set_name = "Верон" }
+					10 = { set_name = "Алтон" }
+					10 = { set_name = "Торвин" }
+					10 = { set_name = "Квеллон" }
+					10 = { set_name = "Харлон" }
+					10 = { set_name = "Донел" }
+					10 = { set_name = "Урригон" }
+					10 = { set_name = "Робин" }
+					10 = { set_name = "Освин" }
+					10 = { set_name = "Освелл" }
+					10 = { set_name = "Родрик" }
+					10 = { set_name = "Марон" }
+					10 = { set_name = "Виктарион" }
+					10 = { set_name = "Эйрон" }
+					10 = { set_name = "Торон" }
 				}
 			}
 		}
@@ -8918,23 +8918,23 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					450 = { }
-					20 = { set_name = Харраг }
-					20 = { set_name = Харвин }
-					10 = { set_name = Равос }
-					10 = { set_name = Эрих }
-					10 = { set_name = Куоред }
-					10 = { set_name = Харрас }
-					10 = { set_name = Вулфгар }
-					10 = { set_name = Хорган }
-					10 = { set_name = Фергон }
-					10 = { set_name = Отгар }
-					10 = { set_name = Крагорн }
-					10 = { set_name = Хармунд }
-					10 = { set_name = Хагон }
-					10 = { set_name = Куорвин }
-					10 = { set_name = Харлан }
-					10 = { set_name = Халлек }
-					10 = { set_name = Харрен }
+					20 = { set_name = "Харраг" }
+					20 = { set_name = "Харвин" }
+					10 = { set_name = "Равос" }
+					10 = { set_name = "Эрих" }
+					10 = { set_name = "Куоред" }
+					10 = { set_name = "Харрас" }
+					10 = { set_name = "Вулфгар" }
+					10 = { set_name = "Хорган" }
+					10 = { set_name = "Фергон" }
+					10 = { set_name = "Отгар" }
+					10 = { set_name = "Крагорн" }
+					10 = { set_name = "Хармунд" }
+					10 = { set_name = "Хагон" }
+					10 = { set_name = "Куорвин" }
+					10 = { set_name = "Харлан" }
+					10 = { set_name = "Халлек" }
+					10 = { set_name = "Харрен" }
 				}
 			}
 		}
@@ -8944,21 +8944,21 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					500 = { }
-					50 = { set_name = Гарт }
-					25 = { set_name = Мерн }
-					25 = { set_name = Джайлс }
-					25 = { set_name = Гарланд }
-					25 = { set_name = Гвейн }
-					10 = { set_name = Эдмунд }
-					10 = { set_name = Гавен }
-					10 = { set_name = Персеон }
-					10 = { set_name = Грейдон }
-					10 = { set_name = Мерль }
-					10 = { set_name = Гордан }
-					10 = { set_name = Гарет }
-					10 = { set_name = Джон }
-					10 = { set_name = Мерин }
-					10 = { set_name = Маттеус }
+					50 = { set_name = "Гарт" }
+					25 = { set_name = "Мерн" }
+					25 = { set_name = "Джайлс" }
+					25 = { set_name = "Гарланд" }
+					25 = { set_name = "Гвейн" }
+					10 = { set_name = "Эдмунд" }
+					10 = { set_name = "Гавен" }
+					10 = { set_name = "Персеон" }
+					10 = { set_name = "Грейдон" }
+					10 = { set_name = "Мерль" }
+					10 = { set_name = "Гордан" }
+					10 = { set_name = "Гарет" }
+					10 = { set_name = "Джон" }
+					10 = { set_name = "Мерин" }
+					10 = { set_name = "Маттеус" }
 				}
 			}
 		}
@@ -8968,39 +8968,39 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					450 = { }
-					20 = { set_name = Алестер }
-					20 = { set_name = Гарет }
-					20 = { set_name = Лео }
-					20 = { set_name = Харлен }
-					20 = { set_name = Гарт }
-					20 = { set_name = Лютор }
-					10 = { set_name = Осмунд }
-					10 = { set_name = Роберт }
-					10 = { set_name = Лорент }
-					10 = { set_name = Тео }
-					10 = { set_name = Маттос }
-					10 = { set_name = Лионель }
-					10 = { set_name = Мейс }
-					10 = { set_name = Уиллас }
-					10 = { set_name = Гарлан }
-					10 = { set_name = Лорас }
-					10 = { set_name = Морин }
-					10 = { set_name = Теодор }
-					10 = { set_name = Гормон }
-					10 = { set_name = Лукас }
-					10 = { set_name = Мартин }
-					10 = { set_name = Бертранд }
+					20 = { set_name = "Алестер" }
+					20 = { set_name = "Гарет" }
+					20 = { set_name = "Лео" }
+					20 = { set_name = "Харлен" }
+					20 = { set_name = "Гарт" }
+					20 = { set_name = "Лютор" }
+					10 = { set_name = "Осмунд" }
+					10 = { set_name = "Роберт" }
+					10 = { set_name = "Лорент" }
+					10 = { set_name = "Тео" }
+					10 = { set_name = "Маттос" }
+					10 = { set_name = "Лионель" }
+					10 = { set_name = "Мейс" }
+					10 = { set_name = "Уиллас" }
+					10 = { set_name = "Гарлан" }
+					10 = { set_name = "Лорас" }
+					10 = { set_name = "Морин" }
+					10 = { set_name = "Теодор" }
+					10 = { set_name = "Гормон" }
+					10 = { set_name = "Лукас" }
+					10 = { set_name = "Мартин" }
+					10 = { set_name = "Бертранд" }
 				}
 			}
 			else = {
 				random_list = {
 					400 = { }
-					10 = { set_name = Маргери }
-					10 = { set_name = Мина }
-					10 = { set_name = Янна }
-					10 = { set_name = Элинор }
-					10 = { set_name = Олин }
-					10 = { set_name = Леона }
+					10 = { set_name = "Маргери" }
+					10 = { set_name = "Мина" }
+					10 = { set_name = "Янна" }
+					10 = { set_name = "Элинор" }
+					10 = { set_name = "Олин" }
+					10 = { set_name = "Леона" }
 				}
 			}
 		}
@@ -9010,37 +9010,37 @@ character_event = {
 				limit = { is_female = no }
 				random_list = {
 					450 = { }
-					20 = { set_name = Морган }
-					20 = { set_name = Морс }
-					10 = { set_name = Нимор }
-					10 = { set_name = Кворен }
-					10 = { set_name = Марон }
-					10 = { set_name = Оливар }
-					10 = { set_name = Левин }
-					10 = { set_name = Доран }
-					10 = { set_name = Оберин }
-					10 = { set_name = Квентин }
-					10 = { set_name = Тристан }
-					10 = { set_name = Морион }
-					10 = { set_name = Кайл }
+					20 = { set_name = "Морган" }
+					20 = { set_name = "Морс" }
+					10 = { set_name = "Нимор" }
+					10 = { set_name = "Кворен" }
+					10 = { set_name = "Марон" }
+					10 = { set_name = "Оливар" }
+					10 = { set_name = "Левин" }
+					10 = { set_name = "Доран" }
+					10 = { set_name = "Оберин" }
+					10 = { set_name = "Квентин" }
+					10 = { set_name = "Тристан" }
+					10 = { set_name = "Морион" }
+					10 = { set_name = "Кайл" }
 				}
 			}
 			else = {
 				random_list = {
 					450 = { }
-					40 = { set_name = Нимерия }
-					10 = { set_name = Мерия }
-					10 = { set_name = Дерия }
-					10 = { set_name = Алиандра }
-					10 = { set_name = Мирия }
-					10 = { set_name = Элия }
-					10 = { set_name = Арианна }
-					10 = { set_name = Обара }
-					10 = { set_name = Тиена }
-					10 = { set_name = Дорея }
-					10 = { set_name = Лореза }
-					10 = { set_name = Мара }
-					10 = { set_name = Корианна }
+					40 = { set_name = "Нимерия" }
+					10 = { set_name = "Мерия" }
+					10 = { set_name = "Дерия" }
+					10 = { set_name = "Алиандра" }
+					10 = { set_name = "Мирия" }
+					10 = { set_name = "Элия" }
+					10 = { set_name = "Арианна" }
+					10 = { set_name = "Обара" }
+					10 = { set_name = "Тиена" }
+					10 = { set_name = "Дорея" }
+					10 = { set_name = "Лореза" }
+					10 = { set_name = "Мара" }
+					10 = { set_name = "Корианна" }
 				}
 			}
 		}
@@ -9244,8 +9244,7 @@ character_event = { #move courtiers back
 				limit = { is_ruler = yes }
 				ROOT = { move_character = PREV }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				liege = { ROOT = { move_character = PREV } }
 			}
 		}
@@ -9505,8 +9504,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9520,8 +9518,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9535,8 +9532,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9550,8 +9546,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9565,8 +9560,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9580,8 +9574,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9595,8 +9588,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9610,8 +9602,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9625,8 +9616,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9640,8 +9630,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9655,8 +9644,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9670,8 +9658,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9685,8 +9672,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9700,8 +9686,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9715,8 +9700,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9730,8 +9714,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9745,8 +9728,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9760,8 +9742,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9775,8 +9756,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9790,8 +9770,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}
@@ -9809,8 +9788,7 @@ character_event = {
 				limit = { is_ruler = yes }
 				custom_tooltip = { text = TOOLTIPdynasty.499 }
 			}
-			if = {
-				limit = { is_ruler = no }
+			else = {
 				custom_tooltip = { text = TOOLTIPdynasty.499B }
 			}
 		}

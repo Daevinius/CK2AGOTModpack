@@ -74,6 +74,7 @@ castle = {
 			    province_id = 1314 # Stonecrab Cay
 			    province_id = 1315 # Mermaid's Palace
 			    province_id = 1348 # Wyne Isle
+			    province_id = 1446 # Bastard's Cradle
 			}
 		}
 
@@ -91,7 +92,7 @@ castle = {
 		potential = {
 			OR = {
 				province_id = 226
-				province_id = 1203
+				province_id = 1202
 			}
 			has_province_flag = kings_landing_established
 			FROMFROM = {
@@ -138,6 +139,7 @@ castle = {
 				province_id = 727	#Port Moraq
 				province_id = 728	#Zabhad
 				province_id = 729	#Vahar
+				province_id = 765	#Yin
 				province_id = 835	#Nefer
 				# province_id = 585	#Port of Ibben
 				# province_id = 594	#Ib Sar
@@ -153,6 +155,7 @@ castle = {
 					title = b_port_moraq
 					title = b_zabhad
 					title = b_vahar
+					title = b_anyang_castle
 					title = b_nefer
 				}
 			}
@@ -171,7 +174,7 @@ castle = {
 
 		potential = {
 			port = yes
-			NOT = { region = world_iron_isles	}
+			NOT = { region = world_iron_isles }
 			FROMFROM = {
 				OR = {
 					base_value_4_trigger = yes
@@ -182,9 +185,11 @@ castle = {
 					title = b_eastwatch
 					title = b_driftwoodhall
 					title = b_abaj
+					title = b_abjaqqa
 					title = b_pongar
 					title = b_draccar
 					title = b_cinnamon_isles
+					title = b_lower_cinnamon_isles
 					title = b_sweetport_sound
 					title = b_claw_isle
 					title = b_sharp_point
@@ -198,10 +203,21 @@ castle = {
 					title = b_greenstone
 					title = b_eagleseyrie
 					title = b_seagardcastle
+					title = b_thousand_islands
+					title = b_ragaroth
+					title = b_bleeding_island
+					title = b_galcar
+					title = b_jahos
+					title = b_fields_nefer
+					title = b_thousand_islands_castle
 				}
 			}
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -224,7 +240,7 @@ castle = {
 	ca_gold_cloaks = {
 		desc = ct_gold_cloaks_desc
 		potential = {
-			province_id = 1203 #kingslanding
+			province_id = 1202 #kingslanding
 			has_province_flag = kings_landing_established
 			FROMFROM = {
 				OR = {
@@ -340,7 +356,11 @@ castle = {
 				province_id = 30
 				province_id = 31
 				province_id = 32
-				province_id = 1325
+				province_id = 1426
+				province_id = 1427
+				province_id = 1428
+				province_id = 1443
+				province_id = 1444
 			}
 			has_province_flag = skagosi_rebuild_ships
 		}
@@ -679,13 +699,21 @@ castle = {
 	ca_five_forts = {
 		desc = ca_five_forts_desc
 		potential = {
-			province_id = 820
+			FROMFROM = {
+				OR = {
+					province_id = 820
+					province_id = 1625
+					province_id = 1626
+					province_id = 1627
+					province_id = 1628
+				}
+			}
 		}
 		#trigger = { always = no }
 		fort_level = 9
-		tax_income = -6
-		levy_size = -0.75
-		garrison_size = -0.75
+		tax_income = -18
+		levy_size = -0.80
+		garrison_size = -0.20
 		levy_reinforce_rate = 0.1
 
 		archers = 3000
@@ -1368,6 +1396,7 @@ castle = {
 					government = pirate_government
 					religion = pirate
 				    religion = corsair
+				    religion = ruin_rel
 					is_lady_of_the_waves_pirate_religion_trigger = yes
 				}
 			}
@@ -1395,6 +1424,7 @@ castle = {
 					government = pirate_government
 					religion = pirate
 				    religion = corsair
+				    religion = ruin_rel
 					is_lady_of_the_waves_pirate_religion_trigger = yes
 				}
 			}
@@ -1422,6 +1452,7 @@ castle = {
 					government = pirate_government
 					religion = pirate
 				    religion = corsair
+				    religion = ruin_rel
 					is_lady_of_the_waves_pirate_religion_trigger = yes
 				}
 			}
@@ -1449,6 +1480,7 @@ castle = {
 					government = pirate_government
 					religion = pirate
 				    religion = corsair
+				    religion = ruin_rel
 					is_lady_of_the_waves_pirate_religion_trigger = yes
 				}
 			}
@@ -1983,7 +2015,11 @@ castle = {
 		desc = ca_wall_q_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2049,7 +2085,11 @@ castle = {
 		desc = ca_wall_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2124,7 +2164,11 @@ castle = {
 		desc = ca_keep_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2195,7 +2239,11 @@ castle = {
 		desc = ca_militia_barracks_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2240,7 +2288,11 @@ castle = {
 		desc = ca_training_grounds_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2273,7 +2325,11 @@ castle = {
 		desc = ca_barracks_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2357,7 +2413,11 @@ castle = {
 		desc = ca_stable_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2426,7 +2486,11 @@ castle = {
 		desc = ca_town_1_desc
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2492,7 +2556,11 @@ castle = {
 		prerequisites = { ca_town_1 }
 		potential = {
 			NAND = {
-				wildling_culture_trigger = yes
+				OR = {
+					waste_culture_trigger = yes
+					wildling_culture_trigger = yes
+					culture = brindlemen
+				}
 				FROM = { government = wildling_feudal_government }
 			}
 		}
@@ -2694,7 +2762,11 @@ castle = {
 	tb_hillfort_1 = {
 		desc = tb_hillfort_1_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2716,7 +2788,11 @@ castle = {
 	tb_hillfort_2 = {
 		desc = tb_hillfort_2_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2741,7 +2817,11 @@ castle = {
 	tb_hillfort_3 = {
 		desc = tb_hillfort_3_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2764,7 +2844,11 @@ castle = {
 	tb_hillfort_4 = {
 		desc = tb_hillfort_4_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2790,7 +2874,11 @@ castle = {
 		desc = shipyard_desc
 		port = yes
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2812,7 +2900,11 @@ castle = {
 		desc = shipyard_desc
 		port = yes
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2835,7 +2927,11 @@ castle = {
 		desc = shipyard_desc
 		port = yes
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2858,7 +2954,11 @@ castle = {
 		desc = shipyard_desc
 		port = yes
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2880,7 +2980,11 @@ castle = {
 	tb_training_grounds_1 = {
 		desc = tb_training_grounds_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2898,7 +3002,11 @@ castle = {
 	tb_training_grounds_2 = {
 		desc = tb_training_grounds_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2920,7 +3028,11 @@ castle = {
 	tb_training_grounds_3 = {
 		desc = tb_training_grounds_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2939,7 +3051,11 @@ castle = {
 	tb_training_grounds_4 = {
 		desc = tb_training_grounds_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2961,7 +3077,11 @@ castle = {
 	tb_war_camp_1 = {
 		desc = tb_war_camp_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2978,7 +3098,11 @@ castle = {
 	tb_war_camp_2 = {
 		desc = tb_war_camp_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -2999,7 +3123,11 @@ castle = {
 	tb_war_camp_3 = {
 		desc = tb_war_camp_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3017,7 +3145,11 @@ castle = {
 	tb_war_camp_4 = {
 		desc = tb_war_camp_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3038,7 +3170,11 @@ castle = {
 	tb_practice_range_1 = {
 		desc = tb_practice_range_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3055,7 +3191,11 @@ castle = {
 	tb_practice_range_2 = {
 		desc = tb_practice_range_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3076,7 +3216,11 @@ castle = {
 	tb_practice_range_3 = {
 		desc = tb_practice_range_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3094,7 +3238,11 @@ castle = {
 	tb_practice_range_4 = {
 		desc = tb_practice_range_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3115,7 +3263,11 @@ castle = {
 	tb_arsenal_1 = {
 		desc = tb_arsenal_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3133,7 +3285,11 @@ castle = {
 	tb_arsenal_2 = {
 		desc = tb_arsenal_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3155,7 +3311,11 @@ castle = {
 	tb_arsenal_3 = {
 		desc = tb_arsenal_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3174,7 +3334,11 @@ castle = {
 	tb_arsenal_4 = {
 		desc = tb_arsenal_desc
 		potential = {
-			wildling_culture_trigger = yes
+			OR = {
+				waste_culture_trigger = yes
+				wildling_culture_trigger = yes
+				culture = brindlemen
+			}
 		}
 		trigger = {
 			TECH_CASTLE_CONSTRUCTION = 0
@@ -3222,12 +3386,14 @@ castle = {
 				FROM = { culture_group = dornish }
 				FROM = { culture_group = free_cities }
 			}
-			NOR = {
-				trait = dragon_rider
-				any_friend = {
-					trait = dragon
+			FROM = {
+				NOR = {
+					trait = dragon_rider
+					any_friend = {
+						trait = dragon
+					}
+					culture_group = valyrian
 				}
-				culture_group = valyrian
 			}
 		}
 		extra_tech_building_start = 10.0 # Never get at start of game
@@ -3262,12 +3428,14 @@ castle = {
 				FROM = { culture_group = dornish }
 				FROM = { culture_group = free_cities }
 			}
-			NOR = {
-				trait = dragon_rider
-				any_friend = {
-					trait = dragon
+			FROM = {
+				NOR = {
+					trait = dragon_rider
+					any_friend = {
+						trait = dragon
+					}
+					culture_group = valyrian
 				}
-				culture_group = valyrian
 			}
 		}
 		extra_tech_building_start = 10.0 # Never get at start of game
@@ -3302,12 +3470,14 @@ castle = {
 				FROM = { culture_group = dornish }
 				FROM = { culture_group = free_cities }
 			}
-			NOR = {
-				trait = dragon_rider
-				any_friend = {
-					trait = dragon
+			FROM = {
+				NOR = {
+					trait = dragon_rider
+					any_friend = {
+						trait = dragon
+					}
+					culture_group = valyrian
 				}
-				culture_group = valyrian
 			}
 		}
 		extra_tech_building_start = 10.0 # Never get at start of game
